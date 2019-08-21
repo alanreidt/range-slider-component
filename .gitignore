@@ -1,0 +1,6 @@
+miscellaneous/
+build/
+dist/
+node_modules/
+.vscode
+.cache/
