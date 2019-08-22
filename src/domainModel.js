@@ -1,8 +1,7 @@
 export class DomainModel {
   constructor({
-    min = 0,
-    max = 100,
-    values = [min, max],
+    boundaries = [0, 100],
+    value = boundaries,
     step = null,
     orientation = "horizontal",
     tooltips = false,
@@ -11,9 +10,8 @@ export class DomainModel {
     this.options = {};
     let options = this.options;
 
-    options.min = min;
-    options.max = max;
-    options.values = values;
+    options.boundaries = boundaries;
+    options.value = value;
     options.step = step;
     options.orientation = orientation;
     options.tooltips = tooltips;
