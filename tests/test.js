@@ -1,4 +1,4 @@
-import {DomainModel} from "../src/domainModel";
+import { initialization } from "./specs/initialization";
 
 /**
  * TODO:
@@ -32,112 +32,6 @@ import {DomainModel} from "../src/domainModel";
 
 describe("DomainModel", function() {
   describe("Initialization process", function() {
-
-
-    describe("shall assign default values for unpassed parameters", function () {
-
-      describe("assigns default values, if nothing is passed", function() {
-        let subjectDomainModel = new DomainModel().options;
-        let objectDomainModel = {
-          boundaries: [0, 100],
-          value: [0, 100],
-          step: null,
-          orientation: "horizontal",
-          tooltips: false,
-        };
-
-        for (let key in subjectDomainModel) {
-
-          it(`${key} is equal to ${objectDomainModel[key]}`, function() {
-            assert.deepEqual( subjectDomainModel[key], objectDomainModel[key] );
-          });
-
-        }
-      });
-
-      describe("assigns default values for unpassed parameters, if only part is passed", function() {
-        let options = {
-          boundaries: [5000, 40000],
-          step: 50,
-          orientation: "vertical",
-        };
-        let objectDomainModel = {
-          boundaries: [5000, 40000],
-          value: [5000, 40000],
-          step: 50,
-          orientation: "vertical",
-          tooltips: false,
-        };
-        let subjectDomainModel = new DomainModel(options).options;
-
-        for (let key in subjectDomainModel) {
-
-          it(`${key} is equal to ${objectDomainModel[key]}`, function() {
-            assert.deepEqual( subjectDomainModel[key], objectDomainModel[key] );
-          });
-
-        }
-      });
-
-    });
-
-
-    // shall assign fixed values for uncorrect arguments
-      // shall assign default value if negative one is passed
-      // shall round float values to the nearest integer one
-    describe("shall assign fixed values for incorrect arguments", function() {
-
-      describe("assigns default value if incorrect one is passed", function() {
-        let options = {
-          boundaries: [-100, 300],
-          value: [0, -100],
-          step: -20,
-          orientation: "right",
-          tooltips: 7,
-        };
-        let objectDomainModel = {
-          boundaries: [0, 300],
-          value: [0, 100],
-          step: null,
-          orientation: "horizontal",
-          tooltips: false,
-        };
-        let subjectDomainModel = new DomainModel(options).options;
-
-        for (let key in subjectDomainModel) {
-
-          it(`${key} is equal to ${objectDomainModel[key]}`, function() {
-            assert.deepEqual( subjectDomainModel[key], objectDomainModel[key] );
-          });
-
-        }
-      });
-
-      describe("rounds float values to the nearest integer one", function() {
-        let options = {
-          boundaries: [0, 999.95],
-          value: [199.9, 600],
-          step: 100.49,
-        };
-        let objectDomainModel = {
-          boundaries: [0, 1000],
-          value: [0, 100],
-          step: 100,
-          orientation: "horizontal",
-          tooltips: false,
-        };
-        let subjectDomainModel = new DomainModel(options).options;
-
-        for (let key in subjectDomainModel) {
-
-          it(`${key} is equal to ${objectDomainModel[key]}`, function() {
-            assert.deepEqual( subjectDomainModel[key], objectDomainModel[key] );
-          });
-
-        }
-      });
-
-    });
-
+    initialization();
   });
 });
