@@ -6,14 +6,12 @@ export class DomainModel {
     orientation = "horizontal",
     tooltips = false,
   } = {}) {
-    // fix order
-    this.options = {};
-    let options = this.options;
-
-    options.boundaries = boundaries;
-    options.value = value;
-    options.step = step;
-    options.orientation = orientation;
-    options.tooltips = tooltips;
+    this.options = {
+      boundaries,
+      value,
+      step,
+      orientation,
+      tooltips,
+    };
   }
 }
