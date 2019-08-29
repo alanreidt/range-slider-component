@@ -25,4 +25,66 @@ export class DomainModel {
       this.value = options.value;
     }
   }
+
+  get boundaries() {
+    return this._options.boundaries;
+  }
+  set boundaries(arr) {
+    let parsedArray = arr.map( item => parseFloat(item) );
+
+    if ( parsedArray.includes(NaN) ) return;
+
+    this._options.boundaries = parsedArray;
+  }
+
+  get value() {
+    return this._options.value;
+  }
+  set value(value) {
+    let arr = [].concat(value);
+    let result = [];
+
+    for (let item of arr) {
+      let parsedItem = parseFloat(item);
+
+      if ( isNaN(parsedItem) ) return;
+
+      result.push(parsedItem);
+    }
+
+    if (result.length === 1) {
+      result = Number(result);
+    }
+
+    this._options.value = result;
+  }
+
+  get step() {
+    return this._options.step;
+  }
+  set step(value) {
+    let parsedValue = parseFloat(value);
+
+    if (isNaN(parsedValue) || parsedValue < 0) return;
+
+    this._options.step = parsedValue;
+  }
+
+  get orientation() {
+    return this._options.orientation;
+  }
+  set orientation(value) {
+    if (value !== "horizontal" && value !== "vertical") return;
+
+    this._options.orientation = value;
+  }
+
+  get tooltips() {
+    return this._options.tooltips;
+  }
+  set tooltips(value) {
+    if (value !== false && value !== true) return;
+
+    this._options.tooltips = value;
+  }
 }
