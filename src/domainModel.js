@@ -29,28 +29,53 @@ export class DomainModel {
   get boundaries() {
     return this._options.boundaries;
   }
-  set boundaries(arr) {
-    let parsedArray = arr.map( item => parseFloat(item) );
+  set boundaries(value) {
+    let currentValue = this._options.boundaries;
 
-    if ( parsedArray.includes(NaN) ) return;
+    if (value === Number) {
+      let parsedItem = parseFloat( value );
 
-    this._options.boundaries = parsedArray;
+      if ( isNaN(parsedItem) ) return;
+
+      if ( value >= currentValue[1] ) {
+        currentValue[1] = value;
+      } else {
+        currentValue[0] = value;
+      }
+    }
+
+    if ( Array.isArray(value) ) {
+      let result = currentValue;
+
+      for (let i = 0; i < result.length; i++) {
+        let parsedItem = parseFloat( value[i] );
+
+        if ( isNaN(parsedItem) ) continue;
+
+        result[i] = parsedItem;
+      }
+
+      currentValue = result;
+    }
   }
 
   get value() {
     return this._options.value;
   }
   set value(value) {
-    let arr = [].concat(value);
+    // let arr = value.toString().split(",");
+    let arr = Array.prototype.concat(value);
     let result = [];
 
     for (let item of arr) {
-      let parsedItem = parseFloat(item);
+      let parsedItem = parseFloat( item );
 
-      if ( isNaN(parsedItem) ) return;
+      if ( isNaN(parsedItem) ) continue;
 
       result.push(parsedItem);
     }
+
+    if (!result.length) return;
 
     if (result.length === 1) {
       result = Number(result);
