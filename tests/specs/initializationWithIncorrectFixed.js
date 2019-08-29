@@ -2,22 +2,22 @@ import {DomainModel} from "../../src/domainModel";
 
 export function initializationWithIncorrectFixed() {
   let options = {
-    boundaries: [-100, 300],
-    value: [0, -100],
+    boundaries: ["hundred", 200],
+    value: [25, "p100"],
     step: -20,
     orientation: "right",
     tooltips: 7,
   };
   let objectDomainModel = {
-    boundaries: [0, 300],
-    value: [0, 100],
+    boundaries: [0, 100],
+    value: 50,
     step: null,
     orientation: "horizontal",
     tooltips: false,
   };
-  let subjectDomainModel = new DomainModel(options).options;
+  let subjectDomainModel = new DomainModel(options);
 
-  for (let key in subjectDomainModel) {
+  for (let key in objectDomainModel) {
 
     it(`${key} is equal to ${objectDomainModel[key]}`, function() {
       assert.deepEqual( subjectDomainModel[key], objectDomainModel[key] );

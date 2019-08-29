@@ -1,7 +1,7 @@
 import { initializationWithDefaults } from "./initializationWithDefaults";
 import { initializationWithPartDefaults } from "./initializationWithPartDefaults";
 import { initializationWithIncorrectFixed } from "./initializationWithIncorrectFixed";
-import { initializationWithFloatFixed } from "./initializationWithFloatFixed";
+import { initializationWithMixedInputFixed } from "./initializationWithMixedInputFixed";
 
 export function initialization() {
   describe("shall assign default values for unpassed parameters", function () {
@@ -21,8 +21,8 @@ export function initialization() {
     describe("assigns default value if incorrect one is passed", function() {
       initializationWithIncorrectFixed();
     });
-    describe("rounds float values to the nearest integer one", function() {
-      initializationWithFloatFixed();
+    describe("parse number from mixed inputs", function() {
+      initializationWithMixedInputFixed();
     });
 
   });
