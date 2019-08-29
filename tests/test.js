@@ -2,7 +2,7 @@ import { initialization } from "./specs/initialization";
 
 /**
  * TODO:
- *  - Initialization
+ *  - Initialization (+)
  *    - shall assign default values for unpassed parameters (+)
  *      - shall assign default values, if nothing is passed (+)
  *      - shall assign default values for unpassed parameters,
@@ -10,24 +10,45 @@ import { initialization } from "./specs/initialization";
  *    - shall assign fixed values for incorrect arguments (+)
  *      - shall assign default value if incorrect one is passed (+)
  *      - shall round float values to the nearest integer one (+)
+ *      - shall parse number from mixed inputs (+)
  *  - Initialization & Reassigning:
- *    - shall accept only positive integer values:
- *      - shall assign default value if negative one is passed
- *      - shall round float values to the nearest integer one
  *    - options:
+ *      - default values:
+ *        - boudaries: [0, 100],
+ *        - value: ({boundaries(max)} - {boundaries(min)}) / 2,
+ *        - step: null,
+ *        - orientation: "horizontal",
+ *        - tooltips: false,
  *      - boundaries:
- *        - shall assign bigger value to max, the another — to min
- *        - should accept as a number, as an array
- *        - should change {boundaries(max)} or {boundaries(min)}, if number is passed
+ *        - shall accept array of numbers
+ *        - shall assign array with default values instead of incorrect input
+ *          ( isNaN( parseFloat(value) ) )
+ *        - shall correct {value} if it's out of {boundaries(range)}
+ *        - should also accept numbers (would change appropriate default one)
+ *        - should assign default value instead of each incorrect one
+ *        - should change direction (ltr or rtl) according to inputed value order
+ *        - should accept not only "numbers" (colors)
  *      - value:
- *        - shall accept as a number, as an array
+ *        - shall accept number or array of numbers — will result in mono- or multi- slider,
+ *          accordingly
+ *        - shall assign default value instead of incorrect input
+ *          ( isNaN( parseFloat(value) ) )
  *        - shall round value to the nearest possible, in order to correspond to {step}
- *        - shall assign value to nearest {boundaries(max)} or {boundaries(min)},
+ *        - shall assign value to the nearest {boundaries(max)} or {boundaries(min)},
  *          if number is out of {boundaries} range
- *        - shall assign value of an array to default, if it is out of {boundaries} range
+ *        - should assign default value instead of each incorrect one
+ *        - should accept keywords: min(start), middle(center), max(end)
  *      - step:
- *        - shall round value to the nearest possible one if (boundaries % step === 0)
+ *        - shall accept only positive number
+ *        - shall round value to the nearest possible one if (boundaries % step === 1)
  *        - shall assign value to {boundaries(max)} if passed value > {boundaries(max)}
+ *        - shall correct {value} in order to correspond to its value
+ *      - orientation:
+ *        - shall accept only string "horizontal" or "vertical"
+ *        - shall assign default value if incorrect one is passed
+ *      - tooltips:
+ *        - shall accept only boolean true or false (!)
+ *        - shall assign default value if incorrect one is passed
  */
 
 describe("DomainModel", function() {
