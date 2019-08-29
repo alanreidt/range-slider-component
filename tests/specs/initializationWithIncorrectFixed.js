@@ -9,8 +9,8 @@ export function initializationWithIncorrectFixed() {
     tooltips: 7,
   };
   let objectDomainModel = {
-    boundaries: [0, 100],
-    value: 50,
+    boundaries: [0, 200],
+    value: 25,
     step: null,
     orientation: "horizontal",
     tooltips: false,
