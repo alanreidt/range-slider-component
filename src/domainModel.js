@@ -10,19 +10,11 @@ export class DomainModel {
       orientation: "horizontal",
       tooltips: false,
     };
+    this._options.value = getAverageOf(this._options.boundaries);
 
     for (let key in this._options) {
       if ( options[key] === undefined ) continue;
       this[key] = options[key];
-    }
-
-    // if value isn't passed
-      // value is equal to half of the boundaries difference
-    // value is equal to options.value
-    this._options.value = (this._options.boundaries[1] - this._options.boundaries[0]) / 2;
-
-    if (options.value !== undefined) {
-      this.value = options.value;
     }
   }
 
@@ -33,14 +25,14 @@ export class DomainModel {
     let currentValue = this._options.boundaries;
 
     if (value === Number) {
-      let parsedItem = parseFloat( value );
+      let floatItem = convertToFloat(value);
 
-      if ( isNaN(parsedItem) ) return;
+      if (floatItem === undefined) return;
 
-      if ( value >= currentValue[1] ) {
-        currentValue[1] = value;
+      if (floatItem >= currentValue[1]) {
+        currentValue[1] = floatItem;
       } else {
-        currentValue[0] = value;
+        currentValue[0] = floatItem;
       }
     }
 
@@ -48,11 +40,11 @@ export class DomainModel {
       let result = currentValue;
 
       for (let i = 0; i < result.length; i++) {
-        let parsedItem = parseFloat( value[i] );
+        let floatItem = convertToFloat( value[i] );
 
-        if ( isNaN(parsedItem) ) continue;
+        if (floatItem === undefined) continue;
 
-        result[i] = parsedItem;
+        result[i] = floatItem;
       }
 
       currentValue = result;
@@ -63,16 +55,15 @@ export class DomainModel {
     return this._options.value;
   }
   set value(value) {
-    // let arr = value.toString().split(",");
     let arr = Array.prototype.concat(value);
     let result = [];
 
     for (let item of arr) {
-      let parsedItem = parseFloat( item );
+      let floatItem = convertToFloat(item);
 
-      if ( isNaN(parsedItem) ) continue;
+      if ( floatItem === undefined ) continue;
 
-      result.push(parsedItem);
+      result.push(floatItem);
     }
 
     if (!result.length) return;
@@ -88,11 +79,11 @@ export class DomainModel {
     return this._options.step;
   }
   set step(value) {
-    let parsedValue = parseFloat(value);
+    let floatValue = convertToFloat(value);
 
-    if (isNaN(parsedValue) || parsedValue < 0) return;
+    if (floatValue === undefined || floatValue < 0) return;
 
-    this._options.step = parsedValue;
+    this._options.step = floatValue;
   }
 
   get orientation() {
@@ -112,4 +103,26 @@ export class DomainModel {
 
     this._options.tooltips = value;
   }
+}
+
+/**
+ * Converts copy of a value to float and returns it,
+ * otherwise returns undefined.
+ *
+ * @param {string} value The subject of operation
+ * @param {number} value The subject of operation
+ * @returns {number}
+ * @returns {undefined} if float number can't be extracted
+ */
+
+function convertToFloat(value) {
+  let floatValue = parseFloat(value);
+
+  if ( isNaN(floatValue) ) return;
+
+  return floatValue;
+}
+
+function getAverageOf(arr) {
+  return arr.reduce( (sum, current) => sum + current, 0 ) / arr.length;
 }
