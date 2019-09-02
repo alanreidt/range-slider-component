@@ -1,18 +1,17 @@
-import {Slider} from "../../src/Slider";
+import {Slider} from "../../../src/Slider";
 
-export function initializationWithIncorrectFixed() {
+export function initializationWithPartDefaults() {
   let options = {
-    boundaries: ["hundred", 200],
-    value: [25, "p100"],
-    step: -20,
-    orientation: "right",
-    tooltips: 7,
+    boundaries: [5000, 40000],
+    value: 20000,
+    step: 50,
+    orientation: "vertical",
   };
   let testObject = {
-    boundaries: [0, 200],
-    value: 25,
-    step: null,
-    orientation: "horizontal",
+    boundaries: [5000, 40000],
+    value: 20000,
+    step: 50,
+    orientation: "vertical",
     tooltips: false,
   };
   let testSubject = new Slider(options);

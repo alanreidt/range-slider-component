@@ -1,4 +1,4 @@
-import {Slider} from "../../src/Slider";
+import {Slider} from "../../../src/Slider";
 
 export function initializationWithMixedInputFixed() {
   let options = {

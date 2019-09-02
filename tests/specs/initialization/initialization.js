@@ -1,7 +1,7 @@
-import { initializationWithDefaults } from "./initializationWithDefaults";
-import { initializationWithPartDefaults } from "./initializationWithPartDefaults";
-import { initializationWithIncorrectFixed } from "./initializationWithIncorrectFixed";
-import { initializationWithMixedInputFixed } from "./initializationWithMixedInputFixed";
+import {initializationWithDefaults} from "./initializationWithDefaults";
+import {initializationWithPartDefaults} from "./initializationWithPartDefaults";
+import {initializationWithIncorrectFixed} from "./initializationWithIncorrectFixed";
+import {initializationWithMixedInputFixed} from "./initializationWithMixedInputFixed";
 
 export function initialization() {
   describe("shall assign default values for unpassed parameters", function () {

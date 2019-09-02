@@ -1,4 +1,4 @@
-import {Slider} from "../../src/Slider";
+import {Slider} from "../../../src/Slider";
 
 export function initializationWithDefaults() {
   let testSubject = new Slider();

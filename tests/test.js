@@ -1,4 +1,4 @@
-import {initialization} from "./specs/initialization";
+import {initialization} from "./specs/initialization/initialization";
 
 /**
  * TODO:
