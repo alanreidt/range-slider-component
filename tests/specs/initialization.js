@@ -6,10 +6,10 @@ import { initializationWithMixedInputFixed } from "./initializationWithMixedInpu
 export function initialization() {
   describe("shall assign default values for unpassed parameters", function () {
 
-    describe("assigns default values, if nothing is passed", function() {
+    context("shall assign default values, if nothing is passed", function() {
       initializationWithDefaults();
     });
-    describe("assigns default values for unpassed parameters, if only part is passed", function() {
+    context("shall assign default values for unpassed parameters, if only part is passed", function() {
       initializationWithPartDefaults();
     });
 
@@ -18,10 +18,10 @@ export function initialization() {
 
   describe("shall assign fixed values for incorrect arguments", function() {
 
-    describe("assigns default value if incorrect one is passed", function() {
+    context("shall assign default value if incorrect one is passed", function() {
       initializationWithIncorrectFixed();
     });
-    describe("parse number from mixed inputs", function() {
+    context("shall parse number from mixed inputs", function() {
       initializationWithMixedInputFixed();
     });
 

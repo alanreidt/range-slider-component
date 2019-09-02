@@ -19,7 +19,7 @@ export function initializationWithIncorrectFixed() {
 
   for (let key in testObject) {
 
-    it(`${key} is equal to ${testObject[key]}`, function() {
+    it(`${key} is equal to ${testObject[key]} (was passed: ${options[key]})`, function() {
       assert.deepEqual( testSubject[key], testObject[key] );
     });
 
