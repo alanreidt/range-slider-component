@@ -1,4 +1,4 @@
-import {DomainModel} from "../../src/domainModel";
+import {Slider} from "../../src/Slider";
 
 export function initializationWithMixedInputFixed() {
   let options = {
@@ -6,19 +6,19 @@ export function initializationWithMixedInputFixed() {
     value: ["0$", 600],
     step: "100",
   };
-  let objectDomainModel = {
+  let testObject = {
     boundaries: [0, 1000],
     value: [0, 600],
     step: 100,
     orientation: "horizontal",
     tooltips: false,
   };
-  let subjectDomainModel = new DomainModel(options);
+  let testSubject = new Slider(options);
 
-  for (let key in objectDomainModel) {
+  for (let key in testObject) {
 
-    it(`${key} is equal to ${objectDomainModel[key]}`, function() {
-      assert.deepEqual( subjectDomainModel[key], objectDomainModel[key] );
+    it(`${key} is equal to ${testObject[key]}`, function() {
+      assert.deepEqual( testSubject[key], testObject[key] );
     });
 
   }

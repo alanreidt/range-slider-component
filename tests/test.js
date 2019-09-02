@@ -1,8 +1,8 @@
-import { initialization } from "./specs/initialization";
+import {initialization} from "./specs/initialization";
 
 /**
  * TODO:
- *  - Initialization (+)
+ *  - Initialization tests (+):
  *    - shall assign default values for unpassed parameters (++)
  *      - shall assign default values, if nothing is passed (++)
  *      - shall assign default values for unpassed parameters,
@@ -11,7 +11,8 @@ import { initialization } from "./specs/initialization";
  *      - shall assign default value if incorrect one is passed (+)
  *      - shall round float values to the nearest integer one (+)
  *      - shall parse number from mixed inputs (+)
- *  - Initialization & Reassigning:
+ *  - Reassigning Tests:
+ *  - Business Logic:
  *    - options:
  *      - default values:
  *        - boudaries: [0, 100],
@@ -51,7 +52,7 @@ import { initialization } from "./specs/initialization";
  *        - shall assign default value if incorrect one is passed (+)
  */
 
-describe("DomainModel", function() {
+describe("Slider", function() {
   describe("Initialization process", function() {
     initialization();
   });

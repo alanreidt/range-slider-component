@@ -1,8 +1,8 @@
-import {DomainModel} from "../../src/domainModel";
+import {Slider} from "../../src/Slider";
 
 export function initializationWithDefaults() {
-  let subjectDomainModel = new DomainModel();
-  let objectDomainModel = {
+  let testSubject = new Slider();
+  let testObject = {
     boundaries: [0, 100],
     value: 50,
     step: null,
@@ -10,10 +10,10 @@ export function initializationWithDefaults() {
     tooltips: false,
   };
 
-  for (let key in objectDomainModel) {
+  for (let key in testObject) {
 
-    it(`${key} is equal to ${objectDomainModel[key]}`, function() {
-      assert.deepEqual( subjectDomainModel[key], objectDomainModel[key] );
+    it(`${key} is equal to ${testObject[key]}`, function() {
+      assert.deepEqual( testSubject[key], testObject[key] );
     });
 
   }

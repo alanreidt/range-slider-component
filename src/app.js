@@ -1,5 +1,5 @@
-import {DomainModel} from "/domainModel";
+import {Slider} from "/Slider";
 
-let slider = new DomainModel();
+let slider = new Slider();
 console.log("Hello!");
 console.log(slider);
