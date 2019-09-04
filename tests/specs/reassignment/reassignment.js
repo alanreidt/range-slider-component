@@ -1,18 +1,18 @@
-import { reassignmentByCorrect } from "./reassignmentByCorrect";
-import { reassignmentByIncorrect } from "./reassignmentByIncorrect";
-import { reassignmentCorrectionOfValueByBoundaries } from "./reassignmentCorrectionOfValueByBoundaries";
-import { reassignmentCorrectionOfStepByBoundaries } from "./reassignmentCorrectionOfStepByBoundaries";
-import { reassignmentCorrectionOfStepOverflowByBoundaries } from "./reassignmentCorrectionOfStepOverflowByBoundaries";
-import { reassignmentCorrectionOfValueByStep } from "./reassignmentCorrectionOfValueByStep";
-import { reassignmentCorrectionOfValueOverflow } from "./reassignmentCorrectionOfValueOverflow";
-import { reassignmentCorrectionOfValue } from "./reassignmentCorrectionOfValue";
-import { reassignmentCorrectionOfStep } from "./reassignmentCorrectionOfStep";
-import { reassignmentCorrectionOfStepOverflow } from "./reassignmentCorrectionOfStepOverflow";
-import { reassignmentBoundariesMin } from "./reassignmentBoundariesMin";
-import { reassignmentBoundariesMax } from "./reassignmentBoundariesMax";
-import { reassignmentValueArray } from "./reassignmentValueArray";
-import { reassignmentValueArrayWithIncorrect } from "./reassignmentValueArrayWithIncorrect";
-import { reassignmentValueDefault } from "./reassignmentValueDefault";
+import {reassignmentByCorrect} from "./reassignmentByCorrect";
+import {reassignmentByIncorrect} from "./reassignmentByIncorrect";
+import {reassignmentCorrectionOfValueByBoundaries} from "./reassignmentCorrectionOfValueByBoundaries";
+import {reassignmentCorrectionOfStepByBoundaries} from "./reassignmentCorrectionOfStepByBoundaries";
+import {reassignmentCorrectionOfStepOverflowByBoundaries} from "./reassignmentCorrectionOfStepOverflowByBoundaries";
+import {reassignmentCorrectionOfValueByStep} from "./reassignmentCorrectionOfValueByStep";
+import {reassignmentCorrectionOfValueOverflow} from "./reassignmentCorrectionOfValueOverflow";
+import {reassignmentCorrectionOfValue} from "./reassignmentCorrectionOfValue";
+import {reassignmentCorrectionOfStep} from "./reassignmentCorrectionOfStep";
+import {reassignmentCorrectionOfStepOverflow} from "./reassignmentCorrectionOfStepOverflow";
+import {reassignmentBoundariesMin} from "./reassignmentBoundariesMin";
+import {reassignmentBoundariesMax} from "./reassignmentBoundariesMax";
+import {reassignmentValueArray} from "./reassignmentValueArray";
+import {reassignmentValueArrayWithIncorrect} from "./reassignmentValueArrayWithIncorrect";
+import {reassignmentValueDefault} from "./reassignmentValueDefault";
 
 export function reassignment() {
   describe("shall change values, if correct one is passed", function() {
