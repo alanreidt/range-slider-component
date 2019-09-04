@@ -6,11 +6,11 @@ export class Slider {
     // to avoid their redundant pass through setters
     this._options = {
       boundaries: [0, 100],
+      value: null,
       step: null,
       orientation: "horizontal",
       tooltips: false,
     };
-    this._options.value = getAverageOf(this._options.boundaries);
 
     for (let key in this._options) {
       if ( options[key] === undefined ) continue;
@@ -52,7 +52,7 @@ export class Slider {
   }
 
   get value() {
-    return this._options.value;
+    return this._options.value || getAverageOf(this._options.boundaries);
   }
   set value(value) {
     let arr = Array.prototype.concat(value);
