@@ -1,4 +1,5 @@
 import {initialization} from "./specs/initialization/initialization";
+import {reassignment} from "./specs/reassignment/reassignment";
 
 /**
  * TODO:
@@ -11,21 +12,31 @@ import {initialization} from "./specs/initialization/initialization";
  *      - shall assign default value if incorrect one is passed (++)
  *      - shall parse number from mixed inputs (++)
  *  - Reassignment test:
- *    - shall change values, if correct one is passed
- *    - shall not change values, if incorrect one is passed
- *    - shall correct values
+ *    - shall change values, if correct one is passed (+)
+ *    - shall not change values, if incorrect one is passed (+)
+ *    - shall correct values (+)
  *      - {boundaries} on change, shall correct {value},
- *        if it became out of the range
+ *        if it became out of the range (+)
  *      - {boundaries} on change, shall correct {step},
- *        if it stopped to correspond to the range
- *      - {boundaries} shall correct {step}, if it became bigger, than {boundaries(max)}
+ *        if it stopped to correspond to the range (+)
+ *      - {boundaries} shall correct {step}, if it became bigger,
+ *        than difference of {boundaries(range)} (+)
  *      - {step} on change, shall correct {value},
- *        if it stopped to correspond to its value
- *      - shall correct {value}, if passed value is out of {boundaries}
- *      - shall correct {value}, if passed value isn't correspond to {step}
- *      - shall correct {step}, if passed value isn't correspond to {boundaries(range)}
- *      - shall correct {step}, if passed value is bigger than {boundaries(max)}
+ *        if it stopped to correspond to its value (+)
+ *      - shall correct {value}, if passed value isn't correspond to {step} (+)
+ *      - shall correct {value}, if passed value is out of {boundaries} (+)
+ *      - shall correct {step}, if passed value isn't correspond to {boundaries(range)} (+)
+ *      - shall correct {step}, if passed value is bigger than difference of {boundaries(range)} (+)
+ *    - shall change nearest {boundaries} value, if only a number is passed (+)
+ *      - shall change {boundaries(min)}, if passed value lay near to it (+)
+ *      - shall change {boundaries(max)}, if passed value lay near to it (+)
+ *    - shall accept unlimited array of {value} values
+ *      - shall accept array of {value} values (+)
+ *      - shall accept array of {value} values and correct incorrect (+)
+ *    - {value} shall be equal to average of boundaries by default (+)
  *  - Business Logic:
+ *    - in general:
+ *      - should allow to define min/max distance between handles
  *    - options:
  *      - default values:
  *        - boudaries: [0, 100],
@@ -39,8 +50,9 @@ import {initialization} from "./specs/initialization/initialization";
  *        - shall leave array with previous values instead of incorrect input
  *          ( isNaN( parseFloat(value) ) ) (+)
  *        - should assign previous values instead of each incorrect one (+)
- *        - shall correct {value} if it's out of {boundaries(range)}
- *        - shall correct {step} if it's not correspond (boundaries % step !== 1)
+ *        - shall correct {value} if it's out of {boundaries(range)} (+)
+ *        - shall correct {step} if it's not correspond (boundaries % step !== 0) (+)
+ *        - shall correct {step} to difference of {boundaries(range)} if passed value > than that (+)
  *        - should change direction (ltr or rtl) according to inputed value order
  *        - should accept not only "numbers" (colors)
  *      - value:
@@ -49,17 +61,18 @@ import {initialization} from "./specs/initialization/initialization";
  *        - shall assign previous value instead of incorrect input
  *          ( isNaN( parseFloat(value) ) ) (+)
  *        - should assign correct values and cut off incorred ones (+)
- *        - shall be equal to average of {boundaries}, if it isn't changed
- *        - shall round value to the nearest possible, in order to correspond to {step}
+ *        - shall be equal to average of {boundaries}, if it isn't changed (+)
+ *        - shall round value to the nearest possible, in order to correspond to {step} (+)
  *        - shall assign value to the nearest {boundaries(max)} or {boundaries(min)},
- *          if number is out of {boundaries} range
+ *          if number is out of {boundaries} range (+)
  *        - should accept keywords: min(start), middle(center), max(end)
  *      - step:
  *        - shall accept only positive number (+)
- *        - shall round value to the nearest possible one if (boundaries % step !== 1)
- *        - shall assign value to {boundaries(max)} if passed value > {boundaries(max)}
- *        - shall correct {value} in order to correspond to its value
+ *        - shall round value to the nearest possible one if (boundaries % step !== 0) (+)
+ *        - shall assign value to difference of {boundaries(range)} if passed value > than that
+ *        - shall correct {value} in order to correspond to its value (+)
  *        - should accept quantity of steps somehow
+ *        - should allow to skip some values
  *      - orientation:
  *        - shall accept only string "horizontal" or "vertical" (+)
  *        - shall assign default value if incorrect one is passed (+)
@@ -71,5 +84,9 @@ import {initialization} from "./specs/initialization/initialization";
 describe("Slider", function() {
   describe("Initialization test", function() {
     initialization();
+  });
+
+  describe("Reassignment test", function() {
+    reassignment();
   });
 });
