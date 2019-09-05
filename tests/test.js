@@ -82,6 +82,7 @@ import {reassignment} from "./specs/reassignment/reassignment";
  */
 
 describe("Slider", function() {
+
   describe("Initialization test", function() {
     initialization();
   });
@@ -89,4 +90,5 @@ describe("Slider", function() {
   describe("Reassignment test", function() {
     reassignment();
   });
+
 });
