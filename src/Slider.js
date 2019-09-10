@@ -27,14 +27,14 @@ export class Slider {
     let currentValue = this._options.boundaries;
 
     if (value === Number) {
-      let floatItem = convertToFloat(value);
+      let filteredValue = parseFloat(value);
 
-      if (floatItem === undefined) return;
+      if ( isNaN(filteredValue) ) return;
 
-      if (floatItem >= currentValue[1]) {
-        currentValue[1] = floatItem;
+      if (filteredValue >= currentValue[1]) {
+        currentValue[1] = filteredValue;
       } else {
-        currentValue[0] = floatItem;
+        currentValue[0] = filteredValue;
       }
     }
 
@@ -42,11 +42,11 @@ export class Slider {
       let result = currentValue;
 
       for (let i = 0; i < result.length; i++) {
-        let floatItem = convertToFloat( value[i] );
+        let filteredItem = parseFloat( value[i] );
 
-        if (floatItem === undefined) continue;
+        if ( isNaN(filteredItem) ) continue;
 
-        result[i] = floatItem;
+        result[i] = filteredItem;
       }
 
       currentValue = result;
@@ -83,11 +83,11 @@ export class Slider {
     return this._options.step;
   }
   set step(value) {
-    let floatValue = convertToFloat(value);
+    let filteredValue = parseFloat(value);
 
-    if (floatValue === undefined || floatValue < 0) return;
+    if (isNaN(filteredValue) || filteredValue < 0) return;
 
-    this._options.step = floatValue;
+    this._options.step = filteredValue;
   }
 
   get orientation() {
