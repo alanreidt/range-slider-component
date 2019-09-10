@@ -59,11 +59,17 @@ export class Slider {
   set value(values) {
     let arrOfValues = Array.prototype.concat(values);
     let filteredArr = [];
+    let step = this._options.step || 1; // edit (make it 1 by default?)
+    let start = this._options.boundaries[0]; // edit: start not always equals to index[0]
 
     arrOfValues.forEach(item => {
       let filteredItem = parseFloat(item);
 
       if ( isNaN(filteredItem) ) return;
+
+      if ( !isDivisible(filteredItem, step, start) ) {
+        filteredItem = getNearestDivisibleOf(filteredItem, step, start);
+      }
 
       filteredArr.push(filteredItem);
     });
