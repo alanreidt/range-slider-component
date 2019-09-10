@@ -1,3 +1,5 @@
+import {convertToFloat, getAverageOf} from "./utilities";
+
 export class Slider {
   // don't use object destructuring as
   // I need to loop over an object
@@ -54,25 +56,21 @@ export class Slider {
   get value() {
     return this._options.value || getAverageOf(this._options.boundaries);
   }
-  set value(value) {
-    let arr = Array.prototype.concat(value);
-    let result = [];
+  set value(values) {
+    let arrOfValues = Array.prototype.concat(values);
+    let filteredArr = [];
 
-    for (let item of arr) {
-      let floatItem = convertToFloat(item);
+    arrOfValues.forEach(item => {
+      let filteredItem = parseFloat(item);
 
-      if ( floatItem === undefined ) continue;
+      if ( isNaN(filteredItem) ) return;
 
-      result.push(floatItem);
-    }
+      filteredArr.push(filteredItem);
+    });
 
-    if (!result.length) return;
+    if (!filteredArr.length) return;
 
-    if (result.length === 1) {
-      result = Number(result);
-    }
-
-    this._options.value = result;
+    this._options.value = !(filteredArr.length - 1) ? Number(filteredArr) : filteredArr;
   }
 
   get step() {
@@ -103,26 +101,4 @@ export class Slider {
 
     this._options.tooltips = value;
   }
-}
-
-/**
- * Converts copy of a value to float and returns it,
- * otherwise returns undefined.
- *
- * @param {string} value The subject of operation
- * @param {number} value The subject of operation
- * @returns {number}
- * @returns {undefined} if float number can't be extracted
- */
-
-function convertToFloat(value) {
-  let floatValue = parseFloat(value);
-
-  if ( isNaN(floatValue) ) return;
-
-  return floatValue;
-}
-
-function getAverageOf(arr) {
-  return arr.reduce( (sum, current) => sum + current, 0 ) / arr.length;
 }
