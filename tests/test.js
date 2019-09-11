@@ -2,7 +2,8 @@ import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
 /**
- * TODO:
+ * Slider TODO:
+ *  - add tests for all functions with negative numbers and floats
  *  - Initialization test (+):
  *    - shall assign default values for unpassed parameters (++)
  *      - shall assign default values, if nothing is passed (++)
@@ -15,6 +16,10 @@ import {reassignment} from "./specs/reassignment/reassignment";
  *    - shall change values, if correct one is passed (+)
  *    - shall not change values, if incorrect one is passed (+)
  *    - shall correct values (+)
+ *      - shall correct {value}, if passed value isn't correspond to {step} (+)
+ *      - shall correct {value}, if passed value is out of {boundaries} (+)
+ *      - shall correct {step}, if passed value isn't correspond to {boundaries(range)} (+)
+ *      - shall correct {step}, if passed value is bigger than difference of {boundaries(range)} (+)
  *      - {boundaries} on change, shall correct {value},
  *        if it became out of the range (+)
  *      - {boundaries} on change, shall correct {step},
@@ -23,10 +28,6 @@ import {reassignment} from "./specs/reassignment/reassignment";
  *        than difference of {boundaries(range)} (+)
  *      - {step} on change, shall correct {value},
  *        if it stopped to correspond to its value (+)
- *      - shall correct {value}, if passed value isn't correspond to {step} (+)
- *      - shall correct {value}, if passed value is out of {boundaries} (+)
- *      - shall correct {step}, if passed value isn't correspond to {boundaries(range)} (+)
- *      - shall correct {step}, if passed value is bigger than difference of {boundaries(range)} (+)
  *    - shall change nearest {boundaries} value, if only a number is passed (+)
  *      - shall change {boundaries(min)}, if passed value lay near to it (+)
  *      - shall change {boundaries(max)}, if passed value lay near to it (+)
@@ -37,6 +38,7 @@ import {reassignment} from "./specs/reassignment/reassignment";
  *  - Business Logic:
  *    - in general:
  *      - should allow to define min/max distance between handles
+ *      - should output made corrections
  *    - options:
  *      - default values:
  *        - boudaries: [0, 100],
