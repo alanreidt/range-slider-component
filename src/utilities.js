@@ -51,7 +51,11 @@ export function getNearestDivisibleOf(dividend, divisor, start = 0) {
  * @returns {undefined} The Error of operation.
  */
 
-export function getOverstepOf(value, step, start = 0) {
+export function getOverstepOf(value, step, start) {
+  start = isFinite(start)? start : 0;
+
+  if ( (value < start) || !isFinite(step) ) return;
+
   let overstep = (value - start) % step;
 
   return isNaN(overstep)? undefined : overstep;
