@@ -1,5 +1,109 @@
+import {getNearestDivisibleOf} from "../src/utilities";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
+
+/**
+ * getNearestDivisibleOf TODO:
+ *  - shall return nearest divisible number
+ *    - nearest divisible number for division of 220 by 100,
+ *      is equal to 200
+ *    - nearest divisible number for division of 250 (controvertial) by 100,
+ *      is equal to 300
+ *    - nearest divisible number for division of 280 by 100,
+ *      is equal to 300
+ *    - nearest divisible number for division of 0 by 100,
+ *      is equal to 0
+ *    - nearest divisible number for division of -220 by 100,
+ *      is equal to -200
+ *  - shall take into account start
+ *    - nearest divisible number for division of 250 by 100,
+ *      starting from 30 is equal to 230
+ *    - nearest divisible number for division of 0 by 100,
+ *      starting from 30 is equal to 30
+ *    - nearest divisible number for division of -220 by 100,
+ *      starting from -3 is equal to -203
+ *  - shall return undifined, if operation can't be performed
+ *    - return undefined, if divisor equals to 0
+ *    - return undefined, if parameters isn't passed
+ *    - return undefined, if only dividend is passed
+ *
+ */
+
+describe("getNearestDivisibleOf", function() {
+
+  describe("shall return nearest divisible number", function() {
+
+    it(`nearest divisible number for division of 220 by 100,
+    is equal to 200`, function() {
+      assert.deepEqual( getNearestDivisibleOf(220, 100), 200 );
+    });
+
+    it(`nearest divisible number for division of 250 (controvertial) by 100,
+    is equal to 300`, function() {
+      assert.deepEqual( getNearestDivisibleOf(250, 100), 300 );
+    });
+
+    it(`nearest divisible number for division of 280 by 100,
+    is equal to 300`, function() {
+      assert.deepEqual( getNearestDivisibleOf(280, 100), 300 );
+    });
+
+    it(`nearest divisible number for division of 0 by 100,
+    is equal to 0`, function() {
+      assert.deepEqual( getNearestDivisibleOf(0, 100), 0 );
+    });
+
+    it(`nearest divisible number for division of -220 by 100,
+    is equal to -200`, function() {
+      assert.deepEqual( getNearestDivisibleOf(-220, 100), -200 );
+    });
+
+  });
+
+
+  describe("shall take into account start", function() {
+
+    it(`nearest divisible number for division of 250 by 100,
+    starting from 30 is equal to 230`, function() {
+      assert.deepEqual( getNearestDivisibleOf(250, 100, 30), 230 );
+    });
+
+    it(`nearest divisible number for division of 0 by 100,
+    starting from 30 is equal to 30`, function() {
+      assert.deepEqual( getNearestDivisibleOf(0, 100, 30), 30 );
+    });
+
+    it(`nearest divisible number for division of -220 by 100,
+    starting from -3 is equal to -203`, function() {
+      assert.deepEqual( getNearestDivisibleOf(-220, 100, -3), -203 );
+    });
+
+  });
+
+
+  describe("shall return undifined, if operation can't be performed", function() {
+
+    it("return undefined, if divisor equals to 0", function() {
+      assert.deepEqual( getNearestDivisibleOf(200, 0), undefined );
+    });
+
+    it("return undefined, if parameters isn't passed", function() {
+      assert.deepEqual( getNearestDivisibleOf(), undefined );
+    });
+
+    it("return undefined, if only dividend is passed", function() {
+      assert.deepEqual( getNearestDivisibleOf(200), undefined );
+    });
+
+    it(`(!!!) nearest divisible number for division of -220 by 100,
+    starting from -3 is equal to -203`, function() {
+      assert.deepEqual( getNearestDivisibleOf(-220, 100, 70), undefined );
+    });
+
+  });
+
+});
+
 
 /**
  * Slider TODO:
