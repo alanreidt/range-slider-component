@@ -1,4 +1,4 @@
-import {convertToFloat, getAverageOf} from "./utilities";
+import {getAverageOf, getNearestDivisibleOf, isDivisible} from "./utilities";
 
 export class Slider {
   // don't use object destructuring as
