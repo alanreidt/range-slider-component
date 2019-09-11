@@ -64,11 +64,11 @@ describe("getOverstepOf", function() {
 
   describe("shall return overstep", function() {
 
-    it(`overstep of 20 over 3 is equal to 2`, function() {
+    it(`overstep of 20 over 3, starting from 0 is equal to 2`, function() {
       assert.deepEqual( getOverstepOf(20, 3), 2 );
     });
 
-    it(`overstep of 81 over 9 is equal to 0`, function() {
+    it(`overstep of 81 over 9, starting from 0 is equal to 0`, function() {
       assert.deepEqual( getOverstepOf(81, 9), 0 );
     });
 
@@ -81,8 +81,8 @@ describe("getOverstepOf", function() {
       assert.deepEqual( getOverstepOf(20, 3, 2), 0 );
     });
 
-    it(`overstep of -63 over 30, starting from -154 is equal to 1`, function() {
-      assert.deepEqual( getOverstepOf(-63, 30, -154), 1 );
+    it(`overstep of -63 over 30, starting from -94 is equal to 1`, function() {
+      assert.deepEqual( getOverstepOf(-63, 30, -94), 1 );
     });
 
   });
@@ -102,8 +102,8 @@ describe("getOverstepOf", function() {
       assert.deepEqual( getOverstepOf(0, 50), 0 );
     });
 
-    it(`overstep of -220 over 50, starting from -200 is equal to 20`, function() {
-      assert.deepEqual( getOverstepOf(-220, 50, -200), 20 );
+    it(`overstep of -220 over 50, starting from -240 is equal to 20`, function() {
+      assert.deepEqual( getOverstepOf(-220, 50, -240), 20 );
     });
 
   });
@@ -114,6 +114,25 @@ describe("getOverstepOf", function() {
     context("corrects negative step", function() {
       it("overstep of 110 over -50 is equal to 10", function() {
         assert.deepEqual( getOverstepOf(110, -50), 10 );
+      });
+    });
+
+    context("corrects value parameter if it equals to null", function() {
+      it("overstep of null over 50 is equal to 0", function() {
+        assert.deepEqual( getOverstepOf(null, 50), 0 );
+      });
+    });
+
+    context("reset start parameter if incorrect one is passed", function() {
+      let testValues = [undefined, null, Infinity, NaN, "text", "123text"];
+
+      testValues.forEach(testValue => {
+
+        it(`overstep of 100 over 60 is equal to 40,
+        if start parameter equals to ${testValue}`, function() {
+          assert.deepEqual( getOverstepOf(100, 60, testValue), 40 );
+        });
+
       });
     });
 
@@ -146,7 +165,7 @@ describe("getOverstepOf", function() {
     });
 
     context("returns undefined if value parameter is incorrect", function() {
-      let testValues = [undefined, null, Infinity, NaN, "text", "123text"];
+      let testValues = [undefined, Infinity, NaN, "text", "123text"];
 
       testValues.forEach(testValue => {
 
@@ -164,18 +183,6 @@ describe("getOverstepOf", function() {
 
         it(`returns undefined, if step parameter equals to ${testValue}`, function() {
           assert.deepEqual( getOverstepOf(100, testValue), undefined );
-        });
-
-      });
-    });
-
-    context("returns undefined if start parameter is incorrect", function() {
-      let testValues = [undefined, null, Infinity, NaN, "text", "123text"];
-
-      testValues.forEach(testValue => {
-
-        it(`returns undefined, if start parameter equals to ${testValue}`, function() {
-          assert.deepEqual( getOverstepOf(100, 60, testValue), undefined );
         });
 
       });
