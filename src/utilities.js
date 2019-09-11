@@ -42,13 +42,13 @@ export function getNearestDivisibleOf(dividend, divisor, start = 0) {
 /**
  * Returns excess over step, if this can be done,
  * taking into account starting point.
- * Otherwise, returns NaN.
+ * Otherwise, returns undefined.
  *
  * @param {number} value The number which step is compared with.
  * @param {number} step The number that represents a value of step.
  * @param {number} start The number which step starts to counting from.
  * @returns {number} The excess of value over step.
- * @returns {NaN} The Error of operation, including: zero step, incorrect parameters.
+ * @returns {undefined} The Error of operation.
  */
 
 export function getOverstepOf(value, step, start = 0) {
