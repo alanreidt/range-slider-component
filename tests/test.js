@@ -345,7 +345,7 @@ describe("getNearestDivisibleOf", function() {
 
   describe("shall correct an input, if it's possible", function() {
 
-    context("corrects negative divisor", function() {
+    context("corrects negative divisor, removing sign", function() {
       it(`nearest divisible number for division of 220 by -100,
       is equal to 200`, function() {
         assert.deepEqual( getNearestDivisibleOf(220, -100), 200 );
