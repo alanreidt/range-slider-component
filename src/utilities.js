@@ -24,17 +24,13 @@ export function isDivisible(dividend, divisor, start = 0) {
  */
 
 export function getNearestDivisibleOf(dividend, divisor, start = 0) {
-  if (divisor < 0) {
-    divisor = -divisor;
-  }
+  // let nextDivisible = divisor * Math.ceil(dividend / divisor); // function
+  // let prevDivisible = divisor * Math.floor(dividend / divisor); // function
+  divisor = Math.abs(divisor);
 
-  let nextDivisible = divisor * Math.ceil(dividend / divisor); // function
-  let prevDivisible = divisor * Math.floor(dividend / divisor); // function
+  let result = Math.round(dividend / divisor) * divisor;
 
-  let nearestDivisible = ( (nextDivisible - dividend) <= (dividend - prevDivisible) ) ? nextDivisible :
-  prevDivisible; // function
-
-  return isFinite(nearestDivisible) ? nearestDivisible : undefined;
+  return isFinite(result) ? result : undefined;
 }
 
 
