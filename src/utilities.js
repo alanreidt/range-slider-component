@@ -4,7 +4,7 @@
  * @param {number} dividend The number, that is divided.
  * @param {number} divisor The number, that divides the dividend.
  * @param {number} start The number, that represents starting point of coordinate system. (???)
- * @returns {boolean} ???
+ * @returns {boolean} True, if dividend is dividing by divisor without remainder. Otherwise, false.
  */
 
 export function isDivisible(dividend, divisor, start = 0) {
@@ -24,18 +24,17 @@ export function isDivisible(dividend, divisor, start = 0) {
  */
 
 export function getNearestDivisibleOf(dividend, divisor, start = 0) {
-  let rem = (dividend - start) % divisor; // function
-  let lack = divisor - rem; // function
-  let nextDivisible = dividend + lack; // function
-  let prevDivisible = dividend - rem; // function
-  // (nextDivisible - dividend) < (dividend - prevDivisible): function
+  if (divisor < 0) {
+    divisor = -divisor;
+  }
 
-  let nearestDivisible = ( (nextDivisible - dividend) > (dividend - prevDivisible) ) ? prevDivisible :
-  nextDivisible; // function
+  let nextDivisible = divisor * Math.ceil(dividend / divisor); // function
+  let prevDivisible = divisor * Math.floor(dividend / divisor); // function
 
-  if ( isNaN(nearestDivisible) ) return;
+  let nearestDivisible = ( (nextDivisible - dividend) <= (dividend - prevDivisible) ) ? nextDivisible :
+  prevDivisible; // function
 
-  return nearestDivisible;
+  return isFinite(nearestDivisible) ? nearestDivisible : undefined;
 }
 
 
