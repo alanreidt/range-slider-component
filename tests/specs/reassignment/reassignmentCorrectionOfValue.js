@@ -14,22 +14,23 @@ export function reassignmentCorrectionOfValue() {
   let testObjectKeys = Object.keys(testObject);
 
   testObjectKeys.forEach(testObjectKey => {
+    let testObjectValue = testObject[testObjectKey];
 
-    for (let i = 0; i < testObject[testObjectKey].length; i++) {
-      for (let key in testValues) {
-        testSubject[key] = testValues[key][i];
-      }
+    for (let i = 0; i < testObjectValue.length; i++) {
+      let testValuesRecord = '';
 
-      let testSubjectValue = testSubject[testObjectKey];
-      let passedValuesRecord = '';
+      testValuesKeys.forEach(key => {
+        let testValuesValue = testValues[key];
 
-      testValuesKeys.forEach(testValuesKey => {
-        passedValuesRecord += `${testValuesKey} = ${testValues[testValuesKey][i]}, `;
+        testSubject[key] = testValuesValue[i];
+        testValuesRecord += `${key} = ${testValuesValue[i]}, `;
       });
 
-      it(`if ${passedValuesRecord} were passed,
-      than corrects value to ${testObject[testObjectKey][i]}`, function() {
-        assert.deepEqual( testSubjectValue, testObject[testObjectKey][i] );
+      let testSubjectValue = testSubject[testObjectKey];
+
+      it(`if ${testValuesRecord} were passed,
+      than corrects value to ${testObjectValue[i]}`, function() {
+        assert.deepEqual( testSubjectValue, testObjectValue[i] );
       });
     }
 
