@@ -65,18 +65,16 @@ export class Slider {
     arrOfValues.forEach(item => {
       let filteredItem = parseFloat(item);
 
-      if ( isNaN(filteredItem) ) return;
+      filteredItem = getNearestDivisibleOf(filteredItem, step, start);
 
-      if ( !isDivisible(filteredItem, step, start) ) {
-        filteredItem = getNearestDivisibleOf(filteredItem, step, start);
-      }
+      if ( isNaN(filteredItem) ) return;
 
       filteredArr.push(filteredItem);
     });
 
     if (!filteredArr.length) return;
 
-    this._options.value = !(filteredArr.length - 1) ? Number(filteredArr) : filteredArr;
+    this._options.value = (filteredArr.length === 1) ? Number(filteredArr) : filteredArr;
   }
 
   get step() {
