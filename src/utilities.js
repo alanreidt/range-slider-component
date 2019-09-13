@@ -27,8 +27,9 @@ export function getNearestDivisibleOf(dividend, divisor, start = 0) {
   // let nextDivisible = divisor * Math.ceil(dividend / divisor); // function
   // let prevDivisible = divisor * Math.floor(dividend / divisor); // function
   divisor = Math.abs(divisor);
+  dividend -= start;
 
-  let result = Math.round(dividend / divisor) * divisor;
+  let result = Math.round(dividend / divisor) * divisor + start;
 
   return isFinite(result) ? result : undefined;
 }
