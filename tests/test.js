@@ -301,11 +301,21 @@ describe("getNearestDivisibleOf", function() {
   });
 
 
-  describe("shall take into account start (XXX)", function() {
+  describe("shall take into account start", function() {
 
     it(`nearest divisible number for division of 250 by 100,
     starting from 30 is equal to 230`, function() {
       assert.deepEqual( getNearestDivisibleOf(250, 100, 30), 230 );
+    });
+
+    it(`nearest divisible number for division of 280 by 100,
+    starting from 30 is equal to 330`, function() {
+      assert.deepEqual( getNearestDivisibleOf(280, 100, 30), 330 );
+    });
+
+    it(`nearest divisible number for division of 300 by 100,
+    starting from 30 is equal to 330`, function() {
+      assert.deepEqual( getNearestDivisibleOf(300, 100, 30), 330 );
     });
 
     it(`nearest divisible number for division of 0 by 100,
@@ -313,14 +323,71 @@ describe("getNearestDivisibleOf", function() {
       assert.deepEqual( getNearestDivisibleOf(0, 100, 30), 30 );
     });
 
-    it(`nearest divisible number for division of -220 by 100,
-    starting from -3 is equal to -203`, function() {
-      assert.deepEqual( getNearestDivisibleOf(-220, 100, -3), -203 );
+    it(`nearest divisible number for division of 100 by 100,
+    starting from 30 is equal to 130`, function() {
+      assert.deepEqual( getNearestDivisibleOf(100, 100, 30), 130 );
     });
 
     it(`nearest divisible number for division of -220 by 100,
-    starting from 70 is equal to -230`, function() {
-      assert.deepEqual( getNearestDivisibleOf(-220, 100, 70), -230 );
+    starting from -403 is equal to -203`, function() {
+      assert.deepEqual( getNearestDivisibleOf(-220, 100, -403), -203 );
+    });
+
+    it(`nearest divisible number for division of -253 by 100,
+    starting from -403 is equal to -203`, function() {
+      assert.deepEqual( getNearestDivisibleOf(-253, 100, -403), -203 );
+    });
+
+    it(`nearest divisible number for division of -280 by 100,
+    starting from -403 is equal to -303`, function() {
+      assert.deepEqual( getNearestDivisibleOf(-280, 100, -403), -303 );
+    });
+
+    context("handles when start property is end", function() {
+      it(`nearest divisible number for division of 220 by 100,
+      starting from 530 is equal to 230`, function() {
+        assert.deepEqual( getNearestDivisibleOf(220, 100, 530), 230 );
+      });
+
+      it(`nearest divisible number for division of 280 by 100,
+      starting from 530 is equal to 230`, function() {
+        assert.deepEqual( getNearestDivisibleOf(280, 100, 530), 330 );
+      });
+
+      it(`nearest divisible number for division of 300 by 100,
+      starting from 530 is equal to 330`, function() {
+        assert.deepEqual( getNearestDivisibleOf(300, 100, 530), 330 );
+      });
+
+      it(`nearest divisible number for division of -220 by 100,
+      starting from -3 is equal to -203`, function() {
+        assert.deepEqual( getNearestDivisibleOf(-220, 100, -3), -203 );
+      });
+
+      it(`nearest divisible number for division of -253 by 100,
+      starting from -3 is equal to -203`, function() {
+        assert.deepEqual( getNearestDivisibleOf(-253, 100, -3), -203 );
+      });
+
+      it(`nearest divisible number for division of -280 by 100,
+      starting from -3 is equal to -303`, function() {
+        assert.deepEqual( getNearestDivisibleOf(-280, 100, -3), -303 );
+      });
+
+      it(`nearest divisible number for division of -150 by 100,
+      starting from 70 is equal to -130`, function() {
+        assert.deepEqual( getNearestDivisibleOf(-150, 100, 70), -130 );
+      });
+
+      it(`nearest divisible number for division of -180 by 100,
+      starting from 70 is equal to -130`, function() {
+        assert.deepEqual( getNearestDivisibleOf(-180, 100, 70), -130 );
+      });
+
+      it(`nearest divisible number for division of -220 by 100,
+      starting from 70 is equal to -230`, function() {
+        assert.deepEqual( getNearestDivisibleOf(-220, 100, 70), -230 );
+      });
     });
 
   });
