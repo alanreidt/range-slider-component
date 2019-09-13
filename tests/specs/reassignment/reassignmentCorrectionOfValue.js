@@ -6,20 +6,32 @@ export function reassignmentCorrectionOfValue() {
     step: [100, 250, 50],
     value: [190, -100, -525],
   };
-  let testObject = [200, 0, -500];
+  let testObject = {
+    value: [200, 0, -500],
+  };
   let testSubject = new Slider();
+  let testValuesKeys = Object.keys(testValues);
+  let testObjectKeys = Object.keys(testObject);
 
-  for (let i = 0; i < testObject.length; i++) {
-    for (let key in testValues) {
-      testSubject[key] = testValues[key][i];
+  testObjectKeys.forEach(testObjectKey => {
+
+    for (let i = 0; i < testObject[testObjectKey].length; i++) {
+      for (let key in testValues) {
+        testSubject[key] = testValues[key][i];
+      }
+
+      let testSubjectValue = testSubject[testObjectKey];
+      let passedValuesRecord = '';
+
+      testValuesKeys.forEach(testValuesKey => {
+        passedValuesRecord += `${testValuesKey} = ${testValues[testValuesKey][i]}, `;
+      });
+
+      it(`if ${passedValuesRecord} were passed,
+      than corrects value to ${testObject[testObjectKey][i]}`, function() {
+        assert.deepEqual( testSubjectValue, testObject[testObjectKey][i] );
+      });
     }
 
-    let testSubjectValue = testSubject.value;
-
-    it(`if boundaries = ${testSubject.boundaries}, step = ${testSubject.step},
-    value = ${testSubject.value} were passed,
-    than corrects value to ${testObject[i]}`, function() {
-      assert.deepEqual( testSubjectValue, testObject[i] );
-    });
-  }
+  });
 }
