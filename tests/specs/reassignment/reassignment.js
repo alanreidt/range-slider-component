@@ -46,7 +46,17 @@ function test(subject, options, expectations) {
 export function reassignment() {
 
   describe("shall change values, if correct one is passed", function() {
-    reassignmentByCorrect();
+    let options = [
+      {boundaries: [100, 500]},
+      {value: 180},
+      {step: 20},
+      {orientation: "vertical"},
+      {tooltips: true},
+    ];
+    let expectations = options;
+    let subject = new Slider();
+
+    test(subject, options, expectations);
   });
 
 
