@@ -85,7 +85,19 @@ export function reassignment() {
 
     context(`shall correct {value},
     if passed value isn't correspond to {step}`, function() {
-      reassignmentCorrectionOfValue();
+      let options = [
+        {boundaries: [0, 500], step: 100, value: 190},
+        {boundaries: [-500, 500], step: 250, value: -100},
+        {boundaries: [-1000, -500], step: 50, value: -525},
+      ];
+      let expectations = [
+        {value: 200},
+        {value: 0},
+        {value: -500},
+      ];
+      let subject = new Slider();
+
+      test(subject, options, expectations);
     });
 
     context(`shall correct {value},
