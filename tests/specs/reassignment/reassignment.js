@@ -61,7 +61,23 @@ export function reassignment() {
 
 
   describe("shall not change values, if incorrect one is passed", function() {
-    reassignmentByIncorrect();
+    let options = [
+      {boundaries: [true, false]},
+      {value: false},
+      {step: "two"},
+      {orientation: 100},
+      {tooltips: 2},
+    ];
+    let expectations = [
+      {boundaries: [0, 100]},
+      {value: 50},
+      {step: null},
+      {orientation: "horizontal"},
+      {tooltips: false},
+    ];
+    let subject = new Slider();
+
+    test(subject, options, expectations);
   });
 
 
