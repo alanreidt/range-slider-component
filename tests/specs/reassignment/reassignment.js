@@ -19,25 +19,26 @@ import {Slider} from "../../../src/Slider";
 function test(subject, options, expectations) {
 
   expectations.forEach( (expectation, index) => {
-    for (let expectationKey in expectation) {
-      let expectationValue = expectation[expectationKey];
-      let option = options[index];
-      let optionsRecord = '';
+    let option = options[index];
+    let optionsRecord = '';
 
-      for (let optionKey in option) {
-        let optionValue = option[optionKey];
+    for (let optionKey in option) {
+      let optionValue = option[optionKey];
 
-        subject[optionKey] = optionValue;
-        optionsRecord += `${optionKey} = ${optionValue}, `;
-      };
+      subject[optionKey] = optionValue;
+      optionsRecord += `${optionKey} = ${optionValue}, `;
+    };
 
-      let subjectValue = subject[expectationKey];
+    context(`if ${optionsRecord} were passed`, function() {
+      for (let expectationKey in expectation) {
+        let expectationValue = expectation[expectationKey];
+        let subjectValue = subject[expectationKey];
 
-      it(`if ${optionsRecord} were passed,
-      than ${expectationKey} results in ${expectationValue}`, function() {
-        assert.deepEqual( subjectValue, expectationValue );
-      });
-    }
+        it(`than ${expectationKey} shall be equal to ${expectationValue}`, function() {
+          assert.deepEqual(subjectValue, expectationValue);
+        });
+      }
+    });
   });
 
 }
