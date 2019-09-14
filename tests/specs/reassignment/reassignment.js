@@ -14,6 +14,35 @@ import {reassignmentValueArray} from "./reassignmentValueArray";
 import {reassignmentValueArrayWithIncorrect} from "./reassignmentValueArrayWithIncorrect";
 import {reassignmentValueDefault} from "./reassignmentValueDefault";
 
+import {Slider} from "../../../src/Slider";
+
+function test(subject, options, expectations) {
+
+  expectations.forEach( (expectation, index) => {
+    for (let expectationKey in expectation) {
+      let expectationValue = expectation[expectationKey];
+      let option = options[index];
+      let optionsRecord = '';
+
+      for (let optionKey in option) {
+        let optionValue = option[optionKey];
+
+        subject[optionKey] = optionValue;
+        optionsRecord += `${optionKey} = ${optionValue}, `;
+      };
+
+      let subjectValue = subject[expectationKey];
+
+      it(`if ${optionsRecord} were passed,
+      than ${expectationKey} results in ${expectationValue}`, function() {
+        assert.deepEqual( subjectValue, expectationValue );
+      });
+    }
+  });
+
+}
+
+
 export function reassignment() {
 
   describe("shall change values, if correct one is passed", function() {
