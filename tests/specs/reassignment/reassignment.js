@@ -4,8 +4,8 @@ import {reassignmentCorrectionOfValueByBoundaries} from "./reassignmentCorrectio
 import {reassignmentCorrectionOfStepByBoundaries} from "./reassignmentCorrectionOfStepByBoundaries";
 import {reassignmentCorrectionOfStepOverflowByBoundaries} from "./reassignmentCorrectionOfStepOverflowByBoundaries";
 import {reassignmentCorrectionOfValueByStep} from "./reassignmentCorrectionOfValueByStep";
-import {reassignmentCorrectionOfValueOverflow} from "./reassignmentCorrectionOfValueOverflow";
 import {reassignmentCorrectionOfValue} from "./reassignmentCorrectionOfValue";
+import {reassignmentCorrectionOfValueOverflow} from "./reassignmentCorrectionOfValueOverflow";
 import {reassignmentCorrectionOfStep} from "./reassignmentCorrectionOfStep";
 import {reassignmentCorrectionOfStepOverflow} from "./reassignmentCorrectionOfStepOverflow";
 import {reassignmentBoundariesMin} from "./reassignmentBoundariesMin";
@@ -102,7 +102,23 @@ export function reassignment() {
 
     context(`shall correct {value},
     if passed value is out of {boundaries}`, function() {
-      reassignmentCorrectionOfValueOverflow();
+      let options = [
+        {boundaries: [0, 500], value: 1000},
+        {boundaries: [-500, 500], value: -1000},
+        {boundaries: [-500, 500], value: [-1000, 1000]},
+        {boundaries: [-500, 500], value: [-1000, 250, 1000]},
+        {boundaries: [-500, 500], value: [-2000, -1000, 250, 1000, 2000]},
+      ];
+      let expectations = [
+        {value: 500},
+        {value: -500},
+        {value: [-500, 500]},
+        {value: [-500, 250, 500]},
+        {value: [-500, 250, 500]},
+      ];
+      let subject = new Slider();
+
+      test(subject, options, expectations);
     });
 
     context(`shall correct {step},
