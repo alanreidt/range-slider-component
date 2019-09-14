@@ -133,7 +133,19 @@ export function reassignment() {
 
     context(`{boundaries} on change, shall correct {value},
     if it became out of the range`, function() {
-      reassignmentCorrectionOfValueByBoundaries();
+      let options = [
+        { boundaries: [200, 500] },
+        { boundaries: [-500, -200] },
+      ];
+      let expectations = [
+        {boundaries:[200, 500], value: 200},
+        {boundaries:[-500, -200], value: -200},
+      ];
+      let subject = new Slider({
+        value: 100,
+      });
+
+      test(subject, options, expectations);
     });
 
     context(`{boundaries} on change, shall correct {step},
@@ -141,7 +153,7 @@ export function reassignment() {
       reassignmentCorrectionOfStepByBoundaries();
     });
 
-    context(`{boundaries} shall correct {step}, if it became bigger,
+    context(`{boundaries} on change shall correct {step}, if it became bigger,
     than difference of {boundaries(range)}`, function() {
       reassignmentCorrectionOfStepOverflowByBoundaries();
     });
