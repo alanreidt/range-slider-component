@@ -48,11 +48,11 @@ export function reassignment() {
 
   describe("shall change values, if correct one is passed", function() {
     let options = [
-      {boundaries: [100, 500]},
-      {value: 180},
-      {step: 20},
-      {orientation: "vertical"},
-      {tooltips: true},
+      {boundaries: [100, 500],
+      value: 180,
+      step: 20,
+      orientation: "vertical",
+      tooltips: true},
     ];
     let expectations = options;
     let subject = new Slider();
@@ -63,18 +63,18 @@ export function reassignment() {
 
   describe("shall not change values, if incorrect one is passed", function() {
     let options = [
-      {boundaries: [true, false]},
-      {value: false},
-      {step: "two"},
-      {orientation: 100},
-      {tooltips: 2},
+      {boundaries: [true, false],
+      value: false,
+      step: "two",
+      orientation: 100,
+      tooltips: 2},
     ];
     let expectations = [
-      {boundaries: [0, 100]},
-      {value: 50},
-      {step: null},
-      {orientation: "horizontal"},
-      {tooltips: false},
+      {boundaries: [0, 100],
+      value: 50,
+      step: null,
+      orientation: "horizontal",
+      tooltips: false},
     ];
     let subject = new Slider();
 
