@@ -2,6 +2,19 @@ import {getOverstepOf, getNearestDivisibleOf} from "../src/utilities";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
+function testFunction({func, funcOptions, expectations, testDescription} = {}) {
+
+  expectations.forEach( (expectation, index) => {
+    let funcOption = funcOptions[index];
+
+    it(`nearest divisible number for division of ${funcOption[0]} by ${funcOption[1]},
+    starting from ${funcOption[2] || 0} is equal to ${expectation}`, function() {
+      assert.deepEqual( func(...funcOption), expectation );
+    });
+  });
+
+}
+
 /**
  * getOverstepOf TODO:
  *  - shall return overstep
