@@ -184,7 +184,21 @@ export function reassignment() {
 
     context(`{boundaries} on change, shall correct {step},
     if it stopped to correspond to the range`, function() {
-      reassignmentCorrectionOfStepByBoundaries();
+      let options = [
+        { boundaries: [0, 90] },
+        { boundaries: [-50, 0] },
+      ];
+      let expectations = [
+        {boundaries:[0, 90], step: 15},
+        {boundaries:[-50, 0], step: 25},
+      ];
+      let ClassOptions = {
+        step: 20,
+      };
+      let Class = Slider;
+      let testOptions = {Class, ClassOptions, options, expectations};
+
+      testClass(testOptions);
     });
 
     context(`{boundaries} on change shall correct {step}, if it became bigger,
