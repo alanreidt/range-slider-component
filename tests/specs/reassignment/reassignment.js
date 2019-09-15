@@ -170,8 +170,8 @@ export function reassignment() {
         { boundaries: [-500, -200] },
       ];
       let expectations = [
-        {boundaries:[200, 500], value: 200},
-        {boundaries:[-500, -200], value: -200},
+        {boundaries: [200, 500], value: 200},
+        {boundaries: [-500, -200], value: -200},
       ];
       let ClassOptions = {
         value: 100,
@@ -189,8 +189,8 @@ export function reassignment() {
         { boundaries: [-50, 0] },
       ];
       let expectations = [
-        {boundaries:[0, 90], step: 15},
-        {boundaries:[-50, 0], step: 25},
+        {boundaries: [0, 90], step: 15},
+        {boundaries: [-50, 0], step: 25},
       ];
       let ClassOptions = {
         step: 20,
@@ -208,8 +208,8 @@ export function reassignment() {
         { boundaries: [-50, 0] },
       ];
       let expectations = [
-        {boundaries:[0, 90], step: 90},
-        {boundaries:[-50, 0], step: 50},
+        {boundaries: [0, 90], step: 90},
+        {boundaries: [-50, 0], step: 50},
       ];
       let ClassOptions = {
         step: 100,
