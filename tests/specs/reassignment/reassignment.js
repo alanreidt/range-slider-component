@@ -56,9 +56,10 @@ export function reassignment() {
       tooltips: true},
     ];
     let expectations = options;
-    let subject = new Slider();
+    let Class = Slider;
+    let testOptions = {Class, options, expectations};
 
-    test(subject, options, expectations);
+    testClass(testOptions);
   });
 
 
@@ -77,9 +78,10 @@ export function reassignment() {
       orientation: "horizontal",
       tooltips: false},
     ];
-    let subject = new Slider();
+    let Class = Slider;
+    let testOptions = {Class, options, expectations};
 
-    test(subject, options, expectations);
+    testClass(testOptions);
   });
 
 
@@ -97,9 +99,10 @@ export function reassignment() {
         {value: 0},
         {value: -500},
       ];
-      let subject = new Slider();
+      let Class = Slider;
+      let testOptions = {Class, options, expectations};
 
-      test(subject, options, expectations);
+      testClass(testOptions);
     });
 
     context(`shall correct {value},
@@ -118,9 +121,10 @@ export function reassignment() {
         {value: [-500, 250, 500]},
         {value: [-500, 250, 500]},
       ];
-      let subject = new Slider();
+      let Class = Slider;
+      let testOptions = {Class, options, expectations};
 
-      test(subject, options, expectations);
+      testClass(testOptions);
     });
 
     context(`shall correct {step},
@@ -143,11 +147,13 @@ export function reassignment() {
         {boundaries:[200, 500], value: 200},
         {boundaries:[-500, -200], value: -200},
       ];
-      let subject = new Slider({
+      let ClassOptions = {
         value: 100,
-      });
+      };
+      let Class = Slider;
+      let testOptions = {Class, ClassOptions, options, expectations};
 
-      test(subject, options, expectations);
+      testClass(testOptions);
     });
 
     context(`{boundaries} on change, shall correct {step},
