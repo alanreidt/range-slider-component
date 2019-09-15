@@ -147,7 +147,20 @@ export function reassignment() {
 
     context(`shall correct {step},
     if passed value is bigger than difference of {boundaries(range)}`, function() {
-      reassignmentCorrectionOfStepOverflow();
+      let options = [
+        {step: 200},
+        {boundaries: [300, 900], step: 1000},
+        {boundaries: [-500, 500], step: 2000},
+      ];
+      let expectations = [
+        {step: 100},
+        {boundaries: [300, 900], step: 600},
+        {boundaries: [-500, 500], step: 1000},
+      ];
+      let Class = Slider;
+      let testOptions = {Class, options, expectations};
+
+      testClass(testOptions);
     });
 
     context(`{boundaries} on change, shall correct {value},
