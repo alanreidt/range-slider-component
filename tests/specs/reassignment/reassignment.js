@@ -16,9 +16,10 @@ import {reassignmentValueDefault} from "./reassignmentValueDefault";
 
 import {Slider} from "../../../src/Slider";
 
-function test(subject, options, expectations) {
+function testClass({Class, ClassOptions, options, expectations} = {}) {
 
   expectations.forEach( (expectation, index) => {
+    let subject = new Class(ClassOptions);
     let option = options[index];
     let optionsRecord = '';
 
