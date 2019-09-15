@@ -129,7 +129,20 @@ export function reassignment() {
 
     context(`shall correct {step},
     if passed value isn't correspond to {boundaries(range)}`, function() {
-      reassignmentCorrectionOfStep();
+      let options = [
+        {step: 30},
+        {boundaries: [0, 300], step: 250},
+        {boundaries: [-500, 500], step: 105},
+      ];
+      let expectations = [
+        {step: 20},
+        {step: 300},
+        {step: 100},
+      ];
+      let Class = Slider;
+      let testOptions = {Class, options, expectations};
+
+      testClass(testOptions);
     });
 
     context(`shall correct {step},
