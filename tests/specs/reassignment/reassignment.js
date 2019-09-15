@@ -222,7 +222,21 @@ export function reassignment() {
 
     context(`{step} on change, shall correct {value},
     if it stopped to correspond to its value`, function() {
-      reassignmentCorrectionOfValueByStep();
+      let options = [
+        { step: 20 },
+        { step: 50 },
+      ];
+      let expectations = [
+        {step: 20, value: 80},
+        {step: 50, value: 50},
+      ];
+      let ClassOptions = {
+        value: 70,
+      };
+      let Class = Slider;
+      let testOptions = {Class, ClassOptions, options, expectations};
+
+      testClass(testOptions);
     });
 
   });
