@@ -136,8 +136,8 @@ export function reassignment() {
       ];
       let expectations = [
         {step: 20},
-        {step: 300},
-        {step: 100},
+        {boundaries: [0, 300], step: 300},
+        {boundaries: [-500, 500], step: 100},
       ];
       let Class = Slider;
       let testOptions = {Class, options, expectations};
