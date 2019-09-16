@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueInBetween} from "../src/utilities";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
@@ -66,6 +66,57 @@ function test(func) {
  *      - returns false, if end equals to "123text"
  *
  */
+
+describe("isValueInBetween", function() {
+  let testCurrent = test(isValueInBetween);
+
+  describe("shall return true, if value is between start and end", function() {
+    let funcOptions = [
+      [50, 0, 100],
+      [-50, -100, 0],
+      [-250, -300, -100],
+      [0, -300, 300],
+    ];
+    let expectations = [true, true, true, true];
+
+    testCurrent(funcOptions, expectations);
+  });
+
+  describe("shall return false, if value is not between start and end", function() {
+    let funcOptions = [
+      [150, 0, 100],
+      [-150, -100, 0],
+      [-350, -300, -100],
+      [500, -300, 300],
+    ];
+    let expectations = [false, false, false, false];
+
+    testCurrent(funcOptions, expectations);
+  });
+
+  describe("shall handle input, when start is end and vice versa", function() {
+    let funcOptions = [
+      [50, 100, 0],
+      [-50, 0, -100],
+      [-250, -100, -300],
+      [0, 300, -300],
+    ];
+    let expectations = [true, true, true, true];
+
+    testCurrent(funcOptions, expectations);
+  });
+
+  describe("shall not include extremums", function() {
+    let funcOptions = [
+      [100, 0, 100],
+      [0, 0, 100],
+    ];
+    let expectations = [false, false];
+
+    testCurrent(funcOptions, expectations);
+  });
+
+});
 
 
 /**
