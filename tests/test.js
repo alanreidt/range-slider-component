@@ -8,8 +8,8 @@ function test(func) {
     expectations.forEach( (expectation, index) => {
       let funcOption = funcOptions[index];
 
-      it(`(!!!) nearest divisible number for division of ${funcOption[0]} by ${funcOption[1]},
-      starting from ${funcOption[2] || 0} is equal to ${expectation}`, function() {
+      it(`${funcOption[0]} between ${funcOption[1]} and
+      ${funcOption[2]} is equal to ${expectation}`, function() {
         assert.deepEqual( func(...funcOption), expectation );
       });
     });
