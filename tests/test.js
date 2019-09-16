@@ -18,6 +18,57 @@ function test(func) {
 }
 
 /**
+ * isValueInBetween TODO:
+ *  - shall return true, if value is between start and end
+ *    - 50 is between 0 and 100
+ *    - -50 is between -100 and 0
+ *    - -250 is between -300 and -100
+ *    - 0 is between -300 and 300
+ *  - shall return false, if value is not between start and end
+ *    - 150 is not between 0 and 100
+ *    - -150 is not between -100 and 0
+ *    - -350 is not between -300 and -100
+ *    - 500 is not between -300 and 300
+ *  - shall handle input, when start is end and vice versa
+ *    - 50 is between 100 and 0
+ *    - -50 is between 0 and -100
+ *    - -250 is between -100 and -300
+ *    - 0 is between 300 and -300
+ *  - shall not include extremums
+ *    - 100 is not between 0 and 100
+ *    - 0 is not between 0 and 100
+ *  - shall return false, if operation can't be performed
+ *    - returns false, if there is no value in between
+ *      - 100 is not between 100 and 100
+ *      - 100 is not between 100 and 101
+ *      - 101 is between 100 and 102
+ *  - shall catch garbage input
+ *    - returns false, if value is incorrect
+ *      - returns false, if value equals to undefined
+ *      - returns false, if value equals to null
+ *      - returns false, if value equals to Infinity
+ *      - returns false, if value equals to NaN
+ *      - returns false, if value equals to "text"
+ *      - returns false, if value equals to "123text"
+ *    - returns false, if start is incorrect
+ *      - returns false, if start equals to undefined
+ *      - returns false, if start equals to null
+ *      - returns false, if start equals to Infinity
+ *      - returns false, if start equals to NaN
+ *      - returns false, if start equals to "text"
+ *      - returns false, if start equals to "123text"
+ *    - returns false, if end is incorrect
+ *      - returns false, if end equals to undefined
+ *      - returns false, if end equals to null
+ *      - returns false, if end equals to Infinity
+ *      - returns false, if end equals to NaN
+ *      - returns false, if end equals to "text"
+ *      - returns false, if end equals to "123text"
+ *
+ */
+
+
+/**
  * getOverstepOf TODO:
  *  - shall return overstep
  *    - overstep of 20 over 3,
