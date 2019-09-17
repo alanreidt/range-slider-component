@@ -3,18 +3,34 @@ import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
 function test(func) {
-  return function (funcOptions, expectations) {
+  return function (funcOptions, expectations, describeTest = template`${0} between ${1} and ${2} is equal to ${3}`) {
 
     expectations.forEach( (expectation, index) => {
       let funcOption = funcOptions[index];
 
-      it(`${funcOption[0]} between ${funcOption[1]} and
-      ${funcOption[2]} is equal to ${expectation}`, function() {
+      it(describeTest(...funcOption, expectation), function() {
         assert.deepEqual( func(...funcOption), expectation );
       });
     });
 
   }
+}
+
+function template(strings, ...keys) {
+  return function(...values) {
+
+    let dict = values[values.length - 1] || {};
+    let result = [strings[0]];
+
+    keys.forEach( (key, i) => {
+      let value = Number.isInteger(key) ? values[key] : dict[key];
+
+      result.push(value, strings[i + 1]);
+    });
+
+    return result.join('');
+
+  };
 }
 
 
