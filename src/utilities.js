@@ -8,11 +8,9 @@
  */
 
 export function isValueInBetween(value, start, end) {
-  [start, end] = (start < end) ? [start, end] : [end, start];
+  if ( [].includes.call(arguments, null) ) return false;
 
-  for (let arg of arguments) {
-    if ( arg === null ) return false;
-  }
+  [start, end] = (start < end) ? [start, end] : [end, start];
 
   return (value > start) && (value < end);
 }
