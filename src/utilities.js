@@ -1,4 +1,24 @@
 /**
+ * Defines whether value is between start and end or not.
+ *
+ * @param {number} value The value, which compares with interval.
+ * @param {number} start The start of the interval.
+ * @param {number} end The end of the interval.
+ * @returns {boolean} True, if value is between start and end, false otherwise.
+ */
+
+export function isValueInBetween(value, start, end) {
+  [start, end] = (start < end) ? [start, end] : [end, start];
+
+  for (let arg of arguments) {
+    if ( arg === null ) return false;
+  }
+
+  return (value > start) && (value < end);
+}
+
+
+/**
  * Defines whether dividend is dividing by divisor without the remainder.
  *
  * @param {number} dividend The number, that is divided.
