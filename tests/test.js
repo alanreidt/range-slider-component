@@ -116,6 +116,64 @@ describe("isValueInBetween", function() {
     testCurrent(funcOptions, expectations);
   });
 
+  describe("shall return false, if there is no value in between", function() {
+    let funcOptions = [
+      [100, 100, 100],
+      [100, 100, 101],
+      [101, 100, 102],
+    ];
+    let expectations = [false, false, true];
+
+    testCurrent(funcOptions, expectations);
+  });
+
+  context("shall catch garbage input", function() {
+    describe("returns false, if value is incorrect", function() {
+      let funcOptions = [
+        [undefined, 0, 100],
+        [null, 0, 100],
+        [Infinity, 0, 100],
+        [NaN, 0, 100],
+        ["text", 0, 100],
+        ["123text", 0, 100],
+        [undefined, 0, 100],
+      ];
+      let expectations = new Array(6).fill(false);
+
+      testCurrent(funcOptions, expectations);
+    });
+
+    describe("returns false, if start is incorrect", function() {
+      let funcOptions = [
+        [0, undefined, 100],
+        [0, null, 100],
+        [0, Infinity, 100],
+        [0, NaN, 100],
+        [0, "text", 100],
+        [0, "123text", 100],
+        [0, undefined, 100],
+      ];
+      let expectations = new Array(6).fill(false);
+
+      testCurrent(funcOptions, expectations);
+    });
+
+    describe("returns false, if end is incorrect", function() {
+      let funcOptions = [
+        [0, 0, undefined],
+        [0, 0, null],
+        [0, 0, Infinity],
+        [0, 0, NaN],
+        [0, 0, "text"],
+        [0, 0, "123text"],
+        [0, 0, undefined],
+      ];
+      let expectations = new Array(6).fill(false);
+
+      testCurrent(funcOptions, expectations);
+    });
+  });
+
 });
 
 
