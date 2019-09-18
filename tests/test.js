@@ -2,8 +2,8 @@ import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo} fr
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
-function test(func) {
-  return function (funcOptions, expectations, describeTest = template`${0} between ${1} and ${2} is equal to ${3}`) {
+function test(func, describeTest = template`${0} between ${1} and ${2} is equal to ${3}`) {
+  return function (funcOptions, expectations) {
 
     expectations.forEach( (expectation, index) => {
       let funcOption = funcOptions[index];
@@ -35,7 +35,8 @@ function template(strings, ...keys) {
 
 
 describe("getNearestTo", function() {
-  let testCurrent = test(getNearestTo);
+  let describeTest = template`nearest number to ${0} from ${1}, ${2}, ${3} is ${4}`;
+  let testCurrent = test(getNearestTo, describeTest);
 
   describe("shall return nearest number to value", function() {
     let funcOptions = [
