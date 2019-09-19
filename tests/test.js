@@ -8,7 +8,7 @@ function test(func, describeTest = template`${0} between ${1} and ${2} is equal 
     expectations.forEach( (expectation, index) => {
       let funcOption = funcOptions[index];
 
-      it(describeTest(...funcOption, expectation), function() {
+      it(describeTest(funcOption, expectation), function() {
         assert.deepEqual( func(...funcOption), expectation );
       });
     });
@@ -18,12 +18,14 @@ function test(func, describeTest = template`${0} between ${1} and ${2} is equal 
 
 function template(strings, ...keys) {
 
-  return function(...values) {
+  return function(values, expectation) {
     let dict = values[values.length - 1] || {};
     let result = [strings[0]];
 
     keys.forEach( (key, i) => {
-      let value = `${Number.isInteger(key) ? values[key] : dict[key]}`;
+      let value = `${Number.isInteger(key) ? values[key] :
+        (key === "...rest") ? values.slice(i) :
+        (key === "expectation") ? expectation : dict[key]}`;
 
       result.push(value, strings[i + 1]);
     });
@@ -35,7 +37,7 @@ function template(strings, ...keys) {
 
 
 describe("getNearestTo", function() {
-  let describeTest = template`nearest number to ${0} from ${1}, ${2}, ${3} is ${4}`;
+  let describeTest = template`nearest number to ${0} from ${"...rest"} is ${"expectation"}`;
   let testCurrent = test(getNearestTo, describeTest);
 
   describe("shall return nearest number to value", function() {
