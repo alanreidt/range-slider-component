@@ -1,4 +1,4 @@
-import {getAverageOf, getNearestDivisibleOf, isDivisible} from "./utilities";
+import {getAverageOf, getNearestDivisibleOf, isValueInBetween, getNearestTo} from "./utilities";
 
 export class Slider {
   // don't use object destructuring as
@@ -61,16 +61,21 @@ export class Slider {
     let filteredArr = [];
     let step = this._options.step || 1; // edit (make it 1 by default?)
     let start = this._options.boundaries[0]; // edit: start not always equals to index[0]
+    let end = this._options.boundaries[1]; // edit: end not always equals to index[1]
 
-    arrOfValues.forEach(item => {
+    arrOfValues.sort( (a, b) => a - b ).forEach(item => {
       let filteredItem = parseFloat(item);
 
-      filteredItem = getNearestDivisibleOf(filteredItem, step, start);
+      filteredItem = ( isValueInBetween(filteredItem, start, end) ) ?
+        getNearestDivisibleOf(filteredItem, step, start) :
+        getNearestTo(filteredItem, start, end);
 
       if ( isNaN(filteredItem) ) return;
 
       filteredArr.push(filteredItem);
     });
+
+    filteredArr = filteredArr.filter( (item, i, arr) => item !== arr[i + 1] );
 
     if (!filteredArr.length) return;
 
