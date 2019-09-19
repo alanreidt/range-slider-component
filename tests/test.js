@@ -2,7 +2,7 @@ import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo} fr
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
-function test(func, describeTest = template`${0} between ${1} and ${2} is equal to ${3}`) {
+function test(func, describeTest = template`${"...rest"} is equal to ${"expectation"}`) {
   return function (funcOptions, expectations) {
 
     expectations.forEach( (expectation, index) => {
@@ -108,7 +108,8 @@ describe("getNearestTo", function() {
 
 
 describe("isValueInBetween", function() {
-  let testCurrent = test(isValueInBetween);
+  let describeTest = template`${0} between ${1} and ${2} is equal to ${"expectation"}`;
+  let testCurrent = test(isValueInBetween, describeTest);
 
   describe("shall return true, if value is between start and end", function() {
     let funcOptions = [
