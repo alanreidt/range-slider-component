@@ -2,8 +2,34 @@ import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo} fr
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
+function makeTestClass(subject, testDescription = template`${"...rest"} is equal to ${"expectation"}`) {
+  class TestClass {
+    constructor(testDescription) {
+      this.subject = subject;
+
+      if (testDescription) {
+        this.testDescription = testDescription;
+      }
+    }
+
+    test(funcOptions, expectations) {
+      expectations.forEach( (expectation, index) => {
+        let funcOption = funcOptions[index];
+
+        it(this.testDescription(funcOption, expectation), () => {
+          assert.deepEqual( this.subject(...funcOption), expectation );
+        });
+      });
+    }
+  }
+
+  TestClass.prototype.testDescription = testDescription;
+
+  return TestClass;
+}
+
 function test(func, describeTest = template`${"...rest"} is equal to ${"expectation"}`) {
-  return function (funcOptions, expectations) {
+  return function(funcOptions, expectations) {
 
     expectations.forEach( (expectation, index) => {
       let funcOption = funcOptions[index];
