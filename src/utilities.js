@@ -60,14 +60,13 @@ export function getNearestTo(value, ...args) {
 
 /**
  * If this can be done, returns the nearest number (the bigger one, if controvertial)
- * that is dividing by divisor without the remainder.
- * Otherwise, returns undefined.
+ * that can be divided by divisor without the remainder.
+ * Otherwise, returns NaN.
  *
- * @param {number} dividend The number, that is divided.
+ * @param {number} dividend The number, that to be divided.
  * @param {number} divisor The number, that divides the dividend.
- * @param {number} start The number, that represents starting point of coordinate system. (???)
- * @returns {number} The nearest number, that is dividing by divisor without the remainder.
- * @returns {undefined} The Error of operation, including: division by 0, incorrect parameters.
+ * @param {number} start The number which to start to counting from.
+ * @returns {number} The nearest number, that can be divided by divisor without the remainder.
  */
 
 export function getNearestDivisibleOf(dividend, divisor, start = 0) {
@@ -76,7 +75,7 @@ export function getNearestDivisibleOf(dividend, divisor, start = 0) {
 
   let result = Math.round(dividend / divisor) * divisor + start;
 
-  return isFinite(result) ? result : undefined;
+  return isFinite(result) ? result : NaN;
 }
 
 export function getNextDivisibleOf(dividend, divisor, start = 0) {
