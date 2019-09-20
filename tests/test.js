@@ -605,18 +605,18 @@ describe("getNearestDivisibleOf", function() {
   });
 
 
-  describe("shall return undifined, if operation can't be performed", function() {
+  describe("shall return NaN, if operation can't be performed", function() {
 
-    it("return undefined, if divisor equals to 0", function() {
-      assert.deepEqual( getNearestDivisibleOf(200, 0), undefined );
+    it("return NaN, if divisor equals to 0", function() {
+      assert.deepEqual( getNearestDivisibleOf(200, 0), NaN );
     });
 
-    it("return undefined, if parameters isn't passed", function() {
-      assert.deepEqual( getNearestDivisibleOf(), undefined );
+    it("return NaN, if parameters isn't passed", function() {
+      assert.deepEqual( getNearestDivisibleOf(), NaN );
     });
 
-    it("return undefined, if only dividend is passed", function() {
-      assert.deepEqual( getNearestDivisibleOf(200), undefined );
+    it("return NaN, if only dividend is passed", function() {
+      assert.deepEqual( getNearestDivisibleOf(200), NaN );
     });
 
   });
@@ -662,25 +662,25 @@ describe("getNearestDivisibleOf", function() {
 
   describe("shall catch garbage input", function() {
 
-    context("returns undefined if dividend parameter is incorrect", function() {
+    context("returns NaN if dividend parameter is incorrect", function() {
       let testValues = [undefined, Infinity, NaN, "text", "123text"];
 
       testValues.forEach(testValue => {
 
-        it(`returns undefined, if dividend parameter equals to ${testValue}`, function() {
-          assert.deepEqual( getNearestDivisibleOf(testValue, 60), undefined );
+        it(`returns NaN, if dividend parameter equals to ${testValue}`, function() {
+          assert.deepEqual( getNearestDivisibleOf(testValue, 60), NaN );
         });
 
       });
     });
 
-    context("returns undefined if divisor parameter is incorrect", function() {
+    context("returns NaN if divisor parameter is incorrect", function() {
       let testValues = [undefined, null, Infinity, NaN, "text", "123text"];
 
       testValues.forEach(testValue => {
 
-        it(`returns undefined, if divisor parameter equals to ${testValue}`, function() {
-          assert.deepEqual( getNearestDivisibleOf(100, testValue), undefined );
+        it(`returns NaN, if divisor parameter equals to ${testValue}`, function() {
+          assert.deepEqual( getNearestDivisibleOf(100, testValue), NaN );
         });
 
       });
