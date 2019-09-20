@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getNearestDividendableOf} from "../src/utilities";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
@@ -61,6 +61,71 @@ function template(strings, ...keys) {
 
 }
 
+describe("getNearestDividendableOf", function() {
+  let describeTest = template`nearest divisor of division of ${0} by ${1} is ${"expectation"}`;
+  let TestClass = makeTestClass(getNearestDividendableOf, describeTest);
+
+  describe("shall return nearest divisor", function() {
+    let funcOptions = [
+      [900, 250],
+      [120, 25],
+      [500, 375],
+      [-120, 25],
+      [500, -375],
+      [-500, -375],
+    ];
+    let expectations = [225, 24, 500, 24, 500, 500];
+
+    let test = new TestClass();
+    test.test(funcOptions, expectations);
+  });
+
+  describe("shall return NaN, when operation can't be performed", function() {
+    let funcOptions = [
+      [25, 120],
+      [500, 0],
+      [0, 375],
+      [0, 0],
+    ];
+    let expectations = new Array(funcOptions.length).fill(NaN);
+
+    let test = new TestClass();
+    test.test(funcOptions, expectations);
+  });
+
+  context("shall catch garbage input", function() {
+    describe("returns NaN, if dividend parameter is incorrect", function() {
+      let funcOptions = [
+        [undefined, 25],
+        [null, 25],
+        [Infinity, 25],
+        [NaN, 25],
+        ["text", 25],
+        ["123text", 25],
+      ];
+      let expectations = new Array(funcOptions.length).fill(NaN);
+
+      let test = new TestClass();
+      test.test(funcOptions, expectations);
+    });
+
+    describe("returns NaN, if divisor parameter is incorrect", function() {
+      let funcOptions = [
+        [50, undefined],
+        [50, null],
+        [50, Infinity],
+        [50, NaN],
+        [50, "text"],
+        [50, "123text"],
+      ];
+      let expectations = new Array(funcOptions.length).fill(NaN);
+
+      let test = new TestClass();
+      test.test(funcOptions, expectations);
+    });
+  });
+
+});
 
 describe("getNearestTo", function() {
   let describeTest = template`nearest number to ${0} from ${"...rest"} is ${"expectation"}`;
