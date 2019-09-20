@@ -99,6 +99,25 @@ export function getPrevDivisibleOf(dividend, divisor, start = 0) {
 
 
 /**
+ * If this can be done, returns the nearest number (the bigger one, if controvertial)
+ * that can divide the dividend without the remainder.
+ * Otherwise, returns NaN.
+ *
+ * @param {number} dividend The number, that to be divided.
+ * @param {number} divisor The number, that divides the dividend.
+ * @returns {number} The nearest number, that can divide the dividend without the remainder.
+ */
+
+export function getNearestDividendableOf(dividend, divisor) {
+  divisor = Math.abs(divisor);
+
+  let result = dividend / Math.round(dividend / divisor);
+
+  return (isFinite(result) && result) ? result : NaN;
+}
+
+
+/**
  * Returns excess over step, if this can be done,
  * taking into account starting point.
  * Otherwise, returns undefined.
