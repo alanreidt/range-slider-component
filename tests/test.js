@@ -69,12 +69,13 @@ describe("getNearestDividendableOf", function() {
     let funcOptions = [
       [900, 250],
       [120, 25],
+      [100, 15],
       [500, 375],
       [-120, 25],
       [500, -375],
       [-500, -375],
     ];
-    let expectations = [225, 24, 500, 24, 500, 500];
+    let expectations = [225, 24, 20, 500, 24, 500, 500];
 
     let test = new TestClass();
     test.test(funcOptions, expectations);
