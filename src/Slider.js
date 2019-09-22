@@ -9,7 +9,7 @@ export class Slider {
     this._options = {
       boundaries: [0, 100],
       value: null,
-      step: null,
+      step: 1,
       orientation: "horizontal",
       tooltips: false,
     };
@@ -64,7 +64,7 @@ export class Slider {
   set value(values) {
     let arrOfValues = Array.prototype.concat(values);
     let filteredArr = [];
-    let step = this._options.step || 1; // edit (make it 1 by default?)
+    let step = this._options.step;
     let start = this._options.boundaries[0]; // edit: start not always equals to index[0]
     let end = this._options.boundaries[1]; // edit: end not always equals to index[1]
 
