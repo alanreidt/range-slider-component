@@ -24,24 +24,20 @@ export class Slider {
     return this._options.boundaries;
   }
   set boundaries(value) {
-    let currentValue = this._options.boundaries;
+    let result = this._options.boundaries.slice();
 
     if (value === Number) {
-      let [start, end] = currentValue;
+      let [start, end] = result;
 
       let filteredValue = parseFloat(value);
 
       if ( isNaN(filteredValue) ) return;
 
-      if ( getNearestTo(filteredValue, start, end) === start ) {
-        currentValue[0] = filteredValue;
-      } else {
-        currentValue[1] = filteredValue;
-      }
+      let result = ( getNearestTo(filteredValue, start, end) === start ) ?
+        [filteredValue, end] : [start, filteredValue];
     }
 
     if ( Array.isArray(value) ) {
-      let result = currentValue;
 
       for (let i = 0; i < result.length; i++) {
         let filteredItem = parseFloat( value[i] );
@@ -51,8 +47,9 @@ export class Slider {
         result[i] = filteredItem;
       }
 
-      currentValue = result;
     }
+
+    this._options.boundaries = result.sort( (a, b) => a - b );
 
     this.value = this._options.value;
     this.step = this._options.step;
