@@ -51,6 +51,9 @@ export class Slider {
 
       currentValue = result;
     }
+
+    this.value = this._options.value;
+    this.step = this._options.step;
   }
 
   get value() {
