@@ -92,7 +92,7 @@ export class Slider {
 
     let filteredValue = parseFloat(value);
 
-    filteredValue = ( isValueInBetween(filteredValue, 0, range) ) ?
+    filteredValue = ( isValueInBetween(filteredValue, 1, range) ) ?
       getNearestDividendableOf(range, filteredValue) :
       getNearestTo(filteredValue, 1, range);
 
