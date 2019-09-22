@@ -1,4 +1,4 @@
-import {getAverageOf, getNearestDivisibleOf, isValueInBetween, getNearestTo} from "./utilities";
+import {getAverageOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getNearestDividendableOf} from "./utilities";
 
 export class Slider {
   // don't use object destructuring as
@@ -86,9 +86,17 @@ export class Slider {
     return this._options.step;
   }
   set step(value) {
+    let start = this._options.boundaries[0]; // edit: start not always equals to index[0]
+    let end = this._options.boundaries[1]; // edit: end not always equals to index[1]
+    let range = end - start;
+
     let filteredValue = parseFloat(value);
 
-    if (isNaN(filteredValue) || filteredValue < 0) return;
+    filteredValue = ( isValueInBetween(filteredValue, 0, range) ) ?
+      getNearestDividendableOf(range, filteredValue) :
+      getNearestTo(filteredValue, 1, range);
+
+    if ( isNaN(filteredValue) ) return;
 
     this._options.step = filteredValue;
   }
