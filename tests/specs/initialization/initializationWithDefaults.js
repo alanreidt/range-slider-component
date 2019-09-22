@@ -5,7 +5,7 @@ export function initializationWithDefaults() {
   let testObject = {
     boundaries: [0, 100],
     value: 50,
-    step: null,
+    step: 1,
     orientation: "horizontal",
     tooltips: false,
   };

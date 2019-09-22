@@ -74,7 +74,7 @@ export function reassignment() {
     let expectations = [
       {boundaries: [0, 100],
       value: 50,
-      step: null,
+      step: 1,
       orientation: "horizontal",
       tooltips: false},
     ];

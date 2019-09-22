@@ -11,7 +11,7 @@ export function initializationWithIncorrectFixed() {
   let testObject = {
     boundaries: [0, 200],
     value: 25,
-    step: null,
+    step: 1,
     orientation: "horizontal",
     tooltips: false,
   };
