@@ -19,12 +19,12 @@ export function isValueInBetween(value, start, end) {
 
 
 /**
- * Defines whether dividend is dividing by divisor without the remainder.
+ * Defines whether dividend can be divided by divisor without the remainder or not.
  *
- * @param {number} dividend The number, that is divided.
+ * @param {number} dividend The number, that to be divided.
  * @param {number} divisor The number, that divides the dividend.
- * @param {number} start The number, that represents starting point of coordinate system. (???)
- * @returns {boolean} True, if dividend is dividing by divisor without remainder. Otherwise, false.
+ * @param {number} start The number which to start to counting from.
+ * @returns {boolean} True, if dividend can be divided by divisor without the remainder. Otherwise, false.
  */
 
 export function isDivisible(dividend, divisor, start = 0) {
