@@ -59,25 +59,24 @@ export class Slider {
     return this._options.value || getAverageOf(this._options.boundaries);
   }
   set value(values) {
-    let arrOfValues = Array.prototype.concat(values);
+    let arrOfValues = [].concat(values);
     let filteredArr = [];
     let step = this._options.step;
-    let start = this._options.boundaries[0]; // edit: start not always equals to index[0]
-    let end = this._options.boundaries[1]; // edit: end not always equals to index[1]
+    let [start, end] = this._options.boundaries;
 
-    arrOfValues.sort( (a, b) => a - b ).forEach(item => {
-      let filteredItem = parseFloat(item);
+    arrOfValues.sort( (a, b) => a - b ).forEach(value => {
+      let filteredValue = parseFloat(value);
 
-      filteredItem = ( isValueInBetween(filteredItem, start, end) ) ?
-        getNearestDivisibleOf(filteredItem, step, start) :
-        getNearestTo(filteredItem, start, end);
+      filteredValue = ( isValueInBetween(filteredValue, start, end) ) ?
+        getNearestDivisibleOf(filteredValue, step, start) :
+        getNearestTo(filteredValue, start, end);
 
-      if ( isNaN(filteredItem) ) return;
+      if ( isNaN(filteredValue) ) return;
 
-      filteredArr.push(filteredItem);
+      filteredArr.push(filteredValue);
     });
 
-    filteredArr = filteredArr.filter( (item, i, arr) => item !== arr[i + 1] );
+    filteredArr = filteredArr.filter( (item, i, filteredArr) => item !== filteredArr[i + 1] );
 
     if (!filteredArr.length) return;
 
