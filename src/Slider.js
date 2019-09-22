@@ -102,6 +102,8 @@ export class Slider {
     if ( isNaN(filteredValue) ) return;
 
     this._options.step = filteredValue;
+
+    this.value = this._options.value;
   }
 
   get orientation() {
