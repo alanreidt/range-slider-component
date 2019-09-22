@@ -113,11 +113,13 @@ export function reassignment() {
         {boundaries: [-500, 500], value: [-1000, 1000]},
         {boundaries: [-500, 500], value: [-1000, 250, 1000]},
         {boundaries: [-500, 500], value: [-2000, -1000, 250, 1000, 2000]},
+        {boundaries: [-500, 500], value: [250, -2000, 1000, 2000, -1000]},
       ];
       let expectations = [
         {boundaries: [0, 500], value: 500},
         {boundaries: [-500, 500], value: -500},
         {boundaries: [-500, 500], value: [-500, 500]},
+        {boundaries: [-500, 500], value: [-500, 250, 500]},
         {boundaries: [-500, 500], value: [-500, 250, 500]},
         {boundaries: [-500, 500], value: [-500, 250, 500]},
       ];
@@ -130,12 +132,12 @@ export function reassignment() {
     context(`shall correct {step},
     if passed value isn't correspond to {boundaries(range)}`, function() {
       let options = [
-        {step: 30},
+        {boundaries: [0, 100], step: 15},
         {boundaries: [0, 300], step: 250},
         {boundaries: [-500, 500], step: 105},
       ];
       let expectations = [
-        {step: 20},
+        {boundaries: [0, 100], step: 20},
         {boundaries: [0, 300], step: 300},
         {boundaries: [-500, 500], step: 100},
       ];
