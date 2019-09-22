@@ -87,8 +87,7 @@ export class Slider {
     return this._options.step;
   }
   set step(value) {
-    let start = this._options.boundaries[0]; // edit: start not always equals to index[0]
-    let end = this._options.boundaries[1]; // edit: end not always equals to index[1]
+    let [start, end] = this._options.boundaries;
     let range = end - start;
 
     let filteredValue = parseFloat(value);
