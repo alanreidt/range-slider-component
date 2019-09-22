@@ -40,11 +40,11 @@ export class Slider {
     if ( Array.isArray(value) ) {
 
       for (let i = 0; i < result.length; i++) {
-        let filteredItem = parseFloat( value[i] );
+        let filteredValue = parseFloat( value[i] );
 
-        if ( isNaN(filteredItem) ) continue;
+        if ( isNaN(filteredValue) ) continue;
 
-        result[i] = filteredItem;
+        result[i] = filteredValue;
       }
 
     }
