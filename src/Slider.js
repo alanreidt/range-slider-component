@@ -27,14 +27,16 @@ export class Slider {
     let currentValue = this._options.boundaries;
 
     if (value === Number) {
+      let [start, end] = currentValue;
+
       let filteredValue = parseFloat(value);
 
       if ( isNaN(filteredValue) ) return;
 
-      if (filteredValue >= currentValue[1]) {
-        currentValue[1] = filteredValue;
-      } else {
+      if ( getNearestTo(filteredValue, start, end) === start ) {
         currentValue[0] = filteredValue;
+      } else {
+        currentValue[1] = filteredValue;
       }
     }
 
