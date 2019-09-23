@@ -692,6 +692,65 @@ describe("getNearestDivisibleOf", function() {
 });
 
 
+describe("Model", function() {
+
+  describe("shall organize access to the dataSource", function() {
+
+    describe("change values of the dataSource", function() {
+      // let newValues = {
+      //   boundaries: [100, 500],
+      //   step: 20,
+      //   tooltips: true,
+      // };
+      // let expectations = {
+      //   boundaries: [100, 500],
+      //   value: 300,
+      //   step: 20,
+      //   orientation: "horizontal",
+      //   tooltips: true,
+      // };
+      // let slider = new Slider();
+      // let model = new Model(slider);
+
+      // model.setValues(newValues);
+
+      // for (let key in expectations) {
+
+      //   it(`${key} equals to ${expectations[key]}`, function() {
+      //     assert.equal( slider[key], expectations[key] );
+      //   });
+
+      // }
+    });
+
+    describe("change values of the dataSource", function() {
+      // let newValues = {
+      //   boundaries: [100, 500],
+      //   step: 20,
+      //   tooltips: true,
+      // };
+      // let options = [
+      //   {setValues: newValues},
+      // ];
+      // let expectations = {
+      //   boundaries: [100, 500],
+      //   value: 300,
+      //   step: 20,
+      //   orientation: "horizontal",
+      //   tooltips: true,
+      // };
+      // let Class = Model;
+      // let ClassOptions = new Slider();
+      // let testOptions = {Class, ClassOptions, options, expectations};
+
+      // testClass(testOptions);
+    });
+
+  });
+
+});
+
+
 describe("Slider", function() {
 
   describe("Initialization test", function() {
