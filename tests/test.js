@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getNearestDividendableOf} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getNearestDividendableOf, observerMixin} from "../src/utilities";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
@@ -691,6 +691,104 @@ describe("getNearestDivisibleOf", function() {
 
 });
 
+
+describe("observerMixin", function() {
+
+  describe("shall store list of subscribers", function() {
+    let publisher = Object.assign({}, observerMixin);
+    let subscriber1 = {};
+    let subscriber2 = {};
+    let subscribers = [subscriber1, subscriber2];
+    let publisherSubscribers = publisher._subscribers.change;
+
+    publisher.subscribe("change", subscriber1);
+    publisher.subscribe("change", subscriber2);
+
+    it(`${subscribers} are in the list`, function() {
+
+      publisherSubscribers.forEach( (subscriber, i) => {
+        assert.equal( subscriber, subscribers[i] );
+      });
+
+    });
+  });
+
+  describe("shall remove subscribers from the list by request", function() {
+    let publisher = Object.assign({}, observerMixin);
+    let subscriber1 = {};
+    let subscriber2 = {};
+    let subscriber3 = {};
+    let subscribers = [subscriber1, subscriber2, subscriber3];
+    let Cuttedsubscribers = [subscriber1, subscriber3];
+    let publisherSubscribers = publisher._subscribers.change;
+
+    publisher.subscribe("change", subscriber1);
+    publisher.subscribe("change", subscriber2);
+    publisher.subscribe("change", subscriber3);
+
+    it(`${subscribers} are in the list`, function() {
+
+      publisherSubscribers.forEach( (subscriber, i) => {
+        assert.equal( subscriber, subscribers[i] );
+      });
+
+    });
+
+    publisher.unsubscribe("change", subscriber2);
+
+    it(`subscriber2 is removed from the list`, function() {
+
+      publisherSubscribers.forEach( (subscriber, i) => {
+        assert.equal( subscriber, Cuttedsubscribers[i] );
+      });
+
+    });
+  });
+
+  describe("shall notify subscribers", function() {
+    let publisher = Object.assign({}, observerMixin);
+    let subscriber1 = {
+      update() {
+        this.isNotified = true;
+      }
+    };
+    let subscriber2 = {
+      update() {
+        this.isNotified = true;
+      }
+    };
+    let subscriber3 = {
+      update() {
+        this.isNotified = true;
+      }
+    };
+    let subscribers = [subscriber1, subscriber2, subscriber3];
+    let publisherSubscribers = publisher._subscribers.change;
+
+    publisher.subscribe("change", subscriber1);
+    publisher.subscribe("change", subscriber2);
+    publisher.subscribe("change", subscriber3);
+
+    it(`${subscribers} are in the list`, function() {
+
+      publisherSubscribers.forEach( (subscriber, i) => {
+        assert.equal( subscriber, subscribers[i] );
+      });
+
+    });
+
+    publisher.notify("change");
+
+    it(`${subscribers} are notified`, function() {
+
+      subscribers.forEach( (subscriber) => {
+        assert.equal( subscriber.isNotified, true );
+      });
+
+    });
+  });
+
+});
 
 describe("Model", function() {
 
