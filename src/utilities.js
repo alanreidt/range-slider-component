@@ -36,7 +36,7 @@ export function isDivisible(dividend, divisor, start = 0) {
  * If this can be done, returns the number that is nearest to the value.
  * Otherwise, returns NaN.
  *
- * @param {number} value The value which nearest number is compared to.
+ * @param {number} value The value, which nearest number is compared to.
  * @param {number} args The number, that is compared to the value.
  * @returns {number} The nearest number to the value.
  * @returns {NaN} Error.
@@ -48,6 +48,8 @@ export function getNearestTo(value, ...args) {
   let filteredArray = args.filter( item => Number.isFinite(item) );
 
   if (!filteredArray.length) return NaN;
+
+  // let result = filteredArray.sort( (a, b) => (value - a) - (value - b) ).shift();
 
   let result = filteredArray.reduce( (prev, current) => {
     let currentDifference = Math.abs(value - current);
