@@ -120,4 +120,16 @@ export class Slider {
 
     this._options.tooltips = value;
   }
+
+  getValues() {
+
+    return {
+      boundaries: this.boundaries,
+      value: this.value,
+      step: this.step,
+      orientation: this.orientation,
+      tooltips: this.tooltips,
+    };
+
+  }
 }
