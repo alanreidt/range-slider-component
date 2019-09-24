@@ -114,20 +114,20 @@ export function getPrevDivisibleOf(dividend, divisor, start = 0) {
 export function getNearestDividendableOf(dividend, divisor) {
   divisor = Math.abs(divisor);
 
-  let nextDividendable = divisor;
-  let prevDividendable = divisor;
+  // let nextDividendable = divisor;
+  // let prevDividendable = divisor;
 
-  while ( (dividend % nextDividendable) !== 0 ) {
-    nextDividendable++;
-  }
+  // while ( (dividend % nextDividendable) ) {
+  //   ++nextDividendable;
+  // }
 
-  while ( (dividend % prevDividendable) !== 0 ) {
-    prevDividendable--;
-  }
+  // while ( (dividend % prevDividendable) ) {
+  //   --prevDividendable;
+  // }
 
-  let result = getNearestTo(divisor, prevDividendable, nextDividendable);
+  // let result = getNearestTo(divisor, prevDividendable, nextDividendable);
 
-  // let result = dividend / Math.round(dividend / divisor);
+  let result = dividend / Math.round(dividend / divisor);
 
   return (isFinite(result) && result) ? result : NaN;
 }
