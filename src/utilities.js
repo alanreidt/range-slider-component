@@ -49,8 +49,6 @@ export function getNearestTo(value, ...args) {
 
   if (!filteredArray.length) return NaN;
 
-  // let result = filteredArray.sort( (a, b) => (value - a) - (value - b) ).shift();
-
   let result = filteredArray.reduce( (prev, current) => {
     let currentDifference = Math.abs(value - current);
     let prevDifference = Math.abs(value - prev);
