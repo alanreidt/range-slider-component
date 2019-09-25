@@ -1,4 +1,54 @@
 /**
+ * The observerMixin is borrowed from http://javascript.info/mixins
+ */
+
+export let observerMixin = {
+  /**
+   * Subscribe to event, usage:
+   *  menu.subscribe("select", function(item) { ... })
+   */
+  subscribe(eventName, handler) {
+    if (!this._eventHandlers) {
+      this._eventHandlers = {};
+    }
+
+    if (!this._eventHandlers[eventName]) {
+      this._eventHandlers[eventName] = [];
+    }
+
+    this._eventHandlers[eventName].push(handler);
+  },
+
+  /**
+   * Cancel the subscription, usage:
+   *  menu.off('select', handler)
+   */
+  off(eventName, handler) {
+    let handlers = this._eventHandlers && this._eventHandlers[eventName];
+    if (!handlers) return;
+    for (let i = 0; i < handlers.length; i++) {
+      if (handlers[i] === handler) {
+        handlers.splice(i--, 1);
+      }
+    }
+  },
+
+  /**
+   * Generate an event with the given name and data
+   *  this.trigger('select', data1, data2);
+   */
+  trigger(eventName, ...args) {
+    if (!this._eventHandlers || !this._eventHandlers[eventName]) {
+      return; // no handlers for that event name
+    }
+
+    // call the handlers
+    this._eventHandlers[eventName].forEach(handler => handler.apply(this, args));
+  }
+};
+
+
+/**
  * Defines whether value is between start and end or not.
  *
  * @param {number} value The value, which is checked for attachment to interval.
