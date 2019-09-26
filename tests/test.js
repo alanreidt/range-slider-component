@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getNearestDividendableOf, observerMixin} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf, observerMixin} from "../src/utilities";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
@@ -61,9 +61,9 @@ function template(strings, ...keys) {
 
 }
 
-describe("getNearestDividendableOf", function() {
+describe("getClosestFactorOf", function() {
   let describeTest = template`nearest divisor of division of ${0} by ${1} is ${"expectation"}`;
-  let TestClass = makeTestClass(getNearestDividendableOf, describeTest);
+  let TestClass = makeTestClass(getClosestFactorOf, describeTest);
 
   describe("shall return nearest divisor", function() {
     let funcOptions = [
@@ -71,11 +71,13 @@ describe("getNearestDividendableOf", function() {
       [120, 25],
       [100, 15],
       [500, 375],
-      [-120, 25],
       [500, -375],
-      [-500, -375],
+      [100, 50],
+      [100, 100],
+      [25, 120],
+      [500, 0],
     ];
-    let expectations = [225, 24, 20, 500, 24, 500, 500];
+    let expectations = [225, 24, 20, 500, 1, 50, 100, 25, 1];
 
     let test = new TestClass();
     test.test(funcOptions, expectations);
@@ -83,10 +85,10 @@ describe("getNearestDividendableOf", function() {
 
   describe("shall return NaN, when operation can't be performed", function() {
     let funcOptions = [
-      [25, 120],
-      [500, 0],
       [0, 375],
       [0, 0],
+      [-120, 25],
+      [-500, -375],
     ];
     let expectations = new Array(funcOptions.length).fill(NaN);
 
