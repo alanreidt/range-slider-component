@@ -100,34 +100,31 @@ export function getPrevDivisibleOf(dividend, divisor, start = 0) {
 
 
 /**
- * If this can be done, returns the nearest number (the bigger one, if controvertial)
- * that can divide the dividend without the remainder.
+ * If this can be done, returns the closest factor (natural number (positive integer))
+ * of the dividend to the divisor (the bigger one, if controvertial).
  * Otherwise, returns NaN.
  *
  * @param {number} dividend The number, that to be divided.
  * @param {number} divisor The number, that divides the dividend.
- * @returns {number} The nearest number, that can divide the dividend without the remainder.
+ * @returns {natural number} The closest factor of the dividend to the divisor.
  */
 
-export function getNearestDividendableOf(dividend, divisor) {
-  divisor = Math.abs(divisor);
+export function getClosestFactorOf(dividend, divisor) {
+  if ( !Number.isFinite(dividend) || !Number.isFinite(divisor) || (dividend <= 0) ) return NaN;
 
-  // let nextDividendable = divisor;
-  // let prevDividendable = divisor;
+  if (divisor <= 0) return 1;
 
-  // while ( (dividend % nextDividendable) ) {
-  //   ++nextDividendable;
-  // }
+  for (let i = 0; i < dividend; i++) {
+    if ( dividend % (divisor + i) === 0 ) {
+      return (divisor + i);
+    }
 
-  // while ( (dividend % prevDividendable) ) {
-  //   --prevDividendable;
-  // }
+    if ( dividend % (divisor - i) === 0 ) {
+      return (divisor - i);
+    }
+  }
 
-  // let result = getNearestTo(divisor, prevDividendable, nextDividendable);
-
-  let result = dividend / Math.round(dividend / divisor);
-
-  return (isFinite(result) && result) ? result : NaN;
+  return dividend;
 }
 
 
