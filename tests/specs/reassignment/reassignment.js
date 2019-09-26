@@ -191,7 +191,7 @@ export function reassignment() {
         { boundaries: [-50, 0] },
       ];
       let expectations = [
-        {boundaries: [0, 90], step: 15},
+        {boundaries: [0, 90], step: 18},
         {boundaries: [-50, 0], step: 25},
       ];
       let ClassOptions = {
