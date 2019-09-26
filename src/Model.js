@@ -1,3 +1,5 @@
+import {observerMixin} from "./utilities";
+
 export class Model {
   constructor(dataSource) {
     this.dataSource = dataSource;
@@ -15,3 +17,5 @@ export class Model {
 
   }
 }
+
+Object.assign(Model.prototype, observerMixin);
