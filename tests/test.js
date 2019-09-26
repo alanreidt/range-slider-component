@@ -701,15 +701,15 @@ describe("observerMixin", function() {
     let subscriber1 = {};
     let subscriber2 = {};
     let subscribers = [subscriber1, subscriber2];
-    let publisherSubscribers = publisher._subscribers.change;
 
     publisher.subscribe("change", subscriber1);
     publisher.subscribe("change", subscriber2);
 
-    it(`${subscribers} are in the list`, function() {
+    subscribers.forEach( (subscriber, i) => {
+      let publisherSubscriber = publisher._subscribers.change[i];
 
-      publisherSubscribers.forEach( (subscriber, i) => {
-        assert.equal( subscriber, subscribers[i] );
+      it(`subscriber${i + 1} is in the list`, function() {
+        assert.equal( subscriber, publisherSubscriber );
       });
 
     });
@@ -721,17 +721,19 @@ describe("observerMixin", function() {
     let subscriber2 = {};
     let subscriber3 = {};
     let subscribers = [subscriber1, subscriber2, subscriber3];
-    let Cuttedsubscribers = [subscriber1, subscriber3];
-    let publisherSubscribers = publisher._subscribers.change;
+    let cuttedSubscribers = [subscriber1, subscriber3];
 
     publisher.subscribe("change", subscriber1);
     publisher.subscribe("change", subscriber2);
     publisher.subscribe("change", subscriber3);
 
-    it(`${subscribers} are in the list`, function() {
+    let publisherSubscribers = publisher._subscribers.change;
 
-      publisherSubscribers.forEach( (subscriber, i) => {
-        assert.equal( subscriber, subscribers[i] );
+    subscribers.forEach( (subscriber, i) => {
+      let publisherSubscriber = publisher._subscribers.change[i];
+
+      it(`subscriber${i + 1} is in the list`, function() {
+        assert.equal( subscriber, publisherSubscriber );
       });
 
     });
@@ -739,49 +741,45 @@ describe("observerMixin", function() {
     publisher.unsubscribe("change", subscriber2);
 
     it(`subscriber2 is removed from the list`, function() {
-
-      publisherSubscribers.forEach( (subscriber, i) => {
-        assert.equal( subscriber, Cuttedsubscribers[i] );
-      });
-
+      assert.deepEqual( cuttedSubscribers, publisherSubscribers );
     });
   });
 
   describe("shall notify subscribers", function() {
     let publisher = Object.assign({}, observerMixin);
     let subscriber1 = {
+      isNotified: false,
       update() {
         this.isNotified = true;
       }
     };
     let subscriber2 = {
+      isNotified: false,
       update() {
         this.isNotified = true;
       }
     };
     let subscriber3 = {
+      isNotified: false,
       update() {
         this.isNotified = true;
       }
     };
     let subscribers = [subscriber1, subscriber2, subscriber3];
-    let publisherSubscribers = publisher._subscribers.change;
 
     publisher.subscribe("change", subscriber1);
     publisher.subscribe("change", subscriber2);
     publisher.subscribe("change", subscriber3);
 
-    it(`${subscribers} are in the list`, function() {
+    let publisherSubscribers = publisher._subscribers.change;
 
-      publisherSubscribers.forEach( (subscriber, i) => {
-        assert.equal( subscriber, subscribers[i] );
-      });
-
+    it(`subscribers are in the list`, function() {
+      assert.deepEqual( subscribers, publisherSubscribers );
     });
 
     publisher.notify("change");
 
-    it(`${subscribers} are notified`, function() {
+    it(`subscribers are notified`, function() {
 
       subscribers.forEach( (subscriber) => {
         assert.equal( subscriber.isNotified, true );
