@@ -71,11 +71,13 @@ describe("getClosestFactorOf", function() {
       [120, 25],
       [100, 15],
       [500, 375],
-      [-120, 25],
       [500, -375],
-      [-500, -375],
+      [100, 50],
+      [100, 100],
+      [25, 120],
+      [500, 0],
     ];
-    let expectations = [225, 24, 20, 500, 24, 500, 500];
+    let expectations = [225, 24, 20, 500, 1, 50, 100, 25, 1];
 
     let test = new TestClass();
     test.test(funcOptions, expectations);
@@ -83,10 +85,10 @@ describe("getClosestFactorOf", function() {
 
   describe("shall return NaN, when operation can't be performed", function() {
     let funcOptions = [
-      [25, 120],
-      [500, 0],
       [0, 375],
       [0, 0],
+      [-120, 25],
+      [-500, -375],
     ];
     let expectations = new Array(funcOptions.length).fill(NaN);
 
