@@ -26,14 +26,14 @@ export class Slider {
   set boundaries(value) {
     let result = this._options.boundaries.slice();
 
-    if ( typeof(value) === "number") {
+    if (typeof(value) === "number") {
       let [start, end] = result;
 
       let filteredValue = parseFloat(value);
 
       if ( isNaN(filteredValue) ) return;
 
-      let result = ( getNearestTo(filteredValue, start, end) === start ) ?
+      result = ( getNearestTo(filteredValue, start, end) === start ) ?
         [filteredValue, end] : [start, filteredValue];
     }
 
