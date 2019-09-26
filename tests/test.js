@@ -1,4 +1,6 @@
 import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf, observerMixin} from "../src/utilities";
+import {Slider} from "../src/Slider";
+import {Model} from "../src/Model";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
@@ -790,62 +792,60 @@ describe("observerMixin", function() {
 
 });
 
-describe("Model", function() {
 
+describe("Model", function() {
   describe("shall organize access to the dataSource", function() {
 
-    describe("change values of the dataSource", function() {
-      // let newValues = {
-      //   boundaries: [100, 500],
-      //   step: 20,
-      //   tooltips: true,
-      // };
-      // let expectations = {
-      //   boundaries: [100, 500],
-      //   value: 300,
-      //   step: 20,
-      //   orientation: "horizontal",
-      //   tooltips: true,
-      // };
-      // let slider = new Slider();
-      // let model = new Model(slider);
+    describe("changes values of the dataSource", function() {
+      let newValues = {
+        boundaries: [100, 500],
+        step: 20,
+        tooltips: true,
+      };
+      let expectations = {
+        boundaries: [100, 500],
+        value: 300,
+        step: 20,
+        orientation: "horizontal",
+        tooltips: true,
+      };
+      let slider = new Slider();
+      let model = new Model(slider);
 
-      // model.setValues(newValues);
+      model.setValues(newValues);
 
-      // for (let key in expectations) {
+      for (let key in expectations) {
 
-      //   it(`${key} equals to ${expectations[key]}`, function() {
-      //     assert.equal( slider[key], expectations[key] );
-      //   });
+        it(`${key} equals to ${expectations[key]}`, function() {
+          assert.deepEqual( slider[key], expectations[key] );
+        });
 
-      // }
+      }
     });
 
-    describe("change values of the dataSource", function() {
-      // let newValues = {
-      //   boundaries: [100, 500],
-      //   step: 20,
-      //   tooltips: true,
-      // };
-      // let options = [
-      //   {setValues: newValues},
-      // ];
-      // let expectations = {
-      //   boundaries: [100, 500],
-      //   value: 300,
-      //   step: 20,
-      //   orientation: "horizontal",
-      //   tooltips: true,
-      // };
-      // let Class = Model;
-      // let ClassOptions = new Slider();
-      // let testOptions = {Class, ClassOptions, options, expectations};
+    describe("returns values of the dataSource", function() {
+      let expectations = {
+        boundaries: [0, 100],
+        value: 50,
+        step: 1,
+        orientation: "horizontal",
+        tooltips: false,
+      };
+      let slider = new Slider();
+      let model = new Model(slider);
 
-      // testClass(testOptions);
+      let sliderValues = model.getValues();
+
+      for (let key in expectations) {
+
+        it(`${key} equals to ${expectations[key]}`, function() {
+          assert.deepEqual( sliderValues[key], expectations[key] );
+        });
+
+      }
     });
 
   });
-
 });
 
 
