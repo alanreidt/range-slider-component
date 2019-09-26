@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getNearestDividendableOf, observerMixin} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf, observerMixin} from "../src/utilities";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
@@ -61,9 +61,9 @@ function template(strings, ...keys) {
 
 }
 
-describe("getNearestDividendableOf", function() {
+describe("getClosestFactorOf", function() {
   let describeTest = template`nearest divisor of division of ${0} by ${1} is ${"expectation"}`;
-  let TestClass = makeTestClass(getNearestDividendableOf, describeTest);
+  let TestClass = makeTestClass(getClosestFactorOf, describeTest);
 
   describe("shall return nearest divisor", function() {
     let funcOptions = [

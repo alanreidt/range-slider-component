@@ -1,4 +1,4 @@
-import {getAverageOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getNearestDividendableOf} from "./utilities";
+import {getAverageOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf} from "./utilities";
 
 export class Slider {
   // don't use object destructuring as
@@ -93,7 +93,7 @@ export class Slider {
     let filteredValue = parseFloat(value);
 
     filteredValue = ( isValueInBetween(filteredValue, 1, range) ) ?
-      getNearestDividendableOf(range, filteredValue) :
+      getClosestFactorOf(range, filteredValue) :
       getNearestTo(filteredValue, 1, range);
 
     if ( isNaN(filteredValue) ) return;
