@@ -26,7 +26,7 @@ export class Slider {
   set boundaries(value) {
     let result = this._options.boundaries.slice();
 
-    if (value === Number) {
+    if ( typeof(value) === "number") {
       let [start, end] = result;
 
       let filteredValue = parseFloat(value);
