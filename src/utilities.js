@@ -6,7 +6,7 @@ export let observerMixin = {
 
   /**
    * Subscribe to event, usage:
-   *  menu.subscribe("select", function(item) { ... })
+   *  menu.subscribe("select", object)
    */
 
   subscribe(eventName, subscriber) {
@@ -20,6 +20,7 @@ export let observerMixin = {
 
     this._subscribers[eventName].push(subscriber);
   },
+
 
   /**
    * Cancel the subscription, usage:
@@ -40,6 +41,7 @@ export let observerMixin = {
     }
   },
 
+
   /**
    * Generate an event with the given name and data
    *  this.notify("select", data1, data2);
@@ -47,10 +49,9 @@ export let observerMixin = {
 
   notify(eventName, ...args) {
     if (!this._subscribers || !this._subscribers[eventName]) {
-      return; // no handlers for that event name
+      return;
     }
 
-    // call the handlers
     this._subscribers[eventName].forEach( subscriber => subscriber.update(args) );
   }
 };
