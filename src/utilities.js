@@ -3,47 +3,55 @@
  */
 
 export let observerMixin = {
+
   /**
    * Subscribe to event, usage:
    *  menu.subscribe("select", function(item) { ... })
    */
-  subscribe(eventName, handler) {
-    if (!this._eventHandlers) {
-      this._eventHandlers = {};
+
+  subscribe(eventName, subscriber) {
+    if (!this._subscribers) {
+      this._subscribers = {};
     }
 
-    if (!this._eventHandlers[eventName]) {
-      this._eventHandlers[eventName] = [];
+    if (!this._subscribers[eventName]) {
+      this._subscribers[eventName] = [];
     }
 
-    this._eventHandlers[eventName].push(handler);
+    this._subscribers[eventName].push(subscriber);
   },
 
   /**
    * Cancel the subscription, usage:
-   *  menu.off('select', handler)
+   *  menu.unsubscribe("select", subscriber)
    */
-  off(eventName, handler) {
-    let handlers = this._eventHandlers && this._eventHandlers[eventName];
+
+  unsubscribe(eventName, subscriber) {
+    let handlers = this._subscribers && this._subscribers[eventName];
+
     if (!handlers) return;
+
     for (let i = 0; i < handlers.length; i++) {
-      if (handlers[i] === handler) {
+
+      if (handlers[i] === subscriber) {
         handlers.splice(i--, 1);
       }
+
     }
   },
 
   /**
    * Generate an event with the given name and data
-   *  this.trigger('select', data1, data2);
+   *  this.notify("select", data1, data2);
    */
-  trigger(eventName, ...args) {
-    if (!this._eventHandlers || !this._eventHandlers[eventName]) {
+
+  notify(eventName, ...args) {
+    if (!this._subscribers || !this._subscribers[eventName]) {
       return; // no handlers for that event name
     }
 
     // call the handlers
-    this._eventHandlers[eventName].forEach(handler => handler.apply(this, args));
+    this._subscribers[eventName].forEach( subscriber => subscriber.update(args) );
   }
 };
 
