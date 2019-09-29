@@ -800,8 +800,11 @@ describe("observerMixin", function() {
  *    shall set step width relatively to Slider width (px)
  *    shall correct step, if there isn't enough space (Slider width)
  *    shall change orientation
- *    shall change position counting process when orientation is changed
- *    shall change tooltips position when orientation is changed
+ *    shall change orientation relative props
+ *      shall change position counting process when orientation is changed
+ *      shall change tooltips position when orientation is changed
+ *      shall change handle proportions when orientation is changed
+ *      shall set default height when orientation is vertical
  *    shall treat tooltips
  *    shall have width (that is height, when horizontal)
  *    shall have state model
