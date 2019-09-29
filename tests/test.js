@@ -792,6 +792,32 @@ describe("observerMixin", function() {
 
 });
 
+/**
+ * ViewController Logic sketch:
+ *  View
+ *    shall display required quantity of handles
+ *    shall restrict quantity of handles (!DomainModel)
+ *    shall set step width relatively to Slider width (px)
+ *    shall correct step, if there isn't enough space (Slider width)
+ *    shall change orientation
+ *    shall change position counting process when orientation is changed
+ *    shall change tooltips position when orientation is changed
+ *    shall treat tooltips
+ *    shall have width (that is height, when horizontal)
+ *    shall have state model
+ *    shall display live value trough state model
+ *  Controller
+ *    shall change slider value, when scale is clicked
+ *    shall change slider value, when handle is moved
+ *    shall change slider value, when handle is moving
+ */
+
+describe("ViewController", function() {
+  it("test", function() {
+    let div = document.createElement("div");
+  });
+});
+
 
 describe("Model", function() {
   describe("shall organize access to the dataSource", function() {
