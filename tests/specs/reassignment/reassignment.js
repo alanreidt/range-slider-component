@@ -260,7 +260,7 @@ export function reassignment() {
   });
 
 
-  describe(`shall accept unlimited array of {value} values`, function() {
+  describe(`shall accept array of {value} values`, function() {
 
     context(`shall accept array of {value} values`, function() {
       reassignmentValueArray();
@@ -269,6 +269,8 @@ export function reassignment() {
     context(`shall accept array of {value} values and correct incorrect`, function() {
       reassignmentValueArrayWithIncorrect();
     });
+
+    it(`shall limit array of {value} to 8 values`);
 
   });
 
