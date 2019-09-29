@@ -800,7 +800,7 @@ describe("observerMixin", function() {
  *    shall set step width relatively to Slider width (px)
  *    shall correct step, if there isn't enough space (Slider width)
  *    shall change orientation
- *    shall change orientation relative props
+ *    shall change orientation related props
  *      shall change position counting process when orientation is changed
  *      shall change tooltips position when orientation is changed
  *      shall change handle proportions when orientation is changed
@@ -816,6 +816,31 @@ describe("observerMixin", function() {
  */
 
 describe("ViewController", function() {
+  // ViewController Tests sketch:
+  //  Controller
+  //    shall listen to handle click
+  //      shall listen to mouse down
+  //      shall listen to pointer position, when mouse is down (updateValue)
+  //        shall change position counting process when orientation is vertical
+  //      shall listen to mouse up
+  //    shall listen to changing of Slider width (updateStep)
+  //    shall change slider value, when line is clicked
+  //    updateValue method
+  //      shall dynamically update value (through app-model or state-model)
+  //    updateStep method
+  //      shall correct step width on mousemove
+  //      shall correct step value, if there isn't enough space (Slider width)
+  //  View
+  //    createLine method
+  //      shall create line with according values
+  //      shall set default height when orientation is vertical (css)
+  //      shall set orientation css class (css)
+  //    createHandles method
+  //      shall create required quantity of handles
+  //      shall set correct data-value attrs
+  //      shall change handle proportions when orientation is vertical (css)
+  //      shall create required quantity of tootips
+  //      shall change tooltips position when orientation is vertical (css)
   it("test", function() {
     let div = document.createElement("div");
   });
