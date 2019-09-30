@@ -774,7 +774,7 @@ describe("ViewController", function() {
   //      shall correct step width on mouse move
   //      shall correct step value, if there isn't enough space (Slider width)
   //  View
-  //    createLine method
+  //    createBase method
   //      shall create line with according values
   //      shall set default height when orientation is vertical (css)
   //      shall set orientation css class (css)
@@ -786,11 +786,11 @@ describe("ViewController", function() {
   //      shall change tooltips position when orientation is vertical (css)
   describe("View logic", function() {
 
-    context("createLine method", function() {
+    context("createBase method", function() {
       it("shall create base of the slider", function() {
         let div = document.createElement("div");
 
-        createLine(div, [100, 500]);
+        createBase(div, [100, 500]);
 
         assert.equal(div.firstElementChild.className, "slider__base");
       });
