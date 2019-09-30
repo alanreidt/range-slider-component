@@ -14,35 +14,8 @@ import {reassignmentValueArray} from "./reassignmentValueArray";
 import {reassignmentValueArrayWithIncorrect} from "./reassignmentValueArrayWithIncorrect";
 import {reassignmentValueDefault} from "./reassignmentValueDefault";
 
+import {testClass} from "../../testUtilities";
 import {Slider} from "../../../src/Slider";
-
-function testClass({Class, ClassOptions, options, expectations} = {}) {
-
-  expectations.forEach( (expectation, index) => {
-    let subject = new Class(ClassOptions);
-    let option = options[index];
-    let optionsRecord = '';
-
-    for (let optionKey in option) {
-      let optionValue = option[optionKey];
-
-      subject[optionKey] = optionValue;
-      optionsRecord += `${optionKey} = ${optionValue}, `;
-    };
-
-    context(`if ${optionsRecord} were passed`, function() {
-      for (let expectationKey in expectation) {
-        let expectationValue = expectation[expectationKey];
-        let subjectValue = subject[expectationKey];
-
-        it(`than ${expectationKey} shall be equal to ${expectationValue}`, function() {
-          assert.deepEqual(subjectValue, expectationValue);
-        });
-      }
-    });
-  });
-
-}
 
 
 export function reassignment() {

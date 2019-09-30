@@ -1,67 +1,10 @@
 import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf, observerMixin} from "../src/utilities";
+import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 
-function makeTestClass(subject, testDescription = template`${"...rest"} is equal to ${"expectation"}`) {
-  class TestClass {
-    constructor(testDescription) {
-      this.subject = subject;
-
-      if (testDescription) {
-        this.testDescription = testDescription;
-      }
-    }
-
-    test(funcOptions, expectations) {
-      expectations.forEach( (expectation, index) => {
-        let funcOption = funcOptions[index];
-
-        it(this.testDescription(funcOption, expectation), () => {
-          assert.deepEqual( this.subject(...funcOption), expectation );
-        });
-      });
-    }
-  }
-
-  TestClass.prototype.testDescription = testDescription;
-
-  return TestClass;
-}
-
-function test(func, describeTest = template`${"...rest"} is equal to ${"expectation"}`) {
-  return function(funcOptions, expectations) {
-
-    expectations.forEach( (expectation, index) => {
-      let funcOption = funcOptions[index];
-
-      it(describeTest(funcOption, expectation), function() {
-        assert.deepEqual( func(...funcOption), expectation );
-      });
-    });
-
-  }
-}
-
-function template(strings, ...keys) {
-
-  return function(values, expectation) {
-    let dict = values[values.length - 1] || {};
-    let result = [strings[0]];
-
-    keys.forEach( (key, i) => {
-      let value = `${Number.isInteger(key) ? values[key] :
-        (key === "...rest") ? values.slice(i) :
-        (key === "expectation") ? expectation : dict[key]}`;
-
-      result.push(value, strings[i + 1]);
-    });
-
-    return result.join('');
-  };
-
-}
 
 describe("getClosestFactorOf", function() {
   let describeTest = template`nearest divisor of division of ${0} by ${1} is ${"expectation"}`;
@@ -828,7 +771,7 @@ describe("ViewController", function() {
   //    updateValue method
   //      shall dynamically update value (through app-model or state-model)
   //    updateStep method
-  //      shall correct step width on mousemove
+  //      shall correct step width on mouse move
   //      shall correct step value, if there isn't enough space (Slider width)
   //  View
   //    createLine method
