@@ -795,12 +795,27 @@ describe("ViewController", function() {
         assert.equal(div.firstElementChild.className, "slider__base");
       });
     });
-    //    createHandles method
-    //      shall create required quantity of handles
-    //      shall set correct data-value attrs
-    //      shall change handle proportions when orientation is vertical (css)
-    //      shall create required quantity of tootips
-    //      shall change tooltips position when orientation is vertical (css)
+
+    context("createHandles method", function() {
+      it("shall create required quantity of handles", function() {
+        let value = [100, 500, 600];
+
+        let handles = createHandles(value);
+
+        assert.equal(handles.length, value.length);
+      });
+
+      it("shall set correct data-value attributes", function() {
+        let value = [100, 500, 600];
+
+        let handles = createHandles(value);
+
+        handles.forEach( (handle) => {
+          assert.equal(handle.dataset.value, value);
+        });
+      });
+    });
+
   });
 });
 
