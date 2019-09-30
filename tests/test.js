@@ -788,11 +788,9 @@ describe("ViewController", function() {
 
     context("createBase method", function() {
       it("shall create base of the slider", function() {
-        let div = document.createElement("div");
+        let base = createBase(div, [100, 500]);
 
-        createBase(div, [100, 500]);
-
-        assert.equal(div.firstElementChild.className, "slider__base");
+        assert.equal(base.className, "slider__base");
       });
     });
 
