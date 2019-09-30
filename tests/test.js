@@ -784,8 +784,23 @@ describe("ViewController", function() {
   //      shall change handle proportions when orientation is vertical (css)
   //      shall create required quantity of tootips
   //      shall change tooltips position when orientation is vertical (css)
-  it("test", function() {
-    let div = document.createElement("div");
+  describe("View logic", function() {
+
+    context("createLine method", function() {
+      it("shall create base of the slider", function() {
+        let div = document.createElement("div");
+
+        createLine(div, [100, 500]);
+
+        assert.equal(div.firstElementChild.className, "slider__base");
+      });
+    });
+    //    createHandles method
+    //      shall create required quantity of handles
+    //      shall set correct data-value attrs
+    //      shall change handle proportions when orientation is vertical (css)
+    //      shall create required quantity of tootips
+    //      shall change tooltips position when orientation is vertical (css)
   });
 });
 
