@@ -816,6 +816,26 @@ describe("ViewController", function() {
       });
     });
 
+    context("createTooltips method", function() {
+      it("shall create required quantity of tooltips", function() {
+        let value = [100, 500, 600];
+
+        let tooltips = createTooltips(value);
+
+        assert.equal(tooltips.length, value.length);
+      });
+
+      it("shall set correct textContent values", function() {
+        let value = [100, 500, 600];
+
+        let tooltips = createTooltips(value);
+
+        tooltips.forEach( (tooltip) => {
+          assert.equal(tooltip.textContent, `${value}`);
+        });
+      });
+    });
+
   });
 });
 
