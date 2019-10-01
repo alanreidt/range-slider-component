@@ -58,6 +58,32 @@ export let observerMixin = {
 
 
 /**
+ * Returns position of the value in the range in percentages, if it's possible.
+ * Otherwise, returns NaN
+ *
+ * @param {number} value The value, which position to be calculated.
+ * @param {number[]} range The range, whick value is compared to.
+ * @returns {number} The position of the value in percentages.
+ */
+
+export function getPositionInPercentageOf(value, range) {
+  let [start, end] = range;
+
+  if (start > end) {
+    [start, end] = [end, start];
+  }
+
+  let difference = end - start;
+
+  value = value - start;
+
+  let result = value / difference;
+
+  return `${result * 100}%`;
+}
+
+
+/**
  * Defines whether value is between start and end or not.
  *
  * @param {number} value The value, which is checked for attachment to interval.
