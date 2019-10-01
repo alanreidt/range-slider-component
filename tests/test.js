@@ -644,7 +644,6 @@ describe("getPositionInPercentageOf", function() {
   let TestClass = makeTestClass(getPositionInPercentageOf, describeTest);
 
   it("take into account different directions (rtl, ltr) of range");
-  it("handling strange numbers");
 
   describe("shall return position", function() {
     let funcOptions = [
@@ -656,6 +655,18 @@ describe("getPositionInPercentageOf", function() {
       [ 250, [200, 700] ],
     ];
     let expectations = ["20%", "0%", "100%", "30%", "50%", "10%"];
+
+    let test = new TestClass();
+    test.test(funcOptions, expectations);
+  });
+
+  describe("shall handle imprecise calculations", function() {
+    let funcOptions = [
+      [ 17, [0, 105] ],
+      [ 1, [0, 3] ],
+      [ 33, [0, 101] ],
+    ];
+    let expectations = ["16.19048%", "33.33333%", "32.67327%"];
 
     let test = new TestClass();
     test.test(funcOptions, expectations);
