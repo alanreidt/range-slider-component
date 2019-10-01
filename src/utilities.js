@@ -73,6 +73,10 @@ export function getPositionInPercentageOf(value, range) {
     [start, end] = [end, start];
   }
 
+  if ( !isValueInBetween(value, start, end) ) {
+    return NaN;
+  }
+
   let difference = end - start;
 
   value = value - start;
