@@ -639,6 +639,23 @@ describe("getNearestDivisibleOf", function() {
 });
 
 
+//    sketch of getPositionInPercentageOf(value:number, range:number[]):
+//      shall return position
+//        position of 100 between 0 and 500 is 20%
+//        position of 0 between 0 and 500 is 0%
+//        position of 500 between 0 and 500 is 100%
+//        position of 30 between 0 and 100 is 33.33333%
+//        position of 0 between -500 and 500 is 50%
+//        position of 250 between 200 and 700 is 10%
+//      shall return NaN, if value is out of range
+//        position of 100 between 200 and 700 is NaN
+//        position of 900 between 200 and 700 is NaN
+//        position of -300 between -200 and 700 is NaN
+//        position of 300 between -700 and -200 is NaN
+//        position of 0 between -700 and -200 is NaN
+//      shall catch the garbage input
+
+
 describe("observerMixin", function() {
 
   describe("shall store list of subscribers", function() {
