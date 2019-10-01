@@ -92,7 +92,7 @@ export function getPositionInPercentageOf(value, range) {
  * @returns {boolean} True, if value is between start and end, false otherwise.
  */
 
-export function isValueInBetween(value, start, end) {
+export function isValueBetween(value, start, end) {
   if ( [].includes.call(arguments, null) ) return false;
 
   if (start > end) {

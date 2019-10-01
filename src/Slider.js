@@ -1,4 +1,4 @@
-import {getAverageOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf} from "./utilities";
+import {getAverageOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf} from "./utilities";
 
 export class Slider {
   // don't use object destructuring as
@@ -67,7 +67,7 @@ export class Slider {
     arrOfValues.sort( (a, b) => a - b ).forEach(value => {
       let filteredValue = parseFloat(value);
 
-      filteredValue = ( isValueInBetween(filteredValue, start, end) ) ?
+      filteredValue = ( isValueBetween(filteredValue, start, end) ) ?
         getNearestDivisibleOf(filteredValue, step, start) :
         getNearestTo(filteredValue, start, end);
 
@@ -92,7 +92,7 @@ export class Slider {
 
     let filteredValue = parseFloat(value);
 
-    filteredValue = ( isValueInBetween(filteredValue, 1, range) ) ?
+    filteredValue = ( isValueBetween(filteredValue, 1, range) ) ?
       getClosestFactorOf(range, filteredValue) :
       getNearestTo(filteredValue, 1, range);
 

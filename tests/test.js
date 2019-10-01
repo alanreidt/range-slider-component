@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
@@ -146,9 +146,9 @@ describe("getNearestTo", function() {
 });
 
 
-describe("isValueInBetween", function() {
+describe("isValueBetween", function() {
   let describeTest = template`${0} between ${1} and ${2} is equal to ${"expectation"}`;
-  let testCurrent = test(isValueInBetween, describeTest);
+  let testCurrent = test(isValueBetween, describeTest);
 
   describe("shall return true, if value is between start and end", function() {
     let funcOptions = [
