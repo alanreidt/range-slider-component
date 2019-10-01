@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf, observerMixin} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueInBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
@@ -639,21 +639,73 @@ describe("getNearestDivisibleOf", function() {
 });
 
 
-//    sketch of getPositionInPercentageOf(value:number, range:number[]):
-//      shall return position
-//        position of 100 between 0 and 500 is 20%
-//        position of 0 between 0 and 500 is 0%
-//        position of 500 between 0 and 500 is 100%
-//        position of 30 between 0 and 100 is 33.33333%
-//        position of 0 between -500 and 500 is 50%
-//        position of 250 between 200 and 700 is 10%
-//      shall return NaN, if value is out of range
-//        position of 100 between 200 and 700 is NaN
-//        position of 900 between 200 and 700 is NaN
-//        position of -300 between -200 and 700 is NaN
-//        position of 300 between -700 and -200 is NaN
-//        position of 0 between -700 and -200 is NaN
-//      shall catch the garbage input
+describe("getPositionInPercentageOf", function() {
+  let describeTest = template`position of ${0} between ${1} is ${"expectation"}`;
+  let TestClass = makeTestClass(getPositionInPercentageOf, describeTest);
+
+  describe("shall return position", function() {
+    let funcOptions = [
+      [ 100, [0, 500] ],
+      [ 0, [0, 500] ],
+      [ 500, [0, 500] ],
+      [ 30, [0, 100] ],
+      [ 30, [-500, 500] ],
+      [ 0, [-500, 500] ],
+      [ 250, [200, 700] ],
+    ];
+    let expectations = ["20%", "0%", "100%", "33.33333%", "50%", "10%"];
+
+    let test = new TestClass();
+    test.test(funcOptions, expectations);
+  });
+
+  describe("shall return NaN, if value is out of range", function() {
+    let funcOptions = [
+      [ 100, [200, 700] ],
+      [ 900, [200, 700] ],
+      [ -300, [-200, 700] ],
+      [ 300, [-700, -200] ],
+      [ 0, [-700, -200] ],
+    ];
+    let expectations = new Array(funcOptions.length).fill(NaN);
+
+    let test = new TestClass();
+    test.test(funcOptions, expectations);
+  });
+
+  context("shall catch garbage input", function() {
+    describe("returns NaN, if value parameter is incorrect", function() {
+      let funcOptions = [
+        [ undefined, [-500, 500] ],
+        [ null, [-500, 500] ],
+        [ Infinity, [-500, 500] ],
+        [ NaN, [-500, 500] ],
+        [ "text", [-500, 500] ],
+        [ "123text", [-500, 500] ],
+      ];
+      let expectations = new Array(funcOptions.length).fill(NaN);
+
+      let test = new TestClass();
+      test.test(funcOptions, expectations);
+    });
+
+    describe("returns NaN, if range parameter is incorrect", function() {
+      let funcOptions = [
+        [ 50, [undefined, 500] ],
+        [ 50, [null, 500] ],
+        [ 50, [Infinity, 500] ],
+        [ 50, [NaN, 500] ],
+        [ 50, ["text", 500] ],
+        [ 50, ["123text", 500] ],
+      ];
+      let expectations = new Array(funcOptions.length).fill(NaN);
+
+      let test = new TestClass();
+      test.test(funcOptions, expectations);
+    });
+  });
+
+});
 
 
 describe("observerMixin", function() {
