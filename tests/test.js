@@ -862,9 +862,8 @@ describe("ViewController", function() {
   //    shall change handle proportions when orientation is vertical (css)
   //    shall create required quantity of tootips
   //    shall change tooltips position when orientation is vertical (css)
-  //  updateHandlePosition (!!!)
-  //    shall update position
-  //    shall controll overflow
+  //  setHandlePosition (handle, position)
+  //    shall set position of handle
   describe("View logic", function() {
 
     context("createBase method", function() {
@@ -912,6 +911,16 @@ describe("ViewController", function() {
         tooltips.forEach( (tooltip) => {
           assert.equal(tooltip.textContent, `${value}`);
         });
+      });
+    });
+
+    context("setHandlePosition method", function() {
+      it("shall set handle position", function() {
+        let handle = document.createElement("div");
+
+        setHandlePosition(handle, "50%");
+
+        assert.equal(handle.style.transform, "translate3d(50%, 0px, 0px)");
       });
     });
 
