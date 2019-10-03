@@ -822,7 +822,7 @@ describe("observerMixin", function() {
 
 /**
  * ViewController Logic sketch:
- *  View
+ *  View logic
  *    shall display required quantity of handles
  *    shall restrict quantity of handles (!DomainModel)
  *    shall set step width relatively to Slider width (px)
@@ -837,38 +837,34 @@ describe("observerMixin", function() {
  *    shall have width (that is height, when horizontal)
  *    shall have state model
  *    shall display live value trough state model
- *  Controller
- *    shall change slider value, when scale is clicked
- *    shall change slider value, when handle is moved
- *    shall change slider value, when handle is moving
+ *  Controller logic
+ *    shall listen to events on the handle
+ *      when mouse is down — listen to a mouse move
+ *      when mouse is moving
+ *        call Model.setValues
+ *        shall change position counting process when orientation is vertical
+ *      when mouse is up — stop to listen to the mouse move
+ *    shall listen to a click event on the base line
+ *      call Model.setValues
+ *    should listen to changing of #slider width
+ *      should correct step value, if there isn't enough space (Slider width)
  */
 
 describe("ViewController", function() {
   // ViewController Tests sketch:
-  //  Controller
-  //    shall listen to handle click
-  //      shall listen to mouse down
-  //      shall listen to pointer position, when mouse is down (updateValue)
-  //        shall change position counting process when orientation is vertical
-  //      shall listen to mouse up
-  //    shall listen to changing of Slider width (updateStep)
-  //    shall change slider value, when line is clicked
-  //    updateValue method
-  //      shall dynamically update value (through app-model or state-model)
-  //    updateStep method
-  //      shall correct step width on mouse move
-  //      shall correct step value, if there isn't enough space (Slider width)
-  //  View
-  //    createBase method
-  //      shall create line with according values
-  //      shall set default height when orientation is vertical (css)
-  //      shall set orientation css class (css)
-  //    createHandles method
-  //      shall create required quantity of handles
-  //      shall set correct data-value attrs
-  //      shall change handle proportions when orientation is vertical (css)
-  //      shall create required quantity of tootips
-  //      shall change tooltips position when orientation is vertical (css)
+  //  createBase method
+  //    shall create line with according values
+  //    shall set default height when orientation is vertical (css)
+  //    shall set orientation css class (css)
+  //  createHandles method
+  //    shall create required quantity of handles
+  //    shall set correct data-value attrs
+  //    shall change handle proportions when orientation is vertical (css)
+  //    shall create required quantity of tootips
+  //    shall change tooltips position when orientation is vertical (css)
+  //  updateHandlePosition (!!!)
+  //    shall update position
+  //    shall controll overflow
   describe("View logic", function() {
 
     context("createBase method", function() {
