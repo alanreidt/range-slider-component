@@ -875,12 +875,17 @@ describe("ViewController", function() {
   });
 
   describe("createHandle function", function() {
+    it("shall create handle", function() {
+      let handle = createHandle();
+
+      assert.isNotNull(handle);
+      assert.isTrue( handle.className.contains("slider__handle") );
+    });
+
     it("shall set data-value attribute", function() {
       let value = 100;
       let handle = createHandle(value);
 
-      assert.isDefined(handle);
-      assert.equal(handle.className.contains("slider__handle"), true);
       assert.equal(handle.dataset.value, value);
     });
   });
@@ -901,7 +906,7 @@ describe("ViewController", function() {
     });
   });
 
-  describe("setHandlePosition method", function() {
+  describe("setHandlePosition function", function() {
     it("shall set handle position", function() {
       let handle = document.createElement("div");
 
