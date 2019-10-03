@@ -894,7 +894,8 @@ describe("ViewController", function() {
     it("shall create tooltip", function() {
       let tooltip = createTooltips();
 
-      assert.isDefined(tooltip);
+      assert.isNotNull(tooltip);
+      assert.isTrue( tooltip.className.contains("slider__tooltip") );
     });
 
     it("shall set textContent value", function() {
