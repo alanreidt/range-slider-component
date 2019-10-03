@@ -885,23 +885,19 @@ describe("ViewController", function() {
     });
   });
 
-  describe("createTooltips method", function() {
-    it("shall create required quantity of tooltips", function() {
-      let value = [100, 500, 600];
+  describe("createTooltips function", function() {
+    it("shall create tooltip", function() {
+      let tooltip = createTooltips();
 
-      let tooltips = createTooltips(value);
-
-      assert.equal(tooltips.length, value.length);
+      assert.isDefined(tooltip);
     });
 
-    it("shall set correct textContent values", function() {
-      let value = [100, 500, 600];
+    it("shall set textContent value", function() {
+      let value = 100;
 
-      let tooltips = createTooltips(value);
+      let tooltip = createTooltip(value);
 
-      tooltips.forEach( (tooltip) => {
-        assert.equal(tooltip.textContent, `${value}`);
-      });
+      assert.equal(tooltip.textContent, `${value}`);
     });
   });
 
