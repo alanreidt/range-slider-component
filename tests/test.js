@@ -865,11 +865,12 @@ describe("ViewController", function() {
   //  setHandlePosition (handle, position)
   //    shall set position of handle
 
-  describe("createBase method", function() {
+  describe("createBase function", function() {
     it("shall create base of the slider", function() {
-      let base = createBase(div, [100, 500]);
+      let base = createBase();
 
-      assert.equal(base.className, "slider__base");
+      assert.isDefined(handle);
+      assert.equal(base.className.contains("slider__base"), true);
     });
   });
 
