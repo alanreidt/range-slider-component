@@ -643,18 +643,19 @@ describe("getPositionInPercentageOf", function() {
   let describeTest = template`position of ${0} between ${1} is ${"expectation"}`;
   let TestClass = makeTestClass(getPositionInPercentageOf, describeTest);
 
-  it("take into account different directions (rtl, ltr) of range");
-
   describe("shall return position", function() {
     let funcOptions = [
       [ 100, [0, 500] ],
       [ 0, [0, 500] ],
       [ 500, [0, 500] ],
-      [ 30, [0, 100] ],
-      [ 0, [-500, 500] ],
+      [ 957, [0, 1000] ],
       [ 250, [200, 700] ],
+      [ 0, [-500, 500] ],
+      [ -200, [-500, 500] ],
+      [ -50, [-500, 0] ],
+      [ -350, [-500, -200] ],
     ];
-    let expectations = ["20%", "0%", "100%", "30%", "50%", "10%"];
+    let expectations = ["20%", "0%", "100%", "95.7%", "10%", "50%", "30%", "90%", "50%"];
 
     let test = new TestClass();
     test.test(funcOptions, expectations);
@@ -665,8 +666,10 @@ describe("getPositionInPercentageOf", function() {
       [ 17, [0, 105] ],
       [ 1, [0, 3] ],
       [ 33, [0, 101] ],
+      [ -17, [-105, 0] ],
+      [ -1, [-2, 1] ],
     ];
-    let expectations = ["16.19048%", "33.33333%", "32.67327%"];
+    let expectations = ["16.19048%", "33.33333%", "32.67327%", "83.80952%", "33.33333%"];
 
     let test = new TestClass();
     test.test(funcOptions, expectations);
