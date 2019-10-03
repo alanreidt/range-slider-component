@@ -873,23 +873,14 @@ describe("ViewController", function() {
     });
   });
 
-  describe("createHandles method", function() {
-    it("shall create required quantity of handles", function() {
-      let value = [100, 500, 600];
+  describe("createHandle function", function() {
+    it("shall set data-value attribute", function() {
+      let value = 100;
+      let handle = createHandle(value);
 
-      let handles = createHandles(value);
-
-      assert.equal(handles.length, value.length);
-    });
-
-    it("shall set correct data-value attributes", function() {
-      let value = [100, 500, 600];
-
-      let handles = createHandles(value);
-
-      handles.forEach( (handle) => {
-        assert.equal(handle.dataset.value, value);
-      });
+      assert.isDefined(handle);
+      assert.equal(handle.className.contains("slider__handle"), true);
+      assert.equal(handle.dataset.value, value);
     });
   });
 
