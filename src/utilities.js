@@ -83,7 +83,7 @@ export function getPositionInPercentageOf(value, range) {
 
   let result = value / difference * 100;
 
-  return `${( result % Math.ceil(result) ) ? result.toFixed(5) : result}%`;
+  return `${( result - Math.trunc(result) ) ? result.toFixed(5) : result}%`;
 }
 
 
