@@ -864,67 +864,65 @@ describe("ViewController", function() {
   //    shall change tooltips position when orientation is vertical (css)
   //  setHandlePosition (handle, position)
   //    shall set position of handle
-  describe("View logic", function() {
 
-    context("createBase method", function() {
-      it("shall create base of the slider", function() {
-        let base = createBase(div, [100, 500]);
+  describe("createBase method", function() {
+    it("shall create base of the slider", function() {
+      let base = createBase(div, [100, 500]);
 
-        assert.equal(base.className, "slider__base");
-      });
+      assert.equal(base.className, "slider__base");
     });
-
-    context("createHandles method", function() {
-      it("shall create required quantity of handles", function() {
-        let value = [100, 500, 600];
-
-        let handles = createHandles(value);
-
-        assert.equal(handles.length, value.length);
-      });
-
-      it("shall set correct data-value attributes", function() {
-        let value = [100, 500, 600];
-
-        let handles = createHandles(value);
-
-        handles.forEach( (handle) => {
-          assert.equal(handle.dataset.value, value);
-        });
-      });
-    });
-
-    context("createTooltips method", function() {
-      it("shall create required quantity of tooltips", function() {
-        let value = [100, 500, 600];
-
-        let tooltips = createTooltips(value);
-
-        assert.equal(tooltips.length, value.length);
-      });
-
-      it("shall set correct textContent values", function() {
-        let value = [100, 500, 600];
-
-        let tooltips = createTooltips(value);
-
-        tooltips.forEach( (tooltip) => {
-          assert.equal(tooltip.textContent, `${value}`);
-        });
-      });
-    });
-
-    context("setHandlePosition method", function() {
-      it("shall set handle position", function() {
-        let handle = document.createElement("div");
-
-        setHandlePosition(handle, "50%");
-
-        assert.equal(handle.style.transform, "translate3d(50%, 0px, 0px)");
-      });
-    });
-
   });
+
+  describe("createHandles method", function() {
+    it("shall create required quantity of handles", function() {
+      let value = [100, 500, 600];
+
+      let handles = createHandles(value);
+
+      assert.equal(handles.length, value.length);
+    });
+
+    it("shall set correct data-value attributes", function() {
+      let value = [100, 500, 600];
+
+      let handles = createHandles(value);
+
+      handles.forEach( (handle) => {
+        assert.equal(handle.dataset.value, value);
+      });
+    });
+  });
+
+  describe("createTooltips method", function() {
+    it("shall create required quantity of tooltips", function() {
+      let value = [100, 500, 600];
+
+      let tooltips = createTooltips(value);
+
+      assert.equal(tooltips.length, value.length);
+    });
+
+    it("shall set correct textContent values", function() {
+      let value = [100, 500, 600];
+
+      let tooltips = createTooltips(value);
+
+      tooltips.forEach( (tooltip) => {
+        assert.equal(tooltip.textContent, `${value}`);
+      });
+    });
+  });
+
+  describe("setHandlePosition method", function() {
+    it("shall set handle position", function() {
+      let handle = document.createElement("div");
+
+      setHandlePosition(handle, "50%");
+
+      assert.equal(handle.style.transform, "translate3d(50%, 0px, 0px)");
+    });
+  });
+
 });
 
 
