@@ -879,7 +879,7 @@ describe("ViewController", function() {
       let handle = createHandle();
 
       assert.isNotNull(handle);
-      assert.isTrue( handle.className.contains("slider__handle") );
+      assert.isTrue( handle.classList.contains("slider__handle") );
     });
 
     it("shall set data-value attribute", function() {
@@ -895,7 +895,7 @@ describe("ViewController", function() {
       let tooltip = createTooltips();
 
       assert.isNotNull(tooltip);
-      assert.isTrue( tooltip.className.contains("slider__tooltip") );
+      assert.isTrue( tooltip.classList.contains("slider__tooltip") );
     });
 
     it("shall set textContent value", function() {
