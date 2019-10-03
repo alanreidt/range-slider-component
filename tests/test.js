@@ -869,8 +869,8 @@ describe("ViewController", function() {
     it("shall create base of the slider", function() {
       let base = createBase();
 
-      assert.isDefined(handle);
-      assert.equal(base.className.contains("slider__base"), true);
+      assert.isNotNull(base);
+      assert.isTrue( base.classList.contains("slider__base") );
     });
   });
 
