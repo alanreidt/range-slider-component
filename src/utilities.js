@@ -6,6 +6,17 @@ export function createBase() {
   return base;
 }
 
+
+export function createHandle(value) {
+  let handle = document.createElement("div");
+
+  handle.classList.add("slider__handle");
+  handle.dataset.value = value;
+
+  return handle;
+}
+
+
 /**
  * The observerMixin is a modification of eventMixin,
  * borrowed from http://javascript.info/mixins
