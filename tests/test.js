@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";

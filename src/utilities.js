@@ -1,3 +1,11 @@
+export function createBase() {
+  let base = document.createElement("div");
+
+  base.classList.add("slider__base");
+
+  return base;
+}
+
 /**
  * The observerMixin is a modification of eventMixin,
  * borrowed from http://javascript.info/mixins
