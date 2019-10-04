@@ -1,8 +1,8 @@
-import {getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions} from "./utilities";
+import {getPositionInPercentageOf, createBase, createHandle, createTooltip, updateHandlePositions} from "./utilities";
 
 export class SliderUI {
 
-  createSliderUI({boundaries, values, step, orientation, tooltipsState} = {}) {
+  create({boundaries, values, step, orientation, tooltipsState} = {}) {
     let base = createBase();
     this.handles = [];
     this.tooltips = [];
@@ -26,9 +26,9 @@ export class SliderUI {
     this.sliderUI = base;
   }
 
-  updateSliderUI({boundaries, values, step, orientation, tooltipsState} = {}) {
+  update({boundaries, values, step, orientation, tooltipsState} = {}) {
 
-    if (values) {
+    if (values & boundaries) {
       let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
 
       updateHandlePositions(this.handles, positions);
