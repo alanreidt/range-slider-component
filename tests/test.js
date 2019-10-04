@@ -821,7 +821,7 @@ describe("observerMixin", function() {
 });
 
 /**
- * ViewController Logic sketch:
+ * SliderUI Logic sketch:
  *  View logic
  *    shall display required quantity of handles
  *    shall restrict quantity of handles (!DomainModel)
@@ -850,8 +850,8 @@ describe("observerMixin", function() {
  *      should correct step value, if there isn't enough space (Slider width)
  */
 
-describe("ViewController", function() {
-  // ViewController Tests sketch:
+describe("SliderUI", function() {
+  // SliderUI Tests sketch:
   //  createBase method
   //    shall create line with according values
   //    shall set default height when orientation is vertical (css)
