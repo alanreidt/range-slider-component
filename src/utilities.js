@@ -1,3 +1,10 @@
+export function setElementPosition(element, position) {
+  element.style.transform = `translate3d(${position}, 0, 0)`;
+
+  return element;
+}
+
+
 export function createBase() {
   let base = document.createElement("div");
 
