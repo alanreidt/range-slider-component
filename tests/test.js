@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
@@ -930,14 +930,28 @@ describe("SliderUI", function() {
     });
   });
 
-  describe("setHandlePosition function", function() {
-    it("shall set handle position", function() {
-      let handle = document.createElement("div");
+  describe("updateHandlePositions function", function() {
 
-      setHandlePosition(handle, "50%");
+    context("shall set position for each handle", function() {
+      let positions = ["10%", "20%", "30%", "40%", "50%"];
+      let handles = [];
 
-      assert.equal(handle.style.transform, "translate3d(50%, 0px, 0px)");
+      positions.forEach( (position) => {
+        handles.push( createHandle() );
+      });
+
+      updateHandlePositions(handles, positions);
+
+      handles.forEach( (handle, i) => {
+        let position = positions[i];
+        let handlePosition = handle.style.transform;
+
+        it(`handle${i + 1} position equals to ${handlePosition}`, function() {
+          assert.equal(handlePosition, `translate3d(${position}, 0px, 0px)`);
+        });
+      });
     });
+
   });
 
 });
