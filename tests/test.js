@@ -882,11 +882,11 @@ describe("SliderUI", function() {
       assert.isTrue( handle.classList.contains("slider__handle") );
     });
 
-    it("shall set data-value attribute", function() {
-      let value = 100;
-      let handle = createHandle(value);
+    it("shall set position of the handle", function() {
+      let position = "50%";
+      let handle = createHandle(position);
 
-      assert.equal(handle.dataset.value, value);
+      assert.equal(handle.style.transform, "translate3d(50%, 0px, 0px)");
     });
   });
 
