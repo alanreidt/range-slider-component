@@ -66,6 +66,13 @@ export function test(func, describeTest = template`${"...rest"} is equal to ${"e
   }
 }
 
+
+/**
+ * The template function is a modification of
+ * a template function, borrowed from
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+ */
+
 export function template(strings, ...keys) {
 
   return function(values, expectation) {

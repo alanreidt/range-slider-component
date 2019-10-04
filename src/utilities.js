@@ -1,5 +1,6 @@
 /**
- * The observerMixin is borrowed from http://javascript.info/mixins
+ * The observerMixin is a modification of eventMixin,
+ * borrowed from http://javascript.info/mixins
  */
 
 export let observerMixin = {
