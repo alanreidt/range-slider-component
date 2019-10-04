@@ -892,7 +892,7 @@ describe("SliderUI", function() {
 
   describe("createTooltips function", function() {
     it("shall create tooltip", function() {
-      let tooltip = createTooltips();
+      let tooltip = createTooltip();
 
       assert.isNotNull(tooltip);
       assert.isTrue( tooltip.classList.contains("slider__tooltip") );
