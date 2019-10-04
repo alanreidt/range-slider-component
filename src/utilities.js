@@ -7,11 +7,11 @@ export function createBase() {
 }
 
 
-export function createHandle(value) {
+export function createHandle(position) {
   let handle = document.createElement("div");
 
   handle.classList.add("slider__handle");
-  handle.dataset.value = value;
+  handle.style.transform = `translate3d(${position}, 0, 0)`;
 
   return handle;
 }
