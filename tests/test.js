@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
@@ -904,6 +904,29 @@ describe("SliderUI", function() {
       let tooltip = createTooltip(value);
 
       assert.equal(tooltip.textContent, `${value}`);
+    });
+  });
+
+  describe("setElemenPosition function", function() {
+    it("shall set element position", function() {
+      let element = document.createElement("div");
+
+      setElementPosition(element, "50%");
+
+      assert.equal(element.style.transform, "translate3d(50%, 0px, 0px)");
+    });
+
+    it("shall change element position", function() {
+      let element = document.createElement("div");
+
+      setElementPosition(element, "50%");
+      assert.equal(element.style.transform, "translate3d(50%, 0px, 0px)");
+
+      setElementPosition(element, "30%");
+      assert.equal(element.style.transform, "translate3d(30%, 0px, 0px)");
+
+      let element2 = setElementPosition(element, "20%");
+      assert.equal(element2.style.transform, "translate3d(20%, 0px, 0px)");
     });
   });
 
