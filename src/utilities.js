@@ -17,6 +17,16 @@ export function createHandle(value) {
 }
 
 
+export function createTooltip(value) {
+  let tooltip = document.createElement("div");
+
+  tooltip.classList.add("slider__tooltip");
+  tooltip.textContent = value;
+
+  return tooltip;
+}
+
+
 /**
  * The observerMixin is a modification of eventMixin,
  * borrowed from http://javascript.info/mixins
