@@ -18,7 +18,7 @@ export function createHandle(position) {
   let handle = document.createElement("div");
 
   handle.classList.add("slider__handle");
-  handle.style.transform = `translate3d(${position}, 0, 0)`;
+  setElementPosition(handle, position);
 
   return handle;
 }
