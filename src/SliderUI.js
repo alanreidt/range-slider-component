@@ -4,24 +4,11 @@ export class SliderUI {
 
   create({boundaries, values, step, orientation, tooltipsState} = {}) {
     let base = createBase();
-    this.handles = [];
-    this.tooltips = [];
+    let positions = values.map( getPositionInPercentageOf(...boundaries) );
 
-    values.forEach( (value) => {
-      let handlePosition = getPositionInPercentageOf(value, boundaries);
-      let handle = createHandle(handlePosition);
-      let tooltip = null;
+    this.handles = createHandles(positions, tooltipsState);
 
-      if (tooltipsState) {
-        tooltip = createTooltip(value);
-        this.tooltips.push(tooltip);
-
-        handle.append(tooltip);
-      }
-
-      this.handles.push(handle);
-      base.append(handle);
-    });
+    base.append(this.handles);
 
     this.sliderUI = base;
   }
