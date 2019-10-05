@@ -4,9 +4,9 @@ export class SliderUI {
 
   create({boundaries, values, step, orientation, tooltipsState} = {}) {
     let base = createBase();
-    let positions = values.map( getPositionInPercentageOf(...boundaries) );
+    let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
 
-    this.handles = createHandles(positions, tooltipsState);
+    this.handles = createHandles(positions, tooltipsState, values);
 
     base.append(this.handles);
 
