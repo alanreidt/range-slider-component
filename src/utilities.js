@@ -1,8 +1,30 @@
+export function createHandles(positions, tooltipsState, values) {
+  let handles = [];
+
+  positions.forEach( (position, i) => {
+    let handle = createHandle(position);
+    let tooltip = null;
+    let value = values[i];
+
+    if (tooltipsState) {
+      tooltip = createTooltip(value);
+
+      handle.append(tooltip);
+    }
+
+    handles.push(handle);
+  });
+
+  return handles;
+}
+
+
 export function setElementPosition(element, position) {
   element.style.transform = `translate3d(${position}, 0, 0)`;
 
   return element;
 }
+
 
 export function updateHandlePositions(handles, positions) {
   handles.forEach( (handle, i) => {
