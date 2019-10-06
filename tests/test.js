@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions, createHandleGroup} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
@@ -887,6 +887,22 @@ describe("SliderUI", function() {
       let handle = createHandle(position);
 
       assert.equal(handle.style.transform, "translate3d(50%, 0px, 0px)");
+    });
+  });
+
+  describe("createHandleGroup function", function() {
+    it("shall create handleGroup", function() {
+      let handleGroup = createHandleGroup();
+
+      assert.isNotNull(handleGroup);
+      assert.isTrue( handleGroup.classList.contains("slider__handle-group") );
+    });
+
+    it("shall set position of the handleGroup", function() {
+      let position = "50%";
+      let handleGroup = createHandleGroup(position);
+
+      assert.equal(handleGroup.style.transform, "translate3d(50%, 0px, 0px)");
     });
   });
 
