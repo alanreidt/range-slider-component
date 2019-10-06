@@ -54,6 +54,16 @@ export function createHandle(position) {
 }
 
 
+export function createHandleGroup(position) {
+  let handleGroup = document.createElement("div");
+
+  handleGroup.classList.add("slider__handle-group");
+  setElementPosition(handleGroup, position);
+
+  return handleGroup;
+}
+
+
 export function createTooltip(value) {
   let tooltip = document.createElement("div");
 
