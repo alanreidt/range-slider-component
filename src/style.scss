@@ -12,12 +12,13 @@ body {
 }
 
 .someUserClass {
-  width: 310px;
+  width: 300px;
 }
 
 .slider1 {
   display: block;
   padding: 5px;
+
   overflow: auto;
 
   &__base {
@@ -26,20 +27,19 @@ body {
 
     width: 100%;
     height: 15px;
-    margin: 5px;
 
     border-radius: 10px;
-    background-image: linear-gradient(left top, #E0E0E0, #111);
     background-color: #E0E0E0;
   }
 
   &__origin {
     position: absolute;
     z-index: 200;
+
     top: 50%;
     transform: translateY(-50%);
-    background-color: red;
 
+    background-color: red;
     cursor: pointer;
   }
 
@@ -54,15 +54,17 @@ body {
   &__tooltip {
     position: absolute;
     z-index: 200;
+
     top: 0;
     left: 50%;
-    transform: translate(-50%, -120%);
+    transform: translate(-50%, -100%);
 
     width: 30px;
     height: 20px;
 
     font-size: 14px;
     text-align: center;
+
     background-color: #EEE;
   }
 
