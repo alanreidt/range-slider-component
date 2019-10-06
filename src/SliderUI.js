@@ -2,8 +2,10 @@ import {getPositionInPercentageOf, createBase, createHandle, createTooltip, crea
 
 export class SliderUI {
 
-  create({boundaries, values, step, orientation, tooltipsState} = {}) {
+  create({boundaries, value, step, orientation, tooltips} = {}) {
     let base = createBase();
+    let tooltipsState = tooltips;
+    let values = value;
     let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
 
     this.handles = createHandles(positions, tooltipsState, values);
