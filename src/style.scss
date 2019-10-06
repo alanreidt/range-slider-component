@@ -19,7 +19,7 @@ body {
   display: block;
   padding: 5px;
 
-  overflow: auto;
+  // overflow: auto;
 
   &__base {
     position: relative;
@@ -55,12 +55,13 @@ body {
     position: absolute;
     z-index: 200;
 
-    top: 0;
+    bottom: 100%;
     left: 50%;
-    transform: translate(-50%, -100%);
+    transform: translateX(-50%);
 
     width: 30px;
     height: 20px;
+    margin-bottom: 5px;
 
     font-size: 14px;
     text-align: center;
