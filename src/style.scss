@@ -1,0 +1,77 @@
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+body {
+  margin: 50px;
+  // margin: 0;
+}
+
+.someUserClass {
+  width: 310px;
+}
+
+.slider1 {
+  display: block;
+  padding: 5px;
+  overflow: auto;
+
+  &__base {
+    position: relative;
+    z-index: 100;
+
+    width: 100%;
+    height: 15px;
+    margin: 5px;
+
+    border-radius: 10px;
+    background-image: linear-gradient(left top, #E0E0E0, #111);
+    background-color: #E0E0E0;
+  }
+
+  &__origin {
+    position: absolute;
+    z-index: 200;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: red;
+
+    cursor: pointer;
+  }
+
+  &__origin_first {
+    left: calc(15% - 20px);
+  }
+
+  &__origin_second {
+    left: calc(100% - 20px);
+  }
+
+  &__tooltip {
+    position: absolute;
+    z-index: 200;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -120%);
+
+    width: 30px;
+    height: 20px;
+
+    font-size: 14px;
+    text-align: center;
+    background-color: #EEE;
+  }
+
+  &__handle {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+    background-color: blue;
+  }
+
+}
