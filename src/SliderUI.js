@@ -3,14 +3,15 @@ import {getPositionInPercentageOf, createBase, createHandle, createTooltip, crea
 export class SliderUI {
 
   create({boundaries, values, step, orientation, tooltipsState} = {}) {
-    let base = createBase();
     let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
+    let handlesTemplate = positions.reduce( (str, position, i) => {
+      str + `<div class="slider__origin" style="left: ${position}">
+        <div class="slider__tooltip">${values[i]}</div>
+        <div class="slider__handle"></div>
+      </div>`
+    }, '');
 
-    this.handles = createHandles(positions, tooltipsState, values);
-
-    base.append(...this.handles);
-
-    this.sliderUI = base;
+    return `<div class="slider__base">${handlesTemplate}</div>`;
   }
 
   update({boundaries, values, step, orientation, tooltipsState} = {}) {
