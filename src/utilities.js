@@ -8,10 +8,15 @@ export function composeHandleGroups(positions, tooltipsState, values) {
 
     let {handleGroup, handle, tooltip} = createHandleGroup(position, tooltipsState, value);
 
+    if (tooltipsState) {
+      tooltips.push(tooltip);
+    }
+
     handleGroups.push(handleGroup);
     handles.push(handle);
-    tooltips.push(tooltip);
   });
+
+  tooltips = tooltips.length ? tooltips : null;
 
   return {handleGroups, handles, tooltips};
 }
@@ -59,7 +64,7 @@ export function createBase() {
 }
 
 
-export function createHandle(position) {
+export function createHandle() {
   let handle = document.createElement("div");
 
   handle.classList.add("slider__handle");
