@@ -2,7 +2,7 @@ import {getPositionInPercentageOf, createBase, createHandle, createTooltip, crea
 
 export class SliderUI {
 
-  create({boundaries, values, step, orientation, tooltipsState} = {}) {
+  create(element, {boundaries, values, step, orientation, tooltipsState} = {}) {
     let base = createBase();
     let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
 
@@ -11,6 +11,8 @@ export class SliderUI {
     base.append(...this.handles);
 
     this.sliderUI = base;
+
+    this._draw(element, orientation);
   }
 
   update({boundaries, values, step, orientation, tooltipsState} = {}) {
@@ -21,6 +23,19 @@ export class SliderUI {
       updateHandlePositions(this.handles, positions);
     }
 
+  }
+
+  _draw(element, orientation) {
+    // add css name of the slider (change it to unique one)
+    if ( !element.classList.contains("slider") ) {
+      element.classList.add("slider");
+    }
+
+    if (orientation === "horizontal") {
+      element.classList.add("slider_horizontal");
+    }
+
+    element.append(this.sliderUI);
   }
 
 }
