@@ -1,4 +1,4 @@
-import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroups} from "./utilities";
+import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroup, composeHandleGroups} from "./utilities";
 
 export class SliderUI {
 
@@ -35,8 +35,8 @@ export class SliderUI {
       element.classList.add("slider");
     }
 
-    if (orientation === "horizontal") {
-      element.classList.add("slider_horizontal");
+    if (orientation === "vertical") {
+      element.classList.add("slider_vertical");
     }
 
     element.append(this.sliderUI);
