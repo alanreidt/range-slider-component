@@ -1,9 +1,10 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions, createHandleGroup, composeHandleGroup, composeHandleGroups} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
+import { SliderUI } from "../src/SliderUI";
 
 
 describe("getClosestFactorOf", function() {
@@ -881,16 +882,25 @@ describe("SliderUI", function() {
       assert.isNotNull(handle);
       assert.isTrue( handle.classList.contains("slider__handle") );
     });
+  });
 
-    it("shall set position of the handle", function() {
+  describe("createHandleGroup function", function() {
+    it("shall create handleGroup", function() {
+      let handleGroup = createHandleGroup();
+
+      assert.isNotNull(handleGroup);
+      assert.isTrue( handleGroup.classList.contains("slider__handle-group") );
+    });
+
+    it("shall set position of the handleGroup", function() {
       let position = "50%";
-      let handle = createHandle(position);
+      let handleGroup = createHandleGroup(position);
 
-      assert.equal(handle.style.transform, "translate3d(50%, 0px, 0px)");
+      assert.equal(handleGroup.style.transform, "translate3d(50%, 0px, 0px)");
     });
   });
 
-  describe("createTooltips function", function() {
+  describe("createTooltip function", function() {
     it("shall create tooltip", function() {
       let tooltip = createTooltip();
 
@@ -930,6 +940,65 @@ describe("SliderUI", function() {
     });
   });
 
+  describe("composeHandleGroup", function() {
+    context("shall append children", function() {
+      let {handleGroup} = composeHandleGroup("70%", true, 100);
+
+      it("shall contain 2 children", function(){
+        assert.equal(handleGroup.children.length, 2);
+      });
+
+      it("shall append tooltip as a first child", function(){
+        let isTooltipFirstChild = handleGroup.firstElementChild.classList.contains("slider__tooltip");
+
+        assert.isTrue(isTooltipFirstChild);
+      });
+
+      it("shall append handle as a second child", function(){
+        let isHandleSecondChild = handleGroup.lastElementChild.classList.contains("slider__handle");
+
+        assert.isTrue(isHandleSecondChild);
+      });
+    });
+
+    it(`shall create handle group without tooltip,
+    when tooltipState is false`, function() {
+      let {handleGroup} = composeHandleGroup("70%", false, 100);
+      let isHandleFirstChild = handleGroup.firstElementChild.classList.contains("slider__handle");
+
+      assert.equal(handleGroup.children.length, 1);
+      assert.isTrue(isHandleFirstChild);
+    });
+  });
+
+  describe("composeHandleGroups", function() {
+    let positions = ["10%", "20%", "30%", "40%", "50%"];
+    let values = [10, 20, 30, 40, 50];
+
+    it(`shall return null for tooltips,
+    if tooltipState is false`, function() {
+      let {tooltips} = composeHandleGroups(positions, false, values);
+
+      assert.isNull(tooltips);
+    });
+
+    context("shall return required quantity of elements", function() {
+      let {handleGroups, handles, tooltips} = composeHandleGroups(positions, true, values);
+
+      it("returns required quantity of handleGroups", function(){
+        assert.equal(handleGroups.length, positions.length);
+      });
+
+      it("returns required quantity of handles", function(){
+        assert.equal(handles.length, positions.length);
+      });
+
+      it("returns required quantity of tooltips", function(){
+        assert.equal(tooltips.length, positions.length);
+      });
+    });
+  });
+
   describe("updateHandlePositions function", function() {
 
     context("shall set position for each handle", function() {
@@ -952,6 +1021,24 @@ describe("SliderUI", function() {
       });
     });
 
+  });
+
+  describe("create method", function() {
+    let options = {
+      boundaries: [0, 100],
+      value: [20, 40, 60],
+      step: 20,
+      orientation: "vertical",
+      tooltips: true,
+    };
+    let subject = new SliderUI();
+    let div = document.createElement("div");
+
+    subject.create(div, options);
+
+    it("shall create required quantity of handle-group", function() {
+      assert.equal(subject.sliderUI.children.length, options.value.length);
+    });
   });
 
 });

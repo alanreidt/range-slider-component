@@ -1,21 +1,41 @@
-export function createHandles(positions, tooltipsState, values) {
+export function composeHandleGroups(positions, tooltipsState, values) {
+  let handleGroups = [];
   let handles = [];
+  let tooltips = [];
 
   positions.forEach( (position, i) => {
-    let handle = createHandle(position);
-    let tooltip = null;
     let value = values[i];
 
-    if (tooltipsState) {
-      tooltip = createTooltip(value);
+    let {handleGroup, handle, tooltip} = createHandleGroup(position, tooltipsState, value);
 
-      handle.append(tooltip);
+    if (tooltipsState) {
+      tooltips.push(tooltip);
     }
 
+    handleGroups.push(handleGroup);
     handles.push(handle);
   });
 
-  return handles;
+  tooltips = tooltips.length ? tooltips : null;
+
+  return {handleGroups, handles, tooltips};
+}
+
+
+export function composeHandleGroup(position, tooltipsState, value) {
+  let handleGroup = createHandleGroup(position);
+  let handle = createHandle();
+  let tooltip = null;
+
+  if (tooltipsState) {
+    tooltip = createTooltip(value);
+
+    handleGroup.append(tooltip);
+  }
+
+  handleGroup.append(handle);
+
+  return {handleGroup, handle, tooltip};
 }
 
 
@@ -44,13 +64,22 @@ export function createBase() {
 }
 
 
-export function createHandle(position) {
+export function createHandle() {
   let handle = document.createElement("div");
 
   handle.classList.add("slider__handle");
-  setElementPosition(handle, position);
 
   return handle;
+}
+
+
+export function createHandleGroup(position) {
+  let handleGroup = document.createElement("div");
+
+  handleGroup.classList.add("slider__handle-group");
+  setElementPosition(handleGroup, position);
+
+  return handleGroup;
 }
 
 
