@@ -970,6 +970,34 @@ describe("SliderUI", function() {
     });
   });
 
+  describe("composeHandleGroups", function() {
+    let positions = ["10%", "20%", "30%", "40%", "50%"];
+    let values = [10, 20, 30, 40, 50];
+
+    it(`shall return null for tooltips,
+    if tooltipState is false`, function() {
+      let {tooltips} = composeHandleGroups(positions, false, values);
+
+      assert.isNull(tooltips);
+    });
+
+    context("shall return required quantity of elements", function() {
+      let {handleGroups, handles, tooltips} = composeHandleGroups(positions, true, values);
+
+      it("returns required quantity of handleGroups", function(){
+        assert.equal(handleGroups.length, positions.length);
+      });
+
+      it("returns required quantity of handles", function(){
+        assert.equal(handles.length, positions.length);
+      });
+
+      it("returns required quantity of tooltips", function(){
+        assert.equal(tooltips.length, positions.length);
+      });
+    });
+  });
+
   describe("updateHandlePositions function", function() {
 
     context("shall set position for each handle", function() {
