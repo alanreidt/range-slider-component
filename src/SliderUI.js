@@ -1,14 +1,18 @@
-import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions} from "./utilities";
+import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroups} from "./utilities";
 
 export class SliderUI {
 
   create(element, {boundaries, values, step, orientation, tooltipsState} = {}) {
-    let base = createBase();
     let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
+    let base = createBase();
 
-    this.handles = createHandles(positions, tooltipsState, values);
+    ({
+      handleGroups: this.handleGroups,
+      handles: this.handles,
+      tooltips: this.tooltips,
+    } = composeHandleGroups(positions, tooltipsState, values) );
 
-    base.append(...this.handles);
+    base.append(...this.handleGroups);
 
     this.sliderUI = base;
 
