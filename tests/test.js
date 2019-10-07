@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions, createHandleGroup} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions, createHandleGroup, composeHandleGroup, composeHandleGroups} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
@@ -899,7 +899,7 @@ describe("SliderUI", function() {
     });
   });
 
-  describe("createTooltips function", function() {
+  describe("createTooltip function", function() {
     it("shall create tooltip", function() {
       let tooltip = createTooltip();
 
@@ -936,6 +936,37 @@ describe("SliderUI", function() {
 
       let element2 = setElementPosition(element, "20%");
       assert.equal(element2.style.transform, "translate3d(20%, 0px, 0px)");
+    });
+  });
+
+  describe("composeHandleGroup", function() {
+    context("shall append children", function() {
+      let {handleGroup} = composeHandleGroup("70%", true, 100);
+
+      it("shall contain 2 children", function(){
+        assert.equal(handleGroup.children.length, 2);
+      });
+
+      it("shall append tooltip as a first child", function(){
+        let isTooltipFirstChild = handleGroup.firstElementChild.classList.contains("slider__tooltip");
+
+        assert.isTrue(isTooltipFirstChild);
+      });
+
+      it("shall append handle as a second child", function(){
+        let isHandleSecondChild = handleGroup.lastElementChild.classList.contains("slider__handle");
+
+        assert.isTrue(isHandleSecondChild);
+      });
+    });
+
+    it(`shall create handle group without tooltip,
+    when tooltipState is false`, function() {
+      let {handleGroup} = composeHandleGroup("70%", false, 100);
+      let isHandleFirstChild = handleGroup.firstElementChild.classList.contains("slider__handle");
+
+      assert.equal(handleGroup.children.length, 1);
+      assert.isTrue(isHandleFirstChild);
     });
   });
 
