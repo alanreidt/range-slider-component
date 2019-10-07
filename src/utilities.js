@@ -1,21 +1,27 @@
-export function createHandles(positions, tooltipsState, values) {
+export function composeHandleGroups(positions, tooltipsState, values) {
+  let handleGroups = [];
   let handles = [];
+  let tooltips = [];
 
   positions.forEach( (position, i) => {
-    let handle = createHandle(position);
+    let handleGroup = createHandleGroup(position);
+    let handle = createHandle();
     let tooltip = null;
     let value = values[i];
 
     if (tooltipsState) {
       tooltip = createTooltip(value);
 
-      handle.append(tooltip);
+      tooltips.push(tooltip);
+      handleGroup.append(tooltip);
     }
 
     handles.push(handle);
+    handleGroup.append(handle);
+    handleGroups.push(handleGroup);
   });
 
-  return handles;
+  return {handleGroups, handles, tooltips};
 }
 
 
