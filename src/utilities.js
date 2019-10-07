@@ -25,6 +25,23 @@ export function composeHandleGroups(positions, tooltipsState, values) {
 }
 
 
+export function composeHandleGroup(position, tooltipsState, value) {
+  let handleGroup = createHandleGroup(position);
+  let handle = createHandle();
+  let tooltip = null;
+
+  if (tooltipsState) {
+    tooltip = createTooltip(value);
+
+    handleGroup.append(tooltip);
+  }
+
+  handleGroup.append(handle);
+
+  return {handleGroup, handle, tooltip};
+}
+
+
 export function setElementPosition(element, position) {
   element.style.transform = `translate3d(${position}, 0, 0)`;
 
