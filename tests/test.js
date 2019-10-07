@@ -4,6 +4,7 @@ import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
+import { SliderUI } from "../src/SliderUI";
 
 
 describe("getClosestFactorOf", function() {
@@ -1020,6 +1021,24 @@ describe("SliderUI", function() {
       });
     });
 
+  });
+
+  describe("create method", function() {
+    let options = {
+      boundaries: [0, 100],
+      values: [20, 40, 60],
+      step: 20,
+      orientation: "vertical",
+      tooltipsState: true,
+    };
+    let subject = new SliderUI();
+    let div = document.createElement("div");
+
+    subject.create(div, options);
+
+    it("shall create required quantity of handle-group", function() {
+      assert.equal(subject.sliderUI.children.length, options.values.length);
+    });
   });
 
 });
