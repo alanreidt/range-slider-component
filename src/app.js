@@ -8,7 +8,7 @@ let slider = new Slider({
 });
 let model = new Model(slider);
 let sliderui = new SliderUI();
-let sliderElement = document.querySelector(".slider");
+let sliderElement = document.querySelector(".someUserClass");
 
 sliderui.create( sliderElement, model.getValues() );
 sliderElement.append(sliderui.sliderUI);
