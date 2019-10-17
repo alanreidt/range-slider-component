@@ -987,14 +987,17 @@ describe("SliderUI", function() {
 
       it("returns required quantity of handleGroups", function(){
         assert.equal(handleGroups.length, positions.length);
+        assert.isFalse( handleGroups.includes(undefined) );
       });
 
       it("returns required quantity of handles", function(){
         assert.equal(handles.length, positions.length);
+        assert.isFalse( handles.includes(undefined) );
       });
 
       it("returns required quantity of tooltips", function(){
         assert.equal(tooltips.length, positions.length);
+        assert.isFalse( tooltips.includes(undefined) );
       });
     });
   });
