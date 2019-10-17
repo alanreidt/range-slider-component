@@ -10,5 +10,5 @@ let model = new Model(slider);
 let sliderui = new SliderUI();
 let sliderElement = document.querySelector(".slider");
 
-sliderui.create( model.getValues() );
+sliderui.create( sliderElement, model.getValues() );
 sliderElement.append(sliderui.sliderUI);
