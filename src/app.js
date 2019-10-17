@@ -7,8 +7,5 @@ let slider = new Slider({
   tooltips: true,
 });
 let model = new Model(slider);
-let sliderui = new SliderUI();
 let sliderElement = document.querySelector(".someUserClass");
-
-sliderui.create( sliderElement, model.getValues() );
-sliderElement.append(sliderui.sliderUI);
+let sliderUI = new SliderUI(sliderElement, model);

@@ -2,7 +2,14 @@ import {getPositionInPercentageOf, createBase, createHandle, createTooltip, crea
 
 export class SliderUI {
 
-  create(element, {boundaries, value: values, step, orientation, tooltips: tooltipsState} = {}) {
+  constructor(parent, dataSource) {
+    this.parent = parent;
+    this.dataSource = dataSource;
+
+    this.create( this.dataSource.getValues() );
+  }
+
+  create({boundaries, value: values, step, orientation, tooltips: tooltipsState} = {}) {
     let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
     let base = createBase();
 
@@ -14,9 +21,9 @@ export class SliderUI {
 
     base.append(...this.handleGroups);
 
-    this.sliderUI = base;
+    this.template = base;
 
-    this._draw(element, orientation);
+    this._draw(orientation);
   }
 
   update({boundaries, values, step, orientation, tooltipsState} = {}) {
@@ -29,17 +36,17 @@ export class SliderUI {
 
   }
 
-  _draw(element, orientation) {
+  _draw(orientation) {
     // add css name of the slider (change it to unique one)
-    if ( !element.classList.contains("slider") ) {
-      element.classList.add("slider");
+    if ( !this.parent.classList.contains("slider") ) {
+      this.parent.classList.add("slider");
     }
 
     if (orientation === "vertical") {
-      element.classList.add("slider_vertical");
+      this.parent.classList.add("slider_vertical");
     }
 
-    element.append(this.sliderUI);
+    this.parent.append(this.template);
   }
 
 }
