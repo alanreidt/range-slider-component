@@ -1027,20 +1027,23 @@ describe("SliderUI", function() {
   });
 
   describe("create method", function() {
-    let options = {
-      boundaries: [0, 100],
-      value: [20, 40, 60],
-      step: 20,
-      orientation: "vertical",
-      tooltips: true,
-    };
-    let subject = new SliderUI();
     let div = document.createElement("div");
-
-    subject.create(div, options);
+    let dataSourceMock = {
+      options: {
+        boundaries: [0, 100],
+        value: [20, 40, 60],
+        step: 20,
+        orientation: "vertical",
+        tooltips: true,
+      },
+      getValues() {
+        return this.options;
+      },
+    };
+    let subject = new SliderUI(div, dataSourceMock);
 
     it("shall create required quantity of handle-group", function() {
-      assert.equal(subject.sliderUI.children.length, options.value.length);
+      assert.equal(div.firstElementChild.children.length, dataSourceMock.options.value.length);
     });
   });
 
