@@ -6,7 +6,7 @@ export class SliderUI {
     this.parent = parent;
     this.dataSource = dataSource;
 
-    this.create( this.dataSource.getValues() );
+    this.create( dataSource.getValues() );
   }
 
   create({boundaries, value: values, step, orientation, tooltips: tooltipsState} = {}) {
