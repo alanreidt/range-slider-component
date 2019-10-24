@@ -8,7 +8,7 @@ export function reassignmentValueDefault() {
     tooltips: true,
   };
   let testObject = {
-    value: 300,
+    values: 300,
   };
   let testSubject = new Slider(options);
 

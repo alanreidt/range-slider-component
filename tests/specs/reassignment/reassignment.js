@@ -23,7 +23,7 @@ export function reassignment() {
   describe("shall change values, if correct one is passed", function() {
     let options = [
       {boundaries: [100, 500],
-      value: 180,
+      values: 180,
       step: 20,
       orientation: "vertical",
       tooltips: true},
@@ -39,14 +39,14 @@ export function reassignment() {
   describe("shall not change values, if incorrect one is passed", function() {
     let options = [
       {boundaries: [true, false],
-      value: false,
+      values: false,
       step: "two",
       orientation: 100,
       tooltips: 2},
     ];
     let expectations = [
       {boundaries: [0, 100],
-      value: 50,
+      values: 50,
       step: 1,
       orientation: "horizontal",
       tooltips: false},
@@ -63,14 +63,14 @@ export function reassignment() {
     context(`shall correct {value},
     if passed value isn't correspond to {step}`, function() {
       let options = [
-        {boundaries: [0, 500], step: 100, value: 190},
-        {boundaries: [-500, 500], step: 250, value: -100},
-        {boundaries: [-1000, -500], step: 50, value: -525},
+        {boundaries: [0, 500], step: 100, values: 190},
+        {boundaries: [-500, 500], step: 250, values: -100},
+        {boundaries: [-1000, -500], step: 50, values: -525},
       ];
       let expectations = [
-        {value: 200},
-        {value: 0},
-        {value: -500},
+        {values: 200},
+        {values: 0},
+        {values: -500},
       ];
       let Class = Slider;
       let testOptions = {Class, options, expectations};
@@ -81,20 +81,20 @@ export function reassignment() {
     context(`shall correct {value},
     if passed value is out of {boundaries}`, function() {
       let options = [
-        {boundaries: [0, 500], value: 1000},
-        {boundaries: [-500, 500], value: -1000},
-        {boundaries: [-500, 500], value: [-1000, 1000]},
-        {boundaries: [-500, 500], value: [-1000, 250, 1000]},
-        {boundaries: [-500, 500], value: [-2000, -1000, 250, 1000, 2000]},
-        {boundaries: [-500, 500], value: [250, -2000, 1000, 2000, -1000]},
+        {boundaries: [0, 500], values: 1000},
+        {boundaries: [-500, 500], values: -1000},
+        {boundaries: [-500, 500], values: [-1000, 1000]},
+        {boundaries: [-500, 500], values: [-1000, 250, 1000]},
+        {boundaries: [-500, 500], values: [-2000, -1000, 250, 1000, 2000]},
+        {boundaries: [-500, 500], values: [250, -2000, 1000, 2000, -1000]},
       ];
       let expectations = [
-        {boundaries: [0, 500], value: 500},
-        {boundaries: [-500, 500], value: -500},
-        {boundaries: [-500, 500], value: [-500, 500]},
-        {boundaries: [-500, 500], value: [-500, 250, 500]},
-        {boundaries: [-500, 500], value: [-500, 250, 500]},
-        {boundaries: [-500, 500], value: [-500, 250, 500]},
+        {boundaries: [0, 500], values: 500},
+        {boundaries: [-500, 500], values: -500},
+        {boundaries: [-500, 500], values: [-500, 500]},
+        {boundaries: [-500, 500], values: [-500, 250, 500]},
+        {boundaries: [-500, 500], values: [-500, 250, 500]},
+        {boundaries: [-500, 500], values: [-500, 250, 500]},
       ];
       let Class = Slider;
       let testOptions = {Class, options, expectations};
@@ -145,11 +145,11 @@ export function reassignment() {
         { boundaries: [-500, -200] },
       ];
       let expectations = [
-        {boundaries: [200, 500], value: 200},
-        {boundaries: [-500, -200], value: -200},
+        {boundaries: [200, 500], values: 200},
+        {boundaries: [-500, -200], values: -200},
       ];
       let ClassOptions = {
-        value: 100,
+        values: 100,
       };
       let Class = Slider;
       let testOptions = {Class, ClassOptions, options, expectations};
@@ -202,11 +202,11 @@ export function reassignment() {
         { step: 50 },
       ];
       let expectations = [
-        {step: 20, value: 80},
-        {step: 50, value: 50},
+        {step: 20, values: 80},
+        {step: 50, values: 50},
       ];
       let ClassOptions = {
-        value: 70,
+        values: 70,
       };
       let Class = Slider;
       let testOptions = {Class, ClassOptions, options, expectations};
