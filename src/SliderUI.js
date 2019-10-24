@@ -9,7 +9,7 @@ export class SliderUI {
     this.create( dataSource.getValues() );
   }
 
-  create({boundaries, value: values, step, orientation, tooltips: tooltipsState} = {}) {
+  create({boundaries, values, step, orientation, tooltips: tooltipsState} = {}) {
     let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
     let base = createBase();
 
