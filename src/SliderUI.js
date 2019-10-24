@@ -9,7 +9,7 @@ export class SliderUI {
     this.create( dataSource.getValues() );
   }
 
-  create({boundaries, values, step, orientation, tooltips: tooltipsState} = {}) {
+  create({boundaries, values, step, orientation, hasTooltips} = {}) {
     let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
     let base = createBase();
 
@@ -17,7 +17,7 @@ export class SliderUI {
       handleGroups: this.handleGroups,
       handles: this.handles,
       tooltips: this.tooltips,
-    } = composeHandleGroups(positions, tooltipsState, values) );
+    } = composeHandleGroups(positions, hasTooltips, values) );
 
     base.append(...this.handleGroups);
 
@@ -26,7 +26,7 @@ export class SliderUI {
     this._draw(orientation);
   }
 
-  update({boundaries, values, step, orientation, tooltipsState} = {}) {
+  update({boundaries, values, step, orientation, hasTooltips} = {}) {
 
     if (values & boundaries) {
       let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
