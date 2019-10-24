@@ -5,7 +5,7 @@ export function reassignmentValueDefault() {
     boundaries: [100, 500],
     step: 20,
     orientation: "vertical",
-    tooltips: true,
+    hasTooltips: true,
   };
   let testObject = {
     values: 300,

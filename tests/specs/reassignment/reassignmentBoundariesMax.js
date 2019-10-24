@@ -6,7 +6,7 @@ export function reassignmentBoundariesMax() {
     values: 180,
     step: 20,
     orientation: "vertical",
-    tooltips: true,
+    hasTooltips: true,
   };
   let testValues = {
     boundaries: 400,

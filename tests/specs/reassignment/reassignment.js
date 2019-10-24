@@ -26,7 +26,7 @@ export function reassignment() {
       values: 180,
       step: 20,
       orientation: "vertical",
-      tooltips: true},
+      hasTooltips: true},
     ];
     let expectations = options;
     let Class = Slider;
@@ -42,14 +42,14 @@ export function reassignment() {
       values: false,
       step: "two",
       orientation: 100,
-      tooltips: 2},
+      hasTooltips: 2},
     ];
     let expectations = [
       {boundaries: [0, 100],
       values: 50,
       step: 1,
       orientation: "horizontal",
-      tooltips: false},
+      hasTooltips: false},
     ];
     let Class = Slider;
     let testOptions = {Class, options, expectations};

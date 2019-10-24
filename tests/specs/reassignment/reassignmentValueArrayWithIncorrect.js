@@ -6,7 +6,7 @@ export function reassignmentValueArrayWithIncorrect() {
     values: [100, 200, 300, "Ben", 460, false],
     step: 20,
     orientation: "vertical",
-    tooltips: true,
+    hasTooltips: true,
   };
   let testObject = {
     values: [100, 200, 300, 460],
