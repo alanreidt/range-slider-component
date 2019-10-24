@@ -1034,7 +1034,7 @@ describe("SliderUI", function() {
         values: [20, 40, 60],
         step: 20,
         orientation: "vertical",
-        tooltips: true,
+        hasTooltips: true,
       },
       getValues() {
         return this.options;
@@ -1057,14 +1057,14 @@ describe("Model", function() {
       let newValues = {
         boundaries: [100, 500],
         step: 20,
-        tooltips: true,
+        hasTooltips: true,
       };
       let expectations = {
         boundaries: [100, 500],
         values: 300,
         step: 20,
         orientation: "horizontal",
-        tooltips: true,
+        hasTooltips: true,
       };
       let slider = new Slider();
       let model = new Model(slider);
@@ -1086,7 +1086,7 @@ describe("Model", function() {
         values: 50,
         step: 1,
         orientation: "horizontal",
-        tooltips: false,
+        hasTooltips: false,
       };
       let slider = new Slider();
       let model = new Model(slider);
