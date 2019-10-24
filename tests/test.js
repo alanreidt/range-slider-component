@@ -1031,7 +1031,7 @@ describe("SliderUI", function() {
     let dataSourceMock = {
       options: {
         boundaries: [0, 100],
-        value: [20, 40, 60],
+        values: [20, 40, 60],
         step: 20,
         orientation: "vertical",
         tooltips: true,
@@ -1043,7 +1043,7 @@ describe("SliderUI", function() {
     let subject = new SliderUI(div, dataSourceMock);
 
     it("shall create required quantity of handle-group", function() {
-      assert.equal(div.firstElementChild.children.length, dataSourceMock.options.value.length);
+      assert.equal(div.firstElementChild.children.length, dataSourceMock.options.values.length);
     });
   });
 
@@ -1061,7 +1061,7 @@ describe("Model", function() {
       };
       let expectations = {
         boundaries: [100, 500],
-        value: 300,
+        values: 300,
         step: 20,
         orientation: "horizontal",
         tooltips: true,
@@ -1083,7 +1083,7 @@ describe("Model", function() {
     describe("returns values of the dataSource", function() {
       let expectations = {
         boundaries: [0, 100],
-        value: 50,
+        values: 50,
         step: 1,
         orientation: "horizontal",
         tooltips: false,
