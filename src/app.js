@@ -3,7 +3,7 @@ import {Model} from "./Model";
 import {SliderUI} from "./SliderUI";
 
 let slider = new Slider({
-  value: [0, 100],
+  values: [0, 100],
   tooltips: true,
 });
 let model = new Model(slider);
