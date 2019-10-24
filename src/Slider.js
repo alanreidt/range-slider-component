@@ -11,7 +11,7 @@ export class Slider {
       values: null,
       step: 1,
       orientation: "horizontal",
-      tooltips: false,
+      hasTooltips: false,
     };
 
     for (let key in this._options) {
@@ -112,13 +112,13 @@ export class Slider {
     this._options.orientation = value;
   }
 
-  get tooltips() {
-    return this._options.tooltips;
+  get hasTooltips() {
+    return this._options.hasTooltips;
   }
-  set tooltips(value) {
+  set hasTooltips(value) {
     if (value !== false && value !== true) return;
 
-    this._options.tooltips = value;
+    this._options.hasTooltips = value;
   }
 
   getValues() {
@@ -128,7 +128,7 @@ export class Slider {
       values: this.values,
       step: this.step,
       orientation: this.orientation,
-      tooltips: this.tooltips,
+      hasTooltips: this.hasTooltips,
     };
 
   }
