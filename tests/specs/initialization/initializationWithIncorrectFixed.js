@@ -6,14 +6,14 @@ export function initializationWithIncorrectFixed() {
     values: [25, "p100"],
     step: -20,
     orientation: "right",
-    tooltips: 7,
+    hasTooltips: 7,
   };
   let testObject = {
     boundaries: [0, 200],
     values: 25,
     step: 1,
     orientation: "horizontal",
-    tooltips: false,
+    hasTooltips: false,
   };
   let testSubject = new Slider(options);
 

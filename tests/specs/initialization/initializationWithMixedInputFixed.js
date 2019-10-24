@@ -11,7 +11,7 @@ export function initializationWithMixedInputFixed() {
     values: [0, 600],
     step: 100,
     orientation: "horizontal",
-    tooltips: false,
+    hasTooltips: false,
   };
   let testSubject = new Slider(options);
 

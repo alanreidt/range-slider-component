@@ -7,7 +7,7 @@ export function initializationWithDefaults() {
     values: 50,
     step: 1,
     orientation: "horizontal",
-    tooltips: false,
+    hasTooltips: false,
   };
 
   for (let key in testObject) {

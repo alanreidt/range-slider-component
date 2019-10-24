@@ -12,7 +12,7 @@ export function initializationWithPartDefaults() {
     values: 20000,
     step: 50,
     orientation: "vertical",
-    tooltips: false,
+    hasTooltips: false,
   };
   let testSubject = new Slider(options);
 
