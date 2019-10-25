@@ -193,7 +193,7 @@ export function getPositionInPercentageOf(value, range) {
  */
 
 export function isValueBetween(value, start, end) {
-  if ( [].includes.call(arguments, null) ) return false;
+  if ( Array.from(arguments).includes(null) ) return false;
 
   if (start > end) {
     [start, end] = [end, start];
