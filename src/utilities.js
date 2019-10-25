@@ -346,13 +346,13 @@ export function getClosestFactorOf(dividend, divisor) {
  */
 
 export function getOverstepOf(value, step, start) {
-  start = isFinite(start)? start : 0;
+  start = isFinite(start) ? start : 0;
 
   if ( (value < start) || !isFinite(step) ) return;
 
   let overstep = (value - start) % step;
 
-  return isNaN(overstep)? undefined : overstep;
+  return isNaN(overstep) ? undefined : overstep;
 }
 
 
