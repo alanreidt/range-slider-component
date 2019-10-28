@@ -2,9 +2,10 @@ import {getPositionInPercentageOf, createBase, createHandle, createTooltip, crea
 
 export class SliderUI {
 
-  constructor(parent, dataSource) {
+  constructor(parent, dataSource, template) {
     this.parent = parent;
     this.dataSource = dataSource;
+    this.template = template;
   }
 
 
