@@ -9,6 +9,7 @@ export class SliderUI {
     this.create( dataSource.getValues() );
   }
 
+
   create({boundaries, values, step, orientation, hasTooltips} = {}) {
     let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
     let base = createBase();
@@ -26,6 +27,7 @@ export class SliderUI {
     this._draw(orientation);
   }
 
+
   update({boundaries, values, step, orientation, hasTooltips} = {}) {
 
     if (values && boundaries) {
@@ -35,6 +37,7 @@ export class SliderUI {
     }
 
   }
+
 
   _draw(orientation) {
     // add css name of the slider (change it to unique one)
@@ -48,6 +51,7 @@ export class SliderUI {
 
     this.parent.append(this.template);
   }
+
 
   _updateHandleGroupPositions(positions) {
     setElementPositions(this.handleGroups, positions);
