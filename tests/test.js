@@ -940,6 +940,31 @@ describe("SliderUI", function() {
     });
   });
 
+  describe("setElementPositions function", function() {
+
+    context("shall set position for each handle", function() {
+      let positions = ["10%", "20%", "30%", "40%", "50%"];
+      let divs = [];
+
+      positions.forEach( () => {
+        divs.push( document.createElement("div") );
+      });
+
+      setElementPositions(divs, positions);
+
+      divs.forEach( (div, i) => {
+        let position = positions[i];
+        let divStyle = div.getAttribute("style");
+        let regexp = new RegExp(`${position}`);
+
+        it(`div${i + 1} position equals to ${position}`, function() {
+          assert.isNotNull( divStyle.match(regexp) );
+        });
+      });
+    });
+
+  });
+
   describe("composeHandleGroup", function() {
     context("shall append children", function() {
       let {handleGroup} = composeHandleGroup("70%", true, 100);
@@ -1000,31 +1025,6 @@ describe("SliderUI", function() {
         assert.isFalse( tooltips.includes(undefined) );
       });
     });
-  });
-
-  describe("setElementPositions function", function() {
-
-    context("shall set position for each handle", function() {
-      let positions = ["10%", "20%", "30%", "40%", "50%"];
-      let divs = [];
-
-      positions.forEach( () => {
-        divs.push( document.createElement("div") );
-      });
-
-      setElementPositions(divs, positions);
-
-      divs.forEach( (div, i) => {
-        let position = positions[i];
-        let divStyle = div.getAttribute("style");
-        let regexp = new RegExp(`${position}`);
-
-        it(`div${i + 1} position equals to ${position}`, function() {
-          assert.isNotNull( divStyle.match(regexp) );
-        });
-      });
-    });
-
   });
 
   describe("create method", function() {
