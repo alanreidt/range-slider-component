@@ -1,4 +1,4 @@
-import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroup, composeHandleGroups} from "./utilities";
+import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroup, setElementPositions, composeHandleGroups} from "./utilities";
 
 export class SliderUI {
 
