@@ -893,10 +893,12 @@ describe("SliderUI", function() {
     });
 
     it("shall set position of the handleGroup", function() {
-      let position = "50%";
-      let handleGroup = createHandleGroup(position);
+      const position = "50%";
+      const regexp = new RegExp(`${position}`);
+      const handleGroup = createHandleGroup(position);
+      const handleGroupStyle = handleGroup.getAttribute("style");
 
-      assert.equal(handleGroup.style.transform, "translate3d(50%, 0px, 0px)");
+      assert.isNotNull( handleGroupStyle.match(regexp) );
     });
   });
 
