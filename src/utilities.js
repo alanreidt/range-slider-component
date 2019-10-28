@@ -55,15 +55,6 @@ export function setElementPositions(elements, positions) {
 }
 
 
-export function updateHandlePositions(handles, positions) {
-  handles.forEach( (handle, i) => {
-    let position = positions[i];
-
-    setElementPosition(handle, position);
-  });
-}
-
-
 export function createBase() {
   let base = document.createElement("div");
 
