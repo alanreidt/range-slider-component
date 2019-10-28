@@ -1,3 +1,5 @@
+import { getPositionInPercentageOf } from "./utilities";
+
 export class Template {
 
   createDefault({boundaries, values, hasTooltips} = {}) {
