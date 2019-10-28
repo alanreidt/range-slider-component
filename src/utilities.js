@@ -46,6 +46,15 @@ export function setElementPosition(element, position) {
 }
 
 
+export function setElementPositions(elements, positions) {
+  elements.forEach( (element, i) => {
+    let position = positions[i];
+
+    setElementPosition(element, position);
+  });
+}
+
+
 export function updateHandlePositions(handles, positions) {
   handles.forEach( (handle, i) => {
     let position = positions[i];
