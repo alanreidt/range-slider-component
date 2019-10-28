@@ -19,7 +19,7 @@ export class SliderUI {
   }
 
 
-  _draw(orientation) {
+  paint(orientation) {
     // add css name of the slider (change it to unique one)
     if ( !this.parent.classList.contains("slider") ) {
       this.parent.classList.add("slider");
