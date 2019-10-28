@@ -918,26 +918,36 @@ describe("SliderUI", function() {
   });
 
   describe("setElemenPosition function", function() {
+
     it("shall set element position", function() {
-      let element = document.createElement("div");
+      const element = document.createElement("div");
+      const position = "50%";
+      const regexp = new RegExp(`${position}`);
 
-      setElementPosition(element, "50%");
+      setElementPosition(element, position);
 
-      assert.equal(element.style.transform, "translate3d(50%, 0px, 0px)");
+      const elementStyle = element.getAttribute("style");
+
+      assert.isNotNull( elementStyle.match(regexp) );
     });
 
-    it("shall change element position", function() {
-      let element = document.createElement("div");
+    context("shall change element position", function() {
+      const element = document.createElement("div");
+      const positions = ["50%", "30%", "20%"];
 
-      setElementPosition(element, "50%");
-      assert.equal(element.style.transform, "translate3d(50%, 0px, 0px)");
+      positions.forEach( (position) => {
+        const regexp = new RegExp(`${position}`);
 
-      setElementPosition(element, "30%");
-      assert.equal(element.style.transform, "translate3d(30%, 0px, 0px)");
+        setElementPosition(element, position);
 
-      let element2 = setElementPosition(element, "20%");
-      assert.equal(element2.style.transform, "translate3d(20%, 0px, 0px)");
+        const elementStyle = element.getAttribute("style");
+
+        it(`element position is changed to ${position}`, function() {
+          assert.isNotNull( elementStyle.match(regexp) );
+        });
+      });
     });
+
   });
 
   describe("setElementPositions function", function() {
