@@ -6,6 +6,8 @@ export class SliderUI {
     this.parent = parent;
     this.dataSource = dataSource;
     this.template = template;
+
+    this.paint( dataSource.getValues() );
   }
 
 
@@ -20,7 +22,7 @@ export class SliderUI {
   }
 
 
-  paint(orientation) {
+  paint({boundaries, values, step, orientation, hasTooltips} = {}) {
     // add css name of the slider (change it to unique one)
     if ( !this.parent.classList.contains("slider") ) {
       this.parent.classList.add("slider");
@@ -30,7 +32,13 @@ export class SliderUI {
       this.parent.classList.add("slider_vertical");
     }
 
-    this.parent.append(this.template);
+    const defaultTemplate = this.template.createDefault({
+      boundaries,
+      values,
+      hasTooltips
+    });
+
+    this.parent.innerHTML = defaultTemplate;
   }
 
 
