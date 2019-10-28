@@ -3,10 +3,10 @@ import {Slider} from "../../../src/Slider";
 export function reassignmentBoundariesMin() {
   let options = {
     boundaries: [100, 500],
-    value: 180,
+    values: 180,
     step: 20,
     orientation: "vertical",
-    tooltips: true,
+    hasTooltips: true,
   };
   let testValues = {
     boundaries: 0,

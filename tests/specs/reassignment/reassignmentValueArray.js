@@ -3,13 +3,13 @@ import {Slider} from "../../../src/Slider";
 export function reassignmentValueArray() {
   let options = {
     boundaries: [100, 500],
-    value: [100, 200, 300, 460],
+    values: [100, 200, 300, 460],
     step: 20,
     orientation: "vertical",
-    tooltips: true,
+    hasTooltips: true,
   };
   let testObject = {
-    value: [100, 200, 300, 460],
+    values: [100, 200, 300, 460],
   };
   let testSubject = new Slider(options);
 

@@ -1,36 +1,56 @@
-export function createHandles(positions, tooltipsState, values) {
+export function composeHandleGroups(positions, tooltipsState, values) {
+  let handleGroups = [];
   let handles = [];
+  let tooltips = [];
 
   positions.forEach( (position, i) => {
-    let handle = createHandle(position);
-    let tooltip = null;
     let value = values[i];
 
-    if (tooltipsState) {
-      tooltip = createTooltip(value);
+    let {handleGroup, handle, tooltip} = composeHandleGroup(position, tooltipsState, value);
 
-      handle.append(tooltip);
+    if (tooltipsState) {
+      tooltips.push(tooltip);
     }
 
+    handleGroups.push(handleGroup);
     handles.push(handle);
   });
 
-  return handles;
+  tooltips = tooltips.length ? tooltips : null;
+
+  return {handleGroups, handles, tooltips};
+}
+
+
+export function composeHandleGroup(position, tooltipsState, value) {
+  let handleGroup = createHandleGroup(position);
+  let handle = createHandle();
+  let tooltip = null;
+
+  if (tooltipsState) {
+    tooltip = createTooltip(value);
+
+    handleGroup.append(tooltip);
+  }
+
+  handleGroup.append(handle);
+
+  return {handleGroup, handle, tooltip};
 }
 
 
 export function setElementPosition(element, position) {
-  element.style.transform = `translate3d(${position}, 0, 0)`;
+  element.style.left = `${position}`;
 
   return element;
 }
 
 
-export function updateHandlePositions(handles, positions) {
-  handles.forEach( (handle, i) => {
+export function setElementPositions(elements, positions) {
+  elements.forEach( (element, i) => {
     let position = positions[i];
 
-    setElementPosition(handle, position);
+    setElementPosition(element, position);
   });
 }
 
@@ -44,13 +64,22 @@ export function createBase() {
 }
 
 
-export function createHandle(position) {
+export function createHandle() {
   let handle = document.createElement("div");
 
   handle.classList.add("slider__handle");
-  setElementPosition(handle, position);
 
   return handle;
+}
+
+
+export function createHandleGroup(position) {
+  let handleGroup = document.createElement("div");
+
+  handleGroup.classList.add("slider__handle-group");
+  setElementPosition(handleGroup, position);
+
+  return handleGroup;
 }
 
 
@@ -164,7 +193,7 @@ export function getPositionInPercentageOf(value, range) {
  */
 
 export function isValueBetween(value, start, end) {
-  if ( [].includes.call(arguments, null) ) return false;
+  if ( Array.from(arguments).includes(null) ) return false;
 
   if (start > end) {
     [start, end] = [end, start];
@@ -317,13 +346,13 @@ export function getClosestFactorOf(dividend, divisor) {
  */
 
 export function getOverstepOf(value, step, start) {
-  start = isFinite(start)? start : 0;
+  start = isFinite(start) ? start : 0;
 
   if ( (value < start) || !isFinite(step) ) return;
 
   let overstep = (value - start) % step;
 
-  return isNaN(overstep)? undefined : overstep;
+  return isNaN(overstep) ? undefined : overstep;
 }
 
 

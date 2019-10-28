@@ -1,9 +1,10 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, updateHandlePositions} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, setElementPositions, updateHandlePositions, createHandleGroup, composeHandleGroup, composeHandleGroups} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
+import { SliderUI } from "../src/SliderUI";
 
 
 describe("getClosestFactorOf", function() {
@@ -881,16 +882,27 @@ describe("SliderUI", function() {
       assert.isNotNull(handle);
       assert.isTrue( handle.classList.contains("slider__handle") );
     });
+  });
 
-    it("shall set position of the handle", function() {
-      let position = "50%";
-      let handle = createHandle(position);
+  describe("createHandleGroup function", function() {
+    it("shall create handleGroup", function() {
+      let handleGroup = createHandleGroup();
 
-      assert.equal(handle.style.transform, "translate3d(50%, 0px, 0px)");
+      assert.isNotNull(handleGroup);
+      assert.isTrue( handleGroup.classList.contains("slider__handle-group") );
+    });
+
+    it("shall set position of the handleGroup", function() {
+      const position = "50%";
+      const regexp = new RegExp(`${position}`);
+      const handleGroup = createHandleGroup(position);
+      const handleGroupStyle = handleGroup.getAttribute("style");
+
+      assert.isNotNull( handleGroupStyle.match(regexp) );
     });
   });
 
-  describe("createTooltips function", function() {
+  describe("createTooltip function", function() {
     it("shall create tooltip", function() {
       let tooltip = createTooltip();
 
@@ -908,50 +920,144 @@ describe("SliderUI", function() {
   });
 
   describe("setElemenPosition function", function() {
+
     it("shall set element position", function() {
-      let element = document.createElement("div");
+      const element = document.createElement("div");
+      const position = "50%";
+      const regexp = new RegExp(`${position}`);
 
-      setElementPosition(element, "50%");
+      setElementPosition(element, position);
 
-      assert.equal(element.style.transform, "translate3d(50%, 0px, 0px)");
+      const elementStyle = element.getAttribute("style");
+
+      assert.isNotNull( elementStyle.match(regexp) );
     });
 
-    it("shall change element position", function() {
-      let element = document.createElement("div");
-
-      setElementPosition(element, "50%");
-      assert.equal(element.style.transform, "translate3d(50%, 0px, 0px)");
-
-      setElementPosition(element, "30%");
-      assert.equal(element.style.transform, "translate3d(30%, 0px, 0px)");
-
-      let element2 = setElementPosition(element, "20%");
-      assert.equal(element2.style.transform, "translate3d(20%, 0px, 0px)");
-    });
-  });
-
-  describe("updateHandlePositions function", function() {
-
-    context("shall set position for each handle", function() {
-      let positions = ["10%", "20%", "30%", "40%", "50%"];
-      let handles = [];
+    context("shall change element position", function() {
+      const element = document.createElement("div");
+      const positions = ["50%", "30%", "20%"];
 
       positions.forEach( (position) => {
-        handles.push( createHandle() );
-      });
+        const regexp = new RegExp(`${position}`);
 
-      updateHandlePositions(handles, positions);
+        setElementPosition(element, position);
 
-      handles.forEach( (handle, i) => {
-        let position = positions[i];
-        let handlePosition = handle.style.transform;
+        const elementStyle = element.getAttribute("style");
 
-        it(`handle${i + 1} position equals to ${handlePosition}`, function() {
-          assert.equal(handlePosition, `translate3d(${position}, 0px, 0px)`);
+        it(`element position is changed to ${position}`, function() {
+          assert.isNotNull( elementStyle.match(regexp) );
         });
       });
     });
 
+  });
+
+  describe("setElementPositions function", function() {
+
+    context("shall set position for each handle", function() {
+      let positions = ["10%", "20%", "30%", "40%", "50%"];
+      let divs = [];
+
+      positions.forEach( () => {
+        divs.push( document.createElement("div") );
+      });
+
+      setElementPositions(divs, positions);
+
+      divs.forEach( (div, i) => {
+        let position = positions[i];
+        let divStyle = div.getAttribute("style");
+        let regexp = new RegExp(`${position}`);
+
+        it(`div${i + 1} position equals to ${position}`, function() {
+          assert.isNotNull( divStyle.match(regexp) );
+        });
+      });
+    });
+
+  });
+
+  describe("composeHandleGroup", function() {
+    context("shall append children", function() {
+      let {handleGroup} = composeHandleGroup("70%", true, 100);
+
+      it("shall contain 2 children", function(){
+        assert.equal(handleGroup.children.length, 2);
+      });
+
+      it("shall append tooltip as a first child", function(){
+        let isTooltipFirstChild = handleGroup.firstElementChild.classList.contains("slider__tooltip");
+
+        assert.isTrue(isTooltipFirstChild);
+      });
+
+      it("shall append handle as a second child", function(){
+        let isHandleSecondChild = handleGroup.lastElementChild.classList.contains("slider__handle");
+
+        assert.isTrue(isHandleSecondChild);
+      });
+    });
+
+    it(`shall create handle group without tooltip,
+    when tooltipState is false`, function() {
+      let {handleGroup} = composeHandleGroup("70%", false, 100);
+      let isHandleFirstChild = handleGroup.firstElementChild.classList.contains("slider__handle");
+
+      assert.equal(handleGroup.children.length, 1);
+      assert.isTrue(isHandleFirstChild);
+    });
+  });
+
+  describe("composeHandleGroups", function() {
+    let positions = ["10%", "20%", "30%", "40%", "50%"];
+    let values = [10, 20, 30, 40, 50];
+
+    it(`shall return null for tooltips,
+    if tooltipState is false`, function() {
+      let {tooltips} = composeHandleGroups(positions, false, values);
+
+      assert.isNull(tooltips);
+    });
+
+    context("shall return required quantity of elements", function() {
+      let {handleGroups, handles, tooltips} = composeHandleGroups(positions, true, values);
+
+      it("returns required quantity of handleGroups", function(){
+        assert.equal(handleGroups.length, positions.length);
+        assert.isFalse( handleGroups.includes(undefined) );
+      });
+
+      it("returns required quantity of handles", function(){
+        assert.equal(handles.length, positions.length);
+        assert.isFalse( handles.includes(undefined) );
+      });
+
+      it("returns required quantity of tooltips", function(){
+        assert.equal(tooltips.length, positions.length);
+        assert.isFalse( tooltips.includes(undefined) );
+      });
+    });
+  });
+
+  describe("create method", function() {
+    let div = document.createElement("div");
+    let dataSourceMock = {
+      options: {
+        boundaries: [0, 100],
+        values: [20, 40, 60],
+        step: 20,
+        orientation: "vertical",
+        hasTooltips: true,
+      },
+      getValues() {
+        return this.options;
+      },
+    };
+    let subject = new SliderUI(div, dataSourceMock);
+
+    it("shall create required quantity of handle-group", function() {
+      assert.equal(div.firstElementChild.children.length, dataSourceMock.options.values.length);
+    });
   });
 
 });
@@ -964,14 +1070,14 @@ describe("Model", function() {
       let newValues = {
         boundaries: [100, 500],
         step: 20,
-        tooltips: true,
+        hasTooltips: true,
       };
       let expectations = {
         boundaries: [100, 500],
-        value: 300,
+        values: 300,
         step: 20,
         orientation: "horizontal",
-        tooltips: true,
+        hasTooltips: true,
       };
       let slider = new Slider();
       let model = new Model(slider);
@@ -990,10 +1096,10 @@ describe("Model", function() {
     describe("returns values of the dataSource", function() {
       let expectations = {
         boundaries: [0, 100],
-        value: 50,
+        values: 50,
         step: 1,
         orientation: "horizontal",
-        tooltips: false,
+        hasTooltips: false,
       };
       let slider = new Slider();
       let model = new Model(slider);

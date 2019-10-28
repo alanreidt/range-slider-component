@@ -4,10 +4,10 @@ export function initializationWithDefaults() {
   let testSubject = new Slider();
   let testObject = {
     boundaries: [0, 100],
-    value: 50,
+    values: 50,
     step: 1,
     orientation: "horizontal",
-    tooltips: false,
+    hasTooltips: false,
   };
 
   for (let key in testObject) {
