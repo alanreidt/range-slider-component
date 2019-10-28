@@ -40,7 +40,7 @@ export function composeHandleGroup(position, tooltipsState, value) {
 
 
 export function setElementPosition(element, position) {
-  element.style.transform = `translate3d(${position}, 0, 0)`;
+  element.style.left = `${position}`;
 
   return element;
 }
