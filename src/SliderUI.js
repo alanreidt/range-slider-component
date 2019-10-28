@@ -28,7 +28,7 @@ export class SliderUI {
 
   update({boundaries, values, step, orientation, hasTooltips} = {}) {
 
-    if (values & boundaries) {
+    if (values && boundaries) {
       let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
 
       this._updateHandleGroupPositions(positions)
