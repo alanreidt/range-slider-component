@@ -5,23 +5,6 @@ export class SliderUI {
   constructor(parent, dataSource) {
     this.parent = parent;
     this.dataSource = dataSource;
-
-    this.create( dataSource.getValues() );
-  }
-
-
-  create({boundaries, values, step, orientation, hasTooltips} = {}) {
-    let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
-    let handlesTemplate = positions.reduce( (str, position, i) => {
-      str + `<div class="slider__origin" style="left: ${position}">
-        <div class="slider__tooltip">${values[i]}</div>
-        <div class="slider__handle"></div>
-      </div>`
-    }, '');
-
-    return `<div class="slider__base">${handlesTemplate}</div>`;
-
-    this._draw(orientation);
   }
 
 
