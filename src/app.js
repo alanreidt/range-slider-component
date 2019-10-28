@@ -1,6 +1,7 @@
 import {Slider} from "./Slider";
 import {Model} from "./Model";
 import {SliderUI} from "./SliderUI";
+import {Template} from "./Template";
 
 let slider = new Slider({
   values: [0, 100],
@@ -8,4 +9,5 @@ let slider = new Slider({
 });
 let model = new Model(slider);
 let sliderElement = document.querySelector(".someUserClass");
-let sliderUI = new SliderUI(sliderElement, model);
+let template = new Template();
+let sliderUI = new SliderUI(sliderElement, model, template);
