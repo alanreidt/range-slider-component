@@ -48,9 +48,17 @@ export class SliderUI {
     setElementPositions(handleGroups, positions);
   }
 
+
   _getHandleGroups() {
     return Array.from(
       this.parent.querySelectorAll(".slider__handle-group")
+    );
+  }
+
+
+  _getTooltips() {
+    return Array.from(
+      this.parent.querySelectorAll(".slider__tooltip")
     );
   }
 
