@@ -824,59 +824,6 @@ describe("observerMixin", function() {
 
 describe("SliderUI", function() {
 
-  describe("createBase function", function() {
-    it("shall create base of the slider", function() {
-      let base = createBase();
-
-      assert.isNotNull(base);
-      assert.isTrue( base.classList.contains("slider__base") );
-    });
-  });
-
-  describe("createHandle function", function() {
-    it("shall create handle", function() {
-      let handle = createHandle();
-
-      assert.isNotNull(handle);
-      assert.isTrue( handle.classList.contains("slider__handle") );
-    });
-  });
-
-  describe("createHandleGroup function", function() {
-    it("shall create handleGroup", function() {
-      let handleGroup = createHandleGroup();
-
-      assert.isNotNull(handleGroup);
-      assert.isTrue( handleGroup.classList.contains("slider__handle-group") );
-    });
-
-    it("shall set position of the handleGroup", function() {
-      const position = "50%";
-      const regexp = new RegExp(`${position}`);
-      const handleGroup = createHandleGroup(position);
-      const handleGroupStyle = handleGroup.getAttribute("style");
-
-      assert.isNotNull( handleGroupStyle.match(regexp) );
-    });
-  });
-
-  describe("createTooltip function", function() {
-    it("shall create tooltip", function() {
-      let tooltip = createTooltip();
-
-      assert.isNotNull(tooltip);
-      assert.isTrue( tooltip.classList.contains("slider__tooltip") );
-    });
-
-    it("shall set textContent value", function() {
-      let value = 100;
-
-      let tooltip = createTooltip(value);
-
-      assert.equal(tooltip.textContent, `${value}`);
-    });
-  });
-
   describe("setElemenPosition function", function() {
 
     it("shall set element position", function() {
@@ -933,68 +880,6 @@ describe("SliderUI", function() {
       });
     });
 
-  });
-
-  describe("composeHandleGroup", function() {
-    context("shall append children", function() {
-      let {handleGroup} = composeHandleGroup("70%", true, 100);
-
-      it("shall contain 2 children", function(){
-        assert.equal(handleGroup.children.length, 2);
-      });
-
-      it("shall append tooltip as a first child", function(){
-        let isTooltipFirstChild = handleGroup.firstElementChild.classList.contains("slider__tooltip");
-
-        assert.isTrue(isTooltipFirstChild);
-      });
-
-      it("shall append handle as a second child", function(){
-        let isHandleSecondChild = handleGroup.lastElementChild.classList.contains("slider__handle");
-
-        assert.isTrue(isHandleSecondChild);
-      });
-    });
-
-    it(`shall create handle group without tooltip,
-    when tooltipState is false`, function() {
-      let {handleGroup} = composeHandleGroup("70%", false, 100);
-      let isHandleFirstChild = handleGroup.firstElementChild.classList.contains("slider__handle");
-
-      assert.equal(handleGroup.children.length, 1);
-      assert.isTrue(isHandleFirstChild);
-    });
-  });
-
-  describe("composeHandleGroups", function() {
-    let positions = ["10%", "20%", "30%", "40%", "50%"];
-    let values = [10, 20, 30, 40, 50];
-
-    it(`shall return null for tooltips,
-    if tooltipState is false`, function() {
-      let {tooltips} = composeHandleGroups(positions, false, values);
-
-      assert.isNull(tooltips);
-    });
-
-    context("shall return required quantity of elements", function() {
-      let {handleGroups, handles, tooltips} = composeHandleGroups(positions, true, values);
-
-      it("returns required quantity of handleGroups", function(){
-        assert.equal(handleGroups.length, positions.length);
-        assert.isFalse( handleGroups.includes(undefined) );
-      });
-
-      it("returns required quantity of handles", function(){
-        assert.equal(handles.length, positions.length);
-        assert.isFalse( handles.includes(undefined) );
-      });
-
-      it("returns required quantity of tooltips", function(){
-        assert.equal(tooltips.length, positions.length);
-        assert.isFalse( tooltips.includes(undefined) );
-      });
-    });
   });
 
   describe("create method", function() {
