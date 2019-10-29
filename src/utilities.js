@@ -34,7 +34,7 @@ export function setElementsPosition(elements, positions) {
 }
 
 
-export function setTextContent(element, value) {
+export function setElementTextContent(element, value) {
   element.textContent = value;
 
   return element;
@@ -43,7 +43,7 @@ export function setTextContent(element, value) {
 
 export function setTextContents(elements, values) {
   elements.forEach(
-    call(setTextContent, values)
+    call(setElementTextContent, values)
   );
 }
 
