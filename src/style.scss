@@ -32,7 +32,7 @@ body {
     background-color: #E0E0E0;
   }
 
-  &__origin {
+  &__handle-group {
     position: absolute;
     z-index: 200;
 
@@ -41,14 +41,6 @@ body {
 
     background-color: red;
     cursor: pointer;
-  }
-
-  &__origin_first {
-    left: calc(15% - 20px);
-  }
-
-  &__origin_second {
-    left: calc(100% - 20px);
   }
 
   &__tooltip {
