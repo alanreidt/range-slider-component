@@ -21,7 +21,7 @@ export function call(callback, values) {
 
 
 export function setElementPosition(element, position) {
-  element.style.left = `${position}`;
+  element.style.left = position;
 
   return element;
 }
