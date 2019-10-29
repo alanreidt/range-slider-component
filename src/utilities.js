@@ -14,6 +14,13 @@ export function setElementPositions(elements, positions) {
 }
 
 
+export function setTextContent(element, value) {
+  element.textContent = value;
+
+  return element;
+}
+
+
 /**
  * The observerMixin is a modification of eventMixin,
  * borrowed from http://javascript.info/mixins
