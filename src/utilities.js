@@ -1,44 +1,3 @@
-export function composeHandleGroups(positions, tooltipsState, values) {
-  let handleGroups = [];
-  let handles = [];
-  let tooltips = [];
-
-  positions.forEach( (position, i) => {
-    let value = values[i];
-
-    let {handleGroup, handle, tooltip} = composeHandleGroup(position, tooltipsState, value);
-
-    if (tooltipsState) {
-      tooltips.push(tooltip);
-    }
-
-    handleGroups.push(handleGroup);
-    handles.push(handle);
-  });
-
-  tooltips = tooltips.length ? tooltips : null;
-
-  return {handleGroups, handles, tooltips};
-}
-
-
-export function composeHandleGroup(position, tooltipsState, value) {
-  let handleGroup = createHandleGroup(position);
-  let handle = createHandle();
-  let tooltip = null;
-
-  if (tooltipsState) {
-    tooltip = createTooltip(value);
-
-    handleGroup.append(tooltip);
-  }
-
-  handleGroup.append(handle);
-
-  return {handleGroup, handle, tooltip};
-}
-
-
 export function setElementPosition(element, position) {
   element.style.left = `${position}`;
 
@@ -52,44 +11,6 @@ export function setElementPositions(elements, positions) {
 
     setElementPosition(element, position);
   });
-}
-
-
-export function createBase() {
-  let base = document.createElement("div");
-
-  base.classList.add("slider__base");
-
-  return base;
-}
-
-
-export function createHandle() {
-  let handle = document.createElement("div");
-
-  handle.classList.add("slider__handle");
-
-  return handle;
-}
-
-
-export function createHandleGroup(position) {
-  let handleGroup = document.createElement("div");
-
-  handleGroup.classList.add("slider__handle-group");
-  setElementPosition(handleGroup, position);
-
-  return handleGroup;
-}
-
-
-export function createTooltip(value) {
-  let tooltip = document.createElement("div");
-
-  tooltip.classList.add("slider__tooltip");
-  tooltip.textContent = value;
-
-  return tooltip;
 }
 
 
