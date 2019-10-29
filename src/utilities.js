@@ -42,11 +42,9 @@ export function setTextContent(element, value) {
 
 
 export function setTextContents(elements, values) {
-  elements.forEach( (element, i) => {
-    let value = values[i];
-
-    setTextContent(element, value);
-  });
+  elements.forEach(
+    call(setTextContent, values)
+  );
 }
 
 
