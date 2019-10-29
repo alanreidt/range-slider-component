@@ -28,11 +28,9 @@ export function setElementPosition(element, position) {
 
 
 export function setElementPositions(elements, positions) {
-  elements.forEach( (element, i) => {
-    let position = positions[i];
-
-    setElementPosition(element, position);
-  });
+  elements.forEach(
+    call(setElementPosition, positions)
+  );
 }
 
 
