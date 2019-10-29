@@ -1,4 +1,4 @@
-import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroup, setElementsPosition, composeHandleGroups, setTextContents} from "./utilities";
+import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroup, setElementsPosition, composeHandleGroups, setElementsTextContent} from "./utilities";
 
 export class SliderUI {
 
@@ -60,7 +60,7 @@ export class SliderUI {
   _updateTooltips(values) {
     const tooltips = this._getTooltips();
 
-    setTextContents(tooltips, values);
+    setElementsTextContent(tooltips, values);
   }
 
 

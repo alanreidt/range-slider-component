@@ -41,7 +41,7 @@ export function setElementTextContent(element, value) {
 }
 
 
-export function setTextContents(elements, values) {
+export function setElementsTextContent(elements, values) {
   elements.forEach(
     call(setElementTextContent, values)
   );
