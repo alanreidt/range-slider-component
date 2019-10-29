@@ -46,4 +46,10 @@ export class SliderUI {
     setElementPositions(this.handleGroups, positions);
   }
 
+  _getHandleGroups() {
+    return Array.from(
+      this.parent.querySelectorAll(".slider__handle-group")
+    );
+  }
+
 }
