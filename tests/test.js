@@ -821,50 +821,8 @@ describe("observerMixin", function() {
 
 });
 
-/**
- * SliderUI Logic sketch:
- *  View logic
- *    shall display required quantity of handles
- *    shall restrict quantity of handles (!DomainModel)
- *    shall set step width relatively to Slider width (px)
- *    shall correct step, if there isn't enough space (Slider width)
- *    shall change orientation
- *    shall change orientation related props
- *      shall change position counting process when orientation is changed
- *      shall change tooltips position when orientation is changed
- *      shall change handle proportions when orientation is changed
- *      shall set default height when orientation is vertical
- *    shall treat tooltips
- *    shall have width (that is height, when horizontal)
- *    shall have state model
- *    shall display live value trough state model
- *  Controller logic
- *    shall listen to events on the handle
- *      when mouse is down — listen to a mouse move
- *      when mouse is moving
- *        call Model.setValues
- *        shall change position counting process when orientation is vertical
- *      when mouse is up — stop to listen to the mouse move
- *    shall listen to a click event on the base line
- *      call Model.setValues
- *    should listen to changing of #slider width
- *      should correct step value, if there isn't enough space (Slider width)
- */
 
 describe("SliderUI", function() {
-  // SliderUI Tests sketch:
-  //  createBase method
-  //    shall create line with according values
-  //    shall set default height when orientation is vertical (css)
-  //    shall set orientation css class (css)
-  //  createHandles method
-  //    shall create required quantity of handles
-  //    shall set correct data-value attrs
-  //    shall change handle proportions when orientation is vertical (css)
-  //    shall create required quantity of tootips
-  //    shall change tooltips position when orientation is vertical (css)
-  //  setHandlePosition (handle, position)
-  //    shall set position of handle
 
   describe("createBase function", function() {
     it("shall create base of the slider", function() {
