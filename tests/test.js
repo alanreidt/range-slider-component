@@ -1,4 +1,4 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, setElementPositions, updateHandlePositions, createHandleGroup, composeHandleGroup, composeHandleGroups} from "../src/utilities";
+import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, createBase, createHandle, createTooltip, setElementPosition, setElementsPosition, updateHandlePositions, createHandleGroup, composeHandleGroup, composeHandleGroups} from "../src/utilities";
 import {makeTestClass, test, testClass, template} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
@@ -857,7 +857,7 @@ describe("SliderUI", function() {
 
   });
 
-  describe("setElementPositions function", function() {
+  describe("setElementsPosition function", function() {
 
     context("shall set position for each handle", function() {
       let positions = ["10%", "20%", "30%", "40%", "50%"];
@@ -867,7 +867,7 @@ describe("SliderUI", function() {
         divs.push( document.createElement("div") );
       });
 
-      setElementPositions(divs, positions);
+      setElementsPosition(divs, positions);
 
       divs.forEach( (div, i) => {
         let position = positions[i];

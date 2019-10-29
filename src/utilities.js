@@ -27,7 +27,7 @@ export function setElementPosition(element, position) {
 }
 
 
-export function setElementPositions(elements, positions) {
+export function setElementsPosition(elements, positions) {
   elements.forEach(
     call(setElementPosition, positions)
   );
