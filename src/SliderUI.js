@@ -1,4 +1,4 @@
-import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroup, setElementPositions, composeHandleGroups} from "./utilities";
+import {getPositionInPercentageOf, createBase, createHandle, createTooltip, createHandles, updateHandlePositions, composeHandleGroup, setElementPositions, composeHandleGroups, setTextContents} from "./utilities";
 
 export class SliderUI {
 
@@ -17,6 +17,7 @@ export class SliderUI {
       let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
 
       this._updateHandleGroupPositions(positions)
+      this._updateTooltips(values)
     }
 
   }
@@ -53,6 +54,13 @@ export class SliderUI {
     return Array.from(
       this.parent.querySelectorAll(".slider__handle-group")
     );
+  }
+
+
+  _updateTooltips(values) {
+    const tooltips = this._getTooltips();
+
+    setTextContents(tooltips, values);
   }
 
 
