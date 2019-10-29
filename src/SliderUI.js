@@ -43,7 +43,9 @@ export class SliderUI {
 
 
   _updateHandleGroupPositions(positions) {
-    setElementPositions(this.handleGroups, positions);
+    const handleGroups = this._getHandleGroups();
+
+    setElementPositions(handleGroups, positions);
   }
 
   _getHandleGroups() {
