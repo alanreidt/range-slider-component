@@ -97,11 +97,11 @@ export let observerMixin = {
    */
 
   triggerSubscribers(eventName, ...args) {
-    if (!this._eventSubscribers || !this._eventSubscribers[eventName]) {
-      return;
-    }
+    let subscribers = this._eventSubscribers && this._eventSubscribers[eventName];
 
-    this._eventSubscribers[eventName].forEach( subscriber => subscriber.update(args) );
+    if (!subscribers) return;
+
+    subscribers.forEach( (subscriber) => subscriber.apply(this, args) );
   }
 };
 
