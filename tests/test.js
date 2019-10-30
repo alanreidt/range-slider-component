@@ -777,43 +777,53 @@ describe("observerMixin", function() {
   });
 
   describe("shall trigger subscribers", function() {
-    let publisher = Object.assign({}, observerMixin);
-    let subscriber1 = {
-      isNotified: false,
-      update() {
-        this.isNotified = true;
-      }
-    };
-    let subscriber2 = {
-      isNotified: false,
-      update() {
-        this.isNotified = true;
-      }
-    };
-    let subscriber3 = {
-      isNotified: false,
-      update() {
-        this.isNotified = true;
-      }
-    };
-    let subscribers = [subscriber1, subscriber2, subscriber3];
+    const publisher = Object.assign({}, observerMixin);
+    const subscribers = [];
 
-    publisher.addSubscriber("change", subscriber1);
-    publisher.addSubscriber("change", subscriber2);
-    publisher.addSubscriber("change", subscriber3);
+    for (let i = 0; i < 3; i++) {
 
-    let publisherSubscribers = publisher._eventSubscribers.change;
+      subscribers.push({
+        isNotified: false,
+        update(value) {
+          this.isNotified = true;
+          this.value = value;
+        }
+      });
+
+    }
+
+    const subscriberHandlers = subscribers.map(
+      (subscriber) => subscriber.update.bind(subscriber)
+    );
+
+    subscriberHandlers.forEach(
+      (subscriberHandler) => publisher.addSubscriber( "change", subscriberHandler )
+    );
+
+    const publisherSubscribers = publisher._eventSubscribers.change;
 
     it(`subscribers are in the list`, function() {
-      assert.deepEqual( subscribers, publisherSubscribers );
+      assert.deepEqual( subscriberHandlers, publisherSubscribers );
     });
 
-    publisher.triggerSubscribers("change");
+    publisher.triggerSubscribers("change", "Hello");
 
-    it(`subscribers are notified`, function() {
+    context(`subscribers are notified`, function() {
 
-      subscribers.forEach( (subscriber) => {
-        assert.equal( subscriber.isNotified, true );
+      subscribers.forEach( (subscriber, i) => {
+        it(`subscriber${i + 1} is notified`, function() {
+          assert.isTrue(subscriber.isNotified);
+        });
+      });
+
+    });
+
+    context(`value is accepted`, function() {
+
+      subscribers.forEach( (subscriber, i) => {
+        it(`subscriber${i + 1} has value`, function() {
+          assert.equal(subscriber.value, "Hello");
+        });
       });
 
     });
