@@ -83,13 +83,11 @@ export let observerMixin = {
 
     if (!subscribers) return;
 
-    for (let i = 0; i < subscribers.length; i++) {
+    subscribers.forEach( (item, i) => {
+      if (item !== subscriber) return;
 
-      if (subscribers[i] === subscriber) {
-        subscribers.splice(i--, 1);
-      }
-
-    }
+      subscribers.splice(i--, 1);
+    });
   },
 
 
