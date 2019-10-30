@@ -769,7 +769,7 @@ describe("observerMixin", function() {
 
     });
 
-    publisher.unsubscribe("change", subscriber2);
+    publisher.removeSubscriber("change", subscriber2);
 
     it(`subscriber2 is removed from the list`, function() {
       assert.deepEqual( cuttedSubscribers, publisherSubscribers );

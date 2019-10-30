@@ -75,10 +75,10 @@ export let observerMixin = {
 
   /**
    * Cancel the subscription, usage:
-   *  menu.unsubscribe("select", subscriber)
+   *  menu.removeSubscriber("select", subscriber)
    */
 
-  unsubscribe(eventName, subscriber) {
+  removeSubscriber(eventName, subscriber) {
     let handlers = this._eventSubscribers && this._eventSubscribers[eventName];
 
     if (!handlers) return;
