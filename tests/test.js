@@ -822,66 +822,66 @@ describe("observerMixin", function() {
 });
 
 
-describe("SliderUI", function() {
+describe("setElemenPosition function", function() {
 
-  describe("setElemenPosition function", function() {
+  it("shall set element position", function() {
+    const element = document.createElement("div");
+    const position = "50%";
+    const regexp = new RegExp(`${position}`);
 
-    it("shall set element position", function() {
-      const element = document.createElement("div");
-      const position = "50%";
+    setElementPosition(element, position);
+
+    const elementStyle = element.getAttribute("style");
+
+    assert.isNotNull( elementStyle.match(regexp) );
+  });
+
+  context("shall change element position", function() {
+    const element = document.createElement("div");
+    const positions = ["50%", "30%", "20%"];
+
+    positions.forEach( (position) => {
       const regexp = new RegExp(`${position}`);
 
       setElementPosition(element, position);
 
       const elementStyle = element.getAttribute("style");
 
-      assert.isNotNull( elementStyle.match(regexp) );
-    });
-
-    context("shall change element position", function() {
-      const element = document.createElement("div");
-      const positions = ["50%", "30%", "20%"];
-
-      positions.forEach( (position) => {
-        const regexp = new RegExp(`${position}`);
-
-        setElementPosition(element, position);
-
-        const elementStyle = element.getAttribute("style");
-
-        it(`element position is changed to ${position}`, function() {
-          assert.isNotNull( elementStyle.match(regexp) );
-        });
+      it(`element position is changed to ${position}`, function() {
+        assert.isNotNull( elementStyle.match(regexp) );
       });
     });
-
   });
 
-  describe("setElementsPosition function", function() {
+});
 
-    context("shall set position for each handle", function() {
-      let positions = ["10%", "20%", "30%", "40%", "50%"];
-      let divs = [];
 
-      positions.forEach( () => {
-        divs.push( document.createElement("div") );
-      });
+describe("setElementsPosition function", function() {
 
-      setElementsPosition(divs, positions);
+  context("shall set position for each handle", function() {
+    let positions = ["10%", "20%", "30%", "40%", "50%"];
+    let divs = [];
 
-      divs.forEach( (div, i) => {
-        let position = positions[i];
-        let divStyle = div.getAttribute("style");
-        let regexp = new RegExp(`${position}`);
-
-        it(`div${i + 1} position equals to ${position}`, function() {
-          assert.isNotNull( divStyle.match(regexp) );
-        });
-      });
+    positions.forEach( () => {
+      divs.push( document.createElement("div") );
     });
 
-  });
+    setElementsPosition(divs, positions);
 
+    divs.forEach( (div, i) => {
+      let position = positions[i];
+      let divStyle = div.getAttribute("style");
+      let regexp = new RegExp(`${position}`);
+
+      it(`div${i + 1} position equals to ${position}`, function() {
+        assert.isNotNull( divStyle.match(regexp) );
+      });
+    });
+  });
+});
+
+
+describe("SliderUI", function() {
 });
 
 
