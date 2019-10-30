@@ -80,6 +80,9 @@ export let observerMixin = {
   /**
    * Cancel the subscription, usage:
    *  menu.removeSubscriber("select", subscriber)
+   *
+   * @param {string} eventName The name of an event to which subscriber is listen to.
+   * @param {function} subscriber The subscriber to be removed from the list.
    */
 
   removeSubscriber(eventName, subscriber) {
