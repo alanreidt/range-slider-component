@@ -93,10 +93,10 @@ export let observerMixin = {
 
   /**
    * Generate an event with the given name and data
-   *  this.notify("select", data1, data2);
+   *  this.triggerSubscribers("select", data1, data2);
    */
 
-  notify(eventName, ...args) {
+  triggerSubscribers(eventName, ...args) {
     if (!this._eventSubscribers || !this._eventSubscribers[eventName]) {
       return;
     }

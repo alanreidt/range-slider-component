@@ -776,7 +776,7 @@ describe("observerMixin", function() {
     });
   });
 
-  describe("shall notify subscribers", function() {
+  describe("shall trigger subscribers", function() {
     let publisher = Object.assign({}, observerMixin);
     let subscriber1 = {
       isNotified: false,
@@ -808,7 +808,7 @@ describe("observerMixin", function() {
       assert.deepEqual( subscribers, publisherSubscribers );
     });
 
-    publisher.notify("change");
+    publisher.triggerSubscribers("change");
 
     it(`subscribers are notified`, function() {
 
