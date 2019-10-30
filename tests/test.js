@@ -737,7 +737,7 @@ describe("observerMixin", function() {
     publisher.addSubscriber("change", subscriber2);
 
     subscribers.forEach( (subscriber, i) => {
-      let publisherSubscriber = publisher._subscribers.change[i];
+      let publisherSubscriber = publisher._eventSubscribers.change[i];
 
       it(`subscriber${i + 1} is in the list`, function() {
         assert.equal( subscriber, publisherSubscriber );
@@ -758,10 +758,10 @@ describe("observerMixin", function() {
     publisher.addSubscriber("change", subscriber2);
     publisher.addSubscriber("change", subscriber3);
 
-    let publisherSubscribers = publisher._subscribers.change;
+    let publisherSubscribers = publisher._eventSubscribers.change;
 
     subscribers.forEach( (subscriber, i) => {
-      let publisherSubscriber = publisher._subscribers.change[i];
+      let publisherSubscriber = publisher._eventSubscribers.change[i];
 
       it(`subscriber${i + 1} is in the list`, function() {
         assert.equal( subscriber, publisherSubscriber );
@@ -802,7 +802,7 @@ describe("observerMixin", function() {
     publisher.addSubscriber("change", subscriber2);
     publisher.addSubscriber("change", subscriber3);
 
-    let publisherSubscribers = publisher._subscribers.change;
+    let publisherSubscribers = publisher._eventSubscribers.change;
 
     it(`subscribers are in the list`, function() {
       assert.deepEqual( subscribers, publisherSubscribers );

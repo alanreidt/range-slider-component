@@ -61,15 +61,15 @@ export let observerMixin = {
    */
 
   addSubscriber(eventName, subscriber) {
-    if (!this._subscribers) {
-      this._subscribers = {};
+    if (!this._eventSubscribers) {
+      this._eventSubscribers = {};
     }
 
-    if (!this._subscribers[eventName]) {
-      this._subscribers[eventName] = [];
+    if (!this._eventSubscribers[eventName]) {
+      this._eventSubscribers[eventName] = [];
     }
 
-    this._subscribers[eventName].push(subscriber);
+    this._eventSubscribers[eventName].push(subscriber);
   },
 
 
@@ -79,7 +79,7 @@ export let observerMixin = {
    */
 
   unsubscribe(eventName, subscriber) {
-    let handlers = this._subscribers && this._subscribers[eventName];
+    let handlers = this._eventSubscribers && this._eventSubscribers[eventName];
 
     if (!handlers) return;
 
@@ -99,11 +99,11 @@ export let observerMixin = {
    */
 
   notify(eventName, ...args) {
-    if (!this._subscribers || !this._subscribers[eventName]) {
+    if (!this._eventSubscribers || !this._eventSubscribers[eventName]) {
       return;
     }
 
-    this._subscribers[eventName].forEach( subscriber => subscriber.update(args) );
+    this._eventSubscribers[eventName].forEach( subscriber => subscriber.update(args) );
   }
 };
 
