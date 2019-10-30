@@ -1,3 +1,31 @@
+export function setElementPosition(element, position) {
+  element.style.left = position;
+
+  return element;
+}
+
+
+export function setElementTextContent(element, value) {
+  element.textContent = value;
+
+  return element;
+}
+
+
+export function setElementsPosition(elements, positions) {
+  elements.forEach(
+    call(setElementPosition, positions)
+  );
+}
+
+
+export function setElementsTextContent(elements, values) {
+  elements.forEach(
+    call(setElementTextContent, values)
+  );
+}
+
+
 /**
  * A wrapper function, that is used alongwith Array.prototype.forEach method.
  * It calls callback function on each element of the array, passing item
@@ -17,34 +45,6 @@ export function call(callback, values) {
     callback(element, value);
   }
 
-}
-
-
-export function setElementPosition(element, position) {
-  element.style.left = position;
-
-  return element;
-}
-
-
-export function setElementsPosition(elements, positions) {
-  elements.forEach(
-    call(setElementPosition, positions)
-  );
-}
-
-
-export function setElementTextContent(element, value) {
-  element.textContent = value;
-
-  return element;
-}
-
-
-export function setElementsTextContent(elements, values) {
-  elements.forEach(
-    call(setElementTextContent, values)
-  );
 }
 
 
