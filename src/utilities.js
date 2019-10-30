@@ -39,7 +39,7 @@ export function setElementsTextContent(elements, values) {
 
 export function call(callback, values) {
 
-  return function(element, i) {
+  return (element, i) => {
     const value = values[i];
 
     callback(element, value);
