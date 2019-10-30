@@ -79,14 +79,14 @@ export let observerMixin = {
    */
 
   removeSubscriber(eventName, subscriber) {
-    let handlers = this._eventSubscribers && this._eventSubscribers[eventName];
+    let subscribers = this._eventSubscribers && this._eventSubscribers[eventName];
 
-    if (!handlers) return;
+    if (!subscribers) return;
 
-    for (let i = 0; i < handlers.length; i++) {
+    for (let i = 0; i < subscribers.length; i++) {
 
-      if (handlers[i] === subscriber) {
-        handlers.splice(i--, 1);
+      if (subscribers[i] === subscriber) {
+        subscribers.splice(i--, 1);
       }
 
     }
