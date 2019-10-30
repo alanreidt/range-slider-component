@@ -57,10 +57,10 @@ export let observerMixin = {
 
   /**
    * Subscribe to event, usage:
-   *  menu.subscribe("select", object)
+   *  menu.addSubscriber("select", object)
    */
 
-  subscribe(eventName, subscriber) {
+  addSubscriber(eventName, subscriber) {
     if (!this._subscribers) {
       this._subscribers = {};
     }

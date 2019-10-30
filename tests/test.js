@@ -733,8 +733,8 @@ describe("observerMixin", function() {
     let subscriber2 = {};
     let subscribers = [subscriber1, subscriber2];
 
-    publisher.subscribe("change", subscriber1);
-    publisher.subscribe("change", subscriber2);
+    publisher.addSubscriber("change", subscriber1);
+    publisher.addSubscriber("change", subscriber2);
 
     subscribers.forEach( (subscriber, i) => {
       let publisherSubscriber = publisher._subscribers.change[i];
@@ -754,9 +754,9 @@ describe("observerMixin", function() {
     let subscribers = [subscriber1, subscriber2, subscriber3];
     let cuttedSubscribers = [subscriber1, subscriber3];
 
-    publisher.subscribe("change", subscriber1);
-    publisher.subscribe("change", subscriber2);
-    publisher.subscribe("change", subscriber3);
+    publisher.addSubscriber("change", subscriber1);
+    publisher.addSubscriber("change", subscriber2);
+    publisher.addSubscriber("change", subscriber3);
 
     let publisherSubscribers = publisher._subscribers.change;
 
@@ -798,9 +798,9 @@ describe("observerMixin", function() {
     };
     let subscribers = [subscriber1, subscriber2, subscriber3];
 
-    publisher.subscribe("change", subscriber1);
-    publisher.subscribe("change", subscriber2);
-    publisher.subscribe("change", subscriber3);
+    publisher.addSubscriber("change", subscriber1);
+    publisher.addSubscriber("change", subscriber2);
+    publisher.addSubscriber("change", subscriber3);
 
     let publisherSubscribers = publisher._subscribers.change;
 
