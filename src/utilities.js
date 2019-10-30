@@ -57,7 +57,11 @@ export let observerMixin = {
 
   /**
    * Subscribe to event, usage:
-   *  menu.addSubscriber("select", object)
+   *  menu.addSubscriber( "select", function(item) { ... } ),
+   *  menu.addSubscriber( "select", obj.method(item) { ... }.bind(obj) )
+   *
+   * @param {string} eventName The name of an event to listen to.
+   * @param {function} subscriber The subscriber to be triggered on the event.
    */
 
   addSubscriber(eventName, subscriber) {
