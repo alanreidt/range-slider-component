@@ -16,7 +16,7 @@ export class SliderUI {
     if (values && boundaries) {
       let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
 
-      this._updateHandleGroupPositions(positions)
+      this._updateHandleGroups(positions)
       this._updateTooltips(values)
     }
 
@@ -43,7 +43,7 @@ export class SliderUI {
   }
 
 
-  _updateHandleGroupPositions(positions) {
+  _updateHandleGroups(positions) {
     const handleGroups = this._getHandleGroups();
 
     setElementsPosition(handleGroups, positions);
