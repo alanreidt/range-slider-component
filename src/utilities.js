@@ -101,6 +101,9 @@ export let observerMixin = {
   /**
    * Generate an event with the given name and data
    *  this.triggerSubscribers("select", data1, data2);
+   *
+   * @param {string} eventName The name of an event to trigger.
+   * @param {any} arg1...args The data to be passed to subscribers.
    */
 
   triggerSubscribers(eventName, ...args) {
