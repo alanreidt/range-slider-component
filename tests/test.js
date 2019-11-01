@@ -897,8 +897,28 @@ describe("SliderUI", function() {
     describe("shall paint slider structure", function() {
       context("add SLIDER_ORIENTATION_FLAG, when needed", function() {
         it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
+          const parent = document.createElement("div");
+          const sliderUi = new SliderUI(parent);
+
+          sliderUi.paint({
+            orientation: "vertical",
+          });
+
+          const sliderBaseClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
+
+          assert.isTrue( sliderBaseClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
         });
         it("add nothing SLIDER_ORIENTATION_FLAG className, if orientaion is horizontal", function() {
+          const parent = document.createElement("div");
+          const sliderUi = new SliderUI(parent);
+
+          sliderUi.paint({
+            orientation: "horizontal",
+          });
+
+          const sliderBaseClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
+
+          assert.isFalse( sliderBaseClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
         });
       });
     });
