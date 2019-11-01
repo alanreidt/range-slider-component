@@ -47,17 +47,17 @@ export class SliderUI {
   }
 
 
-  _getHandleGroups() {
-    return Array.from(
-      this.parent.querySelectorAll(".slider__handle-group")
-    );
-  }
-
-
   _updateTooltips(values) {
     const tooltips = this._getTooltips();
 
     setElementsTextContent(tooltips, values);
+  }
+
+
+  _getHandleGroups() {
+    return Array.from(
+      this.parent.querySelectorAll(".slider__handle-group")
+    );
   }
 
 
