@@ -894,6 +894,7 @@ describe("setElementsPosition function", function() {
 describe("SliderUI", function() {
 
   describe("paint method", function() {
+    it("shall repaint (refresh) slider structure");
     describe("shall paint slider structure", function() {
       context("add SLIDER_ORIENTATION_FLAG, when needed", function() {
         it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
