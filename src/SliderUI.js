@@ -2,9 +2,8 @@ import {getPositionInPercentageOf, setElementsPosition, setElementsTextContent} 
 
 export class SliderUI {
 
-  constructor(parent, template) {
+  constructor(parent) {
     this.parent = parent;
-    this.template = template;
   }
 
 
