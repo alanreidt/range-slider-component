@@ -20,22 +20,15 @@ export class SliderUI {
 
 
   paint({boundaries, values, step, orientation, hasTooltips} = {}) {
-    // add css name of the slider (change it to unique one)
-    if ( !this.parent.classList.contains("slider") ) {
-      this.parent.classList.add("slider");
-    }
 
-    if (orientation === "vertical") {
-      this.parent.classList.add("slider_vertical");
-    }
-
-    const defaultTemplate = this.template.createDefault({
+    this.parent.innerHTML = this._createTemplate({
       boundaries,
       values,
-      hasTooltips
+      step,
+      orientation,
+      hasTooltips,
     });
 
-    this.parent.innerHTML = defaultTemplate;
   }
 
 
