@@ -892,6 +892,26 @@ describe("setElementsPosition function", function() {
 
 
 describe("SliderUI", function() {
+
+  describe("paint method", function() {
+    describe("shall paint slider structure", function() {
+      describe("add classNames to the parent element", function() {
+        context("add SLIDER_NAME, when needed", function() {
+          it("add SLIDER_NAME className by default", function() {
+          });
+          it("don't double SLIDER_NAME className, if it already exists", function() {
+          });
+        });
+        context("add SLIDER_ORIENTATION_FLAG, when needed", function() {
+          it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
+          });
+          it("don't add SLIDER_ORIENTATION_FLAG className, if orientaion is horizontal", function() {
+          });
+        });
+      });
+    });
+  });
+
 });
 
 
