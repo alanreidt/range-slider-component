@@ -1,7 +1,6 @@
 import {Slider} from "./Slider";
 import {Model} from "./Model";
 import {SliderUI} from "./SliderUI";
-import {Template} from "./Template";
 
 let slider = new Slider({
   values: [0, 100],
@@ -10,8 +9,7 @@ let slider = new Slider({
 let model = new Model(slider);
 
 let sliderElement = document.querySelector(".someUserClass");
-let template = new Template();
-let sliderUi = new SliderUI(sliderElement, template);
+let sliderUi = new SliderUI(sliderElement);
 
 const sliderUiBoundedPaint = sliderUi.paint.bind(sliderUi);
 const sliderUiBoundedUpdate = sliderUi.update.bind(sliderUi);
