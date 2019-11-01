@@ -909,7 +909,7 @@ describe("SliderUI", function() {
 
           assert.isTrue( sliderBaseClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
         });
-        it("add nothing SLIDER_ORIENTATION_FLAG className, if orientaion is horizontal", function() {
+        it("add nothing, if orientaion is horizontal", function() {
           const parent = document.createElement("div");
           const sliderUi = new SliderUI(parent);
 
