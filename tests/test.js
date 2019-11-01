@@ -984,6 +984,21 @@ describe("SliderUI", function() {
           assert.isFalse( parent.contains(`${SLIDER_TOOLTIP_NAME}`) );
         });
       });
+
+      it(`create required quantity of ${SLIDER_HANDLE_GROUP_NAME}s`, function() {
+        const parent = document.createElement("div");
+        const sliderUi = new SliderUI(parent);
+        const options = {
+          boundaries: [0, 100],
+          values: [10, 20, 30],
+        };
+
+        sliderUi.paint(options);
+
+        const handleGroups = parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`);
+
+        assert.equal(options.values.length, handleGroups.length);
+      });
     });
   });
 
