@@ -896,6 +896,36 @@ describe("SliderUI", function() {
   describe("paint method", function() {
     it("shall repaint (refresh) slider structure");
     describe("shall paint slider structure", function() {
+      it("paint static structure correctly", function() {
+        const parent = document.createElement("div");
+        const sliderUi = new SliderUI(parent);
+
+        sliderUi.paint({
+          boundaries: [0, 100],
+          values: [20, 80],
+          step: 1,
+          orientation: "vertical",
+          hasTooltips: true,
+        });
+
+        const expectationStr =
+          `<div class="slider slider_vertical">
+            <div class="slider__base">
+              <div class="slider__handle-group" style="left: 20%">
+                <div class="slider__tooltip">20</div>
+                <div class="slider__handle"></div>
+              </div>
+              <div class="slider__handle-group" style="left: 80%">
+                <div class="slider__tooltip">80</div>
+                <div class="slider__handle"></div>
+              </div>
+            </div>
+          </div>`;
+        const testElement = document.createElement("div");
+        testElement.innerHTML = expectationStr;
+
+        assert.deepEqual(testElement, parent);
+      });
       context("add SLIDER_ORIENTATION_FLAG, when needed", function() {
         it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
           const parent = document.createElement("div");
