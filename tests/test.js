@@ -892,9 +892,15 @@ describe("setElementsPosition function", function() {
 
 
 describe("SliderUI", function() {
+  const SLIDER_NAME = "slider";
+  const SLIDER_ORIENTATION_FLAG = "slider_vertical";
+  const SLIDER_HANDLE_GROUP_NAME = "slider__handle-group";
+  const SLIDER_TOOLTIP_NAME = "slider__tooltip";
+  const SLIDER_HANDLE_NAME = "slider__handle";
 
   describe("paint method", function() {
     it("shall repaint (refresh) slider structure");
+
     describe("shall paint slider structure", function() {
       it("paint static structure correctly", function() {
         const parent = document.createElement("div");
@@ -926,6 +932,7 @@ describe("SliderUI", function() {
 
         assert.deepEqual(testElement, parent);
       });
+
       context("add SLIDER_ORIENTATION_FLAG, when needed", function() {
         it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
           const parent = document.createElement("div");
@@ -939,6 +946,7 @@ describe("SliderUI", function() {
 
           assert.isTrue( sliderBaseClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
         });
+
         it("add nothing, if orientaion is horizontal", function() {
           const parent = document.createElement("div");
           const sliderUi = new SliderUI(parent);
@@ -950,6 +958,30 @@ describe("SliderUI", function() {
           const sliderBaseClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
 
           assert.isFalse( sliderBaseClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
+        });
+      });
+
+      context(`create ${SLIDER_TOOLTIP_NAME} element, when needed`, function() {
+        it(`create ${SLIDER_TOOLTIP_NAME} element, if hasTooltips flag is true`, function() {
+          const parent = document.createElement("div");
+          const sliderUi = new SliderUI(parent);
+
+          sliderUi.paint({
+            hasTooltips: true,
+          });
+
+          assert.isTrue( parent.contains(`${SLIDER_TOOLTIP_NAME}`) );
+        });
+
+        it(`create nothing, if hasTooltips flag is false`, function() {
+          const parent = document.createElement("div");
+          const sliderUi = new SliderUI(parent);
+
+          sliderUi.paint({
+            hasTooltips: false,
+          });
+
+          assert.isFalse( parent.contains(`${SLIDER_TOOLTIP_NAME}`) );
         });
       });
     });
