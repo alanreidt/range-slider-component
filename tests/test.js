@@ -928,6 +928,36 @@ describe("SliderUI", function() {
         });
       });
 
+      context("paint dynamic structure correctly", function() {
+        const parent = document.createElement("div");
+        const sliderUi = new SliderUI(parent);
+        const options = {
+          boundaries: [0, 100],
+          values: [10, 20, 30],
+          hasTooltips: true,
+        };
+
+        sliderUi.paint(options);
+
+        it(`create required quantity of ${SLIDER_HANDLE_GROUP_NAME}s`, function() {
+          const handleGroups = parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`);
+
+          assert.equal(options.values.length, handleGroups.length);
+        });
+
+        it(`create required quantity of ${SLIDER_TOOLTIP_NAME}s`, function() {
+          const tooltips = parent.querySelectorAll(`.${SLIDER_TOOLTIP_NAME}`);
+
+          assert.equal(options.values.length, tooltips.length);
+        });
+
+        it(`create required quantity of ${SLIDER_HANDLE_NAME}s`, function() {
+          const handles = parent.querySelectorAll(`.${SLIDER_HANDLE_NAME}`);
+
+          assert.equal(options.values.length, handles.length);
+        });
+      });
+
       context("add SLIDER_ORIENTATION_FLAG, when needed", function() {
         it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
           const parent = document.createElement("div");
@@ -992,20 +1022,6 @@ describe("SliderUI", function() {
         });
       });
 
-      it(`create required quantity of ${SLIDER_HANDLE_GROUP_NAME}s`, function() {
-        const parent = document.createElement("div");
-        const sliderUi = new SliderUI(parent);
-        const options = {
-          boundaries: [0, 100],
-          values: [10, 20, 30],
-        };
-
-        sliderUi.paint(options);
-
-        const handleGroups = parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`);
-
-        assert.equal(options.values.length, handleGroups.length);
-      });
     });
   });
 
