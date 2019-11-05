@@ -939,6 +939,8 @@ describe("SliderUI", function() {
           const sliderUi = new SliderUI(parent);
 
           sliderUi.paint({
+            boundaries: [0, 100],
+            values: [0, 100],
             orientation: "vertical",
           });
 
@@ -952,6 +954,8 @@ describe("SliderUI", function() {
           const sliderUi = new SliderUI(parent);
 
           sliderUi.paint({
+            boundaries: [0, 100],
+            values: [0, 100],
             orientation: "horizontal",
           });
 
