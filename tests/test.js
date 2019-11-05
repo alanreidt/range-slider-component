@@ -944,9 +944,9 @@ describe("SliderUI", function() {
             orientation: "vertical",
           });
 
-          const sliderBaseClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
+          const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
 
-          assert.isTrue( sliderBaseClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
+          assert.isTrue( sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
         });
 
         it("add nothing, if orientaion is horizontal", function() {
@@ -959,9 +959,9 @@ describe("SliderUI", function() {
             orientation: "horizontal",
           });
 
-          const sliderBaseClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
+          const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
 
-          assert.isFalse( sliderBaseClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
+          assert.isFalse( sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
         });
       });
 
