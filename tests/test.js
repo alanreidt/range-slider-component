@@ -893,6 +893,7 @@ describe("setElementsPosition function", function() {
 
 describe("SliderUI", function() {
   const SLIDER_NAME = "slider";
+  const SLIDER_BASE_NAME = "slider__base";
   const SLIDER_ORIENTATION_FLAG = "slider_vertical";
   const SLIDER_HANDLE_GROUP_NAME = "slider__handle-group";
   const SLIDER_TOOLTIP_NAME = "slider__tooltip";
@@ -902,7 +903,7 @@ describe("SliderUI", function() {
     it("shall repaint (refresh) slider structure");
 
     describe("shall paint slider structure", function() {
-      it("paint static structure correctly", function() {
+      context("paint static structure correctly", function() {
         const parent = document.createElement("div");
         const sliderUi = new SliderUI(parent);
 
@@ -914,23 +915,17 @@ describe("SliderUI", function() {
           hasTooltips: true,
         });
 
-        const expectationStr =
-          `<div class="slider slider_vertical">
-            <div class="slider__base">
-              <div class="slider__handle-group" style="left: 20%">
-                <div class="slider__tooltip">20</div>
-                <div class="slider__handle"></div>
-              </div>
-              <div class="slider__handle-group" style="left: 80%">
-                <div class="slider__tooltip">80</div>
-                <div class="slider__handle"></div>
-              </div>
-            </div>
-          </div>`;
-        const testElement = document.createElement("div");
-        testElement.innerHTML = expectationStr;
+        it(`create ${SLIDER_NAME} element`, function() {
+          const slider = parent.querySelector(`.${SLIDER_NAME}`);
 
-        assert.deepEqual(testElement, parent);
+          assert.isNotNull( slider );
+        });
+
+        it(`create ${SLIDER_BASE_NAME} element`, function() {
+          const sliderBase = parent.querySelector(`.${SLIDER_BASE_NAME}`);
+
+          assert.isNotNull( sliderBase );
+        });
       });
 
       context("add SLIDER_ORIENTATION_FLAG, when needed", function() {
