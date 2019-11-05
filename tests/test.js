@@ -971,10 +971,14 @@ describe("SliderUI", function() {
           const sliderUi = new SliderUI(parent);
 
           sliderUi.paint({
+            boundaries: [0, 100],
+            values: [0, 100],
             hasTooltips: true,
           });
 
-          assert.isTrue( parent.contains(`${SLIDER_TOOLTIP_NAME}`) );
+          const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+
+          assert.isNotNull( sliderTooltips );
         });
 
         it(`create nothing, if hasTooltips flag is false`, function() {
@@ -982,10 +986,14 @@ describe("SliderUI", function() {
           const sliderUi = new SliderUI(parent);
 
           sliderUi.paint({
+            boundaries: [0, 100],
+            values: [0, 100],
             hasTooltips: false,
           });
 
-          assert.isFalse( parent.contains(`${SLIDER_TOOLTIP_NAME}`) );
+          const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+
+          assert.isNull( sliderTooltips );
         });
       });
 
