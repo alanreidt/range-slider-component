@@ -900,7 +900,6 @@ describe("SliderUI", function() {
   const SLIDER_HANDLE_NAME = "slider__handle";
 
   describe("paint method", function() {
-    it("shall repaint (refresh) slider structure");
 
     describe("shall paint slider structure", function() {
       context("paint static structure correctly", function() {
@@ -1023,6 +1022,37 @@ describe("SliderUI", function() {
       });
 
     });
+
+
+    context("shall repaint (refresh) slider structure", function() {
+      const parent = document.createElement("div");
+      const sliderUi = new SliderUI(parent);
+
+      sliderUi.paint({
+        boundaries: [0, 100],
+        values: [20, 80],
+        step: 1,
+        orientation: "vertical",
+        hasTooltips: true,
+      });
+
+      const slider = parent.querySelector(`.${SLIDER_NAME}`);
+
+      it("slider and repainted slider (with the same values) are not equal", function() {
+        sliderUi.paint({
+          boundaries: [0, 100],
+          values: [20, 80],
+          step: 1,
+          orientation: "vertical",
+          hasTooltips: true,
+        });
+
+        const sliderRepainted = parent.querySelector(`.${SLIDER_NAME}`);
+
+        assert.notEqual(slider, sliderRepainted);
+      });
+    });
+
   });
 
 });
