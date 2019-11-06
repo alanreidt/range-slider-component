@@ -1023,7 +1023,6 @@ describe("SliderUI", function() {
 
     });
 
-
     context("shall repaint (refresh) slider structure", function() {
       const parent = document.createElement("div");
       const sliderUi = new SliderUI(parent);
@@ -1053,6 +1052,45 @@ describe("SliderUI", function() {
       });
     });
 
+  });
+
+
+  describe("update method", function() {
+    it("shall set values", function() {
+    });
+
+    describe("shall update values", function() {
+      const parent = document.createElement("div");
+      const sliderUi = new SliderUI(parent);
+      const newValues = [10, 60];
+
+      sliderUi.paint({
+        boundaries: [0, 100],
+        values: [20, 80],
+        step: 1,
+        orientation: "vertical",
+        hasTooltips: true,
+      });
+
+      sliderUi.update({
+        boundaries: [0, 100],
+        newValues,
+      });
+
+      context(`${SLIDER_HANDLE_GROUP_NAME}s are updated`, function() {
+        const handleGroups = Array.from( parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`) );
+
+        handleGroups.forEach( (handleGroup, i) => {
+          const value = newValues[i];
+          const regexp = new RegExp(`${value}`);
+          const handleGroupStyle = handleGroup.getAttribute("style");
+
+          it(`${SLIDER_HANDLE_GROUP_NAME}${i + 1} equals to ${value}`, function() {
+            assert.isNotNull( handleGroupStyle.match(regexp) );
+          });
+        });
+      });
+    });
   });
 
 });
