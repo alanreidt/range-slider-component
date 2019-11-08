@@ -25,7 +25,7 @@ export class SliderUI {
 
 
   _paint({boundaries, values, step, orientation, hasTooltips} = {}) {
-    this.parent.innerHTML = this._createTemplate({
+    this.$parent.innerHTML = this._createTemplate({
       boundaries,
       values,
       step,
@@ -68,14 +68,14 @@ export class SliderUI {
 
   _getHandleGroups() {
     return Array.from(
-      this.parent.querySelectorAll(".slider__handle-group")
+      this.$parent.querySelectorAll(".slider__handle-group")
     );
   }
 
 
   _getTooltips() {
     return Array.from(
-      this.parent.querySelectorAll(".slider__tooltip")
+      this.$parent.querySelectorAll(".slider__tooltip")
     );
   }
 
