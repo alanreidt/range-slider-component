@@ -8,6 +8,7 @@ export class SliderUI {
 
     this._paint( model.getValues() );
     this.$handleGroups = this._getHandleGroups();
+    this.$tooltips = this._getTooltips();
   }
 
 
@@ -61,8 +62,6 @@ export class SliderUI {
 
 
   _updateTooltips(values) {
-    const tooltips = this._getTooltips();
-
     setElementsTextContent(tooltips, values);
   }
 
