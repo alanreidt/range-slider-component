@@ -5,6 +5,8 @@ export class SliderUI {
   constructor(parent, model) {
     this.parent = parent;
     this.model = model;
+
+    this.paint( model.getValues() );
   }
 
 
