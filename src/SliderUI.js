@@ -7,6 +7,7 @@ export class SliderUI {
     this.model = model;
 
     this._paint( model.getValues() );
+    this.$handleGroups = this._getHandleGroups();
   }
 
 
@@ -55,8 +56,6 @@ export class SliderUI {
 
 
   _updateHandleGroups(positions) {
-    const handleGroups = this._getHandleGroups();
-
     setElementsPosition(handleGroups, positions);
   }
 
