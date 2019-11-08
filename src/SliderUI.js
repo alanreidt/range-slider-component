@@ -6,7 +6,7 @@ export class SliderUI {
     this.parent = parent;
     this.model = model;
 
-    this.paint( model.getValues() );
+    this._paint( model.getValues() );
   }
 
 
@@ -22,7 +22,7 @@ export class SliderUI {
   }
 
 
-  paint({boundaries, values, step, orientation, hasTooltips} = {}) {
+  _paint({boundaries, values, step, orientation, hasTooltips} = {}) {
     this.parent.innerHTML = this._createTemplate({
       boundaries,
       values,
