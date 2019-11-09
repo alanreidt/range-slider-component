@@ -900,23 +900,26 @@ describe("SliderUI", function() {
   const SLIDER_HANDLE_NAME = "slider__handle";
 
   describe("constructor", function() {
+    const options = {
+      boundaries: [0, 100],
+      values: [20, 80],
+      step: 1,
+      orientation: "vertical",
+      hasTooltips: true,
+    };
+    const model = {
+      _options: options,
+      getValues() {
+        return this._options;
+      }
+    };
+    let $parent;
 
     describe("shall paint slider structure", function() {
-      const $parent = document.createElement("div");
-      const options = {
-        boundaries: [0, 100],
-        values: [20, 80],
-        step: 1,
-        orientation: "vertical",
-        hasTooltips: true,
-      };
-      const model = {
-        _options: options,
-        getValues() {
-          return this._options;
-        }
-      };
-      const sliderUi = new SliderUI($parent, model);
+      beforeEach(function() {
+        $parent = document.createElement("div");
+        new SliderUI($parent, model);
+      });
 
       context("paint static structure correctly", function() {
 
