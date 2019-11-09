@@ -902,22 +902,23 @@ describe("SliderUI", function() {
   describe("paint method", function() {
 
     describe("shall paint slider structure", function() {
+      const $parent = document.createElement("div");
+      const options = {
+        boundaries: [0, 100],
+        values: [20, 80],
+        step: 1,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const model = {
+        _options: options,
+        getValues() {
+          return this._options;
+        }
+      };
+      const sliderUi = new SliderUI($parent, model);
+
       context("paint static structure correctly", function() {
-        const $parent = document.createElement("div");
-        const options = {
-          boundaries: [0, 100],
-          values: [20, 80],
-          step: 1,
-          orientation: "vertical",
-          hasTooltips: true,
-        };
-        const model = {
-          _options: options,
-          getValues() {
-            return this._options;
-          }
-        };
-        const sliderUi = new SliderUI($parent, model);
 
         it(`create ${SLIDER_NAME} element`, function() {
           const slider = $parent.querySelector(`.${SLIDER_NAME}`);
@@ -933,22 +934,6 @@ describe("SliderUI", function() {
       });
 
       context("paint dynamic structure correctly", function() {
-        const $parent = document.createElement("div");
-        const options = {
-          boundaries: [0, 100],
-          values: [20, 80],
-          step: 1,
-          orientation: "vertical",
-          hasTooltips: true,
-        };
-        const model = {
-          _options: options,
-          getValues() {
-            return this._options;
-          }
-        };
-        const sliderUi = new SliderUI($parent, model);
-
         const requiredQuantity = options.values.length;
 
         it(`create ${requiredQuantity} ${SLIDER_HANDLE_GROUP_NAME} elements`, function() {
