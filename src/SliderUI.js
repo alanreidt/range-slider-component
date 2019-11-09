@@ -7,8 +7,6 @@ export class SliderUI {
     this.model = model;
 
     this._paint( model.getValues() );
-    this.$handleGroups = this._getHandleGroups();
-    this.$tooltips = this._getTooltips();
   }
 
 
@@ -32,6 +30,9 @@ export class SliderUI {
       orientation,
       hasTooltips,
     });
+
+    this.$handleGroups = this._getHandleGroups();
+    this.$tooltips = this._getTooltips();
 
     this.update({boundaries, values});
   }
