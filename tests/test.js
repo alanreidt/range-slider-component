@@ -899,7 +899,7 @@ describe("SliderUI", function() {
   const SLIDER_TOOLTIP_NAME = "slider__tooltip";
   const SLIDER_HANDLE_NAME = "slider__handle";
 
-  describe("paint method", function() {
+  describe("constructor", function() {
 
     describe("shall paint slider structure", function() {
       const $parent = document.createElement("div");
