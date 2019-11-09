@@ -957,45 +957,33 @@ describe("SliderUI", function() {
     });
 
     describe(`shall add ${SLIDER_ORIENTATION_FLAG}, when needed`, function() {
-      it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
-        const $parent = document.createElement("div");
-        const options = {
-          boundaries: [0, 100],
-          values: [20, 80],
-          step: 1,
-          orientation: "vertical",
-          hasTooltips: true,
-        };
-        const model = {
-          _options: options,
-          getValues() {
-            return this._options;
-          }
-        };
-        const sliderUi = new SliderUI($parent, model);
+      const $parent = document.createElement("div");
+      const options = {
+        boundaries: [0, 100],
+        values: [20, 80],
+        step: 1,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const model = {
+        _options: options,
+        getValues() {
+          return this._options;
+        }
+      };
 
+      it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
+        const sliderUi = new SliderUI($parent, model);
         const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`).classList;
 
         assert.isTrue( sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
       });
 
       it("add nothing, if orientaion is horizontal", function() {
-        const $parent = document.createElement("div");
-        const options = {
-          boundaries: [0, 100],
-          values: [20, 80],
-          step: 1,
+        Object.assign(options, {
           orientation: "horizontal",
-          hasTooltips: true,
-        };
-        const model = {
-          _options: options,
-          getValues() {
-            return this._options;
-          }
-        };
+        });
         const sliderUi = new SliderUI($parent, model);
-
         const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`).classList;
 
         assert.isFalse( sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
