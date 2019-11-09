@@ -57,7 +57,7 @@ export class SliderUI {
 
 
   _updateHandleGroups(positions) {
-    setElementsPosition(handleGroups, positions);
+    setElementsPosition(this.$handleGroups, positions);
   }
 
 
