@@ -972,7 +972,7 @@ describe("SliderUI", function() {
         }
       };
 
-      it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
+      it(`add ${SLIDER_ORIENTATION_FLAG} className, if orientation is vertical`, function() {
         const sliderUi = new SliderUI($parent, model);
         const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`).classList;
 
