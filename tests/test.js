@@ -1057,8 +1057,7 @@ describe("SliderUI", function() {
 
 
   describe("update method", function() {
-    const parent = document.createElement("div");
-    const sliderUi = new SliderUI(parent);
+    const $parent = document.createElement("div");
     const options = {
       boundaries: [0, 100],
       values: [20, 80],
@@ -1066,13 +1065,18 @@ describe("SliderUI", function() {
       orientation: "vertical",
       hasTooltips: true,
     };
-
-    sliderUi.paint(options);
+    const model = {
+      _options: options,
+      getValues() {
+        return this._options;
+      }
+    };
+    const sliderUi = new SliderUI($parent, model);
 
     describe("shall set values", function() {
 
       context(`${SLIDER_HANDLE_GROUP_NAME}s are set`, function() {
-        const handleGroups = Array.from( parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`) );
+        const handleGroups = Array.from( $parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`) );
 
         handleGroups.forEach( (handleGroup, i) => {
           const value = options.values[i];
@@ -1096,7 +1100,7 @@ describe("SliderUI", function() {
       });
 
       context(`${SLIDER_HANDLE_GROUP_NAME}s are updated`, function() {
-        const handleGroups = Array.from( parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`) );
+        const handleGroups = Array.from( $parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`) );
 
         handleGroups.forEach( (handleGroup, i) => {
           const value = newValues[i];
