@@ -933,32 +933,40 @@ describe("SliderUI", function() {
       });
 
       context("paint dynamic structure correctly", function() {
-        const parent = document.createElement("div");
-        const sliderUi = new SliderUI(parent);
+        const $parent = document.createElement("div");
         const options = {
           boundaries: [0, 100],
-          values: [10, 20, 30],
+          values: [20, 80],
+          step: 1,
+          orientation: "vertical",
           hasTooltips: true,
         };
+        const model = {
+          _options: options,
+          getValues() {
+            return this._options;
+          }
+        };
+        const sliderUi = new SliderUI($parent, model);
 
-        sliderUi.paint(options);
+        const requiredQuantity = options.values.length;
 
-        it(`create required quantity of ${SLIDER_HANDLE_GROUP_NAME}s`, function() {
-          const handleGroups = parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`);
+        it(`create ${requiredQuantity} ${SLIDER_HANDLE_GROUP_NAME} elements`, function() {
+          const handleGroups = $parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`);
 
-          assert.equal(options.values.length, handleGroups.length);
+          assert.equal(requiredQuantity, handleGroups.length);
         });
 
-        it(`create required quantity of ${SLIDER_TOOLTIP_NAME}s`, function() {
-          const tooltips = parent.querySelectorAll(`.${SLIDER_TOOLTIP_NAME}`);
+        it(`create ${requiredQuantity} ${SLIDER_TOOLTIP_NAME} elements`, function() {
+          const tooltips = $parent.querySelectorAll(`.${SLIDER_TOOLTIP_NAME}`);
 
-          assert.equal(options.values.length, tooltips.length);
+          assert.equal(requiredQuantity, tooltips.length);
         });
 
-        it(`create required quantity of ${SLIDER_HANDLE_NAME}s`, function() {
-          const handles = parent.querySelectorAll(`.${SLIDER_HANDLE_NAME}`);
+        it(`create ${requiredQuantity} ${SLIDER_HANDLE_NAME} elements`, function() {
+          const handles = $parent.querySelectorAll(`.${SLIDER_HANDLE_NAME}`);
 
-          assert.equal(options.values.length, handles.length);
+          assert.equal(requiredQuantity, handles.length);
         });
       });
 
