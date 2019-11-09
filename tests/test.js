@@ -969,72 +969,72 @@ describe("SliderUI", function() {
           assert.equal(requiredQuantity, handles.length);
         });
       });
-
-      context("add SLIDER_ORIENTATION_FLAG, when needed", function() {
-        it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
-          const parent = document.createElement("div");
-          const sliderUi = new SliderUI(parent);
-
-          sliderUi.paint({
-            boundaries: [0, 100],
-            values: [0, 100],
-            orientation: "vertical",
-          });
-
-          const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
-
-          assert.isTrue( sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
-        });
-
-        it("add nothing, if orientaion is horizontal", function() {
-          const parent = document.createElement("div");
-          const sliderUi = new SliderUI(parent);
-
-          sliderUi.paint({
-            boundaries: [0, 100],
-            values: [0, 100],
-            orientation: "horizontal",
-          });
-
-          const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
-
-          assert.isFalse( sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
-        });
-      });
-
-      context(`create ${SLIDER_TOOLTIP_NAME} element, when needed`, function() {
-        it(`create ${SLIDER_TOOLTIP_NAME} element, if hasTooltips flag is true`, function() {
-          const parent = document.createElement("div");
-          const sliderUi = new SliderUI(parent);
-
-          sliderUi.paint({
-            boundaries: [0, 100],
-            values: [0, 100],
-            hasTooltips: true,
-          });
-
-          const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
-
-          assert.isNotNull( sliderTooltips );
-        });
-
-        it(`create nothing, if hasTooltips flag is false`, function() {
-          const parent = document.createElement("div");
-          const sliderUi = new SliderUI(parent);
-
-          sliderUi.paint({
-            boundaries: [0, 100],
-            values: [0, 100],
-            hasTooltips: false,
-          });
-
-          const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
-
-          assert.isNull( sliderTooltips );
-        });
-      });
-
     });
+
+    describe(`shall add ${SLIDER_ORIENTATION_FLAG}, when needed`, function() {
+      it("add SLIDER_ORIENTATION_FLAG className, if orientation is vertical", function() {
+        const parent = document.createElement("div");
+        const sliderUi = new SliderUI(parent);
+
+        sliderUi.paint({
+          boundaries: [0, 100],
+          values: [0, 100],
+          orientation: "vertical",
+        });
+
+        const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
+
+        assert.isTrue( sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
+      });
+
+      it("add nothing, if orientaion is horizontal", function() {
+        const parent = document.createElement("div");
+        const sliderUi = new SliderUI(parent);
+
+        sliderUi.paint({
+          boundaries: [0, 100],
+          values: [0, 100],
+          orientation: "horizontal",
+        });
+
+        const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`).classList;
+
+        assert.isFalse( sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`) );
+      });
+    });
+
+    describe(`shall create ${SLIDER_TOOLTIP_NAME} element, when needed`, function() {
+      it(`create ${SLIDER_TOOLTIP_NAME} element, if hasTooltips flag is true`, function() {
+        const parent = document.createElement("div");
+        const sliderUi = new SliderUI(parent);
+
+        sliderUi.paint({
+          boundaries: [0, 100],
+          values: [0, 100],
+          hasTooltips: true,
+        });
+
+        const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+
+        assert.isNotNull( sliderTooltips );
+      });
+
+      it(`create nothing, if hasTooltips flag is false`, function() {
+        const parent = document.createElement("div");
+        const sliderUi = new SliderUI(parent);
+
+        sliderUi.paint({
+          boundaries: [0, 100],
+          values: [0, 100],
+          hasTooltips: false,
+        });
+
+        const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+
+        assert.isNull( sliderTooltips );
+      });
+    });
+
 
     context("shall repaint (refresh) slider structure", function() {
       const parent = document.createElement("div");
