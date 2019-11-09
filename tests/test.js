@@ -991,32 +991,34 @@ describe("SliderUI", function() {
     });
 
     describe(`shall create ${SLIDER_TOOLTIP_NAME} element, when needed`, function() {
+      const $parent = document.createElement("div");
+      const options = {
+        boundaries: [0, 100],
+        values: [20, 80],
+        step: 1,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const model = {
+        _options: options,
+        getValues() {
+          return this._options;
+        }
+      };
+
       it(`create ${SLIDER_TOOLTIP_NAME} element, if hasTooltips flag is true`, function() {
-        const parent = document.createElement("div");
-        const sliderUi = new SliderUI(parent);
-
-        sliderUi.paint({
-          boundaries: [0, 100],
-          values: [0, 100],
-          hasTooltips: true,
-        });
-
-        const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+        const sliderUi = new SliderUI($parent, model);
+        const sliderTooltips = $parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
 
         assert.isNotNull( sliderTooltips );
       });
 
       it(`create nothing, if hasTooltips flag is false`, function() {
-        const parent = document.createElement("div");
-        const sliderUi = new SliderUI(parent);
-
-        sliderUi.paint({
-          boundaries: [0, 100],
-          values: [0, 100],
+        Object.assign(options, {
           hasTooltips: false,
         });
-
-        const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+        const sliderUi = new SliderUI($parent, model);
+        const sliderTooltips = $parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
 
         assert.isNull( sliderTooltips );
       });
