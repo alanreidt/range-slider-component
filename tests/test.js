@@ -1026,31 +1026,30 @@ describe("SliderUI", function() {
 
 
     context("shall repaint (refresh) slider structure", function() {
-      const parent = document.createElement("div");
-      const sliderUi = new SliderUI(parent);
-
-      sliderUi.paint({
+      const $parent = document.createElement("div");
+      const options = {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
         orientation: "vertical",
         hasTooltips: true,
-      });
+      };
+      const model = {
+        _options: options,
+        getValues() {
+          return this._options;
+        }
+      };
+      const sliderUi = new SliderUI($parent, model);
 
-      const slider = parent.querySelector(`.${SLIDER_NAME}`);
+      const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
 
       it("slider and repainted slider (with the same values) are not equal", function() {
-        sliderUi.paint({
-          boundaries: [0, 100],
-          values: [20, 80],
-          step: 1,
-          orientation: "vertical",
-          hasTooltips: true,
-        });
+        const newSliderUi = new SliderUI($parent, model);
 
-        const sliderRepainted = parent.querySelector(`.${SLIDER_NAME}`);
+        const $newSlider = $parent.querySelector(`.${SLIDER_NAME}`);
 
-        assert.notEqual(slider, sliderRepainted);
+        assert.notEqual($slider, $newSlider);
       });
     });
 
