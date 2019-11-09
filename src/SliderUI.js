@@ -62,7 +62,7 @@ export class SliderUI {
 
 
   _updateTooltips(values) {
-    setElementsTextContent(tooltips, values);
+    setElementsTextContent(this.$tooltips, values);
   }
 
 
