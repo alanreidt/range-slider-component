@@ -9,7 +9,7 @@ export class Model {
     return this.dataSource.getValues();
   }
 
-  setValues(options) {
+  update(options) {
     const newOptions = this.dataSource.setValues(options);
 
     this.triggerSubscribers("update", newOptions);
