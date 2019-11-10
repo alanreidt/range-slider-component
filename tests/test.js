@@ -1126,7 +1126,7 @@ describe("SliderUI", function() {
 describe("Model", function() {
   describe("shall organize access to the dataSource", function() {
 
-    describe("changes values of the dataSource", function() {
+    describe("update values of the dataSource", function() {
       let newValues = {
         boundaries: [100, 500],
         step: 20,
@@ -1142,7 +1142,7 @@ describe("Model", function() {
       let slider = new Slider();
       let model = new Model(slider);
 
-      model.setValues(newValues);
+      model.update(newValues);
 
       for (let key in expectations) {
 
