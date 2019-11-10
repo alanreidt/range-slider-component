@@ -90,4 +90,14 @@ export class SliderUI {
     this.$base.addEventListener("click", _triggerModel);
   }
 
+
+  _triggerModel(event) {
+    const sliderWidth = this.$slider.getBoundingClientRect().width;
+    const position = event.clientX - this.$slider.getBoundingClientRect().left;
+    const proportion = position / sliderWidth * 100;
+    const value = this._calcValue(proportion);
+
+    this.model.update({values: value});
+  }
+
 }
