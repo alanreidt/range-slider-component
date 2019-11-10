@@ -1,4 +1,4 @@
-import {getPositionInPercentageOf, setElementsPosition, setElementsTextContent} from "./utilities";
+import {getPositionInPercentageOf, translateProportionIntoValue, setElementsPosition, setElementsTextContent} from "./utilities";
 
 export class SliderUI {
 
