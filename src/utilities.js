@@ -146,6 +146,22 @@ export function getPositionInPercentageOf(value, range) {
 }
 
 
+export function translateProportionIntoValue(proportion, range) {
+  [start, end] = range;
+
+  if (start > end) {
+    [start, end] = [end, start];
+  }
+
+  const difference = end - start;
+
+  proportion = proportion / 100;
+
+  return difference * proportion;
+}
+
+
+
 /**
  * Defines whether value is between start and end or not.
  *
