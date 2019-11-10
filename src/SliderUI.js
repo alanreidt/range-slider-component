@@ -6,7 +6,7 @@ export class SliderUI {
     this.$parent = $parent;
     this.model = model;
 
-    this._paint( model.getValues() );
+    this._paint( model.getOptions() );
   }
 
 
@@ -108,7 +108,7 @@ export class SliderUI {
 
 
   _calcValue(proportion) {
-    const {boundaries} = this.model.getValues();
+    const {boundaries} = this.model.getOptions();
 
     return translateProportionIntoValue(proportion, boundaries);
   }
