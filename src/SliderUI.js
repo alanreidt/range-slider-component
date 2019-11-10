@@ -36,6 +36,7 @@ export class SliderUI {
     this.$tooltips = this._getTooltips();
 
     this.update({boundaries, values});
+    this._addEventListeners();
   }
 
 
@@ -79,6 +80,14 @@ export class SliderUI {
     return Array.from(
       this.$parent.querySelectorAll(".slider__tooltip")
     );
+  }
+
+
+  _addEventListeners() {
+    this.$handleGroups.forEach( ($handleGroup) => {
+      $handleGroup.addEventListener("mousedown", _onMouseDown);
+    });
+    this.$base.addEventListener("click", _triggerModel);
   }
 
 }
