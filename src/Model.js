@@ -5,7 +5,7 @@ export class Model {
     this.dataSource = dataSource;
   }
 
-  getValues() {
+  getOptions() {
     return this.dataSource.getValues();
   }
 
