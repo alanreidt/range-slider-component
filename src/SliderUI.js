@@ -86,9 +86,9 @@ export class SliderUI {
 
   _addEventListeners() {
     this.$handleGroups.forEach( ($handleGroup) => {
-      $handleGroup.addEventListener("mousedown", this._onMouseDown);
+      $handleGroup.onmousedown = this._onMouseDown.bind(this);
     });
-    this.$base.addEventListener("click", this._triggerModel);
+    this.$base.onclick = this._triggerModel.bind(this);
   }
 
 
