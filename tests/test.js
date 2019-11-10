@@ -1164,7 +1164,7 @@ describe("Model", function() {
       let slider = new Slider();
       let model = new Model(slider);
 
-      let sliderValues = model.getValues();
+      let sliderValues = model.getOptions();
 
       for (let key in expectations) {
 
