@@ -132,4 +132,13 @@ export class Slider {
     };
 
   }
+
+  setValues(options) {
+    for ( let key of Object.keys(options) ) {
+      this[key] = options[key];
+    }
+
+    return this.getValues();
+  }
+
 }
