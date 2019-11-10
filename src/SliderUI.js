@@ -92,6 +92,11 @@ export class SliderUI {
   }
 
 
+  _onMouseDown() {
+    console.log("onMouseDown: I'm fine");
+  }
+
+
   _triggerModel(event) {
     const sliderWidth = this.$slider.getBoundingClientRect().width;
     const position = event.clientX - this.$slider.getBoundingClientRect().left;
