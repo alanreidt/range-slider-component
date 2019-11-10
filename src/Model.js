@@ -9,12 +9,10 @@ export class Model {
     return this.dataSource.getValues();
   }
 
-  setValues(values = {}) {
+  setValues(options) {
+    const newOptions = this.dataSource.setValues(options);
 
-    for (let key in values) {
-      this.dataSource[key] = values[key];
-    }
-
+    this.triggerSubscribers("update", newOptions);
   }
 }
 
