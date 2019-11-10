@@ -911,7 +911,7 @@ describe("SliderUI", function() {
       };
       const model = {
         _options: options,
-        getValues() {
+        getOptions() {
           return this._options;
         }
       };
@@ -971,7 +971,7 @@ describe("SliderUI", function() {
       };
       const model = {
         _options: options,
-        getValues() {
+        getOptions() {
           return this._options;
         }
       };
@@ -1005,7 +1005,7 @@ describe("SliderUI", function() {
       };
       const model = {
         _options: options,
-        getValues() {
+        getOptions() {
           return this._options;
         }
       };
@@ -1040,7 +1040,7 @@ describe("SliderUI", function() {
       };
       const model = {
         _options: options,
-        getValues() {
+        getOptions() {
           return this._options;
         }
       };
@@ -1071,7 +1071,7 @@ describe("SliderUI", function() {
     };
     const model = {
       _options: options,
-      getValues() {
+      getOptions() {
         return this._options;
       }
     };
