@@ -101,4 +101,11 @@ export class SliderUI {
     this.model.update({values: value});
   }
 
+
+  _calcValue(proportion) {
+    const {boundaries} = this.model.getValues();
+
+    return translateProportionIntoValue(proportion, boundaries);
+  }
+
 }
