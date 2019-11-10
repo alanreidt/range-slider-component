@@ -88,7 +88,7 @@ export class SliderUI {
     this.$handleGroups.forEach( ($handleGroup) => {
       $handleGroup.onmousedown = this._onMouseDown.bind(this);
     });
-    this.$base.onclick = this._triggerModel.bind(this);
+    this.$base.onmousedown = this._triggerModel.bind(this);
   }
 
 
