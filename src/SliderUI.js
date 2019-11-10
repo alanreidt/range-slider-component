@@ -31,6 +31,7 @@ export class SliderUI {
       hasTooltips,
     });
 
+    this.$slider = this.$parent.querySelector(".slider");
     this.$base = this.$parent.querySelector(".slider__base");
     this.$handleGroups = this._getHandleGroups();
     this.$tooltips = this._getTooltips();
