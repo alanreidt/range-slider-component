@@ -147,7 +147,7 @@ export function getPositionInPercentageOf(value, range) {
 
 
 export function translateProportionIntoValue(proportion, range) {
-  [start, end] = range;
+  let [start, end] = range;
 
   if (start > end) {
     [start, end] = [end, start];
