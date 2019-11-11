@@ -98,6 +98,7 @@ export class SliderUI {
 
 
   _triggerModel(event) {
+    event.preventDefault();
     const sliderWidth = this.$slider.getBoundingClientRect().width;
     const position = event.clientX - this.$slider.getBoundingClientRect().left;
     const proportion = position / sliderWidth * 100;
