@@ -1134,7 +1134,7 @@ describe("Model", function() {
       };
       let expectations = {
         boundaries: [100, 500],
-        values: 300,
+        values: [300],
         step: 20,
         orientation: "horizontal",
         hasTooltips: true,
@@ -1156,7 +1156,7 @@ describe("Model", function() {
     describe("returns values of the dataSource", function() {
       let expectations = {
         boundaries: [0, 100],
-        values: 50,
+        values: [50],
         step: 1,
         orientation: "horizontal",
         hasTooltips: false,
