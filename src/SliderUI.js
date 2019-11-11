@@ -101,6 +101,12 @@ export class SliderUI {
   }
 
 
+  _onMouseUp() {
+    document.removeEventListener("mouseup", this._onMouseUpBound);
+    document.removeEventListener("mousemove", this._triggerModelBound);
+  }
+
+
   _triggerModel(event) {
     event.preventDefault();
     const sliderWidth = this.$slider.getBoundingClientRect().width;
