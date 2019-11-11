@@ -59,12 +59,13 @@ export class Slider {
     return this._options.values || Array.of( getAverageOf(this._options.boundaries) );
   }
   set values(values) {
-    let arrOfValues = [].concat(values);
+    const currentValues = this._options.values && this._options.values.slice();
+    let newValues = [].concat(values);
     let filteredArr = [];
     let step = this._options.step;
     let [start, end] = this._options.boundaries;
 
-    arrOfValues.sort( (a, b) => a - b ).forEach(value => {
+    newValues.sort( (a, b) => a - b ).forEach(value => {
       let filteredValue = parseFloat(value);
 
       filteredValue = ( isValueBetween(filteredValue, start, end) ) ?
@@ -79,6 +80,24 @@ export class Slider {
     filteredArr = filteredArr.filter( (item, i, filteredArr) => item !== filteredArr[i + 1] );
 
     if (!filteredArr.length) return;
+
+    if (!currentValues || filteredArr.length === currentValues.length) {
+      this._options.values = filteredArr;
+      return;
+    }
+
+    if (filteredArr.length > currentValues.length) {
+      filteredArr.length = currentValues.length;
+    } else {
+      filteredArr.forEach( (item) => {
+        const closestValue = getNearestTo(item, ...currentValues);
+        const closestValuePosition = currentValues.indexOf(closestValue);
+
+        currentValues.splice(closestValuePosition, 1, item);
+      });
+
+      filteredArr = currentValues;
+    }
 
     this._options.values = filteredArr;
   }
