@@ -21,14 +21,17 @@ import {Slider} from "../../../src/Slider";
 export function reassignment() {
 
   describe("shall change values, if correct one is passed", function() {
-    let options = [
-      {boundaries: [100, 500],
+    let options = [{
+      boundaries: [100, 500],
       values: 180,
       step: 20,
       orientation: "vertical",
-      hasTooltips: true},
-    ];
-    let expectations = options;
+      hasTooltips: true,
+    }];
+    let expectations = [{
+      ...options[0],
+      values: [180]
+    }];
     let Class = Slider;
     let testOptions = {Class, options, expectations};
 
@@ -37,20 +40,20 @@ export function reassignment() {
 
 
   describe("shall not change values, if incorrect one is passed", function() {
-    let options = [
-      {boundaries: [true, false],
+    let options = [{
+      boundaries: [true, false],
       values: false,
       step: "two",
       orientation: 100,
-      hasTooltips: 2},
-    ];
-    let expectations = [
-      {boundaries: [0, 100],
-      values: 50,
+      hasTooltips: 2,
+    }];
+    let expectations = [{
+      boundaries: [0, 100],
+      values: [50],
       step: 1,
       orientation: "horizontal",
-      hasTooltips: false},
-    ];
+      hasTooltips: false,
+    }];
     let Class = Slider;
     let testOptions = {Class, options, expectations};
 
@@ -68,9 +71,9 @@ export function reassignment() {
         {boundaries: [-1000, -500], step: 50, values: -525},
       ];
       let expectations = [
-        {values: 200},
-        {values: 0},
-        {values: -500},
+        { values: [200] },
+        { values: [0] },
+        { values: [-500] },
       ];
       let Class = Slider;
       let testOptions = {Class, options, expectations};
@@ -89,12 +92,12 @@ export function reassignment() {
         {boundaries: [-500, 500], values: [250, -2000, 1000, 2000, -1000]},
       ];
       let expectations = [
-        {boundaries: [0, 500], values: 500},
-        {boundaries: [-500, 500], values: -500},
-        {boundaries: [-500, 500], values: [-500, 500]},
-        {boundaries: [-500, 500], values: [-500, 250, 500]},
-        {boundaries: [-500, 500], values: [-500, 250, 500]},
-        {boundaries: [-500, 500], values: [-500, 250, 500]},
+        { boundaries: [0, 500], values: [500] },
+        { boundaries: [-500, 500], values: [-500] },
+        { boundaries: [-500, 500], values: [-500, 500] },
+        { boundaries: [-500, 500], values: [-500, 250, 500] },
+        { boundaries: [-500, 500], values: [-500, 250, 500] },
+        { boundaries: [-500, 500], values: [-500, 250, 500] },
       ];
       let Class = Slider;
       let testOptions = {Class, options, expectations};
@@ -145,8 +148,8 @@ export function reassignment() {
         { boundaries: [-500, -200] },
       ];
       let expectations = [
-        {boundaries: [200, 500], values: 200},
-        {boundaries: [-500, -200], values: -200},
+        { boundaries: [200, 500], values: [200] },
+        { boundaries: [-500, -200], values: [-200] },
       ];
       let ClassOptions = {
         values: 100,
@@ -202,8 +205,8 @@ export function reassignment() {
         { step: 50 },
       ];
       let expectations = [
-        {step: 20, values: 80},
-        {step: 50, values: 50},
+        { step: 20, values: [80] },
+        { step: 50, values: [50] },
       ];
       let ClassOptions = {
         values: 70,

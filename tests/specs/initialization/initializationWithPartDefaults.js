@@ -9,7 +9,7 @@ export function initializationWithPartDefaults() {
   };
   let testObject = {
     boundaries: [5000, 40000],
-    values: 20000,
+    values: [20000],
     step: 50,
     orientation: "vertical",
     hasTooltips: false,
