@@ -80,7 +80,7 @@ export class Slider {
 
     if (!filteredArr.length) return;
 
-    this._options.values = (filteredArr.length === 1) ? Number(filteredArr) : filteredArr;
+    this._options.values = filteredArr;
   }
 
   get step() {
