@@ -56,7 +56,7 @@ export class Slider {
   }
 
   get values() {
-    return this._options.values || getAverageOf(this._options.boundaries);
+    return this._options.values || Array.of( getAverageOf(this._options.boundaries) );
   }
   set values(values) {
     let arrOfValues = [].concat(values);
