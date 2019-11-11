@@ -93,7 +93,8 @@ export class SliderUI {
 
 
   _onMouseDown() {
-    console.log("onMouseDown: I'm fine");
+    document.addEventListener("mousemove", _onMouseMove);
+    document.addEventListener("mouseup", _onMouseUp);
   }
 
 
