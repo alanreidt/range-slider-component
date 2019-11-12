@@ -122,10 +122,13 @@ export class SliderUI {
       const targetIndex = this.$handleGroups.indexOf(onMouseDownEventTarget.parentElement);
 
       currentValues.splice(targetIndex, 1, newValue);
-      newValue = currentValues;
+
+      this.model.update({values: currentValues});
     }
 
-    this.model.update({values: newValue});
+    if (event.target === this.$base) {
+      this.model.update({values: newValue});
+    }
   }
 
 
