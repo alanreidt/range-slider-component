@@ -108,7 +108,7 @@ export class SliderUI {
   }
 
 
-  _triggerModel(event, onMouseDownEventTarget) {
+  _triggerModel(event, onMouseDownEvent) {
     const currentValues = this.model.getOptions().values.slice();
     const sliderWidth = this.$slider.getBoundingClientRect().width;
     const position = event.clientX - this.$slider.getBoundingClientRect().left;
@@ -117,11 +117,13 @@ export class SliderUI {
 
     event.preventDefault();
 
-    if ( onMouseDownEventTarget &&
-         this.$handleGroups.includes(onMouseDownEventTarget.parentElement) ) {
-      const targetIndex = this.$handleGroups.indexOf(onMouseDownEventTarget.parentElement);
+    const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
+    const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
+      ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget)
+    );
 
-      currentValues.splice(targetIndex, 1, newValue);
+    if ( onMouseDownEventTargetIndex !== -1 ) {
+      currentValues.splice(onMouseDownEventTargetIndex, 1, newValue);
 
       this.model.update({values: currentValues});
     }
