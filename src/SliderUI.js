@@ -94,7 +94,7 @@ export class SliderUI {
 
   _onMouseDown(onMouseDownEvent) {
     this._triggerModelBound =
-      (event) => this._triggerModel.call(this, event, onMouseDownEvent.target);
+      (event) => this._triggerModel.call(this, event, onMouseDownEvent);
     this._onMouseUpBound = this._onMouseUp.bind(this);
 
     document.addEventListener("mousemove", this._triggerModelBound);
