@@ -109,11 +109,11 @@ export class SliderUI {
 
 
   _triggerModel(event, onMouseDownEventTarget) {
-    let currentValues = this.model.getOptions().values.slice();
+    const currentValues = this.model.getOptions().values.slice();
     const sliderWidth = this.$slider.getBoundingClientRect().width;
     const position = event.clientX - this.$slider.getBoundingClientRect().left;
     const proportion = position / sliderWidth * 100;
-    let newValue = this._calcValue(proportion);
+    const newValue = this._calcValue(proportion);
 
     event.preventDefault();
 
