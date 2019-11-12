@@ -85,17 +85,17 @@ export class SliderUI {
 
 
   _addEventListeners() {
-    this._triggerModelBound = this._triggerModel.bind(this);
-    this._onMouseUpBound = this._onMouseUp.bind(this);
-
     this.$handleGroups.forEach( ($handleGroup) => {
       $handleGroup.onmousedown = this._onMouseDown.bind(this);
     });
-    this.$base.onmousedown = this._triggerModelBound;
+    this.$base.onmousedown = this._triggerModel.bind(this);
   }
 
 
   _onMouseDown() {
+    this._triggerModelBound = this._triggerModel.bind(this);
+    this._onMouseUpBound = this._onMouseUp.bind(this);
+
     document.addEventListener("mousemove", this._triggerModelBound);
     document.addEventListener("mouseup", this._onMouseUpBound);
   }
