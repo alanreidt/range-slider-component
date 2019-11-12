@@ -108,13 +108,24 @@ export class SliderUI {
 
 
   _triggerModel(event) {
-    event.preventDefault();
+    const currentValues = this.model.getOptions().values.slice();
     const sliderWidth = this.$slider.getBoundingClientRect().width;
     const position = event.clientX - this.$slider.getBoundingClientRect().left;
     const proportion = position / sliderWidth * 100;
-    const value = this._calcValue(proportion);
+    let newValue = this._calcValue(proportion);
 
-    this.model.update({values: value});
+    event.preventDefault();
+
+    if ( this.$handleGroups.includes(event.target) ) {
+      const targetIndex = this.$handleGroups.indexOf(event.target);
+
+      currentValues.splice(targetIndex, 1, newValue);
+      newValue = currentValues;
+      console.error(`handle-groups: ${newValue}`);
+    }
+
+    console.log(`base: ${newValue}`);
+    this.model.update({values: newValue});
   }
 
 
