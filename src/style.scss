@@ -17,15 +17,20 @@ body {
 }
 
 .someUserClass {
-  width: 300px;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
   // background-color: green;
 }
 
 .slider {
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
   padding: 5px calc( var(--slider-handle-width) / 2 );
 
   // overflow: auto;
+  box-sizing: border-box;
 
   &__base {
     position: relative;
