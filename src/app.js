@@ -8,7 +8,7 @@ let slider = new Slider({
 });
 let model = new Model(slider);
 
-let $parent = document.querySelector(".someUserClass");
+let $parent = document.querySelector(".user-slider");
 let sliderUi = new SliderUI($parent, model);
 
 const sliderUiBoundedUpdate = sliderUi.update.bind(sliderUi);
