@@ -135,7 +135,7 @@ export class SliderUI {
 
 
   _calcValue(proportion) {
-    const {boundaries} = this.model.getOptions();
+    const boundaries = this.model.getOptions().boundaries;
 
     return translateProportionIntoValue(proportion, boundaries);
   }
