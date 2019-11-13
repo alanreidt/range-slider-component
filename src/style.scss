@@ -92,3 +92,30 @@ body {
   }
 
 }
+
+.slider_vertical {
+  height: 100%;
+  padding: calc( var(--slider-handle-width) / 2 ) 5px;
+
+  & .slider__base {
+    width: 15px;
+    height: 100%;
+    margin: auto;
+  }
+
+  & .slider__handle-group {
+    top: auto;
+    left: 50%;
+    transition-property: top;
+  }
+
+  & .slider__tooltip {
+    bottom: 50%;
+    transform: translateY(50%);
+
+    left: 100%;
+    margin-bottom: 0;
+    margin-left: 5px;
+  }
+
+}
