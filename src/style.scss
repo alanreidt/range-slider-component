@@ -1,3 +1,8 @@
+:root {
+  --slider-handle-width: 20px;
+  --slider-handle-height: var(--slider-handle-width);
+}
+
 @mixin clearfix() {
   &::after {
     content: '';
@@ -62,8 +67,8 @@ body {
   }
 
   &__handle {
-    width: 20px;
-    height: 20px;
+    width: var(--slider-handle-width);
+    height: var(--slider-handle-height);
 
     border-radius: 50%;
     background-color: blue;
