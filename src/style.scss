@@ -18,11 +18,12 @@ body {
 
 .someUserClass {
   width: 300px;
+  // background-color: green;
 }
 
 .slider {
   display: block;
-  padding: 5px;
+  padding: 5px calc( var(--slider-handle-width) / 2 );
 
   // overflow: auto;
 
