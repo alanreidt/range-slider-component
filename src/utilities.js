@@ -158,7 +158,7 @@ export function translateProportionIntoValue(proportion, range) {
 
   proportion = proportion / 100;
 
-  return difference * proportion;
+  return difference * proportion + start;
 }
 
 
