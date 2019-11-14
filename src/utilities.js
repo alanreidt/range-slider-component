@@ -12,9 +12,9 @@ export function setElementTextContent(element, value) {
 }
 
 
-export function setElementsPosition(elements, positions) {
+export function setElementsPosition(elements, positions, property) {
   elements.forEach(
-    call(setElementPosition, positions)
+    call(setElementPosition, positions, property)
   );
 }
 
