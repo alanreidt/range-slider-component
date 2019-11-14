@@ -22,21 +22,15 @@ export class SliderUI {
   }
 
 
-  _paint({boundaries, values, step, orientation, hasTooltips} = {}) {
-    this.$parent.innerHTML = this._createTemplate({
-      boundaries,
-      values,
-      step,
-      orientation,
-      hasTooltips,
-    });
+  _paint(options) {
+    this.$parent.innerHTML = this._createTemplate(options);
 
     this.$slider = this.$parent.querySelector(".slider");
     this.$base = this.$parent.querySelector(".slider__base");
     this.$handleGroups = this._getHandleGroups();
     this.$tooltips = this._getTooltips();
 
-    this.update({boundaries, values, orientation});
+    this.update(options);
     this._addEventListeners();
   }
 
