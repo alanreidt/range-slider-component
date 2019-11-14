@@ -15,7 +15,7 @@ export class SliderUI {
     if (values && boundaries) {
       let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
 
-      this._updateHandleGroups(positions)
+      this._updateHandleGroups(positions, orientation)
       this._updateTooltips(values)
     }
 
@@ -36,7 +36,7 @@ export class SliderUI {
     this.$handleGroups = this._getHandleGroups();
     this.$tooltips = this._getTooltips();
 
-    this.update({boundaries, values});
+    this.update({boundaries, values, orientation});
     this._addEventListeners();
   }
 
@@ -60,7 +60,12 @@ export class SliderUI {
   }
 
 
-  _updateHandleGroups(positions) {
+  _updateHandleGroups(positions, orientation) {
+    if (orientation === "vertical") {
+      setElementsPosition(this.$handleGroups, positions, "top");
+      return;
+    }
+
     setElementsPosition(this.$handleGroups, positions);
   }
 
