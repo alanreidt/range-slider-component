@@ -108,14 +108,22 @@ export class SliderUI {
 
 
   _triggerModel(event, onMouseDownEvent) {
-    const currentValues = this.model.getOptions().values.slice();
-    const sliderWidth = this.$slider.getBoundingClientRect().width;
-    const position = event.clientX - this.$slider.getBoundingClientRect().left;
-    const proportion = position / sliderWidth * 100;
-    const newValue = this._calcValue(proportion);
-
     event.preventDefault();
 
+    const orientation = this.model.getOptions().orientation;
+
+    const position = (orientation === "horizontal") ?
+      event.clientX - this.$slider.getBoundingClientRect().left :
+      event.clientY - this.$slider.getBoundingClientRect().top;
+
+    const sliderSize = (orientation === "horizontal") ?
+      this.$slider.getBoundingClientRect().width :
+      this.$slider.getBoundingClientRect().height;
+
+    const proportion = position / sliderSize * 100;
+    const newValue = this._calcValue(proportion);
+
+    const currentValues = this.model.getOptions().values.slice();
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
     const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
       ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget)
