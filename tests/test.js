@@ -1057,6 +1057,31 @@ describe("SliderUI", function() {
       });
     });
 
+    describe("shall handle user actions (Controller)", function() {
+      let $parent,
+        options,
+        model;
+
+      beforeEach("create new SliderUI", function() {
+        $parent = document.createElement("div");
+        options = {
+          boundaries: [0, 100],
+          values: [20, 80],
+          step: 1,
+          orientation: "vertical",
+          hasTooltips: true,
+        };
+        model = {
+          _options: options,
+          getOptions() {
+            return this._options;
+          }
+        };
+
+        new SliderUI($parent, model);
+      });
+    });
+
   });
 
 
