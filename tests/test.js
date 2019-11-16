@@ -1080,6 +1080,30 @@ describe("SliderUI", function() {
 
         new SliderUI($parent, model);
       });
+
+      describe("shall listen to $base events", function() {
+        const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
+
+        context("trigger model update method on mousedown event", function() {
+          const mousePositionValues = []; // set values
+          const expectationValues = []; // set values
+
+          mousePositionValues.forEach( (mousePositionValue, i) => {
+            const expectationValue = expectationValues[i];
+
+            simulateMouseEvent("mousedown", $base, mousePositionValue);
+
+            it(`model update is triggered on mouse event ${i + 1}`, function() {
+              assert.isTrue(model.isTriggered);
+            });
+
+            it(`pass ${expectationValue} values on mouse position = ${mousePositionValue}`, function() {
+              assert.deepEqual(expectationValue, model._options.values);
+            });
+          });
+        });
+
+      });
     });
 
   });
