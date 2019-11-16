@@ -94,17 +94,24 @@ export function template(strings, ...keys) {
 
 
 /**
+ * The simulateClick function is a modification of
+ * a simulateClick function, borrowed from
+ * https://gomakethings.com/how-to-simulate-a-click-event-with-javascript/
+ */
+
+/**
  * Simulate a click event.
  * @public
- * @param {Element} elem  the element to simulate a click on
+ * @param {Element} element  the element to simulate a click on
  */
-var simulateClick = function (elem) {
+function simulateClick(eventType, element, options = {
+  bubbles: true,
+  cancelable: true,
+  view: window,
+}) {
 	// Create our event (with options)
-	var evt = new MouseEvent('click', {
-		bubbles: true,
-		cancelable: true,
-		view: window
-	});
+	const event = new MouseEvent(eventType, options);
+
 	// If cancelled, don't dispatch our event
-	var canceled = !elem.dispatchEvent(evt);
+	let canceled = !element.dispatchEvent(event);
 };
