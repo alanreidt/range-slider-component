@@ -104,11 +104,16 @@ export function template(strings, ...keys) {
  * @public
  * @param {Element} element  the element to simulate a click on
  */
-function simulateMouseEvent(eventType, element, options = {
-  bubbles: true,
-  cancelable: true,
-  view: window,
-}) {
+export function simulateMouseEvent(eventType, element, options) {
+  options = Object.assign(
+    {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    },
+    options,
+  );
+
 	// Create our event (with options)
 	const event = new MouseEvent(eventType, options);
 
