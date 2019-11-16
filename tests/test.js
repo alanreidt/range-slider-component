@@ -1073,9 +1073,12 @@ describe("SliderUI", function() {
         };
         model = {
           _options: options,
-          getOptions() {
-            return this._options;
-          }
+          isTriggered: false,
+
+          update(options) {
+            this.isTriggered = true;
+            this._options = options;
+          },
         };
 
         new SliderUI($parent, model);
