@@ -1,5 +1,5 @@
 import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, setElementPosition, setElementsPosition } from "../src/utilities";
-import {makeTestClass, test, testClass, template} from "./testUtilities";
+import {makeTestClass, test, testClass, template, simulateMouseEvent} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {Model} from "../src/Model";
 import {initialization} from "./specs/initialization/initialization";
