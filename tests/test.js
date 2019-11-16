@@ -1097,8 +1097,6 @@ describe("SliderUI", function() {
             const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
 
             $slider.style.width = "200px";
-            console.log( $slider.getBoundingClientRect().bottom );
-            console.log( document.body.children.length );
 
             const expectationValue = expectationValues[i];
 
@@ -1150,8 +1148,6 @@ describe("SliderUI", function() {
             const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
 
             $slider.style.height = "200px";
-            console.log( $slider.getBoundingClientRect().bottom );
-            console.log( document.body.children.length );
 
             const expectationValue = expectationValues[i];
 
