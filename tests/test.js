@@ -1104,6 +1104,55 @@ describe("SliderUI", function() {
         });
 
       });
+
+
+      describe("shall listen to $handle-group events", function() {
+        const $handleGroups = $parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`);
+        const $handleGroup = $parent.querySelector(`.${SLIDER_HANDLE_GROUP_NAME}`);
+
+        context("trigger model update method on mousemove during mousedown event", function() {
+          const mousePositionValues = []; // set values
+          const expectationValues = []; // set values
+
+          // add loop through handleGroups (test single value as well)
+          simulateMouseEvent("mousedown", $handleGroup);
+
+          mousePositionValues.forEach( (mousePositionValue, i) => {
+            const expectationValue = expectationValues[i];
+
+            simulateMouseEvent("mousemove", mousePositionValue);
+
+            it(`model update is triggered on mouse event ${i + 1}`, function() {
+              assert.isTrue(model.isTriggered);
+            });
+
+            it(`pass ${expectationValue} values on mouse position = ${mousePositionValue}`, function() {
+              assert.deepEqual(expectationValue, model._options.values);
+            });
+          });
+        });
+
+        context("remove listeners on mouseup after mousedown event", function() {
+          const modelValues = model._options.values.slice();
+          const mousePositionValue = 413412; // set correct value
+
+          // add loop through handleGroups
+          simulateMouseEvent("mousedown", $handleGroup);
+          simulateMouseEvent("mouseup", $handleGroup);
+
+          simulateMouseEvent("mousemove", mousePositionValue);
+
+          it(`model update is not triggered on mouse event`, function() {
+            assert.isFalse(model.isTriggered);
+          });
+
+          it(`model values are equal to ${modelValues}`, function() {
+            assert.deepEqual(modelValues, model._options.values);
+          });
+        });
+
+      });
+
     });
 
   });
