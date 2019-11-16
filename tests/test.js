@@ -1163,6 +1163,7 @@ describe("SliderUI", function() {
           });
         });
 
+        $parent.innerHTML = '';
       });
 
 
