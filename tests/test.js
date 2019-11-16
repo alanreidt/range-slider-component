@@ -1058,49 +1058,110 @@ describe("SliderUI", function() {
     });
 
     describe("shall handle user actions (Controller)", function() {
-      let $parent,
-        options,
-        model;
+      const $parent = document.createElement("div");
+      document.body.append($parent);
 
-      beforeEach("create new SliderUI", function() {
-        $parent = document.createElement("div");
-        options = {
-          boundaries: [0, 100],
-          values: [20, 80],
-          step: 1,
-          orientation: "vertical",
-          hasTooltips: true,
-        };
-        model = {
-          _options: options,
-          isTriggered: false,
-
-          update(options) {
-            this.isTriggered = true;
-            this._options = options;
-          },
-        };
-
-        new SliderUI($parent, model);
-      });
-
-      describe("shall listen to $base events", function() {
-        const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
-
+      describe("shall listen to events on $base element", function() {
         context("trigger model update method on mousedown event", function() {
-          const mousePositionValues = []; // set values
-          const expectationValues = []; // set values
+          const mousePositionValues = [20, 100, 200];
+          const expectationValues = [10, 50, 100];
 
           mousePositionValues.forEach( (mousePositionValue, i) => {
+            const options = {
+              boundaries: [0, 100],
+              values: [20, 80],
+              step: 1,
+              orientation: "horizontal",
+              hasTooltips: true,
+            };
+            const model = {
+              _options: options,
+              isTriggered: false,
+
+              getOptions() {
+                return this._options;
+              },
+
+              update(newOptions) {
+                this.isTriggered = true;
+                this._options = {
+                  ...options,
+                  ...newOptions,
+                };
+              },
+            };
+
+            new SliderUI($parent, model);
+
+            const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
+            const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
+
+            $slider.style.width = "200px";
+            console.log( $slider.getBoundingClientRect().bottom );
+            console.log( document.body.children.length );
+
             const expectationValue = expectationValues[i];
 
-            simulateMouseEvent("mousedown", $base, mousePositionValue);
+            simulateMouseEvent("mousedown", $base, {clientX: mousePositionValue});
 
             it(`model update is triggered on mouse event ${i + 1}`, function() {
               assert.isTrue(model.isTriggered);
             });
 
-            it(`pass ${expectationValue} values on mouse position = ${mousePositionValue}`, function() {
+            it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, function() {
+              assert.deepEqual(expectationValue, model._options.values);
+            });
+          });
+        });
+
+        context(`trigger model update method on mousedown event,
+        when slider is vertical`, function() {
+          const mousePositionValues = [20, 100, 200];
+          const expectationValues = [10, 50, 100];
+
+          mousePositionValues.forEach( (mousePositionValue, i) => {
+            const options = {
+              boundaries: [0, 100],
+              values: [20, 80],
+              step: 1,
+              orientation: "vertical",
+              hasTooltips: true,
+            };
+            const model = {
+              _options: options,
+              isTriggered: false,
+
+              getOptions() {
+                return this._options;
+              },
+
+              update(newOptions) {
+                this.isTriggered = true;
+                this._options = {
+                  ...options,
+                  ...newOptions,
+                };
+              },
+            };
+
+            new SliderUI($parent, model);
+
+            const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
+            const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
+
+            $slider.style.height = "200px";
+            console.log( $slider.getBoundingClientRect().bottom );
+            console.log( document.body.children.length );
+
+            const expectationValue = expectationValues[i];
+
+            simulateMouseEvent("mousedown", $base, {clientY: mousePositionValue});
+
+            it(`model update is triggered on mouse event ${i + 1}`, function() {
+              assert.isTrue(model.isTriggered);
+            });
+
+            it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, function() {
               assert.deepEqual(expectationValue, model._options.values);
             });
           });
