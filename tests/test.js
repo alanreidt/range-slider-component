@@ -1057,6 +1057,7 @@ describe("SliderUI", function() {
       });
     });
 
+
     describe("shall handle user actions (Controller)", function() {
       const $parent = document.createElement("div");
       document.body.append($parent);
@@ -1101,6 +1102,7 @@ describe("SliderUI", function() {
             const expectationValue = expectationValues[i];
 
             simulateMouseEvent("mousedown", $base, {clientX: mousePositionValue});
+            simulateMouseEvent("mouseup", $base);
 
             it(`model update is triggered on mouse event ${i + 1}`, function() {
               assert.isTrue(model.isTriggered);
@@ -1152,6 +1154,7 @@ describe("SliderUI", function() {
             const expectationValue = expectationValues[i];
 
             simulateMouseEvent("mousedown", $base, {clientY: mousePositionValue});
+            simulateMouseEvent("mouseup", $base);
 
             it(`model update is triggered on mouse event ${i + 1}`, function() {
               assert.isTrue(model.isTriggered);
