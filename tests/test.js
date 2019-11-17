@@ -1166,42 +1166,158 @@ describe("SliderUI", function() {
         $parent.innerHTML = '';
       });
 
-
-      describe("shall listen to $handle-group events", function() {
-        const $handleGroups = $parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`);
-        const $handleGroup = $parent.querySelector(`.${SLIDER_HANDLE_GROUP_NAME}`);
-
+      describe("shall listen to events on $handleGroup element", function() {
         context("trigger model update method on mousemove during mousedown event", function() {
-          const mousePositionValues = []; // set values
-          const expectationValues = []; // set values
-
-          // add loop through handleGroups (test single value as well)
-          simulateMouseEvent("mousedown", $handleGroup);
+          const mousePositionValues = [20, 100, 200];
+          const expectationValues = [
+            [10, 80],
+            [50, 80],
+            [100, 80],
+          ];
 
           mousePositionValues.forEach( (mousePositionValue, i) => {
+            const options = {
+              boundaries: [0, 100],
+              values: [20, 80],
+              step: 1,
+              orientation: "horizontal",
+              hasTooltips: true,
+            };
+            const model = {
+              _options: options,
+              isTriggered: false,
+
+              getOptions() {
+                return this._options;
+              },
+
+              update(newOptions) {
+                this.isTriggered = true;
+                this._options = {
+                  ...options,
+                  ...newOptions,
+                };
+              },
+            };
+
+            new SliderUI($parent, model);
+
+            const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
+            const $handleGroup = $parent.querySelector(`.${SLIDER_HANDLE_GROUP_NAME}`);
+
+            $slider.style.width = "200px";
+
             const expectationValue = expectationValues[i];
 
-            simulateMouseEvent("mousemove", mousePositionValue);
+            simulateMouseEvent("mousedown", $handleGroup);
+            simulateMouseEvent("mousemove", document, {clientX: mousePositionValue});
+            simulateMouseEvent("mouseup", document);
 
             it(`model update is triggered on mouse event ${i + 1}`, function() {
               assert.isTrue(model.isTriggered);
             });
 
-            it(`pass ${expectationValue} values on mouse position = ${mousePositionValue}`, function() {
+            it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, function() {
+              assert.deepEqual(expectationValue, model._options.values);
+            });
+          });
+        });
+
+        context(`trigger model update method on mousedown event,
+        when slider is vertical`, function() {
+          const mousePositionValues = [20, 100, 200];
+          const expectationValues = [
+            [10, 80],
+            [50, 80],
+            [100, 80],
+          ];
+
+          mousePositionValues.forEach( (mousePositionValue, i) => {
+            const options = {
+              boundaries: [0, 100],
+              values: [20, 80],
+              step: 1,
+              orientation: "vertical",
+              hasTooltips: true,
+            };
+            const model = {
+              _options: options,
+              isTriggered: false,
+
+              getOptions() {
+                return this._options;
+              },
+
+              update(newOptions) {
+                this.isTriggered = true;
+                this._options = {
+                  ...options,
+                  ...newOptions,
+                };
+              },
+            };
+
+            new SliderUI($parent, model);
+
+            const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
+            const $handleGroup = $parent.querySelector(`.${SLIDER_HANDLE_GROUP_NAME}`);
+
+            $slider.style.height = "200px";
+
+            const expectationValue = expectationValues[i];
+
+            simulateMouseEvent("mousedown", $handleGroup);
+            simulateMouseEvent("mousemove", document, {clientY: mousePositionValue});
+            simulateMouseEvent("mouseup", document);
+
+
+            it(`model update is triggered on mouse event ${i + 1}`, function() {
+              assert.isTrue(model.isTriggered);
+            });
+
+            it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, function() {
               assert.deepEqual(expectationValue, model._options.values);
             });
           });
         });
 
         context("remove listeners on mouseup after mousedown event", function() {
+          const options = {
+            boundaries: [0, 100],
+            values: [20, 80],
+            step: 1,
+            orientation: "vertical",
+            hasTooltips: true,
+          };
+          const model = {
+            _options: options,
+            isTriggered: false,
+
+            getOptions() {
+              return this._options;
+            },
+
+            update(newOptions) {
+              this.isTriggered = true;
+              this._options = {
+                ...options,
+                ...newOptions,
+              };
+            },
+          };
+
+          new SliderUI($parent, model);
+
+          const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
+          const $handleGroup = $parent.querySelector(`.${SLIDER_HANDLE_GROUP_NAME}`);
+
+          $slider.style.height = "200px";
+
           const modelValues = model._options.values.slice();
-          const mousePositionValue = 413412; // set correct value
 
-          // add loop through handleGroups
           simulateMouseEvent("mousedown", $handleGroup);
-          simulateMouseEvent("mouseup", $handleGroup);
-
-          simulateMouseEvent("mousemove", mousePositionValue);
+          simulateMouseEvent("mouseup", document);
+          simulateMouseEvent("mousemove", document, {clientY: 100});
 
           it(`model update is not triggered on mouse event`, function() {
             assert.isFalse(model.isTriggered);
@@ -1212,6 +1328,7 @@ describe("SliderUI", function() {
           });
         });
 
+        $parent.innerHTML = '';
       });
 
     });
