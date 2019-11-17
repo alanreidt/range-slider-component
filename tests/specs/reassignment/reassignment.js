@@ -220,6 +220,72 @@ export function reassignment() {
   });
 
 
+  describe("shall restrict values after initialization", function() {
+
+    describe("restrict {values} quantity (length) after initialization", function() {
+      context("restrict default {values} quantity (length)", function() {
+        const Class = Slider;
+        const options = [
+          { values: 30 },
+          { values: [50, 90] },
+          { values: [60, 70, 90] },
+        ];
+        const expectations = [
+          { values: [30] },
+          { values: [50] },
+          { values: [60] },
+        ];
+        const testOptions = {Class, options, expectations};
+
+        testClass(testOptions);
+      });
+
+      describe("restrict changed {values} quantity (length)", function() {
+        context("preserve single value", function() {
+          const Class = Slider;
+          const ClassOptions = {
+            values: 20,
+          };
+          const options = [
+            { values: 30 },
+            { values: [50, 90] },
+            { values: [60, 70, 90] },
+          ];
+          const expectations = [
+            { values: [30] },
+            { values: [50] },
+            { values: [60] },
+          ];
+          const testOptions = {Class, ClassOptions, options, expectations};
+
+          testClass(testOptions);
+        });
+
+        context("preserve 2 values", function() {
+          const Class = Slider;
+          const ClassOptions = {
+            values: [20, 80],
+          };
+          const options = [
+            { values: 30 },
+            { values: [30, 90] },
+            { values: [30, 50, 90] },
+          ];
+          const expectations = [
+            { values: [30, 80] },
+            { values: [30, 90] },
+            { values: [30, 50] },
+          ];
+          const testOptions = {Class, ClassOptions, options, expectations};
+
+          testClass(testOptions);
+        });
+      });
+    });
+
+  });
+
+
   describe(`shall change nearest {boundaries} value,
   if only a number is passed`, function() {
 
