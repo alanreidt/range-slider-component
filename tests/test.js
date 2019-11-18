@@ -1490,7 +1490,7 @@ describe("Model", function() {
   describe("shall organize access to the dataSource", function() {
 
     describe("update values of the dataSource", function() {
-      let newValues = {
+      const newValues = {
         boundaries: [100, 500],
         step: 20,
         hasTooltips: true,
@@ -1500,7 +1500,7 @@ describe("Model", function() {
           this.options = newOptions;
         },
       };
-      let model = new Model(slider);
+      const model = new Model(slider);
 
       model.update(newValues);
 
