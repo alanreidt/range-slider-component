@@ -19,6 +19,11 @@ import {Slider} from "../../../src/Slider";
 
 
 export function reassignment() {
+  const Class = Slider;
+  const method = "setValues";
+  const methodGetter = "getValues";
+
+  const runTest = testClass({Class, method, methodGetter});
 
   describe("shall change values, if correct one is passed", function() {
     let options = [{
@@ -32,10 +37,9 @@ export function reassignment() {
       ...options[0],
       values: [180]
     }];
-    let Class = Slider;
-    let testOptions = {Class, options, expectations};
+    let testOptions = {options, expectations};
 
-    testClass(testOptions);
+    runTest(testOptions);
   });
 
 
@@ -54,10 +58,9 @@ export function reassignment() {
       orientation: "horizontal",
       hasTooltips: false,
     }];
-    let Class = Slider;
-    let testOptions = {Class, options, expectations};
+    let testOptions = {options, expectations};
 
-    testClass(testOptions);
+    runTest(testOptions);
   });
 
 
@@ -75,10 +78,9 @@ export function reassignment() {
         { values: [0] },
         { values: [-500] },
       ];
-      let Class = Slider;
-      let testOptions = {Class, options, expectations};
+      let testOptions = {options, expectations};
 
-      testClass(testOptions);
+      runTest(testOptions);
     });
 
     context(`shall correct {value},
@@ -99,10 +101,9 @@ export function reassignment() {
         { boundaries: [-500, 500], values: [-500, 250, 500] },
         { boundaries: [-500, 500], values: [-500, 250, 500] },
       ];
-      let Class = Slider;
-      let testOptions = {Class, options, expectations};
+      let testOptions = {options, expectations};
 
-      testClass(testOptions);
+      runTest(testOptions);
     });
 
     context(`shall correct {step},
@@ -117,10 +118,9 @@ export function reassignment() {
         {boundaries: [0, 300], step: 300},
         {boundaries: [-500, 500], step: 100},
       ];
-      let Class = Slider;
-      let testOptions = {Class, options, expectations};
+      let testOptions = {options, expectations};
 
-      testClass(testOptions);
+      runTest(testOptions);
     });
 
     context(`shall correct {step},
@@ -135,10 +135,9 @@ export function reassignment() {
         {boundaries: [300, 900], step: 600},
         {boundaries: [-500, 500], step: 1000},
       ];
-      let Class = Slider;
-      let testOptions = {Class, options, expectations};
+      let testOptions = {options, expectations};
 
-      testClass(testOptions);
+      runTest(testOptions);
     });
 
     context(`{boundaries} on change, shall correct {value},
@@ -154,10 +153,9 @@ export function reassignment() {
       let ClassOptions = {
         values: 100,
       };
-      let Class = Slider;
-      let testOptions = {Class, ClassOptions, options, expectations};
+      let testOptions = {ClassOptions, options, expectations};
 
-      testClass(testOptions);
+      runTest(testOptions);
     });
 
     context(`{boundaries} on change, shall correct {step},
@@ -173,10 +171,9 @@ export function reassignment() {
       let ClassOptions = {
         step: 20,
       };
-      let Class = Slider;
-      let testOptions = {Class, ClassOptions, options, expectations};
+      let testOptions = {ClassOptions, options, expectations};
 
-      testClass(testOptions);
+      runTest(testOptions);
     });
 
     context(`{boundaries} on change shall correct {step}, if it became bigger,
@@ -192,10 +189,9 @@ export function reassignment() {
       let ClassOptions = {
         step: 100,
       };
-      let Class = Slider;
-      let testOptions = {Class, ClassOptions, options, expectations};
+      let testOptions = {ClassOptions, options, expectations};
 
-      testClass(testOptions);
+      runTest(testOptions);
     });
 
     context(`{step} on change, shall correct {value},
@@ -211,10 +207,9 @@ export function reassignment() {
       let ClassOptions = {
         values: 70,
       };
-      let Class = Slider;
-      let testOptions = {Class, ClassOptions, options, expectations};
+      let testOptions = {ClassOptions, options, expectations};
 
-      testClass(testOptions);
+      runTest(testOptions);
     });
 
   });
@@ -224,7 +219,6 @@ export function reassignment() {
 
     describe("restrict {values} quantity (length) after initialization", function() {
       context("restrict default {values} quantity (length)", function() {
-        const Class = Slider;
         const options = [
           { values: 30 },
           { values: [50, 90] },
@@ -235,14 +229,13 @@ export function reassignment() {
           { values: [50] },
           { values: [60] },
         ];
-        const testOptions = {Class, options, expectations};
+        const testOptions = {options, expectations};
 
-        testClass(testOptions);
+        runTest(testOptions);
       });
 
       describe("restrict changed {values} quantity (length)", function() {
         context("preserve single value", function() {
-          const Class = Slider;
           const ClassOptions = {
             values: 20,
           };
@@ -256,13 +249,12 @@ export function reassignment() {
             { values: [50] },
             { values: [60] },
           ];
-          const testOptions = {Class, ClassOptions, options, expectations};
+          const testOptions = {ClassOptions, options, expectations};
 
-          testClass(testOptions);
+          runTest(testOptions);
         });
 
         context("preserve 2 values", function() {
-          const Class = Slider;
           const ClassOptions = {
             values: [20, 80],
           };
@@ -276,9 +268,9 @@ export function reassignment() {
             { values: [30, 90] },
             { values: [30, 50] },
           ];
-          const testOptions = {Class, ClassOptions, options, expectations};
+          const testOptions = {ClassOptions, options, expectations};
 
-          testClass(testOptions);
+          runTest(testOptions);
         });
       });
     });
@@ -291,12 +283,42 @@ export function reassignment() {
 
     context(`shall change {boundaries(min)},
     if passed value lay near to it`, function() {
-      reassignmentBoundariesMin();
+      const ClassOptions = {
+        boundaries: [100, 500],
+        values: 180,
+        step: 20,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const options = [
+        { boundaries: 0 },
+      ];
+      const expectations = [
+        { boundaries: [0, 500] },
+      ];
+      const testOptions = {ClassOptions, options, expectations};
+
+      runTest(testOptions);
     });
 
     context(`shall change {boundaries(max)},
     if passed value lay near to it`, function() {
-      reassignmentBoundariesMax();
+      const ClassOptions = {
+        boundaries: [100, 500],
+        values: 180,
+        step: 20,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const options = [
+        { boundaries: 400 },
+      ];
+      const expectations = [
+        { boundaries: [100, 400] },
+      ];
+      const testOptions = {ClassOptions, options, expectations};
+
+      runTest(testOptions);
     });
 
   });
@@ -305,11 +327,35 @@ export function reassignment() {
   describe(`shall accept array of {value} values`, function() {
 
     context(`shall accept array of {value} values`, function() {
-      reassignmentValueArray();
+      const ClassOptions = {
+        boundaries: [100, 500],
+        values: [100, 200, 300, 460],
+        step: 20,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const expectations = [
+        { values: [100, 200, 300, 460] },
+      ];
+      const testOptions = {ClassOptions, expectations};
+
+      runTest(testOptions);
     });
 
     context(`shall accept array of {value} values and correct incorrect`, function() {
-      reassignmentValueArrayWithIncorrect();
+      const ClassOptions = {
+        boundaries: [100, 500],
+        values: [100, 200, 300, "Ben", 460, false],
+        step: 20,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const expectations = [
+        { values: [100, 200, 300, 460] },
+      ];
+      const testOptions = {ClassOptions, expectations};
+
+      runTest(testOptions);
     });
 
     it(`shall limit array of {value} to 8 values`);
@@ -318,7 +364,18 @@ export function reassignment() {
 
 
   describe("{value} shall be equal to average of {boundaries} by default", function() {
-    reassignmentValueDefault();
+    const ClassOptions = {
+      boundaries: [100, 500],
+      step: 20,
+      orientation: "vertical",
+      hasTooltips: true,
+    };
+    const expectations = [
+      { values: [200] },
+    ];
+    const testOptions = {ClassOptions, options, expectations};
+
+    runTest(testOptions);
   });
 
 }
