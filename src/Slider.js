@@ -143,11 +143,11 @@ export class Slider {
   getValues() {
 
     return {
-      boundaries: this.boundaries,
-      values: this.values,
-      step: this.step,
-      orientation: this.orientation,
-      hasTooltips: this.hasTooltips,
+      boundaries: this._boundaries,
+      values: this._values,
+      step: this._step,
+      orientation: this._orientation,
+      hasTooltips: this._hasTooltips,
     };
 
   }
