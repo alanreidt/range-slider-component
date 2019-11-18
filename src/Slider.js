@@ -20,10 +20,10 @@ export class Slider {
     }
   }
 
-  get boundaries() {
+  get _boundaries() {
     return this._options.boundaries;
   }
-  set boundaries(value) {
+  set _boundaries(value) {
     let result = this._options.boundaries.slice();
 
     if (typeof(value) === "number") {
@@ -51,14 +51,14 @@ export class Slider {
 
     this._options.boundaries = result.sort( (a, b) => a - b );
 
-    this.values = this._options.values;
-    this.step = this._options.step;
+    this._values = this._options.values;
+    this._step = this._options.step;
   }
 
-  get values() {
+  get _values() {
     return this._options.values || Array.of( getAverageOf(this._options.boundaries) );
   }
-  set values(values) {
+  set _values(values) {
     const currentValues = this._options.values && this._options.values.slice();
     let newValues = [].concat(values);
     let filteredArr = [];
@@ -102,10 +102,10 @@ export class Slider {
     this._options.values = filteredArr;
   }
 
-  get step() {
+  get _step() {
     return this._options.step;
   }
-  set step(value) {
+  set _step(value) {
     let [start, end] = this._options.boundaries;
     let range = end - start;
 
@@ -119,22 +119,22 @@ export class Slider {
 
     this._options.step = filteredValue;
 
-    this.values = this._options.values;
+    this._values = this._options.values;
   }
 
-  get orientation() {
+  get _orientation() {
     return this._options.orientation;
   }
-  set orientation(value) {
+  set _orientation(value) {
     if (value !== "horizontal" && value !== "vertical") return;
 
     this._options.orientation = value;
   }
 
-  get hasTooltips() {
+  get _hasTooltips() {
     return this._options.hasTooltips;
   }
-  set hasTooltips(value) {
+  set _hasTooltips(value) {
     if (value !== false && value !== true) return;
 
     this._options.hasTooltips = value;
