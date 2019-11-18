@@ -24,6 +24,7 @@ export function makeTestClass(subject, testDescription = template`${"...rest"} i
   return TestClass;
 }
 
+
 export function testClass({Class, ClassOptions, method, methodGetter, options, expectations} = {}) {
 
   expectations.forEach( (expectation, index) => {
@@ -54,6 +55,7 @@ export function testClass({Class, ClassOptions, method, methodGetter, options, e
   });
 
 }
+
 
 export function test(func, describeTest = template`${"...rest"} is equal to ${"expectation"}`) {
   return function(funcOptions, expectations) {
