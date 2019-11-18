@@ -28,20 +28,38 @@ export function makeTestClass(subject, testDescription = template`${"...rest"} i
 export function testClass({Class, method, methodGetter} = {}) {
 
   return function({ClassOptions, options, expectations} = {}) {
+    let ClassOptionsRecord = '';
+
+    for (let ClassOptionsKey in ClassOptions) {
+      let ClassOptionsValue = ClassOptions[ClassOptionsKey];
+
+      ClassOptionsRecord += `${ClassOptionsKey} = ${ClassOptionsValue}, `;
+    };
+
     expectations.forEach( (expectation, index) => {
       const subject = new Class(ClassOptions);
-      let option = options[index];
+      let option = options && options[index];
       let optionsRecord = '';
 
-      for (let optionKey in option) {
-        let optionValue = option[optionKey];
+      if (method && option) {
+        for (let optionKey in option) {
+          let optionValue = option[optionKey];
 
-        optionsRecord += `${optionKey} = ${optionValue}, `;
-      };
+          optionsRecord += `${optionKey} = ${optionValue}, `;
+        };
 
-      subject[method](option);
+        subject[method](option);
+      }
 
-      const subjectValues = subject[methodGetter](option);
+      if (method && !option) {
+        optionsRecord = ClassOptionsRecord;
+
+        subject[method]();
+      }
+
+      const subjectValues = subject[methodGetter]();
+
+      optionsRecord = optionsRecord || "default values";
 
       context(`if ${optionsRecord} were passed`, function() {
         for (let expectationKey in expectation) {
