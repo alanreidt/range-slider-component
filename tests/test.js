@@ -1529,9 +1529,9 @@ describe("Model", function() {
           return this.options;
         },
       };
-      let model = new Model(slider);
+      const model = new Model(slider);
 
-      let sliderOptions = model.getOptions();
+      const sliderOptions = model.getOptions();
 
       for (let key in expectations) {
 
