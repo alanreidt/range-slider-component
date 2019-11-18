@@ -30,4 +30,59 @@ export function initialization() {
 
   });
 
+
+  describe(`shall accept array of {value} values`, function() {
+
+    context(`shall accept array of {value} values`, function() {
+      const ClassOptions = {
+        boundaries: [100, 500],
+        values: [100, 200, 300, 460],
+        step: 20,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const expectations = [
+        { values: [100, 200, 300, 460] },
+      ];
+      const testOptions = {ClassOptions, expectations};
+
+      runTest(testOptions);
+    });
+
+    context(`shall accept array of {value} values and correct incorrect`, function() {
+      const ClassOptions = {
+        boundaries: [100, 500],
+        values: [100, 200, 300, "Ben", 460, false],
+        step: 20,
+        orientation: "vertical",
+        hasTooltips: true,
+      };
+      const expectations = [
+        { values: [100, 200, 300, 460] },
+      ];
+      const testOptions = {ClassOptions, expectations};
+
+      runTest(testOptions);
+    });
+
+    it(`shall limit array of {value} to 8 values`);
+
+  });
+
+
+  describe("{value} shall be equal to average of {boundaries} by default", function() {
+    const ClassOptions = {
+      boundaries: [100, 500],
+      step: 20,
+      orientation: "vertical",
+      hasTooltips: true,
+    };
+    const expectations = [
+      { values: [200] },
+    ];
+    const testOptions = {ClassOptions, options, expectations};
+
+    runTest(testOptions);
+  });
+
 }
