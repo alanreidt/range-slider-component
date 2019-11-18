@@ -14,10 +14,7 @@ export class Slider {
       hasTooltips: false,
     };
 
-    for (let key in this._options) {
-      if ( options[key] === undefined ) continue;
-      this[key] = options[key];
-    }
+    this.setValues(options);
   }
 
   get _boundaries() {
