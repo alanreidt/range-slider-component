@@ -1514,22 +1514,29 @@ describe("Model", function() {
     });
 
     describe("returns values of the dataSource", function() {
-      let expectations = {
+      const options = {
         boundaries: [0, 100],
-        values: [50],
+        values: [20, 80],
         step: 1,
         orientation: "horizontal",
-        hasTooltips: false,
+        hasTooltips: true,
       };
-      let slider = new Slider();
+      const expectations = options;
+      const slider = {
+        options: options,
+
+        getValues() {
+          return this.options;
+        },
+      };
       let model = new Model(slider);
 
-      let sliderValues = model.getOptions();
+      let sliderOptions = model.getOptions();
 
       for (let key in expectations) {
 
         it(`${key} equals to ${expectations[key]}`, function() {
-          assert.deepEqual( sliderValues[key], expectations[key] );
+          assert.deepEqual( sliderOptions[key], expectations[key] );
         });
 
       }
