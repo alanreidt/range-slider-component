@@ -27,7 +27,7 @@ export function makeTestClass(subject, testDescription = template`${"...rest"} i
 export function testClass({Class, ClassOptions, method, methodGetter, options, expectations} = {}) {
 
   expectations.forEach( (expectation, index) => {
-    let subject = new Class(ClassOptions);
+    const subject = new Class(ClassOptions);
     let option = options[index];
     let optionsRecord = '';
 
