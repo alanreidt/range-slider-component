@@ -135,7 +135,7 @@ export function initialization() {
       hasTooltips: true,
     };
     const expectations = [
-      { values: [200] },
+      { values: [300] },
     ];
     const testOptions = {ClassOptions, expectations};
 
