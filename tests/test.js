@@ -1495,22 +1495,19 @@ describe("Model", function() {
         step: 20,
         hasTooltips: true,
       };
-      let expectations = {
-        boundaries: [100, 500],
-        values: [300],
-        step: 20,
-        orientation: "horizontal",
-        hasTooltips: true,
+      const slider = {
+        setValues(newOptions) {
+          this.options = newOptions;
+        },
       };
-      let slider = new Slider();
       let model = new Model(slider);
 
       model.update(newValues);
 
-      for (let key in expectations) {
+      for (let key in newValues) {
 
-        it(`${key} equals to ${expectations[key]}`, function() {
-          assert.deepEqual( slider[key], expectations[key] );
+        it(`${key} equals to ${newValues[key]}`, function() {
+          assert.deepEqual( slider.options[key], newValues[key] );
         });
 
       }
