@@ -24,7 +24,7 @@ export function makeTestClass(subject, testDescription = template`${"...rest"} i
   return TestClass;
 }
 
-export function testClass({Class, ClassOptions, options, expectations} = {}) {
+export function testClass({Class, ClassOptions, method, methodGetter, options, expectations} = {}) {
 
   expectations.forEach( (expectation, index) => {
     let subject = new Class(ClassOptions);
@@ -34,14 +34,17 @@ export function testClass({Class, ClassOptions, options, expectations} = {}) {
     for (let optionKey in option) {
       let optionValue = option[optionKey];
 
-      subject[optionKey] = optionValue;
       optionsRecord += `${optionKey} = ${optionValue}, `;
     };
+
+    subject[method](option);
+
+    const subjectValues = subject[methodGetter](option);
 
     context(`if ${optionsRecord} were passed`, function() {
       for (let expectationKey in expectation) {
         let expectationValue = expectation[expectationKey];
-        let subjectValue = subject[expectationKey];
+        let subjectValue = subjectValues[expectationKey];
 
         it(`than ${expectationKey} shall be equal to ${expectationValue}`, function() {
           assert.deepEqual(subjectValue, expectationValue);
