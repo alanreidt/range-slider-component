@@ -1,9 +1,6 @@
-import {initializationWithDefaults} from "./initializationWithDefaults";
-import {initializationWithPartDefaults} from "./initializationWithPartDefaults";
-import {initializationWithIncorrectFixed} from "./initializationWithIncorrectFixed";
-import {initializationWithMixedInputFixed} from "./initializationWithMixedInputFixed";
 import { testClass } from "../../testUtilities";
 import { Slider } from "../../../src/Slider";
+
 
 export function initialization() {
   const Class = Slider;
