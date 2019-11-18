@@ -25,34 +25,36 @@ export function makeTestClass(subject, testDescription = template`${"...rest"} i
 }
 
 
-export function testClass({Class, ClassOptions, method, methodGetter, options, expectations} = {}) {
+export function testClass({Class, method, methodGetter} = {}) {
 
-  expectations.forEach( (expectation, index) => {
-    const subject = new Class(ClassOptions);
-    let option = options[index];
-    let optionsRecord = '';
+  return function({ClassOptions, options, expectations} = {}) {
+    expectations.forEach( (expectation, index) => {
+      const subject = new Class(ClassOptions);
+      let option = options[index];
+      let optionsRecord = '';
 
-    for (let optionKey in option) {
-      let optionValue = option[optionKey];
+      for (let optionKey in option) {
+        let optionValue = option[optionKey];
 
-      optionsRecord += `${optionKey} = ${optionValue}, `;
-    };
+        optionsRecord += `${optionKey} = ${optionValue}, `;
+      };
 
-    subject[method](option);
+      subject[method](option);
 
-    const subjectValues = subject[methodGetter](option);
+      const subjectValues = subject[methodGetter](option);
 
-    context(`if ${optionsRecord} were passed`, function() {
-      for (let expectationKey in expectation) {
-        let expectationValue = expectation[expectationKey];
-        let subjectValue = subjectValues[expectationKey];
+      context(`if ${optionsRecord} were passed`, function() {
+        for (let expectationKey in expectation) {
+          let expectationValue = expectation[expectationKey];
+          let subjectValue = subjectValues[expectationKey];
 
-        it(`than ${expectationKey} shall be equal to ${expectationValue}`, function() {
-          assert.deepEqual(subjectValue, expectationValue);
-        });
-      }
+          it(`than ${expectationKey} shall be equal to ${expectationValue}`, function() {
+            assert.deepEqual(subjectValue, expectationValue);
+          });
+        }
+      });
     });
-  });
+  }
 
 }
 
