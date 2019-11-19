@@ -1557,3 +1557,27 @@ describe("Slider", function() {
   });
 
 });
+
+
+describe("SliderAPI", function() {
+  // create method
+    // shall create SliderMock with options
+    // shall create SliderModelMock with SliderMock dataSource
+    // shall create SliderUIMock with $parent and SliderModelMock
+    // shall subscribe SliderUIMock update method to SliderModelMock
+    // shall create parentsMap
+  // getOptions method
+    // shall return current options of the slider
+  // setOptions method
+    // shall set current options of the slider
+
+  describe("create method", function() {
+  });
+
+  describe("getOptions method", function() {
+  });
+
+  describe("setOptions method", function() {
+  });
+
+});
