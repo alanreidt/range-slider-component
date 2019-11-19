@@ -4,6 +4,7 @@ import {SliderUI} from "./SliderUI";
 
 
 export const SliderAPI = {
+  parentsMap: new WeakMap(),
 
   createSlider($parent, options) {
     const slider = new Slider(options);
@@ -12,6 +13,12 @@ export const SliderAPI = {
 
     const sliderUiBoundedUpdate = sliderUi.update.bind(sliderUi);
     model.addSubscriber("update", sliderUiBoundedUpdate);
+
+    this.parentsMap.set($parent, {
+      slider,
+      model,
+      sliderUi,
+    });
   },
 
 };
