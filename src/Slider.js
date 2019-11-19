@@ -15,6 +15,11 @@ export class Slider {
     };
 
     this.setValues(options);
+
+    Object.defineProperties(this._options, {
+      orientation: {writable: false},
+      hasTooltips: {writable: false},
+    });
   }
 
   get _boundaries() {
