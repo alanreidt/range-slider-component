@@ -21,4 +21,8 @@ export const SliderAPI = {
     });
   },
 
+  getOptions($parent) {
+    return this.parentsMap.get($parent).model.getOptions();
+  },
+
 };
