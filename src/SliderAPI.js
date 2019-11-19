@@ -25,4 +25,8 @@ export const SliderAPI = {
     return this.parentsMap.get($parent).model.getOptions();
   },
 
+  setOptions($parent, options) {
+    this.parentsMap.get($parent).model.update(options);
+  },
+
 };
