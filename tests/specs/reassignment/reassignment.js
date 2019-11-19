@@ -14,8 +14,6 @@ export function reassignment() {
       boundaries: [100, 500],
       values: 180,
       step: 20,
-      orientation: "vertical",
-      hasTooltips: true,
     }];
     let expectations = [{
       ...options[0],
@@ -32,8 +30,6 @@ export function reassignment() {
       boundaries: [true, false],
       values: false,
       step: "two",
-      orientation: 100,
-      hasTooltips: 2,
     }];
     let expectations = [{
       boundaries: [0, 100],
