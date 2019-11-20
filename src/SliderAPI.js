@@ -1,8 +1,3 @@
-import {Slider} from "./Slider";
-import {Model} from "./Model";
-import {SliderUI} from "./SliderUI";
-
-
 export const SliderAPI = {
   parentsMap: new WeakMap(),
 
