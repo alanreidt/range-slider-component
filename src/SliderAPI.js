@@ -1,3 +1,6 @@
+import { sliderFactory } from "./SliderFactory";
+
+
 export const SliderAPI = {
   parentsMap: new WeakMap(),
 
