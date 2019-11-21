@@ -5,6 +5,7 @@ import {Model} from "../src/Model";
 import {initialization} from "./specs/initialization/initialization";
 import {reassignment} from "./specs/reassignment/reassignment";
 import {SliderUI} from "../src/SliderUI";
+import { SliderAPI } from "../src/SliderAPI";
 
 
 describe("getClosestFactorOf", function() {
@@ -1560,24 +1561,129 @@ describe("Slider", function() {
 
 
 describe("SliderAPI", function() {
-  // create method
-    // shall create SliderMock with options
-    // shall create SliderModelMock with SliderMock dataSource
-    // shall create SliderUIMock with $parent and SliderModelMock
-    // shall subscribe SliderUIMock update method to SliderModelMock
-    // shall create parentsMap
-  // getOptions method
-    // shall return current options of the slider
-  // setOptions method
-    // shall set current options of the slider
 
   describe("create method", function() {
+    const slider = {
+      arguments: null,
+    };
+
+    const model = {
+      arguments: null,
+      addSubscriberArgs: null,
+
+      addSubscriber(...args) {
+        this.addSubscriberArgs = args;
+      },
+    };
+
+    const sliderUi = {
+      arguments: null,
+
+      update() {},
+    };
+
+    const makeClassMock = function(obj) {
+      return (...options) => {
+        obj.arguments = options;
+        return obj;
+      };
+    };
+
+    const factory = {
+      createSlider: makeClassMock(slider),
+      createModel: makeClassMock(model),
+      createUI: makeClassMock(sliderUi),
+    };
+
+    const $parent = document.createElement("div");
+    const options = {
+      boundaries: [100, 500],
+      values: [200, 300],
+      step: 20,
+      orientaion: "horizontal",
+      hasTooltips: true,
+    };
+
+    SliderAPI._factory = factory;
+    SliderAPI.createSlider($parent, options);
+
+    context("shall create slider with options", function() {
+      it("slider arguments is not equal to null", function() {
+        assert.isNotNull( slider.arguments );
+      });
+
+      it("slider argument is equal to options", function() {
+        assert.deepEqual(slider.arguments[0], options);
+      });
+    });
+
+    context("shall create model with slider, as dataSource", function() {
+      it("model arguments is not equal to null", function() {
+        assert.isNotNull( model.arguments );
+      });
+
+      it("model arguments[0] is equal to slider", function() {
+        assert.deepEqual(model.arguments[0], slider);
+      });
+    });
+
+    context("shall create sliderUi with $parent and model", function() {
+      it("sliderUi arguments is not equal to null", function() {
+        assert.isNotNull( sliderUi.arguments );
+      });
+
+      it("sliderUi arguments[0] is equal to $parent", function() {
+        assert.deepEqual(sliderUi.arguments[0], $parent);
+      });
+
+      it("sliderUi arguments[1] is equal to model", function() {
+        assert.deepEqual(sliderUi.arguments[1], model);
+      });
+    });
+
+    context("shall subscribe sliderUI update method to model", function() {
+      it("model addSubscriberArgs is not equal to null", function() {
+        assert.isNotNull( model.addSubscriberArgs );
+      });
+
+      it("model addSubscriberArgs[0] is equal to 'update'", function() {
+        assert.deepEqual(model.addSubscriberArgs[0], "update");
+      });
+
+      it("model addSubscriberArgs[1] is equal to sliderUi update method", function() {
+        assert.deepEqual(model.addSubscriberArgs[1], sliderUi.update);
+      });
+    });
+
+    context("shall create parentsMap with slider, model and sliderUi", function() {
+      it("sliderAPI parentsMap length is not equal to 0", function() {
+        assert.notEqual( SliderAPI._parentsMap.length, 0 );
+      });
+
+      it("sliderAPI parentsMap $parent is not undefined", function() {
+        assert.notEqual( SliderAPI._parentsMap.get($parent), undefined );
+      });
+
+      it("sliderAPI parentsMap $parent slider is equal to slider", function() {
+        assert.deepEqual( SliderAPI._parentsMap.get($parent).slider, slider );
+      });
+
+      it("sliderAPI parentsMap $parent model is equal to model", function() {
+        assert.deepEqual( SliderAPI._parentsMap.get($parent).model, model );
+      });
+
+      it("sliderAPI parentsMap $parent sliderUi is equal to sliderUi", function() {
+        assert.deepEqual( SliderAPI._parentsMap.get($parent).sliderUi, sliderUi );
+      });
+    });
   });
 
   describe("getOptions method", function() {
+    // shall return current options of the slider
   });
 
   describe("setOptions method", function() {
+    // shall set current options of the slider
   });
 
 });
