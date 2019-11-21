@@ -1,9 +1,7 @@
-:root {
+.slider {
   --slider-handle-width: 20px;
   --slider-handle-height: var(--slider-handle-width);
-}
 
-.slider {
   display: inline-block;
   vertical-align: middle;
   width: 100%;
