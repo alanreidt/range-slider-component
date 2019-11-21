@@ -2,17 +2,18 @@ import { sliderFactory } from "./SliderFactory";
 
 
 export const SliderAPI = {
-  parentsMap: new WeakMap(),
+  _factory: sliderFactory,
+  _parentsMap: new WeakMap(),
 
   createSlider($parent, options) {
-    const slider = sliderFactory.createSlider(options);
-    const model = sliderFactory.createModel(slider);
-    const sliderUi = sliderFactory.createUI($parent, model);
+    const slider = this._factory.createSlider(options);
+    const model = this._factory.createModel(slider);
+    const sliderUi = this._factory.createUI($parent, model);
 
     const sliderUiBoundedUpdate = sliderUi.update.bind(sliderUi);
     model.addSubscriber("update", sliderUiBoundedUpdate);
 
-    this.parentsMap.set($parent, {
+    this._parentsMap.set($parent, {
       slider,
       model,
       sliderUi,
@@ -20,11 +21,11 @@ export const SliderAPI = {
   },
 
   getOptions($parent) {
-    return this.parentsMap.get($parent).model.getOptions();
+    return this._parentsMap.get($parent).model.getOptions();
   },
 
   setOptions($parent, options) {
-    this.parentsMap.get($parent).model.update(options);
+    this._parentsMap.get($parent).model.update(options);
   },
 
 };
