@@ -1561,52 +1561,49 @@ describe("Slider", function() {
 
 
 describe("SliderAPI", function() {
+  const slider = {
+    arguments: null,
+  };
+  const model = {
+    arguments: null,
+    addSubscriberArgs: null,
+
+    addSubscriber(...args) {
+      this.addSubscriberArgs = args;
+    },
+  };
+  const sliderUi = {
+    arguments: null,
+
+    update() {},
+  };
+
+  const makeClassMock = function(obj) {
+    return (...options) => {
+      obj.arguments = options;
+      return obj;
+    };
+  };
+
+  const factory = {
+    createSlider: makeClassMock(slider),
+    createModel: makeClassMock(model),
+    createUI: makeClassMock(sliderUi),
+  };
+
+  const $parent = document.createElement("div");
+  const options = {
+    boundaries: [100, 500],
+    values: [200, 300],
+    step: 20,
+    orientaion: "horizontal",
+    hasTooltips: true,
+  };
+
+  SliderAPI._factory = factory;
+  SliderAPI.createSlider($parent, options);
 
   describe("create method", function() {
-    const slider = {
-      arguments: null,
-    };
-
-    const model = {
-      arguments: null,
-      addSubscriberArgs: null,
-
-      addSubscriber(...args) {
-        this.addSubscriberArgs = args;
-      },
-    };
-
-    const sliderUi = {
-      arguments: null,
-
-      update() {},
-    };
-
-    const makeClassMock = function(obj) {
-      return (...options) => {
-        obj.arguments = options;
-        return obj;
-      };
-    };
-
-    const factory = {
-      createSlider: makeClassMock(slider),
-      createModel: makeClassMock(model),
-      createUI: makeClassMock(sliderUi),
-    };
-
-    const $parent = document.createElement("div");
-    const options = {
-      boundaries: [100, 500],
-      values: [200, 300],
-      step: 20,
-      orientaion: "horizontal",
-      hasTooltips: true,
-    };
-
-    SliderAPI._factory = factory;
-    SliderAPI.createSlider($parent, options);
-
     context("shall create slider with options", function() {
       it("slider arguments is not equal to null", function() {
         assert.isNotNull( slider.arguments );
