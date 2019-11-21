@@ -1572,6 +1572,10 @@ describe("SliderAPI", function() {
       return options;
     },
 
+    update(options) {
+      this.optionsUpdated = options;
+    },
+
     addSubscriber(...args) {
       this.addSubscriberArgs = args;
     },
@@ -1690,7 +1694,23 @@ describe("SliderAPI", function() {
   });
 
   describe("setOptions method", function() {
-    // shall set current options of the slider
+    context("shall set model optionsUpdated property", function() {
+      const newOptions = {
+        boundaries: [0, 100],
+        step: 20,
+      };
+
+      SliderAPI.setOptions($parent, newOptions);
+
+      it("model optionsUpdated is not equal to null", function() {
+        assert.isNotNull( model.optionsUpdated );
+      });
+
+      it("model optionsUpdated is equal to newOptions", function() {
+        assert.equal(model.optionsUpdated, newOptions);
+      });
+
+    });
   });
 
 });
