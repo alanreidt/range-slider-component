@@ -1613,7 +1613,7 @@ describe("SliderAPI", function() {
       });
 
       it("slider argument is equal to options", function() {
-        assert.deepEqual(slider.arguments[0], options);
+        assert.equal(slider.arguments[0], options);
       });
     });
 
@@ -1623,7 +1623,7 @@ describe("SliderAPI", function() {
       });
 
       it("model arguments[0] is equal to slider", function() {
-        assert.deepEqual(model.arguments[0], slider);
+        assert.equal(model.arguments[0], slider);
       });
     });
 
@@ -1633,11 +1633,11 @@ describe("SliderAPI", function() {
       });
 
       it("sliderUi arguments[0] is equal to $parent", function() {
-        assert.deepEqual(sliderUi.arguments[0], $parent);
+        assert.equal(sliderUi.arguments[0], $parent);
       });
 
       it("sliderUi arguments[1] is equal to model", function() {
-        assert.deepEqual(sliderUi.arguments[1], model);
+        assert.equal(sliderUi.arguments[1], model);
       });
     });
 
@@ -1647,11 +1647,11 @@ describe("SliderAPI", function() {
       });
 
       it("model addSubscriberArgs[0] is equal to 'update'", function() {
-        assert.deepEqual(model.addSubscriberArgs[0], "update");
+        assert.equal(model.addSubscriberArgs[0], "update");
       });
 
       it("model addSubscriberArgs[1] is equal to sliderUi update method", function() {
-        assert.deepEqual(model.addSubscriberArgs[1], sliderUi.update);
+        assert.equal(model.addSubscriberArgs[1], sliderUi.update);
       });
     });
 
@@ -1665,15 +1665,15 @@ describe("SliderAPI", function() {
       });
 
       it("sliderAPI parentsMap $parent slider is equal to slider", function() {
-        assert.deepEqual( SliderAPI._parentsMap.get($parent).slider, slider );
+        assert.equal( SliderAPI._parentsMap.get($parent).slider, slider );
       });
 
       it("sliderAPI parentsMap $parent model is equal to model", function() {
-        assert.deepEqual( SliderAPI._parentsMap.get($parent).model, model );
+        assert.equal( SliderAPI._parentsMap.get($parent).model, model );
       });
 
       it("sliderAPI parentsMap $parent sliderUi is equal to sliderUi", function() {
-        assert.deepEqual( SliderAPI._parentsMap.get($parent).sliderUi, sliderUi );
+        assert.equal( SliderAPI._parentsMap.get($parent).sliderUi, sliderUi );
       });
     });
   });
