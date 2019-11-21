@@ -1568,6 +1568,10 @@ describe("SliderAPI", function() {
     arguments: null,
     addSubscriberArgs: null,
 
+    getOptions() {
+      return options;
+    },
+
     addSubscriber(...args) {
       this.addSubscriberArgs = args;
     },
@@ -1676,7 +1680,13 @@ describe("SliderAPI", function() {
   });
 
   describe("getOptions method", function() {
-    // shall return current options of the slider
+    context("shall return current options", function() {
+
+      it("returned options are equal to passed options", function() {
+        assert.equal(SliderAPI.getOptions($parent), options);
+      });
+
+    });
   });
 
   describe("setOptions method", function() {
