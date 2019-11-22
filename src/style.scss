@@ -39,7 +39,7 @@ body {
 }
 
 .cover-container {
-  max-width: 42em;
+  max-width: 48em;
 }
 
 
@@ -92,9 +92,29 @@ body {
 .cover {
   padding: 0 1.5rem;
 }
+
+.cover-heading {
+  margin-bottom: 1.5rem;;
+}
+
 .cover .btn-lg {
   padding: .75rem 1.25rem;
   font-weight: 700;
+}
+
+.playgroud {
+  background-color: #fff;
+  min-height: 100px;
+}
+
+.control-pane {
+  padding: 0.5rem 1rem;
+  border: 3px solid #333;
+  border-radius: 0.5rem;
+
+  &__label {
+    color: #333;
+  }
 }
 
 
@@ -109,13 +129,11 @@ body {
   display: inline-block;
   width: 100%;
   max-width: 300px;
-  margin-bottom: 50px;
   // background-color: green;
 }
 
 .user-slider-vertical {
   display: block;
-  max-width: 100px;
   height: 300px;
-  background-color: #EEE;
+  // background-color: #EEE;
 }
