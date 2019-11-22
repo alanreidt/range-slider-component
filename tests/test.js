@@ -3,7 +3,7 @@ import {makeTestClass, test, testClass, template, simulateMouseEvent} from "./te
 import {SliderModel} from "../src/SliderModel";
 import {SliderAdapter} from "../src/SliderAdapter";
 import {SliderUI} from "../src/SliderUI";
-import { SliderAPI } from "../src/SliderAPI";
+import { slider } from "../src/slider";
 
 
 describe("getClosestFactorOf", function() {
@@ -1994,7 +1994,7 @@ describe("SliderModel", function() {
 });
 
 
-describe("SliderAPI", function() {
+describe("slider", function() {
   const sliderModel = {
     arguments: null,
   };
@@ -2042,8 +2042,8 @@ describe("SliderAPI", function() {
     hasTooltips: true,
   };
 
-  SliderAPI._factory = factory;
-  SliderAPI.createSlider($parent, options);
+  slider._factory = factory;
+  slider.createSlider($parent, options);
 
   describe("create method", function() {
     context("shall create sliderModel with options", function() {
@@ -2096,23 +2096,23 @@ describe("SliderAPI", function() {
 
     context("shall create parentsMap with sliderModel, sliderAdapter and sliderUi", function() {
       it("sliderAPI parentsMap length is not equal to 0", function() {
-        assert.notEqual( SliderAPI._parentsMap.length, 0 );
+        assert.notEqual( slider._parentsMap.length, 0 );
       });
 
       it("sliderAPI parentsMap $parent is not undefined", function() {
-        assert.notEqual( SliderAPI._parentsMap.get($parent), undefined );
+        assert.notEqual( slider._parentsMap.get($parent), undefined );
       });
 
       it("sliderAPI parentsMap $parent sliderModel is equal to sliderModel", function() {
-        assert.equal( SliderAPI._parentsMap.get($parent).sliderModel, sliderModel );
+        assert.equal( slider._parentsMap.get($parent).sliderModel, sliderModel );
       });
 
       it("sliderAPI parentsMap $parent sliderAdapter is equal to sliderAdapter", function() {
-        assert.equal( SliderAPI._parentsMap.get($parent).sliderAdapter, sliderAdapter );
+        assert.equal( slider._parentsMap.get($parent).sliderAdapter, sliderAdapter );
       });
 
       it("sliderAPI parentsMap $parent sliderUi is equal to sliderUi", function() {
-        assert.equal( SliderAPI._parentsMap.get($parent).sliderUi, sliderUi );
+        assert.equal( slider._parentsMap.get($parent).sliderUi, sliderUi );
       });
     });
   });
@@ -2121,7 +2121,7 @@ describe("SliderAPI", function() {
     context("shall return current options", function() {
 
       it("returned options are equal to passed options", function() {
-        assert.equal(SliderAPI.getOptions($parent), options);
+        assert.equal(slider.getOptions($parent), options);
       });
 
     });
@@ -2134,7 +2134,7 @@ describe("SliderAPI", function() {
         step: 20,
       };
 
-      SliderAPI.setOptions($parent, newOptions);
+      slider.setOptions($parent, newOptions);
 
       it("sliderAdapter optionsUpdated is not equal to null", function() {
         assert.isNotNull( sliderAdapter.optionsUpdated );

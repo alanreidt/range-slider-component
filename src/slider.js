@@ -1,7 +1,7 @@
 import { sliderFactory } from "./SliderFactory";
 
 
-export const SliderAPI = {
+export const slider = {
   _factory: sliderFactory,
   _parentsMap: new WeakMap(),
 
