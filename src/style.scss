@@ -127,8 +127,10 @@ body {
 }
 
 .slider-wrapper {
-  display: inline-block;
+  display: flex;
   width: 100%;
-  max-width: 300px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   // background-color: green;
 }
