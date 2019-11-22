@@ -5,7 +5,7 @@ export const slider = {
   _factory: sliderFactory,
   _parentsMap: new WeakMap(),
 
-  createSlider($parent, options) {
+  create($parent, options) {
     const sliderModel = this._factory.createModel(options);
     const sliderAdapter = this._factory.createAdapter(sliderModel);
     const sliderUi = this._factory.createUI($parent, sliderAdapter);

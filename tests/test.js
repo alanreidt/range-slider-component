@@ -2043,7 +2043,7 @@ describe("slider", function() {
   };
 
   slider._factory = factory;
-  slider.createSlider($parent, options);
+  slider.create($parent, options);
 
   describe("create method", function() {
     context("shall create sliderModel with options", function() {

@@ -9,7 +9,7 @@ const $stepNumberInput = document.querySelector("#step");
 const $orientationCheckbox = document.querySelector("#orientation");
 const $hasTooltipsCheckbox = document.querySelector("#hasTooltips");
 
-slider.createSlider($parent, {
+slider.create($parent, {
   boundaries: [0, 100],
   values: [20, 80],
   hasTooltips: true,
@@ -32,5 +32,5 @@ $form.addEventListener("submit", event => {
     orientation,
   };
 
-  slider.createSlider($parent, options);
+  slider.create($parent, options);
 });
