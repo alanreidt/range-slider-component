@@ -6,15 +6,15 @@ export const SliderAPI = {
   _parentsMap: new WeakMap(),
 
   createSlider($parent, options) {
-    const slider = this._factory.createSlider(options);
-    const sliderAdapter = this._factory.createAdapter(slider);
+    const sliderModel = this._factory.createModel(options);
+    const sliderAdapter = this._factory.createAdapter(sliderModel);
     const sliderUi = this._factory.createUI($parent, sliderAdapter);
 
     const sliderUiBoundedUpdate = sliderUi.update.bind(sliderUi);
     sliderAdapter.addSubscriber("update", sliderUiBoundedUpdate);
 
     this._parentsMap.set($parent, {
-      slider,
+      sliderModel,
       sliderAdapter,
       sliderUi,
     });

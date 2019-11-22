@@ -1,6 +1,6 @@
 import {getAverageOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf} from "./utilities";
 
-export class Slider {
+export class SliderModel {
   // don't use object destructuring as
   // I need to loop over an object
   constructor(options = {}) {

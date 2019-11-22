@@ -1,6 +1,6 @@
 import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, setElementPosition, setElementsPosition, translateProportionIntoValue } from "../src/utilities";
 import {makeTestClass, test, testClass, template, simulateMouseEvent} from "./testUtilities";
-import {Slider} from "../src/Slider";
+import {SliderModel} from "../src/SliderModel";
 import {SliderAdapter} from "../src/SliderAdapter";
 import {SliderUI} from "../src/SliderUI";
 import { SliderAPI } from "../src/SliderAPI";
@@ -1494,19 +1494,19 @@ describe("SliderAdapter", function() {
         step: 20,
         hasTooltips: true,
       };
-      const slider = {
+      const sliderModel = {
         setValues(newOptions) {
           this.options = newOptions;
         },
       };
-      const sliderAdapter = new SliderAdapter(slider);
+      const sliderAdapter = new SliderAdapter(sliderModel);
 
       sliderAdapter.update(newValues);
 
       for (let key in newValues) {
 
         it(`${key} equals to ${newValues[key]}`, function() {
-          assert.deepEqual( slider.options[key], newValues[key] );
+          assert.deepEqual( sliderModel.options[key], newValues[key] );
         });
 
       }
@@ -1521,14 +1521,14 @@ describe("SliderAdapter", function() {
         hasTooltips: true,
       };
       const expectations = options;
-      const slider = {
+      const sliderModel = {
         options: options,
 
         getValues() {
           return this.options;
         },
       };
-      const sliderAdapter = new SliderAdapter(slider);
+      const sliderAdapter = new SliderAdapter(sliderModel);
 
       const sliderOptions = sliderAdapter.getOptions();
 
@@ -1545,10 +1545,10 @@ describe("SliderAdapter", function() {
 });
 
 
-describe("Slider", function() {
+describe("SliderModel", function() {
 
   describe("Initialization test", function() {
-    const Class = Slider;
+    const Class = SliderModel;
     const methodGetter = "getValues";
 
     const runTest = testClass({Class, methodGetter});
@@ -1690,7 +1690,7 @@ describe("Slider", function() {
   });
 
   describe("Reassignment test", function() {
-    const Class = Slider;
+    const Class = SliderModel;
     const method = "setValues";
     const methodGetter = "getValues";
 
@@ -1995,7 +1995,7 @@ describe("Slider", function() {
 
 
 describe("SliderAPI", function() {
-  const slider = {
+  const sliderModel = {
     arguments: null,
   };
   const sliderAdapter = {
@@ -2028,7 +2028,7 @@ describe("SliderAPI", function() {
   };
 
   const factory = {
-    createSlider: makeClassMock(slider),
+    createModel: makeClassMock(sliderModel),
     createAdapter: makeClassMock(sliderAdapter),
     createUI: makeClassMock(sliderUi),
   };
@@ -2046,23 +2046,23 @@ describe("SliderAPI", function() {
   SliderAPI.createSlider($parent, options);
 
   describe("create method", function() {
-    context("shall create slider with options", function() {
-      it("slider arguments is not equal to null", function() {
-        assert.isNotNull( slider.arguments );
+    context("shall create sliderModel with options", function() {
+      it("sliderModel arguments is not equal to null", function() {
+        assert.isNotNull( sliderModel.arguments );
       });
 
-      it("slider argument is equal to options", function() {
-        assert.equal(slider.arguments[0], options);
+      it("sliderModel argument is equal to options", function() {
+        assert.equal(sliderModel.arguments[0], options);
       });
     });
 
-    context("shall create sliderAdapter with slider, as dataSource", function() {
+    context("shall create sliderAdapter with sliderModel, as dataSource", function() {
       it("sliderAdapter arguments is not equal to null", function() {
         assert.isNotNull( sliderAdapter.arguments );
       });
 
-      it("sliderAdapter arguments[0] is equal to slider", function() {
-        assert.equal(sliderAdapter.arguments[0], slider);
+      it("sliderAdapter arguments[0] is equal to sliderModel", function() {
+        assert.equal(sliderAdapter.arguments[0], sliderModel);
       });
     });
 
@@ -2094,7 +2094,7 @@ describe("SliderAPI", function() {
       });
     });
 
-    context("shall create parentsMap with slider, sliderAdapter and sliderUi", function() {
+    context("shall create parentsMap with sliderModel, sliderAdapter and sliderUi", function() {
       it("sliderAPI parentsMap length is not equal to 0", function() {
         assert.notEqual( SliderAPI._parentsMap.length, 0 );
       });
@@ -2103,8 +2103,8 @@ describe("SliderAPI", function() {
         assert.notEqual( SliderAPI._parentsMap.get($parent), undefined );
       });
 
-      it("sliderAPI parentsMap $parent slider is equal to slider", function() {
-        assert.equal( SliderAPI._parentsMap.get($parent).slider, slider );
+      it("sliderAPI parentsMap $parent sliderModel is equal to sliderModel", function() {
+        assert.equal( SliderAPI._parentsMap.get($parent).sliderModel, sliderModel );
       });
 
       it("sliderAPI parentsMap $parent sliderAdapter is equal to sliderAdapter", function() {
