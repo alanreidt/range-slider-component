@@ -13,30 +13,65 @@
 
     <title>Slider plugin Demo-page</title>
   </head>
-  <body class="text-center">
+  <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">Cover</h3>
+          <h3 class="masthead-brand">Slider name</h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">Features</a>
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="#">Playground</a>
+            <a class="nav-link" href="#">Quick start</a>
           </nav>
         </div>
       </header>
 
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">Cover your page.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-        </p>
+      <main role="main" class="page__content  inner  cover">
+        <h1 class="cover-heading  text-center">Slider Playgroud</h1>
+        <div class="playgroud  row  rounded  p-3 align-items-center">
+          <div class="playgroud__slider  col-md">
+            <div class="user-slider"></div>
+          </div>
+          <div class="playgroud__control-pane  col-md">
+              <div class="control-pane">
+                <div class="control-pane__inner">
+                  <form>
+                    <div class="form-group">
+                      <label for="boundaries" class="control-pane__label  col-form-label  col-form-label-sm">Min/Max values:</label>
+                      <input type="text" class="form-control  form-control-sm" id="boundaries" aria-describedby="boundariesHelp" placeholder="0, 100">
+                      <small id="boundariesHelp" class="form-text text-muted">Enter single value — change one side</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="values" class="control-pane__label  col-form-label  col-form-label-sm">Initial values:</label>
+                      <input type="text" class="form-control  form-control-sm" id="values" aria-describedby="valuesHelp" placeholder="20, 50, 80">
+                      <small id="valuesHelp" class="form-text text-muted">Each value adds handle</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="step" class="control-pane__label  col-form-label  col-form-label-sm">Step:</label>
+                      <input type="number" class="form-control  form-control-sm" id="step" aria-describedby="stepHelp" placeholder="20">
+                      <small id="stepHelp" class="form-text text-muted">From 1 to Max</small>
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="hasTooltips">
+                        <label class="control-pane__label  custom-control-label" for="hasTooltips">Include tooltips?</label>
+                    </div>
+                    <div class="form-group custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input" id="orientation">
+                      <label class="control-pane__label  custom-control-label" for="orientation">Turn horizontally?</label>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Run</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+          </div>
+        </div>
       </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+          <p class="text-center">Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
         </div>
       </footer>
     </div>
