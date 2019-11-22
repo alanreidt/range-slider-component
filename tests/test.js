@@ -3,7 +3,7 @@ import {makeTestClass, test, testClass, template, simulateMouseEvent} from "./te
 import {SliderModel} from "../src/SliderModel";
 import {SliderAdapter} from "../src/SliderAdapter";
 import {SliderUI} from "../src/SliderUI";
-import { slider } from "../src/slider";
+import { slider } from "../src/slider.js";
 
 
 describe("getClosestFactorOf", function() {

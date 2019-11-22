@@ -1,4 +1,4 @@
-import {slider} from "./slider";
+import {slider} from "./slider.js";
 
 const $parent = document.querySelector(".slider-wrapper");
 
