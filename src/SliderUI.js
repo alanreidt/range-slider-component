@@ -2,11 +2,11 @@ import {getPositionInPercentageOf, translateProportionIntoValue, setElementsPosi
 
 export class SliderUI {
 
-  constructor($parent, model) {
+  constructor($parent, sliderAdapter) {
     this.$parent = $parent;
-    this.model = model;
+    this.sliderAdapter = sliderAdapter;
 
-    this._paint( model.getOptions() );
+    this._paint( sliderAdapter.getOptions() );
   }
 
 
@@ -110,7 +110,7 @@ export class SliderUI {
   _triggerModel(event, onMouseDownEvent) {
     event.preventDefault();
 
-    const orientation = this.model.getOptions().orientation;
+    const orientation = this.sliderAdapter.getOptions().orientation;
 
     const position = (orientation === "horizontal") ?
       event.clientX - this.$slider.getBoundingClientRect().left :
@@ -123,7 +123,7 @@ export class SliderUI {
     const proportion = position / sliderSize * 100;
     const newValue = this._calcValue(proportion);
 
-    const currentValues = this.model.getOptions().values.slice();
+    const currentValues = this.sliderAdapter.getOptions().values.slice();
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
     const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
       ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget)
@@ -132,17 +132,17 @@ export class SliderUI {
     if ( onMouseDownEventTargetIndex !== -1 ) {
       currentValues.splice(onMouseDownEventTargetIndex, 1, newValue);
 
-      this.model.update({values: currentValues});
+      this.sliderAdapter.update({values: currentValues});
     }
 
     if (event.target === this.$base) {
-      this.model.update({values: newValue});
+      this.sliderAdapter.update({values: newValue});
     }
   }
 
 
   _calcValue(proportion) {
-    const boundaries = this.model.getOptions().boundaries;
+    const boundaries = this.sliderAdapter.getOptions().boundaries;
 
     return translateProportionIntoValue(proportion, boundaries);
   }

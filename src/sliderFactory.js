@@ -1,5 +1,5 @@
 import {Slider} from "./Slider";
-import {Model} from "./Model";
+import {SliderAdapter} from "./SliderAdapter";
 import {SliderUI} from "./SliderUI";
 
 
@@ -8,8 +8,8 @@ export const sliderFactory = {
     return new Slider(...args);
   },
 
-  createModel(...args) {
-    return new Model(...args);
+  createAdapter(...args) {
+    return new SliderAdapter(...args);
   },
 
   createUI(...args) {

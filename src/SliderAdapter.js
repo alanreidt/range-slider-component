@@ -1,6 +1,6 @@
 import {observerMixin} from "./utilities";
 
-export class Model {
+export class SliderAdapter {
   constructor(dataSource) {
     this.dataSource = dataSource;
   }
@@ -16,4 +16,4 @@ export class Model {
   }
 }
 
-Object.assign(Model.prototype, observerMixin);
+Object.assign(SliderAdapter.prototype, observerMixin);

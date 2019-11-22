@@ -7,25 +7,25 @@ export const SliderAPI = {
 
   createSlider($parent, options) {
     const slider = this._factory.createSlider(options);
-    const model = this._factory.createModel(slider);
-    const sliderUi = this._factory.createUI($parent, model);
+    const sliderAdapter = this._factory.createAdapter(slider);
+    const sliderUi = this._factory.createUI($parent, sliderAdapter);
 
     const sliderUiBoundedUpdate = sliderUi.update.bind(sliderUi);
-    model.addSubscriber("update", sliderUiBoundedUpdate);
+    sliderAdapter.addSubscriber("update", sliderUiBoundedUpdate);
 
     this._parentsMap.set($parent, {
       slider,
-      model,
+      sliderAdapter,
       sliderUi,
     });
   },
 
   getOptions($parent) {
-    return this._parentsMap.get($parent).model.getOptions();
+    return this._parentsMap.get($parent).sliderAdapter.getOptions();
   },
 
   setOptions($parent, options) {
-    this._parentsMap.get($parent).model.update(options);
+    this._parentsMap.get($parent).sliderAdapter.update(options);
   },
 
 };
