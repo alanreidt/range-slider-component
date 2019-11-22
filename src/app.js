@@ -10,7 +10,8 @@ const $orientationCheckbox = document.querySelector("#orientation");
 const $hasTooltipsCheckbox = document.querySelector("#hasTooltips");
 
 SliderAPI.createSlider($parent, {
-  values: [0, 100],
+  boundaries: [0, 100],
+  values: [20, 80],
   hasTooltips: true,
 });
 
