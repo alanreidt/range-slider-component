@@ -1,6 +1,6 @@
 import {SliderAPI} from "./SliderAPI";
 
-const $parent = document.querySelector(".user-slider");
+const $parent = document.querySelector(".slider-wrapper");
 
 const $form = document.querySelector(".js-control-pane__form");
 const $boundariesTextInput = document.querySelector("#boundaries");
