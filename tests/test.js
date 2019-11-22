@@ -984,7 +984,7 @@ describe("SliderUI", function() {
 
   describe("constructor", function() {
 
-    describe("shall paint slider structure", function() {
+    describe("shall paint $slider structure", function() {
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
@@ -1008,9 +1008,9 @@ describe("SliderUI", function() {
       context("paint static structure correctly", function() {
 
         it(`create ${SLIDER_NAME} element`, function() {
-          const slider = $parent.querySelector(`.${SLIDER_NAME}`);
+          const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
 
-          assert.isNotNull( slider );
+          assert.isNotNull( $slider );
         });
 
         it(`create ${SLIDER_BASE_NAME} element`, function() {
@@ -1112,7 +1112,7 @@ describe("SliderUI", function() {
     });
 
 
-    context("shall repaint (refresh) slider structure", function() {
+    context("shall repaint (refresh) $slider structure", function() {
       const $parent = document.createElement("div");
       const options = {
         boundaries: [0, 100],
@@ -1131,7 +1131,7 @@ describe("SliderUI", function() {
 
       const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
 
-      it("slider and repainted slider (with the same values) are not equal", function() {
+      it("$slider and repainted $slider (with the same values) are not equal", function() {
         const newSliderUi = new SliderUI($parent, sliderAdapter);
 
         const $newSlider = $parent.querySelector(`.${SLIDER_NAME}`);
