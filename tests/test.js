@@ -2,8 +2,6 @@ import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getC
 import {makeTestClass, test, testClass, template, simulateMouseEvent} from "./testUtilities";
 import {Slider} from "../src/Slider";
 import {SliderAdapter} from "../src/SliderAdapter";
-import {initialization} from "./specs/initialization/initialization";
-import {reassignment} from "./specs/reassignment/reassignment";
 import {SliderUI} from "../src/SliderUI";
 import { SliderAPI } from "../src/SliderAPI";
 
