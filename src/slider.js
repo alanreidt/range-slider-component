@@ -40,6 +40,13 @@ export const slider = {
     return this._parentsMap.get($parent).sliderAdapter.getOptions();
   },
 
+  /**
+   * Set the slider instance options.
+   *
+   * @param {HTMLElement} $parent The element the slider is inserted in.
+   * @param {object} options The options to be set to the slider.
+   *
+   */
   setOptions($parent, options) {
     this._parentsMap.get($parent).sliderAdapter.update(options);
   },
