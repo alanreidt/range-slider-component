@@ -29,6 +29,13 @@ export const slider = {
     });
   },
 
+  /**
+   * Returns the slider instance current options. Non-primitive values are references.
+   *
+   * @param {HTMLElement} $parent The element the slider is inserted in.
+   *
+   * @returns {object} options The current options of the slider.
+   */
   getOptions($parent) {
     return this._parentsMap.get($parent).sliderAdapter.getOptions();
   },
