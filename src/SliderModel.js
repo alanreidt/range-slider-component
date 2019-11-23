@@ -1,4 +1,4 @@
-import {getAverageOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf} from "./utilities";
+import {getAverageOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf} from "./utilities/utilities.js";
 
 export class SliderModel {
   // don't use object destructuring as
