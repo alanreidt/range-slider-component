@@ -12,9 +12,9 @@ In order to try the slider out, you can use Demo Page Playground section.
 For more, use git clone command and modify Demo Page app.js file by yourself.
 Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file:
 ```html
-// import slider style (change yourpath)
+<!-- import slider style (change yourpath) -->
 <link rel="stylesheet" href="yourpath/slider_plugin/src/slider.scss">
-// import slider API unit (change yourpath)
+<!-- import slider API unit (change yourpath) -->
 <script src="yourpath/slider_plugin/src/slider.js"></script>
 ```
 ```javascript
@@ -41,7 +41,7 @@ Possible options are described in the [according section]().
 
 By the way, don't forget to set height for vertical slider on $parent element (because slider is created inside):
 ```css
-// $parent element for the slider
+/* parent element for the slider */
 .slider-wrapper {
   height: 100%;
   max-height: 300px;
