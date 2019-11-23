@@ -62,3 +62,12 @@ Compose from js docs.
 Compose from js docs.
 #### setOptions method
 Compose from js docs.
+
+### Options
+| options | default value | Input data type | Output data type | Details |
+|-------------|-----------------------|----------------------------|----------------------------|---------------------------|
+| boundaries | [0, 100] | number || number[] | number[] | Min/Max value |
+| values | average of boundaries | number || number[] | number[] | Initial values = handles |
+| step | 1 | number | number | Step between values |
+| orientation | "horizontal" | "horizontal" || "vertical" | "horizontal" || "vertical" | Orientation of the slider |
+| hasTooltips | false | boolean | boolean | Tooltips state |
