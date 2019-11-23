@@ -38,7 +38,7 @@ And by next command initialize slider:
 
 Possible options are described in the [according section]().
 
-By the way, don't forget to set height for vertical slider on $parent element (cause slider is created inside):
+By the way, don't forget to set height for vertical slider on $parent element (because slider is created inside):
 <code>
   // $parent element for the slider
   .slider-wrapper {
@@ -46,3 +46,16 @@ By the way, don't forget to set height for vertical slider on $parent element (c
     max-height: 300px;
   }
 </code>
+
+The slider will take all free space — it has width or height equal to 100%, depending on orientation.
+
+## API
+slider object, which localized in the slider.js file is dedicated as Slider API Unit.
+Use its create, getOptions or setOptions methods to interact with the slider entity.
+
+### create method
+Compose from js docs.
+### getOptions method
+Compose from js docs.
+### setOptions method
+Compose from js docs.
