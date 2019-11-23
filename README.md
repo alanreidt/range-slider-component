@@ -11,19 +11,20 @@ More to come.
 In order to try the slider out, you can use Demo Page Playground section.
 For more, use git clone command and modify Demo Page app.js file by yourself.
 Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file:
-<code>
+```html
   // import slider style (change yourpath)
   <link rel="stylesheet" href="yourpath/slider_plugin/src/slider.scss">
   // import slider API unit (change yourpath)
   <script src="yourpath/slider_plugin/src/slider.js"></script>
-</code>
-<code lang="javascript">
+```
+```javascript
   // or import slider API directly into your javascript
   import {slider} from "../src/slider.js";
-</code>
+```
 
 And by next command initialize slider:
-<code lang="javascript">
+
+```javascript
   // select your DOM element
   const $parent = document.querySelector(".slider-wrapper");
 
@@ -34,28 +35,30 @@ And by next command initialize slider:
     step: 20,
     hasTooltips: true,
   });
-</code>
+```
 
 Possible options are described in the [according section]().
 
 By the way, don't forget to set height for vertical slider on $parent element (because slider is created inside):
-<code>
+```css
   // $parent element for the slider
   .slider-wrapper {
     height: 100%;
     max-height: 300px;
   }
-</code>
+```
 
 The slider will take all free space — it has width or height equal to 100%, depending on orientation.
 
-## API
+## Documentation
+
+### API
 slider object, which localized in the slider.js file is dedicated as Slider API Unit.
 Use its create, getOptions or setOptions methods to interact with the slider entity.
 
-### create method
+#### create method
 Compose from js docs.
-### getOptions method
+#### getOptions method
 Compose from js docs.
-### setOptions method
+#### setOptions method
 Compose from js docs.
