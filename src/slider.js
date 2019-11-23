@@ -8,6 +8,12 @@ export const slider = {
   _factory: sliderFactory,
   _parentsMap: new WeakMap(),
 
+  /**
+   * Create slider instance.
+   *
+   * @param {HTMLElement} $parent The element slider to be inserted in.
+   * @param {object} options The options of the slider.
+   */
   create($parent, options) {
     const sliderModel = this._factory.createModel(options);
     const sliderAdapter = this._factory.createAdapter(sliderModel);
