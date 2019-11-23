@@ -66,8 +66,8 @@ Compose from js docs.
 ### Options
 | options | default value | Input data type | Output data type | Details |
 |-------------|-----------------------|----------------------------|----------------------------|---------------------------|
-| boundaries | [0, 100] | number || number[] | number[] | Min/Max value |
-| values | average of boundaries | number || number[] | number[] | Initial values = handles |
+| boundaries | [0, 100] | number or number[] | number[] | Min/Max value |
+| values | average of boundaries | number or number[] | number[] | Initial values = handles |
 | step | 1 | number | number | Step between values |
-| orientation | "horizontal" | "horizontal" || "vertical" | "horizontal" || "vertical" | Orientation of the slider |
+| orientation | "horizontal" | "horizontal" or "vertical" | "horizontal" or "vertical" | Orientation of the slider |
 | hasTooltips | false | boolean | boolean | Tooltips state |
