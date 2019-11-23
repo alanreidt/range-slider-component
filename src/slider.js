@@ -1,6 +1,9 @@
 import { sliderFactory } from "./SliderFactory";
 
-
+/**
+ * This object represents API for the slider.
+ * All interactions with the slider must happen only through it.
+ */
 export const slider = {
   _factory: sliderFactory,
   _parentsMap: new WeakMap(),
