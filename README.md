@@ -72,3 +72,13 @@ Compose from js docs.
 | orientation | "horizontal" | "horizontal" or "vertical" | "horizontal" or "vertical" | Orientation of the slider |
 | hasTooltips | false | boolean | boolean | Tooltips state |
 *\* any, that can be parseFloat(), as a number (e.g. "100", "100ab")*
+
+#### boundaries
+##### Input/Output type details
+<p>In case, when only a number is passed, the closest edge (min or max value) to the input will be changed.</p>
+<p>
+For example, having an <code>200</code>, as an input, during an initialization (default value is [0, 100]), will result in [0, 200].
+<br>
+Analogycal situation would have a place during a reassignment (using API setOptions method) — your closest boundaries value will be changed.
+</p>
+<p>Output will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.</p>
