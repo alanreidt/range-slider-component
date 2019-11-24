@@ -98,6 +98,9 @@ Analogycal situation would have a place during a reassignment (using API setOpti
 
 <p>**restrictions**: only positive and negative numbers are allowed.</p>
 
+##### Auto correction
+<p>This value is always corrected to accordance to <code>step</code> option. If it don't correspond — the closest divisible by the step one will be assigned.</p>
+
 #### step
 ##### Input/Output type details
 <p>**restrictions**: value from 1 to Max (1 <= value <= Max) is allowed.</p>
