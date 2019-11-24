@@ -105,6 +105,9 @@ Analogycal situation would have a place during a reassignment (using API setOpti
 ##### Input/Output type details
 <p>**restrictions**: value from 1 to Max (1 <= value <= Max) is allowed.</p>
 
+##### Auto correction
+<p>The value is always corrected to accordance to <code>boundaries</code> option. The division of boundaries difference by step should have no remainder, else it will be assigned to the closest possible one.</p>
+
 #### orientation
 ##### API setOptions
 <p>
