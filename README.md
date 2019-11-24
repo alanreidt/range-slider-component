@@ -82,3 +82,13 @@ For example, having an <code>200</code>, as an input, during an initialization (
 Analogycal situation would have a place during a reassignment (using API setOptions method) — your closest boundaries value will be changed.
 </p>
 <p>Output will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.</p>
+
+#### values
+##### Input/Output type details
+<p><code>values</code> option is handled indentically to <code>boudaries</code>, but, as it has more values to deal with, there has to be additional explanation:</p>
+
+<p>The first difference is if input value lie in the middle of 2 current values, then the bigger will be changed.</p>
+
+<p>And the second is that you can pass array up to current values length (excessed will be ignored) — it will change all the closest values to the inputed one.</p>
+
+<p>**restrictions**: only positive and negative numbers are allowed.</p>
