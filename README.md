@@ -85,6 +85,9 @@ Analogycal situation would have a place during a reassignment (using API setOpti
 
 <p>**restrictions**: only positive and negative numbers are allowed.</p>
 
+##### Auto correction
+<p>This option represents something like an axiom — all other dependent values are corrected according to it.</p>
+
 #### values
 ##### Input/Output type details
 <p><code>values</code> option is handled indentically to <code>boudaries</code>, but, as it has more values to deal with, there has to be additional explanation:</p>
