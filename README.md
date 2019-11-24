@@ -14,8 +14,10 @@ And also, there are tests.
 More to come.
 
 ## Getting started
-In order to try the slider out, you can use Demo Page Playground section.
+In order to try the slider out, you can use [Demo Page Playground section](#change-me).
+
 For more, use git clone command and modify Demo Page app.js file by yourself.
+
 Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file:
 ```html
 <!-- import slider style (change yourpath) -->
@@ -29,7 +31,6 @@ import {slider} from "../src/slider.js";
 ```
 
 And by next command initialize slider:
-
 ```javascript
 // select your DOM element
 const $parent = document.querySelector(".slider-wrapper");
@@ -43,18 +44,19 @@ slider.create($parent, {
 });
 ```
 
-Possible options are described in the [according section]().
+Possible options are described in the [according section](#options).
 
 By the way, don't forget to set height for vertical slider on $parent element (because slider is created inside):
 ```css
 /* parent element for the slider */
 .slider-wrapper {
+  /* the ruleset'll allow slider to be responsive */
   height: 100%;
   max-height: 300px;
 }
 ```
 
-The slider will take all free space — it has width or height equal to 100%, depending on orientation.
+The slider will take all free space up — it has width or height equal to 100%, depending on orientation.
 
 ## Documentation
 
