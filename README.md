@@ -97,7 +97,7 @@ Analogycal situation would have a place during a reassignment (using API setOpti
 
 #### step
 ##### Input/Output type details
-<p>**restrictions**: value from 1 to Max boundaries value (1 <= value <= Max) is allowed.</p>
+<p>**restrictions**: value from 1 to Max (1 <= value <= Max) is allowed.</p>
 
 #### orientation
 ##### API setOptions
