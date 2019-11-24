@@ -144,3 +144,8 @@ P.S. Functionality will be enhanced in the future, in order to allow to listen t
 
 ### sliderModel
 <p>The module contains business logic of the component: possible slider options and logic around them.</p>
+
+### sliderAdapter
+<p>Adapter module is used, as a wrapper around <code>sliderModel</code>. It localizes calls to the Model, allowing to have all dependent code in one place.</p>
+
+<p>Though, presence of Adapter is optional, it gives a way to freely modify <code>sliderModel</code> and even replace it altogether, if current business logic solution don't satisfy your requirements.</p>
