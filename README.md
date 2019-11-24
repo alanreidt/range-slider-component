@@ -131,3 +131,13 @@ Or you can create the slider with tooltips and then hide them through css, when 
 <br>
 P.S. Functionality will be enhanced in the future, in order to allow to listen to events (as update), which will improve the situation.
 </p>
+
+
+### Architecture
+<p>The slider architecture follows a standart MVC architecture, as described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/).</p>
+
+<p>Unfortunatelly, there no English translation of the article, but, in a few words, a standart MVC architecture is characterized by a presence of Model, which plays the role of <i>the facade</i> to an application Domain Model.</p>
+
+<p>Note: although, the slider is just a component of an application and it don't have a Domain Model, I decided to organaze Facade anyway. The reason for that see in [the sliderAdapter section.](###sliderAdapter).</p>
+
+<p>In the result, the approach gives an opportunity to swap modules around and modify them without the need of breaking changes of the code.</p>
