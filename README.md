@@ -73,6 +73,8 @@ Compose from js docs.
 Compose from js docs.
 
 ### Options
+Options represents an object with the next possible members:
+
 | options | default value | Input type | Output type | Details |
 |:-----------:|:---------------------:|:--------------------------:|:--------------------------:|---------------------------|
 | boundaries | [0, 100] | number or number[]* | number[] | Min/Max value |
@@ -80,7 +82,10 @@ Compose from js docs.
 | step | 1 | number* | number | Step between values |
 | orientation | "horizontal" | "horizontal" or "vertical" | "horizontal" or "vertical" | Orientation of the slider |
 | hasTooltips | false | boolean | boolean | Tooltips state |
+
 *\* any, that can be parseFloat(), as a number (e.g. "100", "100ab")*
+
+For future info, see below.
 
 #### boundaries
 ##### Input/Output type details
