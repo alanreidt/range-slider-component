@@ -141,3 +141,6 @@ P.S. Functionality will be enhanced in the future, in order to allow to listen t
 <p>Note: although, the slider is just a component of an application and it don't have a Domain Model, I decided to organaze Facade anyway. The reason for that see in [the sliderAdapter section.](###sliderAdapter).</p>
 
 <p>In the result, the approach gives an opportunity to swap modules around and modify them without the need of breaking changes of the code.</p>
+
+### sliderModel
+<p>The module contains business logic of the component: possible slider options and logic around them.</p>
