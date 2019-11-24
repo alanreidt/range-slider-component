@@ -83,6 +83,8 @@ Analogycal situation would have a place during a reassignment (using API setOpti
 </p>
 <p>Output will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.</p>
 
+<p>**restrictions**: only positive and negative numbers are allowed.</p>
+
 #### values
 ##### Input/Output type details
 <p><code>values</code> option is handled indentically to <code>boudaries</code>, but, as it has more values to deal with, there has to be additional explanation:</p>
