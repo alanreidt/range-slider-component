@@ -106,3 +106,19 @@ Analogycal situation would have a place during a reassignment (using API setOpti
 <br>
 You can accomplish desired result by using API create method, instead.
 </p>
+
+#### hasTooltips
+##### API setOptions
+<p>
+Analogycally to <code>orientation</code> option <code>hasTooltips</code> option is closed for update.
+<br>
+Although, it's possible to realize update behavior there, but I don't see this as a logical functionality.
+<br>
+</p>
+<p>
+You can accomplish desired result by using API create method, instead.
+<br>
+Or you can create the slider with tooltips and then hide them through css, when desire.
+<br>
+P.S. Functionality will be enhanced in the future, in order to allow to listen to events (as update), which will improve the situation.
+</p>
