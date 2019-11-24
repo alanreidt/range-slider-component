@@ -98,3 +98,11 @@ Analogycal situation would have a place during a reassignment (using API setOpti
 #### step
 ##### Input/Output type details
 <p>**restrictions**: value from 1 to Max boundaries value (1 <= value <= Max) is allowed.</p>
+
+#### orientation
+##### API setOptions
+<p>
+<code>orientation</code> option is closed for update, as this operation requires repaint of a web-page.
+<br>
+You can accomplish desired result by using API create method, instead.
+</p>
