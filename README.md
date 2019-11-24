@@ -94,3 +94,7 @@ Analogycal situation would have a place during a reassignment (using API setOpti
 <p>And the second is that you can pass array up to current values length (excessed will be ignored) — it will change all the closest values to the inputed one.</p>
 
 <p>**restrictions**: only positive and negative numbers are allowed.</p>
+
+#### step
+##### Input/Output type details
+<p>**restrictions**: value from 1 to Max boundaries value (1 <= value <= Max) is allowed.</p>
