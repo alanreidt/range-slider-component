@@ -154,9 +154,9 @@ In the result, the approach gives an opportunity to swap modules around and modi
 The module contains business logic of the component: possible slider options and logic around them.
 
 ### sliderAdapter
-<p>Adapter module is used, as a wrapper around <code>sliderModel</code>. It localizes calls to the Model, allowing to have all dependent code in one place.</p>
+Adapter module is used, as a wrapper around `sliderModel`. It localizes calls to the Model, allowing to have all dependent code in one place.
 
-<p>Though, presence of Adapter is optional, it gives a way to freely modify <code>sliderModel</code> and even replace it altogether, if current business logic solution don't satisfy your requirements.</p>
+Though, presence of Adapter is optional, it gives a way to freely modify `sliderModel` and even replace it altogether, if current business logic solution don't satisfy your requirements.
 
 ### sliderUI
 <p>This module is responsible for display of current slider state and handling of user actions. It only translates position of occured events into the slider value. All futher work (as validation of that value and correction of correlated options) is handled by sliderModel.</p>
