@@ -168,3 +168,10 @@ This module is responsible for display of current slider state and handling of u
 It translates position of occured events into the slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `SliderModel`.
 
 As you see, `SliderUI` performs View and Controller functionality. The objective for this is that it's not logical to divide the modules in this concrete component from functional decomposition standpoint — handle don't have any value outside of the slider.
+
+#### UML diagram
+This is a bird view on the slider architecture.
+
+Diagram represents only public members.
+
+![Slider Architeture UML diagram](./_miscellaneous/slider_uml_diagram.jpeg)
