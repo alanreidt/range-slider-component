@@ -142,13 +142,13 @@ Or you can create the slider with tooltips and then hide them through css, when 
 
 
 ### Architecture
-<p>The slider architecture follows a standart MVC architecture, as described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/).</p>
+The slider architecture follows a *standart MVC architecture*, as described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/).
 
-<p>Unfortunatelly, there no English translation of the article, but, in a few words, a standart MVC architecture is characterized by a presence of Model, which plays the role of <i>the facade</i> to an application Domain Model.</p>
+Unfortunatelly, there no English translation of the article, but, in a few words, a *standart MVC architecture* is characterized by a presence of Model, which plays the role of *the facade* to an application Domain Model.
 
-<p>Note: although, the slider is just a component of an application and it don't have a Domain Model, I decided to organaze Facade anyway. The reason for that see in [the sliderAdapter section.](###sliderAdapter).</p>
+> Note: although, the slider is just a component of an application (it don't have a Domain Model), I decided to organize Facade anyway. The reason for that see in [the sliderAdapter section.](#slideradapter).
 
-<p>In the result, the approach gives an opportunity to swap modules around and modify them without the need of breaking changes of the code.</p>
+In the result, the approach gives an opportunity to swap modules around and modify them without the need of breaking changes of the code.
 
 ### sliderModel
 <p>The module contains business logic of the component: possible slider options and logic around them.</p>
