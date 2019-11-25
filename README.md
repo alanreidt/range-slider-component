@@ -151,7 +151,7 @@ Unfortunatelly, there no English translation of the article, but, in a few words
 In the result, the approach gives an opportunity to swap modules around and modify them without the need of breaking changes of the code.
 
 ### sliderModel
-<p>The module contains business logic of the component: possible slider options and logic around them.</p>
+The module contains business logic of the component: possible slider options and logic around them.
 
 ### sliderAdapter
 <p>Adapter module is used, as a wrapper around <code>sliderModel</code>. It localizes calls to the Model, allowing to have all dependent code in one place.</p>
