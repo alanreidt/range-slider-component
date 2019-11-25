@@ -70,6 +70,10 @@ Compose from js docs.
 #### getOptions method
 Compose from js docs.
 #### setOptions method
+> Note: `orientation` and `hasTooltips` options are closed for this method.
+>
+> See details in [the options section](#options).
+
 Compose from js docs.
 
 ### Options
