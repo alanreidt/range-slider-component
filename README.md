@@ -16,18 +16,18 @@ More to come.
 ## Getting started
 In order to try the slider out, you can use [Demo Page Playground section](#change-me).
 
-For more, use git clone command and modify Demo Page app.js file by yourself.
+For more, use git clone command and modify Demo Page `app.js` file by yourself.
 
 Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file:
 ```html
 <!-- import slider style (change yourpath) -->
-<link rel="stylesheet" href="yourpath/slider_plugin/src/slider.scss">
+<link rel="stylesheet" href="{your_path}/slider_plugin/src/slider.scss">
 <!-- import slider API unit (change yourpath) -->
-<script src="yourpath/slider_plugin/src/slider.js"></script>
+<script src="{your_path}/slider_plugin/src/slider.js"></script>
 ```
 ```javascript
 // or import slider API directly into your javascript
-import {slider} from "../src/slider.js";
+import { slider } from "{your_path}/slider_plugin/src/slider.js";
 ```
 
 And by next command initialize slider:
@@ -46,7 +46,7 @@ slider.create($parent, {
 
 Possible options are described in the [according section](#options).
 
-By the way, don't forget to set height for vertical slider on $parent element (because slider is created inside):
+By the way, don't forget to set `height` for vertical slider on `$parent` element (because slider is created inside):
 ```css
 /* parent element for the slider */
 .slider-wrapper {
@@ -56,12 +56,12 @@ By the way, don't forget to set height for vertical slider on $parent element (b
 }
 ```
 
-The slider will take all free space up — it has width or height equal to 100%, depending on orientation.
+The slider will take all free space up — it has `width` or `height` equal to `100%`, depending on orientation.
 
 ## Documentation
 
 ### API
-*slider object*, which localized in the slider.js file is dedicated as Slider API Unit.
+*slider object*, which localized in the `slider.js` file is dedicated as *Slider API Unit*.
 
 Use its `create`, `getOptions` or `setOptions` methods to interact with the slider entity.
 
@@ -77,7 +77,7 @@ Compose from js docs.
 Compose from js docs.
 
 ### Options
-Options represents an object with the next possible members:
+`Options` represents an object with the next possible members:
 
 | options | default value | Input type | Output type | Details |
 |:-----------:|:---------------------:|:--------------------------:|:--------------------------:|---------------------------|
@@ -87,17 +87,17 @@ Options represents an object with the next possible members:
 | orientation | "horizontal" | "horizontal" or "vertical" | "horizontal" or "vertical" | Orientation of the slider |
 | hasTooltips | false | boolean | boolean | Tooltips state |
 
-*\* any, that can be parseFloat(), as a number (e.g. "100", "100ab")*
+*\* any, that can be parseFloat(), as a number (e.g. `"100"`, `"100ab"`)*
 
 For future info, see below.
 
 #### boundaries
 ##### Input/Output type details
-In case, when only a number is passed, the closest edge (min or max value) to the input will be changed.
+In case, when only a number is passed, the closest edge (`Min` or `Max` value) to the input will be changed.
 
-For example, having an `200`, as an *input*, during an initialization (default value is `[0, 100]`), will result in `[0, 200]`.
+For example, having an `200`, as an *input*, during an *initialization* (default value is `[0, 100]`), will result in `[0, 200]`.
 
-Analogycal situation would have a place during a reassignment (using API setOptions method) — your closest boundaries value will be changed.
+Analogycal situation would have a place during a *reassignment* (using *API setOptions method*) — your closest boundaries value will be changed.
 
 *Output* will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.
 
@@ -110,9 +110,9 @@ This option represents something like an axiom — all other dependent values ar
 ##### Input/Output type details
 `values` option is handled indentically to `boundaries`, but, as it has more values to deal with, there is additional information you need to know.
 
-The first difference is if input value lie in the middle of 2 current values, then the bigger will be changed.
+*The first* difference is if input value lie in the middle of 2 current values, then the bigger will be changed.
 
-And the second is that you can pass an array up to current values length (excessed will be ignored) — it will change all the closest values to the inputed ones.
+And *the second* is that you can pass an array up to current values length (excessed will be ignored) — it will change all the closest values to the inputed ones.
 
 *restrictions*: only positive and negative numbers are allowed.
 
