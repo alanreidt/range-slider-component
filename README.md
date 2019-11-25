@@ -159,6 +159,8 @@ Adapter module is used, as a wrapper around `sliderModel`. It localizes calls to
 Though, presence of Adapter is optional, it gives a way to freely modify `sliderModel` and even replace it altogether, if current business logic solution don't satisfy your requirements.
 
 ### sliderUI
-<p>This module is responsible for display of current slider state and handling of user actions. It only translates position of occured events into the slider value. All futher work (as validation of that value and correction of correlated options) is handled by sliderModel.</p>
+This module is responsible for display of current slider state and handling of user actions.
 
-<p>As you see, sliderUI performs View and Controller functionality. The objective for this is that it's not logical to divide this modules from functional decomposition standpoint in this concrete component — handle don't have any value outside of the slider.</p>
+It translates position of occured events into the slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `sliderModel`.
+
+As you see, `sliderUI` performs View and Controller functionality. The objective for this is that it's not logical to divide the modules in this concrete component from functional decomposition standpoint — handle don't have any value outside of the slider.
