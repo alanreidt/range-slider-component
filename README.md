@@ -89,18 +89,18 @@ For future info, see below.
 
 #### boundaries
 ##### Input/Output type details
-<p>In case, when only a number is passed, the closest edge (min or max value) to the input will be changed.</p>
-<p>
-For example, having an <code>200</code>, as an input, during an initialization (default value is [0, 100]), will result in [0, 200].
-<br>
-Analogycal situation would have a place during a reassignment (using API setOptions method) — your closest boundaries value will be changed.
-</p>
-<p>Output will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.</p>
+In case, when only a number is passed, the closest edge (min or max value) to the input will be changed.
 
-<p>**restrictions**: only positive and negative numbers are allowed.</p>
+For example, having an `200`, as an **input**, during an initialization (default value is `[0, 100]`), will result in `[0, 200]`.
+
+Analogycal situation would have a place during a reassignment (using API setOptions method) — your closest boundaries value will be changed.
+
+**Output** will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.
+
+**restrictions**: only positive and negative numbers are allowed.
 
 ##### Auto correction
-<p>This option represents something like an axiom — all other dependent values are corrected according to it.</p>
+This option represents something like an axiom — all other dependent values are corrected according to it.
 
 #### values
 ##### Input/Output type details
