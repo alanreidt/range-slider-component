@@ -104,16 +104,16 @@ This option represents something like an axiom — all other dependent values ar
 
 #### values
 ##### Input/Output type details
-<p><code>values</code> option is handled indentically to <code>boudaries</code>, but, as it has more values to deal with, there has to be additional explanation:</p>
+`values` option is handled indentically to `boundaries`, but, as it has more values to deal with, there is additional information you need to know.
 
-<p>The first difference is if input value lie in the middle of 2 current values, then the bigger will be changed.</p>
+The first difference is if input value lie in the middle of 2 current values, then the bigger will be changed.
 
-<p>And the second is that you can pass array up to current values length (excessed will be ignored) — it will change all the closest values to the inputed one.</p>
+And the second is that you can pass an array up to current values length (excessed will be ignored) — it will change all the closest values to the inputed ones.
 
-<p>**restrictions**: only positive and negative numbers are allowed.</p>
+*restrictions*: only positive and negative numbers are allowed.
 
 ##### Auto correction
-<p>This value is always corrected to accordance to <code>step</code> option. If it don't correspond — the closest divisible by the step one will be assigned.</p>
+This value is always corrected to accordance with `step` option. If it doesn't correspond — the closest divisible by the `step` will be assigned.
 
 #### step
 ##### Input/Output type details
