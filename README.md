@@ -91,13 +91,13 @@ For future info, see below.
 ##### Input/Output type details
 In case, when only a number is passed, the closest edge (min or max value) to the input will be changed.
 
-For example, having an `200`, as an **input**, during an initialization (default value is `[0, 100]`), will result in `[0, 200]`.
+For example, having an `200`, as an *input*, during an initialization (default value is `[0, 100]`), will result in `[0, 200]`.
 
 Analogycal situation would have a place during a reassignment (using API setOptions method) — your closest boundaries value will be changed.
 
-**Output** will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.
+*Output* will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.
 
-**restrictions**: only positive and negative numbers are allowed.
+*restrictions*: only positive and negative numbers are allowed.
 
 ##### Auto correction
 This option represents something like an axiom — all other dependent values are corrected according to it.
