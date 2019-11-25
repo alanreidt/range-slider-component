@@ -1,0 +1,18 @@
+{
+  "name": "slider_plugin-gh-pages",
+  "version": "1.0.0",
+  "description": "Web-page for Bulletproof range slider plugin with MVC architecture at the core",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Alan Reid",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0",
+    "sass": "^1.23.0"
+  }
+}
