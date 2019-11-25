@@ -130,19 +130,15 @@ You can accomplish desired result by using *API create method*, instead.
 
 #### hasTooltips
 ##### API setOptions
-<p>
-Analogycally to <code>orientation</code> option <code>hasTooltips</code> option is closed for update.
-<br>
-Although, it's possible to realize update behavior there, but I don't see this as a logical functionality.
-<br>
-</p>
-<p>
-You can accomplish desired result by using API create method, instead.
-<br>
+Analogycally to `orientation` option `hasTooltips` option is closed for *update*.
+
+Although, it's possible to realize *update* behavior here, I don't see this, as a logical functionality (see below).
+
+You can accomplish desired result by using *API create method*, instead.
+
 Or you can create the slider with tooltips and then hide them through css, when desire.
-<br>
-P.S. Functionality will be enhanced in the future, in order to allow to listen to events (as update), which will improve the situation.
-</p>
+
+> P.S. Functionality will be enhanced in the future, in order to allow to listen to events (as *update*), which will improve the situation.
 
 
 ### Architecture
