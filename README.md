@@ -117,10 +117,10 @@ This value is always corrected to accordance with `step` option. If it doesn't c
 
 #### step
 ##### Input/Output type details
-<p>**restrictions**: value from 1 to Max (1 <= value <= Max) is allowed.</p>
+*restrictions*: value from `1` to `Range (Max − Min values)` (`1 <= value <= Range`) is allowed.
 
 ##### Auto correction
-<p>The value is always corrected to accordance to <code>boundaries</code> option. The division of boundaries difference by step should have no remainder, else it will be assigned to the closest possible one.</p>
+The value is always corrected to accordance with `boundaries` option. The division of `boundaries` difference by `step` should have no remainder, else it will be assigned to the closest possible one.
 
 #### orientation
 ##### API setOptions
