@@ -1,7 +1,7 @@
 # Slider plugin
 
 ## Introduction
-Note: This project is dedicated as portfolio background, so it's not ready for distribution (maybe, yet).
+> Note: This project is dedicated as portfolio background, so it's not ready for distribution (maybe, yet).
 
 Welcome to the slider plugin github page. Although it looks like every other range slider, the component has several advantages, that make it unique.
 
