@@ -63,7 +63,7 @@ The slider will take all free space up — it has width or height equal to 100%,
 ### API
 *slider object*, which localized in the slider.js file is dedicated as Slider API Unit.
 
-Use its create, getOptions or setOptions methods to interact with the slider entity.
+Use its `create`, `getOptions` or `setOptions` methods to interact with the slider entity.
 
 #### create method
 Compose from js docs.
