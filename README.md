@@ -124,11 +124,9 @@ The value is always corrected to accordance with `boundaries` option. The divisi
 
 #### orientation
 ##### API setOptions
-<p>
-<code>orientation</code> option is closed for update, as this operation requires repaint of a web-page.
-<br>
-You can accomplish desired result by using API create method, instead.
-</p>
+`orientation` option is closed for *update*, as this operation requires repaint of a web-page.
+
+You can accomplish desired result by using *API create method*, instead.
 
 #### hasTooltips
 ##### API setOptions
