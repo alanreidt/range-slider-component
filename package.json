@@ -2,9 +2,13 @@
   "name": "slider_plugin",
   "version": "1.0.0",
   "description": "Bulletproof range slider plugin with MVC architecture at the core",
-  "main": "index.js",
+  "main": "src/slider.js",
   "directories": {
     "test": "tests"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/alanreidt/slider.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
