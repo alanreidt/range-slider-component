@@ -14,7 +14,7 @@ And also, there are tests.
 More to come.
 
 ## Getting started
-In order to try the slider out, you can use [Demo Page Playground section](#change-me).
+In order to try the slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
 For more, use git clone command and modify Demo Page `app.js` file by yourself.
 
