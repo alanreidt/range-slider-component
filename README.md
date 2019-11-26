@@ -16,18 +16,22 @@ More to come.
 ## Getting started
 In order to try the slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
-For more, use git clone command and modify Demo Page `app.js` file by yourself.
+For more, clone the repository and play around source code:
+```bash
+# clone this repository
+git clone https://github.com/alanreidt/slider.git
+```
 
-Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file:
+Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file (check [gh-pages branch](https://github.com/alanreidt/slider/tree/gh-pages) to see how it can be done):
 ```html
 <!-- import slider style (change yourpath) -->
-<link rel="stylesheet" href="{your_path}/slider_plugin/src/slider.scss">
+<link rel="stylesheet" href="{your_path}/slider/prod/slider.css">
 <!-- import slider API unit (change yourpath) -->
-<script src="{your_path}/slider_plugin/src/slider.js"></script>
+<script src="{your_path}/slider/prod/slider.js"></script>
 ```
 ```javascript
 // or import slider API directly into your javascript
-import { slider } from "{your_path}/slider_plugin/src/slider.js";
+import { slider } from "{your_path}/slider/prod/slider.js";
 ```
 
 And by next command initialize slider:
@@ -44,7 +48,7 @@ slider.create($parent, {
 });
 ```
 
-Possible options are described in the [according section](#options).
+Possible options are described in [the options section](#options).
 
 By the way, don't forget to set `height` for vertical slider on `$parent` element (because slider is created inside):
 ```css
