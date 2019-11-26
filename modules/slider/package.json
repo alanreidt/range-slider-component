@@ -1,0 +1,25 @@
+{
+  "name": "slider_plugin",
+  "version": "1.0.0",
+  "description": "Bulletproof range slider plugin with MVC architecture at the core",
+  "main": "src/slider.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/alanreidt/slider.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Alan Reid",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cssnano": "^4.1.10",
+    "mocha": "^6.2.2",
+    "sass": "^1.23.7"
+  }
+}

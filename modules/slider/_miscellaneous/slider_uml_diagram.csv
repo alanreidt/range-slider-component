@@ -1,0 +1,53 @@
+Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Text Area 1,Text Area 2,Text Area 3
+1,Page,,,,,,,,,Abstract,,
+2,Class,UML,1,,,,,,,SliderAdapter,"getOptions() : Object
+update(options : Object) : Object",
+3,Class,UML,1,,,,,,,SliderModel,"getValues() : Object
+setValues(options : Object) : Object",
+4,Entity,UML,1,,,,,,,User,,
+5,Class,UML,1,,,,,,,SliderUI,update(options : Object) : Object,
+6,Line,,1,,,2,3,None,Arrow,modifies,,
+7,Line,,1,,,5,2,None,Arrow,modifies,,
+8,Line,,1,,,5,2,None,Arrow,get data,,
+9,Line,,1,,,2,5,None,Arrow,change notification,,
+10,Line,,1,,,4,5,None,Arrow,see,,
+11,Line,,1,,,4,5,None,Arrow,operates,,
+12,Page,,,,,,,,,Main,,
+13,Text,Standard,12,,34,,,,,Slider Project V1,,
+14,Text,Standard,12,,34,,,,,"Alan Reid  |  November 25, 2019",,
+15,Class,UML,12,,,,,,,Domain model,"- values : arr
+- min : int
+- max : int
+- step : int
+- orientation : string
+- tooltips : bool","+ getValueOf( key )
++ setValueOf( key, newValue )"
+16,Class,UML,12,,,,,,,Model,,"+ create( options : obj )
++ getValue( key )
++ setValue( key, newValue )"
+17,Required Interface,UML,12,,,,,,,,,
+18,Provided Interface,UML,12,,,,,,,,,
+19,Class,UML,12,,,,,,,Controller,"+ attribute1:type = defaultValue
++ attribute2:type
+- attribute3:type","+ operation1(params):returnType
+- operation2(params)
+- operation3()"
+20,Class,UML,12,,,,,,,View,"+ attribute1:type = defaultValue
++ attribute2:type
+- attribute3:type","+ operation1(params):returnType
+- operation2(params)
+- operation3()"
+21,Required Interface,UML,12,,,,,,,,,
+22,Provided Interface,UML,12,,,,,,,,,
+23,Required Interface,UML,12,,,,,,,,,
+24,Provided Interface,UML,12,,,,,,,,,
+25,Provided Interface,UML,12,,,,,,,,,
+26,Required Interface,UML,12,,,,,,,,,
+27,Provided Interface,UML,12,,,,,,,,,
+28,Line,,12,,34,13,13,None,None,,,
+29,Line,,12,,,17,18,None,Arrow,uses,,
+30,Line,,12,,,,20,None,Arrow,Change notification,,
+31,Line,,12,,,20,22,None,Arrow,Get data,,
+32,Line,,12,,,19,24,None,Arrow,Modifies,,
+33,Line,,12,,,26,25,None,Arrow,Modifies,,
+34,Group 1,,12,,,,,,,,,
