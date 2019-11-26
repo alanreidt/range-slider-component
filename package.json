@@ -4,7 +4,8 @@
   "description": "Bulletproof range slider plugin with MVC architecture at the core",
   "main": "src/slider.js",
   "directories": {
-    "test": "tests"
+    "test": "tests",
+    "build": "rm -rf prod && parcel build src/slider.js src/slider.scss --out-dir prod"
   },
   "repository": {
     "type" : "git",
