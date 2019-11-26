@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist && parcel build src/index.html --no-source-maps",
+    "build": "rm -rf prod && parcel build src/index.html --out-dir prod --public-url ./prod",
     "serve": "parcel src/index.html --open"
   },
   "keywords": [],
