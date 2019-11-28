@@ -72,7 +72,7 @@ export class SliderModel {
   set _values(values) {
     const currentValues = this._options.values && this._options.values.slice();
     const newValues = [].concat(values);
-    let filteredArr = [];
+    let filteredValues = [];
     const step = this._options.step;
     const [start, end] = this._options.boundaries;
 
@@ -87,32 +87,32 @@ export class SliderModel {
 
       if ( isNaN(filteredValue) ) return;
 
-      filteredArr.push(filteredValue);
+      filteredValues.push(filteredValue);
     });
 
-    filteredArr = filteredArr.filter( (item, i, filteredArr) => item !== filteredArr[i + 1] );
+    filteredValues = filteredValues.filter( (item, i, filteredValues) => item !== filteredValues[i + 1] );
 
-    if (!filteredArr.length) return;
+    if (!filteredValues.length) return;
 
-    if (!currentValues || filteredArr.length === currentValues.length) {
-      this._options.values = filteredArr;
+    if (!currentValues || filteredValues.length === currentValues.length) {
+      this._options.values = filteredValues;
       return;
     }
 
-    if (filteredArr.length > currentValues.length) {
-      filteredArr.length = currentValues.length;
+    if (filteredValues.length > currentValues.length) {
+      filteredValues.length = currentValues.length;
     } else {
-      filteredArr.forEach( (item) => {
+      filteredValues.forEach( (item) => {
         const closestValue = getNearestTo(item, ...currentValues);
         const closestValuePosition = currentValues.indexOf(closestValue);
 
         currentValues.splice(closestValuePosition, 1, item);
       });
 
-      filteredArr = currentValues;
+      filteredValues = currentValues;
     }
 
-    this._options.values = filteredArr;
+    this._options.values = filteredValues;
   }
 
 
