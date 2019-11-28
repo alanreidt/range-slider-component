@@ -71,10 +71,10 @@ export class SliderModel {
   }
   set _values(values) {
     const currentValues = this._options.values && this._options.values.slice();
-    let newValues = [].concat(values);
+    const newValues = [].concat(values);
     let filteredArr = [];
-    let step = this._options.step;
-    let [start, end] = this._options.boundaries;
+    const step = this._options.step;
+    const [start, end] = this._options.boundaries;
 
     newValues.sort( (a, b) => a - b ).forEach(value => {
       let filteredValue = parseFloat(value);
