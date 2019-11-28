@@ -76,7 +76,9 @@ export class SliderModel {
     const step = this._options.step;
     const [start, end] = this._options.boundaries;
 
-    newValues.sort( (a, b) => a - b ).forEach(value => {
+    newValues.sort( (a, b) => a - b );
+
+    newValues.forEach(value => {
       let filteredValue = parseFloat(value);
 
       filteredValue = ( isValueBetween(filteredValue, start, end) ) ?
