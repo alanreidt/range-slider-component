@@ -1,4 +1,4 @@
-import {setElementsPosition, setElementsTextContent} from "./utilities/utilities.js";
+import { setElementsPosition, setElementsTextContent } from "./utilities/utilities.js";
 import { translateProportionIntoValue } from "./utilities/translateProportionIntoValue";
 import { getPositionInPercentageOf } from "./utilities/getPositionInPercentageOf";
 

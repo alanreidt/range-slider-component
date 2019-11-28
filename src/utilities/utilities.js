@@ -1,6 +1,8 @@
 export { call } from "./call";
 export { setElementTextContent } from "./setElementTextContent";
 export { setElementPosition } from "./setElementPosition";
+export { setElementsTextContent } from "./setElementsTextContent";
+export { setElementsPosition } from "./setElementsPosition";
 export { getOverstepOf } from "./getOverstepOf";
 export { getNearestDivisibleOf } from "./getNearestDivisibleOf";
 export { getNearestTo } from "./getNearestTo";
@@ -13,20 +15,6 @@ export { getNextDivisibleOf } from "./getNextDivisibleOf";
 export { getPrevDivisibleOf } from "./getPrevDivisibleOf";
 export { isDivisible } from "./isDivisible";
 export { isValueInBetween } from "./isValueInBetween";
-
-
-export function setElementsPosition(elements, positions, property) {
-  elements.forEach(
-    call(setElementPosition, positions, property)
-  );
-}
-
-
-export function setElementsTextContent(elements, values) {
-  elements.forEach(
-    call(setElementTextContent, values)
-  );
-}
 
 
 /**
