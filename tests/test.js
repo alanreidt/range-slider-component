@@ -3,7 +3,6 @@ import {
   setElementsPosition} from "../src/utilities/utilities.js";
 import { testClass, simulateMouseEvent } from "./testUtilities";
 import { SliderModel } from "../src/SliderModel";
-import { SliderAdapter } from "../src/SliderAdapter";
 import { SliderUI } from "../src/SliderUI";
 import { slider } from "../src/slider.js";
 import { testGetClosestFactorOf } from "../src/utilities/getClosestFactorOf/getClosestFactorOf.test";
@@ -14,6 +13,7 @@ import { testGetNearestDivisibleOf } from "../src/utilities/getNearestDivisibleO
 import { testGetPositionInPercentageOf } from "../src/utilities/getPositionInPercentageOf/getPositionInPercentageOf.test.js";
 import { testTranslateProportionIntoValue } from "../src/utilities/translateProportionIntoValue/translateProportionIntoValue.test.js";
 import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.test.js";
+import { testSliderAdapter } from "./SliderAdapter.test.js";
 
 testGetClosestFactorOf();
 testGetNearestTo();
@@ -23,6 +23,8 @@ testGetNearestDivisibleOf()
 testGetPositionInPercentageOf();
 testTranslateProportionIntoValue();
 testObserverMixin();
+
+testSliderAdapter();
 
 describe("setElemenPosition function", function() {
 
@@ -591,66 +593,6 @@ describe("SliderUI", function() {
 
   });
 
-});
-
-
-describe("SliderAdapter", function() {
-  describe("shall organize access to the dataSource", function() {
-
-    describe("update values of the dataSource", function() {
-      const newValues = {
-        boundaries: [100, 500],
-        step: 20,
-        hasTooltips: true,
-      };
-      const sliderModel = {
-        setValues(newOptions) {
-          this.options = newOptions;
-        },
-      };
-      const sliderAdapter = new SliderAdapter(sliderModel);
-
-      sliderAdapter.update(newValues);
-
-      for (let key in newValues) {
-
-        it(`${key} equals to ${newValues[key]}`, function() {
-          assert.deepEqual( sliderModel.options[key], newValues[key] );
-        });
-
-      }
-    });
-
-    describe("returns values of the dataSource", function() {
-      const options = {
-        boundaries: [0, 100],
-        values: [20, 80],
-        step: 1,
-        orientation: "horizontal",
-        hasTooltips: true,
-      };
-      const expectations = options;
-      const sliderModel = {
-        options: options,
-
-        getValues() {
-          return this.options;
-        },
-      };
-      const sliderAdapter = new SliderAdapter(sliderModel);
-
-      const sliderOptions = sliderAdapter.getOptions();
-
-      for (let key in expectations) {
-
-        it(`${key} equals to ${expectations[key]}`, function() {
-          assert.deepEqual( sliderOptions[key], expectations[key] );
-        });
-
-      }
-    });
-
-  });
 });
 
 
