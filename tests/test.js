@@ -1,4 +1,12 @@
-import {getOverstepOf, getNearestDivisibleOf, isValueBetween, getNearestTo, getClosestFactorOf, observerMixin, getPositionInPercentageOf, setElementPosition, setElementsPosition, translateProportionIntoValue } from "../src/utilities/utilities.js";
+import {observerMixin, setElementsPosition } from "../src/utilities/utilities.js";
+import { getOverstepOf } from "../src/utilities/getOverstepOf";
+import { getNearestDivisibleOf } from "../src/utilities/getNearestDivisibleOf";
+import { getNearestTo } from "../src/utilities/getNearestTo";
+import { isValueBetween } from "../src/utilities/isValueBetween";
+import { translateProportionIntoValue } from "../src/utilities/translateProportionIntoValue";
+import { getPositionInPercentageOf } from "../src/utilities/getPositionInPercentageOf";
+import { setElementPosition } from "../src/utilities/setElementPosition";
+import { getClosestFactorOf } from "../src/utilities/getClosestFactorOf";
 import {makeTestClass, test, testClass, template, simulateMouseEvent} from "./testUtilities";
 import {SliderModel} from "../src/SliderModel";
 import {SliderAdapter} from "../src/SliderAdapter";
