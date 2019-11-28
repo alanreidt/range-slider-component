@@ -29,6 +29,7 @@ export class SliderModel {
     });
   }
 
+
   get _boundaries() {
     return this._options.boundaries;
   }
@@ -63,6 +64,7 @@ export class SliderModel {
     this._values = this._options.values;
     this._step = this._options.step;
   }
+
 
   get _values() {
     return this._options.values || Array.of( getAverageOf(this._options.boundaries) );
@@ -111,6 +113,7 @@ export class SliderModel {
     this._options.values = filteredArr;
   }
 
+
   get _step() {
     return this._options.step;
   }
@@ -131,6 +134,7 @@ export class SliderModel {
     this._values = this._options.values;
   }
 
+
   get _orientation() {
     return this._options.orientation;
   }
@@ -139,6 +143,7 @@ export class SliderModel {
 
     this._options.orientation = value;
   }
+
 
   get _hasTooltips() {
     return this._options.hasTooltips;
@@ -149,8 +154,8 @@ export class SliderModel {
     this._options.hasTooltips = value;
   }
 
-  getValues() {
 
+  getValues() {
     return {
       boundaries: this._boundaries,
       values: this._values,
@@ -158,8 +163,8 @@ export class SliderModel {
       orientation: this._orientation,
       hasTooltips: this._hasTooltips,
     };
-
   }
+
 
   setValues(options) {
     for ( let key of Object.keys(options) ) {
