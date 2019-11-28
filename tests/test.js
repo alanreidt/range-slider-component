@@ -1,5 +1,3 @@
-import {
-  setElementsPosition} from "../src/utilities/utilities.js";
 import { simulateMouseEvent } from "./testUtilities";
 import { SliderUI } from "../src/SliderUI";
 import { testGetClosestFactorOf } from "../src/utilities/getClosestFactorOf/getClosestFactorOf.test";
@@ -26,31 +24,6 @@ testSetElemenPosition();
 testObserverMixin();
 
 testSliderAdapter();
-
-describe("setElementsPosition function", function() {
-
-  context("shall set position for each handle", function() {
-    let positions = ["10%", "20%", "30%", "40%", "50%"];
-    let divs = [];
-
-    positions.forEach( () => {
-      divs.push( document.createElement("div") );
-    });
-
-    setElementsPosition(divs, positions);
-
-    divs.forEach( (div, i) => {
-      let position = positions[i];
-      let divStyle = div.getAttribute("style");
-      let regexp = new RegExp(`${position}`);
-
-      it(`div${i + 1} position equals to ${position}`, function() {
-        assert.isNotNull( divStyle.match(regexp) );
-      });
-    });
-  });
-});
-
 
 describe("SliderUI", function() {
   const SLIDER_NAME = "slider";
