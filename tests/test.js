@@ -1,5 +1,4 @@
 import {
-  setElementPosition,
   setElementsPosition} from "../src/utilities/utilities.js";
 import { simulateMouseEvent } from "./testUtilities";
 import { SliderUI } from "../src/SliderUI";
@@ -14,6 +13,7 @@ import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.
 import { testSliderAdapter } from "./SliderAdapter.test.js";
 import { testSliderModel } from "./SliderModel.test.js";
 import { testSlider } from "./slider.test.js";
+import { testSetElemenPosition } from "../src/utilities/setElementPosition/setElementPosition.test.js";
 
 testGetClosestFactorOf();
 testGetNearestTo();
@@ -22,43 +22,10 @@ testGetOverstepOf();
 testGetNearestDivisibleOf()
 testGetPositionInPercentageOf();
 testTranslateProportionIntoValue();
+testSetElemenPosition();
 testObserverMixin();
 
 testSliderAdapter();
-
-describe("setElemenPosition function", function() {
-
-  it("shall set element position", function() {
-    const element = document.createElement("div");
-    const position = "50%";
-    const regexp = new RegExp(`${position}`);
-
-    setElementPosition(element, position);
-
-    const elementStyle = element.getAttribute("style");
-
-    assert.isNotNull( elementStyle.match(regexp) );
-  });
-
-  context("shall change element position", function() {
-    const element = document.createElement("div");
-    const positions = ["50%", "30%", "20%"];
-
-    positions.forEach( (position) => {
-      const regexp = new RegExp(`${position}`);
-
-      setElementPosition(element, position);
-
-      const elementStyle = element.getAttribute("style");
-
-      it(`element position is changed to ${position}`, function() {
-        assert.isNotNull( elementStyle.match(regexp) );
-      });
-    });
-  });
-
-});
-
 
 describe("setElementsPosition function", function() {
 
