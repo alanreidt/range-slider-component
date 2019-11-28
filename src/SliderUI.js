@@ -1,6 +1,10 @@
-import { setElementsPosition, setElementsTextContent } from "./utilities/utilities.js";
-import { translateProportionIntoValue } from "./utilities/translateProportionIntoValue";
-import { getPositionInPercentageOf } from "./utilities/getPositionInPercentageOf";
+import {
+  getPositionInPercentageOf,
+  translateProportionIntoValue,
+  setElementsPosition,
+  setElementsTextContent
+} from "./utilities/utilities.js";
+
 
 export class SliderUI {
 
