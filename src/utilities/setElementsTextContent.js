@@ -1,5 +1,5 @@
-import { call } from "./call";
-import { setElementTextContent } from "./setElementTextContent";
+import { call } from "./call/call";
+import { setElementTextContent } from "./setElementTextContent/setElementTextContent";
 
 
 export function setElementsTextContent(elements, values) {

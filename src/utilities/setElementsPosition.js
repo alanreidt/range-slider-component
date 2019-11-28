@@ -1,5 +1,5 @@
-import { call } from "./call";
-import { setElementPosition } from "./setElementPosition";
+import { call } from "./call/call";
+import { setElementPosition } from "./setElementPosition/setElementPosition";
 
 
 export function setElementsPosition(elements, positions, property) {

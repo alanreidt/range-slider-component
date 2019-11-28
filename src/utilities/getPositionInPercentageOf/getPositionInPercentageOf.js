@@ -1,4 +1,6 @@
-import { isValueInBetween } from "./isValueInBetween";
+import { isValueInBetween } from "../isValueInBetween/isValueInBetween";
+
+
 /**
  * Returns position of the value in the range in percentages, if it's possible.
  * Otherwise, returns NaN
