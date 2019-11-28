@@ -1,4 +1,4 @@
-import {observerMixin} from "./utilities/utilities.js";
+import { observerMixin } from "./utilities/observerMixin";
 
 export class SliderAdapter {
   constructor(dataSource) {

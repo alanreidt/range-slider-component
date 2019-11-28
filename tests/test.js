@@ -4,12 +4,12 @@ import {
   isValueBetween,
   getNearestTo,
   getClosestFactorOf,
-  observerMixin,
   getPositionInPercentageOf,
   setElementPosition,
   setElementsPosition,
   translateProportionIntoValue
 } from "../src/utilities/utilities.js";
+import { observerMixin } from "../src/utilities/observerMixin";
 import { makeTestClass, test, testClass, template, simulateMouseEvent } from "./testUtilities";
 import { SliderModel } from "../src/SliderModel";
 import { SliderAdapter } from "../src/SliderAdapter";
