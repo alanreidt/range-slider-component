@@ -1,6 +1,18 @@
-import { call } from "./call";
-import { setElementTextContent } from "./setElementTextContent";
-import { setElementPosition } from "./setElementPosition";
+export { call } from "./call";
+export { setElementTextContent } from "./setElementTextContent";
+export { setElementPosition } from "./setElementPosition";
+export { getOverstepOf } from "./getOverstepOf";
+export { getNearestDivisibleOf } from "./getNearestDivisibleOf";
+export { getNearestTo } from "./getNearestTo";
+export { isValueBetween } from "./isValueBetween";
+export { translateProportionIntoValue } from "./translateProportionIntoValue";
+export { getPositionInPercentageOf } from "./getPositionInPercentageOf";
+export { getClosestFactorOf } from "./getClosestFactorOf";
+export { getAverageOf } from "./getAverageOf";
+export { getNextDivisibleOf } from "./getNextDivisibleOf";
+export { getPrevDivisibleOf } from "./getPrevDivisibleOf";
+export { isDivisible } from "./isDivisible";
+export { isValueInBetween } from "./isValueInBetween";
 
 
 export function setElementsPosition(elements, positions, property) {
