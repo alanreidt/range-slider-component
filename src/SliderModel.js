@@ -76,13 +76,12 @@ export class SliderModel {
     const step = this._options.step;
     const [start, end] = this._options.boundaries;
 
-    let validatedValues = newValues.sort( (a, b) => a - b )
-                                  .map( parseFloat )
-                                  .filter( isFinite )
-                                  .map( (value) => packInto(value, start, end) )
-                                  .map( (value) => getNearestDivisibleOf(value, step, start) );
-
-    validatedValues = Array.from( new Set(validatedValues) );
+    let validatedValues = newValues
+                            .sort( (a, b) => a - b )
+                            .map( parseFloat )
+                            .filter( isFinite )
+                            .map( (value) => packInto(value, start, end) )
+                            .map( (value) => getNearestDivisibleOf(value, step, start) );
 
     if ( !validatedValues.length ) return;
 
@@ -101,7 +100,7 @@ export class SliderModel {
       validatedValues.length = currentValues.length;
     }
 
-    this._options.values = validatedValues;
+    this._options.values = Array.from( new Set(validatedValues) );
   }
 
 
