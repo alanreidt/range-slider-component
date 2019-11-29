@@ -84,24 +84,26 @@ export class SliderModel {
                             .map( (value) => packInto(value, start, end) )
                             .map( (value) => getNearestDivisibleOf(value, step, start) );
 
-    if ( !validatedValues.length ) return;
-
     if ( validatedValues.length < (currentValues && currentValues.length) ) {
+      let result = currentValues.slice();
+
       validatedValues.forEach( (item) => {
         const closestValue = getNearestTo(item, ...currentValues);
         const closestValuePosition = currentValues.indexOf(closestValue);
 
-        currentValues.splice(closestValuePosition, 1, item);
+        result.splice(closestValuePosition, 1, item);
       });
 
-      validatedValues = currentValues;
+      validatedValues = result;
     }
 
     if ( currentValues ) {
       validatedValues.length = currentValues.length;
     }
 
-    this._options.values = uniquify( validatedValues );
+    this._options.values = ( !validatedValues.length ) ?
+      currentValues :
+      uniquify( validatedValues );
   }
 
 
