@@ -82,7 +82,7 @@ export class SliderModel {
                                   .map( (value) => packInto(value, start, end) )
                                   .map( (value) => getNearestDivisibleOf(value, step, start) );
 
-    validatedValues = validatedValues.filter( (item, i, validatedValues) => item !== validatedValues[i + 1] );
+    validatedValues = Array.from( new Set(validatedValues) );
 
     if (!validatedValues.length) return;
 
