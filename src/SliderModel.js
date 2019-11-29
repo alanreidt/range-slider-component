@@ -86,14 +86,7 @@ export class SliderModel {
 
     if ( !validatedValues.length ) return;
 
-    if ( !currentValues || (validatedValues.length === currentValues.length) ) {
-      this._options.values = validatedValues;
-      return;
-    }
-
-    if ( validatedValues.length > currentValues.length ) {
-      validatedValues.length = currentValues.length;
-    } else {
+    if ( validatedValues.length < (currentValues && currentValues.length) ) {
       validatedValues.forEach( (item) => {
         const closestValue = getNearestTo(item, ...currentValues);
         const closestValuePosition = currentValues.indexOf(closestValue);
@@ -102,6 +95,10 @@ export class SliderModel {
       });
 
       validatedValues = currentValues;
+    }
+
+    if ( currentValues ) {
+      validatedValues.length = currentValues.length;
     }
 
     this._options.values = validatedValues;
