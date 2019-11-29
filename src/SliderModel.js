@@ -3,7 +3,8 @@ import {
   getNearestDivisibleOf,
   isValueBetween,
   getNearestTo,
-  getClosestFactorOf
+  getClosestFactorOf,
+  packInto,
 } from "../src/utilities/utilities.js";
 
 
@@ -72,23 +73,14 @@ export class SliderModel {
   set _values(values) {
     const currentValues = this._options.values && this._options.values.slice();
     const newValues = [].concat(values);
-    let filteredValues = [];
     const step = this._options.step;
     const [start, end] = this._options.boundaries;
 
-    newValues.sort( (a, b) => a - b );
-
-    newValues.forEach(value => {
-      let filteredValue = parseFloat(value);
-
-      filteredValue = ( isValueBetween(filteredValue, start, end) ) ?
-        getNearestDivisibleOf(filteredValue, step, start) :
-        getNearestTo(filteredValue, start, end);
-
-      if ( isNaN(filteredValue) ) return;
-
-      filteredValues.push(filteredValue);
-    });
+    let filteredValues = newValues.sort( (a, b) => a - b )
+                                  .map( (value) => parseFloat(value) )
+                                  .filter( (value) => !isNaN(value) )
+                                  .map( (value) => packInto(value, start, end) )
+                                  .map( (value) => getNearestDivisibleOf(value, step, start) );
 
     filteredValues = filteredValues.filter( (item, i, filteredValues) => item !== filteredValues[i + 1] );
 
