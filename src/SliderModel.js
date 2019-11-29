@@ -84,14 +84,14 @@ export class SliderModel {
 
     validatedValues = Array.from( new Set(validatedValues) );
 
-    if (!validatedValues.length) return;
+    if ( !validatedValues.length ) return;
 
-    if (!currentValues || validatedValues.length === currentValues.length) {
+    if ( !currentValues || (validatedValues.length === currentValues.length) ) {
       this._options.values = validatedValues;
       return;
     }
 
-    if (validatedValues.length > currentValues.length) {
+    if ( validatedValues.length > currentValues.length ) {
       validatedValues.length = currentValues.length;
     } else {
       validatedValues.forEach( (item) => {
