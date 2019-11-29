@@ -76,35 +76,35 @@ export class SliderModel {
     const step = this._options.step;
     const [start, end] = this._options.boundaries;
 
-    let filteredValues = newValues.sort( (a, b) => a - b )
+    let validatedValues = newValues.sort( (a, b) => a - b )
                                   .map( (value) => parseFloat(value) )
                                   .filter( (value) => !isNaN(value) )
                                   .map( (value) => packInto(value, start, end) )
                                   .map( (value) => getNearestDivisibleOf(value, step, start) );
 
-    filteredValues = filteredValues.filter( (item, i, filteredValues) => item !== filteredValues[i + 1] );
+    validatedValues = validatedValues.filter( (item, i, validatedValues) => item !== validatedValues[i + 1] );
 
-    if (!filteredValues.length) return;
+    if (!validatedValues.length) return;
 
-    if (!currentValues || filteredValues.length === currentValues.length) {
-      this._options.values = filteredValues;
+    if (!currentValues || validatedValues.length === currentValues.length) {
+      this._options.values = validatedValues;
       return;
     }
 
-    if (filteredValues.length > currentValues.length) {
-      filteredValues.length = currentValues.length;
+    if (validatedValues.length > currentValues.length) {
+      validatedValues.length = currentValues.length;
     } else {
-      filteredValues.forEach( (item) => {
+      validatedValues.forEach( (item) => {
         const closestValue = getNearestTo(item, ...currentValues);
         const closestValuePosition = currentValues.indexOf(closestValue);
 
         currentValues.splice(closestValuePosition, 1, item);
       });
 
-      filteredValues = currentValues;
+      validatedValues = currentValues;
     }
 
-    this._options.values = filteredValues;
+    this._options.values = validatedValues;
   }
 
 
