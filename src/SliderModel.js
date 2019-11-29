@@ -5,6 +5,7 @@ import {
   getNearestTo,
   getClosestFactorOf,
   packInto,
+  uniquify,
 } from "../src/utilities/utilities.js";
 
 
@@ -100,7 +101,7 @@ export class SliderModel {
       validatedValues.length = currentValues.length;
     }
 
-    this._options.values = Array.from( new Set(validatedValues) );
+    this._options.values = uniquify( validatedValues );
   }
 
 
