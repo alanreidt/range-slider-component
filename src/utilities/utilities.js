@@ -1,3 +1,4 @@
+export { packInto } from "./packInto/packInto";
 export { call } from "./call/call";
 export { setElementTextContent } from "./setElementTextContent/setElementTextContent";
 export { setElementPosition } from "./setElementPosition/setElementPosition";
