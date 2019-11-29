@@ -77,8 +77,8 @@ export class SliderModel {
     const [start, end] = this._options.boundaries;
 
     let validatedValues = newValues.sort( (a, b) => a - b )
-                                  .map( (value) => parseFloat(value) )
-                                  .filter( (value) => !isNaN(value) )
+                                  .map( parseFloat )
+                                  .filter( isFinite )
                                   .map( (value) => packInto(value, start, end) )
                                   .map( (value) => getNearestDivisibleOf(value, step, start) );
 
