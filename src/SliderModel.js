@@ -84,6 +84,8 @@ export class SliderModel {
                             .map( (value) => packInto(value, start, end) )
                             .map( (value) => getNearestDivisibleOf(value, step, start) );
 
+    if ( !validatedValues.length ) return;
+
     if ( validatedValues.length < (currentValues && currentValues.length) ) {
       let result = currentValues.slice();
 
@@ -101,9 +103,7 @@ export class SliderModel {
       validatedValues.length = currentValues.length;
     }
 
-    this._options.values = ( !validatedValues.length ) ?
-      currentValues :
-      uniquify( validatedValues );
+    this._options.values = uniquify( validatedValues );
   }
 
 
