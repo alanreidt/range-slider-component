@@ -1,3 +1,4 @@
+export { cross } from "./cross/cross";
 export { uniquify } from "./uniquify/uniquify";
 export { packInto } from "./packInto/packInto";
 export { call } from "./call/call";
