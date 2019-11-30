@@ -6,6 +6,7 @@ import {
   getClosestFactorOf,
   packInto,
   uniquify,
+  cross,
 } from "../src/utilities/utilities.js";
 
 
@@ -84,24 +85,7 @@ export class SliderModel {
                             .map( (value) => packInto(value, start, end) )
                             .map( (value) => getNearestDivisibleOf(value, step, start) );
 
-    if ( !validatedValues.length ) return;
-
-    if ( validatedValues.length < (currentValues && currentValues.length) ) {
-      let result = currentValues.slice();
-
-      validatedValues.forEach( (item) => {
-        const closestValue = getNearestTo(item, ...currentValues);
-        const closestValuePosition = currentValues.indexOf(closestValue);
-
-        result.splice(closestValuePosition, 1, item);
-      });
-
-      validatedValues = result;
-    }
-
-    if ( currentValues ) {
-      validatedValues.length = currentValues.length;
-    }
+    validatedValues = cross(currentValues, validatedValues);
 
     this._options.values = uniquify( validatedValues );
   }
