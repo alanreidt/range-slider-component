@@ -9,30 +9,30 @@ import { getNearestTo } from "../getNearestTo/getNearestTo";
  * @returns {array} The crossed array.
  *
  */
-export function cross(currentValues, validatedValues) {
-  currentValues = currentValues && currentValues.slice();
-  validatedValues = validatedValues && validatedValues.slice();
+export function cross(baseArr, arr) {
+  baseArr = baseArr && baseArr.slice();
+  arr = arr && arr.slice();
 
-  if ( !validatedValues || !validatedValues.length ) {
-    return currentValues;
+  if ( !arr || !arr.length ) {
+    return baseArr;
   }
 
-  if ( !currentValues || !currentValues.length ) {
-    return validatedValues;
+  if ( !baseArr || !baseArr.length ) {
+    return arr;
   }
 
-  if ( validatedValues.length < currentValues.length ) {
-    validatedValues.forEach( (item) => {
-      const closestValue = getNearestTo(item, ...currentValues);
-      const closestValuePosition = currentValues.indexOf(closestValue);
+  if ( arr.length < baseArr.length ) {
+    arr.forEach( (item) => {
+      const closestValue = getNearestTo(item, ...baseArr);
+      const closestValuePosition = baseArr.indexOf(closestValue);
 
-      currentValues.splice(closestValuePosition, 1, item);
+      baseArr.splice(closestValuePosition, 1, item);
     });
 
-    validatedValues = currentValues;
+    arr = baseArr;
   }
 
-  validatedValues.length = currentValues.length;
+  arr.length = baseArr.length;
 
-  return validatedValues;
+  return arr;
 }
