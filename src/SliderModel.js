@@ -13,9 +13,10 @@ import {
 export class SliderModel {
   constructor(options = {}) {
     this._options = {
+      // order matters
       boundaries: [0, 100],
-      values: null,
       step: 1,
+      values: null,
       orientation: "horizontal",
       hasTooltips: false,
     };
