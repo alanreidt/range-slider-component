@@ -1,8 +1,6 @@
 import {
   getAverageOf,
   getNearestDivisibleOf,
-  isValueBetween,
-  getNearestTo,
   getClosestFactorOf,
   packInto,
   uniquify,
