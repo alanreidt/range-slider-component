@@ -77,7 +77,6 @@ export class SliderModel {
                             .sort( (a, b) => a - b )
                             .map( parseFloat )
                             .filter( isFinite )
-                            .map( (value) => packInto(value, start, end) )
 
     validatedValues = uniquify( validatedValues );
 
@@ -88,6 +87,7 @@ export class SliderModel {
       validatedValues;
 
     validatedValues = validatedValues
+                        .map( (value) => packInto(value, start, end) )
                         .map( (value) => getNearestDivisibleOf(value, step, start) );
 
     this._options.values = validatedValues;
