@@ -78,7 +78,6 @@ export class SliderModel {
                             .map( parseFloat )
                             .filter( isFinite )
                             .map( (value) => packInto(value, start, end) )
-                            .map( (value) => getNearestDivisibleOf(value, step, start) );
 
     validatedValues = uniquify( validatedValues );
 
@@ -87,6 +86,9 @@ export class SliderModel {
     validatedValues = (validatedValues === null) ?
       Array.of( getAverageOf(this._options.boundaries) ) :
       validatedValues;
+
+    validatedValues = validatedValues
+                        .map( (value) => getNearestDivisibleOf(value, step, start) );
 
     this._options.values = validatedValues;
   }
