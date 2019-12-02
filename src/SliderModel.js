@@ -67,12 +67,12 @@ export class SliderModel {
     return this._options.values;
   }
   set _values(newValues) {
+    const step = this._options.step;
+    const [start, end] = this._options.boundaries;
+
     newValues = [].concat(newValues);
     const currentValues = this._options.values &&
       this._options.values.slice();
-
-    const step = this._options.step;
-    const [start, end] = this._options.boundaries;
 
     let validatedValues = newValues
                             .sort( (a, b) => a - b )
@@ -102,15 +102,15 @@ export class SliderModel {
     const [start, end] = this._options.boundaries;
     const range = end - start;
 
-    let filteredValue = parseFloat(value);
+    let validatedValue = parseFloat(value);
 
-    filteredValue = ( isValueBetween(filteredValue, 1, range) ) ?
-      getClosestFactorOf(range, filteredValue) :
-      getNearestTo(filteredValue, 1, range);
+    if ( isNaN(validatedValue) ) return;
 
-    if ( isNaN(filteredValue) ) return;
+    validatedValue = ( isValueBetween(validatedValue, 1, range) ) ?
+      getClosestFactorOf(range, validatedValue) :
+      getNearestTo(validatedValue, 1, range);
 
-    this._options.step = filteredValue;
+    this._options.step = validatedValue;
   }
 
 
