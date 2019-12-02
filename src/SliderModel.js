@@ -69,8 +69,10 @@ export class SliderModel {
     return this._options.values;
   }
   set _values(values) {
-    const currentValues = this._options.values && this._options.values.slice();
     const newValues = [].concat(values);
+    const currentValues = this._options.values &&
+      this._options.values.slice();
+
     const step = this._options.step;
     const [start, end] = this._options.boundaries;
 
