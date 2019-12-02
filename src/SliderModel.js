@@ -59,9 +59,6 @@ export class SliderModel {
     }
 
     this._options.boundaries = result.sort( (a, b) => a - b );
-
-    this._values = this._options.values;
-    this._step = this._options.step;
   }
 
 
@@ -111,8 +108,6 @@ export class SliderModel {
     if ( isNaN(filteredValue) ) return;
 
     this._options.step = filteredValue;
-
-    this._values = this._options.values;
   }
 
 
