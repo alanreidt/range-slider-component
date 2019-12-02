@@ -102,9 +102,12 @@ export class SliderModel {
     const [start, end] = this._options.boundaries;
     const range = end - start;
 
+    const currentValue = this._options.step;
+
     let validatedValue = parseFloat(value);
 
-    if ( isNaN(validatedValue) ) return;
+    validatedValue = isNaN(validatedValue) ? currentValue :
+      validatedValue;
 
     validatedValue = ( isValueBetween(validatedValue, 1, range) ) ?
       getClosestFactorOf(range, validatedValue) :
