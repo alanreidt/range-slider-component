@@ -11,11 +11,7 @@ import {
 
 
 export class SliderModel {
-  // don't use object destructuring as
-  // I need to loop over an object
   constructor(options = {}) {
-    // Assign default values directly in order
-    // to avoid their redundant pass through setters
     this._options = {
       boundaries: [0, 100],
       values: null,
