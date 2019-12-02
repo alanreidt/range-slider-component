@@ -68,8 +68,8 @@ export class SliderModel {
   get _values() {
     return this._options.values;
   }
-  set _values(values) {
-    const newValues = [].concat(values);
+  set _values(newValues) {
+    newValues = [].concat(newValues);
     const currentValues = this._options.values &&
       this._options.values.slice();
 
