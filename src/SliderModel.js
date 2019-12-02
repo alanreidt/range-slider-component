@@ -66,7 +66,7 @@ export class SliderModel {
 
 
   get _values() {
-    return this._options.values || Array.of( getAverageOf(this._options.boundaries) );
+    return this._options.values;
   }
   set _values(values) {
     const currentValues = this._options.values && this._options.values.slice();
@@ -82,6 +82,10 @@ export class SliderModel {
                             .map( (value) => getNearestDivisibleOf(value, step, start) );
 
     validatedValues = cross(currentValues, validatedValues);
+
+    validatedValues = (validatedValues === null) ?
+      Array.of( getAverageOf(this._options.boundaries) ) :
+      validatedValues;
 
     this._options.values = uniquify( validatedValues );
   }
