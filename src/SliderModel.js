@@ -109,9 +109,8 @@ export class SliderModel {
     validatedValue = isNaN(validatedValue) ? currentValue :
       validatedValue;
 
-    validatedValue = ( isValueBetween(validatedValue, 1, range) ) ?
-      getClosestFactorOf(range, validatedValue) :
-      getNearestTo(validatedValue, 1, range);
+    validatedValue = packInto(validatedValue, 1, range);
+    validatedValue = getClosestFactorOf(range, validatedValue);
 
     this._options.step = validatedValue;
   }
