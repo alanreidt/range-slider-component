@@ -140,7 +140,7 @@ export class SliderModel {
 
 
   setValues(options) {
-    for ( let key of Object.keys(options) ) {
+    for ( let key of Object.keys(this._options) ) {
       this["_" + key] = options[key];
     }
 
