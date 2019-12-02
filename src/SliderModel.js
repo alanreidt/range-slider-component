@@ -81,13 +81,15 @@ export class SliderModel {
                             .map( (value) => packInto(value, start, end) )
                             .map( (value) => getNearestDivisibleOf(value, step, start) );
 
+    validatedValues = uniquify( validatedValues );
+
     validatedValues = cross(currentValues, validatedValues);
 
     validatedValues = (validatedValues === null) ?
       Array.of( getAverageOf(this._options.boundaries) ) :
       validatedValues;
 
-    this._options.values = uniquify( validatedValues );
+    this._options.values = validatedValues;
   }
 
 
