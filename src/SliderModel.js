@@ -83,13 +83,12 @@ export class SliderModel {
   get _step() {
     return this._options.step;
   }
-  set _step(value) {
+  set _step(newValue) {
     const [start, end] = this._options.boundaries;
     const range = end - start;
-
     const currentValue = this._options.step;
 
-    let validatedValue = parseFloat(value);
+    let validatedValue = parseFloat(newValue);
 
     validatedValue = isNaN(validatedValue) ? currentValue :
       validatedValue;
