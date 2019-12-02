@@ -99,8 +99,8 @@ export class SliderModel {
     return this._options.step;
   }
   set _step(value) {
-    let [start, end] = this._options.boundaries;
-    let range = end - start;
+    const [start, end] = this._options.boundaries;
+    const range = end - start;
 
     let filteredValue = parseFloat(value);
 
