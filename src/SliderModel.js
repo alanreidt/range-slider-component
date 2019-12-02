@@ -33,33 +33,18 @@ export class SliderModel {
   get _boundaries() {
     return this._options.boundaries;
   }
-  set _boundaries(value) {
-    let result = this._options.boundaries.slice();
+  set _boundaries(newValues) {
+    const currentValues = this._options.boundaries.slice();
+    newValues = [].concat(newValues);
 
-    if (typeof(value) === "number") {
-      let [start, end] = result;
+    let validatedValues = newValues
+                            .sort( (a, b) => a - b )
+                            .map( parseFloat )
+                            .filter( isFinite );
 
-      let filteredValue = parseFloat(value);
+    validatedValues = cross(currentValues, validatedValues);
 
-      if ( isNaN(filteredValue) ) return;
-
-      result = ( getNearestTo(filteredValue, start, end) === start ) ?
-        [filteredValue, end] : [start, filteredValue];
-    }
-
-    if ( Array.isArray(value) ) {
-
-      for (let i = 0; i < result.length; i++) {
-        let filteredValue = parseFloat( value[i] );
-
-        if ( isNaN(filteredValue) ) continue;
-
-        result[i] = filteredValue;
-      }
-
-    }
-
-    this._options.boundaries = result.sort( (a, b) => a - b );
+    this._options.boundaries = validatedValues;
   }
 
 
