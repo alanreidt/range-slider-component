@@ -77,7 +77,7 @@ export class SliderModel {
     let validatedValues = newValues
                             .sort( (a, b) => a - b )
                             .map( parseFloat )
-                            .filter( isFinite )
+                            .filter( isFinite );
 
     validatedValues = uniquify( validatedValues );
 
