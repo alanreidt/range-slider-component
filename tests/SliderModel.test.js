@@ -407,8 +407,8 @@ export function testSliderModel() {
         });
 
 
-        describe(`shall change closest values,
-        when length of passed array is less than length of current array`, function() {
+        describe(`shall handle passed array with length less,
+        than length of the current array`, function() {
           context(`change closest values`, function () {
             let options = [
               { values: 300 },
