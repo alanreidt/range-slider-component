@@ -205,22 +205,20 @@ export function testSliderModel() {
         context(`shall correct {value},
         if passed value is out of {boundaries}`, function () {
           let options = [
-            { boundaries: [0, 500], values: 1000 },
+            { boundaries: [-500, 500], values: 1000 },
             { boundaries: [-500, 500], values: -1000 },
             { boundaries: [-500, 500], values: [-1000, 1000] },
-            { boundaries: [-500, 500], values: [-1000, 250, 1000] },
-            { boundaries: [-500, 500], values: [-2000, -1000, 250, 1000, 2000] },
-            { boundaries: [-500, 500], values: [250, -2000, 1000, 2000, -1000] },
           ];
           let expectations = [
-            { boundaries: [0, 500], values: [500] },
-            { boundaries: [-500, 500], values: [-500] },
+            { boundaries: [-500, 500], values: [0, 500] },
+            { boundaries: [-500, 500], values: [-500, 100] },
             { boundaries: [-500, 500], values: [-500, 500] },
-            { boundaries: [-500, 500], values: [-500, 250, 500] },
-            { boundaries: [-500, 500], values: [-500, 250, 500] },
-            { boundaries: [-500, 500], values: [-500, 250, 500] },
           ];
-          let testOptions = { options, expectations };
+          let ClassOptions = {
+            boundaries: [0, 100],
+            values: [0, 100],
+          };
+          let testOptions = { ClassOptions, options, expectations };
 
           runTest(testOptions);
         });
