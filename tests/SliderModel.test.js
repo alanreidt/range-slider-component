@@ -388,6 +388,31 @@ export function testSliderModel() {
               runTest(testOptions);
             });
           });
+
+          describe("shall change closest values, when length of passed array is less", function() {
+            context(`change closest values`, function () {
+              let options = [
+                { values: 300 },
+                { values: [-200, 300] },
+                { values: [-200, 5, 300] },
+                { values: [-200, 5, 300, 450] },
+              ];
+              let expectations = [
+                { values: [-400, -100, 0, 300, 500] },
+                { values: [-400, -200, 0, 300, 500] },
+                { values: [-400, -200, 5, 300, 500] },
+                { values: [-400, -200, 5, 300, 450] },
+              ];
+              let ClassOptions = {
+                boundaries: [-500, 500],
+                values: [-400, -100, 0, 200, 500],
+              };
+              let testOptions = { ClassOptions, options, expectations };
+
+              runTest(testOptions);
+            });
+          });
+
         });
       });
 
