@@ -404,53 +404,53 @@ export function testSliderModel() {
               runTest(testOptions);
             });
           });
+        });
 
-          describe("shall change closest values, when length of passed array is less", function() {
-            context(`change closest values`, function () {
-              let options = [
-                { values: 300 },
-                { values: [-200, 300] },
-                { values: [-200, 5, 300] },
-                { values: [-200, 5, 300, 450] },
-              ];
-              let expectations = [
-                { values: [-400, -100, 0, 300, 500] },
-                { values: [-400, -200, 0, 300, 500] },
-                { values: [-400, -200, 5, 300, 500] },
-                { values: [-400, -200, 5, 300, 450] },
-              ];
-              let ClassOptions = {
-                boundaries: [-500, 500],
-                values: [-400, -100, 0, 200, 500],
-              };
-              let testOptions = { ClassOptions, options, expectations };
 
-              runTest(testOptions);
-            });
+        describe("shall change closest values, when length of passed array is less", function() {
+          context(`change closest values`, function () {
+            let options = [
+              { values: 300 },
+              { values: [-200, 300] },
+              { values: [-200, 5, 300] },
+              { values: [-200, 5, 300, 450] },
+            ];
+            let expectations = [
+              { values: [-400, -100, 0, 300, 500] },
+              { values: [-400, -200, 0, 300, 500] },
+              { values: [-400, -200, 5, 300, 500] },
+              { values: [-400, -200, 5, 300, 450] },
+            ];
+            let ClassOptions = {
+              boundaries: [-500, 500],
+              values: [-400, -100, 0, 200, 500],
+            };
+            let testOptions = { ClassOptions, options, expectations };
 
-            context(`handle close inputed values`, function () {
-              let options = [
-                { values: 100 },
-                { values: [10, 20] },
-                { values: [20, 10] },
-                { values: [-10, 10, 20] },
-              ];
-              let expectations = [
-                { values: [-400, -100, 0, 100, 500] },
-                { values: [-400, -100, 10, 20, 500] },
-                { values: [-400, -100, 10, 20, 500] },
-                { values: [-400, -10, 10, 20, 500] },
-              ];
-              let ClassOptions = {
-                boundaries: [-500, 500],
-                values: [-400, -100, 0, 200, 500],
-              };
-              let testOptions = { ClassOptions, options, expectations };
-
-              runTest(testOptions);
-            });
+            runTest(testOptions);
           });
 
+          context(`handle close inputed values`, function () {
+            let options = [
+              { values: 100 },
+              { values: [10, 20] },
+              { values: [20, 10] },
+              { values: [-10, 10, 20] },
+            ];
+            let expectations = [
+              { values: [-400, -100, 0, 100, 500] },
+              { values: [-400, -100, 10, 20, 500] },
+              { values: [-400, -100, 10, 20, 500] },
+              { values: [-400, -10, 10, 20, 500] },
+            ];
+            let ClassOptions = {
+              boundaries: [-500, 500],
+              values: [-400, -100, 0, 200, 500],
+            };
+            let testOptions = { ClassOptions, options, expectations };
+
+            runTest(testOptions);
+          });
         });
       });
 
