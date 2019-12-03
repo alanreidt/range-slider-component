@@ -454,6 +454,72 @@ export function testSliderModel() {
           });
         });
 
+
+        describe(`shall handle passed array with length more,
+        than length of the current array`, function() {
+          context(`change closest`, function () {
+            let options = [
+              { values: [-200, 5, 300, 450] },
+              { values: [-200, 5, 450, 300] },
+              { values: [-200, -500, 5, 300] },
+              { values: [-200, -500, 5, 450, 300] },
+            ];
+            let expectations = [
+              { values: [-200, 5, 300] },
+              { values: [-200, 5, 300] },
+              { values: [-200, 5, 300] },
+              { values: [-200, 5, 300] },
+            ];
+            let ClassOptions = {
+              boundaries: [-500, 500],
+              values: [-100, 0, 200],
+            };
+            let testOptions = { ClassOptions, options, expectations };
+
+            runTest(testOptions);
+          });
+
+          context(`handle close inputed values`, function () {
+            let options = [
+              { values: [-10, 10, 20, 500] },
+              { values: [10, -10, 500, 20] },
+              { values: [-200, -10, 10, 20, 500] },
+              { values: [-10, 10, 20, 500, 50] },
+            ];
+            let expectations = [
+              { values: [-10, 10, 20] },
+              { values: [-10, 10, 20] },
+              { values: [-10, 10, 20] },
+              { values: [-10, 10, 50] },
+            ];
+            let ClassOptions = {
+              boundaries: [-500, 500],
+              values: [-100, 0, 200],
+            };
+            let testOptions = { ClassOptions, options, expectations };
+
+            runTest(testOptions);
+          });
+
+          context(`cut exceed length`, function () {
+            let options = [
+              { values: [-200, 10, 300, 500] },
+              { values: [-200, 10, 300, 450, 500] },
+            ];
+            let expectations = [
+              { values: [-200, 10, 300] },
+              { values: [-200, 10, 300] },
+            ];
+            let ClassOptions = {
+              boundaries: [-500, 500],
+              values: [-100, 0, 200],
+            };
+            let testOptions = { ClassOptions, options, expectations };
+
+            runTest(testOptions);
+          });
+        });
+
       });
 
 
