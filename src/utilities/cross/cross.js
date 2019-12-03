@@ -10,8 +10,8 @@ import { getNearestTo } from "../getNearestTo/getNearestTo";
  *
  */
 export function cross(baseArr, arr) {
-  baseArr = baseArr && baseArr.slice();
-  arr = arr && arr.slice();
+  baseArr = baseArr && baseArr.slice().sort( (a, b) => a - b );
+  arr = arr && arr.slice().sort( (a, b) => a - b );
 
   if ( !arr || !arr.length ) {
     return baseArr;
