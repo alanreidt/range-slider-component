@@ -415,12 +415,16 @@ export function testSliderModel() {
               { values: [-200, 300] },
               { values: [-200, 5, 300] },
               { values: [-200, 5, 300, 450] },
+              { values: [-500, 5, 300, 450] },
+              { values: [-500, -300, 300, 450] },
             ];
             let expectations = [
               { values: [-400, -100, 0, 300, 500] },
               { values: [-400, -200, 0, 300, 500] },
               { values: [-400, -200, 5, 300, 500] },
               { values: [-400, -200, 5, 300, 450] },
+              { values: [-500, -100, 5, 300, 450] },
+              { values: [-500, -300, 0, 300, 450] },
             ];
             let ClassOptions = {
               boundaries: [-500, 500],
