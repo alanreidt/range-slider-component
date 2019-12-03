@@ -122,6 +122,22 @@ export function testSliderModel() {
 
           runTest(testOptions);
         });
+
+        context(`shall filter duplicated values`, function () {
+          const ClassOptions = {
+            boundaries: [100, 500],
+            values: [100, 100, 200, 300, 300, 460],
+            step: 20,
+            orientation: "vertical",
+            hasTooltips: true,
+          };
+          const expectations = [
+            { values: [100, 200, 300, 460] },
+          ];
+          const testOptions = { ClassOptions, expectations };
+
+          runTest(testOptions);
+        });
       });
 
 
