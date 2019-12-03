@@ -17,7 +17,7 @@ export function cross(baseArr, arr) {
     return baseArr;
   }
 
-  if ( !baseArr || !baseArr.length ) {
+  if ( !baseArr || !baseArr.length || (baseArr.length === arr.length) ) {
     return arr;
   }
 
