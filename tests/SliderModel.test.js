@@ -376,12 +376,12 @@ export function testSliderModel() {
               const options = [
                 { values: 30 },
                 { values: [30, 90] },
-                { values: [30, 50, 90] },
+                { values: [30, 90, 100] },
               ];
               const expectations = [
                 { values: [30, 80] },
                 { values: [30, 90] },
-                { values: [30, 50] },
+                { values: [30, 90] },
               ];
               const testOptions = { ClassOptions, options, expectations };
 
