@@ -524,6 +524,32 @@ export function testSliderModel() {
           });
         });
 
+
+        describe(`shall handle passed array with length equal to
+        length of the current array`, function() {
+          context(`assign as is (sorting only)`, function () {
+            let options = [
+              { values: [-200, 5, 300] },
+              { values: [-200, 5, 450] },
+              { values: [-200, -500, 5] },
+              { values: [100, 200, 300] },
+            ];
+            let expectations = [
+              { values: [-200, 5, 300] },
+              { values: [-200, 5, 450] },
+              { values: [-500, -200, 5] },
+              { values: [100, 200, 300] },
+            ];
+            let ClassOptions = {
+              boundaries: [-500, 500],
+              values: [-100, 0, 200],
+            };
+            let testOptions = { ClassOptions, options, expectations };
+
+            runTest(testOptions);
+          });
+        });
+
       });
 
 
