@@ -6,6 +6,12 @@ export class SliderAdapter {
     this.dataSource = dataSource;
   }
 
+  setHandle(index, newValue) {
+    this.dataSource.setHandle(index, newValue);
+
+    this.triggerSubscribers("update", this.getOptions() );
+  }
+
   getOptions() {
     return this.dataSource.getValues();
   }
