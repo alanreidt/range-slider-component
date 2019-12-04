@@ -5,6 +5,7 @@ import {
   packInto,
   uniquify,
   cross,
+  isValueInBetween,
 } from "../src/utilities/utilities.js";
 
 
@@ -115,6 +116,35 @@ export class SliderModel {
     if (value !== false && value !== true) return;
 
     this._options.hasTooltips = value;
+  }
+
+
+  setHandle(index, newValue) {
+    const currentValues = this._options.values;
+    const newValues = currentValues.slice();
+
+    const prevValue = currentValues[index - 1];
+    const nextValue = currentValues[index + 1];
+
+    if ( !prevValue ) {
+      newValue = ( newValue < nextValue ) ?
+        newValue : nextValue;
+    }
+
+    if ( !nextValue ) {
+      newValue = ( newValue > prevValue ) ?
+        newValue : prevValue;
+    }
+
+    if ( prevValue && nextValue ) {
+      newValue = isValueInBetween(newValue, prevValue, nextValue) ?
+        newValue :
+        getNearestTo(newValue, prevValue, nextValue);
+    }
+
+    newValues.splice(index, 1, newValue);
+
+    this.setValues( {values: newValues} );
   }
 
 
