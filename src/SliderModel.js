@@ -6,6 +6,7 @@ import {
   uniquify,
   cross,
   isValueInBetween,
+  getNearestTo,
 } from "../src/utilities/utilities.js";
 
 
