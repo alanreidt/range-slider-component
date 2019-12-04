@@ -129,20 +129,17 @@ export class SliderUI {
     const proportion = position / sliderSize * 100;
     const newValue = this._calcValue(proportion);
 
-    const currentValues = this.sliderAdapter.getOptions().values.slice();
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
     const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
       ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget)
     );
 
     if ( onMouseDownEventTargetIndex !== -1 ) {
-      currentValues.splice(onMouseDownEventTargetIndex, 1, newValue);
-
-      this.sliderAdapter.update({values: currentValues});
+      this.sliderAdapter.setHandle( onMouseDownEventTargetIndex, newValue );
     }
 
     if (event.target === this.$base) {
-      this.sliderAdapter.update({values: newValue});
+      this.sliderAdapter.update( {values: newValue} );
     }
   }
 
