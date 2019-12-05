@@ -1,10 +1,13 @@
+import { isValueInBetween } from "../isValueInBetween/isValueInBetween";
+
+
 export function translateProportionIntoValue(proportion, range) {
   const inputValues = [proportion].concat(range);
   const isIncorrect = inputValues.some(
     (value) => !Number.isFinite(value)
   );
 
-  if ( isIncorrect ) {
+  if ( isIncorrect || !isValueInBetween(proportion, 0 , 100) ) {
     return NaN;
   }
 
