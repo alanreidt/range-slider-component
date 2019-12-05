@@ -11,14 +11,20 @@ import { isValueInBetween } from "../isValueInBetween/isValueInBetween";
  */
 export function getPositionInPercentageOf(value, range) {
   let [start, end] = range;
+
   if (start > end) {
     [start, end] = [end, start];
   }
+
   if (!isValueInBetween(value, start, end)) {
     return NaN;
   }
+
   let difference = end - start;
+
   value = value - start;
+
   let result = value / difference * 100;
+
   return `${(result - Math.trunc(result)) ? result.toFixed(5) : result}%`;
 }
