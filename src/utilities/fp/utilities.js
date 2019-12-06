@@ -1,3 +1,3 @@
-export { fallbackFalseyFP } from "./fallbackFalseyFP/fallbackFalseyFP";
+export { fallbackFalseyFP } from "./fallbackFalseyFP";
 export { getClosestFactorOfFP } from "./getClosestFactorOfFP";
 export { packIntoFP } from "./packIntoFP";

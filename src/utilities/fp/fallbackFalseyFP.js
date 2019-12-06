@@ -1,4 +1,4 @@
-import { fallbackFalsey } from "../../fallbackFalsey/fallbackFalsey";
+import { fallbackFalsey } from "../fallbackFalsey/fallbackFalsey";
 
 const curryRight = require("lodash/curryRight");
 
