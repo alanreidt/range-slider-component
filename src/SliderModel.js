@@ -18,10 +18,14 @@ import {
 
 const flow = require("lodash/flow");
 const curry = require("lodash/curry");
+const curryRight = require("lodash/fp/curryRight");
 const map = require("lodash/fp/map");
 const sortBy = require("lodash/fp/sortBy");
 const filter = require("lodash/fp/filter");
+const uniq = require("lodash/fp/uniq");
 const identity = require("lodash/fp/identity");
+const crossCurried = curry(cross);
+const getNearestDivisibleOfFP = curryRight(getNearestDivisibleOf);
 
 
 export class SliderModel {
@@ -50,7 +54,6 @@ export class SliderModel {
   set _boundaries(newValues) {
     const currentValues = this._options.boundaries;
     newValues = [].concat(newValues);
-    const crossCurried = curry(cross);
 
     this._options.boundaries = flow(
       sortBy( identity ),
@@ -67,29 +70,25 @@ export class SliderModel {
   set _values(newValues) {
     const step = this._options.step;
     const [start, end] = this._options.boundaries;
+    const defaultValue = [
+      getAverageOf(this._options.boundaries),
+    ];
 
     newValues = [].concat(newValues);
     const currentValues = this._options.values &&
       this._options.values.slice();
 
-    let validatedValues = newValues
-                            .sort( (a, b) => a - b )
-                            .map( parseFloat )
-                            .filter( isFinite );
-
-    validatedValues = uniquify( validatedValues );
-
-    validatedValues = cross(currentValues, validatedValues);
-
-    validatedValues = (validatedValues === null) ?
-      Array.of( getAverageOf(this._options.boundaries) ) :
-      validatedValues;
-
-    validatedValues = validatedValues
-                        .map( (value) => packInto(value, start, end) )
-                        .map( (value) => getNearestDivisibleOf(value, step, start) );
-
-    this._options.values = validatedValues;
+    this._options.values = flow(
+      sortBy( identity ),
+      map( parseFloat ),
+      filter( isFinite ),
+      uniq,
+      crossCurried( currentValues ),
+      fallbackFalseyFP( defaultValue ),
+      map( packIntoFP(start, end) ),
+      // map( getNearestDivisibleOfFP(step, start) ),
+    )(newValues)
+        .map( (value) => getNearestDivisibleOfFP(value, step, start) );
   }
 
 
