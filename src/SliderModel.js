@@ -7,6 +7,7 @@ import {
   cross,
   isValueInBetween,
   getNearestTo,
+  fallbackFalsey,
 } from "../src/utilities/utilities.js";
 
 
@@ -90,8 +91,7 @@ export class SliderModel {
 
     let validatedValue = parseFloat(newValue);
 
-    validatedValue = isNaN(validatedValue) ? currentValue :
-      validatedValue;
+    validatedValue = fallbackFalsey(validatedValue, currentValue);
 
     validatedValue = packInto(validatedValue, 1, range);
     validatedValue = getClosestFactorOf(range, validatedValue);
