@@ -1,3 +1,4 @@
+export { fallbackFalsey } from "./fallbackFalsey/fallbackFalsey";
 export { pipe } from "./pipe/pipe";
 export { cross } from "./cross/cross";
 export { uniquify } from "./uniquify/uniquify";
