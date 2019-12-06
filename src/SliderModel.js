@@ -1,13 +1,7 @@
 import {
   getAverageOf,
-  getNearestDivisibleOf,
-  getClosestFactorOf,
-  packInto,
-  uniquify,
-  cross,
   isValueInBetween,
   getNearestTo,
-  fallbackFalsey,
 } from "../src/utilities/utilities.js";
 
 import {
@@ -19,8 +13,6 @@ import {
 } from "./utilities/fp/utilities.js";
 
 const flow = require("lodash/flow");
-const curry = require("lodash/curry");
-const curryRight = require("lodash/fp/curryRight");
 const map = require("lodash/fp/map");
 const sortBy = require("lodash/fp/sortBy");
 const filter = require("lodash/fp/filter");
