@@ -14,7 +14,8 @@ import {
   fallbackFalseyFP,
   packIntoFP,
   getClosestFactorOfFP,
-  crossFP
+  crossFP,
+  getNearestDivisibleOfFP
 } from "./utilities/fp/utilities.js";
 
 const flow = require("lodash/flow");
@@ -25,7 +26,6 @@ const sortBy = require("lodash/fp/sortBy");
 const filter = require("lodash/fp/filter");
 const uniq = require("lodash/fp/uniq");
 const identity = require("lodash/fp/identity");
-const getNearestDivisibleOfFP = curryRight(getNearestDivisibleOf);
 
 
 export class SliderModel {
