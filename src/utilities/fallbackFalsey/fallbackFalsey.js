@@ -1,4 +1,5 @@
 export function fallbackFalsey(value, fallbackValue) {
-  return Number.isNaN(value) ?
-    fallbackValue : value;
+  return value || fallbackValue;
+  // return Number.isNaN(value) ?
+  //   fallbackValue : value;
 }
