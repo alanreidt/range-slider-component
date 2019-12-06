@@ -10,6 +10,14 @@ import {
   fallbackFalsey,
 } from "../src/utilities/utilities.js";
 
+import {
+  fallbackFalseyFP,
+  packIntoFP,
+  getClosestFactorOfFP
+} from "./utilities/fp/utilities.js";
+
+const flow = require("lodash/flow");
+
 
 export class SliderModel {
   constructor(options = {}) {
@@ -89,14 +97,12 @@ export class SliderModel {
     const range = end - start;
     const currentValue = this._options.step;
 
-    let validatedValue = parseFloat(newValue);
-
-    validatedValue = fallbackFalsey(validatedValue, currentValue);
-
-    validatedValue = packInto(validatedValue, 1, range);
-    validatedValue = getClosestFactorOf(range, validatedValue);
-
-    this._options.step = validatedValue;
+    this._options.step = flow(
+      parseFloat,
+      fallbackFalseyFP(currentValue),
+      packIntoFP(1, range),
+      getClosestFactorOfFP(range),
+    )(newValue);
   }
 
 
