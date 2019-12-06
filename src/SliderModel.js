@@ -13,7 +13,8 @@ import {
 import {
   fallbackFalseyFP,
   packIntoFP,
-  getClosestFactorOfFP
+  getClosestFactorOfFP,
+  crossFP
 } from "./utilities/fp/utilities.js";
 
 const flow = require("lodash/flow");
@@ -24,7 +25,6 @@ const sortBy = require("lodash/fp/sortBy");
 const filter = require("lodash/fp/filter");
 const uniq = require("lodash/fp/uniq");
 const identity = require("lodash/fp/identity");
-const crossCurried = curry(cross);
 const getNearestDivisibleOfFP = curryRight(getNearestDivisibleOf);
 
 
@@ -59,7 +59,7 @@ export class SliderModel {
       sortBy( identity ),
       map( parseFloat ),
       filter( isFinite ),
-      crossCurried( currentValues ),
+      crossFP( currentValues ),
     )(newValues);
   }
 
@@ -83,7 +83,7 @@ export class SliderModel {
       map( parseFloat ),
       filter( isFinite ),
       uniq,
-      crossCurried( currentValues ),
+      crossFP( currentValues ),
       fallbackFalseyFP( defaultValue ),
       map( packIntoFP(start, end) ),
       // map( getNearestDivisibleOfFP(step, start) ),
