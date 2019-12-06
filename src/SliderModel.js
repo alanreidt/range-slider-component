@@ -17,6 +17,11 @@ import {
 } from "./utilities/fp/utilities.js";
 
 const flow = require("lodash/flow");
+const curry = require("lodash/curry");
+const map = require("lodash/fp/map");
+const sortBy = require("lodash/fp/sortBy");
+const filter = require("lodash/fp/filter");
+const identity = require("lodash/fp/identity");
 
 
 export class SliderModel {
@@ -45,15 +50,14 @@ export class SliderModel {
   set _boundaries(newValues) {
     const currentValues = this._options.boundaries;
     newValues = [].concat(newValues);
+    const crossCurried = curry(cross);
 
-    let validatedValues = newValues
-                            .sort( (a, b) => a - b )
-                            .map( parseFloat )
-                            .filter( isFinite );
-
-    validatedValues = cross(currentValues, validatedValues);
-
-    this._options.boundaries = validatedValues;
+    this._options.boundaries = flow(
+      sortBy( identity ),
+      map( parseFloat ),
+      filter( isFinite ),
+      crossCurried( currentValues ),
+    )(newValues);
   }
 
 
