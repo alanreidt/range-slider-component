@@ -11,6 +11,8 @@
 export function getNearestDivisibleOf(dividend, divisor, start = 0) {
   divisor = Math.abs(divisor);
   dividend -= start;
+
   let result = Math.round(dividend / divisor) * divisor + start;
+
   return isFinite(result) ? result : NaN;
 }
