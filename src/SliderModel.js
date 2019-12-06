@@ -43,7 +43,7 @@ export class SliderModel {
     return this._options.boundaries;
   }
   set _boundaries(newValues) {
-    const currentValues = this._options.boundaries.slice();
+    const currentValues = this._options.boundaries;
     newValues = [].concat(newValues);
 
     let validatedValues = newValues
