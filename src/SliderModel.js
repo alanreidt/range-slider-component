@@ -78,9 +78,8 @@ export class SliderModel {
       crossFP( currentValues ),
       fallbackFalseyFP( defaultValue ),
       map( packIntoFP(start, end) ),
-      // map( getNearestDivisibleOfFP(step, start) ),
-    )(newValues)
-        .map( (value) => getNearestDivisibleOfFP(value, step, start) );
+      map( getNearestDivisibleOfFP(step, start) ),
+    )(newValues);
   }
 
 

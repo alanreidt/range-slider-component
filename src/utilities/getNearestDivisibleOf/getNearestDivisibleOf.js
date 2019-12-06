@@ -8,7 +8,8 @@
  * @param {number} start The number which to start to counting from.
  * @returns {number} The nearest number, that can be divided by divisor without the remainder.
  */
-export function getNearestDivisibleOf(dividend, divisor, start = 0) {
+export function getNearestDivisibleOf(dividend, divisor, start) {
+  start = start || 0;
   divisor = Math.abs(divisor);
   dividend -= start;
 
