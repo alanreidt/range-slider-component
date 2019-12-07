@@ -127,6 +127,11 @@ export class SliderModel {
     const prevValue = currentValues[index - 1];
     const nextValue = currentValues[index + 1];
 
+    if (currentValues.length === 1) {
+      this.setOptions( {values: newValue} );
+      return;
+    }
+
     if ( !prevValue ) {
       newValue = ( newValue < nextValue ) ?
         newValue : nextValue;
