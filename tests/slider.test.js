@@ -149,8 +149,8 @@ export function testSlider() {
 
         slider.setOptions($parent, newOptions);
 
-        it("sliderAdapter optionsUpdated is not equal to null", function () {
-          assert.isNotNull(sliderAdapter.optionsUpdated);
+        it("sliderAdapter optionsUpdated is not equal to undefined", function () {
+          assert.notEqual(sliderAdapter.optionsUpdated, undefined);
         });
 
         it("sliderAdapter optionsUpdated is equal to newOptions", function () {
