@@ -31,7 +31,7 @@ export class SliderModel {
       hasTooltips: false,
     };
 
-    this.setValues(options);
+    this.setOptions(options);
 
     Object.defineProperties(this._options, {
       orientation: {writable: false},
@@ -145,7 +145,7 @@ export class SliderModel {
 
     newValues.splice(index, 1, newValue);
 
-    this.setValues( {values: newValues} );
+    this.setOptions( {values: newValues} );
   }
 
 
@@ -160,7 +160,7 @@ export class SliderModel {
   }
 
 
-  setValues(options) {
+  setOptions(options) {
     for ( let key of Object.keys(this._options) ) {
       this["_" + key] = options[key];
     }

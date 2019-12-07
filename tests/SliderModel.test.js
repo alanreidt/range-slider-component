@@ -161,7 +161,7 @@ export function testSliderModel() {
 
     describe("Reassignment test", function () {
       const Class = SliderModel;
-      const method = "setValues";
+      const method = "setOptions";
       const methodGetter = "getOptions";
       const runTest = testClass({ Class, method, methodGetter });
 

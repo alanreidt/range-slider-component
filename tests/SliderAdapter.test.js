@@ -14,7 +14,7 @@ export function testSliderAdapter() {
           hasTooltips: true,
         };
         const sliderModel = {
-          setValues(newOptions) {
+          setOptions(newOptions) {
             this.options = newOptions;
           },
         };
