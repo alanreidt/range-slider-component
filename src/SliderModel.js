@@ -16,7 +16,6 @@ const flow = require("lodash/fp/flow");
 const map = require("lodash/fp/map");
 const sortBy = require("lodash/fp/sortBy");
 const filter = require("lodash/fp/filter");
-const uniq = require("lodash/fp/uniq");
 const identity = require("lodash/fp/identity");
 
 
@@ -74,7 +73,6 @@ export class SliderModel {
       sortBy( identity ),
       map( parseFloat ),
       filter( isFinite ),
-      uniq,
       crossFP( currentValues ),
       fallbackFalseyFP( defaultValue ),
       map( packIntoFP(start, end) ),
