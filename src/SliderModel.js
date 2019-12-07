@@ -12,7 +12,7 @@ import {
   getNearestDivisibleOfFP
 } from "./utilities/fp/utilities.js";
 
-const flow = require("lodash/flow");
+const flow = require("lodash/fp/flow");
 const map = require("lodash/fp/map");
 const sortBy = require("lodash/fp/sortBy");
 const filter = require("lodash/fp/filter");
