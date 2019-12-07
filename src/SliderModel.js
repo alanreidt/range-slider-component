@@ -120,7 +120,7 @@ export class SliderModel {
   }
 
 
-  setHandle(index, newValue) {
+  setValueAt(index, newValue) {
     const currentValues = this._options.values;
     const newValues = currentValues.slice();
 

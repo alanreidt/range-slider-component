@@ -282,7 +282,7 @@ export function testSliderUI() {
         });
 
         describe("shall listen to events on $handleGroup element", function() {
-          context("trigger sliderAdapter setHandle method on mousemove during mousedown event", function() {
+          context("trigger sliderAdapter setValueAt method on mousemove during mousedown event", function() {
             const mousePositionValues = [20, 100, 200];
             const expectationValues = [
               [0, 10],
@@ -306,7 +306,7 @@ export function testSliderUI() {
                   return this._options;
                 },
 
-                setHandle(index, newValue) {
+                setValueAt(index, newValue) {
                   this.isTriggered = true;
                   this.value = [index, newValue];
                 },
@@ -335,7 +335,7 @@ export function testSliderUI() {
             });
           });
 
-          context(`trigger sliderAdapter setHandle method on mousedown event,
+          context(`trigger sliderAdapter setValueAt method on mousedown event,
           when slider is vertical`, function() {
             const mousePositionValues = [20, 100, 200];
             const expectationValues = [
@@ -360,7 +360,7 @@ export function testSliderUI() {
                   return this._options;
                 },
 
-                setHandle(index, newValue) {
+                setValueAt(index, newValue) {
                   this.isTriggered = true;
                   this.value = [index, newValue];
                 },
