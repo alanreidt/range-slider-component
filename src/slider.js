@@ -51,4 +51,17 @@ export const slider = {
     this._parentsMap.get($parent).sliderAdapter.update(options);
   },
 
+
+  /**
+   * Set the slider instance value of values option at appropriate index.
+   *
+   * @param {HTMLElement} $parent The element the slider is inserted in.
+   * @param {number} index The index of values option value to change.
+   * @param {number} value The new value.
+   *
+   */
+  setValueAt($parent, index, value) {
+    this._parentsMap.get($parent).sliderAdapter.setValueAt(index, value);
+  },
+
 };
