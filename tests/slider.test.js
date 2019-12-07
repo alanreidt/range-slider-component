@@ -14,7 +14,7 @@ export function testSlider() {
       getOptions() {
         return options;
       },
-      update(options) {
+      setOptions(options) {
         this.optionsUpdated = options;
       },
       setValueAt(index, value) {

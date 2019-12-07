@@ -59,7 +59,7 @@ export const slider = {
    */
 
   setOptions($parent, options) {
-    this._parentsMap.get($parent).sliderAdapter.update(options);
+    this._parentsMap.get($parent).sliderAdapter.setOptions(options);
   },
 
 

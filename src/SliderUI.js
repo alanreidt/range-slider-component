@@ -137,7 +137,7 @@ export class SliderUI {
     if ( onMouseDownEventTargetIndex !== -1 ) {
       this.sliderAdapter.setValueAt( onMouseDownEventTargetIndex, newValue );
     } else if (event.target === this.$base) {
-      this.sliderAdapter.update( {values: newValue} );
+      this.sliderAdapter.setOptions( {values: newValue} );
     }
   }
 

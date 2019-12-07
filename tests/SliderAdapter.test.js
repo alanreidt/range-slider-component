@@ -20,7 +20,7 @@ export function testSliderAdapter() {
         };
         const sliderAdapter = new SliderAdapter(sliderModel);
 
-        sliderAdapter.update(newValues);
+        sliderAdapter.setOptions(newValues);
 
         for (let key in newValues) {
           it(`${key} equals to ${newValues[key]}`, function () {

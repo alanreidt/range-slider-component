@@ -16,7 +16,7 @@ export class SliderAdapter {
     return this.dataSource.getOptions();
   }
 
-  update(options) {
+  setOptions(options) {
     const newOptions = this.dataSource.setOptions(options);
 
     this.triggerSubscribers("update", newOptions);

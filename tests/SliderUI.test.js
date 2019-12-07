@@ -175,7 +175,7 @@ export function testSliderUI() {
         document.body.append($parent);
 
         describe("shall listen to events on $base element", function() {
-          context("trigger sliderAdapter update method on mousedown event", function() {
+          context("trigger sliderAdapter setOptions method on mousedown event", function() {
             const mousePositionValues = [20, 100, 200];
             const expectationValues = [10, 50, 100];
 
@@ -195,7 +195,7 @@ export function testSliderUI() {
                   return this._options;
                 },
 
-                update(newOptions) {
+                setOptions(newOptions) {
                   this.isTriggered = true;
                   this._options = {
                     ...options,
@@ -216,7 +216,7 @@ export function testSliderUI() {
               simulateMouseEvent("mousedown", $base, {clientX: mousePositionValue});
               simulateMouseEvent("mouseup", $base);
 
-              it(`sliderAdapter update is triggered on mouse event ${i + 1}`, function() {
+              it(`sliderAdapter setOptions is triggered on mouse event ${i + 1}`, function() {
                 assert.isTrue(sliderAdapter.isTriggered);
               });
 
@@ -226,7 +226,7 @@ export function testSliderUI() {
             });
           });
 
-          context(`trigger sliderAdapter update method on mousedown event,
+          context(`trigger sliderAdapter setOptions method on mousedown event,
           when slider is vertical`, function() {
             const mousePositionValues = [20, 100, 200];
             const expectationValues = [10, 50, 100];
@@ -247,7 +247,7 @@ export function testSliderUI() {
                   return this._options;
                 },
 
-                update(newOptions) {
+                setOptions(newOptions) {
                   this.isTriggered = true;
                   this._options = {
                     ...options,
@@ -268,7 +268,7 @@ export function testSliderUI() {
               simulateMouseEvent("mousedown", $base, {clientY: mousePositionValue});
               simulateMouseEvent("mouseup", $base);
 
-              it(`sliderAdapter update is triggered on mouse event ${i + 1}`, function() {
+              it(`sliderAdapter setOptions is triggered on mouse event ${i + 1}`, function() {
                 assert.isTrue(sliderAdapter.isTriggered);
               });
 
@@ -325,7 +325,7 @@ export function testSliderUI() {
               simulateMouseEvent("mousemove", document, {clientX: mousePositionValue});
               simulateMouseEvent("mouseup", document);
 
-              it(`sliderAdapter update is triggered on mouse event ${i + 1}`, function() {
+              it(`sliderAdapter setOptions is triggered on mouse event ${i + 1}`, function() {
                 assert.isTrue(sliderAdapter.isTriggered);
               });
 
@@ -380,7 +380,7 @@ export function testSliderUI() {
               simulateMouseEvent("mouseup", document);
 
 
-              it(`sliderAdapter update is triggered on mouse event ${i + 1}`, function() {
+              it(`sliderAdapter setOptions is triggered on mouse event ${i + 1}`, function() {
                 assert.isTrue(sliderAdapter.isTriggered);
               });
 
@@ -407,7 +407,7 @@ export function testSliderUI() {
                 return this._options;
               },
 
-              update(newOptions) {
+              setOptions(newOptions) {
                 this.isTriggered = true;
                 this._options = {
                   ...options,
@@ -429,7 +429,7 @@ export function testSliderUI() {
             simulateMouseEvent("mouseup", document);
             simulateMouseEvent("mousemove", document, {clientY: 100});
 
-            it(`sliderAdapter update is not triggered on mouse event`, function() {
+            it(`sliderAdapter setOptions is not triggered on mouse event`, function() {
               assert.isFalse(sliderAdapter.isTriggered);
             });
 
