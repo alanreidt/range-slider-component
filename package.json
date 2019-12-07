@@ -5,7 +5,7 @@
   "main": "src/slider.js",
   "directories": {
     "test": "tests",
-    "build": "rm -rf prod && parcel build src/slider.js src/slider.scss --out-dir prod --no-source-maps"
+    "build": "rm -rf prod && parcel build src/slider.js src/slider.scss --out-dir ./prod"
   },
   "repository": {
     "type" : "git",
