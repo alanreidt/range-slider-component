@@ -6,12 +6,6 @@ export class SliderAdapter {
     this.dataSource = dataSource;
   }
 
-  setValueAt(index, newValue) {
-    this.dataSource.setValueAt(index, newValue);
-
-    this.triggerSubscribers("update", this.getOptions() );
-  }
-
   getOptions() {
     return this.dataSource.getOptions();
   }
@@ -21,6 +15,13 @@ export class SliderAdapter {
 
     this.triggerSubscribers("update", newOptions);
   }
+
+  setValueAt(index, newValue) {
+    this.dataSource.setValueAt(index, newValue);
+
+    this.triggerSubscribers("update", this.getOptions() );
+  }
+
 }
 
 Object.assign(SliderAdapter.prototype, observerMixin);
