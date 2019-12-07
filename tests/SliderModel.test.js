@@ -597,6 +597,19 @@ export function testSliderModel() {
       });
     });
 
+
+
+    describe("setValueAt method", function() {
+      const Class = SliderModel;
+      const method = "setValueAt";
+      const methodGetter = "getOptions";
+      const runTest = testClass({ Class, method, methodGetter });
+
+      context(`shall handle single value by index 0`, function() {
+      });
+      context(`shall handle multiple values by indexes`, function() {
+      });
+    });
   });
 
 
