@@ -67,7 +67,7 @@ The slider will take all free space up — it has `width` or `height` equal to `
 ### API
 *slider object*, which localized in the `slider.js` file is dedicated as *Slider API Unit*.
 
-Use its `create`, `getOptions` or `setOptions` methods to interact with the slider entity.
+Use its methods to interact with the slider entity.
 
 #### create method
 Compose from js docs.
@@ -78,6 +78,8 @@ Compose from js docs.
 >
 > See details in [the options section](#options).
 
+Compose from js docs.
+#### setValueAt method
 Compose from js docs.
 
 ### Options
@@ -174,7 +176,7 @@ It translates position of occured events into the slider `values` option. All fu
 As you see, `SliderUI` performs View and Controller functionality. The objective for this is that it's not logical to divide the modules in this concrete component from functional decomposition standpoint — handle don't have any value outside of the slider.
 
 #### UML diagram
-This is a bird view on the slider architecture.
+This is a bird's view on the slider architecture.
 
 Diagram represents only public members.
 
