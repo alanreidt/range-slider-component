@@ -17,6 +17,9 @@ export function testSlider() {
       update(options) {
         this.optionsUpdated = options;
       },
+      setValueAt(index, value) {
+        this.valueUpdated = [index, value];
+      },
       addSubscriber(...args) {
         this.addSubscriberArgs = args;
       },
@@ -152,6 +155,27 @@ export function testSlider() {
 
         it("sliderAdapter optionsUpdated is equal to newOptions", function () {
           assert.equal(sliderAdapter.optionsUpdated, newOptions);
+        });
+      });
+
+    });
+
+
+    describe("setValueAt method", function () {
+
+      context("shall set sliderAdapter valueUpdated property", function () {
+        const index = 1;
+        const newValue = 30;
+        const expectation = [index, newValue];
+
+        slider.setValueAt($parent, index, newValue);
+
+        it("sliderAdapter valueUpdated is not equal to undefined", function () {
+          assert.notEqual(sliderAdapter.valueUpdated, undefined);
+        });
+
+        it("sliderAdapter valueUpdated is equal to newOptions", function () {
+          assert.deepEqual(sliderAdapter.valueUpdated, expectation);
         });
       });
 
