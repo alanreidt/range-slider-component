@@ -160,9 +160,9 @@ export class SliderModel {
   }
 
 
-  setOptions(options) {
+  setOptions(newOptions) {
     for ( let key of Object.keys(this._options) ) {
-      this["_" + key] = options[key];
+      this["_" + key] = newOptions[key];
     }
 
     return this.getOptions();
