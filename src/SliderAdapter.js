@@ -13,7 +13,7 @@ export class SliderAdapter {
   }
 
   getOptions() {
-    return this.dataSource.getValues();
+    return this.dataSource.getOptions();
   }
 
   update(options) {

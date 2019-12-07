@@ -41,7 +41,7 @@ export function testSliderAdapter() {
         const expectations = options;
         const sliderModel = {
           options: options,
-          getValues() {
+          getOptions() {
             return this.options;
           },
         };

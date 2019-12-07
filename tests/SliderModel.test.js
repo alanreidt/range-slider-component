@@ -9,7 +9,7 @@ export function testSliderModel() {
 
     describe("Initialization test", function () {
       const Class = SliderModel;
-      const methodGetter = "getValues";
+      const methodGetter = "getOptions";
       const runTest = testClass({ Class, methodGetter });
 
       describe("shall assign default values for unpassed parameters", function () {
@@ -162,7 +162,7 @@ export function testSliderModel() {
     describe("Reassignment test", function () {
       const Class = SliderModel;
       const method = "setValues";
-      const methodGetter = "getValues";
+      const methodGetter = "getOptions";
       const runTest = testClass({ Class, method, methodGetter });
 
       describe("shall change values, if correct one is passed", function () {

@@ -149,7 +149,7 @@ export class SliderModel {
   }
 
 
-  getValues() {
+  getOptions() {
     return {
       boundaries: this._boundaries,
       values: this._values,
@@ -165,7 +165,7 @@ export class SliderModel {
       this["_" + key] = options[key];
     }
 
-    return this.getValues();
+    return this.getOptions();
   }
 
 }
