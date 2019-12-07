@@ -43,14 +43,14 @@ export function testTranslateProportionIntoValue() {
     });
 
 
-    describe("shall return NaN, if (0 > proportion > 100) is out of range", function () {
+    describe("shall handle out of range proportion (0 > proportion > 100)", function () {
       let funcOptions = [
         [101, [200, 700]],
         [200, [200, 700]],
         [-1, [200, 700]],
         [-100, [200, 700]],
       ];
-      let expectations = new Array(funcOptions.length).fill(NaN);
+      let expectations = [705, 1200, 195, -300];
       let test = new TestClass();
 
       test.test(funcOptions, expectations);
