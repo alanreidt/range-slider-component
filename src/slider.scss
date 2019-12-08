@@ -1,15 +1,25 @@
 .slider {
+  --slider-buffer: 10px;
   --slider-base-width: 15px;
   --slider-base-height: var(--slider-base-width);
   --slider-tooltip-height: 26px;
+  --slider-tooltip-margin: 5px;
   --slider-tooltip-border-width: 1px;
   --slider-handle-width: 24px;
   --slider-handle-height: var(--slider-handle-width);
+  --slider-tooltip-gap: calc(
+    var(--slider-tooltip-height) +
+    var(--slider-tooltip-margin) +
+    var(--slider-buffer)
+  );
+  --slider-handle-gap: calc(
+    var(--slider-handle-width) / 2
+  );
 
   display: inline-block;
   vertical-align: middle;
   width: 100%;
-  padding: 5px calc( var(--slider-handle-width) / 2 );
+  padding: var(--slider-tooltip-gap) var(--slider-handle-gap) 5px;
 
   font-family: serif;
 
