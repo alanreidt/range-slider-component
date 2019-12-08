@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf prod && parcel build src/slider.js src/slider.scss --out-dir ./prod --no-content-hash"
+    "build": "rm -rf prod && parcel build src/slider.js src/slider.scss -d ./prod --no-content-hash"
   },
   "keywords": [],
   "author": "Alan Reid",
