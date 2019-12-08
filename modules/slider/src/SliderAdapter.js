@@ -1,19 +1,30 @@
-import {observerMixin} from "./utilities/utilities.js";
+import { observerMixin } from "./utilities/observerMixin/observerMixin";
+
 
 export class SliderAdapter {
   constructor(dataSource) {
     this.dataSource = dataSource;
   }
 
+
   getOptions() {
-    return this.dataSource.getValues();
+    return this.dataSource.getOptions();
   }
 
-  update(options) {
-    const newOptions = this.dataSource.setValues(options);
+
+  setOptions(options) {
+    const newOptions = this.dataSource.setOptions(options);
 
     this.triggerSubscribers("update", newOptions);
   }
+
+
+  setValueAt(index, newValue) {
+    this.dataSource.setValueAt(index, newValue);
+
+    this.triggerSubscribers("update", this.getOptions() );
+  }
+
 }
 
 Object.assign(SliderAdapter.prototype, observerMixin);

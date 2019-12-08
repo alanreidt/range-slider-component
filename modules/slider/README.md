@@ -1,7 +1,7 @@
 # Slider plugin
 
 ## Introduction
-> Note: This project is dedicated as portfolio background, so it's not ready for distribution (maybe, yet).
+> Note: This project is regarded as portfolio background, so it's not ready for distribution (maybe, yet).
 
 Welcome to the slider plugin github page. Although it looks like every other range slider, the component has several advantages, that make it unique.
 
@@ -16,18 +16,22 @@ More to come.
 ## Getting started
 In order to try the slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
-For more, use git clone command and modify Demo Page `app.js` file by yourself.
+For more, clone the repository and play around source code:
+```bash
+# clone this repository
+git clone https://github.com/alanreidt/slider.git
+```
 
-Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file:
+Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file (check [gh-pages branch](https://github.com/alanreidt/slider/tree/gh-pages) to see how it can be done):
 ```html
 <!-- import slider style (change yourpath) -->
-<link rel="stylesheet" href="{your_path}/slider_plugin/src/slider.scss">
+<link rel="stylesheet" href="{your_path}/slider/prod/slider.css">
 <!-- import slider API unit (change yourpath) -->
-<script src="{your_path}/slider_plugin/src/slider.js"></script>
+<script src="{your_path}/slider/prod/slider.js"></script>
 ```
 ```javascript
 // or import slider API directly into your javascript
-import { slider } from "{your_path}/slider_plugin/src/slider.js";
+import { slider } from "{your_path}/slider/prod/slider.js";
 ```
 
 And by next command initialize slider:
@@ -44,7 +48,7 @@ slider.create($parent, {
 });
 ```
 
-Possible options are described in the [according section](#options).
+Possible options are described in [the options section](#options).
 
 By the way, don't forget to set `height` for vertical slider on `$parent` element (because slider is created inside):
 ```css
@@ -63,7 +67,7 @@ The slider will take all free space up — it has `width` or `height` equal to `
 ### API
 *slider object*, which localized in the `slider.js` file is dedicated as *Slider API Unit*.
 
-Use its `create`, `getOptions` or `setOptions` methods to interact with the slider entity.
+Use its methods to interact with the slider entity.
 
 #### create method
 Compose from js docs.
@@ -74,6 +78,8 @@ Compose from js docs.
 >
 > See details in [the options section](#options).
 
+Compose from js docs.
+#### setValueAt method
 Compose from js docs.
 
 ### Options
@@ -170,7 +176,7 @@ It translates position of occured events into the slider `values` option. All fu
 As you see, `SliderUI` performs View and Controller functionality. The objective for this is that it's not logical to divide the modules in this concrete component from functional decomposition standpoint — handle don't have any value outside of the slider.
 
 #### UML diagram
-This is a bird view on the slider architecture.
+This is a bird's view on the slider architecture.
 
 Diagram represents only public members.
 

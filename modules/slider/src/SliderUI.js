@@ -1,4 +1,10 @@
-import {getPositionInPercentageOf, translateProportionIntoValue, setElementsPosition, setElementsTextContent} from "./utilities/utilities.js";
+import {
+  getPositionInPercentageOf,
+  translateProportionIntoValue,
+  setElementsPosition,
+  setElementsTextContent
+} from "./utilities/utilities.js";
+
 
 export class SliderUI {
 
@@ -123,20 +129,15 @@ export class SliderUI {
     const proportion = position / sliderSize * 100;
     const newValue = this._calcValue(proportion);
 
-    const currentValues = this.sliderAdapter.getOptions().values.slice();
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
     const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
       ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget)
     );
 
     if ( onMouseDownEventTargetIndex !== -1 ) {
-      currentValues.splice(onMouseDownEventTargetIndex, 1, newValue);
-
-      this.sliderAdapter.update({values: currentValues});
-    }
-
-    if (event.target === this.$base) {
-      this.sliderAdapter.update({values: newValue});
+      this.sliderAdapter.setValueAt( onMouseDownEventTargetIndex, newValue );
+    } else if (event.target === this.$base) {
+      this.sliderAdapter.setOptions( {values: newValue} );
     }
   }
 
