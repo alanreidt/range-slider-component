@@ -25,13 +25,13 @@ git clone https://github.com/alanreidt/slider.git
 Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file (check [gh-pages branch](https://github.com/alanreidt/slider/tree/gh-pages) to see how it can be done):
 ```html
 <!-- import slider style (change yourpath) -->
-<link rel="stylesheet" href="{your_path}/slider/prod/slider.css">
+<link rel="stylesheet" href="{your_path}/slider/prod/slider.min.css">
 <!-- import slider API unit (change yourpath) -->
-<script src="{your_path}/slider/prod/slider.js"></script>
+<script src="{your_path}/slider/prod/slider.min.js"></script>
 ```
 ```javascript
 // or import slider API directly into your javascript
-import { slider } from "{your_path}/slider/prod/slider.js";
+import { slider } from "{your_path}/slider/prod/slider.min.js";
 ```
 
 And by next command initialize slider:
