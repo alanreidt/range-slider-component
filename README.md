@@ -54,7 +54,7 @@ By the way, don't forget to set `height` for vertical slider on `$parent` elemen
 ```css
 /* parent element for the slider */
 .slider-wrapper {
-  /* the ruleset'll allow slider to be responsive */
+  /* the ruleset will allow slider to be responsive */
   height: 100%;
   max-height: 300px;
 }
