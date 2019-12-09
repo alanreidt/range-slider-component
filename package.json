@@ -11,7 +11,7 @@
     "url": "https://github.com/alanreidt/slider.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "parcel tests/test.html --open",
     "build": "rm -rf prod && parcel build src/slider.js -o src/slider.min.js -d ./prod && parcel build src/slider.scss -o src/slider.min.css -d ./prod"
   },
   "keywords": [],
