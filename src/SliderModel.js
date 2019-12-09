@@ -122,9 +122,10 @@ export class SliderModel {
   setValueAt(index, newValue) {
     const currentValues = this._options.values;
     const newValues = currentValues.slice();
-
-    const prevValue = currentValues[index - 1];
-    const nextValue = currentValues[index + 1];
+    const [prevValue, nextValue] = [
+      currentValues[index - 1],
+      currentValues[index + 1]
+    ];
 
     if (currentValues.length === 1) {
       this.setOptions( {values: newValue} );
