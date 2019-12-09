@@ -17,6 +17,7 @@ const map = require("lodash/fp/map");
 const sortBy = require("lodash/fp/sortBy");
 const filter = require("lodash/fp/filter");
 const identity = require("lodash/fp/identity");
+const isUndefined = require("lodash/fp/isUndefined");
 
 
 export class SliderModel {
@@ -121,26 +122,27 @@ export class SliderModel {
   setValueAt(index, newValue) {
     const currentValues = this._options.values;
     const newValues = currentValues.slice();
-
-    const prevValue = currentValues[index - 1];
-    const nextValue = currentValues[index + 1];
+    const [prevValue, nextValue] = [
+      currentValues[index - 1],
+      currentValues[index + 1]
+    ];
 
     if (currentValues.length === 1) {
       this.setOptions( {values: newValue} );
       return;
     }
 
-    if ( !prevValue ) {
+    if ( isUndefined(prevValue) ) {
       newValue = ( newValue < nextValue ) ?
         newValue : nextValue;
     }
 
-    if ( !nextValue ) {
+    if ( isUndefined(nextValue) ) {
       newValue = ( newValue > prevValue ) ?
         newValue : prevValue;
     }
 
-    if ( prevValue && nextValue ) {
+    if ( !isUndefined(prevValue) && !isUndefined(nextValue) ) {
       newValue = isValueInBetween(newValue, prevValue, nextValue) ?
         newValue :
         getNearestTo(newValue, prevValue, nextValue);
