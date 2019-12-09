@@ -17,6 +17,7 @@ const map = require("lodash/fp/map");
 const sortBy = require("lodash/fp/sortBy");
 const filter = require("lodash/fp/filter");
 const identity = require("lodash/fp/identity");
+const isUndefined = require("lodash/fp/isUndefined");
 
 
 export class SliderModel {
@@ -130,17 +131,17 @@ export class SliderModel {
       return;
     }
 
-    if ( !prevValue ) {
+    if ( isUndefined(prevValue) ) {
       newValue = ( newValue < nextValue ) ?
         newValue : nextValue;
     }
 
-    if ( !nextValue ) {
+    if ( isUndefined(nextValue) ) {
       newValue = ( newValue > prevValue ) ?
         newValue : prevValue;
     }
 
-    if ( prevValue && nextValue ) {
+    if ( !isUndefined(prevValue) && !isUndefined(nextValue) ) {
       newValue = isValueInBetween(newValue, prevValue, nextValue) ?
         newValue :
         getNearestTo(newValue, prevValue, nextValue);
