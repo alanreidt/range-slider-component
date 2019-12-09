@@ -1,5 +1,5 @@
 require('bootstrap');
-import { slider } from "../modules/slider/prod/slider.js";
+import { slider } from "../modules/slider/prod/slider.min.js";
 
 const $parent = document.querySelector(".slider-wrapper");
 
