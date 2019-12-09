@@ -16,22 +16,38 @@ More to come.
 ## Getting started
 In order to try the slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
-For more, clone the repository and play around source code:
+For more, clone the repository:
 ```bash
 # clone this repository
 git clone https://github.com/alanreidt/slider.git
 ```
 
-Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file (check [gh-pages branch](https://github.com/alanreidt/slider/tree/gh-pages) to see how it can be done):
+Use next npm commands to get corresponding results (all dependencies should be installed by npm automatically):
+```bash
+# to build and open web page with the slider
+npm run dev
+
+# to build and open web page with tests
+npm run test
+
+# to build production version
+npm run build
+```
+
+The `slider API` is connected to the `test-page/app.js` file. You can mess around it there.
+
+Production version is placed in `prod` folder.
+
+Or, connect it to your code by downloading zip-file via green button at the top of the page “Clone or download”.
+
+Unzip and place folder within your project folder.
+
+And then, enter next lines in your main html file (or check `test-page` folder to see how to connect it directly to js and css files):
 ```html
 <!-- import slider style (change yourpath) -->
 <link rel="stylesheet" href="{your_path}/slider/prod/slider.min.css">
 <!-- import slider API unit (change yourpath) -->
 <script src="{your_path}/slider/prod/slider.min.js"></script>
-```
-```javascript
-// or import slider API directly into your javascript
-import { slider } from "{your_path}/slider/prod/slider.min.js";
 ```
 
 And by next command initialize slider:
