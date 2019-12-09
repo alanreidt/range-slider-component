@@ -16,6 +16,7 @@ More to come.
 ## Getting started
 In order to try the slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
+### Mess with clone
 For more, clone the repository:
 ```bash
 # clone this repository
@@ -38,7 +39,8 @@ The `slider API` is connected to the `test-page/app.js` file. You can mess aroun
 
 Production version is placed in `prod` folder.
 
-Or, connect it to your code by downloading zip-file via green button at the top of the page “Clone or download”.
+### Connect Slider to your project
+Connect it to your code by downloading zip-file via green button at the top of the page “Clone or download”.
 
 Unzip and place folder within your project folder.
 
@@ -46,6 +48,7 @@ And then, enter next lines in your main html file (or check `test-page` folder t
 ```html
 <!-- import slider style (change yourpath) -->
 <link rel="stylesheet" href="{your_path}/slider/prod/slider.min.css">
+
 <!-- import slider API unit (change yourpath) -->
 <script src="{your_path}/slider/prod/slider.min.js"></script>
 ```
