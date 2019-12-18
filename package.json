@@ -19,8 +19,10 @@
   "author": "Alan Reid",
   "license": "MIT",
   "devDependencies": {
+    "acorn": "^7.1.0",
     "chai": "^4.2.0",
     "cssnano": "^4.1.10",
+    "eslint": "^6.7.2",
     "lodash": "^4.17.15",
     "mocha": "^6.2.2",
     "parcel-bundler": "^1.12.4",
