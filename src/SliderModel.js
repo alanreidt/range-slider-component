@@ -10,7 +10,6 @@ import {
   isValueInBetween,
   getNearestTo,
 } from "./utilities/utilities";
-
 import {
   fallbackFalseyFP,
   packIntoFP,
@@ -50,7 +49,7 @@ export class SliderModel {
       sortBy(identity),
       map(parseFloat),
       filter(Number.isFinite),
-      crossFP(currentValues)
+      crossFP(currentValues),
     )(newValues);
   }
 
@@ -73,7 +72,7 @@ export class SliderModel {
       crossFP(currentValues),
       fallbackFalseyFP(defaultValue),
       map(packIntoFP(start, end)),
-      map(getNearestDivisibleOfFP(step, start))
+      map(getNearestDivisibleOfFP(step, start)),
     )(newValues);
   }
 
@@ -90,7 +89,7 @@ export class SliderModel {
       parseFloat,
       fallbackFalseyFP(currentValue),
       packIntoFP(1, range),
-      getClosestFactorOfFP(range)
+      getClosestFactorOfFP(range),
     )(newValue);
   }
 
