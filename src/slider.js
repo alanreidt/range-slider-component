@@ -1,5 +1,4 @@
-import { sliderFactory } from "./SliderFactory";
-
+import { sliderFactory } from "./sliderFactory";
 
 /**
  * This object represents API for the slider.
@@ -10,7 +9,6 @@ import { sliderFactory } from "./SliderFactory";
 export const slider = {
   _factory: sliderFactory,
   _parentsMap: new WeakMap(),
-
 
   /**
    * Create slider instance.
@@ -35,7 +33,6 @@ export const slider = {
     });
   },
 
-
   /**
    * Returns the slider instance current options. Non-primitive values are references.
    *
@@ -49,7 +46,6 @@ export const slider = {
     return this._parentsMap.get($parent).sliderAdapter.getOptions();
   },
 
-
   /**
    * Set the slider instance options.
    *
@@ -61,7 +57,6 @@ export const slider = {
   setOptions($parent, options) {
     this._parentsMap.get($parent).sliderAdapter.setOptions(options);
   },
-
 
   /**
    * Set the slider instance value of values option at appropriate index.
@@ -75,5 +70,4 @@ export const slider = {
   setValueAt($parent, index, value) {
     this._parentsMap.get($parent).sliderAdapter.setValueAt(index, value);
   },
-
 };
