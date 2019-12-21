@@ -1,7 +1,6 @@
-import {SliderModel} from "./SliderModel";
-import {SliderAdapter} from "./SliderAdapter";
-import {SliderUI} from "./SliderUI";
-
+import { SliderModel } from "./SliderModel";
+import { SliderAdapter } from "./SliderAdapter";
+import { SliderUI } from "./SliderUI";
 
 export const sliderFactory = {
   createModel(...args) {
@@ -14,5 +13,5 @@ export const sliderFactory = {
 
   createUI(...args) {
     return new SliderUI(...args);
-  }
+  },
 };
