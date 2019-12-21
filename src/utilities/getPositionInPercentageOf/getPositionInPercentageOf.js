@@ -1,12 +1,11 @@
 import { isValueInBetween } from "../isValueInBetween/isValueInBetween";
 
-
 /**
  * Returns position of the value in the range in percentages, if it's possible.
  * Otherwise, returns NaN
  *
  * @param {number} value The value, which position to be calculated.
- * @param {number[]} range The range, whick value is compared to.
+ * @param {number[]} range The range, which value is compared to.
  * @returns {number} The position of the value in percentages.
  */
 export function getPositionInPercentageOf(value, range) {
@@ -20,11 +19,11 @@ export function getPositionInPercentageOf(value, range) {
     return NaN;
   }
 
-  let difference = end - start;
+  const difference = end - start;
 
-  value = value - start;
+  value -= start;
 
-  let result = value / difference * 100;
+  const result = (value / difference) * 100;
 
-  return `${(result - Math.trunc(result)) ? result.toFixed(5) : result}%`;
+  return `${result - Math.trunc(result) ? result.toFixed(5) : result}%`;
 }
