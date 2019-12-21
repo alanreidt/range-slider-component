@@ -1,5 +1,5 @@
 /**
- * If this can be done, returns the nearest number (the bigger one, if controvertial)
+ * If this can be done, returns the nearest number (the bigger one, if controversial)
  * that can be divided by divisor without the remainder.
  * Otherwise, returns NaN.
  *
@@ -10,10 +10,11 @@
  */
 export function getNearestDivisibleOf(dividend, divisor, start) {
   start = start || 0;
-  divisor = Math.abs(divisor);
+  const absoluteOfDivisor = Math.abs(divisor);
   dividend -= start;
 
-  let result = Math.round(dividend / divisor) * divisor + start;
+  const result =
+    Math.round(dividend / absoluteOfDivisor) * absoluteOfDivisor + start;
 
-  return isFinite(result) ? result : NaN;
+  return Number.isFinite(result) ? result : NaN;
 }
