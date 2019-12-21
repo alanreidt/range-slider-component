@@ -2,31 +2,27 @@ import {
   getPositionInPercentageOf,
   translateProportionIntoValue,
   setElementsPosition,
-  setElementsTextContent
-} from "./utilities/utilities.js";
-
+  setElementsTextContent,
+} from "./utilities/utilities";
 
 export class SliderUI {
-
   constructor($parent, sliderAdapter) {
     this.$parent = $parent;
     this.sliderAdapter = sliderAdapter;
 
-    this._paint( sliderAdapter.getOptions() );
+    this._paint(sliderAdapter.getOptions());
   }
 
-
-  update({boundaries, values, step, orientation, hasTooltips} = {}) {
-
+  update({ boundaries, values, orientation } = {}) {
     if (values && boundaries) {
-      let positions = values.map( (value) => getPositionInPercentageOf(value, boundaries) );
+      const positions = values.map((value) =>
+        getPositionInPercentageOf(value, boundaries),
+      );
 
-      this._updateHandleGroups(positions, orientation)
-      this._updateTooltips(values)
+      this._updateHandleGroups(positions, orientation);
+      this._updateTooltips(values);
     }
-
   }
-
 
   _paint(options) {
     this.$parent.innerHTML = this._createTemplate(options);
@@ -40,25 +36,20 @@ export class SliderUI {
     this._addEventListeners();
   }
 
-
-  _createTemplate({boundaries, values, step, orientation, hasTooltips} = {}) {
-
-    return(
-      `<div class="slider ${(orientation === "vertical") ? "slider_vertical" : ''}">
+  _createTemplate({ values, orientation, hasTooltips } = {}) {
+    return `<div class="slider ${
+      orientation === "vertical" ? "slider_vertical" : ""
+    }">
         <div class="slider__base">
-          ${values.reduce( (str) => {
-            return str +
-            `<div class="slider__handle-group">
-              ${hasTooltips ? `<div class="slider__tooltip"></div>` : ''}
+          ${values.reduce((str) => {
+            return `${str}<div class="slider__handle-group">
+              ${hasTooltips ? `<div class="slider__tooltip"></div>` : ""}
               <div class="slider__handle"></div>
             </div>`;
-          }, '')}
+          }, "")}
         </div>
-      </div>`
-    );
-
+      </div>`;
   }
-
 
   _updateHandleGroups(positions, orientation) {
     if (orientation === "vertical") {
@@ -69,83 +60,72 @@ export class SliderUI {
     setElementsPosition(this.$handleGroups, positions);
   }
 
-
   _updateTooltips(values) {
     setElementsTextContent(this.$tooltips, values);
   }
 
-
   _getHandleGroups() {
-    return Array.from(
-      this.$parent.querySelectorAll(".slider__handle-group")
-    );
+    return Array.from(this.$parent.querySelectorAll(".slider__handle-group"));
   }
-
 
   _getTooltips() {
-    return Array.from(
-      this.$parent.querySelectorAll(".slider__tooltip")
-    );
+    return Array.from(this.$parent.querySelectorAll(".slider__tooltip"));
   }
 
-
   _addEventListeners() {
-    this.$handleGroups.forEach( ($handleGroup) => {
+    this.$handleGroups.forEach(($handleGroup) => {
       $handleGroup.onmousedown = this._onMouseDown.bind(this);
     });
     this.$base.onmousedown = this._triggerModel.bind(this);
   }
 
-
   _onMouseDown(onMouseDownEvent) {
-    this._triggerModelBound =
-      (event) => this._triggerModel.call(this, event, onMouseDownEvent);
+    this._triggerModelBound = (event) =>
+      this._triggerModel.call(this, event, onMouseDownEvent);
     this._onMouseUpBound = this._onMouseUp.bind(this);
 
     document.addEventListener("mousemove", this._triggerModelBound);
     document.addEventListener("mouseup", this._onMouseUpBound);
   }
 
-
   _onMouseUp() {
     document.removeEventListener("mouseup", this._onMouseUpBound);
     document.removeEventListener("mousemove", this._triggerModelBound);
   }
 
-
   _triggerModel(event, onMouseDownEvent) {
     event.preventDefault();
 
-    const orientation = this.sliderAdapter.getOptions().orientation;
+    const { orientation } = this.sliderAdapter.getOptions();
 
-    const position = (orientation === "horizontal") ?
-      event.clientX - this.$slider.getBoundingClientRect().left :
-      event.clientY - this.$slider.getBoundingClientRect().top;
+    const position =
+      orientation === "horizontal"
+        ? event.clientX - this.$slider.getBoundingClientRect().left
+        : event.clientY - this.$slider.getBoundingClientRect().top;
 
-    const sliderSize = (orientation === "horizontal") ?
-      this.$slider.getBoundingClientRect().width :
-      this.$slider.getBoundingClientRect().height;
+    const sliderSize =
+      orientation === "horizontal"
+        ? this.$slider.getBoundingClientRect().width
+        : this.$slider.getBoundingClientRect().height;
 
-    const proportion = position / sliderSize * 100;
+    const proportion = (position / sliderSize) * 100;
     const newValue = this._calcValue(proportion);
 
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
     const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
-      ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget)
+      ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget),
     );
 
-    if ( onMouseDownEventTargetIndex !== -1 ) {
-      this.sliderAdapter.setValueAt( onMouseDownEventTargetIndex, newValue );
+    if (onMouseDownEventTargetIndex !== -1) {
+      this.sliderAdapter.setValueAt(onMouseDownEventTargetIndex, newValue);
     } else if (event.target === this.$base) {
-      this.sliderAdapter.setOptions( {values: newValue} );
+      this.sliderAdapter.setOptions({ values: newValue });
     }
   }
 
-
   _calcValue(proportion) {
-    const boundaries = this.sliderAdapter.getOptions().boundaries;
+    const { boundaries } = this.sliderAdapter.getOptions();
 
     return translateProportionIntoValue(proportion, boundaries);
   }
-
 }
