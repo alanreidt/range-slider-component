@@ -10,29 +10,33 @@ import { getNearestTo } from "../getNearestTo/getNearestTo";
  *
  */
 export function cross(baseArr, arr) {
-  baseArr = baseArr && baseArr.slice().sort( (a, b) => a - b );
-  arr = arr && arr.slice().sort( (a, b) => a - b );
+  const baseArrCopy = baseArr && baseArr.slice().sort((a, b) => a - b);
+  let arrCopy = arr && arr.slice().sort((a, b) => a - b);
 
-  if ( !arr || !arr.length ) {
+  if (!arrCopy || !arrCopy.length) {
     return baseArr;
   }
 
-  if ( !baseArr || !baseArr.length || (baseArr.length === arr.length) ) {
-    return arr;
+  if (
+    !baseArrCopy ||
+    !baseArrCopy.length ||
+    baseArrCopy.length === arrCopy.length
+  ) {
+    return arrCopy;
   }
 
-  if ( arr.length < baseArr.length ) {
-    arr.forEach( (item) => {
-      const closestValue = getNearestTo(item, ...baseArr);
-      const closestValuePosition = baseArr.indexOf(closestValue);
+  if (arrCopy.length < baseArrCopy.length) {
+    arrCopy.forEach((item) => {
+      const closestValue = getNearestTo(item, ...baseArrCopy);
+      const closestValuePosition = baseArrCopy.indexOf(closestValue);
 
-      baseArr.splice(closestValuePosition, 1, item);
+      baseArrCopy.splice(closestValuePosition, 1, item);
     });
 
-    arr = baseArr;
+    arrCopy = baseArrCopy;
   }
 
-  arr.length = baseArr.length;
+  arrCopy.length = baseArrCopy.length;
 
-  return arr;
+  return arrCopy;
 }
