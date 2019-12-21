@@ -3,7 +3,7 @@ import {
   translateProportionIntoValue,
   setElementsPosition,
   setElementsTextContent,
-} from "./utilities/utilities";
+} from "./utilities";
 
 export class SliderUI {
   constructor($parent, sliderAdapter) {

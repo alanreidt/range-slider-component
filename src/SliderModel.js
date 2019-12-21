@@ -5,11 +5,7 @@ import filter from "lodash/fp/filter";
 import identity from "lodash/fp/identity";
 import isUndefined from "lodash/fp/isUndefined";
 
-import {
-  getAverageOf,
-  isValueInBetween,
-  getNearestTo,
-} from "./utilities/utilities";
+import { getAverageOf, isValueInBetween, getNearestTo } from "./utilities";
 import {
   fallbackFalseyFP,
   packIntoFP,
