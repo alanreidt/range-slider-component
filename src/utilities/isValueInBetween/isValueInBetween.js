@@ -1,5 +1,3 @@
-import { isValueBetween } from "../isValueBetween/isValueBetween";
-
 /**
  * Defines whether value is between start and end, including the edges, or not.
  *
@@ -11,5 +9,11 @@ import { isValueBetween } from "../isValueBetween/isValueBetween";
  *
  */
 export function isValueInBetween(value, start, end) {
-  return isValueBetween(value, start - 1, end - 1);
+  if ([].includes.call(arguments, null)) return false;
+
+  if (start > end) {
+    [start, end] = [end, start];
+  }
+
+  return value >= start && value <= end;
 }
