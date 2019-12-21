@@ -1,6 +1,6 @@
 /**
  * If this can be done, returns the closest factor (natural number (positive integer))
- * of the dividend to the divisor (the bigger one, if controvertial).
+ * of the dividend to the divisor (the bigger one, if controversial).
  * Otherwise, returns NaN.
  *
  * @param {number} dividend The number, that to be divided.
