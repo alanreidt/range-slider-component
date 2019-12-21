@@ -1,6 +1,9 @@
 export function getNextDivisibleOf(dividend, divisor, start = 0) {
-  divisor = Math.abs(divisor);
+  const absoluteOfDivisor = Math.abs(divisor);
   dividend -= start;
-  let result = Math.ceil(dividend / divisor) * divisor + start;
-  return isFinite(result) ? result : undefined;
+
+  const result =
+    Math.ceil(dividend / absoluteOfDivisor) * absoluteOfDivisor + start;
+
+  return Number.isFinite(result) ? result : undefined;
 }
