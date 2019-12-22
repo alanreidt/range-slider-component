@@ -9,17 +9,17 @@ import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.
 import { testSliderAdapter } from "./SliderAdapter.test.js";
 import { testSliderModel } from "./SliderModel.test.js";
 import { testSlider } from "./slider.test.js";
-import { testSetElemenPosition } from "../src/utilities/setElementPosition/setElementPosition.test.js";
+import { testSetElementPosition } from "../src/utilities/setElementPosition/setElementPosition.test.js";
 import { testSliderUI } from "./SliderUI.test";
 
 testGetClosestFactorOf();
 testGetNearestTo();
 testIsValueBetween();
 testGetOverstepOf();
-testGetNearestDivisibleOf()
+testGetNearestDivisibleOf();
 testGetPositionInPercentageOf();
 testTranslateProportionIntoValue();
-testSetElemenPosition();
+testSetElementPosition();
 testObserverMixin();
 
 testSliderModel();
