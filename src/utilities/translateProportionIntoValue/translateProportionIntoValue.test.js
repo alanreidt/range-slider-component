@@ -1,16 +1,13 @@
 import { translateProportionIntoValue } from "./translateProportionIntoValue";
 import { makeTestClass, template } from "../../../tests/testUtilities";
 
-
 export function testTranslateProportionIntoValue() {
+  describe("translateProportionIntoValue", () => {
+    const describeTest = template`proportion of ${0} between ${1} is ${"expectation"}`;
+    const TestClass = makeTestClass(translateProportionIntoValue, describeTest);
 
-
-  describe("translateProportionIntoValue", function () {
-    let describeTest = template`proportion of ${0} between ${1} is ${"expectation"}`;
-    let TestClass = makeTestClass(translateProportionIntoValue, describeTest);
-
-    describe("shall return value", function () {
-      let funcOptions = [
+    describe("shall return value", () => {
+      const funcOptions = [
         [20, [0, 500]],
         [0, [0, 500]],
         [100, [0, 500]],
@@ -21,45 +18,42 @@ export function testTranslateProportionIntoValue() {
         [90, [-500, 0]],
         [50, [-500, -200]],
       ];
-      let expectations = [100, 0, 500, 957, 250, 0, -200, -50, -350];
-      let test = new TestClass();
+      const expectations = [100, 0, 500, 957, 250, 0, -200, -50, -350];
+      const test = new TestClass();
 
       test.test(funcOptions, expectations);
     });
 
-
-    describe("shall handle imprecise calculations", function () {
-      let funcOptions = [
+    describe("shall handle imprecise calculations", () => {
+      const funcOptions = [
         [16.19048, [0, 105]],
         [33.33333, [0, 3]],
         [32.67327, [0, 101]],
         [83.80952, [-105, 0]],
         [33.33333, [-2, 1]],
       ];
-      let expectations = [17, 1, 33, -17, -1];
-      let test = new TestClass();
+      const expectations = [17, 1, 33, -17, -1];
+      const test = new TestClass();
 
       test.test(funcOptions, expectations);
     });
 
-
-    describe("shall handle out of range proportion (0 > proportion > 100)", function () {
-      let funcOptions = [
+    describe("shall handle out of range proportion (0 > proportion > 100)", () => {
+      const funcOptions = [
         [101, [200, 700]],
         [200, [200, 700]],
         [-1, [200, 700]],
         [-100, [200, 700]],
       ];
-      let expectations = [705, 1200, 195, -300];
-      let test = new TestClass();
+      const expectations = [705, 1200, 195, -300];
+      const test = new TestClass();
 
       test.test(funcOptions, expectations);
     });
 
-
-    context("shall catch garbage input", function () {
-      describe("returns NaN, if proportion parameter is incorrect", function () {
-        let funcOptions = [
+    context("shall catch garbage input", () => {
+      describe("returns NaN, if proportion parameter is incorrect", () => {
+        const funcOptions = [
           [undefined, [-500, 500]],
           [null, [-500, 500]],
           [Infinity, [-500, 500]],
@@ -67,14 +61,14 @@ export function testTranslateProportionIntoValue() {
           ["text", [-500, 500]],
           ["123text", [-500, 500]],
         ];
-        let expectations = new Array(funcOptions.length).fill(NaN);
-        let test = new TestClass();
+        const expectations = new Array(funcOptions.length).fill(NaN);
+        const test = new TestClass();
 
         test.test(funcOptions, expectations);
       });
 
-      describe("returns NaN, if range parameter is incorrect", function () {
-        let funcOptions = [
+      describe("returns NaN, if range parameter is incorrect", () => {
+        const funcOptions = [
           [50, [undefined, 500]],
           [50, [null, 500]],
           [50, [Infinity, 500]],
@@ -82,14 +76,11 @@ export function testTranslateProportionIntoValue() {
           [50, ["text", 500]],
           [50, ["123text", 500]],
         ];
-        let expectations = new Array(funcOptions.length).fill(NaN);
-        let test = new TestClass();
+        const expectations = new Array(funcOptions.length).fill(NaN);
+        const test = new TestClass();
 
         test.test(funcOptions, expectations);
       });
     });
-
   });
-
-
 }
