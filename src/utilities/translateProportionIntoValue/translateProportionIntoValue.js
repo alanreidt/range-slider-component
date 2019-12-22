@@ -1,10 +1,9 @@
 export function translateProportionIntoValue(proportion, range) {
-  const inputValues = [proportion].concat(range);
-  const isIncorrect = inputValues.some(
-    (value) => !Number.isFinite(value)
+  const isArgumentsCorrect = Array.from(arguments).every((argument) =>
+    Number.isFinite(parseFloat(argument)),
   );
 
-  if ( isIncorrect ) {
+  if (!isArgumentsCorrect) {
     return NaN;
   }
 
@@ -16,7 +15,7 @@ export function translateProportionIntoValue(proportion, range) {
 
   const difference = end - start;
 
-  proportion = proportion / 100;
+  proportion /= 100;
 
   return Math.round(difference * proportion + start);
 }
