@@ -1,12 +1,10 @@
+import { assert } from "chai";
+
 import { setElementPosition } from "./setElementPosition";
 
-
-export function testSetElemenPosition() {
-
-
-  describe("setElemenPosition function", function () {
-
-    it("shall set element position", function () {
+export function testSetElementPosition() {
+  describe("setElementPosition function", () => {
+    it("shall set element position", () => {
       const element = document.createElement("div");
       const position = "50%";
       const regexp = new RegExp(`${position}`);
@@ -17,8 +15,7 @@ export function testSetElemenPosition() {
       assert.isNotNull(elementStyle.match(regexp));
     });
 
-
-    context("shall change element position", function () {
+    context("shall change element position", () => {
       const element = document.createElement("div");
       const positions = ["50%", "30%", "20%"];
 
@@ -29,13 +26,10 @@ export function testSetElemenPosition() {
 
         const elementStyle = element.getAttribute("style");
 
-        it(`element position is changed to ${position}`, function () {
+        it(`element position is changed to ${position}`, () => {
           assert.isNotNull(elementStyle.match(regexp));
         });
       });
     });
-
   });
-
-
 }
