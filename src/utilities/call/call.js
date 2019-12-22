@@ -12,6 +12,7 @@
 export function call(callback, values, flag) {
   return (element, i) => {
     const value = values[i];
+
     callback(element, value, flag);
   };
 }
