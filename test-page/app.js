@@ -1,4 +1,4 @@
-import { slider } from "../src/slider.js";
+import { slider } from "../src/slider";
 
 const sliderWrappers = document.querySelectorAll(".js-slider-wrapper");
 const $sliderWrapper0 = sliderWrappers[0];
