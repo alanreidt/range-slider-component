@@ -6,7 +6,6 @@ export { setElementTextContent } from "./setElementTextContent/setElementTextCon
 export { setElementPosition } from "./setElementPosition/setElementPosition";
 export { setElementsTextContent } from "./setElementsTextContent";
 export { setElementsPosition } from "./setElementsPosition";
-export { getOverstepOf } from "./getOverstepOf/getOverstepOf";
 export { getNearestDivisibleOf } from "./getNearestDivisibleOf/getNearestDivisibleOf";
 export { getNearestTo } from "./getNearestTo/getNearestTo";
 export { isValueBetween } from "./isValueBetween/isValueBetween";
