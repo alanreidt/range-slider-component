@@ -1,13 +1,11 @@
+import { assert } from "chai";
+
 import { SliderAdapter } from "../src/SliderAdapter";
 
-
 export function testSliderAdapter() {
-
-
-  describe("SliderAdapter", function () {
-
-    describe("shall organize access to the dataSource", function () {
-      describe("update values of the dataSource", function () {
+  describe("SliderAdapter", () => {
+    describe("shall organize access to the dataSource", () => {
+      describe("update values of the dataSource", () => {
         const newValues = {
           boundaries: [100, 500],
           step: 20,
@@ -22,15 +20,14 @@ export function testSliderAdapter() {
 
         sliderAdapter.setOptions(newValues);
 
-        for (let key in newValues) {
-          it(`${key} equals to ${newValues[key]}`, function () {
-            assert.deepEqual(sliderModel.options[key], newValues[key]);
+        Object.entries(newValues).forEach(([key, value]) => {
+          it(`${key} equals to ${value}`, () => {
+            assert.deepEqual(sliderModel.options[key], value);
           });
-        }
+        });
       });
 
-
-      describe("returns values of the dataSource", function () {
+      describe("returns values of the dataSource", () => {
         const options = {
           boundaries: [0, 100],
           values: [20, 80],
@@ -40,7 +37,7 @@ export function testSliderAdapter() {
         };
         const expectations = options;
         const sliderModel = {
-          options: options,
+          options,
           getOptions() {
             return this.options;
           },
@@ -49,15 +46,12 @@ export function testSliderAdapter() {
 
         const sliderOptions = sliderAdapter.getOptions();
 
-        for (let key in expectations) {
-          it(`${key} equals to ${expectations[key]}`, function () {
-            assert.deepEqual(sliderOptions[key], expectations[key]);
+        Object.entries(expectations).forEach(([key, value]) => {
+          it(`${key} equals to ${value}`, () => {
+            assert.deepEqual(sliderOptions[key], value);
           });
-        }
+        });
       });
     });
-
   });
-
-
 }
