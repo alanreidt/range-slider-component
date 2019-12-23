@@ -6,7 +6,7 @@ export { setElementTextContent } from "./setElementTextContent/setElementTextCon
 export { setElementPosition } from "./setElementPosition/setElementPosition";
 export { setElementsTextContent } from "./setElementsTextContent";
 export { setElementsPosition } from "./setElementsPosition";
-export { getNearestDivisibleOf } from "./getNearestDivisibleOf/getNearestDivisibleOf";
+export { findClosestDivisible } from "./findClosestDivisible/findClosestDivisible";
 export { getNearestTo } from "./getNearestTo/getNearestTo";
 export { isValueBetween } from "./isValueBetween/isValueBetween";
 export { translateProportionIntoValue } from "./translateProportionIntoValue/translateProportionIntoValue";

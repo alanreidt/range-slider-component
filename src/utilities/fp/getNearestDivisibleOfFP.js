@@ -1,5 +1,5 @@
-import { getNearestDivisibleOf } from "../getNearestDivisibleOf/getNearestDivisibleOf";
+import { findClosestDivisible } from "../findClosestDivisible/findClosestDivisible";
 
 const curryRight = require("lodash/curryRight");
 
-export const getNearestDivisibleOfFP = curryRight(getNearestDivisibleOf);
+export const getNearestDivisibleOfFP = curryRight(findClosestDivisible);
