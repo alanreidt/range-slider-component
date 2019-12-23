@@ -8,7 +8,7 @@
  *
  * @returns {number} The closest number, that can be divided by divisor without the remainder.
  */
-export function getNearestDivisibleOf(dividend, divisor) {
+export function findClosestDivisible(dividend, divisor) {
   const absoluteOfDivisor = Math.abs(divisor);
 
   const result = Math.round(dividend / absoluteOfDivisor) * absoluteOfDivisor;
