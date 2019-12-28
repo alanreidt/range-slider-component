@@ -1,7 +1,11 @@
+import curryRight from "lodash/fp/curryRight";
+
 import { findClosestDivisible } from "../../utilities";
 
-export function coordinateWithStep(value, step, offset = 0) {
+function base(value, step, offset) {
   const closestDivisible = findClosestDivisible(value - offset, step);
 
   return closestDivisible + offset;
 }
+
+export const coordinateWithStep = curryRight(base);
