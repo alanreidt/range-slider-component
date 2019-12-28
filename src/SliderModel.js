@@ -56,6 +56,7 @@ export class SliderModel {
   set _values(values) {
     const { step } = this._options;
     const [start, end] = this._options.boundaries;
+    const offset = start;
     const defaultValue = [getAverageOf(this._options.boundaries)];
 
     const newValues = [].concat(values);
@@ -68,7 +69,7 @@ export class SliderModel {
       crossFP(currentValues),
       fallbackFalseyFP(defaultValue),
       map(packIntoFP(start, end)),
-      map(coordinateWithStep(step, start)),
+      map(coordinateWithStep(step, offset)),
     )(newValues);
   }
 
