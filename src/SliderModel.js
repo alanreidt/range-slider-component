@@ -11,8 +11,8 @@ import {
   packIntoFP,
   getClosestFactorOfFP,
   crossFP,
-  getNearestDivisibleOfFP,
 } from "./utilities/fp/utilities";
+import { coordinateWithStep } from "./helpers/coordinateWithStep";
 
 export class SliderModel {
   constructor(options = {}) {
@@ -68,7 +68,7 @@ export class SliderModel {
       crossFP(currentValues),
       fallbackFalseyFP(defaultValue),
       map(packIntoFP(start, end)),
-      map(getNearestDivisibleOfFP(step, start)),
+      map(coordinateWithStep(step, start)),
     )(newValues);
   }
 
