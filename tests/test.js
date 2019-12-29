@@ -10,7 +10,9 @@ import { testSliderModel } from "./SliderModel.test";
 import { testSlider } from "./slider.test";
 import { testSetElementPosition } from "../src/utilities/setElementPosition/setElementPosition.test";
 import { testSliderUI } from "./SliderUI.test";
+import { testCoordinateWithStep } from "../src/helpers/coordinateWithStep/coordinateWithStep.test";
 
+testCoordinateWithStep();
 testGetClosestFactorOf();
 testGetNearestTo();
 testIsValueBetween();
