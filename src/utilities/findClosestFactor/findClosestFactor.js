@@ -1,5 +1,3 @@
-import { isDivisible } from "../isDivisible/isDivisible";
-
 /**
  * If this can be done, returns the closest factor (natural number (positive integer))
  * of division (the bigger one, if controversial).
@@ -22,21 +20,14 @@ export function findClosestFactor(dividend, divisor) {
     return 1;
   }
 
-  let nextDivisor = divisor;
-  let prevDivisor = divisor;
-  const isExtremum = nextDivisor === dividend || prevDivisor === 1;
-
-  while (!isExtremum) {
-    if (isDivisible(dividend, nextDivisor)) {
-      return nextDivisor;
+  for (let i = 0; i < dividend; i += 1) {
+    if (dividend % (divisor + i) === 0) {
+      return divisor + i;
     }
 
-    if (isDivisible(dividend, prevDivisor)) {
-      return prevDivisor;
+    if (dividend % (divisor - i) === 0) {
+      return divisor - i;
     }
-
-    nextDivisor += 1;
-    prevDivisor -= 1;
   }
 
   return dividend;
