@@ -10,7 +10,7 @@ export { findClosestDivisible } from "./findClosestDivisible/findClosestDivisibl
 export { getNearestTo } from "./getNearestTo/getNearestTo";
 export { isValueBetween } from "./isValueBetween/isValueBetween";
 export { translateProportionIntoValue } from "./translateProportionIntoValue/translateProportionIntoValue";
-export { getPositionInPercentageOf } from "./getPositionInPercentageOf/getPositionInPercentageOf";
+export { translateValueIntoPosition } from "./translateValueIntoPosition/translateValueIntoPosition";
 export { findClosestFactor } from "./findClosestFactor/findClosestFactor";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";

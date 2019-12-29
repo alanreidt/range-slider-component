@@ -1,8 +1,8 @@
 import {
-  getPositionInPercentageOf,
   translateProportionIntoValue,
   setElementsPosition,
   setElementsTextContent,
+  translateValueIntoPosition,
 } from "./utilities";
 
 export class SliderUI {
@@ -16,7 +16,7 @@ export class SliderUI {
   update({ boundaries, values, orientation } = {}) {
     if (values && boundaries) {
       const positions = values.map((value) =>
-        getPositionInPercentageOf(value, boundaries),
+        translateValueIntoPosition(value, boundaries),
       );
 
       this._updateHandleGroups(positions, orientation);
