@@ -1,4 +1,4 @@
-import { testGetClosestFactorOf } from "../src/utilities/getClosestFactorOf/getClosestFactorOf.test";
+import { testFindClosestFactor } from "../src/utilities/findClosestFactor/findClosestFactor.test";
 import { testGetNearestTo } from "../src/utilities/getNearestTo/getNearestTo.test";
 import { testIsValueBetween } from "../src/utilities/isValueBetween/isValueBetween.test";
 import { testFindClosestDivisible } from "../src/utilities/findClosestDivisible/findClosestDivisible.test";
@@ -13,7 +13,7 @@ import { testSliderUI } from "./SliderUI.test";
 import { testAdjustValueToStep } from "../src/helpers/adjustValueToStep/adjustValueToStep.test";
 
 testAdjustValueToStep();
-testGetClosestFactorOf();
+testFindClosestFactor();
 testGetNearestTo();
 testIsValueBetween();
 testFindClosestDivisible();
