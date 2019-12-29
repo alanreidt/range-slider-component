@@ -8,4 +8,4 @@ function base(value, step, offset) {
   return closestDivisible + offset;
 }
 
-export const coordinateWithStep = curryRight(base);
+export const adjustValueToStep = curryRight(base);

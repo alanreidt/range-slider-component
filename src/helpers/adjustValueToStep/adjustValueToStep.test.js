@@ -1,11 +1,11 @@
 import { assert } from "chai";
 
-import { coordinateWithStep } from "./coordinateWithStep";
+import { adjustValueToStep } from "./adjustValueToStep";
 
-export function testCoordinateWithStep() {
-  const testSubject = coordinateWithStep;
+export function testAdjustValueToStep() {
+  const testSubject = adjustValueToStep;
 
-  describe("coordinateWithStep", () => {
+  describe("adjustValueToStep", () => {
     describe("shall coordinate value with step", () => {
       it(`closest value for value 220, step 100,
       is equal to 200`, () => {
