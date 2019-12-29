@@ -7,7 +7,7 @@
  * @param {number} divisor The number, that divides the dividend.
  * @returns {natural number} The closest factor of the dividend to the divisor.
  */
-export function getClosestFactorOf(dividend, divisor) {
+export function findClosestFactor(dividend, divisor) {
   if (
     !Number.isFinite(dividend) ||
     !Number.isFinite(divisor) ||
