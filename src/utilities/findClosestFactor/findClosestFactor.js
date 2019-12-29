@@ -1,11 +1,12 @@
 /**
  * If this can be done, returns the closest factor (natural number (positive integer))
- * of the dividend to the divisor (the bigger one, if controversial).
+ * of division (the bigger one, if controversial).
  * Otherwise, returns NaN.
  *
  * @param {number} dividend The number, that to be divided.
  * @param {number} divisor The number, that divides the dividend.
- * @returns {natural number} The closest factor of the dividend to the divisor.
+ *
+ * @returns {number} The closest factor (natural number (positive integer)) of the division.
  */
 export function findClosestFactor(dividend, divisor) {
   if (
