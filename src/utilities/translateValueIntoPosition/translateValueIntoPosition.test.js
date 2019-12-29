@@ -1,10 +1,10 @@
-import { getPositionInPercentageOf } from "./getPositionInPercentageOf";
+import { translateValueIntoPosition } from "./translateValueIntoPosition";
 import { makeTestClass, template } from "../../../tests/testUtilities";
 
-export function testGetPositionInPercentageOf() {
-  describe("getPositionInPercentageOf", () => {
+export function testTranslateValueIntoPosition() {
+  describe("translateValueIntoPosition", () => {
     const describeTest = template`position of ${0} between ${1} is ${"expectation"}`;
-    const TestClass = makeTestClass(getPositionInPercentageOf, describeTest);
+    const TestClass = makeTestClass(translateValueIntoPosition, describeTest);
 
     describe("shall return position", () => {
       const funcOptions = [

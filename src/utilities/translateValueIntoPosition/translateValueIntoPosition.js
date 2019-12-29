@@ -8,7 +8,7 @@ import { isValueInBetween } from "../isValueInBetween/isValueInBetween";
  * @param {number[]} range The range, which value is compared to.
  * @returns {number} The position of the value in percentages.
  */
-export function getPositionInPercentageOf(value, range) {
+export function translateValueIntoPosition(value, range) {
   let [start, end] = range;
 
   if (start > end) {
