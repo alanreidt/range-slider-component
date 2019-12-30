@@ -22,11 +22,12 @@ export function findClosestFactor(dividend, divisor) {
     return 1;
   }
 
-  let nextDivisor = divisor;
-  let prevDivisor = divisor;
-  const isExtremum = nextDivisor === dividend || prevDivisor === 1;
-
-  while (!isExtremum) {
+  // condition works as insurance
+  for (
+    let nextDivisor = divisor, prevDivisor = divisor;
+    nextDivisor !== dividend || prevDivisor !== 1;
+    nextDivisor += 1, prevDivisor -= 1
+  ) {
     if (isDivisible(dividend, nextDivisor)) {
       return nextDivisor;
     }
@@ -34,9 +35,6 @@ export function findClosestFactor(dividend, divisor) {
     if (isDivisible(dividend, prevDivisor)) {
       return prevDivisor;
     }
-
-    nextDivisor += 1;
-    prevDivisor -= 1;
   }
 
   return dividend;
