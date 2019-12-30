@@ -1,12 +1,13 @@
 import { isValueInBetween } from "../isValueInBetween/isValueInBetween";
 
 /**
- * Returns position of the value in the range in percentages, if it's possible.
+ * Translates value into position inside range, if it's possible.
  * Otherwise, returns NaN
  *
- * @param {number} value The value, which position to be calculated.
- * @param {number[]} range The range, which value is compared to.
- * @returns {number} The position of the value in percentages.
+ * @param {number} value The value, that to be translated into position.
+ * @param {number} range The range, on which the position depends.
+ *
+ * @returns {number} The position of the value inside range.
  */
 export function translateValueIntoPosition(value, range) {
   let [start, end] = range;
