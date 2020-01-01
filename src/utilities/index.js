@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { toPercentage } from "./toPercentage";
 export { fallbackFalsey } from "./fallbackFalsey/fallbackFalsey";
 export { cross } from "./cross/cross";
 export { packInto } from "./packInto/packInto";
