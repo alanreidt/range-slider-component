@@ -1,3 +1,4 @@
+/* PLOP_INJECT_EXPORT */
 export { fallbackFalsey } from "./fallbackFalsey/fallbackFalsey";
 export { cross } from "./cross/cross";
 export { packInto } from "./packInto/packInto";
