@@ -1,0 +1,1 @@
+export { findRatio } from "./findRatio";

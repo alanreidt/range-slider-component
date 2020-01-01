@@ -11,6 +11,7 @@ import { testSlider } from "./slider.test";
 import { testSetElementPosition } from "../src/utilities/setElementPosition/setElementPosition.test";
 import { testSliderUI } from "./SliderUI.test";
 import { testAdjustValueToStep } from "../src/helpers/adjustValueToStep/adjustValueToStep.test";
+import "../src/utilities/findRatio/findRatio.test";
 
 testAdjustValueToStep();
 testFindClosestFactor();

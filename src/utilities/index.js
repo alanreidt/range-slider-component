@@ -18,3 +18,4 @@ export { getPrevDivisibleOf } from "./getPrevDivisibleOf/getPrevDivisibleOf";
 export { isDivisible } from "./isDivisible/isDivisible";
 export { isValueInBetween } from "./isValueInBetween/isValueInBetween";
 export { observerMixin } from "./observerMixin/observerMixin";
+export { findRatio } from "./findRatio";
