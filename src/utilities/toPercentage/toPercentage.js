@@ -1,3 +1,5 @@
+import { toFixed } from "../toFixed/toFixed";
+
 /**
  * Converts number to percentages.
  *
@@ -12,9 +14,5 @@ export function toPercentage(number) {
     return NaN;
   }
 
-  const percentage = number * 100;
-
-  return `${
-    percentage - Math.trunc(percentage) ? percentage.toFixed(5) : percentage
-  }%`;
+  return `${toFixed(number * 100, 5)}%`;
 }
