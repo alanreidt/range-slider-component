@@ -2,8 +2,8 @@ import {
   translateProportionIntoValue,
   setElementsPosition,
   setElementsTextContent,
-  translateValueIntoPosition,
 } from "./utilities";
+import { findValuePositionBetween } from "./helpers";
 
 export class SliderUI {
   constructor($parent, sliderAdapter) {
@@ -16,7 +16,7 @@ export class SliderUI {
   update({ boundaries, values, orientation } = {}) {
     if (values && boundaries) {
       const positions = values.map((value) =>
-        translateValueIntoPosition(value, boundaries),
+        findValuePositionBetween(value, ...boundaries),
       );
 
       this._updateHandleGroups(positions, orientation);
