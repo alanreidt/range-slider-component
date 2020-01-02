@@ -24,24 +24,10 @@ describe("findRatio", () => {
     test.test(funcOptions, expectations);
   });
 
-  describe("shall handle imprecise calculations", () => {
-    const funcOptions = [
-      [{ antecedent: 17, consequent: 105 }],
-      [{ antecedent: 1, consequent: 3 }],
-      [{ antecedent: 33, consequent: 101 }],
-      [{ antecedent: -17, consequent: 105, offset: -105 }],
-      [{ antecedent: -1, consequent: 3, offset: -2 }],
-    ];
-    const expectations = [0.1619, 0.33333, 0.32673, 0.8381, 0.33333];
-    const test = new TestClass();
-    test.test(funcOptions, expectations);
-  });
-
   describe("shall handle exceptions", () => {
     const funcOptions = [
       [{ antecedent: 100, consequent: 500, offset: 200 }],
       [{ antecedent: 900, consequent: 500, offset: 200 }],
-      [{ antecedent: -300, consequent: 900, offset: -200 }],
       [{ antecedent: 300, consequent: 500, offset: -700 }],
       [{ antecedent: 0, consequent: 500, offset: -700 }],
       [{ antecedent: 0, consequent: 300 }],
@@ -49,7 +35,7 @@ describe("findRatio", () => {
       [{ antecedent: Infinity, consequent: 1000, offset: -500 }],
       [{ antecedent: 300, consequent: Infinity, offset: -500 }],
     ];
-    const expectations = [-0.2, 1.4, -0.11111, 2, 1.4, 0, 0, Infinity, 0];
+    const expectations = [-0.2, 1.4, 2, 1.4, 0, 0, Infinity, 0];
     const test = new TestClass();
     test.test(funcOptions, expectations);
   });
