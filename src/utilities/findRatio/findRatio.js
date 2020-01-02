@@ -19,5 +19,5 @@ export function findRatio({ antecedent, consequent, offset = 0 }) {
   const normalizedAntecedent = antecedent - offset;
   const ratio = normalizedAntecedent / consequent;
 
-  return Number(ratio.toFixed(5));
+  return ratio;
 }
