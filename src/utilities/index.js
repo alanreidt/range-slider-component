@@ -13,7 +13,6 @@ export { findClosestDivisible } from "./findClosestDivisible/findClosestDivisibl
 export { getNearestTo } from "./getNearestTo/getNearestTo";
 export { isValueBetween } from "./isValueBetween/isValueBetween";
 export { translateProportionIntoValue } from "./translateProportionIntoValue/translateProportionIntoValue";
-export { findValuePositionBetween } from "./findValuePositionBetween/findValuePositionBetween";
 export { findClosestFactor } from "./findClosestFactor/findClosestFactor";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
