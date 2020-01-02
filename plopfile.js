@@ -23,11 +23,13 @@ module.exports = (plop) => {
         type: "add",
         path: "src/helpers/{{camelCase name}}/{{camelCase name}}.js",
         templateFile: "plop-templates/helper/helper.js.hbs",
+        skipIfExists: true,
       },
       {
         type: "add",
         path: "src/helpers/{{camelCase name}}/{{camelCase name}}.test.js",
         templateFile: "plop-templates/helper/helper.test.js.hbs",
+        skipIfExists: true,
       },
       {
         type: "add",
@@ -64,11 +66,13 @@ module.exports = (plop) => {
         type: "add",
         path: "src/utilities/{{camelCase name}}/{{camelCase name}}.js",
         templateFile: "plop-templates/helper/helper.js.hbs",
+        skipIfExists: true,
       },
       {
         type: "add",
         path: "src/utilities/{{camelCase name}}/{{camelCase name}}.test.js",
         templateFile: "plop-templates/helper/helper.test.js.hbs",
+        skipIfExists: true,
       },
       {
         type: "add",
