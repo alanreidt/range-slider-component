@@ -1,30 +1,23 @@
-import { isValueInBetween } from "../isValueInBetween/isValueInBetween";
+import { findRatio } from "../findRatio";
+import { toPercentage } from "../toPercentage";
 
 /**
- * Translates value into position inside range, if it's possible.
+ * Returns position of a value between start and end, if it's possible.
  * Otherwise, returns NaN
  *
- * @param {number} value The value, that to be translated into position.
- * @param {number} range The range, on which the position depends.
+ * @param {number} value The value, which position to be found.
+ * @param {number} start The start of the range, where position to be found.
+ * @param {number} end The end of the range, where position to be found.
  *
- * @returns {number} The position of the value inside range.
+ * @returns {number} The position of the value between start and end.
  */
-export function translateValueIntoPosition(value, range) {
-  let [start, end] = range;
+export function findValuePositionBetween(value, start, end) {
+  const range = end - start;
+  const ratio = findRatio({
+    antecedent: value,
+    consequent: range,
+    offset: start,
+  });
 
-  if (start > end) {
-    [start, end] = [end, start];
-  }
-
-  if (!isValueInBetween(value, start, end)) {
-    return NaN;
-  }
-
-  const difference = end - start;
-
-  value -= start;
-
-  const result = (value / difference) * 100;
-
-  return `${result - Math.trunc(result) ? result.toFixed(5) : result}%`;
+  return toPercentage(ratio);
 }
