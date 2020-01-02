@@ -6,15 +6,8 @@ describe("toPercentage", () => {
   const TestClass = makeTestClass(toPercentage, describeTest);
 
   describe("shall convert number to percentages", () => {
-    const funcOptions = [[0], [1], [2], [0.2], [0.75]];
-    const expectations = ["0%", "100%", "200%", "20%", "75%"];
-    const test = new TestClass();
-    test.test(funcOptions, expectations);
-  });
-
-  describe("shall handle imprecise calculations", () => {
-    const funcOptions = [[0.1619048], [0.3333333], [0.957]];
-    const expectations = ["16.19048%", "33.33333%", "95.70000%"];
+    const funcOptions = [[0], [2], [0.2], [0.75], [-2.5]];
+    const expectations = ["0%", "200%", "20%", "75%", "-250%"];
     const test = new TestClass();
     test.test(funcOptions, expectations);
   });
