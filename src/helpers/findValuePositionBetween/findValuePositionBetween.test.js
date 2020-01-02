@@ -21,7 +21,7 @@ describe("findValuePositionBetween", () => {
       "20%",
       "0%",
       "100%",
-      "95.70000%",
+      "95.7%",
       "10%",
       "50%",
       "30%",
@@ -32,34 +32,14 @@ describe("findValuePositionBetween", () => {
     test.test(funcOptions, expectations);
   });
 
-  describe("shall handle imprecise calculations", () => {
-    const funcOptions = [
-      [17, 0, 105],
-      [1, 0, 3],
-      [33, 0, 101],
-      [-17, -105, 0],
-      [-1, -2, 1],
-    ];
-    const expectations = [
-      "16.19048%",
-      "33.33333%",
-      "32.67327%",
-      "83.80952%",
-      "33.33333%",
-    ];
-    const test = new TestClass();
-    test.test(funcOptions, expectations);
-  });
-
   describe("shall handle exceptions", () => {
     const funcOptions = [
       [100, 200, 700],
       [900, 200, 700],
-      [-300, -200, 700],
       [300, -700, -200],
       [0, -700, -200],
     ];
-    const expectations = ["-20%", "140%", "-11.11111%", "200%", "140%"];
+    const expectations = ["-20%", "140%", "200%", "140%"];
     const test = new TestClass();
     test.test(funcOptions, expectations);
   });
