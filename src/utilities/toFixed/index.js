@@ -1,0 +1,1 @@
+export { toFixed } from "./toFixed";

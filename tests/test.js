@@ -13,6 +13,7 @@ import { testSliderUI } from "./SliderUI.test";
 import { testAdjustValueToStep } from "../src/helpers/adjustValueToStep/adjustValueToStep.test";
 import "../src/utilities/findRatio/findRatio.test";
 import "../src/utilities/toPercentage/toPercentage.test";
+import "../src/utilities/toFixed/toFixed.test";
 
 testAdjustValueToStep();
 testFindClosestFactor();
