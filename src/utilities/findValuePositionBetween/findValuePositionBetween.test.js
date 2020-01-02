@@ -1,10 +1,10 @@
-import { translateValueIntoPosition } from "./translateValueIntoPosition";
+import { findValuePositionBetween } from "./findValuePositionBetween";
 import { makeTestClass, template } from "../../../tests/testUtilities";
 
 export function testTranslateValueIntoPosition() {
-  describe("translateValueIntoPosition", () => {
+  describe("findValuePositionBetween", () => {
     const describeTest = template`position of ${0} between ${1} is ${"expectation"}`;
-    const TestClass = makeTestClass(translateValueIntoPosition, describeTest);
+    const TestClass = makeTestClass(findValuePositionBetween, describeTest);
 
     describe("shall return position", () => {
       const funcOptions = [
