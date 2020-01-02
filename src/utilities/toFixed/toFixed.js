@@ -8,10 +8,10 @@
  * @returns {string} A string representing a number in fixed-point notation.
  */
 export function toFixed(number, fractionDigits = 0) {
-  const isArgumentsCorrect =
+  const areArgumentsCorrect =
     typeof number === "number" && Number.isFinite(fractionDigits);
 
-  if (!isArgumentsCorrect) {
+  if (!areArgumentsCorrect) {
     return "NaN";
   }
 
