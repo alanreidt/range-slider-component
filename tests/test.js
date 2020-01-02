@@ -13,7 +13,7 @@ import { testAdjustValueToStep } from "../src/helpers/adjustValueToStep/adjustVa
 import "../src/utilities/findRatio/findRatio.test";
 import "../src/utilities/toPercentage/toPercentage.test";
 import "../src/utilities/toFixed/toFixed.test";
-import "../src/utilities/findValuePositionBetween/findValuePositionBetween.test";
+import "../src/helpers/findValuePositionBetween/findValuePositionBetween.test";
 
 testAdjustValueToStep();
 testFindClosestFactor();
