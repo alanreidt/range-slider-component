@@ -1,12 +1,13 @@
 /**
- * If this can be done, returns ratio of antecedent to consequent,
- * taking into account an offset.
+ * If this can be done, returns ratio between 2 numbers,
+ * taking into account an offset of a 1D coordinate system.
+ * Otherwise, returns NaN.
  *
- * @param {number} antecedent The number, of which ratio to be counted.
- * @param {number} consequent The number, to which ratio to be counted.
- * @param {number} offset The offset of a coordinate system.
+ * @param {number} antecedent The first member of a ratio.
+ * @param {number} consequent The second member of a ratio.
+ * @param {number} offset An offset of a 1D coordinate system.
  *
- * @returns {number} Ratio of the antecedent to the consequent.
+ * @returns {number} A ratio between 2 numbers.
  */
 export function findRatio({ antecedent, consequent, offset = 0 }) {
   const areArgumentsCorrect =
