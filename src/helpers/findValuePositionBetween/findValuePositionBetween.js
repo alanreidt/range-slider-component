@@ -18,11 +18,7 @@ export function findValuePositionBetween(value, start, end) {
   }
 
   const range = end - start;
-  const ratio = findRatio({
-    antecedent: value,
-    consequent: range,
-    offset: start,
-  });
+  const ratio = findRatio(value, range, start);
 
   return toPercentage(ratio);
 }
