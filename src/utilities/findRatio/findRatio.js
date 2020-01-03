@@ -9,7 +9,7 @@
  *
  * @returns {number} A ratio between 2 numbers.
  */
-export function findRatio({ antecedent, consequent, offset = 0 }) {
+export function findRatio(antecedent, consequent, offset = 0) {
   const areArgumentsCorrect =
     antecedent !== null && consequent !== null && Number.isFinite(offset);
 
