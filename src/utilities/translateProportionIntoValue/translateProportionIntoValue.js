@@ -1,21 +1,11 @@
-export function translateProportionIntoValue(proportion, range) {
-  const isArgumentsCorrect = Array.from(arguments).every((argument) =>
-    Number.isFinite(parseFloat(argument)),
-  );
+export function findValueBetween(ratio, start, end) {
+  const areArgumentsCorrect = Array.from(arguments).every(Number.isFinite);
 
-  if (!isArgumentsCorrect) {
+  if (!areArgumentsCorrect) {
     return NaN;
   }
 
-  let [start, end] = range;
+  const range = end - start;
 
-  if (start > end) {
-    [start, end] = [end, start];
-  }
-
-  const difference = end - start;
-
-  proportion /= 100;
-
-  return Math.round(difference * proportion + start);
+  return Math.round(range * ratio + start);
 }
