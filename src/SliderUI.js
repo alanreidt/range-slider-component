@@ -1,9 +1,9 @@
 import {
-  translateProportionIntoValue,
   setElementsPosition,
   setElementsTextContent,
+  findRatio,
 } from "./utilities";
-import { findValuePositionBetween } from "./helpers";
+import { findValuePositionBetween, findValueByRatioBetween } from "./helpers";
 
 export class SliderUI {
   constructor($parent, sliderAdapter) {
