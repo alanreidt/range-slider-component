@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { findAntecedent } from "./findAntecedent";
 export { toFixed } from "./toFixed";
 export { toPercentage } from "./toPercentage";
 export { fallbackFalsey } from "./fallbackFalsey/fallbackFalsey";

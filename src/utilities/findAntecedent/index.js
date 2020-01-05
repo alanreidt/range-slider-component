@@ -1,0 +1,1 @@
+export { findAntecedent } from "./findAntecedent";
