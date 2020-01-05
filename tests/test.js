@@ -2,7 +2,6 @@ import { testFindClosestFactor } from "../src/utilities/findClosestFactor/findCl
 import { testGetNearestTo } from "../src/utilities/getNearestTo/getNearestTo.test";
 import { testIsValueBetween } from "../src/utilities/isValueBetween/isValueBetween.test";
 import { testFindClosestDivisible } from "../src/utilities/findClosestDivisible/findClosestDivisible.test";
-import { testTranslateProportionIntoValue } from "../src/utilities/translateProportionIntoValue/translateProportionIntoValue.test";
 import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.test";
 import { testSliderAdapter } from "./SliderAdapter.test";
 import { testSliderModel } from "./SliderModel.test";
@@ -15,13 +14,13 @@ import "../src/utilities/findAntecedent/findAntecedent.test";
 import "../src/utilities/toPercentage/toPercentage.test";
 import "../src/utilities/toFixed/toFixed.test";
 import "../src/helpers/findValuePositionBetween/findValuePositionBetween.test";
+import "../src/utilities/findValueByRatioBetween/findValueByRatioBetween.test";
 
 testAdjustValueToStep();
 testFindClosestFactor();
 testGetNearestTo();
 testIsValueBetween();
 testFindClosestDivisible();
-testTranslateProportionIntoValue();
 testSetElementPosition();
 testObserverMixin();
 
