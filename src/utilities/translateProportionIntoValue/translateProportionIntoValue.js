@@ -1,3 +1,5 @@
+import { findAntecedent } from "../findAntecedent";
+
 export function findValueBetween(ratio, start, end) {
   const areArgumentsCorrect = Array.from(arguments).every(Number.isFinite);
 
@@ -7,5 +9,5 @@ export function findValueBetween(ratio, start, end) {
 
   const range = end - start;
 
-  return Math.round(range * ratio + start);
+  return Math.round(findAntecedent(range, ratio, start));
 }
