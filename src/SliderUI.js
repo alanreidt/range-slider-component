@@ -96,21 +96,7 @@ export class SliderUI {
   _triggerModel(event, onMouseDownEvent) {
     event.preventDefault();
 
-    const { orientation } = this.sliderAdapter.getOptions();
-
-    const position =
-      orientation === "horizontal"
-        ? event.clientX - this.$slider.getBoundingClientRect().left
-        : event.clientY - this.$slider.getBoundingClientRect().top;
-
-    const sliderSize =
-      orientation === "horizontal"
-        ? this.$slider.getBoundingClientRect().width
-        : this.$slider.getBoundingClientRect().height;
-
-    const proportion = (position / sliderSize) * 100;
-    const newValue = this._calcValue(proportion);
-
+    const newValue = this._findValue(event);
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
     const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
       ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget),
@@ -123,9 +109,22 @@ export class SliderUI {
     }
   }
 
-  _calcValue(proportion) {
+  _findValue(event) {
     const { boundaries } = this.sliderAdapter.getOptions();
+    const { orientation } = this.sliderAdapter.getOptions();
 
-    return translateProportionIntoValue(proportion, boundaries);
+    const position =
+      orientation === "horizontal"
+        ? event.clientX - this.$slider.getBoundingClientRect().left
+        : event.clientY - this.$slider.getBoundingClientRect().top;
+
+    const sliderSize =
+      orientation === "horizontal"
+        ? this.$slider.getBoundingClientRect().width
+        : this.$slider.getBoundingClientRect().height;
+
+    const ratio = findRatio(position, sliderSize);
+
+    return findValueByRatioBetween(ratio, ...boundaries);
   }
 }
