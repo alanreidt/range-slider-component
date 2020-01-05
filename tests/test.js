@@ -14,7 +14,7 @@ import "../src/utilities/findAntecedent/findAntecedent.test";
 import "../src/utilities/toPercentage/toPercentage.test";
 import "../src/utilities/toFixed/toFixed.test";
 import "../src/helpers/findValuePositionBetween/findValuePositionBetween.test";
-import "../src/utilities/findValueByRatioBetween/findValueByRatioBetween.test";
+import "../src/helpers/findValueByRatioBetween/findValueByRatioBetween.test";
 
 testAdjustValueToStep();
 testFindClosestFactor();
