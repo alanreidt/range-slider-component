@@ -13,7 +13,7 @@ export { setElementsPosition } from "./setElementsPosition";
 export { findClosestDivisible } from "./findClosestDivisible/findClosestDivisible";
 export { getNearestTo } from "./getNearestTo/getNearestTo";
 export { isValueBetween } from "./isValueBetween/isValueBetween";
-export { translateProportionIntoValue } from "./translateProportionIntoValue/translateProportionIntoValue";
+export { findValueByRatioBetween } from "./findValueByRatioBetween/findValueByRatioBetween";
 export { findClosestFactor } from "./findClosestFactor/findClosestFactor";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";

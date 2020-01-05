@@ -1,6 +1,6 @@
 import { findAntecedent } from "../findAntecedent";
 
-export function findValueBetween(ratio, start, end) {
+export function findValueByRatioBetween(ratio, start, end) {
   const areArgumentsCorrect = Array.from(arguments).every(Number.isFinite);
 
   if (!areArgumentsCorrect) {
