@@ -2,20 +2,20 @@ import { findValueByRatioBetween } from "./findValueByRatioBetween";
 import { makeTestClass, template } from "../../../tests/testUtilities";
 
 describe("findValueByRatioBetween", () => {
-  const describeTest = template`proportion of ${0} between ${1} is ${"expectation"}`;
+  const describeTest = template`value by ${0} between ${1} and ${2} equals to ${"expectation"}`;
   const TestClass = makeTestClass(findValueByRatioBetween, describeTest);
 
   describe("shall return value", () => {
     const funcOptions = [
-      [20, [0, 500]],
-      [0, [0, 500]],
-      [100, [0, 500]],
-      [95.7, [0, 1000]],
-      [10, [200, 700]],
-      [50, [-500, 500]],
-      [30, [-500, 500]],
-      [90, [-500, 0]],
-      [50, [-500, -200]],
+      [0.2, 0, 500],
+      [0, 0, 500],
+      [1, 0, 500],
+      [0.957, 0, 1000],
+      [0.1, 200, 700],
+      [0.5, -500, 500],
+      [0.3, -500, 500],
+      [0.9, -500, 0],
+      [0.5, -500, -200],
     ];
     const expectations = [100, 0, 500, 957, 250, 0, -200, -50, -350];
     const test = new TestClass();
@@ -25,11 +25,11 @@ describe("findValueByRatioBetween", () => {
 
   describe("shall handle imprecise calculations", () => {
     const funcOptions = [
-      [16.19048, [0, 105]],
-      [33.33333, [0, 3]],
-      [32.67327, [0, 101]],
-      [83.80952, [-105, 0]],
-      [33.33333, [-2, 1]],
+      [0.1619048, 0, 105],
+      [0.3333333, 0, 3],
+      [0.3267327, 0, 101],
+      [0.8380952, -105, 0],
+      [0.3333333, -2, 1],
     ];
     const expectations = [17, 1, 33, -17, -1];
     const test = new TestClass();
@@ -37,12 +37,12 @@ describe("findValueByRatioBetween", () => {
     test.test(funcOptions, expectations);
   });
 
-  describe("shall handle out of range proportion (0 > proportion > 100)", () => {
+  describe("shall handle exceeded ratio (0 > ratio > 1)", () => {
     const funcOptions = [
-      [101, [200, 700]],
-      [200, [200, 700]],
-      [-1, [200, 700]],
-      [-100, [200, 700]],
+      [1.01, 200, 700],
+      [2, 200, 700],
+      [-0.01, 200, 700],
+      [-1, 200, 700],
     ];
     const expectations = [705, 1200, 195, -300];
     const test = new TestClass();
@@ -51,14 +51,14 @@ describe("findValueByRatioBetween", () => {
   });
 
   context("shall catch garbage input", () => {
-    describe("returns NaN, if proportion parameter is incorrect", () => {
+    describe("returns NaN, if ratio parameter is incorrect", () => {
       const funcOptions = [
-        [undefined, [-500, 500]],
-        [null, [-500, 500]],
-        [Infinity, [-500, 500]],
-        [NaN, [-500, 500]],
-        ["text", [-500, 500]],
-        ["123text", [-500, 500]],
+        [undefined, -500, 500],
+        [null, -500, 500],
+        [Infinity, -500, 500],
+        [NaN, -500, 500],
+        ["text", -500, 500],
+        ["123text", -500, 500],
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
@@ -66,14 +66,29 @@ describe("findValueByRatioBetween", () => {
       test.test(funcOptions, expectations);
     });
 
-    describe("returns NaN, if range parameter is incorrect", () => {
+    describe("returns NaN, if start parameter is incorrect", () => {
       const funcOptions = [
-        [50, [undefined, 500]],
-        [50, [null, 500]],
-        [50, [Infinity, 500]],
-        [50, [NaN, 500]],
-        [50, ["text", 500]],
-        [50, ["123text", 500]],
+        [0.5, undefined, 500],
+        [0.5, null, 500],
+        [0.5, Infinity, 500],
+        [0.5, NaN, 500],
+        [0.5, "text", 500],
+        [0.5, "123text", 500],
+      ];
+      const expectations = new Array(funcOptions.length).fill(NaN);
+      const test = new TestClass();
+
+      test.test(funcOptions, expectations);
+    });
+
+    describe("returns NaN, if end parameter is incorrect", () => {
+      const funcOptions = [
+        [0.5, -500, undefined],
+        [0.5, -500, null],
+        [0.5, -500, Infinity],
+        [0.5, -500, NaN],
+        [0.5, -500, "text"],
+        [0.5, -500, "123text"],
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
