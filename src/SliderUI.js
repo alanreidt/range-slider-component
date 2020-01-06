@@ -110,17 +110,11 @@ export class SliderUI {
   }
 
   _findValue(event) {
-    const { boundaries } = this.sliderAdapter.getOptions();
-    const { orientation } = this.sliderAdapter.getOptions();
-
     const position = this._findPosition(event);
-
-    const sliderSize =
-      orientation === "horizontal"
-        ? this.$slider.getBoundingClientRect().width
-        : this.$slider.getBoundingClientRect().height;
+    const sliderSize = this._findSliderSize();
 
     const ratio = findRatio(position, sliderSize);
+    const { boundaries } = this.sliderAdapter.getOptions();
 
     return findValueByRatioBetween(ratio, ...boundaries);
   }
@@ -131,5 +125,13 @@ export class SliderUI {
     return orientation === "horizontal"
       ? event.clientX - this.$slider.getBoundingClientRect().left
       : event.clientY - this.$slider.getBoundingClientRect().top;
+  }
+
+  _findSliderSize() {
+    const { orientation } = this.sliderAdapter.getOptions();
+
+    return orientation === "horizontal"
+      ? this.$slider.getBoundingClientRect().width
+      : this.$slider.getBoundingClientRect().height;
   }
 }
