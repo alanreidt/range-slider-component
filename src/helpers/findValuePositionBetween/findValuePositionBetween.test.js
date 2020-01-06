@@ -32,16 +32,25 @@ describe("findValuePositionBetween", () => {
     test.test(funcOptions, expectations);
   });
 
-  describe("shall handle exceptions", () => {
-    const funcOptions = [
-      [100, 200, 700],
-      [900, 200, 700],
-      [300, -700, -200],
-      [0, -700, -200],
-    ];
-    const expectations = ["-20%", "140%", "200%", "140%"];
-    const test = new TestClass();
-    test.test(funcOptions, expectations);
+  context("shall handle exceptions", () => {
+    describe("handle exceeded position (0% > position > 100%)", () => {
+      const funcOptions = [
+        [100, 200, 700],
+        [900, 200, 700],
+        [300, -700, -200],
+        [0, -700, -200],
+      ];
+      const expectations = ["-20%", "140%", "200%", "140%"];
+      const test = new TestClass();
+      test.test(funcOptions, expectations);
+    });
+
+    describe("handle infinite end", () => {
+      const funcOptions = [[50, 500, Infinity]];
+      const expectations = ["0%"];
+      const test = new TestClass();
+      test.test(funcOptions, expectations);
+    });
   });
 
   context("shall catch garbage input", () => {
@@ -77,7 +86,6 @@ describe("findValuePositionBetween", () => {
       const funcOptions = [
         [50, 500, undefined],
         [50, 500, null],
-        [50, 500, Infinity],
         [50, 500, NaN],
         [50, 500, "text"],
         [50, 500, "123text"],
