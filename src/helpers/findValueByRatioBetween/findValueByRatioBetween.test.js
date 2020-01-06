@@ -23,20 +23,6 @@ describe("findValueByRatioBetween", () => {
     test.test(funcOptions, expectations);
   });
 
-  describe("shall handle imprecise calculations", () => {
-    const funcOptions = [
-      [0.1619048, 0, 105],
-      [0.3333333, 0, 3],
-      [0.3267327, 0, 101],
-      [0.8380952, -105, 0],
-      [0.3333333, -2, 1],
-    ];
-    const expectations = [17, 1, 33, -17, -1];
-    const test = new TestClass();
-
-    test.test(funcOptions, expectations);
-  });
-
   describe("shall handle exceeded ratio (0 > ratio > 1)", () => {
     const funcOptions = [
       [1.01, 200, 700],
