@@ -9,5 +9,5 @@ export function findValueByRatioBetween(ratio, start, end) {
 
   const range = end - start;
 
-  return Math.round(findAntecedent(range, ratio, start));
+  return findAntecedent(range, ratio, start);
 }
