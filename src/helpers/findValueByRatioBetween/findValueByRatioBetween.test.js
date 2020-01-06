@@ -23,17 +23,30 @@ describe("findValueByRatioBetween", () => {
     test.test(funcOptions, expectations);
   });
 
-  describe("shall handle exceeded ratio (0 > ratio > 1)", () => {
-    const funcOptions = [
-      [1.01, 200, 700],
-      [2, 200, 700],
-      [-0.01, 200, 700],
-      [-1, 200, 700],
-    ];
-    const expectations = [705, 1200, 195, -300];
-    const test = new TestClass();
+  context("shall handle exceptions", () => {
+    describe("handle exceeded ratio (0 > ratio > 1)", () => {
+      const funcOptions = [
+        [1.01, 200, 700],
+        [2, 200, 700],
+        [-0.01, 200, 700],
+        [-1, 200, 700],
+      ];
+      const expectations = [705, 1200, 195, -300];
+      const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+      test.test(funcOptions, expectations);
+    });
+
+    describe("handle Infinity", () => {
+      const funcOptions = [
+        [Infinity, -500, 500],
+        [0.5, -500, Infinity],
+      ];
+      const expectations = [Infinity, Infinity];
+      const test = new TestClass();
+
+      test.test(funcOptions, expectations);
+    });
   });
 
   context("shall catch garbage input", () => {
@@ -41,7 +54,6 @@ describe("findValueByRatioBetween", () => {
       const funcOptions = [
         [undefined, -500, 500],
         [null, -500, 500],
-        [Infinity, -500, 500],
         [NaN, -500, 500],
         ["text", -500, 500],
         ["123text", -500, 500],
@@ -71,7 +83,6 @@ describe("findValueByRatioBetween", () => {
       const funcOptions = [
         [0.5, -500, undefined],
         [0.5, -500, null],
-        [0.5, -500, Infinity],
         [0.5, -500, NaN],
         [0.5, -500, "text"],
         [0.5, -500, "123text"],
