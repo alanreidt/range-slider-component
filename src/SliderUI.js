@@ -14,14 +14,12 @@ export class SliderUI {
   }
 
   update({ boundaries, values, orientation } = {}) {
-    if (values && boundaries) {
-      const positions = values.map((value) =>
-        findValuePositionBetween(value, ...boundaries),
-      );
+    const positions = values.map((value) =>
+      findValuePositionBetween(value, ...boundaries),
+    );
 
-      this._updateHandleGroups(positions, orientation);
-      this._updateTooltips(values);
-    }
+    this._updateHandleGroups(positions, orientation);
+    this._updateTooltips(values);
   }
 
   _paint(options) {
