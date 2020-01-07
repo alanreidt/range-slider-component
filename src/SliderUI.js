@@ -110,28 +110,36 @@ export class SliderUI {
   }
 
   _findValue(event) {
-    const position = this._findPosition(event);
-    const sliderSize = this._findSliderSize();
+    const { boundaries, orientation } = this.sliderAdapter.getOptions();
+
+    const position =
+      orientation === "horizontal"
+        ? this._findHorizontalPosition(event)
+        : this._findVerticalPosition(event);
+
+    const sliderSize =
+      orientation === "horizontal"
+        ? this._getSliderWidth()
+        : this._getSliderHeight();
 
     const ratio = findRatio(position, sliderSize);
-    const { boundaries } = this.sliderAdapter.getOptions();
 
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
-  _findPosition(event) {
-    const { orientation } = this.sliderAdapter.getOptions();
-
-    return orientation === "horizontal"
-      ? event.clientX - this.$slider.getBoundingClientRect().left
-      : event.clientY - this.$slider.getBoundingClientRect().top;
+  _findHorizontalPosition(event) {
+    return event.clientX - this.$slider.getBoundingClientRect().left;
   }
 
-  _findSliderSize() {
-    const { orientation } = this.sliderAdapter.getOptions();
+  _findVerticalPosition(event) {
+    return event.clientY - this.$slider.getBoundingClientRect().top;
+  }
 
-    return orientation === "horizontal"
-      ? this.$slider.getBoundingClientRect().width
-      : this.$slider.getBoundingClientRect().height;
+  _getSliderWidth() {
+    return this.$slider.getBoundingClientRect().width;
+  }
+
+  _getSliderHeight() {
+    return this.$slider.getBoundingClientRect().height;
   }
 }
