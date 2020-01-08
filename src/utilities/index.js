@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { isNumberInBetween } from "./isNumberInBetween";
 export { isNumberBetween } from "./isNumberBetween";
 export { findClosestTo } from "./findClosestTo";
 export { findAntecedent } from "./findAntecedent";
@@ -18,6 +19,5 @@ export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
 export { getPrevDivisibleOf } from "./getPrevDivisibleOf/getPrevDivisibleOf";
 export { isDivisible } from "./isDivisible/isDivisible";
-export { isNumberInBetween } from "./isNumberInBetween/isNumberInBetween";
 export { observerMixin } from "./observerMixin/observerMixin";
 export { findRatio } from "./findRatio";
