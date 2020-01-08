@@ -1,8 +1,8 @@
 import { isValueInBetween } from "../isValueInBetween/isValueInBetween";
-import { getNearestTo } from "../getNearestTo/getNearestTo";
+import { findClosestTo } from "../findClosestTo/findClosestTo";
 
 export function packInto(value, start, end) {
   return isValueInBetween(value, start, end)
     ? value
-    : getNearestTo(value, start, end);
+    : findClosestTo(value, start, end);
 }

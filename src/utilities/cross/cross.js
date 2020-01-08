@@ -1,4 +1,4 @@
-import { getNearestTo } from "../getNearestTo/getNearestTo";
+import { findClosestTo } from "../findClosestTo/findClosestTo";
 
 /**
  * Cross arrays' items, regarding first array as a base.
@@ -27,7 +27,7 @@ export function cross(baseArr, arr) {
 
   if (arrCopy.length < baseArrCopy.length) {
     arrCopy.forEach((item) => {
-      const closestValue = getNearestTo(item, ...baseArrCopy);
+      const closestValue = findClosestTo(item, ...baseArrCopy);
       const closestValuePosition = baseArrCopy.indexOf(closestValue);
 
       baseArrCopy.splice(closestValuePosition, 1, item);

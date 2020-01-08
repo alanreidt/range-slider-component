@@ -5,7 +5,7 @@ import filter from "lodash/fp/filter";
 import identity from "lodash/fp/identity";
 import isUndefined from "lodash/fp/isUndefined";
 
-import { getAverageOf, isValueInBetween, getNearestTo } from "./utilities";
+import { getAverageOf, isValueInBetween, findClosestTo } from "./utilities";
 import {
   fallbackFalseyFP,
   packIntoFP,
@@ -135,7 +135,7 @@ export class SliderModel {
     if (!isUndefined(prevValue) && !isUndefined(nextValue)) {
       newValue = isValueInBetween(newValue, prevValue, nextValue)
         ? newValue
-        : getNearestTo(newValue, prevValue, nextValue);
+        : findClosestTo(newValue, prevValue, nextValue);
     }
 
     newValues.splice(index, 1, newValue);
