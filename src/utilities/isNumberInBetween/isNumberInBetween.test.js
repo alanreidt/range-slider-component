@@ -52,6 +52,13 @@ describe("isNumberInBetween", () => {
       [0, 0, 100],
       [300, -300, 300],
       [-300, -300, 300],
+    ];
+    const expectations = new Array(funcOptions.length).fill(true);
+    testCurrent(funcOptions, expectations);
+  });
+
+  describe("shall treat Infinity right", () => {
+    const funcOptions = [
       [Infinity, -300, Infinity],
       [-Infinity, -Infinity, 300],
       [Infinity, -Infinity, Infinity],
