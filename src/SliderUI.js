@@ -122,6 +122,14 @@ export class SliderUI {
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
+  _findHorizontalPosition(eventXCoordinate) {
+    return eventXCoordinate - this.$slider.getBoundingClientRect().left;
+  }
+
+  _getSliderWidth() {
+    return this.$slider.getBoundingClientRect().width;
+  }
+
   _convertYCoordinateToValue(yCoordinate) {
     const position = this._findVerticalPosition(yCoordinate);
     const sliderSize = this._getSliderHeight();
@@ -132,16 +140,8 @@ export class SliderUI {
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
-  _findHorizontalPosition(eventXCoordinate) {
-    return eventXCoordinate - this.$slider.getBoundingClientRect().left;
-  }
-
   _findVerticalPosition(eventYCoordinate) {
     return eventYCoordinate - this.$slider.getBoundingClientRect().top;
-  }
-
-  _getSliderWidth() {
-    return this.$slider.getBoundingClientRect().width;
   }
 
   _getSliderHeight() {
