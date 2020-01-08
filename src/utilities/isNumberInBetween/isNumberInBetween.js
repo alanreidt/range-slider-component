@@ -1,3 +1,5 @@
+import { isNumberBetween } from "../isNumberBetween/isNumberBetween";
+
 /**
  * Defines whether a number is between start and end, including edges, or not.
  *
@@ -12,9 +14,5 @@ export function isNumberInBetween(number, start, end) {
     return false;
   }
 
-  if (start > end) {
-    [start, end] = [end, start];
-  }
-
-  return number >= start && number <= end;
+  return isNumberBetween(number, start - 1, end + 1);
 }
