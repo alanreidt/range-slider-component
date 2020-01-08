@@ -94,7 +94,7 @@ export class SliderUI {
   _triggerModel(event, onMouseDownEvent) {
     event.preventDefault();
 
-    const newValue = this._findValue(event);
+    const newValue = this._convertCoordinateToValue(event);
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
     const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
       ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget),
@@ -107,7 +107,7 @@ export class SliderUI {
     }
   }
 
-  _findValue(event) {
+  _convertCoordinateToValue(event) {
     const { boundaries, orientation } = this.Model.getOptions();
 
     const position =
