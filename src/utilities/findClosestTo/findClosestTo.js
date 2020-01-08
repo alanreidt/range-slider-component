@@ -8,18 +8,18 @@
  * @returns {number} A closest number.
  */
 export function findClosestTo(number, ...variants) {
-  if (!Number.isFinite(number)) return NaN;
+  const validatedVariants = variants.filter(Number.isFinite);
+  const areArgumentsCorrect =
+    Number.isFinite(number) && validatedVariants.length;
 
-  const filteredArray = variants.filter((item) => Number.isFinite(item));
+  if (!areArgumentsCorrect) {
+    return NaN;
+  }
 
-  if (!filteredArray.length) return NaN;
-
-  const result = filteredArray.reduce((prev, current) => {
+  return validatedVariants.reduce((prev, current) => {
     const currentDifference = Math.abs(number - current);
     const prevDifference = Math.abs(number - prev);
 
     return currentDifference <= prevDifference ? current : prev;
   });
-
-  return Number.isFinite(result) ? result : NaN;
 }
