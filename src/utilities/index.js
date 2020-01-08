@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { findClosestTo } from "./findClosestTo";
 export { findAntecedent } from "./findAntecedent";
 export { toFixed } from "./toFixed";
 export { toPercentage } from "./toPercentage";
@@ -11,7 +12,6 @@ export { setElementPosition } from "./setElementPosition/setElementPosition";
 export { setElementsTextContent } from "./setElementsTextContent";
 export { setElementsPosition } from "./setElementsPosition";
 export { findClosestDivisible } from "./findClosestDivisible/findClosestDivisible";
-export { findClosestTo } from "./findClosestTo/findClosestTo";
 export { isValueBetween } from "./isValueBetween/isValueBetween";
 export { findClosestFactor } from "./findClosestFactor/findClosestFactor";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
