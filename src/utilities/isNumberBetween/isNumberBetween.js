@@ -1,19 +1,16 @@
 /**
- * Defines whether value is between start and end or not.
+ * Defines whether a number is between start and end, excluding edges, or not.
  *
- * @param {number} value The value, which is checked for attachment to interval.
- * @param {number} start The start of the interval.
- * @param {number} end The end of the interval.
- *
- * @returns {boolean} True, if value is between start and end, false otherwise.
- *
+ * @param {number} number A number, which is checked for attachment to interval.
+ * @param {number} start A start of the interval.
+ * @param {number} end An end of the interval.
  */
-export function isNumberBetween(value, start, end) {
+export function isNumberBetween(number, start, end) {
   if (Array.from(arguments).includes(null)) return false;
 
   if (start > end) {
     [start, end] = [end, start];
   }
 
-  return value > start && value < end;
+  return number > start && number < end;
 }
