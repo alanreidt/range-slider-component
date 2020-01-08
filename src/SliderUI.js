@@ -6,22 +6,20 @@ import {
 import { findValuePositionBetween, findValueByRatioBetween } from "./helpers";
 
 export class SliderUI {
-  constructor($parent, sliderAdapter) {
+  constructor($parent, Model) {
     this.$parent = $parent;
-    this.sliderAdapter = sliderAdapter;
+    this.Model = Model;
 
-    this._paint(sliderAdapter.getOptions());
+    this._paint(Model.getOptions());
   }
 
   update({ boundaries, values, orientation } = {}) {
-    if (values && boundaries) {
-      const positions = values.map((value) =>
-        findValuePositionBetween(value, ...boundaries),
-      );
+    const positions = values.map((value) =>
+      findValuePositionBetween(value, ...boundaries),
+    );
 
-      this._updateHandleGroups(positions, orientation);
-      this._updateTooltips(values);
-    }
+    this._updateHandleGroups(positions, orientation);
+    this._updateTooltips(values);
   }
 
   _paint(options) {
@@ -103,14 +101,14 @@ export class SliderUI {
     );
 
     if (onMouseDownEventTargetIndex !== -1) {
-      this.sliderAdapter.setValueAt(onMouseDownEventTargetIndex, newValue);
+      this.Model.setValueAt(onMouseDownEventTargetIndex, newValue);
     } else if (event.target === this.$base) {
-      this.sliderAdapter.setOptions({ values: newValue });
+      this.Model.setOptions({ values: newValue });
     }
   }
 
   _findValue(event) {
-    const { boundaries, orientation } = this.sliderAdapter.getOptions();
+    const { boundaries, orientation } = this.Model.getOptions();
 
     const position =
       orientation === "horizontal"
