@@ -12,6 +12,10 @@ export function isNumberBetween(number, start, end) {
     return false;
   }
 
+  if (number === Infinity || number === -Infinity) {
+    return number >= start && number <= end;
+  }
+
   if (start > end) {
     [start, end] = [end, start];
   }
