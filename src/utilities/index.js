@@ -12,7 +12,7 @@ export { setElementPosition } from "./setElementPosition/setElementPosition";
 export { setElementsTextContent } from "./setElementsTextContent";
 export { setElementsPosition } from "./setElementsPosition";
 export { findClosestDivisible } from "./findClosestDivisible/findClosestDivisible";
-export { isValueBetween } from "./isValueBetween/isValueBetween";
+export { isNumberBetween } from "./isNumberBetween/isNumberBetween";
 export { findClosestFactor } from "./findClosestFactor/findClosestFactor";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
