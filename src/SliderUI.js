@@ -113,13 +113,10 @@ export class SliderUI {
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
-    let position = this._findHorizontalPosition(xCoordinate);
-    let sliderSize = this._getSliderWidth();
-
-    if (yCoordinate) {
-      position = this._findVerticalPosition(yCoordinate);
-      sliderSize = this._getSliderHeight();
-    }
+    const [position, sliderSize] =
+      xCoordinate !== undefined
+        ? [this._findHorizontalPosition(xCoordinate), this._getSliderWidth()]
+        : [this._findVerticalPosition(yCoordinate), this._getSliderHeight()];
 
     const ratio = findRatio(position, sliderSize);
     const { boundaries } = this.Model.getOptions();
