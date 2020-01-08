@@ -115,26 +115,26 @@ export class SliderUI {
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
-    const [position, sliderSize] = !isUndefined(xCoordinate)
-      ? [this._findHorizontalPosition(xCoordinate), this._getSliderWidth()]
-      : [this._findVerticalPosition(yCoordinate), this._getSliderHeight()];
+    const [normalizedCoordinate, sliderSize] = !isUndefined(xCoordinate)
+      ? [this._normalizeXCoordinate(xCoordinate), this._getSliderWidth()]
+      : [this._normalizeYCoordinate(yCoordinate), this._getSliderHeight()];
 
-    const ratio = findRatio(position, sliderSize);
+    const ratio = findRatio(normalizedCoordinate, sliderSize);
     const { boundaries } = this.Model.getOptions();
 
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
-  _findHorizontalPosition(eventXCoordinate) {
-    return eventXCoordinate - this.$slider.getBoundingClientRect().left;
+  _normalizeXCoordinate(xCoordinate) {
+    return xCoordinate - this.$slider.getBoundingClientRect().left;
   }
 
   _getSliderWidth() {
     return this.$slider.getBoundingClientRect().width;
   }
 
-  _findVerticalPosition(eventYCoordinate) {
-    return eventYCoordinate - this.$slider.getBoundingClientRect().top;
+  _normalizeYCoordinate(yCoordinate) {
+    return yCoordinate - this.$slider.getBoundingClientRect().top;
   }
 
   _getSliderHeight() {
