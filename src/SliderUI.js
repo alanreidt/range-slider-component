@@ -6,11 +6,11 @@ import {
 import { findValuePositionBetween, findValueByRatioBetween } from "./helpers";
 
 export class SliderUI {
-  constructor($parent, sliderAdapter) {
+  constructor($parent, Model) {
     this.$parent = $parent;
-    this.sliderAdapter = sliderAdapter;
+    this.Model = Model;
 
-    this._paint(sliderAdapter.getOptions());
+    this._paint(Model.getOptions());
   }
 
   update({ boundaries, values, orientation } = {}) {
@@ -101,9 +101,9 @@ export class SliderUI {
     );
 
     if (onMouseDownEventTargetIndex !== -1) {
-      this.sliderAdapter.setValueAt(onMouseDownEventTargetIndex, newValue);
+      this.Model.setValueAt(onMouseDownEventTargetIndex, newValue);
     } else if (event.target === this.$base) {
-      this.sliderAdapter.setOptions({ values: newValue });
+      this.Model.setOptions({ values: newValue });
     }
   }
 
@@ -112,13 +112,13 @@ export class SliderUI {
     const sliderSize = this._findSliderSize();
 
     const ratio = findRatio(position, sliderSize);
-    const { boundaries } = this.sliderAdapter.getOptions();
+    const { boundaries } = this.Model.getOptions();
 
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
   _findPosition(event) {
-    const { orientation } = this.sliderAdapter.getOptions();
+    const { orientation } = this.Model.getOptions();
 
     return orientation === "horizontal"
       ? event.clientX - this.$slider.getBoundingClientRect().left
@@ -126,7 +126,7 @@ export class SliderUI {
   }
 
   _findSliderSize() {
-    const { orientation } = this.sliderAdapter.getOptions();
+    const { orientation } = this.Model.getOptions();
 
     return orientation === "horizontal"
       ? this.$slider.getBoundingClientRect().width
