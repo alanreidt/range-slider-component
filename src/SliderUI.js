@@ -1,3 +1,5 @@
+import isUndefined from "lodash/isUndefined";
+
 import {
   setElementsPosition,
   setElementsTextContent,
@@ -113,10 +115,9 @@ export class SliderUI {
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
-    const [position, sliderSize] =
-      xCoordinate !== undefined
-        ? [this._findHorizontalPosition(xCoordinate), this._getSliderWidth()]
-        : [this._findVerticalPosition(yCoordinate), this._getSliderHeight()];
+    const [position, sliderSize] = !isUndefined(xCoordinate)
+      ? [this._findHorizontalPosition(xCoordinate), this._getSliderWidth()]
+      : [this._findVerticalPosition(yCoordinate), this._getSliderHeight()];
 
     const ratio = findRatio(position, sliderSize);
     const { boundaries } = this.Model.getOptions();
