@@ -97,8 +97,8 @@ export class SliderUI {
 
     const newValue =
       orientation === "horizontal"
-        ? this._convertXCoordinateToValue(event.clientX)
-        : this._convertYCoordinateToValue(event.clientY);
+        ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
+        : this._convertCoordinateToValue({ yCoordinate: event.clientY });
 
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
     const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
@@ -112,9 +112,14 @@ export class SliderUI {
     }
   }
 
-  _convertXCoordinateToValue(xCoordinate) {
-    const position = this._findHorizontalPosition(xCoordinate);
-    const sliderSize = this._getSliderWidth();
+  _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
+    let position = this._findHorizontalPosition(xCoordinate);
+    let sliderSize = this._getSliderWidth();
+
+    if (yCoordinate) {
+      position = this._findVerticalPosition(yCoordinate);
+      sliderSize = this._getSliderHeight();
+    }
 
     const ratio = findRatio(position, sliderSize);
     const { boundaries } = this.Model.getOptions();
@@ -128,16 +133,6 @@ export class SliderUI {
 
   _getSliderWidth() {
     return this.$slider.getBoundingClientRect().width;
-  }
-
-  _convertYCoordinateToValue(yCoordinate) {
-    const position = this._findVerticalPosition(yCoordinate);
-    const sliderSize = this._getSliderHeight();
-
-    const ratio = findRatio(position, sliderSize);
-    const { boundaries } = this.Model.getOptions();
-
-    return findValueByRatioBetween(ratio, ...boundaries);
   }
 
   _findVerticalPosition(eventYCoordinate) {
