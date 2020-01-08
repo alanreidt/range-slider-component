@@ -1,23 +1,22 @@
 /**
- * If this can be done, returns the number that is nearest to the value.
+ * If this can be done, returns a number from the variants, that is closest to the number.
  * Otherwise, returns NaN.
  *
- * @param {number} value The value, which nearest number is compared to.
- * @param {number} args The number, that is compared to the value.
+ * @param {number} number The number, to which the variants are compared to.
+ * @param {...number} variants The variants, from which result to be taken.
  *
- * @returns {number} The nearest number to the value.
- * @returns {NaN} Error.
+ * @returns {number} A closest number.
  */
-export function findClosestTo(value, ...args) {
-  if (!Number.isFinite(value)) return NaN;
+export function findClosestTo(number, ...variants) {
+  if (!Number.isFinite(number)) return NaN;
 
-  const filteredArray = args.filter((item) => Number.isFinite(item));
+  const filteredArray = variants.filter((item) => Number.isFinite(item));
 
   if (!filteredArray.length) return NaN;
 
   const result = filteredArray.reduce((prev, current) => {
-    const currentDifference = Math.abs(value - current);
-    const prevDifference = Math.abs(value - prev);
+    const currentDifference = Math.abs(number - current);
+    const prevDifference = Math.abs(number - prev);
 
     return currentDifference <= prevDifference ? current : prev;
   });
