@@ -8,7 +8,7 @@
  * @returns {boolean} True, if value is between start and end, including the edges, false otherwise.
  *
  */
-export function isValueInBetween(value, start, end) {
+export function isNumberInBetween(value, start, end) {
   if ([].includes.call(arguments, null)) return false;
 
   if (start > end) {

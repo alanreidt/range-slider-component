@@ -18,6 +18,6 @@ export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
 export { getPrevDivisibleOf } from "./getPrevDivisibleOf/getPrevDivisibleOf";
 export { isDivisible } from "./isDivisible/isDivisible";
-export { isValueInBetween } from "./isValueInBetween/isValueInBetween";
+export { isNumberInBetween } from "./isNumberInBetween/isNumberInBetween";
 export { observerMixin } from "./observerMixin/observerMixin";
 export { findRatio } from "./findRatio";
