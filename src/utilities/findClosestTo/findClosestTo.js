@@ -8,7 +8,7 @@
  * @returns {number} The nearest number to the value.
  * @returns {NaN} Error.
  */
-export function getNearestTo(value, ...args) {
+export function findClosestTo(value, ...args) {
   if (!Number.isFinite(value)) return NaN;
 
   const filteredArray = args.filter((item) => Number.isFinite(item));

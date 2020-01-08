@@ -11,7 +11,7 @@ export { setElementPosition } from "./setElementPosition/setElementPosition";
 export { setElementsTextContent } from "./setElementsTextContent";
 export { setElementsPosition } from "./setElementsPosition";
 export { findClosestDivisible } from "./findClosestDivisible/findClosestDivisible";
-export { getNearestTo } from "./getNearestTo/getNearestTo";
+export { findClosestTo } from "./findClosestTo/findClosestTo";
 export { isValueBetween } from "./isValueBetween/isValueBetween";
 export { findClosestFactor } from "./findClosestFactor/findClosestFactor";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
