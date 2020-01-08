@@ -15,6 +15,7 @@ import "../src/utilities/findClosestTo/findClosestTo.test";
 import "../src/helpers/findValuePositionBetween/findValuePositionBetween.test";
 import "../src/helpers/findValueByRatioBetween/findValueByRatioBetween.test";
 import "../src/utilities/isNumberBetween/isNumberBetween.test";
+import "../src/utilities/isNumberInBetween/isNumberInBetween.test";
 
 testAdjustValueToStep();
 testFindClosestFactor();
