@@ -2,10 +2,10 @@ import { findClosestTo } from "./findClosestTo";
 import { test, template } from "../../../tests/testUtilities";
 
 describe("findClosestTo", () => {
-  const describeTest = template`nearest number to ${0} from ${"...rest"} is ${"expectation"}`;
+  const describeTest = template`closest number to ${0} from ${"...rest"} is ${"expectation"}`;
   const testCurrent = test(findClosestTo, describeTest);
 
-  describe("shall return nearest number to value", () => {
+  describe("shall return closest number to the number", () => {
     const funcOptions = [
       [100, 50, 90],
       [-100, -50, -90],
@@ -18,7 +18,7 @@ describe("findClosestTo", () => {
     testCurrent(funcOptions, expectations);
   });
 
-  describe("shall return last nearest number to value, if controversial", () => {
+  describe("shall return last closest number to the number, if controversial", () => {
     const funcOptions = [
       [100, 99, 105, 101, 5],
       [100, 101, 105, 99, 5],
@@ -37,7 +37,7 @@ describe("findClosestTo", () => {
   });
 
   context("shall catch garbage input", () => {
-    describe("returns NaN if value parameter is incorrect", () => {
+    describe("returns NaN if number parameter is incorrect", () => {
       const funcOptions = [
         [undefined, -100, 100],
         [null, -100, 100],
@@ -50,7 +50,7 @@ describe("findClosestTo", () => {
       testCurrent(funcOptions, expectations);
     });
 
-    describe("returns NaN if args parameter is incorrect", () => {
+    describe("returns NaN if variants parameter is incorrect", () => {
       const funcOptions = [
         [50, undefined],
         [50, null],
