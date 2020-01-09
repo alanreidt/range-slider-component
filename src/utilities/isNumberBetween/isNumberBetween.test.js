@@ -2,10 +2,10 @@ import { isNumberBetween } from "./isNumberBetween";
 import { test, template } from "../../../tests/testUtilities";
 
 describe("isNumberBetween", () => {
-  const describeTest = template`${0} between ${1} and ${2} is equal to ${"expectation"}`;
+  const describeTest = template`It is ${"expectation"} that ${0} is between ${1} and ${2}`;
   const testCurrent = test(isNumberBetween, describeTest);
 
-  describe("shall return true, if value is between start and end", () => {
+  describe("shall return true, if number is between start and end", () => {
     const funcOptions = [
       [50, 0, 100],
       [-50, -100, 0],
@@ -19,7 +19,7 @@ describe("isNumberBetween", () => {
     testCurrent(funcOptions, expectations);
   });
 
-  describe("shall return false, if value is not between start and end", () => {
+  describe("shall return false, if number is not between start and end", () => {
     const funcOptions = [
       [150, 0, 100],
       [-150, -100, 0],
@@ -68,7 +68,7 @@ describe("isNumberBetween", () => {
     testCurrent(funcOptions, expectations);
   });
 
-  describe("shall return false, if there is no value in between", () => {
+  describe("shall return false, if there is no number in between", () => {
     const funcOptions = [
       [100, 100, 100],
       [100, 100, 101],
@@ -82,7 +82,7 @@ describe("isNumberBetween", () => {
   });
 
   context("shall catch garbage input", () => {
-    describe("returns false, if value is incorrect", () => {
+    describe("returns false, if number is incorrect", () => {
       const funcOptions = [
         [undefined, -100, 100],
         [null, -100, 100],
