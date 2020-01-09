@@ -13,7 +13,7 @@ export function isNumberBetween(number, start, end) {
   }
 
   if (number === Infinity || number === -Infinity) {
-    return number >= start && number <= end;
+    return number === start || number === end;
   }
 
   if (start > end) {
