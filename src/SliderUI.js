@@ -115,9 +115,9 @@ export class SliderUI {
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
-    const [normalizedCoordinate, sliderSize] = !isUndefined(xCoordinate)
-      ? [this._normalizeXCoordinate(xCoordinate), this._getSliderWidth()]
-      : [this._normalizeYCoordinate(yCoordinate), this._getSliderHeight()];
+    const [adjustedCoordinate, sliderSize] = !isUndefined(xCoordinate)
+      ? [this._adjustToSliderXCoordinate(xCoordinate), this._getSliderWidth()]
+      : [this._adjustToSliderYCoordinate(yCoordinate), this._getSliderHeight()];
 
     const ratio = findRatio(normalizedCoordinate, sliderSize);
     const { boundaries } = this.Model.getOptions();
@@ -125,7 +125,7 @@ export class SliderUI {
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
-  _normalizeXCoordinate(xCoordinate) {
+  _adjustToSliderXCoordinate(xCoordinate) {
     return xCoordinate - this.$slider.getBoundingClientRect().left;
   }
 
@@ -133,7 +133,7 @@ export class SliderUI {
     return this.$slider.getBoundingClientRect().width;
   }
 
-  _normalizeYCoordinate(yCoordinate) {
+  _adjustToSliderYCoordinate(yCoordinate) {
     return yCoordinate - this.$slider.getBoundingClientRect().top;
   }
 
