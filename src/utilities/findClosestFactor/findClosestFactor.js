@@ -5,10 +5,10 @@ import { isDivisible } from "../isDivisible/isDivisible";
  * of division (the bigger one, if controversial).
  * Otherwise, returns NaN.
  *
- * @param {number} dividend The number, that to be divided.
- * @param {number} divisor The number, that divides the dividend.
+ * @param {number} dividend A number, that to be divided.
+ * @param {number} divisor A number, that divides the dividend.
  *
- * @returns {number} The closest factor (natural number (positive integer)) of the division.
+ * @returns {number} The closest factor of the division.
  */
 export function findClosestFactor(dividend, divisor) {
   const areArgumentsCorrect =
