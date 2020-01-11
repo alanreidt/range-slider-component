@@ -5,5 +5,9 @@
  * @param {number} divisor A number, that divides the dividend.
  */
 export function isDivisible(dividend, divisor) {
+  if (dividend === null) {
+    return false;
+  }
+
   return dividend % divisor === 0;
 }
