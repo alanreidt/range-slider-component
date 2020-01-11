@@ -1,4 +1,3 @@
-import { testFindClosestFactor } from "../src/utilities/findClosestFactor/findClosestFactor.test";
 import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.test";
 import { testSliderAdapter } from "./SliderAdapter.test";
 import { testSliderModel } from "./SliderModel.test";
@@ -16,9 +15,9 @@ import "../src/helpers/findValueByRatioBetween/findValueByRatioBetween.test";
 import "../src/utilities/isNumberBetween/isNumberBetween.test";
 import "../src/utilities/isNumberInBetween/isNumberInBetween.test";
 import "../src/utilities/findClosestDivisible/findClosestDivisible.test";
+import "../src/utilities/findClosestFactor/findClosestFactor.test";
 
 testAdjustValueToStep();
-testFindClosestFactor();
 testSetElementPosition();
 testObserverMixin();
 
