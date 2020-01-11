@@ -1,12 +1,12 @@
 /**
  * If this can be done, returns the closest number (the bigger one, if controversial)
- * that can be divided by divisor without the remainder.
+ * that can be divided by divisor without remainder.
  * Otherwise, returns NaN.
  *
- * @param {number} dividend The number, that to be divided.
- * @param {number} divisor The number, that divides the dividend.
+ * @param {number} dividend A number, that to be divided.
+ * @param {number} divisor A number, that divides the dividend.
  *
- * @returns {number} The closest number, that can be divided by divisor without the remainder.
+ * @returns {number} The closest divisible number between the dividend and the divisor.
  */
 export function findClosestDivisible(dividend, divisor) {
   if (dividend === null) {
