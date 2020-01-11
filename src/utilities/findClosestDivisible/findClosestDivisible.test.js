@@ -86,18 +86,11 @@ describe("findClosestDivisible", () => {
         assert.deepEqual(findClosestDivisible(-120, -100), -100);
       });
     });
-
-    context("corrects null to 0 for dividend", () => {
-      it(`closest divisible number for division of null by 100,
-      is equal to 0`, () => {
-        assert.deepEqual(findClosestDivisible(null, 100), 0);
-      });
-    });
   });
 
   describe("shall catch garbage input", () => {
     context("returns NaN if dividend parameter is incorrect", () => {
-      const testValues = [undefined, Infinity, NaN, "text", "123text"];
+      const testValues = [undefined, null, Infinity, NaN, "text", "123text"];
 
       testValues.forEach((testValue) => {
         it(`returns NaN, if dividend parameter equals to ${testValue}`, () => {
