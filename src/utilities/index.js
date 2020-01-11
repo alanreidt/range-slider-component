@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { findClosestDivisible } from "./findClosestDivisible";
 export { isNumberInBetween } from "./isNumberInBetween";
 export { isNumberBetween } from "./isNumberBetween";
 export { findClosestTo } from "./findClosestTo";
@@ -13,7 +14,6 @@ export { setElementTextContent } from "./setElementTextContent/setElementTextCon
 export { setElementPosition } from "./setElementPosition/setElementPosition";
 export { setElementsTextContent } from "./setElementsTextContent";
 export { setElementsPosition } from "./setElementsPosition";
-export { findClosestDivisible } from "./findClosestDivisible/findClosestDivisible";
 export { findClosestFactor } from "./findClosestFactor/findClosestFactor";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
