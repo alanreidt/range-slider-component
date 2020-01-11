@@ -9,6 +9,10 @@
  * @returns {number} The closest number, that can be divided by divisor without the remainder.
  */
 export function findClosestDivisible(dividend, divisor) {
+  if (dividend === null) {
+    return NaN;
+  }
+
   const absoluteOfDivisor = Math.abs(divisor);
 
   const result = Math.round(dividend / absoluteOfDivisor) * absoluteOfDivisor;
