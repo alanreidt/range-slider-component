@@ -1,0 +1,1 @@
+export { isDivisible } from "./isDivisible";

@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { isDivisible } from "./isDivisible";
 export { findClosestFactor } from "./findClosestFactor";
 export { findClosestDivisible } from "./findClosestDivisible";
 export { isNumberInBetween } from "./isNumberInBetween";
@@ -18,6 +19,5 @@ export { setElementsPosition } from "./setElementsPosition";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
 export { getPrevDivisibleOf } from "./getPrevDivisibleOf/getPrevDivisibleOf";
-export { isDivisible } from "./isDivisible/isDivisible";
 export { observerMixin } from "./observerMixin/observerMixin";
 export { findRatio } from "./findRatio";
