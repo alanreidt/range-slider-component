@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { either } from "./either";
 export { isDivisible } from "./isDivisible";
 export { findClosestFactor } from "./findClosestFactor";
 export { findClosestDivisible } from "./findClosestDivisible";
@@ -8,7 +9,6 @@ export { findClosestTo } from "./findClosestTo";
 export { findAntecedent } from "./findAntecedent";
 export { toFixed } from "./toFixed";
 export { toPercentage } from "./toPercentage";
-export { either } from "./either/either";
 export { cross } from "./cross/cross";
 export { packInto } from "./packInto/packInto";
 export { call } from "./call/call";
