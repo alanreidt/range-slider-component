@@ -3,43 +3,43 @@ import { assert } from "chai";
 import { findClosestDivisible } from "./findClosestDivisible";
 
 describe("findClosestDivisible", () => {
-  describe("shall return nearest divisible number", () => {
-    it(`nearest divisible number for division of 220 by 100,
+  describe("shall return closest divisible number", () => {
+    it(`closest divisible number for division of 220 by 100,
     is equal to 200`, () => {
       assert.deepEqual(findClosestDivisible(220, 100), 200);
     });
 
-    it(`nearest divisible number for division of 250 (controversial) by 100,
+    it(`closest divisible number for division of 250 (controversial) by 100,
     is equal to 300`, () => {
       assert.deepEqual(findClosestDivisible(250, 100), 300);
     });
 
-    it(`nearest divisible number for division of 280 by 100,
+    it(`closest divisible number for division of 280 by 100,
     is equal to 300`, () => {
       assert.deepEqual(findClosestDivisible(280, 100), 300);
     });
 
-    it(`nearest divisible number for division of 30 by 100,
+    it(`closest divisible number for division of 30 by 100,
     is equal to 0`, () => {
       assert.deepEqual(findClosestDivisible(30, 100), 0);
     });
 
-    it(`nearest divisible number for division of 60 by 100,
+    it(`closest divisible number for division of 60 by 100,
     is equal to 100`, () => {
       assert.deepEqual(findClosestDivisible(60, 100), 100);
     });
 
-    it(`nearest divisible number for division of -220 by 100,
+    it(`closest divisible number for division of -220 by 100,
     is equal to -200`, () => {
       assert.deepEqual(findClosestDivisible(-220, 100), -200);
     });
 
-    it(`nearest divisible number for division of -250 by 100,
+    it(`closest divisible number for division of -250 by 100,
     is equal to -200`, () => {
       assert.deepEqual(findClosestDivisible(-250, 100), -200);
     });
 
-    it(`nearest divisible number for division of -280 by 100,
+    it(`closest divisible number for division of -280 by 100,
     is equal to -300`, () => {
       assert.deepEqual(findClosestDivisible(-280, 100), -300);
     });
@@ -61,34 +61,34 @@ describe("findClosestDivisible", () => {
 
   describe("shall correct an input, if it's possible", () => {
     context("corrects negative divisor, removing sign", () => {
-      it(`nearest divisible number for division of 220 by -100,
+      it(`closest divisible number for division of 220 by -100,
       is equal to 200`, () => {
         assert.deepEqual(findClosestDivisible(220, -100), 200);
       });
 
-      it(`nearest divisible number for division of 250 by -100,
+      it(`closest divisible number for division of 250 by -100,
       is equal to 300`, () => {
         assert.deepEqual(findClosestDivisible(250, -100), 300);
       });
 
-      it(`nearest divisible number for division of 280 by -100,
+      it(`closest divisible number for division of 280 by -100,
       is equal to 300`, () => {
         assert.deepEqual(findClosestDivisible(280, -100), 300);
       });
 
-      it(`nearest divisible number for division of 0 by -100,
+      it(`closest divisible number for division of 0 by -100,
       is equal to 0`, () => {
         assert.deepEqual(findClosestDivisible(0, -100), 0);
       });
 
-      it(`nearest divisible number for division of -120 by -100,
+      it(`closest divisible number for division of -120 by -100,
       is equal to -100`, () => {
         assert.deepEqual(findClosestDivisible(-120, -100), -100);
       });
     });
 
     context("corrects null to 0 for dividend", () => {
-      it(`nearest divisible number for division of null by 100,
+      it(`closest divisible number for division of null by 100,
       is equal to 0`, () => {
         assert.deepEqual(findClosestDivisible(null, 100), 0);
       });
