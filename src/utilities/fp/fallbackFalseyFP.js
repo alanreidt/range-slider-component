@@ -1,5 +1,5 @@
-import { fallbackFalsey } from "../fallbackFalsey/fallbackFalsey";
+import { either } from "../either/either";
 
 const curryRight = require("lodash/curryRight");
 
-export const fallbackFalseyFP = curryRight(fallbackFalsey);
+export const fallbackFalseyFP = curryRight(either);

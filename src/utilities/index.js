@@ -8,7 +8,7 @@ export { findClosestTo } from "./findClosestTo";
 export { findAntecedent } from "./findAntecedent";
 export { toFixed } from "./toFixed";
 export { toPercentage } from "./toPercentage";
-export { fallbackFalsey } from "./fallbackFalsey/fallbackFalsey";
+export { either } from "./either/either";
 export { cross } from "./cross/cross";
 export { packInto } from "./packInto/packInto";
 export { call } from "./call/call";
