@@ -1,5 +1,5 @@
 /**
- * Defines whether dividend can be divided by divisor without the remainder or not.
+ * Defines whether a dividend can be divided by divisor without a remainder or not.
  *
  * @param {number} dividend A number, that to be divided.
  * @param {number} divisor A number, that divides the dividend.
