@@ -16,6 +16,7 @@ import "../src/utilities/isNumberBetween/isNumberBetween.test";
 import "../src/utilities/isNumberInBetween/isNumberInBetween.test";
 import "../src/utilities/findClosestDivisible/findClosestDivisible.test";
 import "../src/utilities/findClosestFactor/findClosestFactor.test";
+import "../src/utilities/isDivisible/isDivisible.test";
 
 testAdjustValueToStep();
 testSetElementPosition();
