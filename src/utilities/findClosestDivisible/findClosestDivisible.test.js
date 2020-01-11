@@ -1,112 +1,78 @@
-import { assert } from "chai";
-
 import { findClosestDivisible } from "./findClosestDivisible";
+import { makeTestClass, template } from "../../../tests/testUtilities";
 
 describe("findClosestDivisible", () => {
+  const describeTest = template`closest divisible number for division of ${0} by ${1} is ${"expectation"}`;
+  const TestClass = makeTestClass(findClosestDivisible, describeTest);
+
   describe("shall return closest divisible number", () => {
-    it(`closest divisible number for division of 220 by 100,
-    is equal to 200`, () => {
-      assert.deepEqual(findClosestDivisible(220, 100), 200);
-    });
+    const funcOptions = [
+      [220, 100],
+      [250, 100],
+      [280, 100],
+      [30, 100],
+      [60, 100],
+      [-220, 100],
+      [-250, 100],
+      [-280, 100],
+    ];
+    const expectations = [200, 300, 300, 0, 100, -200, -200, -300];
+    const test = new TestClass();
 
-    it(`closest divisible number for division of 250 (controversial) by 100,
-    is equal to 300`, () => {
-      assert.deepEqual(findClosestDivisible(250, 100), 300);
-    });
-
-    it(`closest divisible number for division of 280 by 100,
-    is equal to 300`, () => {
-      assert.deepEqual(findClosestDivisible(280, 100), 300);
-    });
-
-    it(`closest divisible number for division of 30 by 100,
-    is equal to 0`, () => {
-      assert.deepEqual(findClosestDivisible(30, 100), 0);
-    });
-
-    it(`closest divisible number for division of 60 by 100,
-    is equal to 100`, () => {
-      assert.deepEqual(findClosestDivisible(60, 100), 100);
-    });
-
-    it(`closest divisible number for division of -220 by 100,
-    is equal to -200`, () => {
-      assert.deepEqual(findClosestDivisible(-220, 100), -200);
-    });
-
-    it(`closest divisible number for division of -250 by 100,
-    is equal to -200`, () => {
-      assert.deepEqual(findClosestDivisible(-250, 100), -200);
-    });
-
-    it(`closest divisible number for division of -280 by 100,
-    is equal to -300`, () => {
-      assert.deepEqual(findClosestDivisible(-280, 100), -300);
-    });
+    test.test(funcOptions, expectations);
   });
 
   describe("shall return NaN, if operation can't be performed", () => {
-    it("return NaN, if divisor equals to 0", () => {
-      assert.deepEqual(findClosestDivisible(200, 0), NaN);
-    });
+    const funcOptions = [[200, 0], [], [200]];
+    const expectations = new Array(funcOptions.length).fill(NaN);
+    const test = new TestClass();
 
-    it("return NaN, if parameters isn't passed", () => {
-      assert.deepEqual(findClosestDivisible(), NaN);
-    });
-
-    it("return NaN, if only dividend is passed", () => {
-      assert.deepEqual(findClosestDivisible(200), NaN);
-    });
+    test.test(funcOptions, expectations);
   });
 
-  describe("shall correct an input, if it's possible", () => {
-    context("corrects negative divisor, removing sign", () => {
-      it(`closest divisible number for division of 220 by -100,
-      is equal to 200`, () => {
-        assert.deepEqual(findClosestDivisible(220, -100), 200);
-      });
+  describe("shall correct negative divisor, removing sign", () => {
+    const funcOptions = [
+      [220, -100],
+      [250, -100],
+      [280, -100],
+      [0, -100],
+      [-120, -100],
+    ];
+    const expectations = [200, 300, 300, 0, -100];
+    const test = new TestClass();
 
-      it(`closest divisible number for division of 250 by -100,
-      is equal to 300`, () => {
-        assert.deepEqual(findClosestDivisible(250, -100), 300);
-      });
-
-      it(`closest divisible number for division of 280 by -100,
-      is equal to 300`, () => {
-        assert.deepEqual(findClosestDivisible(280, -100), 300);
-      });
-
-      it(`closest divisible number for division of 0 by -100,
-      is equal to 0`, () => {
-        assert.deepEqual(findClosestDivisible(0, -100), 0);
-      });
-
-      it(`closest divisible number for division of -120 by -100,
-      is equal to -100`, () => {
-        assert.deepEqual(findClosestDivisible(-120, -100), -100);
-      });
-    });
+    test.test(funcOptions, expectations);
   });
 
   describe("shall catch garbage input", () => {
     context("returns NaN if dividend parameter is incorrect", () => {
-      const testValues = [undefined, null, Infinity, NaN, "text", "123text"];
+      const funcOptions = [
+        [undefined, 60],
+        [null, 60],
+        [Infinity, 60],
+        [NaN, 60],
+        ["text", 60],
+        ["123text", 60],
+      ];
+      const expectations = new Array(funcOptions.length).fill(NaN);
+      const test = new TestClass();
 
-      testValues.forEach((testValue) => {
-        it(`returns NaN, if dividend parameter equals to ${testValue}`, () => {
-          assert.deepEqual(findClosestDivisible(testValue, 60), NaN);
-        });
-      });
+      test.test(funcOptions, expectations);
     });
 
     context("returns NaN if divisor parameter is incorrect", () => {
-      const testValues = [undefined, null, Infinity, NaN, "text", "123text"];
+      const funcOptions = [
+        [100, undefined],
+        [100, null],
+        [100, Infinity],
+        [100, NaN],
+        [100, "text"],
+        [100, "123text"],
+      ];
+      const expectations = new Array(funcOptions.length).fill(NaN);
+      const test = new TestClass();
 
-      testValues.forEach((testValue) => {
-        it(`returns NaN, if divisor parameter equals to ${testValue}`, () => {
-          assert.deepEqual(findClosestDivisible(100, testValue), NaN);
-        });
-      });
+      test.test(funcOptions, expectations);
     });
   });
 });
