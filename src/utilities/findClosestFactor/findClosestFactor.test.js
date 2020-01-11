@@ -2,10 +2,10 @@ import { findClosestFactor } from "./findClosestFactor";
 import { makeTestClass, template } from "../../../tests/testUtilities";
 
 describe("findClosestFactor", () => {
-  const describeTest = template`nearest divisor of division of ${0} by ${1} is ${"expectation"}`;
+  const describeTest = template`closest factor for division of ${0} by ${1} is ${"expectation"}`;
   const TestClass = makeTestClass(findClosestFactor, describeTest);
 
-  describe("shall return nearest divisor", () => {
+  describe("shall return closest factor", () => {
     const funcOptions = [
       [900, 250],
       [120, 25],
