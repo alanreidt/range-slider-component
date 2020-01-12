@@ -24,7 +24,7 @@ export class SliderUI {
     );
 
     this._updateHandleGroups(positions, orientation);
-    this._updateTooltips(values);
+    this._setTooltipTextContents(values);
   }
 
   _paint(options) {
@@ -62,7 +62,7 @@ export class SliderUI {
     setElementsPosition(this.$handleGroups, positions);
   }
 
-  _updateTooltips(values) {
+  _setTooltipTextContents(values) {
     setElementsTextContent(this.$tooltips, values);
   }
 
