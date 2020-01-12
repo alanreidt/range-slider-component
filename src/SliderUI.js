@@ -23,7 +23,12 @@ export class SliderUI {
       findValuePositionBetween(value, ...boundaries),
     );
 
-    this._setHandleGroupPositions(positions, orientation);
+    if (orientation === "horizontal") {
+      this._setHandleGroupHorizontalPositions(positions);
+    } else {
+      this._setHandleGroupVerticalPositions(positions);
+    }
+
     this._setTooltipTextContents(values);
   }
 
@@ -53,13 +58,12 @@ export class SliderUI {
       </div>`;
   }
 
-  _setHandleGroupPositions(positions, orientation) {
-    if (orientation === "vertical") {
-      setElementsPosition(this.$handleGroups, positions, "top");
-      return;
-    }
-
+  _setHandleGroupHorizontalPositions(positions) {
     setElementsPosition(this.$handleGroups, positions);
+  }
+
+  _setHandleGroupVerticalPositions(positions) {
+    setElementsPosition(this.$handleGroups, positions, "top");
   }
 
   _setTooltipTextContents(values) {
