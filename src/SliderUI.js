@@ -23,7 +23,7 @@ export class SliderUI {
       findValuePositionBetween(value, ...boundaries),
     );
 
-    this._updateHandleGroups(positions, orientation);
+    this._setHandleGroupPositions(positions, orientation);
     this._setTooltipTextContents(values);
   }
 
@@ -53,7 +53,7 @@ export class SliderUI {
       </div>`;
   }
 
-  _updateHandleGroups(positions, orientation) {
+  _setHandleGroupPositions(positions, orientation) {
     if (orientation === "vertical") {
       setElementsPosition(this.$handleGroups, positions, "top");
       return;
