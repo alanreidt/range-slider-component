@@ -13,6 +13,9 @@ export class SliderUI {
     this.Model = Model;
 
     this._paint(Model.getOptions());
+    this._assignElements();
+    this.update(Model.getOptions());
+    this._addEventListeners();
   }
 
   update({ boundaries, values, orientation } = {}) {
@@ -26,11 +29,6 @@ export class SliderUI {
 
   _paint(options) {
     this.$parent.innerHTML = this._createTemplate(options);
-
-    this._assignElements();
-
-    this.update(options);
-    this._addEventListeners();
   }
 
   _assignElements() {
