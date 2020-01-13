@@ -59,11 +59,15 @@ export class SliderUI {
   }
 
   _setHandleGroupHorizontalPositions(positions) {
-    setElementsPosition(this.$handleGroups, positions);
+    this.$handleGroups.forEach(($handleGroup, i) => {
+      $handleGroup.style.left = positions[i];
+    });
   }
 
   _setHandleGroupVerticalPositions(positions) {
-    setElementsPosition(this.$handleGroups, positions, "top");
+    this.$handleGroups.forEach(($handleGroup, i) => {
+      $handleGroup.style.top = positions[i];
+    });
   }
 
   _setTooltipTextContents(values) {
