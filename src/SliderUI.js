@@ -1,7 +1,11 @@
 import isUndefined from "lodash/isUndefined";
 
 import { findRatio } from "./utilities";
-import { findValuePositionBetween, findValueByRatioBetween } from "./helpers";
+import {
+  findValuePositionBetween,
+  findValueByRatioBetween,
+  createTemplate,
+} from "./helpers";
 
 export class SliderUI {
   constructor($parent, Model) {
@@ -29,7 +33,7 @@ export class SliderUI {
   }
 
   _paint(options) {
-    this.$parent.innerHTML = this._createTemplate(options);
+    this.$parent.innerHTML = createTemplate(options);
   }
 
   _assignElements() {
@@ -37,21 +41,6 @@ export class SliderUI {
     this.$base = this.$parent.querySelector(".slider__base");
     this.$handleGroups = this._getHandleGroups();
     this.$tooltips = this._getTooltips();
-  }
-
-  _createTemplate({ values, orientation, hasTooltips } = {}) {
-    return `<div class="slider ${
-      orientation === "vertical" ? "slider_vertical" : ""
-    }">
-        <div class="slider__base">
-          ${values.reduce((str) => {
-            return `${str}<div class="slider__handle-group">
-              ${hasTooltips ? `<div class="slider__tooltip"></div>` : ""}
-              <div class="slider__handle"></div>
-            </div>`;
-          }, "")}
-        </div>
-      </div>`;
   }
 
   _setHandleGroupHorizontalPositions(positions) {
