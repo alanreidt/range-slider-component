@@ -2,7 +2,6 @@ import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.
 import { testSliderAdapter } from "./SliderAdapter.test";
 import { testSliderModel } from "./SliderModel.test";
 import { testSlider } from "./slider.test";
-import { testSetElementPosition } from "../src/utilities/setElementPosition/setElementPosition.test";
 import { testSliderUI } from "./SliderUI.test";
 import { testAdjustValueToStep } from "../src/helpers/adjustValueToStep/adjustValueToStep.test";
 import "../src/utilities/findRatio/findRatio.test";
@@ -20,7 +19,6 @@ import "../src/utilities/isDivisible/isDivisible.test";
 import "../src/utilities/either/either.test";
 
 testAdjustValueToStep();
-testSetElementPosition();
 testObserverMixin();
 
 testSliderModel();
