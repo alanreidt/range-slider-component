@@ -13,6 +13,9 @@ export class SliderUI {
     this.Model = Model;
 
     this._paint(Model.getOptions());
+    this._assignElements();
+    this.update(Model.getOptions());
+    this._addEventListeners();
   }
 
   update({ boundaries, values, orientation } = {}) {
@@ -20,20 +23,24 @@ export class SliderUI {
       findValuePositionBetween(value, ...boundaries),
     );
 
-    this._updateHandleGroups(positions, orientation);
-    this._updateTooltips(values);
+    if (orientation === "horizontal") {
+      this._setHandleGroupHorizontalPositions(positions);
+    } else {
+      this._setHandleGroupVerticalPositions(positions);
+    }
+
+    this._setTooltipTextContents(values);
   }
 
   _paint(options) {
     this.$parent.innerHTML = this._createTemplate(options);
+  }
 
+  _assignElements() {
     this.$slider = this.$parent.querySelector(".slider");
     this.$base = this.$parent.querySelector(".slider__base");
     this.$handleGroups = this._getHandleGroups();
     this.$tooltips = this._getTooltips();
-
-    this.update(options);
-    this._addEventListeners();
   }
 
   _createTemplate({ values, orientation, hasTooltips } = {}) {
@@ -51,16 +58,15 @@ export class SliderUI {
       </div>`;
   }
 
-  _updateHandleGroups(positions, orientation) {
-    if (orientation === "vertical") {
-      setElementsPosition(this.$handleGroups, positions, "top");
-      return;
-    }
-
+  _setHandleGroupHorizontalPositions(positions) {
     setElementsPosition(this.$handleGroups, positions);
   }
 
-  _updateTooltips(values) {
+  _setHandleGroupVerticalPositions(positions) {
+    setElementsPosition(this.$handleGroups, positions, "top");
+  }
+
+  _setTooltipTextContents(values) {
     setElementsTextContent(this.$tooltips, values);
   }
 
@@ -115,9 +121,9 @@ export class SliderUI {
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
-    const [normalizedCoordinate, sliderSize] = !isUndefined(xCoordinate)
-      ? [this._normalizeXCoordinate(xCoordinate), this._getSliderWidth()]
-      : [this._normalizeYCoordinate(yCoordinate), this._getSliderHeight()];
+    const [adjustedCoordinate, sliderSize] = !isUndefined(xCoordinate)
+      ? [this._adjustToSliderXCoordinate(xCoordinate), this._getSliderWidth()]
+      : [this._adjustToSliderYCoordinate(yCoordinate), this._getSliderHeight()];
 
     const ratio = findRatio(normalizedCoordinate, sliderSize);
     const { boundaries } = this.Model.getOptions();
@@ -125,7 +131,7 @@ export class SliderUI {
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
-  _normalizeXCoordinate(xCoordinate) {
+  _adjustToSliderXCoordinate(xCoordinate) {
     return xCoordinate - this.$slider.getBoundingClientRect().left;
   }
 
@@ -133,7 +139,7 @@ export class SliderUI {
     return this.$slider.getBoundingClientRect().width;
   }
 
-  _normalizeYCoordinate(yCoordinate) {
+  _adjustToSliderYCoordinate(yCoordinate) {
     return yCoordinate - this.$slider.getBoundingClientRect().top;
   }
 
