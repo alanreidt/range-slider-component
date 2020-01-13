@@ -13,6 +13,9 @@ export class SliderUI {
     this.Model = Model;
 
     this._paint(Model.getOptions());
+    this._assignElements();
+    this.update(Model.getOptions());
+    this._addEventListeners();
   }
 
   update({ boundaries, values, orientation } = {}) {
@@ -20,17 +23,17 @@ export class SliderUI {
       findValuePositionBetween(value, ...boundaries),
     );
 
-    this._updateHandleGroups(positions, orientation);
-    this._updateTooltips(values);
+    if (orientation === "horizontal") {
+      this._setHandleGroupHorizontalPositions(positions);
+    } else {
+      this._setHandleGroupVerticalPositions(positions);
+    }
+
+    this._setTooltipTextContents(values);
   }
 
   _paint(options) {
     this.$parent.innerHTML = this._createTemplate(options);
-
-    this._assignElements();
-
-    this.update(options);
-    this._addEventListeners();
   }
 
   _assignElements() {
@@ -55,16 +58,15 @@ export class SliderUI {
       </div>`;
   }
 
-  _updateHandleGroups(positions, orientation) {
-    if (orientation === "vertical") {
-      setElementsPosition(this.$handleGroups, positions, "top");
-      return;
-    }
-
+  _setHandleGroupHorizontalPositions(positions) {
     setElementsPosition(this.$handleGroups, positions);
   }
 
-  _updateTooltips(values) {
+  _setHandleGroupVerticalPositions(positions) {
+    setElementsPosition(this.$handleGroups, positions, "top");
+  }
+
+  _setTooltipTextContents(values) {
     setElementsTextContent(this.$tooltips, values);
   }
 
