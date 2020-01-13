@@ -71,7 +71,9 @@ export class SliderUI {
   }
 
   _setTooltipTextContents(values) {
-    setElementsTextContent(this.$tooltips, values);
+    this.$tooltips.forEach(($tooltip, i) => {
+      $tooltip.textContent = values[i];
+    });
   }
 
   _getHandleGroups() {
