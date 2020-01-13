@@ -125,7 +125,7 @@ export class SliderUI {
       ? [this._adjustToSliderXCoordinate(xCoordinate), this._getSliderWidth()]
       : [this._adjustToSliderYCoordinate(yCoordinate), this._getSliderHeight()];
 
-    const ratio = findRatio(normalizedCoordinate, sliderSize);
+    const ratio = findRatio(adjustedCoordinate, sliderSize);
     const { boundaries } = this.Model.getOptions();
 
     return findValueByRatioBetween(ratio, ...boundaries);
