@@ -1,10 +1,6 @@
 import isUndefined from "lodash/isUndefined";
 
-import {
-  setElementsPosition,
-  setElementsTextContent,
-  findRatio,
-} from "./utilities";
+import { findRatio } from "./utilities";
 import { findValuePositionBetween, findValueByRatioBetween } from "./helpers";
 
 export class SliderUI {
