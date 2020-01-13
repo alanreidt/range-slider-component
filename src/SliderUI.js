@@ -32,17 +32,6 @@ export class SliderUI {
     this._setTooltipTextContents(values);
   }
 
-  _paint(options) {
-    this.$parent.innerHTML = createTemplate(options);
-  }
-
-  _assignElements() {
-    this.$slider = this.$parent.querySelector(".slider");
-    this.$base = this.$parent.querySelector(".slider__base");
-    this.$handleGroups = this._getHandleGroups();
-    this.$tooltips = this._getTooltips();
-  }
-
   _setHandleGroupHorizontalPositions(positions) {
     this.$handleGroups.forEach(($handleGroup, i) => {
       $handleGroup.style.left = positions[i];
@@ -59,6 +48,17 @@ export class SliderUI {
     this.$tooltips.forEach(($tooltip, i) => {
       $tooltip.textContent = values[i];
     });
+  }
+
+  _paint(options) {
+    this.$parent.innerHTML = createTemplate(options);
+  }
+
+  _assignElements() {
+    this.$slider = this.$parent.querySelector(".slider");
+    this.$base = this.$parent.querySelector(".slider__base");
+    this.$handleGroups = this._getHandleGroups();
+    this.$tooltips = this._getTooltips();
   }
 
   _getHandleGroups() {
@@ -126,12 +126,12 @@ export class SliderUI {
     return xCoordinate - this.$slider.getBoundingClientRect().left;
   }
 
-  _getSliderWidth() {
-    return this.$slider.getBoundingClientRect().width;
-  }
-
   _adjustToSliderYCoordinate(yCoordinate) {
     return yCoordinate - this.$slider.getBoundingClientRect().top;
+  }
+
+  _getSliderWidth() {
+    return this.$slider.getBoundingClientRect().width;
   }
 
   _getSliderHeight() {
