@@ -34,7 +34,7 @@ export function testSlider() {
         this.addSubscriberArgs = args;
       },
     };
-    const sliderUi = {
+    const sliderUI = {
       arguments: null,
       setElements() {},
     };
@@ -50,7 +50,7 @@ export function testSlider() {
     const factory = {
       createModel: makeClassMock(sliderModel),
       createAdapter: makeClassMock(sliderAdapter),
-      createUI: makeClassMock(sliderUi),
+      createUI: makeClassMock(sliderUI),
     };
     const $parent = document.createElement("div");
 
@@ -81,17 +81,17 @@ export function testSlider() {
         },
       );
 
-      context("shall create sliderUi with $parent and sliderAdapter", () => {
-        it("sliderUi arguments is not equal to null", () => {
-          assert.isNotNull(sliderUi.arguments);
+      context("shall create sliderUI with $parent and sliderAdapter", () => {
+        it("sliderUI arguments is not equal to null", () => {
+          assert.isNotNull(sliderUI.arguments);
         });
 
-        it("sliderUi arguments[0] is equal to $parent", () => {
-          assert.equal(sliderUi.arguments[0], $parent);
+        it("sliderUI arguments[0] is equal to $parent", () => {
+          assert.equal(sliderUI.arguments[0], $parent);
         });
 
-        it("sliderUi arguments[1] is equal to sliderAdapter", () => {
-          assert.equal(sliderUi.arguments[1], sliderAdapter);
+        it("sliderUI arguments[1] is equal to sliderAdapter", () => {
+          assert.equal(sliderUI.arguments[1], sliderAdapter);
         });
       });
 
@@ -106,17 +106,17 @@ export function testSlider() {
             assert.equal(sliderAdapter.addSubscriberArgs[0], "update");
           });
 
-          it("sliderAdapter addSubscriberArgs[1] is equal to sliderUi setElements method", () => {
+          it("sliderAdapter addSubscriberArgs[1] is equal to sliderUI setElements method", () => {
             assert.equal(
               sliderAdapter.addSubscriberArgs[1],
-              sliderUi.setElements,
+              sliderUI.setElements,
             );
           });
         },
       );
 
       context(
-        "shall create parentsMap with sliderModel, sliderAdapter and sliderUi",
+        "shall create parentsMap with sliderModel, sliderAdapter and sliderUI",
         () => {
           it("sliderAPI parentsMap length is not equal to 0", () => {
             assert.notEqual(slider._parentsMap.length, 0);
@@ -140,8 +140,8 @@ export function testSlider() {
             );
           });
 
-          it("sliderAPI parentsMap $parent sliderUi is equal to sliderUi", () => {
-            assert.equal(slider._parentsMap.get($parent).sliderUi, sliderUi);
+          it("sliderAPI parentsMap $parent sliderUI is equal to sliderUI", () => {
+            assert.equal(slider._parentsMap.get($parent).sliderUI, sliderUI);
           });
         },
       );
