@@ -21,15 +21,15 @@ export const slider = {
   create($parent, options) {
     const sliderModel = this._factory.createModel(options);
     const sliderAdapter = this._factory.createAdapter(sliderModel);
-    const sliderUi = this._factory.createUI($parent, sliderAdapter);
+    const sliderUI = this._factory.createUI($parent, sliderAdapter);
 
-    const sliderUiSetElementsBound = sliderUi.setElements.bind(sliderUi);
+    const sliderUiSetElementsBound = sliderUI.setElements.bind(sliderUI);
     sliderAdapter.addSubscriber("update", sliderUiSetElementsBound);
 
     this._parentsMap.set($parent, {
       sliderModel,
       sliderAdapter,
-      sliderUi,
+      sliderUI,
     });
   },
 
