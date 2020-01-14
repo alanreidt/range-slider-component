@@ -1,10 +1,9 @@
 /**
- * Description
+ * Returns a string, that contains Slider DOM structure.
  *
- * @param {number}
- * @param {number}
+ * @param {object} An object, which contains Slider properties.
  *
- * @returns {number}
+ * @returns {string}
  */
 export function createTemplate({ values, orientation, hasTooltips } = {}) {
   return `<div class="slider ${
