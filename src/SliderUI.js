@@ -14,11 +14,11 @@ export class SliderUI {
 
     this._paint(model.getOptions());
     this._assignElements();
-    this.update(model.getOptions());
+    this.setElements(model.getOptions());
     this._addEventListeners();
   }
 
-  update({ boundaries, values, orientation } = {}) {
+  setElements({ boundaries, values, orientation } = {}) {
     const positions = values.map((value) =>
       findValuePositionBetween(value, ...boundaries),
     );
