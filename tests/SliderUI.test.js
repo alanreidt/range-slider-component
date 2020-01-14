@@ -524,7 +524,7 @@ export function testSliderUI() {
       describe("shall update values", () => {
         const newValues = [10, 60];
 
-        sliderUi.update({
+        sliderUi.setElements({
           boundaries: [0, 100],
           values: newValues,
         });

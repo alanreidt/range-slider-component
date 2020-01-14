@@ -36,7 +36,7 @@ export function testSlider() {
     };
     const sliderUi = {
       arguments: null,
-      update() {},
+      setElements() {},
     };
 
     const makeClassMock = (obj) => {
@@ -104,8 +104,11 @@ export function testSlider() {
           assert.equal(sliderAdapter.addSubscriberArgs[0], "update");
         });
 
-        it("sliderAdapter addSubscriberArgs[1] is equal to sliderUi update method", () => {
-          assert.equal(sliderAdapter.addSubscriberArgs[1], sliderUi.update);
+        it("sliderAdapter addSubscriberArgs[1] is equal to sliderUi setElements method", () => {
+          assert.equal(
+            sliderAdapter.addSubscriberArgs[1],
+            sliderUi.setElements,
+          );
         });
       });
 

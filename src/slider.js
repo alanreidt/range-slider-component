@@ -23,8 +23,8 @@ export const slider = {
     const sliderAdapter = this._factory.createAdapter(sliderModel);
     const sliderUi = this._factory.createUI($parent, sliderAdapter);
 
-    const sliderUiBoundedUpdate = sliderUi.update.bind(sliderUi);
-    sliderAdapter.addSubscriber("update", sliderUiBoundedUpdate);
+    const sliderUiSetElementsBound = sliderUi.setElements.bind(sliderUi);
+    sliderAdapter.addSubscriber("update", sliderUiSetElementsBound);
 
     this._parentsMap.set($parent, {
       sliderModel,
