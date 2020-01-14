@@ -8,13 +8,13 @@ import {
 } from "./helpers";
 
 export class SliderUI {
-  constructor($parent, Model) {
+  constructor($parent, model) {
     this.$parent = $parent;
-    this.Model = Model;
+    this.model = model;
 
-    this._paint(Model.getOptions());
+    this._paint(model.getOptions());
     this._assignElements();
-    this.update(Model.getOptions());
+    this.update(model.getOptions());
     this._addEventListeners();
   }
 
@@ -92,7 +92,7 @@ export class SliderUI {
 
   _triggerModel(event, onMouseDownEvent) {
     event.preventDefault();
-    const { orientation } = this.Model.getOptions();
+    const { orientation } = this.model.getOptions();
 
     const newValue =
       orientation === "horizontal"
@@ -105,9 +105,9 @@ export class SliderUI {
     );
 
     if (onMouseDownEventTargetIndex !== -1) {
-      this.Model.setValueAt(onMouseDownEventTargetIndex, newValue);
+      this.model.setValueAt(onMouseDownEventTargetIndex, newValue);
     } else if (event.target === this.$base) {
-      this.Model.setOptions({ values: newValue });
+      this.model.setOptions({ values: newValue });
     }
   }
 
@@ -117,7 +117,7 @@ export class SliderUI {
       : [this._adjustToSliderYCoordinate(yCoordinate), this._getSliderHeight()];
 
     const ratio = findRatio(adjustedCoordinate, sliderSize);
-    const { boundaries } = this.Model.getOptions();
+    const { boundaries } = this.model.getOptions();
 
     return findValueByRatioBetween(ratio, ...boundaries);
   }
