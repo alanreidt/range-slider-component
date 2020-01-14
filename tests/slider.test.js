@@ -95,22 +95,25 @@ export function testSlider() {
         });
       });
 
-      context("shall subscribe sliderUI update method to sliderAdapter", () => {
-        it("sliderAdapter addSubscriberArgs is not equal to null", () => {
-          assert.isNotNull(sliderAdapter.addSubscriberArgs);
-        });
+      context(
+        "shall subscribe sliderUI setElements method to sliderAdapter",
+        () => {
+          it("sliderAdapter addSubscriberArgs is not equal to null", () => {
+            assert.isNotNull(sliderAdapter.addSubscriberArgs);
+          });
 
-        it("sliderAdapter addSubscriberArgs[0] is equal to 'update'", () => {
-          assert.equal(sliderAdapter.addSubscriberArgs[0], "update");
-        });
+          it("sliderAdapter addSubscriberArgs[0] is equal to 'update'", () => {
+            assert.equal(sliderAdapter.addSubscriberArgs[0], "update");
+          });
 
-        it("sliderAdapter addSubscriberArgs[1] is equal to sliderUi setElements method", () => {
-          assert.equal(
-            sliderAdapter.addSubscriberArgs[1],
-            sliderUi.setElements,
-          );
-        });
-      });
+          it("sliderAdapter addSubscriberArgs[1] is equal to sliderUi setElements method", () => {
+            assert.equal(
+              sliderAdapter.addSubscriberArgs[1],
+              sliderUi.setElements,
+            );
+          });
+        },
+      );
 
       context(
         "shall create parentsMap with sliderModel, sliderAdapter and sliderUi",

@@ -486,7 +486,7 @@ export function testSliderUI() {
       });
     });
 
-    describe("update method", () => {
+    describe("setElements method", () => {
       const $parent = document.createElement("div");
       const options = {
         boundaries: [0, 100],
