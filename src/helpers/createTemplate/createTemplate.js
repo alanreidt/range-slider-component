@@ -10,8 +10,8 @@ export function createTemplate({ values, orientation, hasTooltips } = {}) {
     orientation === "vertical" ? "slider_vertical" : ""
   }">
       <div class="slider__base">
-        ${values.reduce((str) => {
-          return `${str}<div class="slider__handle-group">
+        ${values.reduce((str, value, index) => {
+          return `${str}<div class="slider__handle-group" data-index="${index}">
             ${hasTooltips ? `<div class="slider__tooltip"></div>` : ""}
             <div class="slider__handle"></div>
           </div>`;
