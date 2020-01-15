@@ -100,11 +100,10 @@ export class SliderUI {
         : this._convertCoordinateToValue({ yCoordinate: event.clientY });
 
     const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
-    const onMouseDownEventTargetIndex = this.$handleGroups.findIndex(
-      ($handleGroup) => $handleGroup.contains(onMouseDownEventTarget),
-    );
+    const onMouseDownEventTargetIndex =
+      onMouseDownEventTarget && onMouseDownEventTarget.dataset.index;
 
-    if (onMouseDownEventTargetIndex !== -1) {
+    if (!isUndefined(onMouseDownEventTargetIndex)) {
       this.model.setValueAt(onMouseDownEventTargetIndex, newValue);
     } else if (event.target === this.$base) {
       this.model.setOptions({ values: newValue });
