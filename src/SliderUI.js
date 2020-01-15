@@ -14,8 +14,8 @@ export class SliderUI {
 
     this._paint(model.getOptions());
     this._assignElements();
-    this.setElements(model.getOptions());
     this._addEventListeners();
+    this.setElements(model.getOptions());
   }
 
   setElements({ boundaries, values, orientation } = {}) {
