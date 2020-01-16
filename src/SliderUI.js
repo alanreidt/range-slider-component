@@ -80,12 +80,7 @@ export class SliderUI {
   _handleSliderMouseDown(event) {
     event.preventDefault();
 
-    const { orientation } = this.model.getOptions();
-    const newValue =
-      orientation === "horizontal"
-        ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
-        : this._convertCoordinateToValue({ yCoordinate: event.clientY });
-
+    const newValue = this._findValue(event);
     const target = event && event.target;
 
     if (target === this.$base) {
@@ -110,12 +105,7 @@ export class SliderUI {
 
   _handleDocumentMouseMove(handleGroup, event) {
     const index = Number(handleGroup.dataset.index);
-
-    const { orientation } = this.model.getOptions();
-    const newValue =
-      orientation === "horizontal"
-        ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
-        : this._convertCoordinateToValue({ yCoordinate: event.clientY });
+    const newValue = this._findValue(event);
 
     this.model.setValueAt(index, newValue);
   }
@@ -126,6 +116,14 @@ export class SliderUI {
       this._handleDocumentMouseMoveLocked,
     );
     document.removeEventListener("mouseup", this._handleDocumentMouseUp);
+  }
+
+  _findValue(event) {
+    const { orientation } = this.model.getOptions();
+
+    return orientation === "horizontal"
+      ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
+      : this._convertCoordinateToValue({ yCoordinate: event.clientY });
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
