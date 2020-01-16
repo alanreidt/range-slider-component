@@ -12,9 +12,13 @@ export class SliderUI {
     this.$parent = $parent;
     this.model = model;
 
+    this._handleSliderMouseDown = this._handleSliderMouseDown.bind(this);
+    this._handleDocumentMouseMove = this._handleDocumentMouseMove.bind(this);
+    this._handleDocumentMouseUp = this._handleDocumentMouseUp.bind(this);
+
     this._paint(model.getOptions());
     this._assignElements();
-    this._addEventListeners();
+    this._addEventListener();
     this.setElements(model.getOptions());
   }
 
@@ -69,45 +73,70 @@ export class SliderUI {
     return Array.from(this.$parent.querySelectorAll(".slider__tooltip"));
   }
 
-  _addEventListeners() {
-    this.$handleGroups.forEach(($handleGroup) => {
-      $handleGroup.onmousedown = this._onMouseDown.bind(this);
-    });
-    this.$base.onmousedown = this._triggerModel.bind(this);
+  _addEventListener() {
+    this.$slider.onmousedown = this._handleSliderMouseDown;
   }
 
-  _onMouseDown(onMouseDownEvent) {
-    this._triggerModelBound = (event) =>
-      this._triggerModel.call(this, event, onMouseDownEvent);
-    this._onMouseUpBound = this._onMouseUp.bind(this);
-
-    document.addEventListener("mousemove", this._triggerModelBound);
-    document.addEventListener("mouseup", this._onMouseUpBound);
-  }
-
-  _onMouseUp() {
-    document.removeEventListener("mouseup", this._onMouseUpBound);
-    document.removeEventListener("mousemove", this._triggerModelBound);
-  }
-
-  _triggerModel(event, onMouseDownEvent) {
+  _handleSliderMouseDown(event) {
     event.preventDefault();
-    const { orientation } = this.model.getOptions();
 
+    const { orientation } = this.model.getOptions();
     const newValue =
       orientation === "horizontal"
         ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
         : this._convertCoordinateToValue({ yCoordinate: event.clientY });
 
-    const onMouseDownEventTarget = onMouseDownEvent && onMouseDownEvent.target;
-    const onMouseDownEventTargetIndex =
-      onMouseDownEventTarget && onMouseDownEventTarget.dataset.index;
+    const target = event && event.target;
 
-    if (!isUndefined(onMouseDownEventTargetIndex)) {
-      this.model.setValueAt(onMouseDownEventTargetIndex, newValue);
-    } else if (event.target === this.$base) {
+    if (target === this.$base) {
       this.model.setOptions({ values: newValue });
     }
+
+    const currentHandleGroup =
+      target && target.closest(".slider__handle-group");
+
+    if (currentHandleGroup) {
+      this._handleHandleGroupMouseDown(currentHandleGroup);
+    }
+  }
+
+  _handleHandleGroupMouseDown(currentHandleGroup) {
+    this._handleDocumentMouseMoveBlocked = (currentEvent) =>
+      this._handleDocumentMouseMove.call(
+        this,
+        currentEvent,
+        currentHandleGroup,
+      );
+
+    document.addEventListener(
+      "mousemove",
+      this._handleDocumentMouseMoveBlocked,
+    );
+    document.addEventListener("mouseup", this._handleDocumentMouseUp);
+  }
+
+  _handleDocumentMouseMove(currentEvent, currentHandleGroup) {
+    const index = Number(currentHandleGroup.dataset.index);
+
+    const { orientation } = this.model.getOptions();
+    const newValue =
+      orientation === "horizontal"
+        ? this._convertCoordinateToValue({
+            xCoordinate: currentEvent.clientX,
+          })
+        : this._convertCoordinateToValue({
+            yCoordinate: currentEvent.clientY,
+          });
+
+    this.model.setValueAt(index, newValue);
+  }
+
+  _handleDocumentMouseUp() {
+    document.removeEventListener(
+      "mousemove",
+      this._handleDocumentMouseMoveBlocked,
+    );
+    document.removeEventListener("mouseup", this._handleDocumentMouseUp);
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
