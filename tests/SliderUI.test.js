@@ -308,7 +308,7 @@ export function testSliderUI() {
           $parent.innerHTML = "";
         });
 
-        describe("shall listen to events on $handleGroup element", () => {
+        describe("shall listen to events on $handle element", () => {
           context(
             "trigger sliderAdapter setValueAt method on mousemove during mousedown event",
             () => {
@@ -344,15 +344,13 @@ export function testSliderUI() {
                 new SliderUI($parent, sliderAdapter);
 
                 const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-                const $handleGroup = $parent.querySelector(
-                  `.${SLIDER_HANDLE_GROUP_NAME}`,
-                );
+                const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
                 $slider.style.width = "200px";
 
                 const expectationValue = expectationValues[i];
 
-                simulateMouseEvent("mousedown", $handleGroup);
+                simulateMouseEvent("mousedown", $handle);
                 simulateMouseEvent("mousemove", document, {
                   clientX: mousePositionValue,
                 });
@@ -406,15 +404,13 @@ export function testSliderUI() {
                 new SliderUI($parent, sliderAdapter);
 
                 const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-                const $handleGroup = $parent.querySelector(
-                  `.${SLIDER_HANDLE_GROUP_NAME}`,
-                );
+                const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
                 $slider.style.height = "200px";
 
                 const expectationValue = expectationValues[i];
 
-                simulateMouseEvent("mousedown", $handleGroup);
+                simulateMouseEvent("mousedown", $handle);
                 simulateMouseEvent("mousemove", document, {
                   clientY: mousePositionValue,
                 });
@@ -460,15 +456,13 @@ export function testSliderUI() {
             new SliderUI($parent, sliderAdapter);
 
             const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-            const $handleGroup = $parent.querySelector(
-              `.${SLIDER_HANDLE_GROUP_NAME}`,
-            );
+            const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
             $slider.style.height = "200px";
 
             const modelValues = sliderAdapter._options.values.slice();
 
-            simulateMouseEvent("mousedown", $handleGroup);
+            simulateMouseEvent("mousedown", $handle);
             simulateMouseEvent("mouseup", document);
             simulateMouseEvent("mousemove", document, { clientY: 100 });
 
