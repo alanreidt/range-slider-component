@@ -12,9 +12,7 @@ export class SliderUI {
     this.$parent = $parent;
     this.model = model;
 
-    this._handleSliderMouseDown = this._handleSliderMouseDown.bind(this);
-    this._handleDocumentMouseMove = this._handleDocumentMouseMove.bind(this);
-    this._handleDocumentMouseUp = this._handleDocumentMouseUp.bind(this);
+    this._bindMethods();
 
     this._paint(model.getOptions());
     this._assignElements();
@@ -52,6 +50,12 @@ export class SliderUI {
     this.$tooltips.forEach(($tooltip, i) => {
       $tooltip.textContent = values[i];
     });
+  }
+
+  _bindMethods() {
+    this._handleSliderMouseDown = this._handleSliderMouseDown.bind(this);
+    this._handleDocumentMouseMove = this._handleDocumentMouseMove.bind(this);
+    this._handleDocumentMouseUp = this._handleDocumentMouseUp.bind(this);
   }
 
   _paint(options) {
