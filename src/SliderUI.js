@@ -100,33 +100,22 @@ export class SliderUI {
     }
   }
 
-  _handleHandleGroupMouseDown(currentHandleGroup) {
-    this._handleDocumentMouseMoveBlocked = (currentEvent) =>
-      this._handleDocumentMouseMove.call(
-        this,
-        currentEvent,
-        currentHandleGroup,
-      );
+  _handleHandleGroupMouseDown(handleGroup) {
+    this._handleDocumentMouseMoveLocked = (event) =>
+      this._handleDocumentMouseMove.call(this, handleGroup, event);
 
-    document.addEventListener(
-      "mousemove",
-      this._handleDocumentMouseMoveBlocked,
-    );
+    document.addEventListener("mousemove", this._handleDocumentMouseMoveLocked);
     document.addEventListener("mouseup", this._handleDocumentMouseUp);
   }
 
-  _handleDocumentMouseMove(currentEvent, currentHandleGroup) {
-    const index = Number(currentHandleGroup.dataset.index);
+  _handleDocumentMouseMove(handleGroup, event) {
+    const index = Number(handleGroup.dataset.index);
 
     const { orientation } = this.model.getOptions();
     const newValue =
       orientation === "horizontal"
-        ? this._convertCoordinateToValue({
-            xCoordinate: currentEvent.clientX,
-          })
-        : this._convertCoordinateToValue({
-            yCoordinate: currentEvent.clientY,
-          });
+        ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
+        : this._convertCoordinateToValue({ yCoordinate: event.clientY });
 
     this.model.setValueAt(index, newValue);
   }
@@ -134,7 +123,7 @@ export class SliderUI {
   _handleDocumentMouseUp() {
     document.removeEventListener(
       "mousemove",
-      this._handleDocumentMouseMoveBlocked,
+      this._handleDocumentMouseMoveLocked,
     );
     document.removeEventListener("mouseup", this._handleDocumentMouseUp);
   }
