@@ -18,7 +18,7 @@ export class SliderUI {
 
     this._paint(model.getOptions());
     this._assignElements();
-    this._addEventListener();
+    this._addSliderEventListener();
     this.setElements(model.getOptions());
   }
 
@@ -73,7 +73,7 @@ export class SliderUI {
     return Array.from(this.$parent.querySelectorAll(".slider__tooltip"));
   }
 
-  _addEventListener() {
+  _addSliderEventListener() {
     this.$slider.onmousedown = this._handleSliderMouseDown;
   }
 
