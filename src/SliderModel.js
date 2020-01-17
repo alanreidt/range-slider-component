@@ -33,6 +33,58 @@ export class SliderModel {
     });
   }
 
+  getOptions() {
+    return {
+      boundaries: this._boundaries,
+      values: this._values,
+      step: this._step,
+      orientation: this._orientation,
+      hasTooltips: this._hasTooltips,
+    };
+  }
+
+  setOptions(newOptions) {
+    Object.keys(this._options).forEach((key) => {
+      this[`_${key}`] = newOptions[key];
+    });
+
+    return this.getOptions();
+  }
+
+  setValueAt(index, value) {
+    const currentValues = this._options.values;
+    const newValues = currentValues.slice();
+    const [prevValue, nextValue] = [
+      currentValues[index - 1],
+      currentValues[index + 1],
+    ];
+
+    let newValue = value;
+
+    if (currentValues.length === 1) {
+      this.setOptions({ values: newValue });
+      return;
+    }
+
+    if (isUndefined(prevValue)) {
+      newValue = newValue < nextValue ? newValue : nextValue;
+    }
+
+    if (isUndefined(nextValue)) {
+      newValue = newValue > prevValue ? newValue : prevValue;
+    }
+
+    if (!isUndefined(prevValue) && !isUndefined(nextValue)) {
+      newValue = isNumberInBetween(newValue, prevValue, nextValue)
+        ? newValue
+        : findClosestTo(newValue, prevValue, nextValue);
+    }
+
+    newValues.splice(index, 1, newValue);
+
+    this.setOptions({ values: newValues });
+  }
+
   get _boundaries() {
     return this._options.boundaries;
   }
@@ -108,57 +160,5 @@ export class SliderModel {
     if (value !== false && value !== true) return;
 
     this._options.hasTooltips = value;
-  }
-
-  setValueAt(index, value) {
-    const currentValues = this._options.values;
-    const newValues = currentValues.slice();
-    const [prevValue, nextValue] = [
-      currentValues[index - 1],
-      currentValues[index + 1],
-    ];
-
-    let newValue = value;
-
-    if (currentValues.length === 1) {
-      this.setOptions({ values: newValue });
-      return;
-    }
-
-    if (isUndefined(prevValue)) {
-      newValue = newValue < nextValue ? newValue : nextValue;
-    }
-
-    if (isUndefined(nextValue)) {
-      newValue = newValue > prevValue ? newValue : prevValue;
-    }
-
-    if (!isUndefined(prevValue) && !isUndefined(nextValue)) {
-      newValue = isNumberInBetween(newValue, prevValue, nextValue)
-        ? newValue
-        : findClosestTo(newValue, prevValue, nextValue);
-    }
-
-    newValues.splice(index, 1, newValue);
-
-    this.setOptions({ values: newValues });
-  }
-
-  getOptions() {
-    return {
-      boundaries: this._boundaries,
-      values: this._values,
-      step: this._step,
-      orientation: this._orientation,
-      hasTooltips: this._hasTooltips,
-    };
-  }
-
-  setOptions(newOptions) {
-    Object.keys(this._options).forEach((key) => {
-      this[`_${key}`] = newOptions[key];
-    });
-
-    return this.getOptions();
   }
 }
