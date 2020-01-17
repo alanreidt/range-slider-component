@@ -108,7 +108,7 @@ export function testSlider() {
         });
 
         it("sliderAPI parentsMap $parent model is equal to model", () => {
-          assert.equal(slider._parentsMap.get($parent).sliderModel, model);
+          assert.equal(slider._parentsMap.get($parent).model, model);
         });
 
         it("sliderAPI parentsMap $parent viewController is equal to viewController", () => {
