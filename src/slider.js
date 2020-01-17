@@ -20,15 +20,13 @@ export const slider = {
 
   create($parent, options) {
     const sliderModel = this._factory.createModel(options);
-    const sliderAdapter = this._factory.createAdapter(sliderModel);
-    const sliderUI = this._factory.createUI($parent, sliderAdapter);
+    const sliderUI = this._factory.createUI($parent, sliderModel);
 
     const sliderUiSetElementsBound = sliderUI.setElements.bind(sliderUI);
-    sliderAdapter.addSubscriber("update", sliderUiSetElementsBound);
+    sliderModel.addSubscriber("update", sliderUiSetElementsBound);
 
     this._parentsMap.set($parent, {
       sliderModel,
-      sliderAdapter,
       sliderUI,
     });
   },
@@ -43,7 +41,7 @@ export const slider = {
    */
 
   getOptions($parent) {
-    return this._parentsMap.get($parent).sliderAdapter.getOptions();
+    return this._parentsMap.get($parent).sliderModel.getOptions();
   },
 
   /**
@@ -55,7 +53,7 @@ export const slider = {
    */
 
   setOptions($parent, options) {
-    this._parentsMap.get($parent).sliderAdapter.setOptions(options);
+    this._parentsMap.get($parent).sliderModel.setOptions(options);
   },
 
   /**
@@ -68,6 +66,6 @@ export const slider = {
    */
 
   setValueAt($parent, index, value) {
-    this._parentsMap.get($parent).sliderAdapter.setValueAt(index, value);
+    this._parentsMap.get($parent).sliderModel.setValueAt(index, value);
   },
 };
