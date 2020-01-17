@@ -1,5 +1,5 @@
 import { Model } from "./Model";
-import { SliderUI } from "./SliderUI";
+import { ViewController } from "./ViewController";
 
 export const sliderFactory = {
   createModel(...args) {
@@ -7,6 +7,6 @@ export const sliderFactory = {
   },
 
   createUI(...args) {
-    return new SliderUI(...args);
+    return new ViewController(...args);
   },
 };

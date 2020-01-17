@@ -1,6 +1,6 @@
 import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.test";
 import { testSlider } from "./slider.test";
-import { testSliderUI } from "./SliderUI.test";
+import { testSliderUI } from "./ViewController.test";
 import { testAdjustValueToStep } from "../src/helpers/adjustValueToStep/adjustValueToStep.test";
 import "./Model.test";
 import "../src/utilities/findRatio/findRatio.test";

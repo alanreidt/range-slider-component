@@ -7,7 +7,7 @@ import {
   createTemplate,
 } from "./helpers";
 
-export class SliderUI {
+export class ViewController {
   constructor($parent, model) {
     this.$parent = $parent;
     this.model = model;

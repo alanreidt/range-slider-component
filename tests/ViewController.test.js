@@ -1,10 +1,10 @@
 import { assert } from "chai";
 
 import { simulateMouseEvent } from "./testUtilities";
-import { SliderUI } from "../src/SliderUI";
+import { ViewController } from "../src/ViewController";
 
 export function testSliderUI() {
-  describe("SliderUI", () => {
+  describe("ViewController", () => {
     const SLIDER_NAME = "slider";
     const SLIDER_BASE_NAME = "slider__base";
     const SLIDER_ORIENTATION_FLAG = "slider_vertical";
@@ -31,7 +31,7 @@ export function testSliderUI() {
 
         beforeEach(() => {
           $parent = document.createElement("div");
-          new SliderUI($parent, model);
+          new ViewController($parent, model);
         });
 
         context("paint static structure correctly", () => {
@@ -92,7 +92,7 @@ export function testSliderUI() {
         };
 
         it(`add ${SLIDER_ORIENTATION_FLAG} className, if orientation is vertical`, () => {
-          const sliderUi = new SliderUI($parent, model);
+          new ViewController($parent, model);
           const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`)
             .classList;
 
@@ -103,7 +103,7 @@ export function testSliderUI() {
           Object.assign(options, {
             orientation: "horizontal",
           });
-          const sliderUi = new SliderUI($parent, model);
+          new ViewController($parent, model);
           const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`)
             .classList;
 
@@ -130,7 +130,7 @@ export function testSliderUI() {
         };
 
         it(`create ${SLIDER_TOOLTIP_NAME} element, if hasTooltips flag is true`, () => {
-          const sliderUi = new SliderUI($parent, model);
+          new ViewController($parent, model);
           const sliderTooltips = $parent.querySelector(
             `.${SLIDER_TOOLTIP_NAME}`,
           );
@@ -142,7 +142,7 @@ export function testSliderUI() {
           Object.assign(options, {
             hasTooltips: false,
           });
-          const sliderUi = new SliderUI($parent, model);
+          new ViewController($parent, model);
           const sliderTooltips = $parent.querySelector(
             `.${SLIDER_TOOLTIP_NAME}`,
           );
@@ -166,12 +166,12 @@ export function testSliderUI() {
             return this._options;
           },
         };
-        const sliderUi = new SliderUI($parent, model);
+        new ViewController($parent, model);
 
         const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
 
         it("$slider and repainted $slider (with the same values) are not equal", () => {
-          const newSliderUi = new SliderUI($parent, model);
+          new ViewController($parent, model);
 
           const $newSlider = $parent.querySelector(`.${SLIDER_NAME}`);
 
@@ -213,7 +213,7 @@ export function testSliderUI() {
                 },
               };
 
-              new SliderUI($parent, model);
+              new ViewController($parent, model);
 
               const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
               const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
@@ -270,7 +270,7 @@ export function testSliderUI() {
                   },
                 };
 
-                new SliderUI($parent, model);
+                new ViewController($parent, model);
 
                 const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
                 const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
@@ -332,7 +332,7 @@ export function testSliderUI() {
                   },
                 };
 
-                new SliderUI($parent, model);
+                new ViewController($parent, model);
 
                 const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
                 const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
@@ -392,7 +392,7 @@ export function testSliderUI() {
                   },
                 };
 
-                new SliderUI($parent, model);
+                new ViewController($parent, model);
 
                 const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
                 const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
@@ -444,7 +444,7 @@ export function testSliderUI() {
               },
             };
 
-            new SliderUI($parent, model);
+            new ViewController($parent, model);
 
             const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
             const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
@@ -486,7 +486,7 @@ export function testSliderUI() {
           return this._options;
         },
       };
-      const sliderUi = new SliderUI($parent, model);
+      const viewController = new ViewController($parent, model);
 
       describe("shall set values", () => {
         context(`${SLIDER_HANDLE_GROUP_NAME}s are set`, () => {
@@ -509,7 +509,7 @@ export function testSliderUI() {
       describe("shall update values", () => {
         const newValues = [10, 60];
 
-        sliderUi.setElements({
+        viewController.setElements({
           boundaries: [0, 100],
           values: newValues,
         });
