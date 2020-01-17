@@ -2,7 +2,7 @@ import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.
 import { testSlider } from "./slider.test";
 import { testSliderUI } from "./SliderUI.test";
 import { testAdjustValueToStep } from "../src/helpers/adjustValueToStep/adjustValueToStep.test";
-import { testSliderModel } "./Model.test";
+import "./Model.test";
 import "../src/utilities/findRatio/findRatio.test";
 import "../src/utilities/findAntecedent/findAntecedent.test";
 import "../src/utilities/toPercentage/toPercentage.test";
@@ -20,6 +20,5 @@ import "../src/utilities/either/either.test";
 testAdjustValueToStep();
 testObserverMixin();
 
-testSliderModel();
 testSliderUI();
 testSlider();
