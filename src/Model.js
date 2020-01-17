@@ -19,7 +19,7 @@ import {
 } from "./utilities/fp/utilities";
 import { adjustValueToStep } from "./helpers";
 
-export class SliderModel {
+export class Model {
   constructor(options = {}) {
     this._options = {
       // order matters
@@ -168,4 +168,4 @@ export class SliderModel {
   }
 }
 
-Object.assign(SliderModel.prototype, observerMixin);
+Object.assign(Model.prototype, observerMixin);

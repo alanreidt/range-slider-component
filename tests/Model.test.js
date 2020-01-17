@@ -1,10 +1,10 @@
 import { testClass } from "./testUtilities";
-import { SliderModel } from "../src/SliderModel";
+import { Model } from "../src/Model";
 
 export function testSliderModel() {
-  describe("SliderModel", () => {
+  describe("Model", () => {
     describe("Initialization test", () => {
-      const Class = SliderModel;
+      const Class = Model;
       const methodGetter = "getOptions";
       const runTest = testClass({ Class, methodGetter });
 
@@ -143,7 +143,7 @@ export function testSliderModel() {
     });
 
     describe("Reassignment test", () => {
-      const Class = SliderModel;
+      const Class = Model;
       const method = "setOptions";
       const methodGetter = "getOptions";
       const runTest = testClass({ Class, method, methodGetter });
