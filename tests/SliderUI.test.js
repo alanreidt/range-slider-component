@@ -21,7 +21,7 @@ export function testSliderUI() {
           orientation: "vertical",
           hasTooltips: true,
         };
-        const sliderAdapter = {
+        const model = {
           _options: options,
           getOptions() {
             return this._options;
@@ -31,7 +31,7 @@ export function testSliderUI() {
 
         beforeEach(() => {
           $parent = document.createElement("div");
-          new SliderUI($parent, sliderAdapter);
+          new SliderUI($parent, model);
         });
 
         context("paint static structure correctly", () => {
@@ -84,7 +84,7 @@ export function testSliderUI() {
           orientation: "vertical",
           hasTooltips: true,
         };
-        const sliderAdapter = {
+        const model = {
           _options: options,
           getOptions() {
             return this._options;
@@ -92,7 +92,7 @@ export function testSliderUI() {
         };
 
         it(`add ${SLIDER_ORIENTATION_FLAG} className, if orientation is vertical`, () => {
-          const sliderUi = new SliderUI($parent, sliderAdapter);
+          const sliderUi = new SliderUI($parent, model);
           const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`)
             .classList;
 
@@ -103,7 +103,7 @@ export function testSliderUI() {
           Object.assign(options, {
             orientation: "horizontal",
           });
-          const sliderUi = new SliderUI($parent, sliderAdapter);
+          const sliderUi = new SliderUI($parent, model);
           const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`)
             .classList;
 
@@ -122,7 +122,7 @@ export function testSliderUI() {
           orientation: "vertical",
           hasTooltips: true,
         };
-        const sliderAdapter = {
+        const model = {
           _options: options,
           getOptions() {
             return this._options;
@@ -130,7 +130,7 @@ export function testSliderUI() {
         };
 
         it(`create ${SLIDER_TOOLTIP_NAME} element, if hasTooltips flag is true`, () => {
-          const sliderUi = new SliderUI($parent, sliderAdapter);
+          const sliderUi = new SliderUI($parent, model);
           const sliderTooltips = $parent.querySelector(
             `.${SLIDER_TOOLTIP_NAME}`,
           );
@@ -142,7 +142,7 @@ export function testSliderUI() {
           Object.assign(options, {
             hasTooltips: false,
           });
-          const sliderUi = new SliderUI($parent, sliderAdapter);
+          const sliderUi = new SliderUI($parent, model);
           const sliderTooltips = $parent.querySelector(
             `.${SLIDER_TOOLTIP_NAME}`,
           );
@@ -160,18 +160,18 @@ export function testSliderUI() {
           orientation: "vertical",
           hasTooltips: true,
         };
-        const sliderAdapter = {
+        const model = {
           _options: options,
           getOptions() {
             return this._options;
           },
         };
-        const sliderUi = new SliderUI($parent, sliderAdapter);
+        const sliderUi = new SliderUI($parent, model);
 
         const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
 
         it("$slider and repainted $slider (with the same values) are not equal", () => {
-          const newSliderUi = new SliderUI($parent, sliderAdapter);
+          const newSliderUi = new SliderUI($parent, model);
 
           const $newSlider = $parent.querySelector(`.${SLIDER_NAME}`);
 
@@ -184,68 +184,62 @@ export function testSliderUI() {
         document.body.append($parent);
 
         describe("shall listen to events on $base element", () => {
-          context(
-            "trigger sliderAdapter setOptions method on mousedown event",
-            () => {
-              const mousePositionValues = [20, 100, 200];
-              const expectationValues = [10, 50, 100];
+          context("trigger model setOptions method on mousedown event", () => {
+            const mousePositionValues = [20, 100, 200];
+            const expectationValues = [10, 50, 100];
 
-              mousePositionValues.forEach((mousePositionValue, i) => {
-                const options = {
-                  boundaries: [0, 100],
-                  values: [20, 80],
-                  step: 1,
-                  orientation: "horizontal",
-                  hasTooltips: true,
-                };
-                const sliderAdapter = {
-                  _options: options,
-                  isTriggered: false,
+            mousePositionValues.forEach((mousePositionValue, i) => {
+              const options = {
+                boundaries: [0, 100],
+                values: [20, 80],
+                step: 1,
+                orientation: "horizontal",
+                hasTooltips: true,
+              };
+              const model = {
+                _options: options,
+                isTriggered: false,
 
-                  getOptions() {
-                    return this._options;
-                  },
+                getOptions() {
+                  return this._options;
+                },
 
-                  setOptions(newOptions) {
-                    this.isTriggered = true;
-                    this._options = {
-                      ...options,
-                      ...newOptions,
-                    };
-                  },
-                };
+                setOptions(newOptions) {
+                  this.isTriggered = true;
+                  this._options = {
+                    ...options,
+                    ...newOptions,
+                  };
+                },
+              };
 
-                new SliderUI($parent, sliderAdapter);
+              new SliderUI($parent, model);
 
-                const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-                const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
+              const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
+              const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
 
-                $slider.style.width = "200px";
+              $slider.style.width = "200px";
 
-                const expectationValue = expectationValues[i];
+              const expectationValue = expectationValues[i];
 
-                simulateMouseEvent("mousedown", $base, {
-                  clientX: mousePositionValue,
-                });
-                simulateMouseEvent("mouseup", $base);
-
-                it(`sliderAdapter setOptions is triggered on mouse event ${i +
-                  1}`, () => {
-                  assert.isTrue(sliderAdapter.isTriggered);
-                });
-
-                it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, () => {
-                  assert.deepEqual(
-                    expectationValue,
-                    sliderAdapter._options.values,
-                  );
-                });
+              simulateMouseEvent("mousedown", $base, {
+                clientX: mousePositionValue,
               });
-            },
-          );
+              simulateMouseEvent("mouseup", $base);
+
+              it(`model setOptions is triggered on mouse event ${i +
+                1}`, () => {
+                assert.isTrue(model.isTriggered);
+              });
+
+              it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, () => {
+                assert.deepEqual(expectationValue, model._options.values);
+              });
+            });
+          });
 
           context(
-            `trigger sliderAdapter setOptions method on mousedown event,
+            `trigger model setOptions method on mousedown event,
           when slider is vertical`,
             () => {
               const mousePositionValues = [20, 100, 200];
@@ -259,7 +253,7 @@ export function testSliderUI() {
                   orientation: "vertical",
                   hasTooltips: true,
                 };
-                const sliderAdapter = {
+                const model = {
                   _options: options,
                   isTriggered: false,
 
@@ -276,7 +270,7 @@ export function testSliderUI() {
                   },
                 };
 
-                new SliderUI($parent, sliderAdapter);
+                new SliderUI($parent, model);
 
                 const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
                 const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
@@ -290,16 +284,13 @@ export function testSliderUI() {
                 });
                 simulateMouseEvent("mouseup", $base);
 
-                it(`sliderAdapter setOptions is triggered on mouse event ${i +
+                it(`model setOptions is triggered on mouse event ${i +
                   1}`, () => {
-                  assert.isTrue(sliderAdapter.isTriggered);
+                  assert.isTrue(model.isTriggered);
                 });
 
                 it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, () => {
-                  assert.deepEqual(
-                    expectationValue,
-                    sliderAdapter._options.values,
-                  );
+                  assert.deepEqual(expectationValue, model._options.values);
                 });
               });
             },
@@ -310,7 +301,7 @@ export function testSliderUI() {
 
         describe("shall listen to events on $handle element", () => {
           context(
-            "trigger sliderAdapter setValueAt method on mousemove during mousedown event",
+            "trigger model setValueAt method on mousemove during mousedown event",
             () => {
               const mousePositionValues = [20, 100, 200];
               const expectationValues = [
@@ -327,7 +318,7 @@ export function testSliderUI() {
                   orientation: "horizontal",
                   hasTooltips: true,
                 };
-                const sliderAdapter = {
+                const model = {
                   _options: options,
                   isTriggered: false,
 
@@ -341,7 +332,7 @@ export function testSliderUI() {
                   },
                 };
 
-                new SliderUI($parent, sliderAdapter);
+                new SliderUI($parent, model);
 
                 const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
                 const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
@@ -356,20 +347,20 @@ export function testSliderUI() {
                 });
                 simulateMouseEvent("mouseup", document);
 
-                it(`sliderAdapter setOptions is triggered on mouse event ${i +
+                it(`model setOptions is triggered on mouse event ${i +
                   1}`, () => {
-                  assert.isTrue(sliderAdapter.isTriggered);
+                  assert.isTrue(model.isTriggered);
                 });
 
                 it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, () => {
-                  assert.deepEqual(expectationValue, sliderAdapter.value);
+                  assert.deepEqual(expectationValue, model.value);
                 });
               });
             },
           );
 
           context(
-            `trigger sliderAdapter setValueAt method on mousedown event,
+            `trigger model setValueAt method on mousedown event,
           when slider is vertical`,
             () => {
               const mousePositionValues = [20, 100, 200];
@@ -387,7 +378,7 @@ export function testSliderUI() {
                   orientation: "vertical",
                   hasTooltips: true,
                 };
-                const sliderAdapter = {
+                const model = {
                   _options: options,
                   isTriggered: false,
 
@@ -401,7 +392,7 @@ export function testSliderUI() {
                   },
                 };
 
-                new SliderUI($parent, sliderAdapter);
+                new SliderUI($parent, model);
 
                 const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
                 const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
@@ -416,13 +407,13 @@ export function testSliderUI() {
                 });
                 simulateMouseEvent("mouseup", document);
 
-                it(`sliderAdapter setOptions is triggered on mouse event ${i +
+                it(`model setOptions is triggered on mouse event ${i +
                   1}`, () => {
-                  assert.isTrue(sliderAdapter.isTriggered);
+                  assert.isTrue(model.isTriggered);
                 });
 
                 it(`passed value = ${expectationValue} on mouse position = ${mousePositionValue}`, () => {
-                  assert.deepEqual(expectationValue, sliderAdapter.value);
+                  assert.deepEqual(expectationValue, model.value);
                 });
               });
             },
@@ -436,7 +427,7 @@ export function testSliderUI() {
               orientation: "vertical",
               hasTooltips: true,
             };
-            const sliderAdapter = {
+            const model = {
               _options: options,
               isTriggered: false,
 
@@ -453,25 +444,25 @@ export function testSliderUI() {
               },
             };
 
-            new SliderUI($parent, sliderAdapter);
+            new SliderUI($parent, model);
 
             const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
             const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
             $slider.style.height = "200px";
 
-            const modelValues = sliderAdapter._options.values.slice();
+            const modelValues = model._options.values.slice();
 
             simulateMouseEvent("mousedown", $handle);
             simulateMouseEvent("mouseup", document);
             simulateMouseEvent("mousemove", document, { clientY: 100 });
 
-            it(`sliderAdapter setOptions is not triggered on mouse event`, () => {
-              assert.isFalse(sliderAdapter.isTriggered);
+            it(`model setOptions is not triggered on mouse event`, () => {
+              assert.isFalse(model.isTriggered);
             });
 
-            it(`sliderAdapter values are equal to ${modelValues}`, () => {
-              assert.deepEqual(modelValues, sliderAdapter._options.values);
+            it(`model values are equal to ${modelValues}`, () => {
+              assert.deepEqual(modelValues, model._options.values);
             });
           });
 
@@ -489,13 +480,13 @@ export function testSliderUI() {
         orientation: "vertical",
         hasTooltips: true,
       };
-      const sliderAdapter = {
+      const model = {
         _options: options,
         getOptions() {
           return this._options;
         },
       };
-      const sliderUi = new SliderUI($parent, sliderAdapter);
+      const sliderUi = new SliderUI($parent, model);
 
       describe("shall set values", () => {
         context(`${SLIDER_HANDLE_GROUP_NAME}s are set`, () => {
