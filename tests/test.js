@@ -1,5 +1,4 @@
 import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.test";
-import { testSliderAdapter } from "./SliderAdapter.test";
 import { testSliderModel } from "./SliderModel.test";
 import { testSlider } from "./slider.test";
 import { testSliderUI } from "./SliderUI.test";
@@ -22,6 +21,5 @@ testAdjustValueToStep();
 testObserverMixin();
 
 testSliderModel();
-testSliderAdapter();
 testSliderUI();
 testSlider();
