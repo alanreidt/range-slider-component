@@ -5,7 +5,12 @@ import filter from "lodash/fp/filter";
 import identity from "lodash/fp/identity";
 import isUndefined from "lodash/fp/isUndefined";
 
-import { getAverageOf, isNumberInBetween, findClosestTo } from "./utilities";
+import {
+  getAverageOf,
+  isNumberInBetween,
+  findClosestTo,
+  observerMixin,
+} from "./utilities";
 import {
   fallbackFalseyFP,
   packIntoFP,
@@ -48,7 +53,7 @@ export class SliderModel {
       this[`_${key}`] = newOptions[key];
     });
 
-    return this.getOptions();
+    this.triggerSubscribers("update", this.getOptions());
   }
 
   setValueAt(index, value) {
@@ -162,3 +167,5 @@ export class SliderModel {
     this._options.hasTooltips = value;
   }
 }
+
+Object.assign(SliderModel.prototype, observerMixin);
