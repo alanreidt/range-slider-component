@@ -51,7 +51,7 @@ export const slider = {
   },
 
   /**
-   * Set the slider instance value of values option at appropriate index.
+   * Set the slider instance value of values option at an index.
    *
    * @param {HTMLElement} $parent The element the slider is inserted in.
    * @param {number} index The index of values option value to change.
