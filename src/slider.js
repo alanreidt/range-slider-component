@@ -20,14 +20,16 @@ export const slider = {
 
   create($parent, options) {
     const model = this._factory.createModel(options);
-    const sliderUI = this._factory.createUI($parent, model);
+    const viewController = this._factory.createUI($parent, model);
 
-    const sliderUiSetElementsBound = sliderUI.setElements.bind(sliderUI);
+    const sliderUiSetElementsBound = viewController.setElements.bind(
+      viewController,
+    );
     model.addSubscriber("update", sliderUiSetElementsBound);
 
     this._parentsMap.set($parent, {
       model,
-      sliderUI,
+      viewController,
     });
   },
 

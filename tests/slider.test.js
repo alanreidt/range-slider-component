@@ -113,7 +113,7 @@ export function testSlider() {
 
         it("sliderAPI parentsMap $parent viewController is equal to viewController", () => {
           assert.equal(
-            slider._parentsMap.get($parent).sliderUI,
+            slider._parentsMap.get($parent).viewController,
             viewController,
           );
         });
