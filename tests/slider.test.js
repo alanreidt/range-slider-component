@@ -31,7 +31,7 @@ export function testSlider() {
         this.addSubscriberArgs = args;
       },
     };
-    const sliderUI = {
+    const viewController = {
       arguments: null,
       setElements() {},
     };
@@ -46,7 +46,7 @@ export function testSlider() {
 
     const factory = {
       createModel: makeClassMock(model),
-      createUI: makeClassMock(sliderUI),
+      createUI: makeClassMock(viewController),
     };
     const $parent = document.createElement("div");
 
@@ -64,35 +64,41 @@ export function testSlider() {
         });
       });
 
-      context("shall create sliderUI with $parent and model", () => {
-        it("sliderUI arguments is not equal to null", () => {
-          assert.isNotNull(sliderUI.arguments);
+      context("shall create viewController with $parent and model", () => {
+        it("viewController arguments is not equal to null", () => {
+          assert.isNotNull(viewController.arguments);
         });
 
-        it("sliderUI arguments[0] is equal to $parent", () => {
-          assert.equal(sliderUI.arguments[0], $parent);
+        it("viewController arguments[0] is equal to $parent", () => {
+          assert.equal(viewController.arguments[0], $parent);
         });
 
-        it("sliderUI arguments[1] is equal to model", () => {
-          assert.equal(sliderUI.arguments[1], model);
-        });
-      });
-
-      context("shall subscribe sliderUI setElements method to model", () => {
-        it("model addSubscriberArgs is not equal to null", () => {
-          assert.isNotNull(model.addSubscriberArgs);
-        });
-
-        it("model addSubscriberArgs[0] is equal to 'update'", () => {
-          assert.equal(model.addSubscriberArgs[0], "update");
-        });
-
-        it("model addSubscriberArgs[1] is equal to sliderUI setElements method", () => {
-          assert.equal(model.addSubscriberArgs[1], sliderUI.setElements);
+        it("viewController arguments[1] is equal to model", () => {
+          assert.equal(viewController.arguments[1], model);
         });
       });
 
-      context("shall create parentsMap with model and sliderUI", () => {
+      context(
+        "shall subscribe viewController setElements method to model",
+        () => {
+          it("model addSubscriberArgs is not equal to null", () => {
+            assert.isNotNull(model.addSubscriberArgs);
+          });
+
+          it("model addSubscriberArgs[0] is equal to 'update'", () => {
+            assert.equal(model.addSubscriberArgs[0], "update");
+          });
+
+          it("model addSubscriberArgs[1] is equal to viewController setElements method", () => {
+            assert.equal(
+              model.addSubscriberArgs[1],
+              viewController.setElements,
+            );
+          });
+        },
+      );
+
+      context("shall create parentsMap with model and viewController", () => {
         it("sliderAPI parentsMap length is not equal to 0", () => {
           assert.notEqual(slider._parentsMap.length, 0);
         });
@@ -105,8 +111,11 @@ export function testSlider() {
           assert.equal(slider._parentsMap.get($parent).sliderModel, model);
         });
 
-        it("sliderAPI parentsMap $parent sliderUI is equal to sliderUI", () => {
-          assert.equal(slider._parentsMap.get($parent).sliderUI, sliderUI);
+        it("sliderAPI parentsMap $parent viewController is equal to viewController", () => {
+          assert.equal(
+            slider._parentsMap.get($parent).sliderUI,
+            viewController,
+          );
         });
       });
     });
