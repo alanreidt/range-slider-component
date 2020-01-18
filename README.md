@@ -171,28 +171,17 @@ Or you can create the slider with tooltips and then hide them through css, when 
 
 
 ### Architecture
-The slider architecture follows a *standart MVC architecture*, as described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/).
-
-Unfortunatelly, there no English translation of the article, but, in a few words, a *standart MVC architecture* is characterized by a presence of Model, which plays the role of *the facade* to an application Domain Model.
-
-> Note: although, the slider is just a component of an application (it don't have a Domain Model), I decided to organize Facade anyway. The reason for that see in [the SliderAdapter section.](#slideradapter).
-
-In the result, the approach gives an opportunity to swap modules around and modify them without the need of breaking changes of the code.
+The slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
 
 #### Model
-The module contains business logic of the component: possible slider options and logic around them.
-
-#### SliderAdapter
-Adapter module is used, as a wrapper around `Model`. It localizes calls to the Model, allowing to have all dependent code in one place.
-
-Though, presence of Adapter is optional, it gives a way to freely modify `Model` and even replace it altogether, if current business logic solution don't satisfy your requirements.
+The module contains business logic of the slider component: possible slider options and logic around them.
 
 #### ViewController
 This module is responsible for display of current slider state and handling of user actions.
 
 It translates position of occured events into the slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `Model`.
 
-As you see, `ViewController` performs View and Controller functionality. The objective for this is that it's not logical to divide the modules in this concrete component from functional decomposition standpoint — handle don't have any value outside of the slider.
+As you see, `ViewController` performs View and Controller functionality. The objective for this is that it's not logical, from functional decomposition standpoint, to divide the module — handles (which realize Controller functionality) don't have any value outside of the slider (View).
 
 #### UML diagram
 This is a bird's view on the slider architecture.
