@@ -1,8 +1,8 @@
-import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.test";
 import { testAdjustValueToStep } from "../src/helpers/adjustValueToStep/adjustValueToStep.test";
 import "./Model.test";
 import "./ViewController.test";
 import "./slider.test";
+import "../src/utilities/observerMixin/observerMixin.test";
 import "../src/utilities/findRatio/findRatio.test";
 import "../src/utilities/findAntecedent/findAntecedent.test";
 import "../src/utilities/toPercentage/toPercentage.test";
@@ -18,4 +18,3 @@ import "../src/utilities/isDivisible/isDivisible.test";
 import "../src/utilities/either/either.test";
 
 testAdjustValueToStep();
-testObserverMixin();
