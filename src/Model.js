@@ -64,6 +64,12 @@ export class Model {
       currentValues[index + 1],
     ];
 
+    const areArgumentsCorrect = Array.from(arguments).every(Number.isFinite);
+
+    if (!areArgumentsCorrect) {
+      return;
+    }
+
     let newValue = value;
 
     if (currentValues.length === 1) {
