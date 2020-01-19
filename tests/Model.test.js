@@ -1,4 +1,6 @@
-import { testClass } from "./testUtilities";
+import assert from "assert";
+
+import { testClass, makeTestClass, template } from "./testUtilities";
 import { Model } from "../src/Model";
 
 describe("Model", () => {
@@ -589,6 +591,143 @@ describe("Model", () => {
           runTest(testOptions);
         },
       );
+    });
+  });
+
+  describe("setValueAt method", () => {
+    context("shall change value at appropriate index", () => {
+      const classOptions = { values: [10, 30, 50] };
+      const testOptions = [
+        [0, 20],
+        [1, 40],
+        [2, 60],
+        [1, 20],
+        [2, 40],
+      ];
+      const expectations = [
+        [20, 30, 50],
+        [10, 40, 50],
+        [10, 30, 60],
+        [10, 20, 50],
+        [10, 30, 40],
+      ];
+
+      expectations.forEach((expectation, i) => {
+        const model = new Model(classOptions);
+        const testOption = testOptions[i];
+
+        it(`result of value ${testOption[1]} set at index ${testOption[0]} equals to ${expectation} (was ${classOptions.values})`, () => {
+          model.setValueAt(...testOption);
+
+          assert.deepEqual(model.getOptions().values, expectation);
+        });
+      });
+    });
+
+    context("shall restrict value to adjacent values", () => {
+      const classOptions = { values: [10, 30, 50] };
+      const testOptions = [
+        [0, -20],
+        [0, 100],
+        [1, -50],
+        [1, 200],
+        [2, 20],
+        [2, 500],
+      ];
+      const expectations = [
+        [0, 30, 50],
+        [30, 30, 50],
+        [10, 10, 50],
+        [10, 50, 50],
+        [10, 30, 30],
+        [10, 30, 100],
+      ];
+
+      expectations.forEach((expectation, i) => {
+        const model = new Model(classOptions);
+        const testOption = testOptions[i];
+
+        it(`result of value ${testOption[1]} set at index ${testOption[0]} equals to ${expectation} (was ${classOptions.values})`, () => {
+          model.setValueAt(...testOption);
+
+          assert.deepEqual(model.getOptions().values, expectation);
+        });
+      });
+    });
+
+    context("shall handle “out of length” index", () => {
+      const classOptions = { values: [10, 30, 50] };
+      const testOptions = [
+        [5, 20],
+        [45, 20],
+        [-2, 20],
+      ];
+      const expectations = new Array(testOptions.length).fill(
+        classOptions.values,
+      );
+
+      expectations.forEach((expectation, i) => {
+        const model = new Model(classOptions);
+        const testOption = testOptions[i];
+
+        it(`result of value ${testOption[1]} set at index ${testOption[0]} equals to ${expectation} (was ${classOptions.values})`, () => {
+          model.setValueAt(...testOption);
+
+          assert.deepEqual(model.getOptions().values, expectation);
+        });
+      });
+    });
+
+    describe("shall catch garbage input", () => {
+      context("handle incorrect index parameter", () => {
+        const classOptions = { values: [10, 30, 50] };
+        const testOptions = [
+          [null, 50],
+          [undefined, 50],
+          [NaN, 50],
+          ["text", 50],
+          ["text123", 50],
+        ];
+        const expectations = new Array(testOptions.length).fill(
+          classOptions.values,
+        );
+
+        expectations.forEach((expectation, i) => {
+          const model = new Model(classOptions);
+          const testOption = testOptions[i];
+
+          it(`result of value ${testOption[1]} set at index ${testOption[0]} equals to ${expectation}`, () => {
+            model.setValueAt(...testOption);
+
+            assert.deepEqual(model.getOptions().values, expectation);
+          });
+        });
+      });
+
+      context("handle incorrect value parameter", () => {
+        const classOptions = { values: [10, 30, 50] };
+        const testOptions = [
+          [0, null],
+          [1, undefined],
+          [2, NaN],
+          [0, "text"],
+          [1, "text123"],
+        ];
+        const expectations = new Array(testOptions.length).fill(
+          classOptions.values,
+        );
+
+        expectations.forEach((expectation, i) => {
+          const model = new Model(classOptions);
+          const testOption = testOptions[i];
+
+          it(`result of value ${testOption[1]} set at index ${testOption[0]} equals to ${expectation}`, () => {
+            model.setValueAt(...testOption);
+
+            assert.deepEqual(model.getOptions().values, expectation);
+          });
+        });
+      });
     });
   });
 });
