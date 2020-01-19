@@ -26,12 +26,9 @@ describe("ViewController", () => {
           return this._options;
         },
       };
-      let $parent;
+      const $parent = document.createElement("div");
 
-      beforeEach(() => {
-        $parent = document.createElement("div");
-        new ViewController($parent, model);
-      });
+      new ViewController($parent, model);
 
       context("paint static structure correctly", () => {
         it(`create ${SLIDER_NAME} element`, () => {
@@ -70,6 +67,22 @@ describe("ViewController", () => {
           assert.equal(requiredQuantity, handles.length);
         });
       });
+
+      context(
+        `assign correct data-index to ${SLIDER_HANDLE_GROUP_NAME}`,
+        () => {
+          const handleGroups = $parent.querySelectorAll(
+            `.${SLIDER_HANDLE_GROUP_NAME}`,
+          );
+
+          handleGroups.forEach((handleGroup, index) => {
+            it(`#${index +
+              1} ${SLIDER_HANDLE_GROUP_NAME}'s data-index is equal to ${index}`, () => {
+              assert.equal(Number(handleGroup.dataset.index), index);
+            });
+          });
+        },
+      );
     });
 
     describe(`shall add ${SLIDER_ORIENTATION_FLAG}, when needed`, () => {
