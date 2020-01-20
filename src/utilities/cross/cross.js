@@ -26,11 +26,15 @@ export function cross(baseArr, arr) {
   }
 
   if (arrCopy.length < baseArrCopy.length) {
+    const variants = baseArrCopy.slice();
+
     arrCopy.forEach((item) => {
-      const closestValue = findClosestTo(item, ...baseArrCopy);
+      const closestValue = findClosestTo(item, ...variants);
       const closestValuePosition = baseArrCopy.indexOf(closestValue);
+      const index = variants.indexOf(closestValue);
 
       baseArrCopy.splice(closestValuePosition, 1, item);
+      variants.splice(0, index + 1);
     });
 
     arrCopy = baseArrCopy;
