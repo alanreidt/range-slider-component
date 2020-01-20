@@ -444,12 +444,14 @@ describe("Model", () => {
             { values: [10, 20] },
             { values: [20, 10] },
             { values: [-10, 10, 20] },
+            { values: [150, 220, 400] },
           ];
           const expectations = [
             { values: [-400, -100, 0, 100, 500] },
             { values: [-400, -100, 10, 20, 500] },
             { values: [-400, -100, 10, 20, 500] },
-            { values: [-400, -10, 10, 20, 500] },
+            { values: [-400, -100, -10, 10, 20] },
+            { values: [-400, -100, 150, 220, 400] },
           ];
           const ClassOptions = {
             boundaries: [-500, 500],
