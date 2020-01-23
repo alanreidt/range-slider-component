@@ -7,7 +7,6 @@ import { findClosestTo } from "../findClosestTo/findClosestTo";
  * @param {array} arr The array to be crossed in.
  *
  * @returns {array} The crossed array.
- *
  */
 export function cross(baseArr, arr) {
   const baseArrCopy = baseArr && baseArr.slice().sort((a, b) => a - b);
