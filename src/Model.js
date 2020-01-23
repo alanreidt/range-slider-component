@@ -13,7 +13,7 @@ import {
 } from "./utilities";
 import {
   fallbackFalseyFP,
-  packIntoFP,
+  placeBetween,
   crossWith,
 } from "./utilities/fp/utilities";
 import { adjustValueToStep, adjustToRange } from "./helpers";
@@ -130,7 +130,7 @@ export class Model {
       filter(Number.isFinite),
       crossWith(currentValues),
       fallbackFalseyFP(defaultValue),
-      map(packIntoFP(start, end)),
+      map(placeBetween(start, end)),
       map(adjustValueToStep(step, offset)),
     )(newValues);
   }
@@ -147,7 +147,7 @@ export class Model {
     this._options.step = flow(
       parseFloat,
       fallbackFalseyFP(currentValue),
-      packIntoFP(1, range),
+      placeBetween(1, range),
       adjustToRange(range),
     )(newValue);
   }
