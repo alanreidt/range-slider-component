@@ -14,10 +14,9 @@ import {
 import {
   fallbackFalseyFP,
   packIntoFP,
-  adjustToRange,
   crossFP,
 } from "./utilities/fp/utilities";
-import { adjustValueToStep } from "./helpers";
+import { adjustValueToStep, adjustToRange } from "./helpers";
 
 export class Model {
   constructor(options = {}) {
