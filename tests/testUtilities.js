@@ -1,4 +1,7 @@
-export function makeTestClass(subject, testDescription = template`${"...rest"} is equal to ${"expectation"}`) {
+export function makeTestClass(
+  subject,
+  testDescription = template`${"...rest"} is equal to ${"expectation"}`,
+) {
   class TestClass {
     constructor(testDescription) {
       this.subject = subject;
@@ -9,11 +12,11 @@ export function makeTestClass(subject, testDescription = template`${"...rest"} i
     }
 
     test(funcOptions, expectations) {
-      expectations.forEach( (expectation, index) => {
-        let funcOption = funcOptions[index];
+      expectations.forEach((expectation, index) => {
+        const funcOption = funcOptions[index];
 
         it(this.testDescription(funcOption, expectation), () => {
-          assert.deepEqual( this.subject(...funcOption), expectation );
+          assert.deepEqual(this.subject(...funcOption), expectation);
         });
       });
     }
@@ -24,29 +27,27 @@ export function makeTestClass(subject, testDescription = template`${"...rest"} i
   return TestClass;
 }
 
+export function testClass({ Class, method, methodGetter } = {}) {
+  return function({ ClassOptions, options, expectations } = {}) {
+    let ClassOptionsRecord = "";
 
-export function testClass({Class, method, methodGetter} = {}) {
-
-  return function({ClassOptions, options, expectations} = {}) {
-    let ClassOptionsRecord = '';
-
-    for (let ClassOptionsKey in ClassOptions) {
-      let ClassOptionsValue = ClassOptions[ClassOptionsKey];
+    for (const ClassOptionsKey in ClassOptions) {
+      const ClassOptionsValue = ClassOptions[ClassOptionsKey];
 
       ClassOptionsRecord += `${ClassOptionsKey} = ${ClassOptionsValue}, `;
-    };
+    }
 
-    expectations.forEach( (expectation, index) => {
+    expectations.forEach((expectation, index) => {
       const subject = new Class(ClassOptions);
-      let option = options && options[index];
-      let optionsRecord = '';
+      const option = options && options[index];
+      let optionsRecord = "";
 
       if (method && option) {
-        for (let optionKey in option) {
-          let optionValue = option[optionKey];
+        for (const optionKey in option) {
+          const optionValue = option[optionKey];
 
           optionsRecord += `${optionKey} = ${optionValue}, `;
-        };
+        }
 
         subject[method](option);
       }
@@ -62,9 +63,9 @@ export function testClass({Class, method, methodGetter} = {}) {
       optionsRecord = optionsRecord || "default values";
 
       context(`if ${optionsRecord} were passed`, function() {
-        for (let expectationKey in expectation) {
-          let expectationValue = expectation[expectationKey];
-          let subjectValue = subjectValues[expectationKey];
+        for (const expectationKey in expectation) {
+          const expectationValue = expectation[expectationKey];
+          const subjectValue = subjectValues[expectationKey];
 
           it(`than ${expectationKey} shall be equal to ${expectationValue}`, function() {
             assert.deepEqual(subjectValue, expectationValue);
@@ -72,25 +73,23 @@ export function testClass({Class, method, methodGetter} = {}) {
         }
       });
     });
-  }
-
+  };
 }
 
-
-export function test(func, describeTest = template`${"...rest"} is equal to ${"expectation"}`) {
+export function test(
+  func,
+  describeTest = template`${"...rest"} is equal to ${"expectation"}`,
+) {
   return function(funcOptions, expectations) {
-
-    expectations.forEach( (expectation, index) => {
-      let funcOption = funcOptions[index];
+    expectations.forEach((expectation, index) => {
+      const funcOption = funcOptions[index];
 
       it(describeTest(funcOption, expectation), function() {
-        assert.deepEqual( func(...funcOption), expectation );
+        assert.deepEqual(func(...funcOption), expectation);
       });
     });
-
-  }
+  };
 }
-
 
 /**
  * The template function is a modification of
@@ -99,24 +98,27 @@ export function test(func, describeTest = template`${"...rest"} is equal to ${"e
  */
 
 export function template(strings, ...keys) {
-
   return function(values, expectation) {
-    let dict = values[values.length - 1] || {};
-    let result = [strings[0]];
+    const dict = values[values.length - 1] || {};
+    const result = [strings[0]];
 
-    keys.forEach( (key, i) => {
-      let value = `${Number.isInteger(key) ? values[key] :
-        (key === "...rest") ? values.slice(i) :
-        (key === "expectation") ? expectation : dict[key]}`;
+    keys.forEach((key, i) => {
+      const value = `${
+        Number.isInteger(key)
+          ? values[key]
+          : key === "...rest"
+          ? values.slice(i)
+          : key === "expectation"
+          ? expectation
+          : dict[key]
+      }`;
 
       result.push(value, strings[i + 1]);
     });
 
-    return result.join('');
+    return result.join("");
   };
-
 }
-
 
 /**
  * The simulateMouseEvent function is a modification of
@@ -130,18 +132,16 @@ export function template(strings, ...keys) {
  * @param {Element} element  the element to simulate a click on
  */
 export function simulateMouseEvent(eventType, element, options) {
-  options = Object.assign(
-    {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-    },
-    options,
-  );
+  options = {
+    bubbles: true,
+    cancelable: true,
+    view: window,
+    ...options,
+  };
 
-	// Create our event (with options)
-	const event = new MouseEvent(eventType, options);
+  // Create our event (with options)
+  const event = new MouseEvent(eventType, options);
 
-	// If cancelled, don't dispatch our event
-	let canceled = !element.dispatchEvent(event);
-};
+  // If cancelled, don't dispatch our event
+  const canceled = !element.dispatchEvent(event);
+}
