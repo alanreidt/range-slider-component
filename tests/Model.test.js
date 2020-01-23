@@ -1,6 +1,6 @@
 import assert from "assert";
 
-import { testClass, makeTestClass, template } from "./testUtilities";
+import { testClass } from "./testUtilities";
 import { Model } from "../src/Model";
 
 describe("Model", () => {
