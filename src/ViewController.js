@@ -132,8 +132,8 @@ export class ViewController {
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
     const [adjustedCoordinate, sliderSize] = !isUndefined(xCoordinate)
-      ? [this._adjustToSliderXCoordinate(xCoordinate), this._getSliderWidth()]
-      : [this._adjustToSliderYCoordinate(yCoordinate), this._getSliderHeight()];
+      ? [this._adjustToSliderXAxis(xCoordinate), this._getSliderWidth()]
+      : [this._adjustToSliderYAxis(yCoordinate), this._getSliderHeight()];
 
     const ratio = findRatio(adjustedCoordinate, sliderSize);
     const { boundaries } = this.model.getOptions();
@@ -141,11 +141,11 @@ export class ViewController {
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
-  _adjustToSliderXCoordinate(xCoordinate) {
+  _adjustToSliderXAxis(xCoordinate) {
     return xCoordinate - this.$slider.getBoundingClientRect().left;
   }
 
-  _adjustToSliderYCoordinate(yCoordinate) {
+  _adjustToSliderYAxis(yCoordinate) {
     return yCoordinate - this.$slider.getBoundingClientRect().top;
   }
 
