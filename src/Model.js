@@ -11,11 +11,7 @@ import {
   findClosestTo,
   observerMixin,
 } from "./utilities";
-import {
-  fallbackFalseyFP,
-  placeBetween,
-  crossWith,
-} from "./utilities/fp/utilities";
+import { eitherOr, placeBetween, crossWith } from "./utilities/fp/utilities";
 import { adjustValueToStep, adjustToRange } from "./helpers";
 
 export class Model {
@@ -129,7 +125,7 @@ export class Model {
       map(parseFloat),
       filter(Number.isFinite),
       crossWith(currentValues),
-      fallbackFalseyFP(defaultValue),
+      eitherOr(defaultValue),
       map(placeBetween(start, end)),
       map(adjustValueToStep(step, offset)),
     )(newValues);
@@ -146,7 +142,7 @@ export class Model {
 
     this._options.step = flow(
       parseFloat,
-      fallbackFalseyFP(currentValue),
+      eitherOr(currentValue),
       placeBetween(1, range),
       adjustToRange(range),
     )(newValue);
