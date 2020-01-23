@@ -14,7 +14,7 @@ import {
 import {
   fallbackFalseyFP,
   packIntoFP,
-  crossFP,
+  crossWith,
 } from "./utilities/fp/utilities";
 import { adjustValueToStep, adjustToRange } from "./helpers";
 
@@ -107,7 +107,7 @@ export class Model {
       sortBy(identity),
       map(parseFloat),
       filter(Number.isFinite),
-      crossFP(currentValues),
+      crossWith(currentValues),
     )(newValues);
   }
 
@@ -128,7 +128,7 @@ export class Model {
       sortBy(identity),
       map(parseFloat),
       filter(Number.isFinite),
-      crossFP(currentValues),
+      crossWith(currentValues),
       fallbackFalseyFP(defaultValue),
       map(packIntoFP(start, end)),
       map(adjustValueToStep(step, offset)),
