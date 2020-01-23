@@ -1,8 +1,8 @@
-import { placeValueBetween } from "../placeValueBetween/placeValueBetween";
+import { placeNumberBetween } from "../placeNumberBetween/placeNumberBetween";
 
 /**
- * Wrapper on placeValueBetween utility function.
+ * Wrapper on placeNumberBetween utility function.
  */
 export function placeBetween(start, end) {
-  return (number) => placeValueBetween(number, start, end);
+  return (number) => placeNumberBetween(number, start, end);
 }
