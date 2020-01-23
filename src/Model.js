@@ -14,7 +14,7 @@ import {
 import {
   fallbackFalseyFP,
   packIntoFP,
-  getClosestFactorOfFP,
+  adjustToRange,
   crossFP,
 } from "./utilities/fp/utilities";
 import { adjustValueToStep } from "./helpers";
@@ -149,7 +149,7 @@ export class Model {
       parseFloat,
       fallbackFalseyFP(currentValue),
       packIntoFP(1, range),
-      getClosestFactorOfFP(range),
+      adjustToRange(range),
     )(newValue);
   }
 

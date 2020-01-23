@@ -1,5 +1,5 @@
 import { findClosestFactor } from "../findClosestFactor/findClosestFactor";
 
-export function getClosestFactorOfFP(range) {
+export function adjustToRange(range) {
   return (step) => findClosestFactor(range, step);
 }
