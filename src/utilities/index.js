@@ -10,7 +10,7 @@ export { findAntecedent } from "./findAntecedent";
 export { toFixed } from "./toFixed";
 export { toPercentage } from "./toPercentage";
 export { cross } from "./cross/cross";
-export { packInto } from "./packInto/packInto";
+export { placeValueBetween } from "./placeValueBetween/placeValueBetween";
 export { call } from "./call/call";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
