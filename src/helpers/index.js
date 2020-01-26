@@ -1,4 +1,7 @@
 /* PLOP_INJECT_EXPORT */
+export { crossWith } from "./crossWith";
+export { eitherOr } from "./eitherOr";
+export { placeBetween } from "./placeBetween";
 export { adjustToRange } from "./adjustToRange";
 export { createTemplate } from "./createTemplate";
 export { findValueByRatioBetween } from "./findValueByRatioBetween";
