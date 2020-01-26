@@ -11,7 +11,7 @@ import {
   findClosestTo,
   observerMixin,
 } from "./utilities";
-import { eitherOr, placeBetween, crossWith } from "./utilities/fp/utilities";
+import { eitherOr, placeBetween, crossWith } from "./utilities/fp";
 import { adjustValueToStep, adjustToRange } from "./helpers";
 
 export class Model {
