@@ -1,4 +1,4 @@
-import { findClosestFactor } from "../../utilities/findClosestFactor/findClosestFactor";
+import { findClosestFactor } from "../utilities";
 
 /**
  * Wrapper on findClosestFactor utility function.
