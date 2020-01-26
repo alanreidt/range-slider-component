@@ -1,4 +1,4 @@
-import { placeNumberBetween } from "../placeNumberBetween/placeNumberBetween";
+import { placeNumberBetween } from "../utilities";
 
 /**
  * Wrapper on placeNumberBetween utility function.

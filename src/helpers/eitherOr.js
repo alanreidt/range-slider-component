@@ -1,4 +1,4 @@
-import { either } from "../either/either";
+import { either } from "../utilities";
 
 /**
  * Wrapper on either utility function.
