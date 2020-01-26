@@ -11,8 +11,13 @@ import {
   findClosestTo,
   observerMixin,
 } from "./utilities";
-import { eitherOr, placeBetween, crossWith } from "./utilities/fp";
-import { adjustValueToStep, adjustToRange } from "./helpers";
+import {
+  adjustValueToStep,
+  adjustToRange,
+  eitherOr,
+  placeBetween,
+  crossWith,
+} from "./helpers";
 
 export class Model {
   constructor(options = {}) {
