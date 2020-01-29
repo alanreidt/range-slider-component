@@ -1,6 +1,6 @@
 import assert from "assert";
 
-import { template } from "../testUtilities";
+import { template } from "./template";
 
 export function makeTestClass(
   subject,
