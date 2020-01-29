@@ -1,9 +1,9 @@
 import { isNumberInBetween } from "./isNumberInBetween";
-import { test, template } from "../../../tests/testUtilities";
+import { makeTestClass, template } from "../../../tests/testUtilities";
 
 describe("isNumberInBetween", () => {
   const describeTest = template`It is ${"expectation"} that ${0} is in between ${1} and ${2}`;
-  const testCurrent = test(isNumberInBetween, describeTest);
+  const TestClass = makeTestClass(isNumberInBetween, describeTest);
 
   describe("shall return true, if number is in between start and end", () => {
     const funcOptions = [
@@ -16,7 +16,9 @@ describe("isNumberInBetween", () => {
       [1000000000, -Infinity, Infinity],
     ];
     const expectations = new Array(funcOptions.length).fill(true);
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   describe("shall return false, if number is not in between start and end", () => {
@@ -29,7 +31,9 @@ describe("isNumberInBetween", () => {
       [500, -Infinity, 300],
     ];
     const expectations = new Array(funcOptions.length).fill(false);
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   describe("shall handle input, when start is end and vice versa", () => {
@@ -43,7 +47,9 @@ describe("isNumberInBetween", () => {
       [1000000000, Infinity, -Infinity],
     ];
     const expectations = new Array(funcOptions.length).fill(true);
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   describe("shall include extremums", () => {
@@ -54,7 +60,9 @@ describe("isNumberInBetween", () => {
       [-300, -300, 300],
     ];
     const expectations = new Array(funcOptions.length).fill(true);
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   describe("shall treat Infinity right", () => {
@@ -65,7 +73,9 @@ describe("isNumberInBetween", () => {
       [-Infinity, -Infinity, Infinity],
     ];
     const expectations = new Array(funcOptions.length).fill(true);
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   describe("shall return true, if there is only edges", () => {
@@ -78,7 +88,9 @@ describe("isNumberInBetween", () => {
       [-301, -301, -300],
     ];
     const expectations = new Array(funcOptions.length).fill(true);
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   context("shall catch garbage input", () => {
@@ -92,7 +104,9 @@ describe("isNumberInBetween", () => {
         ["123text", -100, 100],
       ];
       const expectations = new Array(funcOptions.length).fill(false);
-      testCurrent(funcOptions, expectations);
+      const test = new TestClass();
+
+      test.test(funcOptions, expectations);
     });
 
     describe("returns false, if start is incorrect", () => {
@@ -104,7 +118,9 @@ describe("isNumberInBetween", () => {
         [50, "123text", 100],
       ];
       const expectations = new Array(funcOptions.length).fill(false);
-      testCurrent(funcOptions, expectations);
+      const test = new TestClass();
+
+      test.test(funcOptions, expectations);
     });
 
     describe("returns false, if end is incorrect", () => {
@@ -116,7 +132,9 @@ describe("isNumberInBetween", () => {
         [50, 100, "123text"],
       ];
       const expectations = new Array(funcOptions.length).fill(false);
-      testCurrent(funcOptions, expectations);
+      const test = new TestClass();
+
+      test.test(funcOptions, expectations);
     });
   });
 });
