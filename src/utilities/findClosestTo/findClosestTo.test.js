@@ -1,9 +1,9 @@
 import { findClosestTo } from "./findClosestTo";
-import { test, template } from "../../../tests/testUtilities";
+import { makeTestClass, template } from "../../../tests/testUtilities";
 
 describe("findClosestTo", () => {
   const describeTest = template`closest number to ${0} from ${"...rest"} is ${"expectation"}`;
-  const testCurrent = test(findClosestTo, describeTest);
+  const TestClass = makeTestClass(findClosestTo, describeTest);
 
   describe("shall return closest number to the number", () => {
     const funcOptions = [
@@ -15,7 +15,9 @@ describe("findClosestTo", () => {
       [100, 50, 90, 105],
     ];
     const expectations = [90, -90, -50, 100, 250, 105];
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   describe("shall return last closest number to the number, if controversial", () => {
@@ -24,7 +26,9 @@ describe("findClosestTo", () => {
       [100, 101, 105, 99, 5],
     ];
     const expectations = [101, 99];
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   describe("shall filter incorrect arguments", () => {
@@ -33,7 +37,9 @@ describe("findClosestTo", () => {
       [0, null, 105, Infinity, 5],
     ];
     const expectations = [105, 5];
-    testCurrent(funcOptions, expectations);
+    const test = new TestClass();
+
+    test.test(funcOptions, expectations);
   });
 
   context("shall catch garbage input", () => {
@@ -47,7 +53,9 @@ describe("findClosestTo", () => {
         ["123text", -100, 100],
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
-      testCurrent(funcOptions, expectations);
+      const test = new TestClass();
+
+      test.test(funcOptions, expectations);
     });
 
     describe("returns NaN if variants parameter is incorrect", () => {
@@ -60,7 +68,9 @@ describe("findClosestTo", () => {
         [50, "123text"],
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
-      testCurrent(funcOptions, expectations);
+      const test = new TestClass();
+
+      test.test(funcOptions, expectations);
     });
   });
 });
