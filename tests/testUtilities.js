@@ -27,48 +27,47 @@ export function makeTestClass(
   return TestClass;
 }
 
-export function testClass({ Class, method, methodGetter } = {}) {
-  return function({ ClassOptions, options, expectations } = {}) {
-    let ClassOptionsRecord = "";
+export function testClass({ Class, methodName, methodGetterName } = {}) {
+  return function({ constructorArgs, methodArgsList, expectations } = {}) {
+    let constructorArgsRecord = "";
 
-    for (const ClassOptionsKey in ClassOptions) {
-      const ClassOptionsValue = ClassOptions[ClassOptionsKey];
+    for (const constructorArgsKey in constructorArgs) {
+      const constructorArgsValue = constructorArgs[constructorArgsKey];
 
-      ClassOptionsRecord += `${ClassOptionsKey} = ${ClassOptionsValue}, `;
+      constructorArgsRecord += `${constructorArgsKey} = ${constructorArgsValue}, `;
     }
 
     expectations.forEach((expectation, index) => {
-      const subject = new Class(ClassOptions);
-      const option = options && options[index];
-      let optionsRecord = "";
+      const subject = new Class(constructorArgs);
+      const methodArgs = methodArgsList && methodArgsList[index];
+      let methodArgsRecord = "";
 
-      if (method && option) {
-        for (const optionKey in option) {
-          const optionValue = option[optionKey];
+      if (methodName && methodArgs) {
+        for (const methodArgsKey in methodArgs) {
+          const methodArgsValue = methodArgs[methodArgsKey];
 
-          optionsRecord += `${optionKey} = ${optionValue}, `;
+          methodArgsRecord += `${methodArgsKey} = ${methodArgsValue}, `;
         }
 
-        subject[method](option);
+        subject[methodName](methodArgs);
       }
 
-      if (method && !option) {
-        optionsRecord = ClassOptionsRecord;
+      if (methodName && !methodArgs) {
+        methodArgsRecord = constructorArgsRecord;
 
-        subject[method]();
+        subject[methodName]();
       }
 
-      const subjectValues = subject[methodGetter]();
+      const subjectOutput = subject[methodGetterName]();
+      methodArgsRecord = methodArgsRecord || "default values";
 
-      optionsRecord = optionsRecord || "default values";
-
-      context(`if ${optionsRecord} were passed`, function() {
+      context(`if ${methodArgsRecord} were passed`, function() {
         for (const expectationKey in expectation) {
           const expectationValue = expectation[expectationKey];
-          const subjectValue = subjectValues[expectationKey];
+          const subjectOutputValue = subjectOutput[expectationKey];
 
           it(`than ${expectationKey} shall be equal to ${expectationValue}`, function() {
-            assert.deepEqual(subjectValue, expectationValue);
+            assert.deepEqual(subjectOutputValue, expectationValue);
           });
         }
       });
