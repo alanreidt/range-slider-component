@@ -4,29 +4,24 @@ import { template } from "./template";
 
 export function makeTestClass(
   subject,
-  testDescription = template`${"...rest"} is equal to ${"expectation"}`,
+  commonDescription = template`${"...rest"} is equal to ${"expectation"}`,
 ) {
   class TestClass {
-    constructor(testDescription) {
+    constructor(localDescription) {
       this.subject = subject;
-
-      if (testDescription) {
-        this.testDescription = testDescription;
-      }
+      this.description = localDescription || commonDescription;
     }
 
-    test(funcOptions, expectations) {
+    test(funcArgsList, expectations) {
       expectations.forEach((expectation, index) => {
-        const funcOption = funcOptions[index];
+        const funcArgs = funcArgsList[index];
 
-        it(this.testDescription(funcOption, expectation), () => {
-          assert.deepEqual(this.subject(...funcOption), expectation);
+        it(this.description(funcArgs, expectation), () => {
+          assert.deepEqual(this.subject(...funcArgs), expectation);
         });
       });
     }
   }
-
-  TestClass.prototype.testDescription = testDescription;
 
   return TestClass;
 }
