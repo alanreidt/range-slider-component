@@ -1,8 +1,8 @@
 import { findClosestDivisible } from "./findClosestDivisible";
-import { makeTestClass, template } from "../../../tests/testUtilities";
+import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("findClosestDivisible", () => {
-  const describeTest = template`closest divisible number for division of ${0} by ${1} is ${"expectation"}`;
+  const describeTest = testDescriptionTemplate`closest divisible number for division of ${0} by ${1} is ${"expectation"}`;
   const TestClass = makeTestClass(findClosestDivisible, describeTest);
 
   describe("shall return closest divisible number", () => {

@@ -1,8 +1,8 @@
 import { findClosestTo } from "./findClosestTo";
-import { makeTestClass, template } from "../../../tests/testUtilities";
+import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("findClosestTo", () => {
-  const describeTest = template`closest number to ${0} from ${"...rest"} is ${"expectation"}`;
+  const describeTest = testDescriptionTemplate`closest number to ${0} from ${"...rest"} is ${"expectation"}`;
   const TestClass = makeTestClass(findClosestTo, describeTest);
 
   describe("shall return closest number to the number", () => {

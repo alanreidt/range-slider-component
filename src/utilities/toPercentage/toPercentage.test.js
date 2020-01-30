@@ -1,8 +1,11 @@
 import { toPercentage } from "./toPercentage";
-import { makeTestClass, template } from "../../../tests/testUtilities";
+import {
+  makeTestClass,
+  testDescriptionTemplate,
+} from "../../../tests/testUtilities";
 
 describe("toPercentage", () => {
-  const describeTest = template`converts ${0} to ${"expectation"}`;
+  const describeTest = testDescriptionTemplate`converts ${0} to ${"expectation"}`;
   const TestClass = makeTestClass(toPercentage, describeTest);
 
   describe("shall convert number to percentages", () => {

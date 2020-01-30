@@ -1,8 +1,8 @@
 import { isDivisible } from "./isDivisible";
-import { makeTestClass, template } from "../../../tests/testUtilities";
+import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("isDivisible", () => {
-  const describeTest = template`It is ${"expectation"} that ${0} is divisible by ${1}`;
+  const describeTest = testDescriptionTemplate`It is ${"expectation"} that ${0} is divisible by ${1}`;
   const TestClass = makeTestClass(isDivisible, describeTest);
 
   describe("shall return true, if dividend is divisible by divisor", () => {

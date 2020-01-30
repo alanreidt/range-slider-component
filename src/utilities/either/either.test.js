@@ -1,8 +1,8 @@
 import { either } from "./either";
-import { makeTestClass, template } from "../../../tests/testUtilities";
+import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("either", () => {
-  const describeTest = template`return ${"expectation"} from ${0} and ${1}`;
+  const describeTest = testDescriptionTemplate`return ${"expectation"} from ${0} and ${1}`;
   const TestClass = makeTestClass(either, describeTest);
 
   describe("shall return fallback parameter, if origin isn't correct", () => {

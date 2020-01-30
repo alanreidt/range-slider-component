@@ -1,8 +1,8 @@
 import { findAntecedent } from "./findAntecedent";
-import { makeTestClass, template } from "../../../tests/testUtilities";
+import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("findAntecedent", () => {
-  const describeTest = template`antecedent of ${0} by ${1}, with offset = ${3} is ${"expectation"}`;
+  const describeTest = testDescriptionTemplate`antecedent of ${0} by ${1}, with offset = ${3} is ${"expectation"}`;
   const TestClass = makeTestClass(findAntecedent, describeTest);
 
   describe("shall return antecedent", () => {

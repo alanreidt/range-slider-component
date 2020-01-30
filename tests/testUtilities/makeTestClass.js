@@ -1,10 +1,10 @@
 import { assert } from "chai";
 
-import { template } from "./template";
+import { testDescriptionTemplate } from "./testDescriptionTemplate";
 
 export function makeTestClass(
   subject,
-  commonDescription = template`${"...rest"} is equal to ${"expectation"}`,
+  commonDescription = testDescriptionTemplate`${"...rest"} is equal to ${"expectation"}`,
 ) {
   return class {
     constructor(localDescription) {

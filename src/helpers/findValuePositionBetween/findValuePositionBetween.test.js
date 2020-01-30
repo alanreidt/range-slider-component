@@ -1,8 +1,8 @@
 import { findValuePositionBetween } from "./findValuePositionBetween";
-import { makeTestClass, template } from "../../../tests/testUtilities";
+import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("findValuePositionBetween", () => {
-  const describeTest = template`position of ${0} between ${1} and ${2} is ${"expectation"}`;
+  const describeTest = testDescriptionTemplate`position of ${0} between ${1} and ${2} is ${"expectation"}`;
   const TestClass = makeTestClass(findValuePositionBetween, describeTest);
 
   describe("shall return position", () => {
