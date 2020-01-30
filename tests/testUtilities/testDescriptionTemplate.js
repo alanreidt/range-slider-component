@@ -5,7 +5,6 @@
  */
 export function testDescriptionTemplate(strings, ...keys) {
   return function(values, expectation) {
-    const dict = values[values.length - 1] || {};
     const result = [strings[0]];
 
     keys.forEach((key, i) => {
@@ -14,9 +13,7 @@ export function testDescriptionTemplate(strings, ...keys) {
           ? values[key]
           : key === "...rest"
           ? values.slice(i)
-          : key === "expectation"
-          ? expectation
-          : dict[key]
+          : expectation
       }`;
 
       result.push(value, strings[i + 1]);
