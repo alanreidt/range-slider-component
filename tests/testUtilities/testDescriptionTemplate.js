@@ -1,4 +1,9 @@
 /**
+ * This is the tagged template function.
+ * It parses template literal and then converts it into a string,
+ * replacing keywords — "...rest", "expectation" or argument index — with arguments,
+ * passed to the closure.
+ *
  * The function is a modification of
  * a template function, borrowed from
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
