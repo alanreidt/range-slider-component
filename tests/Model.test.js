@@ -1,13 +1,13 @@
 import { assert } from "chai";
 
-import { testClass } from "./testUtilities";
+import { composeClassTest } from "./testUtilities";
 import { Model } from "../src/Model";
 
 describe("Model", () => {
   describe("Initialization test", () => {
     const Class = Model;
     const methodGetterName = "getOptions";
-    const runTest = testClass({ Class, methodGetterName });
+    const runTest = composeClassTest({ Class, methodGetterName });
 
     describe("shall assign default values for not passed parameters", () => {
       context("shall assign default values, if nothing is passed", () => {
@@ -147,7 +147,7 @@ describe("Model", () => {
     const Class = Model;
     const methodName = "setOptions";
     const methodGetterName = "getOptions";
-    const runTest = testClass({ Class, methodName, methodGetterName });
+    const runTest = composeClassTest({ Class, methodName, methodGetterName });
 
     describe("shall change values, if correct one is passed", () => {
       const methodArgsList = [
