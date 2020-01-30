@@ -1,11 +1,11 @@
 /**
- * The simulateMouseEvent function is a modification of
+ * Simulate a mouse event.
+ *
+ * The function is a modification of
  * a simulateClick function, borrowed from
- * https://gomakethings.com/how-to-simulate-a-click-event-with-javascript/
+ * https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
  *
- * Simulate a click event.
- *
- * @param {Element} element  the element to simulate a click on
+ * @param {HTMLElement} element An element to simulate a mouse event on
  */
 export function simulateMouseEvent(eventType, element, options) {
   options = {
@@ -14,8 +14,8 @@ export function simulateMouseEvent(eventType, element, options) {
     view: window,
     ...options,
   };
-  // Create our event (with options)
+
   const event = new MouseEvent(eventType, options);
-  // If cancelled, don't dispatch our event
+
   const canceled = !element.dispatchEvent(event);
 }
