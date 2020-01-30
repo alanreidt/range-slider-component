@@ -12,7 +12,7 @@ export function makeTestClass(
       this.description = localDescription || commonDescription;
     }
 
-    test(funcArgsList, expectations) {
+    run(funcArgsList, expectations) {
       expectations.forEach((expectation, index) => {
         const funcArgs = funcArgsList[index];
 
