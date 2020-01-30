@@ -6,7 +6,7 @@ import { testDescriptionTemplate } from "./testDescriptionTemplate";
  * Returns a class for a test.
  *
  * @param {Object} subject A subject of the test.
- * @param {testDescriptionTemplate} commonDescriptionTemplate a test description template,
+ * @param {testDescriptionTemplate} commonDescriptionTemplate A test description template,
  *  composed via testDescriptionTemplate testUtilities function.
  */
 export function makeTestClass(
@@ -15,7 +15,7 @@ export function makeTestClass(
 ) {
   return class {
     /**
-     * @param {testDescriptionTemplate} localDescriptionTemplate a test description template,
+     * @param {testDescriptionTemplate} localDescriptionTemplate A test description template,
      *  composed via testDescriptionTemplate testUtilities function.
      *  Will replace commonDescriptionTemplate, if it's passed.
      */
@@ -28,8 +28,8 @@ export function makeTestClass(
     /**
      * Run the test.
      *
-     * @param {any} funcArgsList testing function arguments array
-     * @param {any} expectations test expectations
+     * @param {any} funcArgsList A testing function arguments array
+     * @param {any} expectations The test expectations
      */
     run(funcArgsList, expectations) {
       expectations.forEach((expectation, index) => {
