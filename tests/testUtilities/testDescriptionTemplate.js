@@ -8,8 +8,8 @@
  * a template function, borrowed from
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
  *
- * @param {any} args testing function arguments
- * @param {any} expectation test expectation
+ * @param {any} args A testing function arguments
+ * @param {any} expectation The test expectation
  */
 export function testDescriptionTemplate(strings, ...keys) {
   return (args, expectation) => {
