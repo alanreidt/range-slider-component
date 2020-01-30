@@ -2,8 +2,8 @@ import { findValueByRatioBetween } from "./findValueByRatioBetween";
 import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("findValueByRatioBetween", () => {
-  const describeTest = testDescriptionTemplate`value by ${0} between ${1} and ${2} equals to ${"expectation"}`;
-  const TestClass = makeTestClass(findValueByRatioBetween, describeTest);
+  const commonDescriptionTemplate = testDescriptionTemplate`value by ${0} between ${1} and ${2} equals to ${"expectation"}`;
+  const TestClass = makeTestClass(findValueByRatioBetween, commonDescriptionTemplate);
 
   describe("shall return value", () => {
     const funcArgsList = [

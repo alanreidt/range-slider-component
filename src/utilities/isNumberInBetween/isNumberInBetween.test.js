@@ -2,8 +2,8 @@ import { isNumberInBetween } from "./isNumberInBetween";
 import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("isNumberInBetween", () => {
-  const describeTest = testDescriptionTemplate`It is ${"expectation"} that ${0} is in between ${1} and ${2}`;
-  const TestClass = makeTestClass(isNumberInBetween, describeTest);
+  const commonDescriptionTemplate = testDescriptionTemplate`It is ${"expectation"} that ${0} is in between ${1} and ${2}`;
+  const TestClass = makeTestClass(isNumberInBetween, commonDescriptionTemplate);
 
   describe("shall return true, if number is in between start and end", () => {
     const funcArgsList = [

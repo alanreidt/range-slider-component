@@ -2,8 +2,8 @@ import { findClosestFactor } from "./findClosestFactor";
 import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("findClosestFactor", () => {
-  const describeTest = testDescriptionTemplate`closest factor for division of ${0} by ${1} is ${"expectation"}`;
-  const TestClass = makeTestClass(findClosestFactor, describeTest);
+  const commonDescriptionTemplate = testDescriptionTemplate`closest factor for division of ${0} by ${1} is ${"expectation"}`;
+  const TestClass = makeTestClass(findClosestFactor, commonDescriptionTemplate);
 
   describe("shall return closest factor", () => {
     const funcArgsList = [

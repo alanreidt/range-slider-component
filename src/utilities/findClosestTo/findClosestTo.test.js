@@ -5,8 +5,8 @@ import {
 } from "../../../tests/testUtilities";
 
 describe("findClosestTo", () => {
-  const describeTest = testDescriptionTemplate`closest number to ${0} from ${"...rest"} is ${"expectation"}`;
-  const TestClass = makeTestClass(findClosestTo, describeTest);
+  const commonDescriptionTemplate = testDescriptionTemplate`closest number to ${0} from ${"...rest"} is ${"expectation"}`;
+  const TestClass = makeTestClass(findClosestTo, commonDescriptionTemplate);
 
   describe("shall return closest number to the number", () => {
     const funcArgsList = [

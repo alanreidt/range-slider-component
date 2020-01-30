@@ -2,8 +2,8 @@ import { toFixed } from "./toFixed";
 import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("toFixed", () => {
-  const describeTest = testDescriptionTemplate`${0} with ${1} fixed digits is ${"expectation"}`;
-  const TestClass = makeTestClass(toFixed, describeTest);
+  const commonDescriptionTemplate = testDescriptionTemplate`${0} with ${1} fixed digits is ${"expectation"}`;
+  const TestClass = makeTestClass(toFixed, commonDescriptionTemplate);
 
   describe("shall fix number of digits after the decimal point", () => {
     describe("fix to 0 digits", () => {

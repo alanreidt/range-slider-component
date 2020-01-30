@@ -5,8 +5,8 @@ import {
 } from "../../../tests/testUtilities";
 
 describe("toPercentage", () => {
-  const describeTest = testDescriptionTemplate`converts ${0} to ${"expectation"}`;
-  const TestClass = makeTestClass(toPercentage, describeTest);
+  const commonDescriptionTemplate = testDescriptionTemplate`converts ${0} to ${"expectation"}`;
+  const TestClass = makeTestClass(toPercentage, commonDescriptionTemplate);
 
   describe("shall convert number to percentages", () => {
     const funcArgsList = [[0], [2], [0.2], [0.75], [-2.5]];

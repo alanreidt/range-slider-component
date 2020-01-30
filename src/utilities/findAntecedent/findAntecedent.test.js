@@ -2,8 +2,8 @@ import { findAntecedent } from "./findAntecedent";
 import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
 
 describe("findAntecedent", () => {
-  const describeTest = testDescriptionTemplate`antecedent of ${0} by ${1}, with offset = ${3} is ${"expectation"}`;
-  const TestClass = makeTestClass(findAntecedent, describeTest);
+  const commonDescriptionTemplate = testDescriptionTemplate`antecedent of ${0} by ${1}, with offset = ${3} is ${"expectation"}`;
+  const TestClass = makeTestClass(findAntecedent, commonDescriptionTemplate);
 
   describe("shall return antecedent", () => {
     const funcArgsList = [
