@@ -1,4 +1,4 @@
-import assert from "assert";
+import { assert } from "chai";
 
 import { testClass } from "./testUtilities";
 import { Model } from "../src/Model";

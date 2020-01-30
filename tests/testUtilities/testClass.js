@@ -1,4 +1,4 @@
-import assert from "assert";
+import { assert } from "chai";
 
 export function testClass({ Class, methodName, methodGetterName } = {}) {
   return function({ constructorArgs, methodArgsList, expectations } = {}) {
