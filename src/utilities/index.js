@@ -11,7 +11,6 @@ export { toFixed } from "./toFixed";
 export { toPercentage } from "./toPercentage";
 export { cross } from "./cross/cross";
 export { placeNumberBetween } from "./placeNumberBetween/placeNumberBetween";
-export { call } from "./call/call";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
 export { getPrevDivisibleOf } from "./getPrevDivisibleOf/getPrevDivisibleOf";
