@@ -1,7 +1,7 @@
 import { assert } from "chai";
 
 export function testClass({ Class, methodName, methodGetterName } = {}) {
-  return function({ constructorArgs, methodArgsList, expectations } = {}) {
+  return ({ constructorArgs, methodArgsList, expectations } = {}) => {
     let constructorArgsRecord = "";
 
     for (const constructorArgsKey in constructorArgs) {
@@ -34,7 +34,7 @@ export function testClass({ Class, methodName, methodGetterName } = {}) {
       const subjectOutput = subject[methodGetterName]();
       methodArgsRecord = methodArgsRecord || "default values";
 
-      context(`if ${methodArgsRecord} were passed`, function() {
+      context(`if ${methodArgsRecord} were passed`, () => {
         for (const expectationKey in expectation) {
           const expectationValue = expectation[expectationKey];
           const subjectOutputValue = subjectOutput[expectationKey];
