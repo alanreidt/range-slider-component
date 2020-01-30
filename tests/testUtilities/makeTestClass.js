@@ -6,7 +6,7 @@ export function makeTestClass(
   subject,
   commonDescription = template`${"...rest"} is equal to ${"expectation"}`,
 ) {
-  class TestClass {
+  return class {
     constructor(localDescription) {
       this.subject = subject;
       this.description = localDescription || commonDescription;
@@ -21,7 +21,5 @@ export function makeTestClass(
         });
       });
     }
-  }
-
-  return TestClass;
+  };
 }
