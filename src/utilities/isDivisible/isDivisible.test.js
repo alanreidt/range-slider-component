@@ -6,35 +6,35 @@ describe("isDivisible", () => {
   const TestClass = makeTestClass(isDivisible, describeTest);
 
   describe("shall return true, if dividend is divisible by divisor", () => {
-    const funcOptions = [
+    const funcArgsList = [
       [200, 100],
       [0, 100],
       [-200, 100],
       [0, Infinity],
     ];
-    const expectations = new Array(funcOptions.length).fill(true);
+    const expectations = new Array(funcArgsList.length).fill(true);
     const test = new TestClass();
 
-    test.run(funcOptions, expectations);
+    test.run(funcArgsList, expectations);
   });
 
   describe("shall handle Infinity correctly", () => {
-    const funcOptions = [
+    const funcArgsList = [
       [Infinity, 20],
       [Infinity, Infinity],
       [Infinity, -Infinity],
       [-Infinity, Infinity],
       [-Infinity, -Infinity],
     ];
-    const expectations = new Array(funcOptions.length).fill(false);
+    const expectations = new Array(funcArgsList.length).fill(false);
     const test = new TestClass();
 
-    test.run(funcOptions, expectations);
+    test.run(funcArgsList, expectations);
   });
 
   describe("shall catch garbage input", () => {
     context("returns NaN if dividend parameter is incorrect", () => {
-      const funcOptions = [
+      const funcArgsList = [
         [undefined, 60],
         [null, 60],
         [Infinity, 60],
@@ -42,14 +42,14 @@ describe("isDivisible", () => {
         ["text", 60],
         ["123text", 60],
       ];
-      const expectations = new Array(funcOptions.length).fill(false);
+      const expectations = new Array(funcArgsList.length).fill(false);
       const test = new TestClass();
 
-      test.run(funcOptions, expectations);
+      test.run(funcArgsList, expectations);
     });
 
     context("returns NaN if divisor parameter is incorrect", () => {
-      const funcOptions = [
+      const funcArgsList = [
         [100, undefined],
         [100, null],
         [100, Infinity],
@@ -57,10 +57,10 @@ describe("isDivisible", () => {
         [100, "text"],
         [100, "123text"],
       ];
-      const expectations = new Array(funcOptions.length).fill(false);
+      const expectations = new Array(funcArgsList.length).fill(false);
       const test = new TestClass();
 
-      test.run(funcOptions, expectations);
+      test.run(funcArgsList, expectations);
     });
   });
 });

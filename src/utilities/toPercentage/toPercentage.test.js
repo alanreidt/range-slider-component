@@ -6,15 +6,15 @@ describe("toPercentage", () => {
   const TestClass = makeTestClass(toPercentage, describeTest);
 
   describe("shall convert number to percentages", () => {
-    const funcOptions = [[0], [2], [0.2], [0.75], [-2.5]];
+    const funcArgsList = [[0], [2], [0.2], [0.75], [-2.5]];
     const expectations = ["0%", "200%", "20%", "75%", "-250%"];
     const test = new TestClass();
-    test.run(funcOptions, expectations);
+    test.run(funcArgsList, expectations);
   });
 
   context("shall catch garbage input", () => {
     describe("returns NaN, if number parameter is incorrect", () => {
-      const funcOptions = [
+      const funcArgsList = [
         [undefined],
         [null],
         [Infinity],
@@ -22,9 +22,9 @@ describe("toPercentage", () => {
         ["text"],
         ["123text"],
       ];
-      const expectations = new Array(funcOptions.length).fill(NaN);
+      const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
-      test.run(funcOptions, expectations);
+      test.run(funcArgsList, expectations);
     });
   });
 });

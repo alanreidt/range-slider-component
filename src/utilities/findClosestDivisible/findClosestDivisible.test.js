@@ -6,7 +6,7 @@ describe("findClosestDivisible", () => {
   const TestClass = makeTestClass(findClosestDivisible, describeTest);
 
   describe("shall return closest divisible number", () => {
-    const funcOptions = [
+    const funcArgsList = [
       [220, 100],
       [250, 100],
       [280, 100],
@@ -19,19 +19,19 @@ describe("findClosestDivisible", () => {
     const expectations = [200, 300, 300, 0, 100, -200, -200, -300];
     const test = new TestClass();
 
-    test.run(funcOptions, expectations);
+    test.run(funcArgsList, expectations);
   });
 
   describe("shall return NaN, if operation can't be performed", () => {
-    const funcOptions = [[200, 0], [], [200]];
-    const expectations = new Array(funcOptions.length).fill(NaN);
+    const funcArgsList = [[200, 0], [], [200]];
+    const expectations = new Array(funcArgsList.length).fill(NaN);
     const test = new TestClass();
 
-    test.run(funcOptions, expectations);
+    test.run(funcArgsList, expectations);
   });
 
   describe("shall correct negative divisor, removing sign", () => {
-    const funcOptions = [
+    const funcArgsList = [
       [220, -100],
       [250, -100],
       [280, -100],
@@ -41,12 +41,12 @@ describe("findClosestDivisible", () => {
     const expectations = [200, 300, 300, 0, -100];
     const test = new TestClass();
 
-    test.run(funcOptions, expectations);
+    test.run(funcArgsList, expectations);
   });
 
   describe("shall catch garbage input", () => {
     context("returns NaN if dividend parameter is incorrect", () => {
-      const funcOptions = [
+      const funcArgsList = [
         [undefined, 60],
         [null, 60],
         [Infinity, 60],
@@ -54,14 +54,14 @@ describe("findClosestDivisible", () => {
         ["text", 60],
         ["123text", 60],
       ];
-      const expectations = new Array(funcOptions.length).fill(NaN);
+      const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
 
-      test.run(funcOptions, expectations);
+      test.run(funcArgsList, expectations);
     });
 
     context("returns NaN if divisor parameter is incorrect", () => {
-      const funcOptions = [
+      const funcArgsList = [
         [100, undefined],
         [100, null],
         [100, Infinity],
@@ -69,10 +69,10 @@ describe("findClosestDivisible", () => {
         [100, "text"],
         [100, "123text"],
       ];
-      const expectations = new Array(funcOptions.length).fill(NaN);
+      const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
 
-      test.run(funcOptions, expectations);
+      test.run(funcArgsList, expectations);
     });
   });
 });
