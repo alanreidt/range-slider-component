@@ -9,26 +9,26 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
  */
 export function testDescriptionTemplate(strings, ...keys) {
-  return (values, expectation) => {
-    const result = [strings[0]];
+  return (args, expectation) => {
+    const description = [strings[0]];
 
     keys.forEach((key, i) => {
       let value = null;
 
       switch (key) {
         case "...rest":
-          value = values.slice(i);
+          value = args.slice(i);
           break;
         case "expectation":
           value = expectation;
           break;
         default:
-          value = values[key];
+          value = args[key];
       }
 
-      result.push(String(value), strings[i + 1]);
+      description.push(String(value), strings[i + 1]);
     });
 
-    return result.join("");
+    return description.join("");
   };
 }
