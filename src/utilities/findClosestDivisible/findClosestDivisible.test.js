@@ -1,9 +1,15 @@
 import { findClosestDivisible } from "./findClosestDivisible";
-import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
+import {
+  makeTestClass,
+  testDescriptionTemplate,
+} from "../../../tests/testUtilities";
 
 describe("findClosestDivisible", () => {
   const commonDescriptionTemplate = testDescriptionTemplate`closest divisible number for division of ${0} by ${1} is ${"expectation"}`;
-  const TestClass = makeTestClass(findClosestDivisible, commonDescriptionTemplate);
+  const TestClass = makeTestClass(
+    findClosestDivisible,
+    commonDescriptionTemplate,
+  );
 
   describe("shall return closest divisible number", () => {
     const funcArgsList = [

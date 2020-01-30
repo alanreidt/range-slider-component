@@ -1,5 +1,8 @@
 import { isNumberInBetween } from "./isNumberInBetween";
-import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
+import {
+  makeTestClass,
+  testDescriptionTemplate,
+} from "../../../tests/testUtilities";
 
 describe("isNumberInBetween", () => {
   const commonDescriptionTemplate = testDescriptionTemplate`It is ${"expectation"} that ${0} is in between ${1} and ${2}`;

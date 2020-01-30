@@ -1,5 +1,8 @@
 import { either } from "./either";
-import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
+import {
+  makeTestClass,
+  testDescriptionTemplate,
+} from "../../../tests/testUtilities";
 
 describe("either", () => {
   const commonDescriptionTemplate = testDescriptionTemplate`return ${"expectation"} from ${0} and ${1}`;

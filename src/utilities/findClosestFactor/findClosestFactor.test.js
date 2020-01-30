@@ -1,5 +1,8 @@
 import { findClosestFactor } from "./findClosestFactor";
-import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
+import {
+  makeTestClass,
+  testDescriptionTemplate,
+} from "../../../tests/testUtilities";
 
 describe("findClosestFactor", () => {
   const commonDescriptionTemplate = testDescriptionTemplate`closest factor for division of ${0} by ${1} is ${"expectation"}`;

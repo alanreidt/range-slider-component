@@ -1,9 +1,15 @@
 import { findValuePositionBetween } from "./findValuePositionBetween";
-import { makeTestClass, testDescriptionTemplate } from "../../../tests/testUtilities";
+import {
+  makeTestClass,
+  testDescriptionTemplate,
+} from "../../../tests/testUtilities";
 
 describe("findValuePositionBetween", () => {
   const commonDescriptionTemplate = testDescriptionTemplate`position of ${0} between ${1} and ${2} is ${"expectation"}`;
-  const TestClass = makeTestClass(findValuePositionBetween, commonDescriptionTemplate);
+  const TestClass = makeTestClass(
+    findValuePositionBetween,
+    commonDescriptionTemplate,
+  );
 
   describe("shall return position", () => {
     const funcArgsList = [
