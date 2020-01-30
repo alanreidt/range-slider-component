@@ -2,7 +2,7 @@ import { findRatio } from "./findRatio";
 import { makeTestClass, template } from "../../../tests/testUtilities";
 
 describe("findRatio", () => {
-  const describeTest = template`ratio of ${0} to ${1}, with offset = ${3} is ${"expectation"}`;
+  const describeTest = template`ratio of ${0} to ${1}, with offset = ${2} is ${"expectation"}`;
   const TestClass = makeTestClass(findRatio, describeTest);
 
   describe("shall return ratio", () => {
