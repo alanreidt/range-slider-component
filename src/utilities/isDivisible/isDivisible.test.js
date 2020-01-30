@@ -15,7 +15,7 @@ describe("isDivisible", () => {
     const expectations = new Array(funcOptions.length).fill(true);
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall handle Infinity correctly", () => {
@@ -29,7 +29,7 @@ describe("isDivisible", () => {
     const expectations = new Array(funcOptions.length).fill(false);
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall catch garbage input", () => {
@@ -45,7 +45,7 @@ describe("isDivisible", () => {
       const expectations = new Array(funcOptions.length).fill(false);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     context("returns NaN if divisor parameter is incorrect", () => {
@@ -60,7 +60,7 @@ describe("isDivisible", () => {
       const expectations = new Array(funcOptions.length).fill(false);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

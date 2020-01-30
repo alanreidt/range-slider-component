@@ -29,7 +29,7 @@ describe("findValuePositionBetween", () => {
       "50%",
     ];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   context("shall handle exceptions", () => {
@@ -42,14 +42,14 @@ describe("findValuePositionBetween", () => {
       ];
       const expectations = ["-20%", "140%", "200%", "140%"];
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("handle infinite end", () => {
       const funcOptions = [[50, 500, Infinity]];
       const expectations = ["0%"];
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 
@@ -65,7 +65,7 @@ describe("findValuePositionBetween", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if start parameter is incorrect", () => {
@@ -79,7 +79,7 @@ describe("findValuePositionBetween", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if end parameter is incorrect", () => {
@@ -92,7 +92,7 @@ describe("findValuePositionBetween", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

@@ -17,7 +17,7 @@ describe("findAntecedent", () => {
     ];
     const expectations = [100, 0, 250, 0, -200, -50, -350];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall handle exceptions", () => {
@@ -33,7 +33,7 @@ describe("findAntecedent", () => {
     ];
     const expectations = [100, 900, 300, 0, 300, Infinity, Infinity, NaN];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   context("shall catch garbage input", () => {
@@ -47,7 +47,7 @@ describe("findAntecedent", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if ratio parameter is incorrect", () => {
@@ -60,7 +60,7 @@ describe("findAntecedent", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if offset parameter is incorrect", () => {
@@ -73,7 +73,7 @@ describe("findAntecedent", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

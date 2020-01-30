@@ -10,7 +10,7 @@ describe("toFixed", () => {
       const funcOptions = [[0.1619048], [0.3333333], [0.957], [0.5], [-0.5]];
       const expectations = ["0", "0", "1", "1", "-1"];
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
     describe("fix to 1 digit", () => {
       const funcOptions = [
@@ -20,7 +20,7 @@ describe("toFixed", () => {
       ];
       const expectations = ["0.2", "0.3", "1.0"];
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
     describe("fix to 5 digits", () => {
       const funcOptions = [
@@ -30,7 +30,7 @@ describe("toFixed", () => {
       ];
       const expectations = ["0.16190", "0.33333", "0.95700"];
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 
@@ -42,7 +42,7 @@ describe("toFixed", () => {
     ];
     const expectations = ["0", "100", "-100"];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall return Infinity and NaN as is (only turning them into a string)", () => {
@@ -52,7 +52,7 @@ describe("toFixed", () => {
     ];
     const expectations = ["Infinity", "NaN"];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   context("shall catch garbage input", () => {
@@ -65,7 +65,7 @@ describe("toFixed", () => {
       ];
       const expectations = new Array(funcOptions.length).fill("NaN");
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if fractionDigits parameter is incorrect", () => {
@@ -78,7 +78,7 @@ describe("toFixed", () => {
       ];
       const expectations = new Array(funcOptions.length).fill("NaN");
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

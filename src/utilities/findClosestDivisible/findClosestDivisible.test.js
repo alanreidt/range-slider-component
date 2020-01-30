@@ -19,7 +19,7 @@ describe("findClosestDivisible", () => {
     const expectations = [200, 300, 300, 0, 100, -200, -200, -300];
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall return NaN, if operation can't be performed", () => {
@@ -27,7 +27,7 @@ describe("findClosestDivisible", () => {
     const expectations = new Array(funcOptions.length).fill(NaN);
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall correct negative divisor, removing sign", () => {
@@ -41,7 +41,7 @@ describe("findClosestDivisible", () => {
     const expectations = [200, 300, 300, 0, -100];
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall catch garbage input", () => {
@@ -57,7 +57,7 @@ describe("findClosestDivisible", () => {
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     context("returns NaN if divisor parameter is incorrect", () => {
@@ -72,7 +72,7 @@ describe("findClosestDivisible", () => {
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

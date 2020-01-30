@@ -20,7 +20,7 @@ describe("findValueByRatioBetween", () => {
     const expectations = [100, 0, 500, 957, 250, 0, -200, -50, -350];
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   context("shall handle exceptions", () => {
@@ -34,7 +34,7 @@ describe("findValueByRatioBetween", () => {
       const expectations = [705, 1200, 195, -300];
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("handle Infinity", () => {
@@ -45,7 +45,7 @@ describe("findValueByRatioBetween", () => {
       const expectations = [Infinity, Infinity];
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 
@@ -61,7 +61,7 @@ describe("findValueByRatioBetween", () => {
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if start parameter is incorrect", () => {
@@ -76,7 +76,7 @@ describe("findValueByRatioBetween", () => {
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if end parameter is incorrect", () => {
@@ -90,7 +90,7 @@ describe("findValueByRatioBetween", () => {
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

@@ -15,7 +15,7 @@ describe("either", () => {
     ];
     const expectations = new Array(funcOptions.length).fill(500);
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall return origin, if it's correct", () => {
@@ -29,7 +29,7 @@ describe("either", () => {
     ];
     const expectations = [100, 0, -100, 0.5, Infinity, -Infinity];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall return fallback, if neither is true", () => {
@@ -43,6 +43,6 @@ describe("either", () => {
     const expectations = [null, undefined, "", false, NaN];
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 });

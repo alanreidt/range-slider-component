@@ -19,7 +19,7 @@ describe("findClosestFactor", () => {
     ];
     const expectations = [225, 24, 20, 500, 1, 50, 100, 25, 1];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall return NaN, when operation can't be performed", () => {
@@ -31,7 +31,7 @@ describe("findClosestFactor", () => {
     ];
     const expectations = new Array(funcOptions.length).fill(NaN);
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   context("shall catch garbage input", () => {
@@ -46,7 +46,7 @@ describe("findClosestFactor", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if divisor parameter is incorrect", () => {
@@ -60,7 +60,7 @@ describe("findClosestFactor", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

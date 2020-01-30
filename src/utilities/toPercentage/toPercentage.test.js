@@ -9,7 +9,7 @@ describe("toPercentage", () => {
     const funcOptions = [[0], [2], [0.2], [0.75], [-2.5]];
     const expectations = ["0%", "200%", "20%", "75%", "-250%"];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   context("shall catch garbage input", () => {
@@ -24,7 +24,7 @@ describe("toPercentage", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

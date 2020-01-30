@@ -17,7 +17,7 @@ describe("findClosestTo", () => {
     const expectations = [90, -90, -50, 100, 250, 105];
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall return last closest number to the number, if controversial", () => {
@@ -28,7 +28,7 @@ describe("findClosestTo", () => {
     const expectations = [101, 99];
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall filter incorrect arguments", () => {
@@ -39,7 +39,7 @@ describe("findClosestTo", () => {
     const expectations = [105, 5];
     const test = new TestClass();
 
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   context("shall catch garbage input", () => {
@@ -55,7 +55,7 @@ describe("findClosestTo", () => {
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN if variants parameter is incorrect", () => {
@@ -70,7 +70,7 @@ describe("findClosestTo", () => {
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
 
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });

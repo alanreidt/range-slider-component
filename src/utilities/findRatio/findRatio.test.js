@@ -19,7 +19,7 @@ describe("findRatio", () => {
     ];
     const expectations = [0.2, 0, 1, 0.957, 0.1, 0.5, 0.3, 0.9, 0.5];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   describe("shall handle exceptions", () => {
@@ -34,7 +34,7 @@ describe("findRatio", () => {
     ];
     const expectations = [-0.2, 1.4, 2, 1.4, 0, Infinity, 0];
     const test = new TestClass();
-    test.test(funcOptions, expectations);
+    test.run(funcOptions, expectations);
   });
 
   context("shall catch garbage input", () => {
@@ -48,7 +48,7 @@ describe("findRatio", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if consequent parameter is incorrect", () => {
@@ -61,7 +61,7 @@ describe("findRatio", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
 
     describe("returns NaN, if offset parameter is incorrect", () => {
@@ -74,7 +74,7 @@ describe("findRatio", () => {
       ];
       const expectations = new Array(funcOptions.length).fill(NaN);
       const test = new TestClass();
-      test.test(funcOptions, expectations);
+      test.run(funcOptions, expectations);
     });
   });
 });
