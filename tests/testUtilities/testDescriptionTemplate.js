@@ -4,19 +4,24 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
  */
 export function testDescriptionTemplate(strings, ...keys) {
-  return function(values, expectation) {
+  return (values, expectation) => {
     const result = [strings[0]];
 
     keys.forEach((key, i) => {
-      const value = `${
-        Number.isInteger(key)
-          ? values[key]
-          : key === "...rest"
-          ? values.slice(i)
-          : expectation
-      }`;
+      let value = null;
 
-      result.push(value, strings[i + 1]);
+      switch (key) {
+        case "...rest":
+          value = values.slice(i);
+          break;
+        case "expectation":
+          value = expectation;
+          break;
+        default:
+          value = values[key];
+      }
+
+      result.push(String(value), strings[i + 1]);
     });
 
     return result.join("");
