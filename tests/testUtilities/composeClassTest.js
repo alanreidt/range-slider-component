@@ -1,6 +1,6 @@
 import { assert } from "chai";
 
-export function testClass({ Class, methodName, methodGetterName } = {}) {
+export function composeClassTest({ Class, methodName, methodGetterName } = {}) {
   return ({ constructorArgs, methodArgsList, expectations } = {}) => {
     let constructorArgsRecord = "";
 
