@@ -1,9 +1,9 @@
 /**
- * The template function is a modification of
+ * The function is a modification of
  * a template function, borrowed from
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
  */
-export function template(strings, ...keys) {
+export function testDescriptionTemplate(strings, ...keys) {
   return function(values, expectation) {
     const dict = values[values.length - 1] || {};
     const result = [strings[0]];
