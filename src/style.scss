@@ -111,6 +111,13 @@ body {
   min-height: 100px;
 }
 
+.playground__slider {
+  & .slider__base {
+    border-color: #afafaf;
+    background-color: #cacaca;
+  }
+}
+
 .control-pane {
   padding: 0.5rem 1rem;
   border: 3px solid #333;
