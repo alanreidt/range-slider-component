@@ -1,184 +1,163 @@
-import { slider } from "../src/slider.js";
+import { assert } from "chai";
 
+import { slider } from "../src/slider";
 
-export function testSlider() {
+describe("slider", () => {
+  const options = {
+    boundaries: [100, 500],
+    values: [200, 300],
+    step: 20,
+    orientation: "horizontal",
+    hasTooltips: true,
+  };
+  const model = {
+    arguments: null,
+    addSubscriberArgs: null,
 
+    getOptions() {
+      return options;
+    },
 
-  describe("slider", function () {
-    const sliderModel = {
-      arguments: null,
+    setOptions(newOptions) {
+      this.optionsUpdated = newOptions;
+    },
+
+    setValueAt(index, value) {
+      this.valueUpdated = [index, value];
+    },
+
+    addSubscriber(...args) {
+      this.addSubscriberArgs = args;
+    },
+  };
+  const viewController = {
+    arguments: null,
+    setElements() {},
+  };
+
+  const makeClassMock = (obj) => {
+    return (...newOptions) => {
+      obj.arguments = newOptions;
+
+      return obj;
     };
-    const sliderAdapter = {
-      arguments: null,
-      addSubscriberArgs: null,
-      getOptions() {
-        return options;
-      },
-      setOptions(options) {
-        this.optionsUpdated = options;
-      },
-      setValueAt(index, value) {
-        this.valueUpdated = [index, value];
-      },
-      addSubscriber(...args) {
-        this.addSubscriberArgs = args;
-      },
-    };
-    const sliderUi = {
-      arguments: null,
-      update() { },
-    };
+  };
 
-    const makeClassMock = function (obj) {
-      return (...options) => {
-        obj.arguments = options;
-        return obj;
-      };
-    };
+  const factory = {
+    createModel: makeClassMock(model),
+    createUI: makeClassMock(viewController),
+  };
+  const $parent = document.createElement("div");
 
-    const factory = {
-      createModel: makeClassMock(sliderModel),
-      createAdapter: makeClassMock(sliderAdapter),
-      createUI: makeClassMock(sliderUi),
-    };
+  slider._factory = factory;
+  slider.create($parent, options);
 
-    const $parent = document.createElement("div");
-    const options = {
-      boundaries: [100, 500],
-      values: [200, 300],
-      step: 20,
-      orientaion: "horizontal",
-      hasTooltips: true,
-    };
-
-    slider._factory = factory;
-    slider.create($parent, options);
-
-    describe("create method", function () {
-
-      context("shall create sliderModel with options", function () {
-        it("sliderModel arguments is not equal to null", function () {
-          assert.isNotNull(sliderModel.arguments);
-        });
-
-        it("sliderModel argument is equal to options", function () {
-          assert.equal(sliderModel.arguments[0], options);
-        });
+  describe("create method", () => {
+    context("shall create model with options", () => {
+      it("model arguments is not equal to null", () => {
+        assert.isNotNull(model.arguments);
       });
 
-      context("shall create sliderAdapter with sliderModel, as dataSource", function () {
-        it("sliderAdapter arguments is not equal to null", function () {
-          assert.isNotNull(sliderAdapter.arguments);
-        });
-
-        it("sliderAdapter arguments[0] is equal to sliderModel", function () {
-          assert.equal(sliderAdapter.arguments[0], sliderModel);
-        });
-      });
-
-      context("shall create sliderUi with $parent and sliderAdapter", function () {
-        it("sliderUi arguments is not equal to null", function () {
-          assert.isNotNull(sliderUi.arguments);
-        });
-
-        it("sliderUi arguments[0] is equal to $parent", function () {
-          assert.equal(sliderUi.arguments[0], $parent);
-        });
-
-        it("sliderUi arguments[1] is equal to sliderAdapter", function () {
-          assert.equal(sliderUi.arguments[1], sliderAdapter);
-        });
-      });
-
-      context("shall subscribe sliderUI update method to sliderAdapter", function () {
-        it("sliderAdapter addSubscriberArgs is not equal to null", function () {
-          assert.isNotNull(sliderAdapter.addSubscriberArgs);
-        });
-
-        it("sliderAdapter addSubscriberArgs[0] is equal to 'update'", function () {
-          assert.equal(sliderAdapter.addSubscriberArgs[0], "update");
-        });
-
-        it("sliderAdapter addSubscriberArgs[1] is equal to sliderUi update method", function () {
-          assert.equal(sliderAdapter.addSubscriberArgs[1], sliderUi.update);
-        });
-      });
-
-      context("shall create parentsMap with sliderModel, sliderAdapter and sliderUi", function () {
-        it("sliderAPI parentsMap length is not equal to 0", function () {
-          assert.notEqual(slider._parentsMap.length, 0);
-        });
-
-        it("sliderAPI parentsMap $parent is not undefined", function () {
-          assert.notEqual(slider._parentsMap.get($parent), undefined);
-        });
-
-        it("sliderAPI parentsMap $parent sliderModel is equal to sliderModel", function () {
-          assert.equal(slider._parentsMap.get($parent).sliderModel, sliderModel);
-        });
-
-        it("sliderAPI parentsMap $parent sliderAdapter is equal to sliderAdapter", function () {
-          assert.equal(slider._parentsMap.get($parent).sliderAdapter, sliderAdapter);
-        });
-
-        it("sliderAPI parentsMap $parent sliderUi is equal to sliderUi", function () {
-          assert.equal(slider._parentsMap.get($parent).sliderUi, sliderUi);
-        });
+      it("model argument is equal to options", () => {
+        assert.equal(model.arguments[0], options);
       });
     });
 
-
-    describe("getOptions method", function () {
-
-      context("shall return current options", function () {
-        it("returned options are equal to passed options", function () {
-          assert.equal(slider.getOptions($parent), options);
-        });
+    context("shall create viewController with $parent and model", () => {
+      it("viewController arguments is not equal to null", () => {
+        assert.isNotNull(viewController.arguments);
       });
 
+      it("viewController arguments[0] is equal to $parent", () => {
+        assert.equal(viewController.arguments[0], $parent);
+      });
+
+      it("viewController arguments[1] is equal to model", () => {
+        assert.equal(viewController.arguments[1], model);
+      });
     });
 
-
-    describe("setOptions method", function () {
-
-      context("shall set sliderAdapter optionsUpdated property", function () {
-        const newOptions = {
-          boundaries: [0, 100],
-          step: 20,
-        };
-
-        slider.setOptions($parent, newOptions);
-
-        it("sliderAdapter optionsUpdated is not equal to undefined", function () {
-          assert.notEqual(sliderAdapter.optionsUpdated, undefined);
+    context(
+      "shall subscribe viewController setElements method to model",
+      () => {
+        it("model addSubscriberArgs is not equal to null", () => {
+          assert.isNotNull(model.addSubscriberArgs);
         });
 
-        it("sliderAdapter optionsUpdated is equal to newOptions", function () {
-          assert.equal(sliderAdapter.optionsUpdated, newOptions);
+        it("model addSubscriberArgs[0] is equal to 'update'", () => {
+          assert.equal(model.addSubscriberArgs[0], "update");
         });
+
+        it("model addSubscriberArgs[1] is equal to viewController setElements method", () => {
+          assert.equal(model.addSubscriberArgs[1], viewController.setElements);
+        });
+      },
+    );
+
+    context("shall create parentsMap with model and viewController", () => {
+      it("sliderAPI parentsMap length is not equal to 0", () => {
+        assert.notEqual(slider._parentsMap.length, 0);
       });
 
-    });
-
-
-    describe("setValueAt method", function () {
-
-      context("shall set sliderAdapter valueUpdated property", function () {
-        const index = 1;
-        const newValue = 30;
-        const expectation = [index, newValue];
-
-        slider.setValueAt($parent, index, newValue);
-
-        it("sliderAdapter valueUpdated is not equal to undefined", function () {
-          assert.notEqual(sliderAdapter.valueUpdated, undefined);
-        });
-
-        it("sliderAdapter valueUpdated is equal to newOptions", function () {
-          assert.deepEqual(sliderAdapter.valueUpdated, expectation);
-        });
+      it("sliderAPI parentsMap $parent is not undefined", () => {
+        assert.notEqual(slider._parentsMap.get($parent), undefined);
       });
 
+      it("sliderAPI parentsMap $parent model is equal to model", () => {
+        assert.equal(slider._parentsMap.get($parent).model, model);
+      });
+
+      it("sliderAPI parentsMap $parent viewController is equal to viewController", () => {
+        assert.equal(
+          slider._parentsMap.get($parent).viewController,
+          viewController,
+        );
+      });
     });
   });
-}
+
+  describe("getOptions method", () => {
+    context("shall return current options", () => {
+      it("returned options are equal to passed options", () => {
+        assert.equal(slider.getOptions($parent), options);
+      });
+    });
+  });
+
+  describe("setOptions method", () => {
+    context("shall set model optionsUpdated property", () => {
+      const newOptions = {
+        boundaries: [0, 100],
+        step: 20,
+      };
+
+      slider.setOptions($parent, newOptions);
+
+      it("model optionsUpdated is not equal to undefined", () => {
+        assert.notEqual(model.optionsUpdated, undefined);
+      });
+
+      it("model optionsUpdated is equal to newOptions", () => {
+        assert.equal(model.optionsUpdated, newOptions);
+      });
+    });
+  });
+
+  describe("setValueAt method", () => {
+    context("shall set model valueUpdated property", () => {
+      const index = 1;
+      const newValue = 30;
+      const expectation = [index, newValue];
+
+      slider.setValueAt($parent, index, newValue);
+
+      it("model valueUpdated is not equal to undefined", () => {
+        assert.notEqual(model.valueUpdated, undefined);
+      });
+
+      it("model valueUpdated is equal to newOptions", () => {
+        assert.deepEqual(model.valueUpdated, expectation);
+      });
+    });
+  });
+});

@@ -1,0 +1,1 @@
+export { findClosestFactor } from "./findClosestFactor";

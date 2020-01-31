@@ -1,28 +1,18 @@
-import { testGetClosestFactorOf } from "../src/utilities/getClosestFactorOf/getClosestFactorOf.test";
-import { testGetNearestTo } from "../src/utilities/getNearestTo/getNearestTo.test.js";
-import { testIsValueBetween } from "../src/utilities/isValueBetween/isValueBetween.test.js";
-import { testGetOverstepOf } from "../src/utilities/getOverstepOf/getOverstepOf.test.js";
-import { testGetNearestDivisibleOf } from "../src/utilities/getNearestDivisibleOf/getNearestDivisibleOf.test.js";
-import { testGetPositionInPercentageOf } from "../src/utilities/getPositionInPercentageOf/getPositionInPercentageOf.test.js";
-import { testTranslateProportionIntoValue } from "../src/utilities/translateProportionIntoValue/translateProportionIntoValue.test.js";
-import { testObserverMixin } from "../src/utilities/observerMixin/observerMixin.test.js";
-import { testSliderAdapter } from "./SliderAdapter.test.js";
-import { testSliderModel } from "./SliderModel.test.js";
-import { testSlider } from "./slider.test.js";
-import { testSetElemenPosition } from "../src/utilities/setElementPosition/setElementPosition.test.js";
-import { testSliderUI } from "./SliderUI.test";
-
-testGetClosestFactorOf();
-testGetNearestTo();
-testIsValueBetween();
-testGetOverstepOf();
-testGetNearestDivisibleOf()
-testGetPositionInPercentageOf();
-testTranslateProportionIntoValue();
-testSetElemenPosition();
-testObserverMixin();
-
-testSliderModel();
-testSliderAdapter();
-testSliderUI();
-testSlider();
+import "./Model.test";
+import "./ViewController.test";
+import "./slider.test";
+import "../src/utilities/observerMixin/observerMixin.test";
+import "../src/helpers/adjustValueToStep/adjustValueToStep.test";
+import "../src/utilities/findRatio/findRatio.test";
+import "../src/utilities/findAntecedent/findAntecedent.test";
+import "../src/utilities/toPercentage/toPercentage.test";
+import "../src/utilities/toFixed/toFixed.test";
+import "../src/utilities/findClosestTo/findClosestTo.test";
+import "../src/helpers/findValuePositionBetween/findValuePositionBetween.test";
+import "../src/helpers/findValueByRatioBetween/findValueByRatioBetween.test";
+import "../src/utilities/isNumberBetween/isNumberBetween.test";
+import "../src/utilities/isNumberInBetween/isNumberInBetween.test";
+import "../src/utilities/findClosestDivisible/findClosestDivisible.test";
+import "../src/utilities/findClosestFactor/findClosestFactor.test";
+import "../src/utilities/isDivisible/isDivisible.test";
+import "../src/utilities/either/either.test";

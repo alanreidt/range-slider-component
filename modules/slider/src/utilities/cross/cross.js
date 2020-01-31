@@ -1,4 +1,4 @@
-import { getNearestTo } from "../getNearestTo/getNearestTo";
+import { findClosestTo } from "../findClosestTo/findClosestTo";
 
 /**
  * Cross arrays' items, regarding first array as a base.
@@ -7,32 +7,39 @@ import { getNearestTo } from "../getNearestTo/getNearestTo";
  * @param {array} arr The array to be crossed in.
  *
  * @returns {array} The crossed array.
- *
  */
 export function cross(baseArr, arr) {
-  baseArr = baseArr && baseArr.slice().sort( (a, b) => a - b );
-  arr = arr && arr.slice().sort( (a, b) => a - b );
+  const baseArrCopy = baseArr && baseArr.slice().sort((a, b) => a - b);
+  let arrCopy = arr && arr.slice().sort((a, b) => a - b);
 
-  if ( !arr || !arr.length ) {
+  if (!arrCopy || !arrCopy.length) {
     return baseArr;
   }
 
-  if ( !baseArr || !baseArr.length || (baseArr.length === arr.length) ) {
-    return arr;
+  if (
+    !baseArrCopy ||
+    !baseArrCopy.length ||
+    baseArrCopy.length === arrCopy.length
+  ) {
+    return arrCopy;
   }
 
-  if ( arr.length < baseArr.length ) {
-    arr.forEach( (item) => {
-      const closestValue = getNearestTo(item, ...baseArr);
-      const closestValuePosition = baseArr.indexOf(closestValue);
+  if (arrCopy.length < baseArrCopy.length) {
+    const variants = baseArrCopy.slice();
 
-      baseArr.splice(closestValuePosition, 1, item);
+    arrCopy.forEach((item) => {
+      const closestValue = findClosestTo(item, ...variants);
+      const closestValuePosition = baseArrCopy.indexOf(closestValue);
+      const index = variants.indexOf(closestValue);
+
+      baseArrCopy.splice(closestValuePosition, 1, item);
+      variants.splice(0, index + 1);
     });
 
-    arr = baseArr;
+    arrCopy = baseArrCopy;
   }
 
-  arr.length = baseArr.length;
+  arrCopy.length = baseArrCopy.length;
 
-  return arr;
+  return arrCopy;
 }

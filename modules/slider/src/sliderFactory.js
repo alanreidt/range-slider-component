@@ -1,18 +1,12 @@
-import {SliderModel} from "./SliderModel";
-import {SliderAdapter} from "./SliderAdapter";
-import {SliderUI} from "./SliderUI";
-
+import { Model } from "./Model";
+import { ViewController } from "./ViewController";
 
 export const sliderFactory = {
   createModel(...args) {
-    return new SliderModel(...args);
-  },
-
-  createAdapter(...args) {
-    return new SliderAdapter(...args);
+    return new Model(...args);
   },
 
   createUI(...args) {
-    return new SliderUI(...args);
-  }
+    return new ViewController(...args);
+  },
 };

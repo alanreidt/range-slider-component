@@ -1,0 +1,51 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "mocha": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:prettier/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "no-underscore-dangle": "off",
+      "import/prefer-default-export": "off",
+      "import/no-default-export": "error",
+
+      // enhance linting speed
+      "import/no-cycle": "off",
+
+      "import/order": ["error", {
+        "groups": [["builtin", "external"], "internal", ["parent", "sibling"], "index"],
+        "newlines-between": "always"
+      }],
+      "import/no-extraneous-dependencies": ["error", {
+        "devDependencies": ["**/*.test.js", "**/*.spec.js", "**/testUtilities/*.js"]
+      }],
+      // "import/no-internal-modules": "off",
+      // "no-restricted-imports": ["error", "@material-ui/core", "@material-ui/icons", "i18next", "react-i18next"],
+
+      // should allowShortCircuit and allowTernary be true?
+      "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true  }],
+
+      "no-console": ["error", { "allow": ["info", "warn", "error"] }],
+      "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+
+      // Why?
+      // "no-undef": "off",
+
+      "prettier/prettier": "error"
+    }
+}

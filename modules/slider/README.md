@@ -16,22 +16,41 @@ More to come.
 ## Getting started
 In order to try the slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
-For more, clone the repository and play around source code:
+### Mess with clone
+For more, clone the repository:
 ```bash
 # clone this repository
 git clone https://github.com/alanreidt/slider.git
 ```
 
-Or, connect it to your code (which isn't recomended for now) by entering next lines in your main html file (check [gh-pages branch](https://github.com/alanreidt/slider/tree/gh-pages) to see how it can be done):
+Use next npm commands to get corresponding results (all dependencies should be installed by npm automatically):
+```bash
+# to build and open web page with the slider
+npm run dev
+
+# to build and open web page with tests
+npm run test
+
+# to build production version
+npm run build
+```
+
+The `slider API` is connected to the `test-page/app.js` file. You can mess around it there.
+
+Production version is placed in `prod` folder.
+
+### Connect Slider to your project
+Connect it to your code by downloading zip-file via green button at the top of the page “Clone or download”.
+
+Unzip and place folder within your project folder.
+
+And then, enter next lines in your main html file (or check `test-page` folder to see how to connect it directly to js and css files):
 ```html
 <!-- import slider style (change yourpath) -->
-<link rel="stylesheet" href="{your_path}/slider/prod/slider.css">
+<link rel="stylesheet" href="{your_path}/slider/prod/slider.min.css">
+
 <!-- import slider API unit (change yourpath) -->
-<script src="{your_path}/slider/prod/slider.js"></script>
-```
-```javascript
-// or import slider API directly into your javascript
-import { slider } from "{your_path}/slider/prod/slider.js";
+<script src="{your_path}/slider/prod/slider.min.js"></script>
 ```
 
 And by next command initialize slider:
@@ -54,7 +73,7 @@ By the way, don't forget to set `height` for vertical slider on `$parent` elemen
 ```css
 /* parent element for the slider */
 .slider-wrapper {
-  /* the ruleset'll allow slider to be responsive */
+  /* the ruleset will allow slider to be responsive */
   height: 100%;
   max-height: 300px;
 }
@@ -152,28 +171,17 @@ Or you can create the slider with tooltips and then hide them through css, when 
 
 
 ### Architecture
-The slider architecture follows a *standart MVC architecture*, as described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/).
+The slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
 
-Unfortunatelly, there no English translation of the article, but, in a few words, a *standart MVC architecture* is characterized by a presence of Model, which plays the role of *the facade* to an application Domain Model.
+#### Model
+The module contains business logic of the slider component: possible slider options and logic around them.
 
-> Note: although, the slider is just a component of an application (it don't have a Domain Model), I decided to organize Facade anyway. The reason for that see in [the SliderAdapter section.](#slideradapter).
-
-In the result, the approach gives an opportunity to swap modules around and modify them without the need of breaking changes of the code.
-
-#### SliderModel
-The module contains business logic of the component: possible slider options and logic around them.
-
-#### SliderAdapter
-Adapter module is used, as a wrapper around `SliderModel`. It localizes calls to the Model, allowing to have all dependent code in one place.
-
-Though, presence of Adapter is optional, it gives a way to freely modify `SliderModel` and even replace it altogether, if current business logic solution don't satisfy your requirements.
-
-#### SliderUI
+#### ViewController
 This module is responsible for display of current slider state and handling of user actions.
 
-It translates position of occured events into the slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `SliderModel`.
+It translates position of occured events into the slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `Model`.
 
-As you see, `SliderUI` performs View and Controller functionality. The objective for this is that it's not logical to divide the modules in this concrete component from functional decomposition standpoint — handle don't have any value outside of the slider.
+As you see, `ViewController` performs View and Controller functionality. The objective for this is that it's not logical, from functional decomposition standpoint, to divide the module — handles (which realize Controller functionality) don't have any value outside of the slider (View).
 
 #### UML diagram
 This is a bird's view on the slider architecture.
