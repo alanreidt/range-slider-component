@@ -8,14 +8,12 @@
  * @param {HTMLElement} element An element to simulate a mouse event on
  */
 export function simulateMouseEvent(eventType, element, options) {
-  options = {
+  const event = new MouseEvent(eventType, {
     bubbles: true,
     cancelable: true,
     view: window,
     ...options,
-  };
+  });
 
-  const event = new MouseEvent(eventType, options);
-
-  const canceled = !element.dispatchEvent(event);
+  element.dispatchEvent(event);
 }
