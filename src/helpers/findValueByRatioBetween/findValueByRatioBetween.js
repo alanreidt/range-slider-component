@@ -1,4 +1,4 @@
-import { findAntecedent } from "../../utilities/findAntecedent";
+import { findAntecedent } from "../../utilities";
 
 /**
  * Returns value between start and end, via known ratio, if it's possible.
@@ -11,9 +11,7 @@ import { findAntecedent } from "../../utilities/findAntecedent";
  * @returns {number} A value between the start and the end.
  */
 export function findValueByRatioBetween(ratio, start, end) {
-  const areArgumentsCorrect = end !== null;
-
-  if (!areArgumentsCorrect) {
+  if (end === null) {
     return NaN;
   }
 
