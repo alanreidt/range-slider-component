@@ -11,9 +11,7 @@ import { findRatio, toPercentage } from "../../utilities";
  * @returns {number} The position of the value between the start and the end.
  */
 export function findValuePositionBetween(value, start, end) {
-  const areArgumentsCorrect = end !== null;
-
-  if (!areArgumentsCorrect) {
+  if (end === null) {
     return NaN;
   }
 
