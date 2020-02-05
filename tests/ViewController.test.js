@@ -12,7 +12,7 @@ describe("ViewController", () => {
   const SLIDER_HANDLE_NAME = "slider__handle";
 
   describe("constructor", () => {
-    describe("shall paint $slider structure", () => {
+    describe("shall paint slider structure", () => {
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
@@ -26,19 +26,19 @@ describe("ViewController", () => {
           return this._options;
         },
       };
-      const $parent = document.createElement("div");
+      const parent = document.createElement("div");
 
-      new ViewController($parent, model);
+      new ViewController(parent, model);
 
       context("paint static structure correctly", () => {
         it(`create ${SLIDER_NAME} element`, () => {
-          const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
+          const slider = parent.querySelector(`.${SLIDER_NAME}`);
 
-          assert.isNotNull($slider);
+          assert.isNotNull(slider);
         });
 
         it(`create ${SLIDER_BASE_NAME} element`, () => {
-          const sliderBase = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
+          const sliderBase = parent.querySelector(`.${SLIDER_BASE_NAME}`);
 
           assert.isNotNull(sliderBase);
         });
@@ -48,7 +48,7 @@ describe("ViewController", () => {
         const requiredQuantity = options.values.length;
 
         it(`create ${requiredQuantity} ${SLIDER_HANDLE_GROUP_NAME} elements`, () => {
-          const handleGroups = $parent.querySelectorAll(
+          const handleGroups = parent.querySelectorAll(
             `.${SLIDER_HANDLE_GROUP_NAME}`,
           );
 
@@ -56,13 +56,13 @@ describe("ViewController", () => {
         });
 
         it(`create ${requiredQuantity} ${SLIDER_TOOLTIP_NAME} elements`, () => {
-          const tooltips = $parent.querySelectorAll(`.${SLIDER_TOOLTIP_NAME}`);
+          const tooltips = parent.querySelectorAll(`.${SLIDER_TOOLTIP_NAME}`);
 
           assert.equal(requiredQuantity, tooltips.length);
         });
 
         it(`create ${requiredQuantity} ${SLIDER_HANDLE_NAME} elements`, () => {
-          const handles = $parent.querySelectorAll(`.${SLIDER_HANDLE_NAME}`);
+          const handles = parent.querySelectorAll(`.${SLIDER_HANDLE_NAME}`);
 
           assert.equal(requiredQuantity, handles.length);
         });
@@ -71,7 +71,7 @@ describe("ViewController", () => {
       context(
         `assign correct data-index to ${SLIDER_HANDLE_GROUP_NAME}`,
         () => {
-          const handleGroups = $parent.querySelectorAll(
+          const handleGroups = parent.querySelectorAll(
             `.${SLIDER_HANDLE_GROUP_NAME}`,
           );
 
@@ -86,7 +86,7 @@ describe("ViewController", () => {
     });
 
     describe(`shall add ${SLIDER_ORIENTATION_FLAG}, when needed`, () => {
-      const $parent = document.createElement("div");
+      const parent = document.createElement("div");
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
@@ -102,8 +102,8 @@ describe("ViewController", () => {
       };
 
       it(`add ${SLIDER_ORIENTATION_FLAG} className, if orientation is vertical`, () => {
-        new ViewController($parent, model);
-        const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`)
+        new ViewController(parent, model);
+        const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`)
           .classList;
 
         assert.isTrue(sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`));
@@ -113,8 +113,8 @@ describe("ViewController", () => {
         Object.assign(options, {
           orientation: "horizontal",
         });
-        new ViewController($parent, model);
-        const sliderClassList = $parent.querySelector(`.${SLIDER_NAME}`)
+        new ViewController(parent, model);
+        const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`)
           .classList;
 
         assert.isFalse(sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`));
@@ -122,7 +122,7 @@ describe("ViewController", () => {
     });
 
     describe(`shall create ${SLIDER_TOOLTIP_NAME} element, when needed`, () => {
-      const $parent = document.createElement("div");
+      const parent = document.createElement("div");
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
@@ -138,8 +138,8 @@ describe("ViewController", () => {
       };
 
       it(`create ${SLIDER_TOOLTIP_NAME} element, if hasTooltips flag is true`, () => {
-        new ViewController($parent, model);
-        const sliderTooltips = $parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+        new ViewController(parent, model);
+        const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
 
         assert.isNotNull(sliderTooltips);
       });
@@ -148,15 +148,15 @@ describe("ViewController", () => {
         Object.assign(options, {
           hasTooltips: false,
         });
-        new ViewController($parent, model);
-        const sliderTooltips = $parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+        new ViewController(parent, model);
+        const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
 
         assert.isNull(sliderTooltips);
       });
     });
 
-    context("shall repaint (refresh) $slider structure", () => {
-      const $parent = document.createElement("div");
+    context("shall repaint (refresh) slider structure", () => {
+      const parent = document.createElement("div");
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
@@ -170,24 +170,24 @@ describe("ViewController", () => {
           return this._options;
         },
       };
-      new ViewController($parent, model);
+      new ViewController(parent, model);
 
-      const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
+      const slider = parent.querySelector(`.${SLIDER_NAME}`);
 
-      it("$slider and repainted $slider (with the same values) are not equal", () => {
-        new ViewController($parent, model);
+      it("slider and repainted slider (with the same values) are not equal", () => {
+        new ViewController(parent, model);
 
-        const $newSlider = $parent.querySelector(`.${SLIDER_NAME}`);
+        const $newSlider = parent.querySelector(`.${SLIDER_NAME}`);
 
-        assert.notEqual($slider, $newSlider);
+        assert.notEqual(slider, $newSlider);
       });
     });
 
     describe("shall handle user actions (Controller)", () => {
-      const $parent = document.createElement("div");
-      document.body.append($parent);
+      const parent = document.createElement("div");
+      document.body.append(parent);
 
-      describe("shall listen to events on $base element", () => {
+      describe("shall listen to events on base element", () => {
         context("trigger model setOptions method on mousedown event", () => {
           const mousePositionValues = [20, 100, 200];
           const expectationValues = [10, 50, 100];
@@ -217,19 +217,19 @@ describe("ViewController", () => {
               },
             };
 
-            new ViewController($parent, model);
+            new ViewController(parent, model);
 
-            const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-            const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
+            const slider = parent.querySelector(`.${SLIDER_NAME}`);
+            const base = parent.querySelector(`.${SLIDER_BASE_NAME}`);
 
-            $slider.style.width = "200px";
+            slider.style.width = "200px";
 
             const expectationValue = expectationValues[i];
 
-            simulateMouseEvent("mousedown", $base, {
+            simulateMouseEvent("mousedown", base, {
               clientX: mousePositionValue,
             });
-            simulateMouseEvent("mouseup", $base);
+            simulateMouseEvent("mouseup", base);
 
             it(`model setOptions is triggered on mouse event ${i + 1}`, () => {
               assert.isTrue(model.isTriggered);
@@ -273,19 +273,19 @@ describe("ViewController", () => {
                 },
               };
 
-              new ViewController($parent, model);
+              new ViewController(parent, model);
 
-              const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-              const $base = $parent.querySelector(`.${SLIDER_BASE_NAME}`);
+              const slider = parent.querySelector(`.${SLIDER_NAME}`);
+              const base = parent.querySelector(`.${SLIDER_BASE_NAME}`);
 
-              $slider.style.height = "200px";
+              slider.style.height = "200px";
 
               const expectationValue = expectationValues[i];
 
-              simulateMouseEvent("mousedown", $base, {
+              simulateMouseEvent("mousedown", base, {
                 clientY: mousePositionValue,
               });
-              simulateMouseEvent("mouseup", $base);
+              simulateMouseEvent("mouseup", base);
 
               it(`model setOptions is triggered on mouse event ${i +
                 1}`, () => {
@@ -299,10 +299,10 @@ describe("ViewController", () => {
           },
         );
 
-        $parent.innerHTML = "";
+        parent.innerHTML = "";
       });
 
-      describe("shall listen to events on $handle element", () => {
+      describe("shall listen to events on handle element", () => {
         context(
           "trigger model setValueAt method on mousemove during mousedown event",
           () => {
@@ -335,16 +335,16 @@ describe("ViewController", () => {
                 },
               };
 
-              new ViewController($parent, model);
+              new ViewController(parent, model);
 
-              const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-              const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
+              const slider = parent.querySelector(`.${SLIDER_NAME}`);
+              const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
-              $slider.style.width = "200px";
+              slider.style.width = "200px";
 
               const expectationValue = expectationValues[i];
 
-              simulateMouseEvent("mousedown", $handle);
+              simulateMouseEvent("mousedown", handle);
               simulateMouseEvent("mousemove", document, {
                 clientX: mousePositionValue,
               });
@@ -395,16 +395,16 @@ describe("ViewController", () => {
                 },
               };
 
-              new ViewController($parent, model);
+              new ViewController(parent, model);
 
-              const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-              const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
+              const slider = parent.querySelector(`.${SLIDER_NAME}`);
+              const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
-              $slider.style.height = "200px";
+              slider.style.height = "200px";
 
               const expectationValue = expectationValues[i];
 
-              simulateMouseEvent("mousedown", $handle);
+              simulateMouseEvent("mousedown", handle);
               simulateMouseEvent("mousemove", document, {
                 clientY: mousePositionValue,
               });
@@ -447,16 +447,16 @@ describe("ViewController", () => {
             },
           };
 
-          new ViewController($parent, model);
+          new ViewController(parent, model);
 
-          const $slider = $parent.querySelector(`.${SLIDER_NAME}`);
-          const $handle = $parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
+          const slider = parent.querySelector(`.${SLIDER_NAME}`);
+          const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
-          $slider.style.height = "200px";
+          slider.style.height = "200px";
 
           const modelValues = model._options.values.slice();
 
-          simulateMouseEvent("mousedown", $handle);
+          simulateMouseEvent("mousedown", handle);
           simulateMouseEvent("mouseup", document);
           simulateMouseEvent("mousemove", document, { clientY: 100 });
 
@@ -469,13 +469,13 @@ describe("ViewController", () => {
           });
         });
 
-        $parent.innerHTML = "";
+        parent.innerHTML = "";
       });
     });
   });
 
   describe("setElements method", () => {
-    const $parent = document.createElement("div");
+    const parent = document.createElement("div");
     const options = {
       boundaries: [0, 100],
       values: [20, 80],
@@ -489,12 +489,12 @@ describe("ViewController", () => {
         return this._options;
       },
     };
-    const viewController = new ViewController($parent, model);
+    const viewController = new ViewController(parent, model);
 
     describe("shall set values", () => {
       context(`${SLIDER_HANDLE_GROUP_NAME}s are set`, () => {
         const handleGroups = Array.from(
-          $parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
+          parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
         );
 
         handleGroups.forEach((handleGroup, i) => {
@@ -519,7 +519,7 @@ describe("ViewController", () => {
 
       context(`${SLIDER_HANDLE_GROUP_NAME}s are updated`, () => {
         const handleGroups = Array.from(
-          $parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
+          parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
         );
 
         handleGroups.forEach((handleGroup, i) => {

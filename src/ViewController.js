@@ -8,8 +8,8 @@ import {
 } from "./helpers";
 
 export class ViewController {
-  constructor($parent, model) {
-    this.$parent = $parent;
+  constructor(parent, model) {
+    this.parent = parent;
     this.model = model;
 
     this._bindMethods();
@@ -35,20 +35,20 @@ export class ViewController {
   }
 
   _setHandleGroupHorizontalPositions(positions) {
-    this.$handleGroups.forEach(($handleGroup, i) => {
-      $handleGroup.style.left = positions[i];
+    this.handleGroups.forEach((handleGroup, i) => {
+      handleGroup.style.left = positions[i];
     });
   }
 
   _setHandleGroupVerticalPositions(positions) {
-    this.$handleGroups.forEach(($handleGroup, i) => {
-      $handleGroup.style.top = positions[i];
+    this.handleGroups.forEach((handleGroup, i) => {
+      handleGroup.style.top = positions[i];
     });
   }
 
   _setTooltipTextContents(values) {
-    this.$tooltips.forEach(($tooltip, i) => {
-      $tooltip.textContent = values[i];
+    this.tooltips.forEach((tooltip, i) => {
+      tooltip.textContent = values[i];
     });
   }
 
@@ -59,26 +59,26 @@ export class ViewController {
   }
 
   _paint(options) {
-    this.$parent.innerHTML = createTemplate(options);
+    this.parent.innerHTML = createTemplate(options);
   }
 
   _assignElements() {
-    this.$slider = this.$parent.querySelector(".slider");
-    this.$base = this.$parent.querySelector(".slider__base");
-    this.$handleGroups = this._getHandleGroups();
-    this.$tooltips = this._getTooltips();
+    this.slider = this.parent.querySelector(".slider");
+    this.base = this.parent.querySelector(".slider__base");
+    this.handleGroups = this._getHandleGroups();
+    this.tooltips = this._getTooltips();
   }
 
   _getHandleGroups() {
-    return Array.from(this.$parent.querySelectorAll(".slider__handle-group"));
+    return Array.from(this.parent.querySelectorAll(".slider__handle-group"));
   }
 
   _getTooltips() {
-    return Array.from(this.$parent.querySelectorAll(".slider__tooltip"));
+    return Array.from(this.parent.querySelectorAll(".slider__tooltip"));
   }
 
   _addSliderEventListener() {
-    this.$slider.onmousedown = this._handleSliderMouseDown;
+    this.slider.onmousedown = this._handleSliderMouseDown;
   }
 
   _handleSliderMouseDown(event) {
@@ -87,7 +87,7 @@ export class ViewController {
     const newValue = this._findValueByEvent(event);
     const target = event && event.target;
 
-    if (target === this.$base) {
+    if (target === this.base) {
       this.model.setOptions({ values: newValue });
     }
 
@@ -142,18 +142,18 @@ export class ViewController {
   }
 
   _adjustToSliderXAxis(xCoordinate) {
-    return xCoordinate - this.$slider.getBoundingClientRect().left;
+    return xCoordinate - this.slider.getBoundingClientRect().left;
   }
 
   _adjustToSliderYAxis(yCoordinate) {
-    return yCoordinate - this.$slider.getBoundingClientRect().top;
+    return yCoordinate - this.slider.getBoundingClientRect().top;
   }
 
   _getSliderWidth() {
-    return this.$slider.getBoundingClientRect().width;
+    return this.slider.getBoundingClientRect().width;
   }
 
   _getSliderHeight() {
-    return this.$slider.getBoundingClientRect().height;
+    return this.slider.getBoundingClientRect().height;
   }
 }

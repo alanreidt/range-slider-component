@@ -47,10 +47,10 @@ describe("slider", () => {
     createModel: makeClassMock(model),
     createUI: makeClassMock(viewController),
   };
-  const $parent = document.createElement("div");
+  const parent = document.createElement("div");
 
   slider._factory = factory;
-  slider.create($parent, options);
+  slider.create(parent, options);
 
   describe("create method", () => {
     context("shall create model with options", () => {
@@ -63,13 +63,13 @@ describe("slider", () => {
       });
     });
 
-    context("shall create viewController with $parent and model", () => {
+    context("shall create viewController with parent and model", () => {
       it("viewController arguments is not equal to null", () => {
         assert.isNotNull(viewController.arguments);
       });
 
-      it("viewController arguments[0] is equal to $parent", () => {
-        assert.equal(viewController.arguments[0], $parent);
+      it("viewController arguments[0] is equal to parent", () => {
+        assert.equal(viewController.arguments[0], parent);
       });
 
       it("viewController arguments[1] is equal to model", () => {
@@ -99,17 +99,17 @@ describe("slider", () => {
         assert.notEqual(slider._parentsMap.length, 0);
       });
 
-      it("sliderAPI parentsMap $parent is not undefined", () => {
-        assert.notEqual(slider._parentsMap.get($parent), undefined);
+      it("sliderAPI parentsMap parent is not undefined", () => {
+        assert.notEqual(slider._parentsMap.get(parent), undefined);
       });
 
-      it("sliderAPI parentsMap $parent model is equal to model", () => {
-        assert.equal(slider._parentsMap.get($parent).model, model);
+      it("sliderAPI parentsMap parent model is equal to model", () => {
+        assert.equal(slider._parentsMap.get(parent).model, model);
       });
 
-      it("sliderAPI parentsMap $parent viewController is equal to viewController", () => {
+      it("sliderAPI parentsMap parent viewController is equal to viewController", () => {
         assert.equal(
-          slider._parentsMap.get($parent).viewController,
+          slider._parentsMap.get(parent).viewController,
           viewController,
         );
       });
@@ -119,7 +119,7 @@ describe("slider", () => {
   describe("getOptions method", () => {
     context("shall return current options", () => {
       it("returned options are equal to passed options", () => {
-        assert.equal(slider.getOptions($parent), options);
+        assert.equal(slider.getOptions(parent), options);
       });
     });
   });
@@ -131,7 +131,7 @@ describe("slider", () => {
         step: 20,
       };
 
-      slider.setOptions($parent, newOptions);
+      slider.setOptions(parent, newOptions);
 
       it("model optionsUpdated is not equal to undefined", () => {
         assert.notEqual(model.optionsUpdated, undefined);
@@ -149,7 +149,7 @@ describe("slider", () => {
       const newValue = 30;
       const expectation = [index, newValue];
 
-      slider.setValueAt($parent, index, newValue);
+      slider.setValueAt(parent, index, newValue);
 
       it("model valueUpdated is not equal to undefined", () => {
         assert.notEqual(model.valueUpdated, undefined);

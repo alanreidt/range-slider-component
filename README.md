@@ -56,10 +56,10 @@ And then, enter next lines in your main html file (or check `test-page` folder t
 And by next command initialize slider:
 ```javascript
 // select your DOM element
-const $parent = document.querySelector(".slider-wrapper");
+const parent = document.querySelector(".slider-wrapper");
 
 // and create slider with options
-slider.create($parent, {
+slider.create(parent, {
   boundaries: [0, 100],
   values: [20, 80],
   step: 20,
@@ -69,7 +69,7 @@ slider.create($parent, {
 
 Possible options are described in [the options section](#options).
 
-By the way, don't forget to set `height` for vertical slider on `$parent` element (because slider is created inside):
+By the way, don't forget to set `height` for vertical slider on `parent` element (because slider is created inside):
 ```css
 /* parent element for the slider */
 .slider-wrapper {
