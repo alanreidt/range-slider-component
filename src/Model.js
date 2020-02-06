@@ -55,25 +55,24 @@ export class Model {
   }
 
   setValueAt(index, value) {
-    const currentValues = this._options.values;
-    const newValues = currentValues.slice();
-    const [prevValue, nextValue] = [
-      currentValues[index - 1],
-      currentValues[index + 1],
-    ];
-
     const areArgumentsCorrect = Array.from(arguments).every(Number.isFinite);
 
     if (!areArgumentsCorrect) {
       return;
     }
 
+    const currentValues = this._options.values;
     let newValue = value;
 
     if (currentValues.length === 1) {
       this.setOptions({ values: newValue });
       return;
     }
+
+    const [prevValue, nextValue] = [
+      currentValues[index - 1],
+      currentValues[index + 1],
+    ];
 
     if (isUndefined(prevValue)) {
       newValue = newValue < nextValue ? newValue : nextValue;
@@ -89,9 +88,11 @@ export class Model {
         : findClosestTo(newValue, prevValue, nextValue);
     }
 
-    newValues.splice(index, 1, newValue);
+    const values = currentValues.slice();
 
-    this.setOptions({ values: newValues });
+    values.splice(index, 1, newValue);
+
+    this.setOptions({ values });
   }
 
   _setBoundaries(values) {
