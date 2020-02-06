@@ -177,9 +177,9 @@ describe("ViewController", () => {
       it("slider and repainted slider (with the same values) are not equal", () => {
         new ViewController(parent, model);
 
-        const $newSlider = parent.querySelector(`.${SLIDER_NAME}`);
+        const newSlider = parent.querySelector(`.${SLIDER_NAME}`);
 
-        assert.notEqual(slider, $newSlider);
+        assert.notEqual(slider, newSlider);
       });
     });
 
