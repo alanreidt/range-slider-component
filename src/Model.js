@@ -44,7 +44,11 @@ export class Model {
 
   setOptions(newOptions) {
     Object.keys(this._options).forEach((key) => {
-      this[`_${key}`] = newOptions[key];
+      const capitalizedKey = key[0].toUpperCase() + key.slice(1);
+      const keySetterName = `_set${capitalizedKey}`;
+      const value = newOptions[key];
+
+      this[keySetterName](value);
     });
 
     this.triggerSubscribers("update", this.getOptions());
@@ -90,7 +94,7 @@ export class Model {
     this.setOptions({ values: newValues });
   }
 
-  set _boundaries(values) {
+  _setBoundaries(values) {
     const currentValues = this._options.boundaries;
     const newValues = [].concat(values);
 
@@ -102,7 +106,7 @@ export class Model {
     )(newValues);
   }
 
-  set _values(values) {
+  _setValues(values) {
     const { step } = this._options;
     const [start, end] = this._options.boundaries;
     const offset = start;
@@ -122,7 +126,7 @@ export class Model {
     )(newValues);
   }
 
-  set _step(newValue) {
+  _setStep(newValue) {
     const [start, end] = this._options.boundaries;
     const range = end - start;
     const currentValue = this._options.step;
@@ -135,13 +139,13 @@ export class Model {
     )(newValue);
   }
 
-  set _orientation(value) {
+  _setOrientation(value) {
     if (value !== "horizontal" && value !== "vertical") return;
 
     this._options.orientation = value;
   }
 
-  set _hasTooltips(value) {
+  _setHasTooltips(value) {
     if (value !== false && value !== true) return;
 
     this._options.hasTooltips = value;
