@@ -63,18 +63,18 @@ export class ViewController {
   }
 
   _assignElements() {
-    this.slider = this.parent.querySelector(".slider");
-    this.base = this.parent.querySelector(".slider__base");
+    this.slider = this.parent.querySelector(".js-slider");
+    this.base = this.parent.querySelector(".js-slider__base");
     this.handleGroups = this._getHandleGroups();
     this.tooltips = this._getTooltips();
   }
 
   _getHandleGroups() {
-    return Array.from(this.parent.querySelectorAll(".slider__handle-group"));
+    return Array.from(this.parent.querySelectorAll(".js-slider__handle-group"));
   }
 
   _getTooltips() {
-    return Array.from(this.parent.querySelectorAll(".slider__tooltip"));
+    return Array.from(this.parent.querySelectorAll(".js-slider__tooltip"));
   }
 
   _addSliderEventListener() {
@@ -92,7 +92,7 @@ export class ViewController {
     }
 
     const currentHandleGroup =
-      target && target.closest(".slider__handle-group");
+      target && target.closest(".js-slider__handle-group");
 
     if (currentHandleGroup) {
       this._handleHandleGroupMouseDown(currentHandleGroup);

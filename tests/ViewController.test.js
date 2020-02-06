@@ -4,12 +4,12 @@ import { simulateMouseEvent } from "./testUtilities";
 import { ViewController } from "../src/ViewController";
 
 describe("ViewController", () => {
-  const SLIDER_NAME = "slider";
-  const SLIDER_BASE_NAME = "slider__base";
-  const SLIDER_ORIENTATION_FLAG = "slider_vertical";
-  const SLIDER_HANDLE_GROUP_NAME = "slider__handle-group";
-  const SLIDER_TOOLTIP_NAME = "slider__tooltip";
-  const SLIDER_HANDLE_NAME = "slider__handle";
+  const SLIDER_NAME = "js-slider";
+  const SLIDER_BASE_NAME = "js-slider__base";
+  const SLIDER_ORIENTATION_FLAG = "js-slider_vertical";
+  const SLIDER_HANDLE_GROUP_NAME = "js-slider__handle-group";
+  const SLIDER_TOOLTIP_NAME = "js-slider__tooltip";
+  const SLIDER_HANDLE_NAME = "js-slider__handle";
 
   describe("constructor", () => {
     describe("shall paint slider structure", () => {
