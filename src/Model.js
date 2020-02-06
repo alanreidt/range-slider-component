@@ -20,7 +20,7 @@ import {
 } from "./helpers";
 
 export class Model {
-  constructor(options = {}) {
+  constructor(newOptions = {}) {
     this._options = {
       // order matters
       boundaries: [0, 100],
@@ -30,7 +30,7 @@ export class Model {
       hasTooltips: false,
     };
 
-    this.setOptions(options);
+    this.setOptions(newOptions);
 
     Object.defineProperties(this._options, {
       orientation: { writable: false },
