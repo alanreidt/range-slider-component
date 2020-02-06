@@ -99,12 +99,14 @@ export class Model {
     const currentValues = this._options.boundaries;
     const newValues = [].concat(values);
 
-    this._options.boundaries = flow(
+    const validate = flow(
       sortBy(identity),
       map(parseFloat),
       filter(Number.isFinite),
       crossWith(currentValues),
-    )(newValues);
+    );
+
+    this._options.boundaries = validate(newValues);
   }
 
   _setValues(values) {
@@ -116,7 +118,7 @@ export class Model {
     const newValues = [].concat(values);
     const currentValues = this._options.values && this._options.values.slice();
 
-    this._options.values = flow(
+    const validate = flow(
       sortBy(identity),
       map(parseFloat),
       filter(Number.isFinite),
@@ -124,7 +126,9 @@ export class Model {
       eitherOr(defaultValue),
       map(placeBetween(start, end)),
       map(adjustValueToStep(step, offset)),
-    )(newValues);
+    );
+
+    this._options.values = validate(newValues);
   }
 
   _setStep(newValue) {
@@ -132,12 +136,14 @@ export class Model {
     const range = end - start;
     const currentValue = this._options.step;
 
-    this._options.step = flow(
+    const validate = flow(
       parseFloat,
       eitherOr(currentValue),
       placeBetween(1, range),
       adjustToRange(range),
-    )(newValue);
+    );
+
+    this._options.step = validate(newValue);
   }
 
   _setOrientation(value) {
