@@ -39,13 +39,7 @@ export class Model {
   }
 
   getOptions() {
-    return {
-      boundaries: this._boundaries,
-      values: this._values,
-      step: this._step,
-      orientation: this._orientation,
-      hasTooltips: this._hasTooltips,
-    };
+    return this._options;
   }
 
   setOptions(newOptions) {
@@ -96,10 +90,6 @@ export class Model {
     this.setOptions({ values: newValues });
   }
 
-  get _boundaries() {
-    return this._options.boundaries;
-  }
-
   set _boundaries(values) {
     const currentValues = this._options.boundaries;
     const newValues = [].concat(values);
@@ -110,10 +100,6 @@ export class Model {
       filter(Number.isFinite),
       crossWith(currentValues),
     )(newValues);
-  }
-
-  get _values() {
-    return this._options.values;
   }
 
   set _values(values) {
@@ -136,10 +122,6 @@ export class Model {
     )(newValues);
   }
 
-  get _step() {
-    return this._options.step;
-  }
-
   set _step(newValue) {
     const [start, end] = this._options.boundaries;
     const range = end - start;
@@ -153,18 +135,10 @@ export class Model {
     )(newValue);
   }
 
-  get _orientation() {
-    return this._options.orientation;
-  }
-
   set _orientation(value) {
     if (value !== "horizontal" && value !== "vertical") return;
 
     this._options.orientation = value;
-  }
-
-  get _hasTooltips() {
-    return this._options.hasTooltips;
   }
 
   set _hasTooltips(value) {
