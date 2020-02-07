@@ -11,6 +11,7 @@
     "url": "https://github.com/alanreidt/slider.git"
   },
   "scripts": {
+    "riteway": "riteway -r esm",
     "test": "parcel tests/test.html --open",
     "build": "rm -rf prod && parcel build src/slider.js -o src/slider.min.js -d ./prod && parcel build src/slider.scss -o src/slider.min.css -d ./prod",
     "dev": "parcel test-page/index.html --open",
