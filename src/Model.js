@@ -3,13 +3,11 @@ import map from "lodash/fp/map";
 import sortBy from "lodash/fp/sortBy";
 import filter from "lodash/fp/filter";
 import identity from "lodash/fp/identity";
-import isUndefined from "lodash/fp/isUndefined";
 
 import {
   getAverageOf,
-  isNumberInBetween,
-  findClosestTo,
   observerMixin,
+  restrictNumberByNeighbors,
 } from "./utilities";
 import {
   adjustValueToStep,
@@ -62,10 +60,9 @@ export class Model {
     }
 
     const currentValues = this._options.values;
-    let newValue = value;
 
     if (currentValues.length === 1) {
-      this.setOptions({ values: newValue });
+      this.setOptions({ values: value });
       return;
     }
 
@@ -74,19 +71,7 @@ export class Model {
       currentValues[index + 1],
     ];
 
-    if (isUndefined(prevValue)) {
-      newValue = newValue < nextValue ? newValue : nextValue;
-    }
-
-    if (isUndefined(nextValue)) {
-      newValue = newValue > prevValue ? newValue : prevValue;
-    }
-
-    if (!isUndefined(prevValue) && !isUndefined(nextValue)) {
-      newValue = isNumberInBetween(newValue, prevValue, nextValue)
-        ? newValue
-        : findClosestTo(newValue, prevValue, nextValue);
-    }
+    const newValue = restrictNumberByNeighbors(value, prevValue, nextValue);
 
     const values = currentValues.slice();
 
