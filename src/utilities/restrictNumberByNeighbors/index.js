@@ -1,0 +1,1 @@
+export { restrictNumberByNeighbors } from "./restrictNumberByNeighbors";

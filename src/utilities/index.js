@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { restrictNumberByNeighbors } from "./restrictNumberByNeighbors";
 export { either } from "./either";
 export { isDivisible } from "./isDivisible";
 export { findClosestFactor } from "./findClosestFactor";
