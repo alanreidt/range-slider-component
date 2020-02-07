@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { isNumberFalsey } from "./isNumberFalsey";
 export { restrictNumberByNeighbors } from "./restrictNumberByNeighbors";
 export { either } from "./either";
 export { isDivisible } from "./isDivisible";
