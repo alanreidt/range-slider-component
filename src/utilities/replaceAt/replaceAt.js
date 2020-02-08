@@ -1,3 +1,5 @@
+import { isNumberFalsey } from "../isNumberFalsey";
+
 /**
  * Replace a value of an array at index.
  *
@@ -8,6 +10,14 @@
  * @returns {array} The array with replaced value.
  */
 export function replaceAt(index, value, array) {
+  if (!Array.isArray(array)) {
+    return NaN;
+  }
+
+  if (isNumberFalsey(index)) {
+    return array;
+  }
+
   const result = array.slice();
 
   result.splice(index, 1, value);
