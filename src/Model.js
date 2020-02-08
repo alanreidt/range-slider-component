@@ -62,11 +62,6 @@ export class Model {
 
     const currentValues = this._options.values;
 
-    if (currentValues.length === 1) {
-      this.setOptions({ values: value });
-      return;
-    }
-
     const [prevValue, nextValue] = [
       currentValues[index - 1],
       currentValues[index + 1],

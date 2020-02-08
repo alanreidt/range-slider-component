@@ -611,14 +611,6 @@ describe("Model", () => {
   });
 
   describe("setValueAt method", () => {
-    it(`shall replace single value, no matter what index is passed`, () => {
-      const model = new Model({ values: [40] });
-
-      model.setValueAt(3, 60);
-
-      assert.deepEqual(model.getOptions().values, [60]);
-    });
-
     context("shall change value at appropriate index", () => {
       const constructorArgs = { values: [10, 30, 50] };
       const testOptions = [
