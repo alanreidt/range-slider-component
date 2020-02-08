@@ -7,7 +7,7 @@ import { isNumberFalsey } from "../isNumberFalsey";
  *
  * @param {number} number A subject of the restriction.
  * @param {number} prevNeighbor A bottom limit of the subject.
- * @param {number} prevNeighbor A top limit of the subject.
+ * @param {number} nextNeighbor A top limit of the subject.
  *
  * @returns {number} A number, which is prevNeighbor <= number <= nextNeighbor.
  */
