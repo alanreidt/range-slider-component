@@ -8,7 +8,7 @@ import {
   getAverageOf,
   observerMixin,
   restrictNumberByNeighbors,
-  replaceAt,
+  replaceValueAt,
 } from "./utilities";
 import {
   adjustValueToStep,
@@ -69,7 +69,7 @@ export class Model {
 
     const newValue = restrictNumberByNeighbors(value, prevValue, nextValue);
 
-    const values = replaceAt(index, newValue, currentValues);
+    const values = replaceValueAt(index, newValue, currentValues);
 
     this.setOptions({ values });
   }

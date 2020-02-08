@@ -9,7 +9,7 @@ import { isNumberFalsey } from "../isNumberFalsey";
  *
  * @returns {array} The array with replaced value.
  */
-export function replaceAt(index, value, array) {
+export function replaceValueAt(index, value, array) {
   if (!Array.isArray(array)) {
     return NaN;
   }
