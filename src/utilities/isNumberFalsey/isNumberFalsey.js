@@ -1,9 +1,9 @@
 /**
- * Defines whether number is number falsey or not.
- * The values false, null, "", undefined, and NaN are number falsey (in short, it is as falsey, but without 0).
+ * Defines whether number is falsey or not.
+ * The values which are not a number type and are NaN will return false.
  *
  * @param {number} number A subject of examination.
  */
 export function isNumberFalsey(number) {
-  return !(number === 0 || number);
+  return !(typeof number === "number" && !Number.isNaN(number));
 }

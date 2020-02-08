@@ -53,4 +53,18 @@ describe("isNumberFalsey", async (assert) => {
     actual: isNumberFalsey(""),
     expected: true,
   });
+
+  assert({
+    given: "string with number",
+    should,
+    actual: isNumberFalsey("20"),
+    expected: true,
+  });
+
+  assert({
+    given: "string with space",
+    should,
+    actual: isNumberFalsey(" "),
+    expected: true,
+  });
 });

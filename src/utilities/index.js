@@ -1,5 +1,5 @@
 /* PLOP_INJECT_EXPORT */
-export { replaceAt } from "./replaceAt";
+export { replaceValueAt } from "./replaceValueAt";
 export { isNumberFalsey } from "./isNumberFalsey";
 export { restrictNumberByNeighbors } from "./restrictNumberByNeighbors";
 export { either } from "./either";
