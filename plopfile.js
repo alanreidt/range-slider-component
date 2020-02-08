@@ -21,20 +21,9 @@ module.exports = (plop) => {
     actions: [
       {
         type: "add",
-        path: "src/helpers/{{camelCase name}}/{{camelCase name}}.js",
+        path: "src/helpers/{{camelCase name}}.js",
         templateFile: "plop-templates/helper/helper.js.hbs",
         skipIfExists: true,
-      },
-      {
-        type: "add",
-        path: "src/helpers/{{camelCase name}}/{{camelCase name}}.test.js",
-        templateFile: "plop-templates/helper/helper.test.js.hbs",
-        skipIfExists: true,
-      },
-      {
-        type: "add",
-        path: "src/helpers/{{camelCase name}}/index.js",
-        templateFile: "plop-templates/helper/index.js.hbs",
       },
       {
         type: "add",
