@@ -4,18 +4,15 @@ import sortBy from "lodash/fp/sortBy";
 import filter from "lodash/fp/filter";
 import identity from "lodash/fp/identity";
 
-import {
-  getAverageOf,
-  observerMixin,
-  restrictNumberByNeighbors,
-  replaceValueAt,
-} from "./utilities";
+import { getAverageOf, observerMixin } from "./utilities";
 import {
   adjustValueToStep,
   adjustToRange,
   eitherOr,
   placeBetween,
   crossWith,
+  restrictByNeighbors,
+  replaceAt,
 } from "./helpers";
 
 export class Model {
@@ -61,15 +58,15 @@ export class Model {
     }
 
     const currentValues = this._options.values;
-
     const [prevValue, nextValue] = [
       currentValues[index - 1],
       currentValues[index + 1],
     ];
 
-    const newValue = restrictNumberByNeighbors(value, prevValue, nextValue);
-
-    const values = replaceValueAt(index, newValue, currentValues);
+    const values = flow(
+      restrictByNeighbors(prevValue, nextValue),
+      replaceAt(index, currentValues),
+    )(value);
 
     this.setOptions({ values });
   }
