@@ -12,6 +12,10 @@ import { isNumberFalsey } from "../isNumberFalsey";
  * @returns {number} A number, which is prevNeighbor <= number <= nextNeighbor.
  */
 export function restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor) {
+  if (typeof number !== "number") {
+    return NaN;
+  }
+
   let result = null;
 
   if (isNumberFalsey(prevNeighbor)) {
