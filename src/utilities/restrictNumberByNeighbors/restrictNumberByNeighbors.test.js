@@ -60,16 +60,16 @@ describe("restrictNumberByNeighbors", async (assert) => {
   });
 
   assert({
-    given: "number is not a number",
+    given: "number is not a number type",
     should: "return NaN",
-    actual: restrictNumberByNeighbors("15", 0, 100),
-    expected: NaN,
+    actual: Number.isNaN(restrictNumberByNeighbors("15", 0, 100)),
+    expected: true,
   });
 
   assert({
     given: "number is NaN",
     should: "return number",
-    actual: restrictNumberByNeighbors(NaN, 0, 100),
-    expected: NaN,
+    actual: Number.isNaN(restrictNumberByNeighbors(NaN, 0, 100)),
+    expected: true,
   });
 });
