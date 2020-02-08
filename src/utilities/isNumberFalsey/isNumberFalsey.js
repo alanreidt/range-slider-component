@@ -5,5 +5,5 @@
  * @param {number} number A subject of examination.
  */
 export function isNumberFalsey(number) {
-  return !(number === 0 || number);
+  return !(typeof number === "number" && !Number.isNaN(number));
 }
