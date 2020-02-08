@@ -98,9 +98,9 @@ export class Model {
     const currentValues = this._options.values && this._options.values.slice();
 
     const validate = flow(
-      sortBy(identity),
       map(parseFloat),
       filter(Number.isFinite),
+      sortBy(identity),
       crossWith(currentValues),
       eitherOr(defaultValue),
       map(placeBetween(start, end)),
