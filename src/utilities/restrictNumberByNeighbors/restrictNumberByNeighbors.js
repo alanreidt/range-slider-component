@@ -16,6 +16,10 @@ export function restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor) {
     return NaN;
   }
 
+  if (isNumberFalsey(prevNeighbor) && isNumberFalsey(nextNeighbor)) {
+    return number;
+  }
+
   let result = null;
 
   if (isNumberFalsey(prevNeighbor)) {
