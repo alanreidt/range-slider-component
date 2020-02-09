@@ -44,4 +44,25 @@ describe("replaceValueAt", async (assert) => {
     actual: Number.isNaN(replaceValueAt(1, 50, 60)),
     expected: true,
   });
+
+  assert({
+    given: "1 item long array",
+    should: "return modified array",
+    actual: replaceValueAt(0, 50, [60]),
+    expected: [50],
+  });
+
+  assert({
+    given: "exceeded index and 1 item long array",
+    should: "return array with added item",
+    actual: replaceValueAt(5, 50, [60]),
+    expected: [60, 50],
+  });
+
+  assert({
+    given: "exceeded negative index and 1 item long array",
+    should: "return array with first item replaced",
+    actual: replaceValueAt(-3, 50, [60]),
+    expected: [50],
+  });
 });
