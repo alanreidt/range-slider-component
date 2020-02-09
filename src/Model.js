@@ -51,21 +51,21 @@ export class Model {
   }
 
   setValueAt(index, value) {
-    const areArgumentsCorrect = Array.from(arguments).every(Number.isFinite);
-
-    if (!areArgumentsCorrect) {
-      return;
-    }
-
     const currentValues = this._options.values;
+    const isIndexExceeded = index > currentValues.length || index < 0;
+
+    if (isIndexExceeded) return;
+
     const [prevValue, nextValue] = [
       currentValues[index - 1],
       currentValues[index + 1],
     ];
 
     const values = flow(
+      parseFloat,
       restrictByNeighbors(prevValue, nextValue),
       replaceAt(index, currentValues),
+      filter(Number.isFinite),
     )(value);
 
     this.setOptions({ values });

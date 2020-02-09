@@ -611,6 +611,27 @@ describe("Model", () => {
   });
 
   describe("setValueAt method", () => {
+    context("shall handle 1 item long values array", () => {
+      const constructorArgs = { values: [30] };
+      const testOptions = [
+        [-10, 20],
+        [0, 20],
+        [10, 20],
+      ];
+      const expectations = [[30], [20], [30]];
+
+      expectations.forEach((expectation, i) => {
+        const model = new Model(constructorArgs);
+        const testOption = testOptions[i];
+
+        it(`result of value ${testOption[1]} set at index ${testOption[0]} equals to ${expectation} (was ${constructorArgs.values})`, () => {
+          model.setValueAt(...testOption);
+
+          assert.deepEqual(model.getOptions().values, expectation);
+        });
+      });
+    });
+
     context("shall change value at appropriate index", () => {
       const constructorArgs = { values: [10, 30, 50] };
       const testOptions = [
