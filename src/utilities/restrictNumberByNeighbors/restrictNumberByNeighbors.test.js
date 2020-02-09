@@ -2,7 +2,7 @@ import { describe } from "riteway";
 
 import { restrictNumberByNeighbors } from "./restrictNumberByNeighbors";
 
-describe("restrictNumberByNeighbors", async (assert) => {
+describe("restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor)", async (assert) => {
   assert({
     given: "prevNeighbor < number < nextNeighbor",
     should: "return number",
@@ -25,35 +25,35 @@ describe("restrictNumberByNeighbors", async (assert) => {
   });
 
   assert({
-    given: "prevNeighbor is number falsey, number < nextNeighbor",
+    given: "prevNeighbor is falsey number, number < nextNeighbor",
     should: "return number",
     actual: restrictNumberByNeighbors(-40, undefined, 100),
     expected: -40,
   });
 
   assert({
-    given: "prevNeighbor is number falsey, number > nextNeighbor",
+    given: "prevNeighbor is falsey number, number > nextNeighbor",
     should: "return nextNeighbor",
     actual: restrictNumberByNeighbors(140, NaN, 100),
     expected: 100,
   });
 
   assert({
-    given: "nextNeighbor is number falsey, number > prevNeighbor",
+    given: "nextNeighbor is falsey number, number > prevNeighbor",
     should: "return number",
     actual: restrictNumberByNeighbors(0, -20, ""),
     expected: 0,
   });
 
   assert({
-    given: "nextNeighbor is number falsey, number < prevNeighbor",
+    given: "nextNeighbor is falsey number, number < prevNeighbor",
     should: "return prevNeighbor",
     actual: restrictNumberByNeighbors(-50, -20, false),
     expected: -20,
   });
 
   assert({
-    given: "prevNeighbor and nextNeighbor are number falsey",
+    given: "prevNeighbor and nextNeighbor are falsey numbers",
     should: "return number",
     actual: restrictNumberByNeighbors(15, "-20", null),
     expected: 15,
@@ -68,7 +68,7 @@ describe("restrictNumberByNeighbors", async (assert) => {
 
   assert({
     given: "number is NaN",
-    should: "return number",
+    should: "return NaN",
     actual: Number.isNaN(restrictNumberByNeighbors(NaN, 0, 100)),
     expected: true,
   });
@@ -88,7 +88,7 @@ describe("restrictNumberByNeighbors", async (assert) => {
   });
 
   assert({
-    given: "incorrect input",
+    given: "incorrect arguments",
     should: "return NaN",
     actual: Number.isNaN(restrictNumberByNeighbors(false, NaN, "twenty")),
     expected: true,
