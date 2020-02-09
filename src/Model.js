@@ -52,6 +52,10 @@ export class Model {
 
   setValueAt(index, value) {
     const currentValues = this._options.values;
+    const isIndexExceeded = index > currentValues.length || index < 0;
+
+    if (isIndexExceeded) return;
+
     const [prevValue, nextValue] = [
       currentValues[index - 1],
       currentValues[index + 1],

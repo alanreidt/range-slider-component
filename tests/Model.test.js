@@ -618,7 +618,7 @@ describe("Model", () => {
         [0, 20],
         [10, 20],
       ];
-      const expectations = [[20], [20], [20]];
+      const expectations = [[30], [20], [30]];
 
       expectations.forEach((expectation, i) => {
         const model = new Model(constructorArgs);
