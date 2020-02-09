@@ -55,7 +55,7 @@ describe("restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor)", async 
   assert({
     given: "prevNeighbor and nextNeighbor are falsey numbers",
     should: "return number",
-    actual: restrictNumberByNeighbors(15, "-20", null),
+    actual: restrictNumberByNeighbors(15, undefined, undefined),
     expected: 15,
   });
 
