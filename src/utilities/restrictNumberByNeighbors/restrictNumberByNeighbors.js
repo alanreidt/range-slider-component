@@ -12,7 +12,7 @@ import { isNumberFalsey } from "../isNumberFalsey";
  * @returns {number} A number, which is prevNeighbor <= number <= nextNeighbor.
  */
 export function restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor) {
-  if (typeof number !== "number") {
+  if (isNumberFalsey(number)) {
     return NaN;
   }
 
