@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export { cross } from "./cross";
 export { replaceValueAt } from "./replaceValueAt";
 export { isNumberFalsey } from "./isNumberFalsey";
 export { restrictNumberByNeighbors } from "./restrictNumberByNeighbors";
@@ -12,7 +13,6 @@ export { findClosestTo } from "./findClosestTo";
 export { findAntecedent } from "./findAntecedent";
 export { toFixed } from "./toFixed";
 export { toPercentage } from "./toPercentage";
-export { cross } from "./cross/cross";
 export { placeNumberBetween } from "./placeNumberBetween/placeNumberBetween";
 export { getAverageOf } from "./getAverageOf/getAverageOf";
 export { getNextDivisibleOf } from "./getNextDivisibleOf/getNextDivisibleOf";
