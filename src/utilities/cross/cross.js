@@ -41,5 +41,5 @@ export function cross(baseArr, arr) {
 
   arrCopy.length = baseArrCopy.length;
 
-  return arrCopy;
+  return arrCopy.sort((a, b) => a - b);
 }
