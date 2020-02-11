@@ -65,7 +65,6 @@ export class Model {
       parseFloat,
       restrictByNeighbors(prevValue, nextValue),
       replaceAt(index, currentValues),
-      filter(Number.isFinite),
     )(value);
 
     this.setOptions({ values });
