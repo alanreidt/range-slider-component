@@ -2,44 +2,48 @@ import { findClosestTo } from "../findClosestTo/findClosestTo";
 
 /**
  * Cross arrays' items, regarding first array as a base.
+ * Each base array item, closest to crossing array item will be replaced by it.
  *
- * @param {array} baseArr The base array. Its length to be preserved.
- * @param {array} arr The array to be crossed in.
+ * @param {array} baseArray A base array. Its length to be preserved.
+ * @param {array} crossingArray An array to be crossed in.
  *
- * @returns {array} The crossed array.
+ * @returns {array} A crossed array.
  */
-export function cross(baseArr, arr) {
-  const baseArrCopy = baseArr && baseArr.slice().sort((a, b) => a - b);
-  let arrCopy = arr && arr.slice().sort((a, b) => a - b);
+export function cross(baseArray, crossingArray) {
+  const isArrayCorrect = (array) => array && array.length;
+  const ascending = (a, b) => a - b;
 
-  if (!arrCopy || !arrCopy.length) {
-    return baseArr;
+  const baseArrayCopy = baseArray && baseArray.slice().sort(ascending);
+  let crossingArrayCopy =
+    crossingArray && crossingArray.slice().sort(ascending);
+
+  if (!isArrayCorrect(crossingArrayCopy)) {
+    return baseArray;
   }
 
   if (
-    !baseArrCopy ||
-    !baseArrCopy.length ||
-    baseArrCopy.length === arrCopy.length
+    !isArrayCorrect(baseArrayCopy) ||
+    baseArrayCopy.length === crossingArrayCopy.length
   ) {
-    return arrCopy;
+    return crossingArrayCopy;
   }
 
-  if (arrCopy.length < baseArrCopy.length) {
-    const variants = baseArrCopy.slice();
+  if (crossingArrayCopy.length < baseArrayCopy.length) {
+    const variants = baseArrayCopy.slice();
 
-    arrCopy.forEach((item) => {
+    crossingArrayCopy.forEach((item) => {
       const closestValue = findClosestTo(item, ...variants);
-      const closestValuePosition = baseArrCopy.indexOf(closestValue);
-      const index = variants.indexOf(closestValue);
+      const closestValueIndexInBaseArray = baseArrayCopy.indexOf(closestValue);
+      const closestValueIndexInVariants = variants.indexOf(closestValue);
 
-      baseArrCopy.splice(closestValuePosition, 1, item);
-      variants.splice(0, index + 1);
+      baseArrayCopy.splice(closestValueIndexInBaseArray, 1, item);
+      variants.splice(0, closestValueIndexInVariants + 1);
     });
 
-    arrCopy = baseArrCopy;
+    crossingArrayCopy = baseArrayCopy;
   }
 
-  arrCopy.length = baseArrCopy.length;
+  crossingArrayCopy.length = baseArrayCopy.length;
 
-  return arrCopy;
+  return crossingArrayCopy.sort(ascending);
 }
