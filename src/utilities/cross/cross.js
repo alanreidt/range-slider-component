@@ -2,11 +2,12 @@ import { findClosestTo } from "../findClosestTo/findClosestTo";
 
 /**
  * Cross arrays' items, regarding first array as a base.
+ * Each base array item, closest to crossing array item will be replaced by it.
  *
- * @param {array} baseArray The base array. Its length to be preserved.
- * @param {array} crossingArray The array to be crossed in.
+ * @param {array} baseArray A base array. Its length to be preserved.
+ * @param {array} crossingArray An array to be crossed in.
  *
- * @returns {array} The crossed array.
+ * @returns {array} A crossed array.
  */
 export function cross(baseArray, crossingArray) {
   const isArrayCorrect = (array) => array && array.length;
