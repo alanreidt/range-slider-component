@@ -144,5 +144,27 @@ describe("Model", async () => {
         .getOptions().values,
       expected: [0, 140],
     });
+
+    assert({
+      given: `object with a "boundaries" option value isn't divisible by previous "step" option value`,
+      should: `return the validate "step" option`,
+      actual: new Model(initialOptions)
+        .setOptions({
+          boundaries: [0, 250],
+        })
+        .getOptions().step,
+      expected: 25,
+    });
+
+    assert({
+      given: `object with a "boundaries" option value excluding previous "step" option value`,
+      should: `return the validate "step" option`,
+      actual: new Model(initialOptions)
+        .setOptions({
+          boundaries: [0, 10],
+        })
+        .getOptions().step,
+      expected: 10,
+    });
   });
 });
