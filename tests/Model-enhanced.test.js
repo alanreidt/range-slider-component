@@ -106,6 +106,10 @@ describe("Model", async () => {
   });
 
   describe("setOptions", async (assert) => {
+    // no arguments?
+    // dependencies between options
+    // options features
+
     const initialOptions = {
       boundaries: [-200, 200],
       values: [-100, 140],
@@ -177,6 +181,28 @@ describe("Model", async () => {
         })
         .getOptions().values,
       expected: [-100, 100],
+    });
+
+    assert({
+      given: `object with "values" array length > than length of initialization array`,
+      should: `return the "values" array with initialization array length"`,
+      actual: new Model({ ...initialOptions, values: 0 })
+        .setOptions({
+          values: [100, 200, 300],
+        })
+        .getOptions().values,
+      expected: [100],
+    });
+
+    assert({
+      given: `object with "values" array length > than length of initialization array`,
+      should: `return the "values" array with initialization array length"`,
+      actual: new Model({ ...initialOptions, values: [0, 200] })
+        .setOptions({
+          values: [100, 200, 300],
+        })
+        .getOptions().values,
+      expected: [100, 200],
     });
   });
 });
