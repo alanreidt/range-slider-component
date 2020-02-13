@@ -36,7 +36,7 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with "parseFloat-applicable" options values`,
+      given: `object with "parseFloat-applicable" options`,
       should: "return object with the validated options",
       actual: new Model({
         boundaries: [0, "1000px"],
@@ -52,8 +52,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "values" option value isn't divisible by a "step" option`,
-      should: `return the validated "values" option`,
+      given: `object with "values" aren't divisible by "step"`,
+      should: `return the validated "values"`,
       actual: new Model({
         boundaries: [0, 500],
         step: 100,
@@ -63,8 +63,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "values" option value isn't divisible by a "step" option`,
-      should: `return the validated "values" option`,
+      given: `object with "values" aren't divisible by "step"`,
+      should: `return the validated "values"`,
       actual: new Model({
         boundaries: [-500, 500],
         step: 250,
@@ -74,8 +74,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "values" option value out of slider edges`,
-      should: `return the "values" option value equals to one/both of the slider edges`,
+      given: `object with "values" out of slider boundaries`,
+      should: `return the "values" equals to one/both of the slider boundaries`,
       actual: new Model({
         boundaries: [-500, 500],
         step: 1,
@@ -85,8 +85,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "step" option value isn't a factor of slider range`,
-      should: `return the validated "step" option`,
+      given: `object with "step" isn't a factor of slider range`,
+      should: `return the validated "step"`,
       actual: new Model({
         boundaries: [-500, 500],
         step: 130,
@@ -95,8 +95,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "step" option value out of slider range`,
-      should: `return the validated "step" option`,
+      given: `object with "step" out of slider range`,
+      should: `return the "step" equals to the slider range`,
       actual: new Model({
         boundaries: [-500, 500],
         step: 2000,
@@ -136,8 +136,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "boundaries" option value excluding previous "values" option value`,
-      should: `return the "values" option value equals to one/both of the slider edges`,
+      given: `object with "boundaries" excluding previous "values"`,
+      should: `return the "values" equals to one/both of the slider boundaries`,
       actual: new Model(initialOptions)
         .setOptions({
           boundaries: [0, 200],
@@ -147,8 +147,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "boundaries" option value isn't divisible by previous "step" option value`,
-      should: `return the validate "step" option`,
+      given: `object with "boundaries" aren't divisible by previous "step"`,
+      should: `return the "step" is a factor of the "boundaries"`,
       actual: new Model(initialOptions)
         .setOptions({
           boundaries: [0, 250],
@@ -158,8 +158,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "boundaries" option value excluding previous "step" option value`,
-      should: `return the validate "step" option`,
+      given: `object with "boundaries" excluding previous "step"`,
+      should: `return the "step" equals to the slider range`,
       actual: new Model(initialOptions)
         .setOptions({
           boundaries: [0, 10],
@@ -169,8 +169,8 @@ describe("Model", async () => {
     });
 
     assert({
-      given: `object with a "step" option value isn't a factor of previous "values" option value`,
-      should: `return the "values" option value divisible by the "step"`,
+      given: `object with "step" isn't a factor of previous "values"`,
+      should: `return the "values" divisible by the "step"`,
       actual: new Model(initialOptions)
         .setOptions({
           step: 100,
