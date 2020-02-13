@@ -82,6 +82,26 @@ describe("Model", async () => {
       }).getOptions().values,
       expected: [-500, 500],
     });
+
+    assert({
+      given: `object with a "step" option value isn't a factor of slider range`,
+      should: `return the validated "step" option`,
+      actual: new Model({
+        boundaries: [-500, 500],
+        step: 130,
+      }).getOptions().step,
+      expected: 125,
+    });
+
+    assert({
+      given: `object with a "step" option value out of slider range`,
+      should: `return the validated "step" option`,
+      actual: new Model({
+        boundaries: [-500, 500],
+        step: 2000,
+      }).getOptions().step,
+      expected: 1000,
+    });
   });
 
   describe("setOptions", async (assert) => {
