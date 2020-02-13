@@ -78,6 +78,7 @@ describe("Model", async () => {
       should: `return the "values" option value equals to one/both of the slider edges`,
       actual: new Model({
         boundaries: [-500, 500],
+        step: 1,
         values: [-1000, 1000],
       }).getOptions().values,
       expected: [-500, 500],
