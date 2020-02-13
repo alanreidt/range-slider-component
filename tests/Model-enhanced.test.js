@@ -133,5 +133,16 @@ describe("Model", async () => {
       actual: new Model(initialOptions).setOptions(wrongOptions).getOptions(),
       expected: initialOptions,
     });
+
+    assert({
+      given: `object with a "boundaries" option value excluding previous "values" option value`,
+      should: `return the "values" option value equals to one/both of the slider edges`,
+      actual: new Model(initialOptions)
+        .setOptions({
+          boundaries: [0, 200],
+        })
+        .getOptions().values,
+      expected: [0, 140],
+    });
   });
 });
