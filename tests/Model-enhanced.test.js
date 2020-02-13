@@ -178,5 +178,27 @@ describe("Model", async () => {
         .getOptions().values,
       expected: [-100, 100],
     });
+
+    assert({
+      given: `object with "values" array length > than length of initialization array`,
+      should: `return the "values" with initialization array length"`,
+      actual: new Model({ ...initialOptions, values: 0 })
+        .setOptions({
+          values: [100, 200, 300],
+        })
+        .getOptions().values,
+      expected: [100],
+    });
+
+    assert({
+      given: `object with "values" array length > than length of initialization array`,
+      should: `return the "values" with initialization array length"`,
+      actual: new Model({ ...initialOptions, values: [0, 200] })
+        .setOptions({
+          values: [100, 200, 300],
+        })
+        .getOptions().values,
+      expected: [100, 200],
+    });
   });
 });
