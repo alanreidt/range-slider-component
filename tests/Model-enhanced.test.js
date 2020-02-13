@@ -51,4 +51,35 @@ describe("Model", async () => {
       },
     });
   });
+
+  describe("setOptions", async (assert) => {
+    const initialOptions = {
+      boundaries: [-200, 200],
+      values: [-100, 140],
+      step: 20,
+      orientation: "vertical",
+      hasTooltips: true,
+    };
+    const reassignmentOptions = {
+      boundaries: [-200, 500],
+      values: [-200, 400],
+      step: 100,
+    };
+
+    assert({
+      given: "object with correct options",
+      should: "return object with the validated options",
+      actual: new Model(initialOptions)
+        .setOptions(reassignmentOptions)
+        .getOptions(),
+      expected: { ...initialOptions, ...reassignmentOptions },
+    });
+
+    assert({
+      given: "object with wrong options",
+      should: "return object with previous (initial) options",
+      actual: new Model(initialOptions).setOptions(wrongOptions).getOptions(),
+      expected: initialOptions,
+    });
+  });
 });
