@@ -50,6 +50,38 @@ describe("Model", async () => {
         step: 100,
       },
     });
+
+    assert({
+      given: `object with a "values" option value isn't divisible by a "step" option`,
+      should: `return the validated "values" option`,
+      actual: new Model({
+        boundaries: [0, 500],
+        step: 100,
+        values: 190,
+      }).getOptions().values,
+      expected: [200],
+    });
+
+    assert({
+      given: `object with a "values" option value isn't divisible by a "step" option`,
+      should: `return the validated "values" option`,
+      actual: new Model({
+        boundaries: [-500, 500],
+        step: 250,
+        values: -100,
+      }).getOptions().values,
+      expected: [0],
+    });
+
+    assert({
+      given: `object with a "values" option value out of slider edges`,
+      should: `return the "values" option value equals to one/both of the slider edges`,
+      actual: new Model({
+        boundaries: [-500, 500],
+        values: [-1000, 1000],
+      }).getOptions().values,
+      expected: [-500, 500],
+    });
   });
 
   describe("setOptions", async (assert) => {
