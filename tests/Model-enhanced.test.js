@@ -167,5 +167,16 @@ describe("Model", async () => {
         .getOptions().step,
       expected: 10,
     });
+
+    assert({
+      given: `object with a "step" option value isn't a factor of previous "values" option value`,
+      should: `return the "values" option value divisible by the "step"`,
+      actual: new Model(initialOptions)
+        .setOptions({
+          step: 100,
+        })
+        .getOptions().values,
+      expected: [-100, 100],
+    });
   });
 });
