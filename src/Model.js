@@ -3,8 +3,9 @@ import map from "lodash/fp/map";
 import sortBy from "lodash/fp/sortBy";
 import filter from "lodash/fp/filter";
 import identity from "lodash/fp/identity";
+import cloneDeep from "lodash/cloneDeep";
 
-import { getAverageOf, observerMixin } from "./utilities";
+import { observerMixin } from "./utilities";
 import {
   adjustValueToStep,
   adjustToRange,
@@ -14,17 +15,11 @@ import {
   restrictByNeighbors,
   replaceAt,
 } from "./helpers";
+import { DEFAULT_OPTIONS } from "./DEFAULT_OPTIONS";
 
 export class Model {
   constructor(newOptions = {}) {
-    this._options = {
-      // order matters
-      boundaries: [0, 100],
-      step: 1,
-      values: null,
-      orientation: "horizontal",
-      hasTooltips: false,
-    };
+    this._options = cloneDeep(DEFAULT_OPTIONS);
 
     this.setOptions(newOptions);
 
@@ -90,7 +85,6 @@ export class Model {
     const { step } = this._options;
     const [start, end] = this._options.boundaries;
     const offset = start;
-    const defaultValue = [getAverageOf(this._options.boundaries)];
 
     const newValues = [].concat(values);
     const currentValues = this._options.values && this._options.values.slice();
@@ -100,7 +94,6 @@ export class Model {
       filter(Number.isFinite),
       sortBy(identity),
       crossWith(currentValues),
-      eitherOr(defaultValue),
       map(placeBetween(start, end)),
       map(adjustValueToStep(step, offset)),
     );
