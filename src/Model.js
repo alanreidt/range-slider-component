@@ -48,6 +48,8 @@ export class Model {
     });
 
     this.triggerSubscribers("update", this.getOptions());
+
+    return this;
   }
 
   setValueAt(index, value) {
