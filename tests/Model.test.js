@@ -4,144 +4,144 @@ import { composeClassTest } from "./testUtilities";
 import { Model } from "../src/Model";
 
 describe("Model", () => {
-  describe("Initialization test", () => {
-    const Class = Model;
-    const methodGetterName = "getOptions";
-    const runTest = composeClassTest({ Class, methodGetterName });
+  // describe("Initialization test", () => {
+  //   const Class = Model;
+  //   const methodGetterName = "getOptions";
+  //   const runTest = composeClassTest({ Class, methodGetterName });
 
-    describe("shall assign default values for not passed parameters", () => {
-      context("shall assign default values, if nothing is passed", () => {
-        const expectations = [
-          {
-            boundaries: [0, 100],
-            values: [50],
-            step: 1,
-            orientation: "horizontal",
-            hasTooltips: false,
-          },
-        ];
-        const testOptions = { expectations };
+  //   describe("shall assign default values for not passed parameters", () => {
+  //     context("shall assign default values, if nothing is passed", () => {
+  //       const expectations = [
+  //         {
+  //           boundaries: [0, 100],
+  //           values: [50],
+  //           step: 1,
+  //           orientation: "horizontal",
+  //           hasTooltips: false,
+  //         },
+  //       ];
+  //       const testOptions = { expectations };
 
-        runTest(testOptions);
-      });
+  //       runTest(testOptions);
+  //     });
 
-      context(
-        "shall assign default values for not passed parameters, if only part is passed",
-        () => {
-          const constructorArgs = {
-            boundaries: [5000, 40000],
-            values: 20000,
-            step: 50,
-            orientation: "vertical",
-          };
-          const expectations = [
-            {
-              boundaries: [5000, 40000],
-              values: [20000],
-              step: 50,
-              orientation: "vertical",
-              hasTooltips: false,
-            },
-          ];
-          const testOptions = { constructorArgs, expectations };
+  //     context(
+  //       "shall assign default values for not passed parameters, if only part is passed",
+  //       () => {
+  //         const constructorArgs = {
+  //           boundaries: [5000, 40000],
+  //           values: 20000,
+  //           step: 50,
+  //           orientation: "vertical",
+  //         };
+  //         const expectations = [
+  //           {
+  //             boundaries: [5000, 40000],
+  //             values: [20000],
+  //             step: 50,
+  //             orientation: "vertical",
+  //             hasTooltips: false,
+  //           },
+  //         ];
+  //         const testOptions = { constructorArgs, expectations };
 
-          runTest(testOptions);
-        },
-      );
-    });
+  //         runTest(testOptions);
+  //       },
+  //     );
+  //   });
 
-    describe("shall assign fixed values for incorrect arguments", () => {
-      context("shall assign default value if incorrect one is passed", () => {
-        const constructorArgs = {
-          boundaries: ["hundred", 200],
-          values: [25, "p100"],
-          step: -20,
-          orientation: "right",
-          hasTooltips: 7,
-        };
-        const expectations = [
-          {
-            boundaries: [0, 200],
-            values: [25],
-            step: 1,
-            orientation: "horizontal",
-            hasTooltips: false,
-          },
-        ];
-        const testOptions = { constructorArgs, expectations };
+  //   describe("shall assign fixed values for incorrect arguments", () => {
+  //     context("shall assign default value if incorrect one is passed", () => {
+  //       const constructorArgs = {
+  //         boundaries: ["hundred", 200],
+  //         values: [25, "p100"],
+  //         step: -20,
+  //         orientation: "right",
+  //         hasTooltips: 7,
+  //       };
+  //       const expectations = [
+  //         {
+  //           boundaries: [0, 200],
+  //           values: [25],
+  //           step: 1,
+  //           orientation: "horizontal",
+  //           hasTooltips: false,
+  //         },
+  //       ];
+  //       const testOptions = { constructorArgs, expectations };
 
-        runTest(testOptions);
-      });
+  //       runTest(testOptions);
+  //     });
 
-      context("shall parse number from mixed inputs", () => {
-        const constructorArgs = {
-          boundaries: [0, "1000px"],
-          values: ["0$", 600],
-          step: "100",
-        };
-        const expectations = [
-          {
-            boundaries: [0, 1000],
-            values: [0, 600],
-            step: 100,
-            orientation: "horizontal",
-            hasTooltips: false,
-          },
-        ];
-        const testOptions = { constructorArgs, expectations };
+  //     context("shall parse number from mixed inputs", () => {
+  //       const constructorArgs = {
+  //         boundaries: [0, "1000px"],
+  //         values: ["0$", 600],
+  //         step: "100",
+  //       };
+  //       const expectations = [
+  //         {
+  //           boundaries: [0, 1000],
+  //           values: [0, 600],
+  //           step: 100,
+  //           orientation: "horizontal",
+  //           hasTooltips: false,
+  //         },
+  //       ];
+  //       const testOptions = { constructorArgs, expectations };
 
-        runTest(testOptions);
-      });
-    });
+  //       runTest(testOptions);
+  //     });
+  //   });
 
-    describe(`shall accept array of {value} values`, () => {
-      it(`shall limit array of {value} to 8 values`);
+  //   describe(`shall accept array of {value} values`, () => {
+  //     it(`shall limit array of {value} to 8 values`);
 
-      context(`shall accept array of {value} values`, () => {
-        const constructorArgs = {
-          boundaries: [100, 500],
-          values: [100, 200, 300, 460],
-          step: 20,
-          orientation: "vertical",
-          hasTooltips: true,
-        };
-        const expectations = [{ values: [100, 200, 300, 460] }];
-        const testOptions = { constructorArgs, expectations };
+  //     context(`shall accept array of {value} values`, () => {
+  //       const constructorArgs = {
+  //         boundaries: [100, 500],
+  //         values: [100, 200, 300, 460],
+  //         step: 20,
+  //         orientation: "vertical",
+  //         hasTooltips: true,
+  //       };
+  //       const expectations = [{ values: [100, 200, 300, 460] }];
+  //       const testOptions = { constructorArgs, expectations };
 
-        runTest(testOptions);
-      });
+  //       runTest(testOptions);
+  //     });
 
-      context(
-        `shall accept array of {value} values and correct incorrect`,
-        () => {
-          const constructorArgs = {
-            boundaries: [100, 500],
-            values: [100, 200, 300, "Ben", 460, false],
-            step: 20,
-            orientation: "vertical",
-            hasTooltips: true,
-          };
-          const expectations = [{ values: [100, 200, 300, 460] }];
-          const testOptions = { constructorArgs, expectations };
+  //     context(
+  //       `shall accept array of {value} values and correct incorrect`,
+  //       () => {
+  //         const constructorArgs = {
+  //           boundaries: [100, 500],
+  //           values: [100, 200, 300, "Ben", 460, false],
+  //           step: 20,
+  //           orientation: "vertical",
+  //           hasTooltips: true,
+  //         };
+  //         const expectations = [{ values: [100, 200, 300, 460] }];
+  //         const testOptions = { constructorArgs, expectations };
 
-          runTest(testOptions);
-        },
-      );
-    });
+  //         runTest(testOptions);
+  //       },
+  //     );
+  //   });
 
-    describe("{value} shall be equal to average of {boundaries} by default", () => {
-      const constructorArgs = {
-        boundaries: [100, 500],
-        step: 20,
-        orientation: "vertical",
-        hasTooltips: true,
-      };
-      const expectations = [{ values: [300] }];
-      const testOptions = { constructorArgs, expectations };
+  //   describe("{value} shall be equal to average of {boundaries} by default", () => {
+  //     const constructorArgs = {
+  //       boundaries: [100, 500],
+  //       step: 20,
+  //       orientation: "vertical",
+  //       hasTooltips: true,
+  //     };
+  //     const expectations = [{ values: [300] }];
+  //     const testOptions = { constructorArgs, expectations };
 
-      runTest(testOptions);
-    });
-  });
+  //     runTest(testOptions);
+  //   });
+  // });
 
   describe("Reassignment test", () => {
     const Class = Model;
@@ -149,308 +149,308 @@ describe("Model", () => {
     const methodGetterName = "getOptions";
     const runTest = composeClassTest({ Class, methodName, methodGetterName });
 
-    describe("shall change values, if correct one is passed", () => {
-      const methodArgsList = [
-        {
-          boundaries: [100, 500],
-          values: 180,
-          step: 20,
-        },
-      ];
-      const expectations = [
-        {
-          ...methodArgsList[0],
-          values: [180],
-        },
-      ];
-      const testOptions = { methodArgsList, expectations };
+    // describe("shall change values, if correct one is passed", () => {
+    //   const methodArgsList = [
+    //     {
+    //       boundaries: [100, 500],
+    //       values: 180,
+    //       step: 20,
+    //     },
+    //   ];
+    //   const expectations = [
+    //     {
+    //       ...methodArgsList[0],
+    //       values: [180],
+    //     },
+    //   ];
+    //   const testOptions = { methodArgsList, expectations };
 
-      runTest(testOptions);
-    });
+    //   runTest(testOptions);
+    // });
 
-    describe("shall not change values, if incorrect one is passed", () => {
-      const methodArgsList = [
-        {
-          boundaries: [true, false],
-          values: false,
-          step: "two",
-        },
-      ];
-      const expectations = [
-        {
-          boundaries: [0, 100],
-          values: [50],
-          step: 1,
-          orientation: "horizontal",
-          hasTooltips: false,
-        },
-      ];
-      const testOptions = { methodArgsList, expectations };
+    // describe("shall not change values, if incorrect one is passed", () => {
+    //   const methodArgsList = [
+    //     {
+    //       boundaries: [true, false],
+    //       values: false,
+    //       step: "two",
+    //     },
+    //   ];
+    //   const expectations = [
+    //     {
+    //       boundaries: [0, 100],
+    //       values: [50],
+    //       step: 1,
+    //       orientation: "horizontal",
+    //       hasTooltips: false,
+    //     },
+    //   ];
+    //   const testOptions = { methodArgsList, expectations };
 
-      runTest(testOptions);
-    });
+    //   runTest(testOptions);
+    // });
 
-    describe("shall correct values", () => {
-      context(
-        `shall correct {value},
-      if passed value isn't correspond to {step}`,
-        () => {
-          const methodArgsList = [
-            { boundaries: [0, 500], step: 100, values: 190 },
-            { boundaries: [-500, 500], step: 250, values: -100 },
-            { boundaries: [-1000, -500], step: 50, values: -525 },
-          ];
-          const expectations = [
-            { values: [200] },
-            { values: [0] },
-            { values: [-500] },
-          ];
-          const testOptions = { methodArgsList, expectations };
+    // describe("shall correct values", () => {
+    //   context(
+    //     `shall correct {value},
+    //   if passed value isn't correspond to {step}`,
+    //     () => {
+    //       const methodArgsList = [
+    //         { boundaries: [0, 500], step: 100, values: 190 },
+    //         { boundaries: [-500, 500], step: 250, values: -100 },
+    //         { boundaries: [-1000, -500], step: 50, values: -525 },
+    //       ];
+    //       const expectations = [
+    //         { values: [200] },
+    //         { values: [0] },
+    //         { values: [-500] },
+    //       ];
+    //       const testOptions = { methodArgsList, expectations };
 
-          runTest(testOptions);
-        },
-      );
+    //       runTest(testOptions);
+    //     },
+    //   );
 
-      context(
-        `shall correct {value},
-      if passed value is out of {boundaries}`,
-        () => {
-          const methodArgsList = [
-            { boundaries: [-500, 500], values: 1000 },
-            { boundaries: [-500, 500], values: -1000 },
-            { boundaries: [-500, 500], values: [-1000, 1000] },
-          ];
-          const expectations = [
-            { boundaries: [-500, 500], values: [0, 500] },
-            { boundaries: [-500, 500], values: [-500, 100] },
-            { boundaries: [-500, 500], values: [-500, 500] },
-          ];
-          const constructorArgs = {
-            boundaries: [0, 100],
-            values: [0, 100],
-          };
-          const testOptions = { constructorArgs, methodArgsList, expectations };
+    //   context(
+    //     `shall correct {value},
+    //   if passed value is out of {boundaries}`,
+    //     () => {
+    //       const methodArgsList = [
+    //         { boundaries: [-500, 500], values: 1000 },
+    //         { boundaries: [-500, 500], values: -1000 },
+    //         { boundaries: [-500, 500], values: [-1000, 1000] },
+    //       ];
+    //       const expectations = [
+    //         { boundaries: [-500, 500], values: [0, 500] },
+    //         { boundaries: [-500, 500], values: [-500, 100] },
+    //         { boundaries: [-500, 500], values: [-500, 500] },
+    //       ];
+    //       const constructorArgs = {
+    //         boundaries: [0, 100],
+    //         values: [0, 100],
+    //       };
+    //       const testOptions = { constructorArgs, methodArgsList, expectations };
 
-          runTest(testOptions);
-        },
-      );
+    //       runTest(testOptions);
+    //     },
+    //   );
 
-      context(
-        `shall correct {step},
-      if passed value isn't correspond to {boundaries(range)}`,
-        () => {
-          const methodArgsList = [
-            { boundaries: [0, 100], step: 15 },
-            { boundaries: [0, 300], step: 250 },
-            { boundaries: [-500, 500], step: 105 },
-          ];
-          const expectations = [
-            { boundaries: [0, 100], step: 20 },
-            { boundaries: [0, 300], step: 300 },
-            { boundaries: [-500, 500], step: 100 },
-          ];
-          const testOptions = { methodArgsList, expectations };
+    //   context(
+    //     `shall correct {step},
+    //   if passed value isn't correspond to {boundaries(range)}`,
+    //     () => {
+    //       const methodArgsList = [
+    //         { boundaries: [0, 100], step: 15 },
+    //         { boundaries: [0, 300], step: 250 },
+    //         { boundaries: [-500, 500], step: 105 },
+    //       ];
+    //       const expectations = [
+    //         { boundaries: [0, 100], step: 20 },
+    //         { boundaries: [0, 300], step: 300 },
+    //         { boundaries: [-500, 500], step: 100 },
+    //       ];
+    //       const testOptions = { methodArgsList, expectations };
 
-          runTest(testOptions);
-        },
-      );
+    //       runTest(testOptions);
+    //     },
+    //   );
 
-      context(
-        `shall correct {step},
-      if passed value is bigger than difference of {boundaries(range)}`,
-        () => {
-          const methodArgsList = [
-            { step: 200 },
-            { boundaries: [300, 900], step: 1000 },
-            { boundaries: [-500, 500], step: 2000 },
-          ];
-          const expectations = [
-            { step: 100 },
-            { boundaries: [300, 900], step: 600 },
-            { boundaries: [-500, 500], step: 1000 },
-          ];
-          const testOptions = { methodArgsList, expectations };
+    //   context(
+    //     `shall correct {step},
+    //   if passed value is bigger than difference of {boundaries(range)}`,
+    //     () => {
+    //       const methodArgsList = [
+    //         { step: 200 },
+    //         { boundaries: [300, 900], step: 1000 },
+    //         { boundaries: [-500, 500], step: 2000 },
+    //       ];
+    //       const expectations = [
+    //         { step: 100 },
+    //         { boundaries: [300, 900], step: 600 },
+    //         { boundaries: [-500, 500], step: 1000 },
+    //       ];
+    //       const testOptions = { methodArgsList, expectations };
 
-          runTest(testOptions);
-        },
-      );
+    //       runTest(testOptions);
+    //     },
+    //   );
 
-      context(
-        `{boundaries} on change, shall correct {value},
-      if it became out of the range`,
-        () => {
-          const methodArgsList = [
-            { boundaries: [200, 500] },
-            { boundaries: [-500, -200] },
-          ];
-          const expectations = [
-            { boundaries: [200, 500], values: [200] },
-            { boundaries: [-500, -200], values: [-200] },
-          ];
-          const constructorArgs = {
-            values: 100,
-          };
-          const testOptions = { constructorArgs, methodArgsList, expectations };
+    //   context(
+    //     `{boundaries} on change, shall correct {value},
+    //   if it became out of the range`,
+    //     () => {
+    //       const methodArgsList = [
+    //         { boundaries: [200, 500] },
+    //         { boundaries: [-500, -200] },
+    //       ];
+    //       const expectations = [
+    //         { boundaries: [200, 500], values: [200] },
+    //         { boundaries: [-500, -200], values: [-200] },
+    //       ];
+    //       const constructorArgs = {
+    //         values: 100,
+    //       };
+    //       const testOptions = { constructorArgs, methodArgsList, expectations };
 
-          runTest(testOptions);
-        },
-      );
+    //       runTest(testOptions);
+    //     },
+    //   );
 
-      context(
-        `{boundaries} on change, shall correct {step},
-      if it stopped to correspond to the range`,
-        () => {
-          const methodArgsList = [
-            { boundaries: [0, 90] },
-            { boundaries: [-50, 0] },
-          ];
-          const expectations = [
-            { boundaries: [0, 90], step: 18 },
-            { boundaries: [-50, 0], step: 25 },
-          ];
-          const constructorArgs = {
-            step: 20,
-          };
-          const testOptions = { constructorArgs, methodArgsList, expectations };
+    //   context(
+    //     `{boundaries} on change, shall correct {step},
+    //   if it stopped to correspond to the range`,
+    //     () => {
+    //       const methodArgsList = [
+    //         { boundaries: [0, 90] },
+    //         { boundaries: [-50, 0] },
+    //       ];
+    //       const expectations = [
+    //         { boundaries: [0, 90], step: 18 },
+    //         { boundaries: [-50, 0], step: 25 },
+    //       ];
+    //       const constructorArgs = {
+    //         step: 20,
+    //       };
+    //       const testOptions = { constructorArgs, methodArgsList, expectations };
 
-          runTest(testOptions);
-        },
-      );
+    //       runTest(testOptions);
+    //     },
+    //   );
 
-      context(
-        `{boundaries} on change shall correct {step}, if it became bigger,
-      than difference of {boundaries(range)}`,
-        () => {
-          const methodArgsList = [
-            { boundaries: [0, 90] },
-            { boundaries: [-50, 0] },
-          ];
-          const expectations = [
-            { boundaries: [0, 90], step: 90 },
-            { boundaries: [-50, 0], step: 50 },
-          ];
-          const constructorArgs = {
-            step: 100,
-          };
-          const testOptions = { constructorArgs, methodArgsList, expectations };
+    //   context(
+    //     `{boundaries} on change shall correct {step}, if it became bigger,
+    //   than difference of {boundaries(range)}`,
+    //     () => {
+    //       const methodArgsList = [
+    //         { boundaries: [0, 90] },
+    //         { boundaries: [-50, 0] },
+    //       ];
+    //       const expectations = [
+    //         { boundaries: [0, 90], step: 90 },
+    //         { boundaries: [-50, 0], step: 50 },
+    //       ];
+    //       const constructorArgs = {
+    //         step: 100,
+    //       };
+    //       const testOptions = { constructorArgs, methodArgsList, expectations };
 
-          runTest(testOptions);
-        },
-      );
+    //       runTest(testOptions);
+    //     },
+    //   );
 
-      context(
-        `{step} on change, shall correct {value},
-      if it stopped to correspond to its value`,
-        () => {
-          const methodArgsList = [{ step: 20 }, { step: 50 }];
-          const expectations = [
-            { step: 20, values: [80] },
-            { step: 50, values: [50] },
-          ];
-          const constructorArgs = {
-            values: 70,
-          };
-          const testOptions = { constructorArgs, methodArgsList, expectations };
+    //   context(
+    //     `{step} on change, shall correct {value},
+    //   if it stopped to correspond to its value`,
+    //     () => {
+    //       const methodArgsList = [{ step: 20 }, { step: 50 }];
+    //       const expectations = [
+    //         { step: 20, values: [80] },
+    //         { step: 50, values: [50] },
+    //       ];
+    //       const constructorArgs = {
+    //         values: 70,
+    //       };
+    //       const testOptions = { constructorArgs, methodArgsList, expectations };
 
-          runTest(testOptions);
-        },
-      );
-    });
+    //       runTest(testOptions);
+    //     },
+    //   );
+    // });
 
     describe("shall restrict values after initialization", () => {
-      describe("restrict {values} quantity (length) after initialization", () => {
-        context("restrict default {values} quantity (length)", () => {
-          const methodArgsList = [
-            { values: 30 },
-            { values: [50, 90] },
-            { values: [60, 70, 90] },
-          ];
-          const expectations = [
-            { values: [30] },
-            { values: [50] },
-            { values: [60] },
-          ];
-          const testOptions = { methodArgsList, expectations };
+      // describe("restrict {values} quantity (length) after initialization", () => {
+      //   context("restrict default {values} quantity (length)", () => {
+      //     const methodArgsList = [
+      //       { values: 30 },
+      //       { values: [50, 90] },
+      //       { values: [60, 70, 90] },
+      //     ];
+      //     const expectations = [
+      //       { values: [30] },
+      //       { values: [50] },
+      //       { values: [60] },
+      //     ];
+      //     const testOptions = { methodArgsList, expectations };
 
-          runTest(testOptions);
-        });
+      //     runTest(testOptions);
+      //   });
 
-        describe("restrict changed {values} quantity (length)", () => {
-          context("preserve single value", () => {
-            const constructorArgs = {
-              values: 20,
-            };
-            const methodArgsList = [
-              { values: 30 },
-              { values: [50, 90] },
-              { values: [60, 70, 90] },
-            ];
-            const expectations = [
-              { values: [30] },
-              { values: [50] },
-              { values: [60] },
-            ];
-            const testOptions = {
-              constructorArgs,
-              methodArgsList,
-              expectations,
-            };
+      //   describe("restrict changed {values} quantity (length)", () => {
+      //     context("preserve single value", () => {
+      //       const constructorArgs = {
+      //         values: 20,
+      //       };
+      //       const methodArgsList = [
+      //         { values: 30 },
+      //         { values: [50, 90] },
+      //         { values: [60, 70, 90] },
+      //       ];
+      //       const expectations = [
+      //         { values: [30] },
+      //         { values: [50] },
+      //         { values: [60] },
+      //       ];
+      //       const testOptions = {
+      //         constructorArgs,
+      //         methodArgsList,
+      //         expectations,
+      //       };
 
-            runTest(testOptions);
-          });
+      //       runTest(testOptions);
+      //     });
 
-          context("preserve 2 values", () => {
-            const constructorArgs = {
-              values: [20, 80],
-            };
-            const methodArgsList = [
-              { values: 30 },
-              { values: [30, 90] },
-              { values: [30, 90, 100] },
-            ];
-            const expectations = [
-              { values: [30, 80] },
-              { values: [30, 90] },
-              { values: [30, 90] },
-            ];
-            const testOptions = {
-              constructorArgs,
-              methodArgsList,
-              expectations,
-            };
+      //     context("preserve 2 values", () => {
+      //       const constructorArgs = {
+      //         values: [20, 80],
+      //       };
+      //       const methodArgsList = [
+      //         { values: 30 },
+      //         { values: [30, 90] },
+      //         { values: [30, 90, 100] },
+      //       ];
+      //       const expectations = [
+      //         { values: [30, 80] },
+      //         { values: [30, 90] },
+      //         { values: [30, 90] },
+      //       ];
+      //       const testOptions = {
+      //         constructorArgs,
+      //         methodArgsList,
+      //         expectations,
+      //       };
 
-            runTest(testOptions);
-          });
-        });
-      });
+      //       runTest(testOptions);
+      //     });
+      //   });
+      // });
 
       describe(`shall handle passed array with length less,
       than length of the current array`, () => {
-        context(`change closest values`, () => {
-          const methodArgsList = [
-            { values: 300 },
-            { values: [-200, 300] },
-            { values: [-200, 5, 300] },
-            { values: [-200, 5, 300, 450] },
-            { values: [-500, 5, 300, 450] },
-            { values: [-500, -300, 300, 450] },
-          ];
-          const expectations = [
-            { values: [-400, -100, 0, 300, 500] },
-            { values: [-400, -200, 0, 300, 500] },
-            { values: [-400, -200, 5, 300, 500] },
-            { values: [-400, -200, 5, 300, 450] },
-            { values: [-500, -100, 5, 300, 450] },
-            { values: [-500, -300, 0, 300, 450] },
-          ];
-          const constructorArgs = {
-            boundaries: [-500, 500],
-            values: [-400, -100, 0, 200, 500],
-          };
-          const testOptions = { constructorArgs, methodArgsList, expectations };
+        // context(`change closest values`, () => {
+        //   const methodArgsList = [
+        //     { values: 300 },
+        //     { values: [-200, 300] },
+        //     { values: [-200, 5, 300] },
+        //     { values: [-200, 5, 300, 450] },
+        //     { values: [-500, 5, 300, 450] },
+        //     { values: [-500, -300, 300, 450] },
+        //   ];
+        //   const expectations = [
+        //     { values: [-400, -100, 0, 300, 500] },
+        //     { values: [-400, -200, 0, 300, 500] },
+        //     { values: [-400, -200, 5, 300, 500] },
+        //     { values: [-400, -200, 5, 300, 450] },
+        //     { values: [-500, -100, 5, 300, 450] },
+        //     { values: [-500, -300, 0, 300, 450] },
+        //   ];
+        //   const constructorArgs = {
+        //     boundaries: [-500, 500],
+        //     values: [-400, -100, 0, 200, 500],
+        //   };
+        //   const testOptions = { constructorArgs, methodArgsList, expectations };
 
-          runTest(testOptions);
-        });
+        //   runTest(testOptions);
+        // });
 
         context(`handle close inputted values`, () => {
           const methodArgsList = [
