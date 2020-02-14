@@ -566,6 +566,34 @@ describe("Model", () => {
           runTest(testOptions);
         });
       });
+
+      describe("shall handle values array with identical items", () => {
+        it("change appropriate item", () => {
+          const options = new Model({
+            boundaries: [0, 100],
+            values: [40, 40, 40, 40],
+            step: 1,
+          })
+            .setOptions({ values: [20] })
+            .getOptions();
+          const { values } = options;
+
+          assert.deepEqual(values, [20, 40, 40, 40]);
+        });
+
+        it("change appropriate item", () => {
+          const options = new Model({
+            boundaries: [0, 100],
+            values: [40, 40, 40, 40],
+            step: 1,
+          })
+            .setOptions({ values: [60] })
+            .getOptions();
+          const { values } = options;
+
+          assert.deepEqual(values, [40, 40, 40, 60]);
+        });
+      });
     });
 
     describe(`shall change nearest {boundaries} value,
