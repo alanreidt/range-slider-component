@@ -30,7 +30,7 @@ export class Model {
   }
 
   getOptions() {
-    return this._options;
+    return cloneDeep(this._options);
   }
 
   setOptions(newOptions) {
