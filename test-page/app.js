@@ -13,7 +13,7 @@ slider.create(parent0, {
 });
 
 slider.create(parent1, {
-  values: [20, 80],
+  boundaries: [0, 233],
   step: 1,
   hasTooltips: true,
 });
