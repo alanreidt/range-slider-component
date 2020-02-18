@@ -6,6 +6,7 @@ const DEFAULT_OPTIONS = {
   step: 1,
   orientation: "horizontal",
   hasTooltips: false,
+  _values: null,
   get values() {
     return this._values || [getAverageOf(this.boundaries)];
   },
