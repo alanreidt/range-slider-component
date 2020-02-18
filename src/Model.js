@@ -23,6 +23,9 @@ export class Model {
 
     this.setOptions(newOptions);
 
+    this._options.orientation = this._options.orientation;
+    this._options.hasTooltips = this._options.hasTooltips;
+
     Object.defineProperties(this._options, {
       orientation: { writable: false },
       hasTooltips: { writable: false },
