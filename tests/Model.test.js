@@ -623,7 +623,11 @@ describe("Model", () => {
 
   describe("setValueAt method", () => {
     context("shall handle 1 item long values array", () => {
-      const constructorArgs = { values: [30] };
+      const constructorArgs = {
+        boundaries: [0, 100],
+        step: 1,
+        values: [30],
+      };
       const testOptions = [
         [-10, 20],
         [0, 20],
@@ -644,7 +648,11 @@ describe("Model", () => {
     });
 
     context("shall change value at appropriate index", () => {
-      const constructorArgs = { values: [10, 30, 50] };
+      const constructorArgs = {
+        boundaries: [0, 100],
+        step: 1,
+        values: [10, 30, 50],
+      };
       const testOptions = [
         [0, 20],
         [1, 40],
@@ -673,7 +681,11 @@ describe("Model", () => {
     });
 
     context("shall restrict value to adjacent values", () => {
-      const constructorArgs = { values: [10, 30, 50] };
+      const constructorArgs = {
+        boundaries: [0, 100],
+        step: 1,
+        values: [10, 30, 50],
+      };
       const testOptions = [
         [0, -20],
         [0, 100],
@@ -704,7 +716,11 @@ describe("Model", () => {
     });
 
     context("shall handle “out of length” index", () => {
-      const constructorArgs = { values: [10, 30, 50] };
+      const constructorArgs = {
+        boundaries: [0, 100],
+        step: 1,
+        values: [10, 30, 50],
+      };
       const testOptions = [
         [5, 20],
         [45, 20],
@@ -728,7 +744,11 @@ describe("Model", () => {
 
     describe("shall catch garbage input", () => {
       context("handle incorrect index parameter", () => {
-        const constructorArgs = { values: [10, 30, 50] };
+        const constructorArgs = {
+          boundaries: [0, 100],
+          step: 1,
+          values: [10, 30, 50],
+        };
         const testOptions = [
           [null, 50],
           [undefined, 50],
@@ -753,7 +773,11 @@ describe("Model", () => {
       });
 
       context("handle incorrect value parameter", () => {
-        const constructorArgs = { values: [10, 30, 50] };
+        const constructorArgs = {
+          boundaries: [0, 100],
+          step: 1,
+          values: [10, 30, 50],
+        };
         const testOptions = [
           [0, null],
           [1, undefined],
