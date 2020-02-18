@@ -3,7 +3,6 @@ import map from "lodash/fp/map";
 import sortBy from "lodash/fp/sortBy";
 import filter from "lodash/fp/filter";
 import identity from "lodash/fp/identity";
-import cloneDeep from "lodash/cloneDeep";
 
 import { observerMixin } from "./utilities";
 import {
@@ -19,7 +18,8 @@ import { DEFAULT_OPTIONS } from "./DEFAULT_OPTIONS";
 
 export class Model {
   constructor(newOptions = {}) {
-    this._options = cloneDeep(DEFAULT_OPTIONS);
+    this.DEFAULT_OPTIONS = DEFAULT_OPTIONS;
+    this._options = Object.create(DEFAULT_OPTIONS);
 
     this.setOptions(newOptions);
 
@@ -30,12 +30,26 @@ export class Model {
   }
 
   getOptions() {
-    return cloneDeep(this._options);
+    const options = this._options;
+    const optionsCopy = {};
+
+    Object.keys(this.DEFAULT_OPTIONS).forEach((key) => {
+      const value = options[key];
+
+      optionsCopy[key] = Array.isArray(value) ? value.slice() : value;
+    });
+
+    return optionsCopy;
   }
 
   setOptions(newOptions) {
-    Object.keys(this._options).forEach((key) => {
-      const capitalizedKey = key[0].toUpperCase() + key.slice(1);
+    Object.keys(this.DEFAULT_OPTIONS).forEach((key) => {
+      const keyFirstLetter = key[0];
+      const isKeyPrivate = keyFirstLetter === "_";
+
+      if (isKeyPrivate) return;
+
+      const capitalizedKey = keyFirstLetter.toUpperCase() + key.slice(1);
       const keySetterName = `_set${capitalizedKey}`;
       const value = newOptions[key];
 
@@ -85,15 +99,17 @@ export class Model {
     const { step } = this._options;
     const [start, end] = this._options.boundaries;
     const offset = start;
+    const defaultValue = this._options.values;
 
     const newValues = [].concat(values);
-    const currentValues = this._options.values && this._options.values.slice();
+    const currentValues = this._options._values;
 
     const validate = flow(
       map(parseFloat),
       filter(Number.isFinite),
       sortBy(identity),
       crossWith(currentValues),
+      eitherOr(defaultValue),
       map(placeBetween(start, end)),
       map(adjustValueToStep(step, offset)),
     );
