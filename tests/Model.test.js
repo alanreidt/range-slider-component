@@ -2,6 +2,7 @@ import { assert } from "chai";
 
 import { composeClassTest } from "./testUtilities";
 import { Model } from "../src/Model";
+import { DEFAULT_OPTIONS } from "../src/DEFAULT_OPTIONS";
 
 describe("Model", () => {
   describe("Initialization test", () => {
@@ -11,15 +12,7 @@ describe("Model", () => {
 
     describe("shall assign default values for not passed parameters", () => {
       context("shall assign default values, if nothing is passed", () => {
-        const expectations = [
-          {
-            boundaries: [0, 100],
-            values: [50],
-            step: 1,
-            orientation: "horizontal",
-            hasTooltips: false,
-          },
-        ];
+        const expectations = [DEFAULT_OPTIONS];
         const testOptions = { expectations };
 
         runTest(testOptions);
@@ -28,19 +21,16 @@ describe("Model", () => {
       context(
         "shall assign default values for not passed parameters, if only part is passed",
         () => {
-          const constructorArgs = {
+          const partialOptions = {
             boundaries: [5000, 40000],
-            values: 20000,
-            step: 50,
+            values: [22500],
             orientation: "vertical",
           };
+          const constructorArgs = partialOptions;
           const expectations = [
             {
-              boundaries: [5000, 40000],
-              values: [20000],
-              step: 50,
-              orientation: "vertical",
-              hasTooltips: false,
+              ...DEFAULT_OPTIONS,
+              ...partialOptions,
             },
           ];
           const testOptions = { constructorArgs, expectations };
@@ -61,11 +51,9 @@ describe("Model", () => {
         };
         const expectations = [
           {
-            boundaries: [0, 200],
+            ...DEFAULT_OPTIONS,
+            boundaries: [DEFAULT_OPTIONS.boundaries[0], 200],
             values: [25],
-            step: 1,
-            orientation: "horizontal",
-            hasTooltips: false,
           },
         ];
         const testOptions = { constructorArgs, expectations };
@@ -176,15 +164,7 @@ describe("Model", () => {
           step: "two",
         },
       ];
-      const expectations = [
-        {
-          boundaries: [0, 100],
-          values: [50],
-          step: 1,
-          orientation: "horizontal",
-          hasTooltips: false,
-        },
-      ];
+      const expectations = [DEFAULT_OPTIONS];
       const testOptions = { methodArgsList, expectations };
 
       runTest(testOptions);
@@ -265,7 +245,10 @@ describe("Model", () => {
             { boundaries: [-500, 500], step: 2000 },
           ];
           const expectations = [
-            { step: 100 },
+            {
+              step:
+                DEFAULT_OPTIONS.boundaries[1] - DEFAULT_OPTIONS.boundaries[0],
+            },
             { boundaries: [300, 900], step: 600 },
             { boundaries: [-500, 500], step: 1000 },
           ];
