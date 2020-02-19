@@ -15,7 +15,7 @@ export class ViewController {
     this._bindMethods();
 
     this._paint(model.getOptions());
-    this._assignElements();
+    this._attachElements();
     this._addSliderEventListener();
     this.setElements(model.getOptions());
   }
@@ -62,7 +62,7 @@ export class ViewController {
     this.parent.innerHTML = createTemplate(options);
   }
 
-  _assignElements() {
+  _attachElements() {
     this.slider = this.parent.querySelector(".js-slider");
     this.base = this.parent.querySelector(".js-slider__base");
     this.handleGroups = this._getHandleGroups();
