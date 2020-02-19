@@ -20,6 +20,7 @@ describe("findAntecedent", () => {
     ];
     const expectations = [100, 0, 250, 0, -200, -50, -350];
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -36,6 +37,7 @@ describe("findAntecedent", () => {
     ];
     const expectations = [100, 900, 300, 0, 300, Infinity, Infinity, NaN];
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -50,6 +52,7 @@ describe("findAntecedent", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
 
@@ -63,6 +66,7 @@ describe("findAntecedent", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
 
@@ -76,6 +80,7 @@ describe("findAntecedent", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
   });
