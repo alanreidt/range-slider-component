@@ -13,6 +13,7 @@ describe("toFixed", () => {
       const funcArgsList = [[0.1619048], [0.3333333], [0.957], [0.5], [-0.5]];
       const expectations = ["0", "0", "1", "1", "-1"];
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
     describe("fix to 1 digit", () => {
@@ -23,6 +24,7 @@ describe("toFixed", () => {
       ];
       const expectations = ["0.2", "0.3", "1.0"];
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
     describe("fix to 5 digits", () => {
@@ -33,6 +35,7 @@ describe("toFixed", () => {
       ];
       const expectations = ["0.16190", "0.33333", "0.95700"];
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
   });
@@ -45,6 +48,7 @@ describe("toFixed", () => {
     ];
     const expectations = ["0", "100", "-100"];
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -55,6 +59,7 @@ describe("toFixed", () => {
     ];
     const expectations = ["Infinity", "NaN"];
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -68,6 +73,7 @@ describe("toFixed", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill("NaN");
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
 
@@ -81,6 +87,7 @@ describe("toFixed", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill("NaN");
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
   });
