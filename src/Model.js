@@ -136,7 +136,9 @@ export class Model {
   }
 
   _setOrientation(value) {
-    if (value !== "horizontal" && value !== "vertical") return;
+    const isValueValid = value === "horizontal" || value === "vertical";
+
+    if (!isValueValid) return;
 
     this._options.orientation = value;
   }
