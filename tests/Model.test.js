@@ -528,6 +528,11 @@ describe("Model", () => {
       describe(`shall handle passed array with length equal to
       length of the current array`, () => {
         context(`assign as is (sorting only)`, () => {
+          const constructorArgs = {
+            boundaries: [-500, 500],
+            step: 1,
+            values: [-100, 0, 200],
+          };
           const methodArgsList = [
             { values: [-200, 5, 300] },
             { values: [-200, 5, 450] },
@@ -540,10 +545,6 @@ describe("Model", () => {
             { values: [-500, -200, 5] },
             { values: [100, 200, 300] },
           ];
-          const constructorArgs = {
-            boundaries: [-500, 500],
-            values: [-100, 0, 200],
-          };
           const testOptions = { constructorArgs, methodArgsList, expectations };
 
           runTest(testOptions);
