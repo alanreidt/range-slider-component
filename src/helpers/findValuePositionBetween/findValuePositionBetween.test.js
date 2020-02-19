@@ -35,6 +35,7 @@ describe("findValuePositionBetween", () => {
       "50%",
     ];
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -48,6 +49,7 @@ describe("findValuePositionBetween", () => {
       ];
       const expectations = ["-20%", "140%", "200%", "140%"];
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
 
@@ -55,6 +57,7 @@ describe("findValuePositionBetween", () => {
       const funcArgsList = [[50, 500, Infinity]];
       const expectations = ["0%"];
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
   });
@@ -71,6 +74,7 @@ describe("findValuePositionBetween", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
 
@@ -85,6 +89,7 @@ describe("findValuePositionBetween", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
 
@@ -98,6 +103,7 @@ describe("findValuePositionBetween", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
   });
