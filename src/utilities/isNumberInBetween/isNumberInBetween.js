@@ -8,7 +8,7 @@ import { isNumberBetween } from "../isNumberBetween/isNumberBetween";
  * @param {number} end An end of the interval.
  */
 export function isNumberInBetween(number, start, end) {
-  const areArgumentsIncludeNull = Array.from(arguments).includes(null);
+  const areArgumentsIncludeNull = [...arguments].includes(null);
 
   if (areArgumentsIncludeNull) {
     return false;

@@ -6,7 +6,7 @@
  * @param {number} end An end of the interval.
  */
 export function isNumberBetween(number, start, end) {
-  const areArgumentsIncludeNull = Array.from(arguments).includes(null);
+  const areArgumentsIncludeNull = [...arguments].includes(null);
 
   if (areArgumentsIncludeNull) {
     return false;

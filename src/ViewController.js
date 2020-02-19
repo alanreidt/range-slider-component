@@ -70,11 +70,11 @@ export class ViewController {
   }
 
   _getHandleGroups() {
-    return Array.from(this.parent.querySelectorAll(".js-slider__handle-group"));
+    return [...this.parent.querySelectorAll(".js-slider__handle-group")];
   }
 
   _getTooltips() {
-    return Array.from(this.parent.querySelectorAll(".js-slider__tooltip"));
+    return [...this.parent.querySelectorAll(".js-slider__tooltip")];
   }
 
   _addSliderEventListener() {

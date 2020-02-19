@@ -493,9 +493,9 @@ describe("ViewController", () => {
 
     describe("shall set values", () => {
       context(`${SLIDER_HANDLE_GROUP_NAME}s are set`, () => {
-        const handleGroups = Array.from(
-          parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
-        );
+        const handleGroups = [
+          ...parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
+        ];
 
         handleGroups.forEach((handleGroup, i) => {
           const value = options.values[i];
@@ -518,9 +518,9 @@ describe("ViewController", () => {
       });
 
       context(`${SLIDER_HANDLE_GROUP_NAME}s are updated`, () => {
-        const handleGroups = Array.from(
-          parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
-        );
+        const handleGroups = [
+          ...parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
+        ];
 
         handleGroups.forEach((handleGroup, i) => {
           const value = newValues[i];
