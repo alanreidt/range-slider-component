@@ -22,6 +22,7 @@ describe("findClosestFactor", () => {
     ];
     const expectations = [225, 24, 20, 500, 1, 50, 100, 25, 1];
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -34,6 +35,7 @@ describe("findClosestFactor", () => {
     ];
     const expectations = new Array(funcArgsList.length).fill(NaN);
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -49,6 +51,7 @@ describe("findClosestFactor", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
 
@@ -63,6 +66,7 @@ describe("findClosestFactor", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
   });
