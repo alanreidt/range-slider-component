@@ -12,6 +12,7 @@ describe("toPercentage", () => {
     const funcArgsList = [[0], [2], [0.2], [0.75], [-2.5]];
     const expectations = ["0%", "200%", "20%", "75%", "-250%"];
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -27,6 +28,7 @@ describe("toPercentage", () => {
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
+
       test.run(funcArgsList, expectations);
     });
   });
