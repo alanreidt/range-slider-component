@@ -142,7 +142,7 @@ export class Model {
   }
 
   _setHasTooltips(value) {
-    if (value !== false && value !== true) return;
+    if (typeof value !== "boolean") return;
 
     this._options.hasTooltips = value;
   }
