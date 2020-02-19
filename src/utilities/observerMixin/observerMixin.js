@@ -39,7 +39,7 @@ export const observerMixin = {
     subscribers.forEach((item, i) => {
       if (item !== subscriber) return;
 
-      subscribers.splice(i--, 1);
+      subscribers.splice(i, 1);
     });
   },
 
