@@ -18,6 +18,7 @@ describe("either", () => {
     ];
     const expectations = new Array(funcArgsList.length).fill(500);
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
@@ -32,6 +33,7 @@ describe("either", () => {
     ];
     const expectations = [100, 0, -100, 0.5, Infinity, -Infinity];
     const test = new TestClass();
+
     test.run(funcArgsList, expectations);
   });
 
