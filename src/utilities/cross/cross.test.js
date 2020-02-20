@@ -1,6 +1,6 @@
 import { describe } from 'riteway';
 
-import { cross } from './cross';
+import cross from './cross';
 
 describe('cross(baseArr, arr)', async (assert) => {
   assert({

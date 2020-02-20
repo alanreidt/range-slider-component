@@ -1,5 +1,5 @@
 /* PLOP_INJECT_IMPORT */
-import { cross } from './cross';
+import cross from './cross';
 import { replaceValueAt } from './replaceValueAt';
 import { isNumberFalsey } from './isNumberFalsey';
 import { restrictNumberByNeighbors } from './restrictNumberByNeighbors';

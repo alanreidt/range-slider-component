@@ -1,1 +1,3 @@
-export { cross } from "./cross";
+import cross from './cross';
+
+export default cross;
