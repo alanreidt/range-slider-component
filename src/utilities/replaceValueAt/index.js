@@ -1,1 +1,3 @@
-export { replaceValueAt } from "./replaceValueAt";
+import replaceValueAt from './replaceValueAt';
+
+export default replaceValueAt;

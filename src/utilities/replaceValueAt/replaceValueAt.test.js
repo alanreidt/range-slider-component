@@ -1,6 +1,6 @@
 import { describe } from 'riteway';
 
-import { replaceValueAt } from './replaceValueAt';
+import replaceValueAt from './replaceValueAt';
 
 describe('replaceValueAt(index, value, array)', async (assert) => {
   assert({

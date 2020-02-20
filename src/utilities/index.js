@@ -3,7 +3,7 @@ import placeNumberBetween from './placeNumberBetween';
 import observerMixin from './observerMixin';
 import getAverageOf from './getAverageOf';
 import cross from './cross';
-import { replaceValueAt } from './replaceValueAt';
+import replaceValueAt from './replaceValueAt';
 import isNumberFalsey from './isNumberFalsey';
 import { restrictNumberByNeighbors } from './restrictNumberByNeighbors';
 import either from './either';
