@@ -1,4 +1,4 @@
-import { isNumberFalsey } from "../isNumberFalsey";
+import isNumberFalsey from '../isNumberFalsey';
 
 /**
  * Replace a value of an array at index.
@@ -9,7 +9,11 @@ import { isNumberFalsey } from "../isNumberFalsey";
  *
  * @returns {array} The array with replaced value.
  */
-export function replaceValueAt(index, value, array) {
+const replaceValueAt = function replaceValueAtFromUtilities(
+  index,
+  value,
+  array,
+) {
   if (!Array.isArray(array)) {
     return NaN;
   }
@@ -23,4 +27,6 @@ export function replaceValueAt(index, value, array) {
   result.splice(index, 1, value);
 
   return result;
-}
+};
+
+export default replaceValueAt;
