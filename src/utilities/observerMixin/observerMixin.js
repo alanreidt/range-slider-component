@@ -2,7 +2,7 @@
  * The observerMixin is a modification of eventMixin,
  * borrowed from http://javascript.info/mixins
  */
-export const observerMixin = {
+const observerMixin = {
   /**
    * Subscribe to event, usage:
    *   menu.addSubscriber( "select", function(item) { ... } ),
@@ -59,3 +59,5 @@ export const observerMixin = {
     subscribers.forEach((subscriber) => subscriber.apply(this, args));
   },
 };
+
+export default observerMixin;
