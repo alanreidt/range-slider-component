@@ -1,1 +1,3 @@
-export { isNumberBetween } from "./isNumberBetween";
+import isNumberBetween from './isNumberBetween';
+
+export default isNumberBetween;

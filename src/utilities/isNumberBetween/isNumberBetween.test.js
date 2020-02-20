@@ -1,4 +1,4 @@
-import { isNumberBetween } from './isNumberBetween';
+import isNumberBetween from './isNumberBetween';
 import {
   makeTestClass,
   testDescriptionTemplate,
