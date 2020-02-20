@@ -7,8 +7,10 @@
  *
  * @returns {any} Either origin or fallback.
  */
-export function either(origin, fallback) {
+const either = function eitherFromUtilities(origin, fallback) {
   const isOriginCorrect = origin === 0 || origin;
 
   return isOriginCorrect ? origin : fallback;
-}
+};
+
+export default either;
