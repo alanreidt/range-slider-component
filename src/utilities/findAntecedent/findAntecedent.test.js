@@ -1,4 +1,4 @@
-import { findAntecedent } from './findAntecedent';
+import findAntecedent from './findAntecedent';
 import {
   makeTestClass,
   testDescriptionTemplate,

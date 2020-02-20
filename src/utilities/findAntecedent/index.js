@@ -1,1 +1,3 @@
-export { findAntecedent } from "./findAntecedent";
+import findAntecedent from './findAntecedent';
+
+export default findAntecedent;

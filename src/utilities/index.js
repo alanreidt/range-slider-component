@@ -10,7 +10,7 @@ import { findClosestDivisible } from './findClosestDivisible';
 import { isNumberInBetween } from './isNumberInBetween';
 import { isNumberBetween } from './isNumberBetween';
 import { findClosestTo } from './findClosestTo';
-import { findAntecedent } from './findAntecedent';
+import findAntecedent from './findAntecedent';
 import { toFixed } from './toFixed';
 import { toPercentage } from './toPercentage';
 import { placeNumberBetween } from './placeNumberBetween/placeNumberBetween';
