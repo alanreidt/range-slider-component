@@ -1,4 +1,4 @@
-import { findClosestTo } from './findClosestTo';
+import findClosestTo from './findClosestTo';
 import {
   makeTestClass,
   testDescriptionTemplate,

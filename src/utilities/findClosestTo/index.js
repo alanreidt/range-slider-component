@@ -1,1 +1,3 @@
-export { findClosestTo } from "./findClosestTo";
+import findClosestTo from './findClosestTo';
+
+export default findClosestTo;
