@@ -8,7 +8,7 @@ import either from './either';
 import isDivisible from './isDivisible';
 import findClosestFactor from './findClosestFactor';
 import findClosestDivisible from './findClosestDivisible';
-import { isNumberInBetween } from './isNumberInBetween';
+import isNumberInBetween from './isNumberInBetween';
 import isNumberBetween from './isNumberBetween';
 import findClosestTo from './findClosestTo';
 import findAntecedent from './findAntecedent';
