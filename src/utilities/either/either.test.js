@@ -1,4 +1,4 @@
-import { either } from './either';
+import either from './either';
 import {
   makeTestClass,
   testDescriptionTemplate,

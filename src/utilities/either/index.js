@@ -1,1 +1,3 @@
-export { either } from "./either";
+import either from './either';
+
+export default either;
