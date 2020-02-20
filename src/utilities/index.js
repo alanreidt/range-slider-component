@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import observerMixin from './observerMixin';
 import getAverageOf from './getAverageOf';
 import cross from './cross';
 import { replaceValueAt } from './replaceValueAt';
@@ -17,11 +18,11 @@ import { toPercentage } from './toPercentage';
 import { placeNumberBetween } from './placeNumberBetween/placeNumberBetween';
 import { getNextDivisibleOf } from './getNextDivisibleOf/getNextDivisibleOf';
 import { getPrevDivisibleOf } from './getPrevDivisibleOf/getPrevDivisibleOf';
-import { observerMixin } from './observerMixin/observerMixin';
 import findRatio from './findRatio';
 
 export {
   /* PLOP_INJECT_EXPORT */
+  observerMixin,
   getAverageOf,
   cross,
   replaceValueAt,
@@ -40,6 +41,5 @@ export {
   placeNumberBetween,
   getNextDivisibleOf,
   getPrevDivisibleOf,
-  observerMixin,
   findRatio,
 };
