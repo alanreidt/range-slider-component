@@ -1,14 +1,14 @@
-import { findRatio } from "./findRatio";
+import { findRatio } from './findRatio';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from "../../../tests/testUtilities";
+} from '../../../tests/testUtilities';
 
-describe("findRatio", () => {
-  const commonDescriptionTemplate = testDescriptionTemplate`ratio of ${0} to ${1}, with offset = ${2} is ${"expectation"}`;
+describe('findRatio', () => {
+  const commonDescriptionTemplate = testDescriptionTemplate`ratio of ${0} to ${1}, with offset = ${2} is ${'expectation'}`;
   const TestClass = makeTestClass(findRatio, commonDescriptionTemplate);
 
-  describe("shall return ratio", () => {
+  describe('shall return ratio', () => {
     const funcArgsList = [
       [100, 500],
       [0, 500],
@@ -26,7 +26,7 @@ describe("findRatio", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall handle exceptions", () => {
+  describe('shall handle exceptions', () => {
     const funcArgsList = [
       [100, 500, 200],
       [900, 500, 200],
@@ -42,14 +42,14 @@ describe("findRatio", () => {
     test.run(funcArgsList, expectations);
   });
 
-  context("shall catch garbage input", () => {
-    describe("returns NaN, if antecedent parameter is incorrect", () => {
+  context('shall catch garbage input', () => {
+    describe('returns NaN, if antecedent parameter is incorrect', () => {
       const funcArgsList = [
         [undefined, 1000, -500],
         [null, 1000, -500],
         [NaN, 1000, -500],
-        ["text", 1000, -500],
-        ["123text", 1000, -500],
+        ['text', 1000, -500],
+        ['123text', 1000, -500],
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
@@ -57,13 +57,13 @@ describe("findRatio", () => {
       test.run(funcArgsList, expectations);
     });
 
-    describe("returns NaN, if consequent parameter is incorrect", () => {
+    describe('returns NaN, if consequent parameter is incorrect', () => {
       const funcArgsList = [
         [100, undefined, -500],
         [100, null, -500],
         [100, NaN, -500],
-        [100, "text", -500],
-        [100, "123text", -500],
+        [100, 'text', -500],
+        [100, '123text', -500],
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
@@ -71,13 +71,13 @@ describe("findRatio", () => {
       test.run(funcArgsList, expectations);
     });
 
-    describe("returns NaN, if offset parameter is incorrect", () => {
+    describe('returns NaN, if offset parameter is incorrect', () => {
       const funcArgsList = [
         [100, 200, null],
         [100, 200, NaN],
         [100, 200, Infinity],
-        [100, 200, "text"],
-        [100, 200, "123text"],
+        [100, 200, 'text'],
+        [100, 200, '123text'],
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
