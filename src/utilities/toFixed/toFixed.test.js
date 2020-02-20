@@ -1,4 +1,4 @@
-import { toFixed } from './toFixed';
+import toFixed from './toFixed';
 import {
   makeTestClass,
   testDescriptionTemplate,

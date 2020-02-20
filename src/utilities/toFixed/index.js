@@ -1,1 +1,3 @@
-export { toFixed } from "./toFixed";
+import toFixed from './toFixed';
+
+export default toFixed;
