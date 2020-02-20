@@ -1,4 +1,4 @@
-import { findRatio } from './findRatio';
+import findRatio from './findRatio';
 import {
   makeTestClass,
   testDescriptionTemplate,

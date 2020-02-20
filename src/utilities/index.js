@@ -18,7 +18,7 @@ import { getAverageOf } from './getAverageOf/getAverageOf';
 import { getNextDivisibleOf } from './getNextDivisibleOf/getNextDivisibleOf';
 import { getPrevDivisibleOf } from './getPrevDivisibleOf/getPrevDivisibleOf';
 import { observerMixin } from './observerMixin/observerMixin';
-import { findRatio } from './findRatio';
+import findRatio from './findRatio';
 
 export {
   /* PLOP_INJECT_EXPORT */

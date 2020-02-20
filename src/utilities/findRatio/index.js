@@ -1,1 +1,3 @@
-export { findRatio } from "./findRatio";
+import findRatio from './findRatio';
+
+export default findRatio;
