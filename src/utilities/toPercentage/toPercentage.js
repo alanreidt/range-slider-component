@@ -5,7 +5,7 @@
  *
  * @returns {string} A string, that contains number in percentages.
  */
-export function toPercentage(number) {
+const toPercentage = function toPercentageFromUtilities(number) {
   const isNumberCorrect = Number.isFinite(number);
 
   if (!isNumberCorrect) {
@@ -13,4 +13,6 @@ export function toPercentage(number) {
   }
 
   return `${number * 100}%`;
-}
+};
+
+export default toPercentage;
