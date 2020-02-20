@@ -4,6 +4,8 @@
  *
  * @param {number} number A subject of examination.
  */
-export function isNumberFalsey(number) {
-  return !(typeof number === "number" && !Number.isNaN(number));
-}
+const isNumberFalsey = function isNumberFalseyFromUtilities(number) {
+  return !(typeof number === 'number' && !Number.isNaN(number));
+};
+
+export default isNumberFalsey;
