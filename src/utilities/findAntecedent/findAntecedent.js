@@ -10,7 +10,11 @@
  *
  * @returns {number} An antecedent of the ratio.
  */
-export function findAntecedent(consequent, ratio, offset = 0) {
+const findAntecedent = function findAntecedentFromUtilities(
+  consequent,
+  ratio,
+  offset = 0,
+) {
   const areArgumentsCorrect =
     consequent !== null && ratio !== null && Number.isFinite(offset);
 
@@ -19,4 +23,6 @@ export function findAntecedent(consequent, ratio, offset = 0) {
   }
 
   return consequent * ratio + offset;
-}
+};
+
+export default findAntecedent;
