@@ -1,6 +1,6 @@
-import { isNumberInBetween } from "../isNumberInBetween";
-import { findClosestTo } from "../findClosestTo";
-import { isNumberFalsey } from "../isNumberFalsey";
+import isNumberInBetween from '../isNumberInBetween';
+import findClosestTo from '../findClosestTo';
+import isNumberFalsey from '../isNumberFalsey';
 
 /**
  * Restricts a number by adjacent numbers.
@@ -11,7 +11,11 @@ import { isNumberFalsey } from "../isNumberFalsey";
  *
  * @returns {number} A number, which is prevNeighbor <= number <= nextNeighbor.
  */
-export function restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor) {
+const restrictNumberByNeighbors = function restrictNumberByNeighborsFromUtilities(
+  number,
+  prevNeighbor,
+  nextNeighbor,
+) {
   if (isNumberFalsey(number)) {
     return NaN;
   }
@@ -37,4 +41,6 @@ export function restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor) {
   }
 
   return result;
-}
+};
+
+export default restrictNumberByNeighbors;
