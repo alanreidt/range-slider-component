@@ -1,16 +1,16 @@
-import { assert } from "chai";
+import { assert } from 'chai';
 
-import { observerMixin } from "./observerMixin";
+import { observerMixin } from './observerMixin';
 
-describe("observerMixin", () => {
-  describe("shall store list of subscribers", () => {
+describe('observerMixin', () => {
+  describe('shall store list of subscribers', () => {
     const publisher = { ...observerMixin };
     const subscriber1 = {};
     const subscriber2 = {};
     const subscribers = [subscriber1, subscriber2];
 
-    publisher.addSubscriber("change", subscriber1);
-    publisher.addSubscriber("change", subscriber2);
+    publisher.addSubscriber('change', subscriber1);
+    publisher.addSubscriber('change', subscriber2);
 
     subscribers.forEach((subscriber, i) => {
       const publisherSubscriber = publisher._eventSubscribers.change[i];
@@ -21,7 +21,7 @@ describe("observerMixin", () => {
     });
   });
 
-  describe("shall remove subscribers from the list by request", () => {
+  describe('shall remove subscribers from the list by request', () => {
     const publisher = { ...observerMixin };
     const subscriber1 = {};
     const subscriber2 = {};
@@ -29,9 +29,9 @@ describe("observerMixin", () => {
     const subscribers = [subscriber1, subscriber2, subscriber3];
     const cuttedSubscribers = [subscriber1, subscriber3];
 
-    publisher.addSubscriber("change", subscriber1);
-    publisher.addSubscriber("change", subscriber2);
-    publisher.addSubscriber("change", subscriber3);
+    publisher.addSubscriber('change', subscriber1);
+    publisher.addSubscriber('change', subscriber2);
+    publisher.addSubscriber('change', subscriber3);
 
     const publisherSubscribers = publisher._eventSubscribers.change;
 
@@ -43,14 +43,14 @@ describe("observerMixin", () => {
       });
     });
 
-    publisher.removeSubscriber("change", subscriber2);
+    publisher.removeSubscriber('change', subscriber2);
 
     it(`subscriber2 is removed from the list`, () => {
       assert.deepEqual(cuttedSubscribers, publisherSubscribers);
     });
   });
 
-  describe("shall trigger subscribers", () => {
+  describe('shall trigger subscribers', () => {
     const publisher = { ...observerMixin };
     const subscribers = [];
 
@@ -69,7 +69,7 @@ describe("observerMixin", () => {
     );
 
     subscriberHandlers.forEach((subscriberHandler) =>
-      publisher.addSubscriber("change", subscriberHandler),
+      publisher.addSubscriber('change', subscriberHandler),
     );
 
     const publisherSubscribers = publisher._eventSubscribers.change;
@@ -78,7 +78,7 @@ describe("observerMixin", () => {
       assert.deepEqual(subscriberHandlers, publisherSubscribers);
     });
 
-    publisher.triggerSubscribers("change", "Hello");
+    publisher.triggerSubscribers('change', 'Hello');
 
     context(`subscribers are notified`, () => {
       subscribers.forEach((subscriber, i) => {
@@ -91,7 +91,7 @@ describe("observerMixin", () => {
     context(`value is accepted`, () => {
       subscribers.forEach((subscriber, i) => {
         it(`subscriber${i + 1} has value`, () => {
-          assert.equal(subscriber.value, "Hello");
+          assert.equal(subscriber.value, 'Hello');
         });
       });
     });
