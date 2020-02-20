@@ -1,14 +1,14 @@
-import { isNumberInBetween } from "./isNumberInBetween";
+import { isNumberInBetween } from './isNumberInBetween';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from "../../../tests/testUtilities";
+} from '../../../tests/testUtilities';
 
-describe("isNumberInBetween", () => {
-  const commonDescriptionTemplate = testDescriptionTemplate`It is ${"expectation"} that ${0} is in between ${1} and ${2}`;
+describe('isNumberInBetween', () => {
+  const commonDescriptionTemplate = testDescriptionTemplate`It is ${'expectation'} that ${0} is in between ${1} and ${2}`;
   const TestClass = makeTestClass(isNumberInBetween, commonDescriptionTemplate);
 
-  describe("shall return true, if number is in between start and end", () => {
+  describe('shall return true, if number is in between start and end', () => {
     const funcArgsList = [
       [50, 0, 100],
       [-50, -100, 0],
@@ -24,7 +24,7 @@ describe("isNumberInBetween", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall return false, if number is not in between start and end", () => {
+  describe('shall return false, if number is not in between start and end', () => {
     const funcArgsList = [
       [150, 0, 100],
       [-150, -100, 0],
@@ -39,7 +39,7 @@ describe("isNumberInBetween", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall handle input, when start is end and vice versa", () => {
+  describe('shall handle input, when start is end and vice versa', () => {
     const funcArgsList = [
       [50, 100, 0],
       [-50, 0, -100],
@@ -55,7 +55,7 @@ describe("isNumberInBetween", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall include extremums", () => {
+  describe('shall include extremums', () => {
     const funcArgsList = [
       [100, 0, 100],
       [0, 0, 100],
@@ -68,7 +68,7 @@ describe("isNumberInBetween", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall treat Infinity right", () => {
+  describe('shall treat Infinity right', () => {
     const funcArgsList = [
       [Infinity, -300, Infinity],
       [-Infinity, -Infinity, 300],
@@ -81,7 +81,7 @@ describe("isNumberInBetween", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall return true, if there is only edges", () => {
+  describe('shall return true, if there is only edges', () => {
     const funcArgsList = [
       [100, 100, 100],
       [100, 100, 101],
@@ -96,15 +96,15 @@ describe("isNumberInBetween", () => {
     test.run(funcArgsList, expectations);
   });
 
-  context("shall catch garbage input", () => {
-    describe("returns false, if number is incorrect", () => {
+  context('shall catch garbage input', () => {
+    describe('returns false, if number is incorrect', () => {
       const funcArgsList = [
         [undefined, -100, 100],
         [null, -100, 100],
         [Infinity, -100, 100],
         [NaN, -100, 100],
-        ["text", -100, 100],
-        ["123text", -100, 100],
+        ['text', -100, 100],
+        ['123text', -100, 100],
       ];
       const expectations = new Array(funcArgsList.length).fill(false);
       const test = new TestClass();
@@ -112,13 +112,13 @@ describe("isNumberInBetween", () => {
       test.run(funcArgsList, expectations);
     });
 
-    describe("returns false, if start is incorrect", () => {
+    describe('returns false, if start is incorrect', () => {
       const funcArgsList = [
         [50, undefined, 100],
         [50, null, 100],
         [50, NaN, 100],
-        [50, "text", 100],
-        [50, "123text", 100],
+        [50, 'text', 100],
+        [50, '123text', 100],
       ];
       const expectations = new Array(funcArgsList.length).fill(false);
       const test = new TestClass();
@@ -126,13 +126,13 @@ describe("isNumberInBetween", () => {
       test.run(funcArgsList, expectations);
     });
 
-    describe("returns false, if end is incorrect", () => {
+    describe('returns false, if end is incorrect', () => {
       const funcArgsList = [
         [50, 100, undefined],
         [50, 100, null],
         [50, 100, NaN],
-        [50, 100, "text"],
-        [50, 100, "123text"],
+        [50, 100, 'text'],
+        [50, 100, '123text'],
       ];
       const expectations = new Array(funcArgsList.length).fill(false);
       const test = new TestClass();
