@@ -1,14 +1,14 @@
-import { findClosestFactor } from "./findClosestFactor";
+import { findClosestFactor } from './findClosestFactor';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from "../../../tests/testUtilities";
+} from '../../../tests/testUtilities';
 
-describe("findClosestFactor", () => {
-  const commonDescriptionTemplate = testDescriptionTemplate`closest factor for division of ${0} by ${1} is ${"expectation"}`;
+describe('findClosestFactor', () => {
+  const commonDescriptionTemplate = testDescriptionTemplate`closest factor for division of ${0} by ${1} is ${'expectation'}`;
   const TestClass = makeTestClass(findClosestFactor, commonDescriptionTemplate);
 
-  describe("shall return closest factor", () => {
+  describe('shall return closest factor', () => {
     const funcArgsList = [
       [900, 250],
       [120, 25],
@@ -39,15 +39,15 @@ describe("findClosestFactor", () => {
     test.run(funcArgsList, expectations);
   });
 
-  context("shall catch garbage input", () => {
-    describe("returns NaN, if dividend parameter is incorrect", () => {
+  context('shall catch garbage input', () => {
+    describe('returns NaN, if dividend parameter is incorrect', () => {
       const funcArgsList = [
         [undefined, 25],
         [null, 25],
         [Infinity, 25],
         [NaN, 25],
-        ["text", 25],
-        ["123text", 25],
+        ['text', 25],
+        ['123text', 25],
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
@@ -55,14 +55,14 @@ describe("findClosestFactor", () => {
       test.run(funcArgsList, expectations);
     });
 
-    describe("returns NaN, if divisor parameter is incorrect", () => {
+    describe('returns NaN, if divisor parameter is incorrect', () => {
       const funcArgsList = [
         [50, undefined],
         [50, null],
         [50, Infinity],
         [50, NaN],
-        [50, "text"],
-        [50, "123text"],
+        [50, 'text'],
+        [50, '123text'],
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
