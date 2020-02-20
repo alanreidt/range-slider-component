@@ -9,7 +9,7 @@ import { findClosestTo } from '../findClosestTo/findClosestTo';
  *
  * @returns {array} A crossed array.
  */
-export function cross(baseArray, crossingArray) {
+const cross = function crossFromUtilities(baseArray, crossingArray) {
   const isArrayCorrect = (array) => array && array.length;
   const ascending = (a, b) => a - b;
 
@@ -46,4 +46,6 @@ export function cross(baseArray, crossingArray) {
   crossingArrayCopy.length = baseArrayCopy.length;
 
   return crossingArrayCopy.sort(ascending);
-}
+};
+
+export default cross;
