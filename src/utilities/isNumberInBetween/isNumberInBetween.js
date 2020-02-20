@@ -1,4 +1,4 @@
-import { isNumberBetween } from "../isNumberBetween/isNumberBetween";
+import isNumberBetween from '../isNumberBetween';
 
 /**
  * Defines whether a number is between start and end, including edges, or not.
@@ -7,7 +7,11 @@ import { isNumberBetween } from "../isNumberBetween/isNumberBetween";
  * @param {number} start A start of the interval.
  * @param {number} end An end of the interval.
  */
-export function isNumberInBetween(number, start, end) {
+const isNumberInBetween = function isNumberInBetweenFromUtilities(
+  number,
+  start,
+  end,
+) {
   const areArgumentsIncludeNull = [...arguments].includes(null);
 
   if (areArgumentsIncludeNull) {
@@ -15,4 +19,6 @@ export function isNumberInBetween(number, start, end) {
   }
 
   return isNumberBetween(number, start - 1, end + 1);
-}
+};
+
+export default isNumberInBetween;
