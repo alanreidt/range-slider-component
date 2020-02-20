@@ -1,6 +1,6 @@
 import { describe } from 'riteway';
 
-import { restrictNumberByNeighbors } from './restrictNumberByNeighbors';
+import restrictNumberByNeighbors from './restrictNumberByNeighbors';
 
 describe('restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor)', async (assert) => {
   assert({

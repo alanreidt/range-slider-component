@@ -1,1 +1,3 @@
-export { restrictNumberByNeighbors } from "./restrictNumberByNeighbors";
+import restrictNumberByNeighbors from './restrictNumberByNeighbors';
+
+export default restrictNumberByNeighbors;
