@@ -1,4 +1,4 @@
-import { findClosestTo } from "../findClosestTo/findClosestTo";
+import { findClosestTo } from '../findClosestTo/findClosestTo';
 
 /**
  * Cross arrays' items, regarding first array as a base.
