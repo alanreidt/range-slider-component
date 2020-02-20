@@ -1,17 +1,17 @@
-import { findClosestDivisible } from "./findClosestDivisible";
+import { findClosestDivisible } from './findClosestDivisible';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from "../../../tests/testUtilities";
+} from '../../../tests/testUtilities';
 
-describe("findClosestDivisible", () => {
-  const commonDescriptionTemplate = testDescriptionTemplate`closest divisible number for division of ${0} by ${1} is ${"expectation"}`;
+describe('findClosestDivisible', () => {
+  const commonDescriptionTemplate = testDescriptionTemplate`closest divisible number for division of ${0} by ${1} is ${'expectation'}`;
   const TestClass = makeTestClass(
     findClosestDivisible,
     commonDescriptionTemplate,
   );
 
-  describe("shall return closest divisible number", () => {
+  describe('shall return closest divisible number', () => {
     const funcArgsList = [
       [220, 100],
       [250, 100],
@@ -36,7 +36,7 @@ describe("findClosestDivisible", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall correct negative divisor, removing sign", () => {
+  describe('shall correct negative divisor, removing sign', () => {
     const funcArgsList = [
       [220, -100],
       [250, -100],
@@ -50,15 +50,15 @@ describe("findClosestDivisible", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall catch garbage input", () => {
-    context("returns NaN if dividend parameter is incorrect", () => {
+  describe('shall catch garbage input', () => {
+    context('returns NaN if dividend parameter is incorrect', () => {
       const funcArgsList = [
         [undefined, 60],
         [null, 60],
         [Infinity, 60],
         [NaN, 60],
-        ["text", 60],
-        ["123text", 60],
+        ['text', 60],
+        ['123text', 60],
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
@@ -66,14 +66,14 @@ describe("findClosestDivisible", () => {
       test.run(funcArgsList, expectations);
     });
 
-    context("returns NaN if divisor parameter is incorrect", () => {
+    context('returns NaN if divisor parameter is incorrect', () => {
       const funcArgsList = [
         [100, undefined],
         [100, null],
         [100, Infinity],
         [100, NaN],
-        [100, "text"],
-        [100, "123text"],
+        [100, 'text'],
+        [100, '123text'],
       ];
       const expectations = new Array(funcArgsList.length).fill(NaN);
       const test = new TestClass();
