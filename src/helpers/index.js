@@ -1,4 +1,4 @@
-/* PLOP_INJECT_EXPORT */
+/* PLOP_INJECT_IMPORT */
 import { replaceAt } from './replaceAt';
 import { restrictByNeighbors } from './restrictByNeighbors';
 import { crossWith } from './crossWith';
@@ -11,6 +11,7 @@ import { findValuePositionBetween } from './findValuePositionBetween';
 import { adjustValueToStep } from './adjustValueToStep';
 
 export {
+  /* PLOP_INJECT_EXPORT */
   replaceAt,
   restrictByNeighbors,
   crossWith,

@@ -34,8 +34,14 @@ module.exports = (plop) => {
       {
         type: 'append',
         path: 'src/helpers/index.js',
+        pattern: `/* PLOP_INJECT_IMPORT */`,
+        template: `import {{camelCase name}} from './{{camelCase name}}';`,
+      },
+      {
+        type: 'append',
+        path: 'src/helpers/index.js',
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `export { {{camelCase name}} } from "./{{camelCase name}}";`,
+        template: `  {{camelCase name}},`,
       },
     ],
   });
@@ -77,8 +83,14 @@ module.exports = (plop) => {
       {
         type: 'append',
         path: 'src/utilities/index.js',
+        pattern: `/* PLOP_INJECT_IMPORT */`,
+        template: `import {{camelCase name}} from './{{camelCase name}}';`,
+      },
+      {
+        type: 'append',
+        path: 'src/utilities/index.js',
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `export { {{camelCase name}} } from "./{{camelCase name}}";`,
+        template: `  {{camelCase name}},`,
       },
     ],
   });

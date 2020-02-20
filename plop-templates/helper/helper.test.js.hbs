@@ -1,8 +1,12 @@
-import { assert } from "chai";
+import { describe } from 'riteway';
 
-import { {{camelCase name}} } from "./{{camelCase name}}";
+import {{camelCase name}} from './{{camelCase name}}';
 
-describe("{{camelCase name}}", () => {
-   it("shall", () => {
-   });
+describe('{{camelCase name}}', async (assert) => {
+  assert({
+    given: 'no arguments',
+    should: 'return zero',
+    actual: {{camelCase name}}(),
+    expected: 0,
+  });
 });
