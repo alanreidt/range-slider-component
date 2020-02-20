@@ -1,8 +1,14 @@
-import { isNumberInBetween } from "../isNumberInBetween/isNumberInBetween";
-import { findClosestTo } from "../findClosestTo/findClosestTo";
+import isNumberInBetween from '../isNumberInBetween';
+import findClosestTo from '../findClosestTo';
 
-export function placeNumberBetween(number, start, end) {
+const placeNumberBetween = function placeNumberBetweenFromUtilities(
+  number,
+  start,
+  end,
+) {
   return isNumberInBetween(number, start, end)
     ? number
     : findClosestTo(number, start, end);
-}
+};
+
+export default placeNumberBetween;
