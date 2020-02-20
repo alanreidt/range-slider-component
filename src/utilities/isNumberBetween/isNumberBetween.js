@@ -5,7 +5,11 @@
  * @param {number} start A start of the interval.
  * @param {number} end An end of the interval.
  */
-export function isNumberBetween(number, start, end) {
+const isNumberBetween = function isNumberBetweenFromUtilities(
+  number,
+  start,
+  end,
+) {
   const areArgumentsIncludeNull = [...arguments].includes(null);
 
   if (areArgumentsIncludeNull) {
@@ -21,4 +25,6 @@ export function isNumberBetween(number, start, end) {
   }
 
   return number > start && number < end;
-}
+};
+
+export default isNumberBetween;
