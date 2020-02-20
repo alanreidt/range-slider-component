@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import getNextDivisibleOf from './getNextDivisibleOf';
 import placeNumberBetween from './placeNumberBetween';
 import observerMixin from './observerMixin';
 import getAverageOf from './getAverageOf';
@@ -16,12 +17,12 @@ import findClosestTo from './findClosestTo';
 import findAntecedent from './findAntecedent';
 import toFixed from './toFixed';
 import toPercentage from './toPercentage';
-import { getNextDivisibleOf } from './getNextDivisibleOf/getNextDivisibleOf';
 import { getPrevDivisibleOf } from './getPrevDivisibleOf/getPrevDivisibleOf';
 import findRatio from './findRatio';
 
 export {
   /* PLOP_INJECT_EXPORT */
+  getNextDivisibleOf,
   placeNumberBetween,
   observerMixin,
   getAverageOf,
@@ -39,7 +40,6 @@ export {
   findAntecedent,
   toFixed,
   toPercentage,
-  getNextDivisibleOf,
   getPrevDivisibleOf,
   findRatio,
 };
