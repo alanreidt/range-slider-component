@@ -1,1 +1,3 @@
-export { isNumberFalsey } from "./isNumberFalsey";
+import isNumberFalsey from './isNumberFalsey';
+
+export default isNumberFalsey;

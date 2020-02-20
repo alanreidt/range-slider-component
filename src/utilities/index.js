@@ -2,7 +2,7 @@
 import getAverageOf from './getAverageOf';
 import cross from './cross';
 import { replaceValueAt } from './replaceValueAt';
-import { isNumberFalsey } from './isNumberFalsey';
+import isNumberFalsey from './isNumberFalsey';
 import { restrictNumberByNeighbors } from './restrictNumberByNeighbors';
 import either from './either';
 import isDivisible from './isDivisible';

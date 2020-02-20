@@ -1,6 +1,6 @@
 import { describe } from 'riteway';
 
-import { isNumberFalsey } from './isNumberFalsey';
+import isNumberFalsey from './isNumberFalsey';
 
 describe('isNumberFalsey', async (assert) => {
   const should = 'return true';
