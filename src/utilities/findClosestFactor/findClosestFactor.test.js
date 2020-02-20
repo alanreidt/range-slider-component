@@ -1,4 +1,4 @@
-import { findClosestFactor } from './findClosestFactor';
+import findClosestFactor from './findClosestFactor';
 import {
   makeTestClass,
   testDescriptionTemplate,

@@ -5,7 +5,7 @@ import { isNumberFalsey } from './isNumberFalsey';
 import { restrictNumberByNeighbors } from './restrictNumberByNeighbors';
 import either from './either';
 import { isDivisible } from './isDivisible';
-import { findClosestFactor } from './findClosestFactor';
+import findClosestFactor from './findClosestFactor';
 import findClosestDivisible from './findClosestDivisible';
 import { isNumberInBetween } from './isNumberInBetween';
 import { isNumberBetween } from './isNumberBetween';

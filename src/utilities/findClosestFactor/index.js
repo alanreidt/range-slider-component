@@ -1,1 +1,3 @@
-export { findClosestFactor } from "./findClosestFactor";
+import findClosestFactor from './findClosestFactor';
+
+export default findClosestFactor;
