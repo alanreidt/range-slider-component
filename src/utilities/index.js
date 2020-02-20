@@ -1,4 +1,4 @@
-/* PLOP_INJECT_EXPORT */
+/* PLOP_INJECT_IMPORT */
 import { cross } from './cross';
 import { replaceValueAt } from './replaceValueAt';
 import { isNumberFalsey } from './isNumberFalsey';
@@ -21,6 +21,7 @@ import { observerMixin } from './observerMixin/observerMixin';
 import { findRatio } from './findRatio';
 
 export {
+  /* PLOP_INJECT_EXPORT */
   cross,
   replaceValueAt,
   isNumberFalsey,
