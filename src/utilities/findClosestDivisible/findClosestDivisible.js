@@ -8,7 +8,10 @@
  *
  * @returns {number} The closest divisible number between the dividend and the divisor.
  */
-export function findClosestDivisible(dividend, divisor) {
+const findClosestDivisible = function findClosestDivisibleFromUtilities(
+  dividend,
+  divisor,
+) {
   if (dividend === null) {
     return NaN;
   }
@@ -18,4 +21,6 @@ export function findClosestDivisible(dividend, divisor) {
   const result = Math.round(dividend / absoluteOfDivisor) * absoluteOfDivisor;
 
   return Number.isFinite(result) ? result : NaN;
-}
+};
+
+export default findClosestDivisible;
