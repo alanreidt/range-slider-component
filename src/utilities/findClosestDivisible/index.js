@@ -1,1 +1,3 @@
-export { findClosestDivisible } from "./findClosestDivisible";
+import findClosestDivisible from './findClosestDivisible';
+
+export default findClosestDivisible;

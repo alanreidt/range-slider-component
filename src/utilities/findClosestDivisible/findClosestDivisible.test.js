@@ -1,4 +1,4 @@
-import { findClosestDivisible } from './findClosestDivisible';
+import findClosestDivisible from './findClosestDivisible';
 import {
   makeTestClass,
   testDescriptionTemplate,
