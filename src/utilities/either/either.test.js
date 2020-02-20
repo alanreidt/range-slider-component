@@ -1,11 +1,11 @@
-import { either } from "./either";
+import { either } from './either';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from "../../../tests/testUtilities";
+} from '../../../tests/testUtilities';
 
-describe("either", () => {
-  const commonDescriptionTemplate = testDescriptionTemplate`return ${"expectation"} from ${0} and ${1}`;
+describe('either', () => {
+  const commonDescriptionTemplate = testDescriptionTemplate`return ${'expectation'} from ${0} and ${1}`;
   const TestClass = makeTestClass(either, commonDescriptionTemplate);
 
   describe("shall return fallback parameter, if origin isn't correct", () => {
@@ -14,7 +14,7 @@ describe("either", () => {
       [null, 500],
       [NaN, 500],
       [false, 500],
-      ["", 500],
+      ['', 500],
     ];
     const expectations = new Array(funcArgsList.length).fill(500);
     const test = new TestClass();
@@ -37,15 +37,15 @@ describe("either", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall return fallback, if neither is true", () => {
+  describe('shall return fallback, if neither is true', () => {
     const funcArgsList = [
       [undefined, null],
       [null, undefined],
-      [NaN, ""],
+      [NaN, ''],
       [false, false],
-      ["", NaN],
+      ['', NaN],
     ];
-    const expectations = [null, undefined, "", false, NaN];
+    const expectations = [null, undefined, '', false, NaN];
     const test = new TestClass();
 
     test.run(funcArgsList, expectations);
