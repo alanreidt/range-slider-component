@@ -1,10 +1,10 @@
-import flow from "lodash/fp/flow";
-import map from "lodash/fp/map";
-import sortBy from "lodash/fp/sortBy";
-import filter from "lodash/fp/filter";
-import identity from "lodash/fp/identity";
+import flow from 'lodash/fp/flow';
+import map from 'lodash/fp/map';
+import sortBy from 'lodash/fp/sortBy';
+import filter from 'lodash/fp/filter';
+import identity from 'lodash/fp/identity';
 
-import { observerMixin } from "./utilities";
+import { observerMixin } from './utilities';
 import {
   adjustValueToStep,
   adjustToRange,
@@ -13,8 +13,8 @@ import {
   crossWith,
   restrictByNeighbors,
   replaceAt,
-} from "./helpers";
-import { DEFAULT_OPTIONS } from "./DEFAULT_OPTIONS";
+} from './helpers';
+import { DEFAULT_OPTIONS } from './DEFAULT_OPTIONS';
 
 export class Model {
   constructor(newOptions = {}) {
@@ -48,7 +48,7 @@ export class Model {
   setOptions(newOptions) {
     Object.keys(this.DEFAULT_OPTIONS).forEach((key) => {
       const keyFirstLetter = key[0];
-      const isKeyPrivate = keyFirstLetter === "_";
+      const isKeyPrivate = keyFirstLetter === '_';
 
       if (isKeyPrivate) return;
 
@@ -59,7 +59,7 @@ export class Model {
       this[keySetterName](value);
     });
 
-    this.triggerSubscribers("update", this.getOptions());
+    this.triggerSubscribers('update', this.getOptions());
 
     return this;
   }
@@ -136,7 +136,7 @@ export class Model {
   }
 
   _setOrientation(value) {
-    const isValueValid = value === "horizontal" || value === "vertical";
+    const isValueValid = value === 'horizontal' || value === 'vertical';
 
     if (!isValueValid) return;
 
@@ -144,7 +144,7 @@ export class Model {
   }
 
   _setHasTooltips(value) {
-    if (typeof value !== "boolean") return;
+    if (typeof value !== 'boolean') return;
 
     this._options.hasTooltips = value;
   }
