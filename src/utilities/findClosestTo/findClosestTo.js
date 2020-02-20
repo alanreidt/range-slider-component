@@ -7,7 +7,7 @@
  *
  * @returns {number} A closest number.
  */
-export function findClosestTo(number, ...variants) {
+const findClosestTo = function findClosestToFromUtilities(number, ...variants) {
   const validatedVariants = variants.filter(Number.isFinite);
   const areArgumentsCorrect =
     Number.isFinite(number) && validatedVariants.length;
@@ -22,4 +22,6 @@ export function findClosestTo(number, ...variants) {
 
     return currentDifference <= prevDifference ? current : prev;
   });
-}
+};
+
+export default findClosestTo;
