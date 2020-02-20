@@ -1,4 +1,4 @@
-import { isDivisible } from "../isDivisible/isDivisible";
+import { isDivisible } from '../isDivisible/isDivisible';
 
 /**
  * If this can be done, returns the closest factor (natural number (positive integer))
@@ -10,7 +10,10 @@ import { isDivisible } from "../isDivisible/isDivisible";
  *
  * @returns {number} The closest factor of the division.
  */
-export function findClosestFactor(dividend, divisor) {
+const findClosestFactor = function findClosestFactorFromUtilities(
+  dividend,
+  divisor,
+) {
   const areArgumentsCorrect =
     Number.isFinite(dividend) && Number.isFinite(divisor) && dividend > 0;
 
@@ -38,4 +41,6 @@ export function findClosestFactor(dividend, divisor) {
   }
 
   return dividend;
-}
+};
+
+export default findClosestFactor;
