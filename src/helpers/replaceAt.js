@@ -1,4 +1,4 @@
-import { replaceValueAt } from "../utilities/replaceValueAt";
+import { replaceValueAt } from '../utilities';
 
 /**
  * A wrapper on replaceValueAt utility function

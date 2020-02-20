@@ -1,4 +1,4 @@
-import { isDivisible } from '../isDivisible/isDivisible';
+import isDivisible from '../isDivisible/isDivisible';
 
 /**
  * If this can be done, returns the closest factor (natural number (positive integer))
