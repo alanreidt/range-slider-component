@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { observerMixin } from './observerMixin';
+import observerMixin from './observerMixin';
 
 describe('observerMixin', () => {
   describe('shall store list of subscribers', () => {
