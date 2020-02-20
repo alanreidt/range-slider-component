@@ -7,15 +7,17 @@
  *
  * @returns {string} A string representing a number in fixed-point notation.
  */
-export function toFixed(number, fractionDigits = 0) {
+const toFixed = function toFixedFromUtilities(number, fractionDigits = 0) {
   const areArgumentsCorrect =
-    typeof number === "number" && Number.isFinite(fractionDigits);
+    typeof number === 'number' && Number.isFinite(fractionDigits);
 
   if (!areArgumentsCorrect) {
-    return "NaN";
+    return 'NaN';
   }
 
   return number - number.toFixed()
     ? number.toFixed(fractionDigits)
     : String(number);
-}
+};
+
+export default toFixed;
