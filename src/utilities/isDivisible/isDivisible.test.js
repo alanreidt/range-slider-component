@@ -1,4 +1,4 @@
-import { isDivisible } from './isDivisible';
+import isDivisible from './isDivisible';
 import {
   makeTestClass,
   testDescriptionTemplate,
