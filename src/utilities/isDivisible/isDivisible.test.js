@@ -1,14 +1,14 @@
-import { isDivisible } from "./isDivisible";
+import { isDivisible } from './isDivisible';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from "../../../tests/testUtilities";
+} from '../../../tests/testUtilities';
 
-describe("isDivisible", () => {
-  const commonDescriptionTemplate = testDescriptionTemplate`It is ${"expectation"} that ${0} is divisible by ${1}`;
+describe('isDivisible', () => {
+  const commonDescriptionTemplate = testDescriptionTemplate`It is ${'expectation'} that ${0} is divisible by ${1}`;
   const TestClass = makeTestClass(isDivisible, commonDescriptionTemplate);
 
-  describe("shall return true, if dividend is divisible by divisor", () => {
+  describe('shall return true, if dividend is divisible by divisor', () => {
     const funcArgsList = [
       [200, 100],
       [0, 100],
@@ -21,7 +21,7 @@ describe("isDivisible", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall handle Infinity correctly", () => {
+  describe('shall handle Infinity correctly', () => {
     const funcArgsList = [
       [Infinity, 20],
       [Infinity, Infinity],
@@ -35,15 +35,15 @@ describe("isDivisible", () => {
     test.run(funcArgsList, expectations);
   });
 
-  describe("shall catch garbage input", () => {
-    context("returns NaN if dividend parameter is incorrect", () => {
+  describe('shall catch garbage input', () => {
+    context('returns NaN if dividend parameter is incorrect', () => {
       const funcArgsList = [
         [undefined, 60],
         [null, 60],
         [Infinity, 60],
         [NaN, 60],
-        ["text", 60],
-        ["123text", 60],
+        ['text', 60],
+        ['123text', 60],
       ];
       const expectations = new Array(funcArgsList.length).fill(false);
       const test = new TestClass();
@@ -51,14 +51,14 @@ describe("isDivisible", () => {
       test.run(funcArgsList, expectations);
     });
 
-    context("returns NaN if divisor parameter is incorrect", () => {
+    context('returns NaN if divisor parameter is incorrect', () => {
       const funcArgsList = [
         [100, undefined],
         [100, null],
         [100, Infinity],
         [100, NaN],
-        [100, "text"],
-        [100, "123text"],
+        [100, 'text'],
+        [100, '123text'],
       ];
       const expectations = new Array(funcArgsList.length).fill(false);
       const test = new TestClass();
