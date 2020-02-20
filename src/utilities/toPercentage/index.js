@@ -1,1 +1,3 @@
-export { toPercentage } from "./toPercentage";
+import toPercentage from './toPercentage';
+
+export default toPercentage;

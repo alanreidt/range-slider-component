@@ -1,4 +1,4 @@
-import { toPercentage } from './toPercentage';
+import toPercentage from './toPercentage';
 import {
   makeTestClass,
   testDescriptionTemplate,
