@@ -16,7 +16,7 @@ import {
 } from './helpers';
 import { DEFAULT_OPTIONS } from './DEFAULT_OPTIONS';
 
-export class Model {
+class Model {
   constructor(newOptions = {}) {
     this.DEFAULT_OPTIONS = DEFAULT_OPTIONS;
     this._options = Object.create(DEFAULT_OPTIONS);
@@ -151,3 +151,5 @@ export class Model {
 }
 
 Object.assign(Model.prototype, observerMixin);
+
+export default Model;
