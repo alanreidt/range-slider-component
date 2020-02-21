@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 
 import { simulateMouseEvent } from './testUtilities';
-import { ViewController } from '../src/ViewController';
+import ViewController from '../src/ViewController';
 
 describe('ViewController', () => {
   const SLIDER_NAME = 'js-slider';
