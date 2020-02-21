@@ -2,7 +2,7 @@ import './Model.test';
 import './ViewController.test';
 import './slider.test';
 import '../src/utilities/observerMixin/observerMixin.test';
-import '../src/helpers/adjustValueToStep/adjustValueToStep.test';
+import '../src/utilities/adjustValueToStep/adjustValueToStep.test';
 import '../src/utilities/findRatio/findRatio.test';
 import '../src/utilities/findAntecedent/findAntecedent.test';
 import '../src/utilities/toPercentage/toPercentage.test';
