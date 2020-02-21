@@ -4,7 +4,7 @@ import sortBy from 'lodash/fp/sortBy';
 import filter from 'lodash/fp/filter';
 import identity from 'lodash/fp/identity';
 
-import { observerMixin } from './utilities';
+import { ObserverMixin } from './utilities';
 import {
   adjustToStep,
   adjustToRange,
@@ -150,6 +150,6 @@ class Model {
   }
 }
 
-Object.assign(Model.prototype, observerMixin);
+Object.assign(Model.prototype, ObserverMixin);
 
 export default Model;

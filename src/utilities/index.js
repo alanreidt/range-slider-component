@@ -3,7 +3,7 @@ import adjustValueToStep from './adjustValueToStep';
 import getPrevDivisibleOf from './getPrevDivisibleOf';
 import getNextDivisibleOf from './getNextDivisibleOf';
 import placeNumberBetween from './placeNumberBetween';
-import observerMixin from './observerMixin';
+import ObserverMixin from './ObserverMixin';
 import getAverageOf from './getAverageOf';
 import cross from './cross';
 import replaceValueAt from './replaceValueAt';
@@ -27,7 +27,7 @@ export {
   getPrevDivisibleOf,
   getNextDivisibleOf,
   placeNumberBetween,
-  observerMixin,
+  ObserverMixin,
   getAverageOf,
   cross,
   replaceValueAt,
