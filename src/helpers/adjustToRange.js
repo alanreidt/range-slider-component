@@ -1,4 +1,4 @@
-import { findClosestFactor } from "../utilities";
+import { findClosestFactor } from '../utilities';
 
 /**
  * Wrapper on findClosestFactor utility function.
@@ -9,6 +9,8 @@ import { findClosestFactor } from "../utilities";
  *
  * @returns {number} Adjusted step.
  */
-export function adjustToRange(range) {
+const adjustToRange = function adjustToRangeHelper(range) {
   return (step) => findClosestFactor(range, step);
-}
+};
+
+export default adjustToRange;
