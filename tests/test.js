@@ -1,7 +1,7 @@
 import './Model.test';
 import './ViewController.test';
-import './slider.test';
-import '../src/utilities/observerMixin/observerMixin.test';
+import './Slider.test';
+import '../src/utilities/ObserverMixin/ObserverMixin.test';
 import '../src/utilities/adjustValueToStep/adjustValueToStep.test';
 import '../src/utilities/findRatio/findRatio.test';
 import '../src/utilities/findAntecedent/findAntecedent.test';
