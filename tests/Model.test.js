@@ -1,17 +1,17 @@
-import { assert } from "chai";
+import { assert } from 'chai';
 
-import { composeClassTest } from "./testUtilities";
-import { Model } from "../src/Model";
-import { DEFAULT_OPTIONS } from "../src/DEFAULT_OPTIONS";
+import { composeClassTest } from './testUtilities';
+import { Model } from '../src/Model';
+import { DEFAULT_OPTIONS } from '../src/DEFAULT_OPTIONS';
 
-describe("Model", () => {
-  describe("Initialization test", () => {
+describe('Model', () => {
+  describe('Initialization test', () => {
     const Class = Model;
-    const methodGetterName = "getOptions";
+    const methodGetterName = 'getOptions';
     const runTest = composeClassTest({ Class, methodGetterName });
 
-    describe("shall assign default values for not passed parameters", () => {
-      context("shall assign default values, if nothing is passed", () => {
+    describe('shall assign default values for not passed parameters', () => {
+      context('shall assign default values, if nothing is passed', () => {
         const expectations = [DEFAULT_OPTIONS];
         const testOptions = { expectations };
 
@@ -19,12 +19,12 @@ describe("Model", () => {
       });
 
       context(
-        "shall assign default values for not passed parameters, if only part is passed",
+        'shall assign default values for not passed parameters, if only part is passed',
         () => {
           const partialOptions = {
             boundaries: [5000, 40000],
             values: [22500],
-            orientation: "vertical",
+            orientation: 'vertical',
           };
           const constructorArgs = partialOptions;
           const expectations = [
@@ -40,13 +40,13 @@ describe("Model", () => {
       );
     });
 
-    describe("shall assign fixed values for incorrect arguments", () => {
-      context("shall assign default value if incorrect one is passed", () => {
+    describe('shall assign fixed values for incorrect arguments', () => {
+      context('shall assign default value if incorrect one is passed', () => {
         const constructorArgs = {
-          boundaries: ["hundred", 200],
-          values: [25, "p100"],
+          boundaries: ['hundred', 200],
+          values: [25, 'p100'],
           step: -20,
-          orientation: "right",
+          orientation: 'right',
           hasTooltips: 7,
         };
         const expectations = [
@@ -61,18 +61,18 @@ describe("Model", () => {
         runTest(testOptions);
       });
 
-      context("shall parse number from mixed inputs", () => {
+      context('shall parse number from mixed inputs', () => {
         const constructorArgs = {
-          boundaries: [0, "1000px"],
-          values: ["0$", 600],
-          step: "100",
+          boundaries: [0, '1000px'],
+          values: ['0$', 600],
+          step: '100',
         };
         const expectations = [
           {
             boundaries: [0, 1000],
             values: [0, 600],
             step: 100,
-            orientation: "horizontal",
+            orientation: 'horizontal',
             hasTooltips: false,
           },
         ];
@@ -90,7 +90,7 @@ describe("Model", () => {
           boundaries: [100, 500],
           values: [100, 200, 300, 460],
           step: 20,
-          orientation: "vertical",
+          orientation: 'vertical',
           hasTooltips: true,
         };
         const expectations = [{ values: [100, 200, 300, 460] }];
@@ -104,9 +104,9 @@ describe("Model", () => {
         () => {
           const constructorArgs = {
             boundaries: [100, 500],
-            values: [100, 200, 300, "Ben", 460, false],
+            values: [100, 200, 300, 'Ben', 460, false],
             step: 20,
-            orientation: "vertical",
+            orientation: 'vertical',
             hasTooltips: true,
           };
           const expectations = [{ values: [100, 200, 300, 460] }];
@@ -117,11 +117,11 @@ describe("Model", () => {
       );
     });
 
-    describe("{value} shall be equal to average of {boundaries} by default", () => {
+    describe('{value} shall be equal to average of {boundaries} by default', () => {
       const constructorArgs = {
         boundaries: [100, 500],
         step: 20,
-        orientation: "vertical",
+        orientation: 'vertical',
         hasTooltips: true,
       };
       const expectations = [{ values: [300] }];
@@ -131,13 +131,13 @@ describe("Model", () => {
     });
   });
 
-  describe("Reassignment test", () => {
+  describe('Reassignment test', () => {
     const Class = Model;
-    const methodName = "setOptions";
-    const methodGetterName = "getOptions";
+    const methodName = 'setOptions';
+    const methodGetterName = 'getOptions';
     const runTest = composeClassTest({ Class, methodName, methodGetterName });
 
-    describe("shall change values, if correct one is passed", () => {
+    describe('shall change values, if correct one is passed', () => {
       const methodArgsList = [
         {
           boundaries: [100, 500],
@@ -156,12 +156,12 @@ describe("Model", () => {
       runTest(testOptions);
     });
 
-    describe("shall not change values, if incorrect one is passed", () => {
+    describe('shall not change values, if incorrect one is passed', () => {
       const methodArgsList = [
         {
           boundaries: [true, false],
           values: false,
-          step: "two",
+          step: 'two',
         },
       ];
       const expectations = [DEFAULT_OPTIONS];
@@ -170,7 +170,7 @@ describe("Model", () => {
       runTest(testOptions);
     });
 
-    describe("shall correct values", () => {
+    describe('shall correct values', () => {
       context(
         `shall correct {value},
       if passed value isn't correspond to {step}`,
@@ -340,9 +340,9 @@ describe("Model", () => {
       );
     });
 
-    describe("shall restrict values after initialization", () => {
-      describe("restrict {values} quantity (length) after initialization", () => {
-        context("restrict default {values} quantity (length)", () => {
+    describe('shall restrict values after initialization', () => {
+      describe('restrict {values} quantity (length) after initialization', () => {
+        context('restrict default {values} quantity (length)', () => {
           const methodArgsList = [
             { values: 30 },
             { values: [50, 90] },
@@ -358,8 +358,8 @@ describe("Model", () => {
           runTest(testOptions);
         });
 
-        describe("restrict changed {values} quantity (length)", () => {
-          context("preserve single value", () => {
+        describe('restrict changed {values} quantity (length)', () => {
+          context('preserve single value', () => {
             const constructorArgs = {
               values: 20,
             };
@@ -382,7 +382,7 @@ describe("Model", () => {
             runTest(testOptions);
           });
 
-          context("preserve 2 values", () => {
+          context('preserve 2 values', () => {
             const constructorArgs = {
               values: [20, 80],
             };
@@ -551,8 +551,8 @@ describe("Model", () => {
         });
       });
 
-      describe("shall handle values array with identical items", () => {
-        it("change appropriate item", () => {
+      describe('shall handle values array with identical items', () => {
+        it('change appropriate item', () => {
           const options = new Model({
             boundaries: [0, 100],
             values: [40, 40, 40, 40],
@@ -565,7 +565,7 @@ describe("Model", () => {
           assert.deepEqual(values, [20, 40, 40, 40]);
         });
 
-        it("change appropriate item", () => {
+        it('change appropriate item', () => {
           const options = new Model({
             boundaries: [0, 100],
             values: [40, 40, 40, 40],
@@ -590,7 +590,7 @@ describe("Model", () => {
             boundaries: [100, 500],
             values: 180,
             step: 20,
-            orientation: "vertical",
+            orientation: 'vertical',
             hasTooltips: true,
           };
           const methodArgsList = [{ boundaries: 0 }];
@@ -609,7 +609,7 @@ describe("Model", () => {
             boundaries: [100, 500],
             values: 180,
             step: 20,
-            orientation: "vertical",
+            orientation: 'vertical',
             hasTooltips: true,
           };
           const methodArgsList = [{ boundaries: 400 }];
@@ -622,8 +622,8 @@ describe("Model", () => {
     });
   });
 
-  describe("setValueAt method", () => {
-    context("shall handle 1 item long values array", () => {
+  describe('setValueAt method', () => {
+    context('shall handle 1 item long values array', () => {
       const constructorArgs = {
         boundaries: [0, 100],
         step: 1,
@@ -648,7 +648,7 @@ describe("Model", () => {
       });
     });
 
-    context("shall change value at appropriate index", () => {
+    context('shall change value at appropriate index', () => {
       const constructorArgs = {
         boundaries: [0, 100],
         step: 1,
@@ -681,7 +681,7 @@ describe("Model", () => {
       });
     });
 
-    context("shall restrict value to adjacent values", () => {
+    context('shall restrict value to adjacent values', () => {
       const constructorArgs = {
         boundaries: [0, 100],
         step: 1,
@@ -716,7 +716,7 @@ describe("Model", () => {
       });
     });
 
-    context("shall handle “out of length” index", () => {
+    context('shall handle “out of length” index', () => {
       const constructorArgs = {
         boundaries: [0, 100],
         step: 1,
@@ -743,8 +743,8 @@ describe("Model", () => {
       });
     });
 
-    describe("shall catch garbage input", () => {
-      context("handle incorrect index parameter", () => {
+    describe('shall catch garbage input', () => {
+      context('handle incorrect index parameter', () => {
         const constructorArgs = {
           boundaries: [0, 100],
           step: 1,
@@ -754,8 +754,8 @@ describe("Model", () => {
           [null, 50],
           [undefined, 50],
           [NaN, 50],
-          ["text", 50],
-          ["text123", 50],
+          ['text', 50],
+          ['text123', 50],
         ];
         const expectations = new Array(testOptions.length).fill(
           constructorArgs.values,
@@ -773,7 +773,7 @@ describe("Model", () => {
         });
       });
 
-      context("handle incorrect value parameter", () => {
+      context('handle incorrect value parameter', () => {
         const constructorArgs = {
           boundaries: [0, 100],
           step: 1,
@@ -783,8 +783,8 @@ describe("Model", () => {
           [0, null],
           [1, undefined],
           [2, NaN],
-          [0, "text"],
-          [1, "text123"],
+          [0, 'text'],
+          [1, 'text123'],
         ];
         const expectations = new Array(testOptions.length).fill(
           constructorArgs.values,
