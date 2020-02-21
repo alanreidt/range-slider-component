@@ -1,1 +1,3 @@
-export { adjustValueToStep } from "./adjustValueToStep";
+import adjustValueToStep from './adjustValueToStep';
+
+export default adjustValueToStep;

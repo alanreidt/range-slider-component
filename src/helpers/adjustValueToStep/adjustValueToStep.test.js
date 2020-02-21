@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { adjustValueToStep } from './adjustValueToStep';
+import adjustValueToStep from './adjustValueToStep';
 
 describe('adjustValueToStep', () => {
   const testSubject = adjustValueToStep;
