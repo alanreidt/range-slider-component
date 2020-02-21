@@ -1,5 +1,5 @@
-import { Model } from "./Model";
-import { ViewController } from "./ViewController";
+import { Model } from './Model';
+import { ViewController } from './ViewController';
 
 export const sliderFactory = {
   createModel(...args) {
