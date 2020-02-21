@@ -1,23 +1,23 @@
-import { assert } from "chai";
+import { assert } from 'chai';
 
-import { simulateMouseEvent } from "./testUtilities";
-import { ViewController } from "../src/ViewController";
+import { simulateMouseEvent } from './testUtilities';
+import { ViewController } from '../src/ViewController';
 
-describe("ViewController", () => {
-  const SLIDER_NAME = "js-slider";
-  const SLIDER_BASE_NAME = "js-slider__base";
-  const SLIDER_ORIENTATION_FLAG = "js-slider_vertical";
-  const SLIDER_HANDLE_GROUP_NAME = "js-slider__handle-group";
-  const SLIDER_TOOLTIP_NAME = "js-slider__tooltip";
-  const SLIDER_HANDLE_NAME = "js-slider__handle";
+describe('ViewController', () => {
+  const SLIDER_NAME = 'js-slider';
+  const SLIDER_BASE_NAME = 'js-slider__base';
+  const SLIDER_ORIENTATION_FLAG = 'js-slider_vertical';
+  const SLIDER_HANDLE_GROUP_NAME = 'js-slider__handle-group';
+  const SLIDER_TOOLTIP_NAME = 'js-slider__tooltip';
+  const SLIDER_HANDLE_NAME = 'js-slider__handle';
 
-  describe("constructor", () => {
-    describe("shall paint slider structure", () => {
+  describe('constructor', () => {
+    describe('shall paint slider structure', () => {
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
-        orientation: "vertical",
+        orientation: 'vertical',
         hasTooltips: true,
       };
       const model = {
@@ -26,11 +26,11 @@ describe("ViewController", () => {
           return this._options;
         },
       };
-      const parent = document.createElement("div");
+      const parent = document.createElement('div');
 
       new ViewController(parent, model);
 
-      context("paint static structure correctly", () => {
+      context('paint static structure correctly', () => {
         it(`create ${SLIDER_NAME} element`, () => {
           const slider = parent.querySelector(`.${SLIDER_NAME}`);
 
@@ -44,7 +44,7 @@ describe("ViewController", () => {
         });
       });
 
-      context("paint dynamic structure correctly", () => {
+      context('paint dynamic structure correctly', () => {
         const requiredQuantity = options.values.length;
 
         it(`create ${requiredQuantity} ${SLIDER_HANDLE_GROUP_NAME} elements`, () => {
@@ -86,12 +86,12 @@ describe("ViewController", () => {
     });
 
     describe(`shall add ${SLIDER_ORIENTATION_FLAG}, when needed`, () => {
-      const parent = document.createElement("div");
+      const parent = document.createElement('div');
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
-        orientation: "vertical",
+        orientation: 'vertical',
         hasTooltips: true,
       };
       const model = {
@@ -109,9 +109,9 @@ describe("ViewController", () => {
         assert.isTrue(sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`));
       });
 
-      it("add nothing, if orientation is horizontal", () => {
+      it('add nothing, if orientation is horizontal', () => {
         Object.assign(options, {
-          orientation: "horizontal",
+          orientation: 'horizontal',
         });
         new ViewController(parent, model);
         const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`)
@@ -122,12 +122,12 @@ describe("ViewController", () => {
     });
 
     describe(`shall create ${SLIDER_TOOLTIP_NAME} element, when needed`, () => {
-      const parent = document.createElement("div");
+      const parent = document.createElement('div');
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
-        orientation: "vertical",
+        orientation: 'vertical',
         hasTooltips: true,
       };
       const model = {
@@ -155,13 +155,13 @@ describe("ViewController", () => {
       });
     });
 
-    context("shall repaint (refresh) slider structure", () => {
-      const parent = document.createElement("div");
+    context('shall repaint (refresh) slider structure', () => {
+      const parent = document.createElement('div');
       const options = {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
-        orientation: "vertical",
+        orientation: 'vertical',
         hasTooltips: true,
       };
       const model = {
@@ -174,7 +174,7 @@ describe("ViewController", () => {
 
       const slider = parent.querySelector(`.${SLIDER_NAME}`);
 
-      it("slider and repainted slider (with the same values) are not equal", () => {
+      it('slider and repainted slider (with the same values) are not equal', () => {
         new ViewController(parent, model);
 
         const newSlider = parent.querySelector(`.${SLIDER_NAME}`);
@@ -183,12 +183,12 @@ describe("ViewController", () => {
       });
     });
 
-    describe("shall handle user actions (Controller)", () => {
-      const parent = document.createElement("div");
+    describe('shall handle user actions (Controller)', () => {
+      const parent = document.createElement('div');
       document.body.append(parent);
 
-      describe("shall listen to events on base element", () => {
-        context("trigger model setOptions method on mousedown event", () => {
+      describe('shall listen to events on base element', () => {
+        context('trigger model setOptions method on mousedown event', () => {
           const mousePositionValues = [20, 100, 200];
           const expectationValues = [10, 50, 100];
 
@@ -197,7 +197,7 @@ describe("ViewController", () => {
               boundaries: [0, 100],
               values: [20, 80],
               step: 1,
-              orientation: "horizontal",
+              orientation: 'horizontal',
               hasTooltips: true,
             };
             const model = {
@@ -222,14 +222,14 @@ describe("ViewController", () => {
             const slider = parent.querySelector(`.${SLIDER_NAME}`);
             const base = parent.querySelector(`.${SLIDER_BASE_NAME}`);
 
-            slider.style.width = "200px";
+            slider.style.width = '200px';
 
             const expectationValue = expectationValues[i];
 
-            simulateMouseEvent("mousedown", base, {
+            simulateMouseEvent('mousedown', base, {
               clientX: mousePositionValue,
             });
-            simulateMouseEvent("mouseup", base);
+            simulateMouseEvent('mouseup', base);
 
             it(`model setOptions is triggered on mouse event ${i + 1}`, () => {
               assert.isTrue(model.isTriggered);
@@ -253,7 +253,7 @@ describe("ViewController", () => {
                 boundaries: [0, 100],
                 values: [20, 80],
                 step: 1,
-                orientation: "vertical",
+                orientation: 'vertical',
                 hasTooltips: true,
               };
               const model = {
@@ -278,14 +278,14 @@ describe("ViewController", () => {
               const slider = parent.querySelector(`.${SLIDER_NAME}`);
               const base = parent.querySelector(`.${SLIDER_BASE_NAME}`);
 
-              slider.style.height = "200px";
+              slider.style.height = '200px';
 
               const expectationValue = expectationValues[i];
 
-              simulateMouseEvent("mousedown", base, {
+              simulateMouseEvent('mousedown', base, {
                 clientY: mousePositionValue,
               });
-              simulateMouseEvent("mouseup", base);
+              simulateMouseEvent('mouseup', base);
 
               it(`model setOptions is triggered on mouse event ${i +
                 1}`, () => {
@@ -299,12 +299,12 @@ describe("ViewController", () => {
           },
         );
 
-        parent.innerHTML = "";
+        parent.innerHTML = '';
       });
 
-      describe("shall listen to events on handle element", () => {
+      describe('shall listen to events on handle element', () => {
         context(
-          "trigger model setValueAt method on mousemove during mousedown event",
+          'trigger model setValueAt method on mousemove during mousedown event',
           () => {
             const mousePositionValues = [20, 100, 200];
             const expectationValues = [
@@ -318,7 +318,7 @@ describe("ViewController", () => {
                 boundaries: [0, 100],
                 values: [20, 80],
                 step: 1,
-                orientation: "horizontal",
+                orientation: 'horizontal',
                 hasTooltips: true,
               };
               const model = {
@@ -340,15 +340,15 @@ describe("ViewController", () => {
               const slider = parent.querySelector(`.${SLIDER_NAME}`);
               const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
-              slider.style.width = "200px";
+              slider.style.width = '200px';
 
               const expectationValue = expectationValues[i];
 
-              simulateMouseEvent("mousedown", handle);
-              simulateMouseEvent("mousemove", document, {
+              simulateMouseEvent('mousedown', handle);
+              simulateMouseEvent('mousemove', document, {
                 clientX: mousePositionValue,
               });
-              simulateMouseEvent("mouseup", document);
+              simulateMouseEvent('mouseup', document);
 
               it(`model setOptions is triggered on mouse event ${i +
                 1}`, () => {
@@ -378,7 +378,7 @@ describe("ViewController", () => {
                 boundaries: [0, 100],
                 values: [20, 80],
                 step: 1,
-                orientation: "vertical",
+                orientation: 'vertical',
                 hasTooltips: true,
               };
               const model = {
@@ -400,15 +400,15 @@ describe("ViewController", () => {
               const slider = parent.querySelector(`.${SLIDER_NAME}`);
               const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
-              slider.style.height = "200px";
+              slider.style.height = '200px';
 
               const expectationValue = expectationValues[i];
 
-              simulateMouseEvent("mousedown", handle);
-              simulateMouseEvent("mousemove", document, {
+              simulateMouseEvent('mousedown', handle);
+              simulateMouseEvent('mousemove', document, {
                 clientY: mousePositionValue,
               });
-              simulateMouseEvent("mouseup", document);
+              simulateMouseEvent('mouseup', document);
 
               it(`model setOptions is triggered on mouse event ${i +
                 1}`, () => {
@@ -422,12 +422,12 @@ describe("ViewController", () => {
           },
         );
 
-        context("remove listeners on mouseup after mousedown event", () => {
+        context('remove listeners on mouseup after mousedown event', () => {
           const options = {
             boundaries: [0, 100],
             values: [20, 80],
             step: 1,
-            orientation: "vertical",
+            orientation: 'vertical',
             hasTooltips: true,
           };
           const model = {
@@ -452,13 +452,13 @@ describe("ViewController", () => {
           const slider = parent.querySelector(`.${SLIDER_NAME}`);
           const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
 
-          slider.style.height = "200px";
+          slider.style.height = '200px';
 
           const modelValues = model._options.values.slice();
 
-          simulateMouseEvent("mousedown", handle);
-          simulateMouseEvent("mouseup", document);
-          simulateMouseEvent("mousemove", document, { clientY: 100 });
+          simulateMouseEvent('mousedown', handle);
+          simulateMouseEvent('mouseup', document);
+          simulateMouseEvent('mousemove', document, { clientY: 100 });
 
           it(`model setOptions is not triggered on mouse event`, () => {
             assert.isFalse(model.isTriggered);
@@ -469,18 +469,18 @@ describe("ViewController", () => {
           });
         });
 
-        parent.innerHTML = "";
+        parent.innerHTML = '';
       });
     });
   });
 
-  describe("setElements method", () => {
-    const parent = document.createElement("div");
+  describe('setElements method', () => {
+    const parent = document.createElement('div');
     const options = {
       boundaries: [0, 100],
       values: [20, 80],
       step: 1,
-      orientation: "vertical",
+      orientation: 'vertical',
       hasTooltips: true,
     };
     const model = {
@@ -491,7 +491,7 @@ describe("ViewController", () => {
     };
     const viewController = new ViewController(parent, model);
 
-    describe("shall set values", () => {
+    describe('shall set values', () => {
       context(`${SLIDER_HANDLE_GROUP_NAME}s are set`, () => {
         const handleGroups = [
           ...parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
@@ -500,7 +500,7 @@ describe("ViewController", () => {
         handleGroups.forEach((handleGroup, i) => {
           const value = options.values[i];
           const regexp = new RegExp(`${value}`);
-          const handleGroupStyle = handleGroup.getAttribute("style");
+          const handleGroupStyle = handleGroup.getAttribute('style');
 
           it(`${SLIDER_HANDLE_GROUP_NAME}${i + 1} equals to ${value}`, () => {
             assert.isNotNull(handleGroupStyle.match(regexp));
@@ -509,7 +509,7 @@ describe("ViewController", () => {
       });
     });
 
-    describe("shall update values", () => {
+    describe('shall update values', () => {
       const newValues = [10, 60];
 
       viewController.setElements({
@@ -525,7 +525,7 @@ describe("ViewController", () => {
         handleGroups.forEach((handleGroup, i) => {
           const value = newValues[i];
           const regexp = new RegExp(`${value}`);
-          const handleGroupStyle = handleGroup.getAttribute("style");
+          const handleGroupStyle = handleGroup.getAttribute('style');
 
           it(`${SLIDER_HANDLE_GROUP_NAME}${i + 1} equals to ${value}`, () => {
             assert.isNotNull(handleGroupStyle.match(regexp));
