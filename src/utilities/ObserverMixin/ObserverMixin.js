@@ -1,8 +1,8 @@
 /**
- * The observerMixin is a modification of eventMixin,
+ * The ObserverMixin is a modification of eventMixin,
  * borrowed from http://javascript.info/mixins
  */
-const observerMixin = {
+const ObserverMixin = {
   /**
    * Subscribe to event, usage:
    *   menu.addSubscriber( "select", function(item) { ... } ),
@@ -60,4 +60,4 @@ const observerMixin = {
   },
 };
 
-export default observerMixin;
+export default ObserverMixin;

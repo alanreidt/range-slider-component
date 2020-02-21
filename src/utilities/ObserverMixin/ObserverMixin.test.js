@@ -1,10 +1,10 @@
 import { assert } from 'chai';
 
-import observerMixin from './observerMixin';
+import ObserverMixin from './ObserverMixin';
 
-describe('observerMixin', () => {
+describe('ObserverMixin', () => {
   describe('shall store list of subscribers', () => {
-    const publisher = { ...observerMixin };
+    const publisher = { ...ObserverMixin };
     const subscriber1 = {};
     const subscriber2 = {};
     const subscribers = [subscriber1, subscriber2];
@@ -22,7 +22,7 @@ describe('observerMixin', () => {
   });
 
   describe('shall remove subscribers from the list by request', () => {
-    const publisher = { ...observerMixin };
+    const publisher = { ...ObserverMixin };
     const subscriber1 = {};
     const subscriber2 = {};
     const subscriber3 = {};
@@ -51,7 +51,7 @@ describe('observerMixin', () => {
   });
 
   describe('shall trigger subscribers', () => {
-    const publisher = { ...observerMixin };
+    const publisher = { ...ObserverMixin };
     const subscribers = [];
 
     for (let i = 0; i < 3; i += 1) {
