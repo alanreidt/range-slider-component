@@ -5,9 +5,13 @@
  *
  * @returns {string}
  */
-export function createTemplate({ values, orientation, hasTooltips } = {}) {
+const createTemplate = function createTemplateFromHelpers({
+  values,
+  orientation,
+  hasTooltips,
+} = {}) {
   return `<div class="slider js-slider ${
-    orientation === "vertical" ? "slider_vertical js-slider_vertical" : ""
+    orientation === 'vertical' ? 'slider_vertical js-slider_vertical' : ''
   }">
       <div class="slider__base js-slider__base">
         ${values.reduce((str, value, index) => {
@@ -15,11 +19,13 @@ export function createTemplate({ values, orientation, hasTooltips } = {}) {
             ${
               hasTooltips
                 ? `<div class="slider__tooltip js-slider__tooltip"></div>`
-                : ""
+                : ''
             }
             <div class="slider__handle js-slider__handle"></div>
           </div>`;
-        }, "")}
+        }, '')}
       </div>
     </div>`;
-}
+};
+
+export default createTemplate;
