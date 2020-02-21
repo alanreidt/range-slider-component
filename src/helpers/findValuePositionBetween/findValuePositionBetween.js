@@ -1,4 +1,4 @@
-import { findRatio, toPercentage } from "../../utilities";
+import { findRatio, toPercentage } from '../../utilities';
 
 /**
  * Returns a position of a value between start and end, if it's possible.
@@ -10,7 +10,11 @@ import { findRatio, toPercentage } from "../../utilities";
  *
  * @returns {number} The position of the value between the start and the end.
  */
-export function findValuePositionBetween(value, start, end) {
+const findValuePositionBetween = function findValuePositionBetweenFromHelpers(
+  value,
+  start,
+  end,
+) {
   if (end === null) {
     return NaN;
   }
@@ -19,4 +23,6 @@ export function findValuePositionBetween(value, start, end) {
   const ratio = findRatio(value, range, start);
 
   return toPercentage(ratio);
-}
+};
+
+export default findValuePositionBetween;
