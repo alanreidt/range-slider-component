@@ -1,9 +1,14 @@
-import { restrictNumberByNeighbors } from "../utilities";
+import { restrictNumberByNeighbors } from '../utilities';
 
 /**
  * A wrapper on restrictNumberByNeighbors utility function
  */
-export function restrictByNeighbors(prevNeighbor, nextNeighbor) {
+const restrictByNeighbors = function restrictByNeighborsFromHelpers(
+  prevNeighbor,
+  nextNeighbor,
+) {
   return (number) =>
     restrictNumberByNeighbors(number, prevNeighbor, nextNeighbor);
-}
+};
+
+export default restrictByNeighbors;
