@@ -1,4 +1,4 @@
-import { findClosestDivisible } from '../../utilities';
+import findClosestDivisible from '../findClosestDivisible';
 
 /**
  * Adjust a value, in order to be divisible by a step.

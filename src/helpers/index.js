@@ -8,7 +8,6 @@ import adjustToRange from './adjustToRange';
 import createTemplate from './createTemplate';
 import { findValueByRatioBetween } from './findValueByRatioBetween';
 import { findValuePositionBetween } from './findValuePositionBetween';
-import adjustValueToStep from './adjustValueToStep';
 
 export {
   /* PLOP_INJECT_EXPORT */
@@ -21,5 +20,4 @@ export {
   createTemplate,
   findValueByRatioBetween,
   findValuePositionBetween,
-  adjustValueToStep,
 };

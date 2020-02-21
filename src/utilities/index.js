@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import adjustValueToStep from './adjustValueToStep';
 import getPrevDivisibleOf from './getPrevDivisibleOf';
 import getNextDivisibleOf from './getNextDivisibleOf';
 import placeNumberBetween from './placeNumberBetween';
@@ -22,6 +23,7 @@ import findRatio from './findRatio';
 
 export {
   /* PLOP_INJECT_EXPORT */
+  adjustValueToStep,
   getPrevDivisibleOf,
   getNextDivisibleOf,
   placeNumberBetween,
