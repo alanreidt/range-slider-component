@@ -1,5 +1,5 @@
 /* PLOP_INJECT_IMPORT */
-import { replaceAt } from './replaceAt';
+import replaceAt from './replaceAt';
 import { restrictByNeighbors } from './restrictByNeighbors';
 import crossWith from './crossWith';
 import eitherOr from './eitherOr';

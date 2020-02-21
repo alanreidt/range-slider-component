@@ -3,6 +3,8 @@ import { replaceValueAt } from '../utilities';
 /**
  * A wrapper on replaceValueAt utility function
  */
-export function replaceAt(index, array) {
+const replaceAt = function replaceAtFromHelpers(index, array) {
   return (value) => replaceValueAt(index, value, array);
-}
+};
+
+export default replaceAt;
