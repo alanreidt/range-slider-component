@@ -1,11 +1,11 @@
-import { assert } from "chai";
+import { assert } from 'chai';
 
-import { adjustValueToStep } from "./adjustValueToStep";
+import { adjustValueToStep } from './adjustValueToStep';
 
-describe("adjustValueToStep", () => {
+describe('adjustValueToStep', () => {
   const testSubject = adjustValueToStep;
 
-  describe("shall coordinate value with step", () => {
+  describe('shall coordinate value with step', () => {
     it(`closest value for value 220, step 100,
     is equal to 200`, () => {
       assert.deepEqual(testSubject(220, 100, 0), 200);
@@ -47,7 +47,7 @@ describe("adjustValueToStep", () => {
     });
   });
 
-  describe("shall take into account offset", () => {
+  describe('shall take into account offset', () => {
     it(`closest value for value 250, step 100,
     and offset 30 is equal to 230`, () => {
       assert.deepEqual(testSubject(250, 100, 30), 230);
@@ -88,7 +88,7 @@ describe("adjustValueToStep", () => {
       assert.deepEqual(testSubject(-280, 100, -403), -303);
     });
 
-    context("shall handle offset > value", () => {
+    context('shall handle offset > value', () => {
       it(`closest value for value 220, step 100,
       and offset 530 is equal to 230`, () => {
         assert.deepEqual(testSubject(220, 100, 530), 230);
@@ -137,13 +137,13 @@ describe("adjustValueToStep", () => {
   });
 
   describe("shall return NaN, if operation can't be performed", () => {
-    it("return NaN, if step equals to 0", () => {
+    it('return NaN, if step equals to 0', () => {
       assert.deepEqual(testSubject(200, 0, 0), NaN);
     });
   });
 
   describe("shall correct an input, if it's possible", () => {
-    context("corrects negative step, removing sign", () => {
+    context('corrects negative step, removing sign', () => {
       it(`closest value for value 220, step -100,
       is equal to 200`, () => {
         assert.deepEqual(testSubject(220, -100, 0), 200);
@@ -170,7 +170,7 @@ describe("adjustValueToStep", () => {
       });
     });
 
-    context("corrects null to 0 for value", () => {
+    context('corrects null to 0 for value', () => {
       it(`closest value for value null, step 100,
       is equal to 0`, () => {
         assert.deepEqual(testSubject(null, 100, 0), 0);
@@ -178,9 +178,9 @@ describe("adjustValueToStep", () => {
     });
   });
 
-  describe("shall catch garbage input", () => {
-    context("returns NaN if value parameter is incorrect", () => {
-      const testValues = [undefined, Infinity, NaN, "text", "123text"];
+  describe('shall catch garbage input', () => {
+    context('returns NaN if value parameter is incorrect', () => {
+      const testValues = [undefined, Infinity, NaN, 'text', '123text'];
 
       testValues.forEach((testValue) => {
         it(`returns NaN, if value parameter equals to ${testValue}`, () => {
@@ -189,8 +189,8 @@ describe("adjustValueToStep", () => {
       });
     });
 
-    context("returns NaN if step parameter is incorrect", () => {
-      const testValues = [undefined, null, Infinity, NaN, "text", "123text"];
+    context('returns NaN if step parameter is incorrect', () => {
+      const testValues = [undefined, null, Infinity, NaN, 'text', '123text'];
 
       testValues.forEach((testValue) => {
         it(`returns NaN, if step parameter equals to ${testValue}`, () => {
