@@ -1,4 +1,4 @@
-import { Model } from './Model';
+import Model from './Model';
 import { ViewController } from './ViewController';
 
 export const sliderFactory = {
