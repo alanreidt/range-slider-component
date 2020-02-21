@@ -8,7 +8,7 @@ import placeBetween from './placeBetween';
 import adjustToRange from './adjustToRange';
 import createTemplate from './createTemplate';
 import findValueByRatioBetween from './findValueByRatioBetween';
-import { findValuePositionBetween } from './findValuePositionBetween';
+import findValuePositionBetween from './findValuePositionBetween';
 
 export {
   /* PLOP_INJECT_EXPORT */

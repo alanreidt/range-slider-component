@@ -1,4 +1,4 @@
-import { findValuePositionBetween } from './findValuePositionBetween';
+import findValuePositionBetween from './findValuePositionBetween';
 import {
   makeTestClass,
   testDescriptionTemplate,

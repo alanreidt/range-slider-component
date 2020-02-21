@@ -1,1 +1,3 @@
-export { findValuePositionBetween } from "./findValuePositionBetween";
+import findValuePositionBetween from './findValuePositionBetween';
+
+export default findValuePositionBetween;
