@@ -1,13 +1,13 @@
-import isUndefined from "lodash/isUndefined";
+import isUndefined from 'lodash/isUndefined';
 
-import { findRatio } from "./utilities";
+import { findRatio } from './utilities';
 import {
   findValuePositionBetween,
   findValueByRatioBetween,
   createTemplate,
-} from "./helpers";
+} from './helpers';
 
-export class ViewController {
+class ViewController {
   constructor(parent, model) {
     this.parent = parent;
     this.model = model;
@@ -25,7 +25,7 @@ export class ViewController {
       findValuePositionBetween(value, ...boundaries),
     );
 
-    if (orientation === "horizontal") {
+    if (orientation === 'horizontal') {
       this._setHandleGroupHorizontalPositions(positions);
     } else {
       this._setHandleGroupVerticalPositions(positions);
@@ -63,18 +63,18 @@ export class ViewController {
   }
 
   _attachElements() {
-    this.slider = this.parent.querySelector(".js-slider");
-    this.base = this.parent.querySelector(".js-slider__base");
+    this.slider = this.parent.querySelector('.js-slider');
+    this.base = this.parent.querySelector('.js-slider__base');
     this.handleGroups = this._getHandleGroups();
     this.tooltips = this._getTooltips();
   }
 
   _getHandleGroups() {
-    return [...this.parent.querySelectorAll(".js-slider__handle-group")];
+    return [...this.parent.querySelectorAll('.js-slider__handle-group')];
   }
 
   _getTooltips() {
-    return [...this.parent.querySelectorAll(".js-slider__tooltip")];
+    return [...this.parent.querySelectorAll('.js-slider__tooltip')];
   }
 
   _addSliderEventListener() {
@@ -92,7 +92,7 @@ export class ViewController {
     }
 
     const currentHandleGroup =
-      target && target.closest(".js-slider__handle-group");
+      target && target.closest('.js-slider__handle-group');
 
     if (currentHandleGroup) {
       this._handleHandleGroupMouseDown(currentHandleGroup);
@@ -103,8 +103,8 @@ export class ViewController {
     this._handleDocumentMouseMoveLocked = (event) =>
       this._handleDocumentMouseMove.call(this, handleGroup, event);
 
-    document.addEventListener("mousemove", this._handleDocumentMouseMoveLocked);
-    document.addEventListener("mouseup", this._handleDocumentMouseUp);
+    document.addEventListener('mousemove', this._handleDocumentMouseMoveLocked);
+    document.addEventListener('mouseup', this._handleDocumentMouseUp);
   }
 
   _handleDocumentMouseMove(handleGroup, event) {
@@ -116,16 +116,16 @@ export class ViewController {
 
   _handleDocumentMouseUp() {
     document.removeEventListener(
-      "mousemove",
+      'mousemove',
       this._handleDocumentMouseMoveLocked,
     );
-    document.removeEventListener("mouseup", this._handleDocumentMouseUp);
+    document.removeEventListener('mouseup', this._handleDocumentMouseUp);
   }
 
   _findValueByEvent(event) {
     const { orientation } = this.model.getOptions();
 
-    return orientation === "horizontal"
+    return orientation === 'horizontal'
       ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
       : this._convertCoordinateToValue({ yCoordinate: event.clientY });
   }
@@ -157,3 +157,5 @@ export class ViewController {
     return this.slider.getBoundingClientRect().height;
   }
 }
+
+export default ViewController;
