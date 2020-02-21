@@ -1,9 +1,12 @@
 /**
  * Returns a string, that contains Slider DOM structure.
  *
- * @param {object} An object, which contains Slider properties.
+ * @param {object} options Object, which contains Slider properties.
+ * @param {number[]} options.values
+ * @param {string} options.orientation
+ * @param {boolean} options.hasTooltips
  *
- * @returns {string}
+ * @returns {string} Slider DOM structure.
  */
 const createTemplate = function createTemplateFromHelpers({
   values,
