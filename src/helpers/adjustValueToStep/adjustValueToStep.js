@@ -1,12 +1,4 @@
-import curryRight from "lodash/fp/curryRight";
-
-import { findClosestDivisible } from "../../utilities";
-
-function base(value, step, offset) {
-  const closestDivisible = findClosestDivisible(value - offset, step);
-
-  return closestDivisible + offset;
-}
+import { findClosestDivisible } from '../../utilities';
 
 /**
  * Adjust a value, in order to be divisible by a step.
@@ -18,4 +10,14 @@ function base(value, step, offset) {
  *
  * @returns {number} The adjusted value, that can be divided by the step without remainder.
  */
-export const adjustValueToStep = curryRight(base);
+const adjustValueToStep = function adjustValueToStepFromUtilities(
+  value,
+  step,
+  offset,
+) {
+  const closestDivisible = findClosestDivisible(value - offset, step);
+
+  return closestDivisible + offset;
+};
+
+export default adjustValueToStep;
