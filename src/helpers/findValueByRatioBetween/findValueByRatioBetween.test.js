@@ -1,4 +1,4 @@
-import { findValueByRatioBetween } from './findValueByRatioBetween';
+import findValueByRatioBetween from './findValueByRatioBetween';
 import {
   makeTestClass,
   testDescriptionTemplate,

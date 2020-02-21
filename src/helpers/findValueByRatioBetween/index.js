@@ -1,1 +1,3 @@
-export { findValueByRatioBetween } from "./findValueByRatioBetween";
+import findValueByRatioBetween from './findValueByRatioBetween';
+
+export default findValueByRatioBetween;
