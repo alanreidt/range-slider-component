@@ -6,7 +6,7 @@ import identity from 'lodash/fp/identity';
 
 import { observerMixin } from './utilities';
 import {
-  adjustValueToStep,
+  adjustToStep,
   adjustToRange,
   eitherOr,
   placeBetween,
@@ -114,7 +114,7 @@ export class Model {
       crossWith(currentValues),
       eitherOr(defaultValue),
       map(placeBetween(start, end)),
-      map(adjustValueToStep(step, offset)),
+      map(adjustToStep(step, offset)),
     );
 
     this._options.values = validate(newValues);
