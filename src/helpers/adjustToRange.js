@@ -9,7 +9,7 @@ import { findClosestFactor } from '../utilities';
  *
  * @returns {number} Adjusted step.
  */
-const adjustToRange = function adjustToRangeHelper(range) {
+const adjustToRange = function adjustToRangeFromHelpers(range) {
   return (step) => findClosestFactor(range, step);
 };
 
