@@ -1,10 +1,10 @@
-import { getAverageOf } from "./utilities";
+import { getAverageOf } from './utilities';
 
 const DEFAULT_OPTIONS = {
   // order matters
   boundaries: [0, 100],
   step: 1,
-  orientation: "horizontal",
+  orientation: 'horizontal',
   hasTooltips: false,
   get values() {
     return this._values || [getAverageOf(this.boundaries)];
@@ -14,4 +14,4 @@ const DEFAULT_OPTIONS = {
   },
 };
 
-export { DEFAULT_OPTIONS };
+export default DEFAULT_OPTIONS;
