@@ -1,6 +1,5 @@
 import { getAverageOf } from './utilities';
 
-const HAS_TOOLTIPS = true;
 const ORIENTATION_HORIZONTAL = 'horizontal';
 const ORIENTATION_VERTICAL = 'vertical';
 
@@ -9,7 +8,7 @@ const DEFAULT_OPTIONS = {
   boundaries: [0, 100],
   step: 1,
   orientation: ORIENTATION_HORIZONTAL,
-  hasTooltips: HAS_TOOLTIPS,
+  hasTooltips: true,
   get values() {
     return this._values || [getAverageOf(this.boundaries)];
   },
@@ -18,9 +17,4 @@ const DEFAULT_OPTIONS = {
   },
 };
 
-export {
-  DEFAULT_OPTIONS,
-  HAS_TOOLTIPS,
-  ORIENTATION_HORIZONTAL,
-  ORIENTATION_VERTICAL,
-};
+export { DEFAULT_OPTIONS, ORIENTATION_HORIZONTAL, ORIENTATION_VERTICAL };
