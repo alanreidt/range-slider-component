@@ -14,7 +14,7 @@ import {
   restrictByNeighbors,
   replaceAt,
 } from './helpers';
-import { DEFAULT_OPTIONS } from './DEFAULT_OPTIONS';
+import DEFAULT_OPTIONS from './DEFAULT_OPTIONS';
 
 class Model {
   constructor(newOptions = {}) {

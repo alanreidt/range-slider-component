@@ -2,7 +2,7 @@ import { assert } from 'chai';
 
 import { composeClassTest } from './testUtilities';
 import Model from '../src/Model';
-import { DEFAULT_OPTIONS } from '../src/DEFAULT_OPTIONS';
+import DEFAULT_OPTIONS from '../src/DEFAULT_OPTIONS';
 
 describe('Model', () => {
   describe('Initialization test', () => {
