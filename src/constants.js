@@ -9,7 +9,7 @@ const DEFAULT_OPTIONS = {
   boundaries: [0, 100],
   step: 1,
   orientation: ORIENTATION_HORIZONTAL,
-  hasTooltips: !HAS_TOOLTIPS,
+  hasTooltips: HAS_TOOLTIPS,
   get values() {
     return this._values || [getAverageOf(this.boundaries)];
   },
