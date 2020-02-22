@@ -14,7 +14,11 @@ import {
   restrictByNeighbors,
   replaceAt,
 } from './helpers';
-import { DEFAULT_OPTIONS } from './constants';
+import {
+  DEFAULT_OPTIONS,
+  ORIENTATION_HORIZONTAL,
+  ORIENTATION_VERTICAL,
+} from './constants';
 
 class Model {
   constructor(newOptions = {}) {
@@ -136,7 +140,8 @@ class Model {
   }
 
   _setOrientation(value) {
-    const isValueValid = value === 'horizontal' || value === 'vertical';
+    const isValueValid =
+      value === ORIENTATION_HORIZONTAL || value === ORIENTATION_VERTICAL;
 
     if (!isValueValid) return;
 
