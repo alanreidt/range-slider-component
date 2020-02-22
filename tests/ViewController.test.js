@@ -515,6 +515,7 @@ describe('ViewController', () => {
       viewController.setElements({
         boundaries: [0, 100],
         values: newValues,
+        orientation: 'horizontal',
       });
 
       context(`${SLIDER_HANDLE_GROUP_NAME}s are updated`, () => {
