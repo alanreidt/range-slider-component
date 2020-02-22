@@ -6,6 +6,7 @@ import {
   findValueByRatioBetween,
   createTemplate,
 } from './helpers';
+import { ORIENTATION_HORIZONTAL, ORIENTATION_VERTICAL } from './constants';
 
 class ViewController {
   constructor(parent, model) {
@@ -25,11 +26,11 @@ class ViewController {
       findValuePositionBetween(value, ...boundaries),
     );
 
-    if (orientation === 'horizontal') {
+    if (orientation === ORIENTATION_HORIZONTAL) {
       this._setHandleGroupHorizontalPositions(positions);
     }
 
-    if (orientation === 'vertical') {
+    if (orientation === ORIENTATION_VERTICAL) {
       this._setHandleGroupVerticalPositions(positions);
     }
 
@@ -127,7 +128,7 @@ class ViewController {
   _findValueByEvent(event) {
     const { orientation } = this.model.getOptions();
 
-    return orientation === 'horizontal'
+    return orientation === ORIENTATION_HORIZONTAL
       ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
       : this._convertCoordinateToValue({ yCoordinate: event.clientY });
   }
