@@ -1,11 +1,11 @@
-import { sliderFactory } from './sliderFactory';
+import SliderFactory from './SliderFactory';
 
 /**
  * This object represents API for the Slider.
  * All interactions with the Slider must happen only through it.
  */
 const Slider = {
-  _factory: sliderFactory,
+  _factory: SliderFactory,
   _parentsMap: new WeakMap(),
 
   /**
