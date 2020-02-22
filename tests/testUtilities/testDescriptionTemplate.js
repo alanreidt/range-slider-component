@@ -11,7 +11,10 @@
  * @param {any} args A testing function arguments
  * @param {any} expectation The test expectation
  */
-export function testDescriptionTemplate(strings, ...keys) {
+const testDescriptionTemplate = function testDescriptionTemplateFromTestUtilities(
+  strings,
+  ...keys
+) {
   return (args, expectation) => {
     const description = [strings[0]];
 
@@ -19,10 +22,10 @@ export function testDescriptionTemplate(strings, ...keys) {
       let value = null;
 
       switch (key) {
-        case "...rest":
+        case '...rest':
           value = args.slice(i);
           break;
-        case "expectation":
+        case 'expectation':
           value = expectation;
           break;
         default:
@@ -32,6 +35,8 @@ export function testDescriptionTemplate(strings, ...keys) {
       description.push(String(value), strings[i + 1]);
     });
 
-    return description.join("");
+    return description.join('');
   };
-}
+};
+
+export default testDescriptionTemplate;
