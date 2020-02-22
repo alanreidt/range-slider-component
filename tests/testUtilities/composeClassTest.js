@@ -21,7 +21,7 @@ const composeClassTest = function composeClassTestFromTestUtilities({
       const methodArgs = methodArgsList && methodArgsList[index];
       let methodArgsRecord = '';
 
-      if (methodName && methodArgs) {
+      if (methodName !== undefined && methodArgs !== undefined) {
         Object.keys(methodArgs).forEach((methodArgsKey) => {
           const methodArgsValue = methodArgs[methodArgsKey];
 
@@ -31,7 +31,7 @@ const composeClassTest = function composeClassTestFromTestUtilities({
         subject[methodName](methodArgs);
       }
 
-      if (methodName && !methodArgs) {
+      if (methodName !== undefined && methodArgs === undefined) {
         methodArgsRecord = constructorArgsRecord;
 
         subject[methodName]();
