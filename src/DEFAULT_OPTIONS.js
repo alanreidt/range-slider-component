@@ -14,4 +14,13 @@ const DEFAULT_OPTIONS = {
   },
 };
 
-export default DEFAULT_OPTIONS;
+const HAS_TOOLTIPS = true;
+const ORIENTATION_HORIZONTAL = 'horizontal';
+const ORIENTATION_VERTICAL = 'vertical';
+
+export {
+  DEFAULT_OPTIONS,
+  HAS_TOOLTIPS,
+  ORIENTATION_HORIZONTAL,
+  ORIENTATION_VERTICAL,
+};
