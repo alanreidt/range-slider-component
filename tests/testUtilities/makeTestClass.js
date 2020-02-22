@@ -1,6 +1,6 @@
-import { assert } from "chai";
+import { assert } from 'chai';
 
-import { testDescriptionTemplate } from "./testDescriptionTemplate";
+import { testDescriptionTemplate } from './testDescriptionTemplate';
 
 /**
  * Returns a class for a test.
@@ -9,9 +9,9 @@ import { testDescriptionTemplate } from "./testDescriptionTemplate";
  * @param {testDescriptionTemplate} commonDescriptionTemplate A test description template,
  *  composed via testDescriptionTemplate testUtilities function.
  */
-export function makeTestClass(
+const makeTestClass = function makeTestClassFromTestUtilities(
   subject,
-  commonDescriptionTemplate = testDescriptionTemplate`${"...rest"} is equal to ${"expectation"}`,
+  commonDescriptionTemplate = testDescriptionTemplate`${'...rest'} is equal to ${'expectation'}`,
 ) {
   return class {
     /**
@@ -41,4 +41,6 @@ export function makeTestClass(
       });
     }
   };
-}
+};
+
+export default makeTestClass;
