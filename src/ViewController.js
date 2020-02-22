@@ -27,7 +27,9 @@ class ViewController {
 
     if (orientation === 'horizontal') {
       this._setHandleGroupHorizontalPositions(positions);
-    } else {
+    }
+
+    if (orientation === 'vertical') {
       this._setHandleGroupVerticalPositions(positions);
     }
 
