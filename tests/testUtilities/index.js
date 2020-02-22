@@ -1,4 +1,11 @@
-export { composeClassTest } from "./composeClassTest";
-export { makeTestClass } from "./makeTestClass";
-export { testDescriptionTemplate } from "./testDescriptionTemplate";
-export { simulateMouseEvent } from "./simulateMouseEvent";
+import { composeClassTest } from './composeClassTest';
+import { makeTestClass } from './makeTestClass';
+import { testDescriptionTemplate } from './testDescriptionTemplate';
+import { simulateMouseEvent } from './simulateMouseEvent';
+
+export {
+  composeClassTest,
+  makeTestClass,
+  testDescriptionTemplate,
+  simulateMouseEvent,
+};
