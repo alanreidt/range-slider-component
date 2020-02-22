@@ -2,6 +2,7 @@ import { assert } from 'chai';
 
 import { simulateMouseEvent } from './testUtilities';
 import ViewController from '../src/ViewController';
+import { ORIENTATION_VERTICAL, ORIENTATION_HORIZONTAL } from '../src/constants';
 
 describe('ViewController', () => {
   const SLIDER_NAME = 'js-slider';
@@ -17,7 +18,7 @@ describe('ViewController', () => {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
-        orientation: 'vertical',
+        orientation: ORIENTATION_VERTICAL,
         hasTooltips: true,
       };
       const model = {
@@ -91,7 +92,7 @@ describe('ViewController', () => {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
-        orientation: 'vertical',
+        orientation: ORIENTATION_VERTICAL,
         hasTooltips: true,
       };
       const model = {
@@ -111,7 +112,7 @@ describe('ViewController', () => {
 
       it('add nothing, if orientation is horizontal', () => {
         Object.assign(options, {
-          orientation: 'horizontal',
+          orientation: ORIENTATION_HORIZONTAL,
         });
         new ViewController(parent, model);
         const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`)
@@ -127,7 +128,7 @@ describe('ViewController', () => {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
-        orientation: 'vertical',
+        orientation: ORIENTATION_VERTICAL,
         hasTooltips: true,
       };
       const model = {
@@ -161,7 +162,7 @@ describe('ViewController', () => {
         boundaries: [0, 100],
         values: [20, 80],
         step: 1,
-        orientation: 'vertical',
+        orientation: ORIENTATION_VERTICAL,
         hasTooltips: true,
       };
       const model = {
@@ -197,7 +198,7 @@ describe('ViewController', () => {
               boundaries: [0, 100],
               values: [20, 80],
               step: 1,
-              orientation: 'horizontal',
+              orientation: ORIENTATION_HORIZONTAL,
               hasTooltips: true,
             };
             const model = {
@@ -253,7 +254,7 @@ describe('ViewController', () => {
                 boundaries: [0, 100],
                 values: [20, 80],
                 step: 1,
-                orientation: 'vertical',
+                orientation: ORIENTATION_VERTICAL,
                 hasTooltips: true,
               };
               const model = {
@@ -318,7 +319,7 @@ describe('ViewController', () => {
                 boundaries: [0, 100],
                 values: [20, 80],
                 step: 1,
-                orientation: 'horizontal',
+                orientation: ORIENTATION_HORIZONTAL,
                 hasTooltips: true,
               };
               const model = {
@@ -378,7 +379,7 @@ describe('ViewController', () => {
                 boundaries: [0, 100],
                 values: [20, 80],
                 step: 1,
-                orientation: 'vertical',
+                orientation: ORIENTATION_VERTICAL,
                 hasTooltips: true,
               };
               const model = {
@@ -427,7 +428,7 @@ describe('ViewController', () => {
             boundaries: [0, 100],
             values: [20, 80],
             step: 1,
-            orientation: 'vertical',
+            orientation: ORIENTATION_VERTICAL,
             hasTooltips: true,
           };
           const model = {
@@ -480,7 +481,7 @@ describe('ViewController', () => {
       boundaries: [0, 100],
       values: [20, 80],
       step: 1,
-      orientation: 'vertical',
+      orientation: ORIENTATION_VERTICAL,
       hasTooltips: true,
     };
     const model = {
@@ -515,7 +516,7 @@ describe('ViewController', () => {
       viewController.setElements({
         boundaries: [0, 100],
         values: newValues,
-        orientation: 'horizontal',
+        orientation: ORIENTATION_HORIZONTAL,
       });
 
       context(`${SLIDER_HANDLE_GROUP_NAME}s are updated`, () => {
