@@ -2,16 +2,18 @@ import { assert } from 'chai';
 
 import { simulateMouseEvent } from './testUtilities';
 import ViewController from '../src/ViewController';
-import { ORIENTATION_VERTICAL, ORIENTATION_HORIZONTAL } from '../src/constants';
+import {
+  ORIENTATION_VERTICAL,
+  ORIENTATION_HORIZONTAL,
+  SLIDER_NAME,
+  SLIDER_BASE_NAME,
+  SLIDER_ORIENTATION_FLAG,
+  SLIDER_HANDLE_GROUP_NAME,
+  SLIDER_TOOLTIP_NAME,
+  SLIDER_HANDLE_NAME,
+} from '../src/constants';
 
 describe('ViewController', () => {
-  const SLIDER_NAME = 'js-slider';
-  const SLIDER_BASE_NAME = 'js-slider__base';
-  const SLIDER_ORIENTATION_FLAG = 'js-slider_vertical';
-  const SLIDER_HANDLE_GROUP_NAME = 'js-slider__handle-group';
-  const SLIDER_TOOLTIP_NAME = 'js-slider__tooltip';
-  const SLIDER_HANDLE_NAME = 'js-slider__handle';
-
   describe('constructor', () => {
     describe('shall paint slider structure', () => {
       const options = {

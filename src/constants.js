@@ -17,4 +17,21 @@ const DEFAULT_OPTIONS = {
   },
 };
 
-export { DEFAULT_OPTIONS, ORIENTATION_HORIZONTAL, ORIENTATION_VERTICAL };
+const SLIDER_NAME = 'js-slider';
+const SLIDER_BASE_NAME = 'js-slider__base';
+const SLIDER_ORIENTATION_FLAG = 'js-slider_vertical';
+const SLIDER_HANDLE_GROUP_NAME = 'js-slider__handle-group';
+const SLIDER_TOOLTIP_NAME = 'js-slider__tooltip';
+const SLIDER_HANDLE_NAME = 'js-slider__handle';
+
+export {
+  DEFAULT_OPTIONS,
+  ORIENTATION_HORIZONTAL,
+  ORIENTATION_VERTICAL,
+  SLIDER_NAME,
+  SLIDER_BASE_NAME,
+  SLIDER_ORIENTATION_FLAG,
+  SLIDER_HANDLE_GROUP_NAME,
+  SLIDER_TOOLTIP_NAME,
+  SLIDER_HANDLE_NAME,
+};
