@@ -16,7 +16,7 @@ const Slider = {
    */
   create(parent, options) {
     const model = this._factory.createModel(options);
-    const viewController = this._factory.createUI(parent, model);
+    const viewController = this._factory.createViewController(parent, model);
 
     const viewControllerSetElementsBound = viewController.setElements.bind(
       viewController,

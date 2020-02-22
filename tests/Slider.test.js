@@ -45,7 +45,7 @@ describe('Slider', () => {
 
   const factory = {
     createModel: makeClassMock(model),
-    createUI: makeClassMock(viewController),
+    createViewController: makeClassMock(viewController),
   };
   const parent = document.createElement('div');
 
