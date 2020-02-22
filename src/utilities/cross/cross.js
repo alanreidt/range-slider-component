@@ -10,7 +10,7 @@ import findClosestTo from '../findClosestTo/findClosestTo';
  * @returns {number[]} A crossed array.
  */
 const cross = function crossFromUtilities(baseArray, crossingArray) {
-  const isArrayCorrect = (array) => array && array.length;
+  const isArrayCorrect = (array) => array && array.length !== 0;
   const ascending = (a, b) => a - b;
 
   const baseArrayCopy = baseArray && baseArray.slice().sort(ascending);

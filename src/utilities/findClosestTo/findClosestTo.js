@@ -10,7 +10,7 @@
 const findClosestTo = function findClosestToFromUtilities(number, ...variants) {
   const validatedVariants = variants.filter(Number.isFinite);
   const areArgumentsCorrect =
-    Number.isFinite(number) && validatedVariants.length;
+    Number.isFinite(number) && validatedVariants.length !== 0;
 
   if (!areArgumentsCorrect) {
     return NaN;
