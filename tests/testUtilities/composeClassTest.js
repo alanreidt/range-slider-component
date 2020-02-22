@@ -8,11 +8,13 @@ const composeClassTest = function composeClassTestFromTestUtilities({
   return ({ constructorArgs, methodArgsList, expectations } = {}) => {
     let constructorArgsRecord = '';
 
-    Object.keys(constructorArgs).forEach((constructorArgsKey) => {
-      const constructorArgsValue = constructorArgs[constructorArgsKey];
+    if (constructorArgs !== undefined) {
+      Object.keys(constructorArgs).forEach((constructorArgsKey) => {
+        const constructorArgsValue = constructorArgs[constructorArgsKey];
 
-      constructorArgsRecord += `${constructorArgsKey} = ${constructorArgsValue}, `;
-    });
+        constructorArgsRecord += `${constructorArgsKey} = ${constructorArgsValue}, `;
+      });
+    }
 
     expectations.forEach((expectation, index) => {
       const subject = new Class(constructorArgs);
