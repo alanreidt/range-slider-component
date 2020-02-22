@@ -66,6 +66,8 @@ describe('Model', () => {
           boundaries: [0, '1000px'],
           values: ['0$', 600],
           step: '100',
+          orientation: 'horizontal',
+          hasTooltips: false,
         };
         const expectations = [
           {
