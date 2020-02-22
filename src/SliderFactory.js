@@ -6,7 +6,7 @@ const SliderFactory = {
     return new Model(...args);
   },
 
-  createUI(...args) {
+  createViewController(...args) {
     return new ViewController(...args);
   },
 };
