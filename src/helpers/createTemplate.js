@@ -1,3 +1,5 @@
+import { ORIENTATION_VERTICAL } from '../constants';
+
 /**
  * Returns a string, that contains Slider DOM structure.
  *
@@ -14,7 +16,9 @@ const createTemplate = function createTemplateFromHelpers({
   hasTooltips,
 } = {}) {
   return `<div class="slider js-slider ${
-    orientation === 'vertical' ? 'slider_vertical js-slider_vertical' : ''
+    orientation === ORIENTATION_VERTICAL
+      ? 'slider_vertical js-slider_vertical'
+      : ''
   }">
       <div class="slider__base js-slider__base">
         ${values.reduce((str, value, index) => {
