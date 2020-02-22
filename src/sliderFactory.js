@@ -1,7 +1,7 @@
 import Model from './Model';
 import ViewController from './ViewController';
 
-export const sliderFactory = {
+const sliderFactory = {
   createModel(...args) {
     return new Model(...args);
   },
@@ -10,3 +10,5 @@ export const sliderFactory = {
     return new ViewController(...args);
   },
 };
+
+export default sliderFactory;
