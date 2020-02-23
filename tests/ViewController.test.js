@@ -6,11 +6,16 @@ import {
   ORIENTATION_VERTICAL,
   ORIENTATION_HORIZONTAL,
   SLIDER_NAME,
-  SLIDER_BASE_NAME,
-  SLIDER_ORIENTATION_FLAG,
-  SLIDER_HANDLE_GROUP_NAME,
-  SLIDER_TOOLTIP_NAME,
-  SLIDER_HANDLE_NAME,
+  JS_SLIDER_VERTICAL_CLASS_NAME,
+  BASE_NAME,
+  HANDLE_GROUP_NAME,
+  TOOLTIP_NAME,
+  HANDLE_NAME,
+  JS_SLIDER_SELECTOR,
+  JS_BASE_SELECTOR,
+  JS_HANDLE_GROUP_SELECTOR,
+  JS_HANDLE_SELECTOR,
+  JS_TOOLTIP_SELECTOR,
 } from '../src/constants';
 
 describe('ViewController', () => {
@@ -35,13 +40,13 @@ describe('ViewController', () => {
 
       context('paint static structure correctly', () => {
         it(`create ${SLIDER_NAME} element`, () => {
-          const slider = parent.querySelector(`.${SLIDER_NAME}`);
+          const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
 
           assert.isNotNull(slider);
         });
 
-        it(`create ${SLIDER_BASE_NAME} element`, () => {
-          const sliderBase = parent.querySelector(`.${SLIDER_BASE_NAME}`);
+        it(`create ${BASE_NAME} element`, () => {
+          const sliderBase = parent.querySelector(`${JS_BASE_SELECTOR}`);
 
           assert.isNotNull(sliderBase);
         });
@@ -50,45 +55,41 @@ describe('ViewController', () => {
       context('paint dynamic structure correctly', () => {
         const requiredQuantity = options.values.length;
 
-        it(`create ${requiredQuantity} ${SLIDER_HANDLE_GROUP_NAME} elements`, () => {
+        it(`create ${requiredQuantity} ${HANDLE_GROUP_NAME} elements`, () => {
           const handleGroups = parent.querySelectorAll(
-            `.${SLIDER_HANDLE_GROUP_NAME}`,
+            `${JS_HANDLE_GROUP_SELECTOR}`,
           );
 
           assert.equal(requiredQuantity, handleGroups.length);
         });
 
-        it(`create ${requiredQuantity} ${SLIDER_TOOLTIP_NAME} elements`, () => {
-          const tooltips = parent.querySelectorAll(`.${SLIDER_TOOLTIP_NAME}`);
+        it(`create ${requiredQuantity} ${TOOLTIP_NAME} elements`, () => {
+          const tooltips = parent.querySelectorAll(`${JS_TOOLTIP_SELECTOR}`);
 
           assert.equal(requiredQuantity, tooltips.length);
         });
 
-        it(`create ${requiredQuantity} ${SLIDER_HANDLE_NAME} elements`, () => {
-          const handles = parent.querySelectorAll(`.${SLIDER_HANDLE_NAME}`);
+        it(`create ${requiredQuantity} ${HANDLE_NAME} elements`, () => {
+          const handles = parent.querySelectorAll(`${JS_HANDLE_SELECTOR}`);
 
           assert.equal(requiredQuantity, handles.length);
         });
       });
 
-      context(
-        `assign correct data-index to ${SLIDER_HANDLE_GROUP_NAME}`,
-        () => {
-          const handleGroups = parent.querySelectorAll(
-            `.${SLIDER_HANDLE_GROUP_NAME}`,
-          );
+      context(`assign correct data-index to ${HANDLE_GROUP_NAME}`, () => {
+        const handleGroups = parent.querySelectorAll(
+          `${JS_HANDLE_GROUP_SELECTOR}`,
+        );
 
-          handleGroups.forEach((handleGroup, index) => {
-            it(`#${index +
-              1} ${SLIDER_HANDLE_GROUP_NAME}'s data-index is equal to ${index}`, () => {
-              assert.equal(Number(handleGroup.dataset.index), index);
-            });
+        handleGroups.forEach((handleGroup, index) => {
+          it(`#${index +
+            1} ${HANDLE_GROUP_NAME}'s data-index is equal to ${index}`, () => {
+            assert.equal(Number(handleGroup.dataset.index), index);
           });
-        },
-      );
+        });
+      });
     });
-
-    describe(`shall add ${SLIDER_ORIENTATION_FLAG}, when needed`, () => {
+    describe(`shall add ${JS_SLIDER_VERTICAL_CLASS_NAME}, when needed`, () => {
       const parent = document.createElement('div');
       const options = {
         boundaries: [0, 100],
@@ -103,13 +104,14 @@ describe('ViewController', () => {
           return this._options;
         },
       };
-
-      it(`add ${SLIDER_ORIENTATION_FLAG} className, if orientation is vertical`, () => {
+      it(`add ${JS_SLIDER_VERTICAL_CLASS_NAME} className, if orientation is vertical`, () => {
         new ViewController(parent, model);
-        const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`)
+        const sliderClassList = parent.querySelector(`${JS_SLIDER_SELECTOR}`)
           .classList;
 
-        assert.isTrue(sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`));
+        assert.isTrue(
+          sliderClassList.contains(`${JS_SLIDER_VERTICAL_CLASS_NAME}`),
+        );
       });
 
       it('add nothing, if orientation is horizontal', () => {
@@ -117,14 +119,16 @@ describe('ViewController', () => {
           orientation: ORIENTATION_HORIZONTAL,
         });
         new ViewController(parent, model);
-        const sliderClassList = parent.querySelector(`.${SLIDER_NAME}`)
+        const sliderClassList = parent.querySelector(`${JS_SLIDER_SELECTOR}`)
           .classList;
 
-        assert.isFalse(sliderClassList.contains(`${SLIDER_ORIENTATION_FLAG}`));
+        assert.isFalse(
+          sliderClassList.contains(`${JS_SLIDER_VERTICAL_CLASS_NAME}`),
+        );
       });
     });
 
-    describe(`shall create ${SLIDER_TOOLTIP_NAME} element, when needed`, () => {
+    describe(`shall create ${TOOLTIP_NAME} element, when needed`, () => {
       const parent = document.createElement('div');
       const options = {
         boundaries: [0, 100],
@@ -140,9 +144,9 @@ describe('ViewController', () => {
         },
       };
 
-      it(`create ${SLIDER_TOOLTIP_NAME} element, if hasTooltips flag is true`, () => {
+      it(`create ${TOOLTIP_NAME} element, if hasTooltips flag is true`, () => {
         new ViewController(parent, model);
-        const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+        const sliderTooltips = parent.querySelector(`${JS_TOOLTIP_SELECTOR}`);
 
         assert.isNotNull(sliderTooltips);
       });
@@ -152,7 +156,7 @@ describe('ViewController', () => {
           hasTooltips: false,
         });
         new ViewController(parent, model);
-        const sliderTooltips = parent.querySelector(`.${SLIDER_TOOLTIP_NAME}`);
+        const sliderTooltips = parent.querySelector(`${JS_TOOLTIP_SELECTOR}`);
 
         assert.isNull(sliderTooltips);
       });
@@ -175,12 +179,12 @@ describe('ViewController', () => {
       };
       new ViewController(parent, model);
 
-      const slider = parent.querySelector(`.${SLIDER_NAME}`);
+      const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
 
       it('slider and repainted slider (with the same values) are not equal', () => {
         new ViewController(parent, model);
 
-        const newSlider = parent.querySelector(`.${SLIDER_NAME}`);
+        const newSlider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
 
         assert.notEqual(slider, newSlider);
       });
@@ -222,8 +226,8 @@ describe('ViewController', () => {
 
             new ViewController(parent, model);
 
-            const slider = parent.querySelector(`.${SLIDER_NAME}`);
-            const base = parent.querySelector(`.${SLIDER_BASE_NAME}`);
+            const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+            const base = parent.querySelector(`${JS_BASE_SELECTOR}`);
 
             slider.style.width = '200px';
 
@@ -278,8 +282,8 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(`.${SLIDER_NAME}`);
-              const base = parent.querySelector(`.${SLIDER_BASE_NAME}`);
+              const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+              const base = parent.querySelector(`${JS_BASE_SELECTOR}`);
 
               slider.style.height = '200px';
 
@@ -340,8 +344,8 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(`.${SLIDER_NAME}`);
-              const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
+              const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+              const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
 
               slider.style.width = '200px';
 
@@ -400,8 +404,8 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(`.${SLIDER_NAME}`);
-              const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
+              const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+              const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
 
               slider.style.height = '200px';
 
@@ -452,8 +456,8 @@ describe('ViewController', () => {
 
           new ViewController(parent, model);
 
-          const slider = parent.querySelector(`.${SLIDER_NAME}`);
-          const handle = parent.querySelector(`.${SLIDER_HANDLE_NAME}`);
+          const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+          const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
 
           slider.style.height = '200px';
 
@@ -495,9 +499,9 @@ describe('ViewController', () => {
     const viewController = new ViewController(parent, model);
 
     describe('shall set values', () => {
-      context(`${SLIDER_HANDLE_GROUP_NAME}s are set`, () => {
+      context(`${HANDLE_GROUP_NAME}s are set`, () => {
         const handleGroups = [
-          ...parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
+          ...parent.querySelectorAll(`${JS_HANDLE_GROUP_SELECTOR}`),
         ];
 
         handleGroups.forEach((handleGroup, i) => {
@@ -505,7 +509,7 @@ describe('ViewController', () => {
           const regexp = new RegExp(`${value}`);
           const handleGroupStyle = handleGroup.getAttribute('style');
 
-          it(`${SLIDER_HANDLE_GROUP_NAME}${i + 1} equals to ${value}`, () => {
+          it(`${HANDLE_GROUP_NAME}${i + 1} equals to ${value}`, () => {
             assert.isNotNull(handleGroupStyle.match(regexp));
           });
         });
@@ -521,9 +525,9 @@ describe('ViewController', () => {
         orientation: ORIENTATION_HORIZONTAL,
       });
 
-      context(`${SLIDER_HANDLE_GROUP_NAME}s are updated`, () => {
+      context(`${HANDLE_GROUP_NAME}s are updated`, () => {
         const handleGroups = [
-          ...parent.querySelectorAll(`.${SLIDER_HANDLE_GROUP_NAME}`),
+          ...parent.querySelectorAll(`${JS_HANDLE_GROUP_SELECTOR}`),
         ];
 
         handleGroups.forEach((handleGroup, i) => {
@@ -531,7 +535,7 @@ describe('ViewController', () => {
           const regexp = new RegExp(`${value}`);
           const handleGroupStyle = handleGroup.getAttribute('style');
 
-          it(`${SLIDER_HANDLE_GROUP_NAME}${i + 1} equals to ${value}`, () => {
+          it(`${HANDLE_GROUP_NAME}${i + 1} equals to ${value}`, () => {
             assert.isNotNull(handleGroupStyle.match(regexp));
           });
         });
