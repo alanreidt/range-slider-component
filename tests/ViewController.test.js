@@ -6,7 +6,6 @@ import {
   ORIENTATION_VERTICAL,
   ORIENTATION_HORIZONTAL,
   SLIDER_NAME,
-  JS_SLIDER_VERTICAL_CLASS_NAME,
   BASE_NAME,
   HANDLE_GROUP_NAME,
   TOOLTIP_NAME,
@@ -14,8 +13,9 @@ import {
   JS_SLIDER_SELECTOR,
   JS_BASE_SELECTOR,
   JS_HANDLE_GROUP_SELECTOR,
-  JS_HANDLE_SELECTOR,
   JS_TOOLTIP_SELECTOR,
+  HANDLE_CLASS_NAME,
+  ORIENTATION_FLAG_NAME,
 } from '../src/constants';
 
 describe('ViewController', () => {
@@ -70,7 +70,7 @@ describe('ViewController', () => {
         });
 
         it(`create ${requiredQuantity} ${HANDLE_NAME} elements`, () => {
-          const handles = parent.querySelectorAll(JS_HANDLE_SELECTOR);
+          const handles = parent.querySelectorAll(`.${HANDLE_CLASS_NAME}`);
 
           assert.equal(requiredQuantity, handles.length);
         });
@@ -87,7 +87,7 @@ describe('ViewController', () => {
         });
       });
     });
-    describe(`shall add ${JS_SLIDER_VERTICAL_CLASS_NAME}, when needed`, () => {
+    describe(`shall add ${ORIENTATION_FLAG_NAME} modifier, when needed`, () => {
       const parent = document.createElement('div');
       const options = {
         boundaries: [0, 100],
@@ -102,12 +102,14 @@ describe('ViewController', () => {
           return this._options;
         },
       };
-      it(`add ${JS_SLIDER_VERTICAL_CLASS_NAME} className, if orientation is vertical`, () => {
+      it(`add ${ORIENTATION_FLAG_NAME} modifier, if orientation is vertical`, () => {
         new ViewController(parent, model);
         const sliderClassList = parent.querySelector(JS_SLIDER_SELECTOR)
           .classList;
 
-        assert.isTrue(sliderClassList.contains(JS_SLIDER_VERTICAL_CLASS_NAME));
+        assert.isTrue(
+          sliderClassList.contains(`${SLIDER_NAME}_${ORIENTATION_FLAG_NAME}`),
+        );
       });
 
       it('add nothing, if orientation is horizontal', () => {
@@ -118,7 +120,9 @@ describe('ViewController', () => {
         const sliderClassList = parent.querySelector(JS_SLIDER_SELECTOR)
           .classList;
 
-        assert.isFalse(sliderClassList.contains(JS_SLIDER_VERTICAL_CLASS_NAME));
+        assert.isFalse(
+          sliderClassList.contains(`${SLIDER_NAME}_${ORIENTATION_FLAG_NAME}`),
+        );
       });
     });
 
@@ -339,7 +343,7 @@ describe('ViewController', () => {
               new ViewController(parent, model);
 
               const slider = parent.querySelector(JS_SLIDER_SELECTOR);
-              const handle = parent.querySelector(JS_HANDLE_SELECTOR);
+              const handle = parent.querySelector(`.${HANDLE_CLASS_NAME}`);
 
               slider.style.width = '200px';
 
@@ -399,7 +403,7 @@ describe('ViewController', () => {
               new ViewController(parent, model);
 
               const slider = parent.querySelector(JS_SLIDER_SELECTOR);
-              const handle = parent.querySelector(JS_HANDLE_SELECTOR);
+              const handle = parent.querySelector(`.${HANDLE_CLASS_NAME}`);
 
               slider.style.height = '200px';
 
@@ -451,7 +455,7 @@ describe('ViewController', () => {
           new ViewController(parent, model);
 
           const slider = parent.querySelector(JS_SLIDER_SELECTOR);
-          const handle = parent.querySelector(JS_HANDLE_SELECTOR);
+          const handle = parent.querySelector(`.${HANDLE_CLASS_NAME}`);
 
           slider.style.height = '200px';
 
