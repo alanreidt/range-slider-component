@@ -1,11 +1,9 @@
 import {
   ORIENTATION_VERTICAL,
   JS_SLIDER_CLASS_NAME,
-  JS_SLIDER_VERTICAL_CLASS_NAME,
   JS_BASE_CLASS_NAME,
   JS_HANDLE_GROUP_CLASS_NAME,
   JS_TOOLTIP_CLASS_NAME,
-  JS_HANDLE_CLASS_NAME,
   SLIDER_NAME,
   SLIDER_VERTICAL_CLASS_NAME,
   BASE_CLASS_NAME,
@@ -29,10 +27,10 @@ const createTemplate = function createTemplateFromHelpers({
   orientation,
   hasTooltips,
 } = {}) {
-  return `<div class="${SLIDER_NAME} ${JS_SLIDER_CLASS_NAME} ${
+  return `<div class="${JS_SLIDER_CLASS_NAME} ${
     orientation === ORIENTATION_VERTICAL
-      ? `${SLIDER_VERTICAL_CLASS_NAME} ${JS_SLIDER_VERTICAL_CLASS_NAME}`
-      : ''
+      ? SLIDER_VERTICAL_CLASS_NAME
+      : SLIDER_NAME
   }">
       <div class="${BASE_CLASS_NAME} ${JS_BASE_CLASS_NAME}">
         ${values.reduce((str, value, index) => {
@@ -42,7 +40,7 @@ const createTemplate = function createTemplateFromHelpers({
                 ? `<div class="${TOOLTIP_CLASS_NAME} ${JS_TOOLTIP_CLASS_NAME}"></div>`
                 : ''
             }
-            <div class="${HANDLE_CLASS_NAME} ${JS_HANDLE_CLASS_NAME}"></div>
+            <div class="${HANDLE_CLASS_NAME}"></div>
           </div>`;
         }, '')}
       </div>
