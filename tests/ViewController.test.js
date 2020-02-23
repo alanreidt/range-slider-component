@@ -57,7 +57,7 @@ describe('ViewController', () => {
 
         it(`create ${requiredQuantity} ${HANDLE_GROUP_NAME} elements`, () => {
           const handleGroups = parent.querySelectorAll(
-            `${JS_HANDLE_GROUP_SELECTOR}`,
+            JS_HANDLE_GROUP_SELECTOR,
           );
 
           assert.equal(requiredQuantity, handleGroups.length);
@@ -70,16 +70,14 @@ describe('ViewController', () => {
         });
 
         it(`create ${requiredQuantity} ${HANDLE_NAME} elements`, () => {
-          const handles = parent.querySelectorAll(`${JS_HANDLE_SELECTOR}`);
+          const handles = parent.querySelectorAll(JS_HANDLE_SELECTOR);
 
           assert.equal(requiredQuantity, handles.length);
         });
       });
 
       context(`assign correct data-index to ${HANDLE_GROUP_NAME}`, () => {
-        const handleGroups = parent.querySelectorAll(
-          `${JS_HANDLE_GROUP_SELECTOR}`,
-        );
+        const handleGroups = parent.querySelectorAll(JS_HANDLE_GROUP_SELECTOR);
 
         handleGroups.forEach((handleGroup, index) => {
           it(`#${index +
@@ -341,7 +339,7 @@ describe('ViewController', () => {
               new ViewController(parent, model);
 
               const slider = parent.querySelector(JS_SLIDER_SELECTOR);
-              const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
+              const handle = parent.querySelector(JS_HANDLE_SELECTOR);
 
               slider.style.width = '200px';
 
@@ -401,7 +399,7 @@ describe('ViewController', () => {
               new ViewController(parent, model);
 
               const slider = parent.querySelector(JS_SLIDER_SELECTOR);
-              const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
+              const handle = parent.querySelector(JS_HANDLE_SELECTOR);
 
               slider.style.height = '200px';
 
@@ -453,7 +451,7 @@ describe('ViewController', () => {
           new ViewController(parent, model);
 
           const slider = parent.querySelector(JS_SLIDER_SELECTOR);
-          const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
+          const handle = parent.querySelector(JS_HANDLE_SELECTOR);
 
           slider.style.height = '200px';
 
@@ -497,7 +495,7 @@ describe('ViewController', () => {
     describe('shall set values', () => {
       context(`${HANDLE_GROUP_NAME}s are set`, () => {
         const handleGroups = [
-          ...parent.querySelectorAll(`${JS_HANDLE_GROUP_SELECTOR}`),
+          ...parent.querySelectorAll(JS_HANDLE_GROUP_SELECTOR),
         ];
 
         handleGroups.forEach((handleGroup, i) => {
@@ -523,7 +521,7 @@ describe('ViewController', () => {
 
       context(`${HANDLE_GROUP_NAME}s are updated`, () => {
         const handleGroups = [
-          ...parent.querySelectorAll(`${JS_HANDLE_GROUP_SELECTOR}`),
+          ...parent.querySelectorAll(JS_HANDLE_GROUP_SELECTOR),
         ];
 
         handleGroups.forEach((handleGroup, i) => {
