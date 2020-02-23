@@ -40,13 +40,13 @@ describe('ViewController', () => {
 
       context('paint static structure correctly', () => {
         it(`create ${SLIDER_NAME} element`, () => {
-          const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+          const slider = parent.querySelector(JS_SLIDER_SELECTOR);
 
           assert.isNotNull(slider);
         });
 
         it(`create ${BASE_NAME} element`, () => {
-          const sliderBase = parent.querySelector(`${JS_BASE_SELECTOR}`);
+          const sliderBase = parent.querySelector(JS_BASE_SELECTOR);
 
           assert.isNotNull(sliderBase);
         });
@@ -64,7 +64,7 @@ describe('ViewController', () => {
         });
 
         it(`create ${requiredQuantity} ${TOOLTIP_NAME} elements`, () => {
-          const tooltips = parent.querySelectorAll(`${JS_TOOLTIP_SELECTOR}`);
+          const tooltips = parent.querySelectorAll(JS_TOOLTIP_SELECTOR);
 
           assert.equal(requiredQuantity, tooltips.length);
         });
@@ -106,12 +106,10 @@ describe('ViewController', () => {
       };
       it(`add ${JS_SLIDER_VERTICAL_CLASS_NAME} className, if orientation is vertical`, () => {
         new ViewController(parent, model);
-        const sliderClassList = parent.querySelector(`${JS_SLIDER_SELECTOR}`)
+        const sliderClassList = parent.querySelector(JS_SLIDER_SELECTOR)
           .classList;
 
-        assert.isTrue(
-          sliderClassList.contains(`${JS_SLIDER_VERTICAL_CLASS_NAME}`),
-        );
+        assert.isTrue(sliderClassList.contains(JS_SLIDER_VERTICAL_CLASS_NAME));
       });
 
       it('add nothing, if orientation is horizontal', () => {
@@ -119,12 +117,10 @@ describe('ViewController', () => {
           orientation: ORIENTATION_HORIZONTAL,
         });
         new ViewController(parent, model);
-        const sliderClassList = parent.querySelector(`${JS_SLIDER_SELECTOR}`)
+        const sliderClassList = parent.querySelector(JS_SLIDER_SELECTOR)
           .classList;
 
-        assert.isFalse(
-          sliderClassList.contains(`${JS_SLIDER_VERTICAL_CLASS_NAME}`),
-        );
+        assert.isFalse(sliderClassList.contains(JS_SLIDER_VERTICAL_CLASS_NAME));
       });
     });
 
@@ -146,7 +142,7 @@ describe('ViewController', () => {
 
       it(`create ${TOOLTIP_NAME} element, if hasTooltips flag is true`, () => {
         new ViewController(parent, model);
-        const sliderTooltips = parent.querySelector(`${JS_TOOLTIP_SELECTOR}`);
+        const sliderTooltips = parent.querySelector(JS_TOOLTIP_SELECTOR);
 
         assert.isNotNull(sliderTooltips);
       });
@@ -156,7 +152,7 @@ describe('ViewController', () => {
           hasTooltips: false,
         });
         new ViewController(parent, model);
-        const sliderTooltips = parent.querySelector(`${JS_TOOLTIP_SELECTOR}`);
+        const sliderTooltips = parent.querySelector(JS_TOOLTIP_SELECTOR);
 
         assert.isNull(sliderTooltips);
       });
@@ -179,12 +175,12 @@ describe('ViewController', () => {
       };
       new ViewController(parent, model);
 
-      const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+      const slider = parent.querySelector(JS_SLIDER_SELECTOR);
 
       it('slider and repainted slider (with the same values) are not equal', () => {
         new ViewController(parent, model);
 
-        const newSlider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+        const newSlider = parent.querySelector(JS_SLIDER_SELECTOR);
 
         assert.notEqual(slider, newSlider);
       });
@@ -226,8 +222,8 @@ describe('ViewController', () => {
 
             new ViewController(parent, model);
 
-            const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
-            const base = parent.querySelector(`${JS_BASE_SELECTOR}`);
+            const slider = parent.querySelector(JS_SLIDER_SELECTOR);
+            const base = parent.querySelector(JS_BASE_SELECTOR);
 
             slider.style.width = '200px';
 
@@ -282,8 +278,8 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
-              const base = parent.querySelector(`${JS_BASE_SELECTOR}`);
+              const slider = parent.querySelector(JS_SLIDER_SELECTOR);
+              const base = parent.querySelector(JS_BASE_SELECTOR);
 
               slider.style.height = '200px';
 
@@ -344,7 +340,7 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+              const slider = parent.querySelector(JS_SLIDER_SELECTOR);
               const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
 
               slider.style.width = '200px';
@@ -404,7 +400,7 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+              const slider = parent.querySelector(JS_SLIDER_SELECTOR);
               const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
 
               slider.style.height = '200px';
@@ -456,7 +452,7 @@ describe('ViewController', () => {
 
           new ViewController(parent, model);
 
-          const slider = parent.querySelector(`${JS_SLIDER_SELECTOR}`);
+          const slider = parent.querySelector(JS_SLIDER_SELECTOR);
           const handle = parent.querySelector(`${JS_HANDLE_SELECTOR}`);
 
           slider.style.height = '200px';
