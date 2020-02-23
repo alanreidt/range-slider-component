@@ -1,3 +1,5 @@
+import { withNaming } from '@bem-react/classname';
+
 import { getAverageOf } from './utilities';
 
 const ORIENTATION_HORIZONTAL = 'horizontal';
@@ -24,25 +26,39 @@ const HANDLE_GROUP_NAME = 'handle-group';
 const TOOLTIP_NAME = 'tooltip';
 const HANDLE_NAME = 'handle';
 
-const SLIDER_VERTICAL_CLASS_NAME = 'slider_vertical';
-const BASE_CLASS_NAME = 'slider__base';
-const HANDLE_GROUP_CLASS_NAME = 'slider__handle-group';
-const TOOLTIP_CLASS_NAME = 'slider__tooltip';
-const HANDLE_CLASS_NAME = 'slider__handle';
+const className = withNaming({ e: '__', m: '_', v: '_' });
+const composeSliderElementClassName = className(SLIDER_NAME);
 
-const JS_SLIDER_CLASS_NAME = 'js-slider';
-const JS_SLIDER_VERTICAL_CLASS_NAME = 'js-slider_vertical';
-const JS_BASE_CLASS_NAME = 'js-slider__base';
-const JS_HANDLE_GROUP_CLASS_NAME = 'js-slider__handle-group';
-const JS_TOOLTIP_CLASS_NAME = 'js-slider__tooltip';
-const JS_HANDLE_CLASS_NAME = 'js-slider__handle';
+const SLIDER_VERTICAL_CLASS_NAME = composeSliderElementClassName({
+  [ORIENTATION_FLAG_NAME]: true,
+});
+const HANDLE_GROUP_CLASS_NAME = composeSliderElementClassName(
+  HANDLE_GROUP_NAME,
+);
+const BASE_CLASS_NAME = composeSliderElementClassName(BASE_NAME);
+const TOOLTIP_CLASS_NAME = composeSliderElementClassName(TOOLTIP_NAME);
+const HANDLE_CLASS_NAME = composeSliderElementClassName(HANDLE_NAME);
 
-const JS_SLIDER_SELECTOR = '.js-slider';
-const JS_SLIDER_VERTICAL_SELECTOR = '.js-slider_vertical';
-const JS_BASE_SELECTOR = '.js-slider__base';
-const JS_HANDLE_GROUP_SELECTOR = '.js-slider__handle-group';
-const JS_TOOLTIP_SELECTOR = '.js-slider__tooltip';
-const JS_HANDLE_SELECTOR = '.js-slider__handle';
+const jsClassName = withNaming({ n: 'js-', e: '__', m: '_', v: '_' });
+const composeSliderElementJSClassName = jsClassName(SLIDER_NAME);
+
+const JS_SLIDER_VERTICAL_CLASS_NAME = composeSliderElementJSClassName({
+  [ORIENTATION_FLAG_NAME]: true,
+});
+const JS_HANDLE_GROUP_CLASS_NAME = composeSliderElementJSClassName(
+  HANDLE_GROUP_NAME,
+);
+const JS_SLIDER_CLASS_NAME = composeSliderElementJSClassName();
+const JS_BASE_CLASS_NAME = composeSliderElementJSClassName(BASE_NAME);
+const JS_TOOLTIP_CLASS_NAME = composeSliderElementJSClassName(TOOLTIP_NAME);
+const JS_HANDLE_CLASS_NAME = composeSliderElementJSClassName(HANDLE_NAME);
+
+const JS_SLIDER_SELECTOR = `.${JS_SLIDER_CLASS_NAME}`;
+const JS_SLIDER_VERTICAL_SELECTOR = `.${JS_SLIDER_VERTICAL_CLASS_NAME}`;
+const JS_BASE_SELECTOR = `.${JS_BASE_CLASS_NAME}`;
+const JS_HANDLE_GROUP_SELECTOR = `.${JS_HANDLE_GROUP_CLASS_NAME}`;
+const JS_TOOLTIP_SELECTOR = `.${JS_TOOLTIP_CLASS_NAME}`;
+const JS_HANDLE_SELECTOR = `.${JS_HANDLE_CLASS_NAME}`;
 
 export {
   DEFAULT_OPTIONS,
