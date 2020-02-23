@@ -6,7 +6,14 @@ import {
   findValueByRatioBetween,
   createTemplate,
 } from './helpers';
-import { ORIENTATION_HORIZONTAL, ORIENTATION_VERTICAL } from './constants';
+import {
+  ORIENTATION_HORIZONTAL,
+  ORIENTATION_VERTICAL,
+  JS_SLIDER_SELECTOR,
+  JS_BASE_SELECTOR,
+  JS_HANDLE_GROUP_SELECTOR,
+  JS_TOOLTIP_SELECTOR,
+} from './constants';
 
 class ViewController {
   constructor(parent, model) {
@@ -66,18 +73,18 @@ class ViewController {
   }
 
   _attachElements() {
-    this.slider = this.parent.querySelector('.js-slider');
-    this.base = this.parent.querySelector('.js-slider__base');
+    this.slider = this.parent.querySelector(JS_SLIDER_SELECTOR);
+    this.base = this.parent.querySelector(JS_BASE_SELECTOR);
     this.handleGroups = this._getHandleGroups();
     this.tooltips = this._getTooltips();
   }
 
   _getHandleGroups() {
-    return [...this.parent.querySelectorAll('.js-slider__handle-group')];
+    return [...this.parent.querySelectorAll(JS_HANDLE_GROUP_SELECTOR)];
   }
 
   _getTooltips() {
-    return [...this.parent.querySelectorAll('.js-slider__tooltip')];
+    return [...this.parent.querySelectorAll(JS_TOOLTIP_SELECTOR)];
   }
 
   _addSliderEventListener() {
@@ -95,7 +102,7 @@ class ViewController {
     }
 
     const currentHandleGroup =
-      target && target.closest('.js-slider__handle-group');
+      target && target.closest(JS_HANDLE_GROUP_SELECTOR);
 
     if (currentHandleGroup) {
       this._handleHandleGroupMouseDown(currentHandleGroup);
