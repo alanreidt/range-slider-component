@@ -26,14 +26,6 @@ class Model {
     this._options = Object.create(DEFAULT_OPTIONS);
 
     this.setOptions(newOptions);
-
-    this._options.orientation = this._options.orientation;
-    this._options.hasTooltips = this._options.hasTooltips;
-
-    Object.defineProperties(this._options, {
-      orientation: { writable: false },
-      hasTooltips: { writable: false },
-    });
   }
 
   getOptions() {
@@ -139,19 +131,28 @@ class Model {
     this._options.step = validate(newValue);
   }
 
-  _setOrientation(value) {
+  _setOrientation(newValue) {
+    const currentValue = this._options.orientation;
+
+    if (Object.prototype.hasOwnProperty.call(this._options, 'orientation')) {
+      return;
+    }
+
     const isValueValid =
-      value === ORIENTATION_HORIZONTAL || value === ORIENTATION_VERTICAL;
+      newValue === ORIENTATION_HORIZONTAL || newValue === ORIENTATION_VERTICAL;
 
-    if (!isValueValid) return;
-
-    this._options.orientation = value;
+    this._options.orientation = isValueValid ? newValue : currentValue;
   }
 
-  _setHasTooltips(value) {
-    if (typeof value !== 'boolean') return;
+  _setHasTooltips(newValue) {
+    const currentValue = this._options.hasTooltips;
 
-    this._options.hasTooltips = value;
+    if (Object.prototype.hasOwnProperty.call(this._options, 'hasTooltips')) {
+      return;
+    }
+
+    this._options.hasTooltips =
+      typeof newValue === 'boolean' ? newValue : currentValue;
   }
 }
 
