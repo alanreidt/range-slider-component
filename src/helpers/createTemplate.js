@@ -1,4 +1,18 @@
-import { ORIENTATION_VERTICAL } from '../constants';
+import {
+  ORIENTATION_VERTICAL,
+  JS_SLIDER_CLASS_NAME,
+  JS_SLIDER_VERTICAL_CLASS_NAME,
+  JS_BASE_CLASS_NAME,
+  JS_HANDLE_GROUP_CLASS_NAME,
+  JS_TOOLTIP_CLASS_NAME,
+  JS_HANDLE_CLASS_NAME,
+  SLIDER_NAME,
+  SLIDER_VERTICAL_CLASS_NAME,
+  BASE_CLASS_NAME,
+  HANDLE_GROUP_CLASS_NAME,
+  TOOLTIP_CLASS_NAME,
+  HANDLE_CLASS_NAME,
+} from '../constants';
 
 /**
  * Returns a string, that contains Slider DOM structure.
@@ -15,20 +29,20 @@ const createTemplate = function createTemplateFromHelpers({
   orientation,
   hasTooltips,
 } = {}) {
-  return `<div class="slider js-slider ${
+  return `<div class="${SLIDER_NAME} ${JS_SLIDER_CLASS_NAME} ${
     orientation === ORIENTATION_VERTICAL
-      ? 'slider_vertical js-slider_vertical'
+      ? `${SLIDER_VERTICAL_CLASS_NAME} ${JS_SLIDER_VERTICAL_CLASS_NAME}`
       : ''
   }">
-      <div class="slider__base js-slider__base">
+      <div class="${BASE_CLASS_NAME} ${JS_BASE_CLASS_NAME}">
         ${values.reduce((str, value, index) => {
-          return `${str}<div class="slider__handle-group js-slider__handle-group" data-index="${index}">
+          return `${str}<div class="${HANDLE_GROUP_CLASS_NAME} ${JS_HANDLE_GROUP_CLASS_NAME}" data-index="${index}">
             ${
               hasTooltips
-                ? `<div class="slider__tooltip js-slider__tooltip"></div>`
+                ? `<div class="${TOOLTIP_CLASS_NAME} ${JS_TOOLTIP_CLASS_NAME}"></div>`
                 : ''
             }
-            <div class="slider__handle js-slider__handle"></div>
+            <div class="${HANDLE_CLASS_NAME} ${JS_HANDLE_CLASS_NAME}"></div>
           </div>`;
         }, '')}
       </div>
