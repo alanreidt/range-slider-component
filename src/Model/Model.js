@@ -4,7 +4,7 @@ import sortBy from 'lodash/fp/sortBy';
 import filter from 'lodash/fp/filter';
 import identity from 'lodash/fp/identity';
 
-import { ObserverMixin } from '../utilities';
+import { ObserverMixin } from '../../modules/utilities';
 import {
   adjustToStep,
   adjustToRange,

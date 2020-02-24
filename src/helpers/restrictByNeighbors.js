@@ -1,4 +1,4 @@
-import { restrictNumberByNeighbors } from '../utilities';
+import { restrictNumberByNeighbors } from '../../modules/utilities';
 
 /**
  * A wrapper on restrictNumberByNeighbors utility function

@@ -1,6 +1,6 @@
 import isUndefined from 'lodash/isUndefined';
 
-import { findRatio } from '../utilities';
+import { findRatio } from '../../modules/utilities';
 import {
   findValuePositionBetween,
   findValueByRatioBetween,

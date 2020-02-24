@@ -1,4 +1,4 @@
-import { findRatio, toPercentage } from '../../utilities';
+import { findRatio, toPercentage } from '../../../modules/utilities';
 
 /**
  * Returns a position of a value between start and end, if it's possible.

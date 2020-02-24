@@ -1,6 +1,6 @@
 import { withNaming } from '@bem-react/classname';
 
-import { getAverageOf } from './utilities';
+import { getAverageOf } from '../modules/utilities';
 
 const ORIENTATION_HORIZONTAL = 'horizontal';
 const ORIENTATION_VERTICAL = 'vertical';

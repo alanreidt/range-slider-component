@@ -1,4 +1,4 @@
-import { cross } from '../utilities';
+import { cross } from '../../modules/utilities';
 
 /**
  * Wrapper on cross utility function.

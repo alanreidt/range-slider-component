@@ -1,4 +1,4 @@
-import { replaceValueAt } from '../utilities';
+import { replaceValueAt } from '../../modules/utilities';
 
 /**
  * A wrapper on replaceValueAt utility function

@@ -1,4 +1,4 @@
-import { findClosestFactor } from '../utilities';
+import { findClosestFactor } from '../../modules/utilities';
 
 /**
  * Wrapper on findClosestFactor utility function.

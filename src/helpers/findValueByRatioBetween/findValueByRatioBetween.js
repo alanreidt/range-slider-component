@@ -1,4 +1,4 @@
-import { findAntecedent } from '../../utilities';
+import { findAntecedent } from '../../../modules/utilities';
 
 /**
  * Returns value between start and end, via known ratio, if it's possible.
