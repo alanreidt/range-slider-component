@@ -2,7 +2,7 @@ import findClosestTo from './findClosestTo';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from '../../../modules/testUtilities';
+} from '../../testUtilities';
 
 describe('findClosestTo', () => {
   const commonDescriptionTemplate = testDescriptionTemplate`closest number to ${0} from ${'...rest'} is ${'expectation'}`;

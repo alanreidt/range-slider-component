@@ -2,7 +2,7 @@ import toFixed from './toFixed';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from '../../../modules/testUtilities';
+} from '../../testUtilities';
 
 describe('toFixed', () => {
   const commonDescriptionTemplate = testDescriptionTemplate`${0} with ${1} fixed digits is ${'expectation'}`;

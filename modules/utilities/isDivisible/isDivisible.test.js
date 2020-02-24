@@ -2,7 +2,7 @@ import isDivisible from './isDivisible';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from '../../../modules/testUtilities';
+} from '../../testUtilities';
 
 describe('isDivisible', () => {
   const commonDescriptionTemplate = testDescriptionTemplate`It is ${'expectation'} that ${0} is divisible by ${1}`;

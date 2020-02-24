@@ -1,8 +1,5 @@
 import toPercentage from './toPercentage';
-import {
-  makeTestClass,
-  testDescriptionTemplate,
-} from '../../../modules/testUtilities';
+import { makeTestClass, testDescriptionTemplate } from '../../testUtilities';
 
 describe('toPercentage', () => {
   const commonDescriptionTemplate = testDescriptionTemplate`converts ${0} to ${'expectation'}`;

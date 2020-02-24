@@ -2,7 +2,7 @@ import findRatio from './findRatio';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from '../../../modules/testUtilities';
+} from '../../testUtilities';
 
 describe('findRatio', () => {
   const commonDescriptionTemplate = testDescriptionTemplate`ratio of ${0} to ${1}, with offset = ${2} is ${'expectation'}`;
