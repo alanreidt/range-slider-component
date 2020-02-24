@@ -1,5 +1,5 @@
 import '../src/Model/Model.test';
-import '../src/ViewController.test';
+import '../src/ViewController/ViewController.test';
 import '../src/Slider.test';
 import '../src/utilities/ObserverMixin/ObserverMixin.test';
 import '../src/utilities/adjustValueToStep/adjustValueToStep.test';

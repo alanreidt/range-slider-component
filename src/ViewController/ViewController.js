@@ -1,11 +1,11 @@
 import isUndefined from 'lodash/isUndefined';
 
-import { findRatio } from './utilities';
+import { findRatio } from '../utilities';
 import {
   findValuePositionBetween,
   findValueByRatioBetween,
   createTemplate,
-} from './helpers';
+} from '../helpers';
 import {
   ORIENTATION_HORIZONTAL,
   ORIENTATION_VERTICAL,
@@ -13,7 +13,7 @@ import {
   JS_BASE_SELECTOR,
   JS_HANDLE_GROUP_SELECTOR,
   JS_TOOLTIP_SELECTOR,
-} from './constants';
+} from '../constants';
 
 class ViewController {
   constructor(parent, model) {

@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { simulateMouseEvent } from '../tests/testUtilities';
+import { simulateMouseEvent } from '../../tests/testUtilities';
 import ViewController from './ViewController';
 import {
   ORIENTATION_VERTICAL,
@@ -16,7 +16,7 @@ import {
   JS_TOOLTIP_SELECTOR,
   HANDLE_CLASS_NAME,
   ORIENTATION_FLAG_NAME,
-} from './constants';
+} from '../constants';
 
 describe('ViewController', () => {
   describe('constructor', () => {
