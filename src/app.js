@@ -1,5 +1,5 @@
 require('bootstrap');
-import { slider } from "../modules/slider/prod/slider.min.js";
+import Slider from "../modules/slider/prod/Slider.min.js";
 
 const $parent = document.querySelector(".slider-wrapper");
 
@@ -10,7 +10,7 @@ const $stepNumberInput = document.querySelector("#step");
 const $orientationCheckbox = document.querySelector("#orientation");
 const $hasTooltipsCheckbox = document.querySelector("#hasTooltips");
 
-slider.create($parent, {
+Slider.create($parent, {
   boundaries: [0, 100],
   values: [20, 80],
   hasTooltips: true,
@@ -33,5 +33,5 @@ $form.addEventListener("submit", event => {
     orientation,
   };
 
-  slider.create($parent, options);
+  Slider.create($parent, options);
 });
