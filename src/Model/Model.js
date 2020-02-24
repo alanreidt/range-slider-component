@@ -4,7 +4,7 @@ import sortBy from 'lodash/fp/sortBy';
 import filter from 'lodash/fp/filter';
 import identity from 'lodash/fp/identity';
 
-import { ObserverMixin } from './utilities';
+import { ObserverMixin } from '../utilities';
 import {
   adjustToStep,
   adjustToRange,
@@ -13,12 +13,12 @@ import {
   crossWith,
   restrictByNeighbors,
   replaceAt,
-} from './helpers';
+} from '../helpers';
 import {
   DEFAULT_OPTIONS,
   ORIENTATION_HORIZONTAL,
   ORIENTATION_VERTICAL,
-} from './constants';
+} from '../constants';
 
 class Model {
   constructor(newOptions = {}) {

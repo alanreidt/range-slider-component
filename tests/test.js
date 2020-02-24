@@ -1,4 +1,4 @@
-import '../src/Model.test';
+import '../src/Model/Model.test';
 import '../src/ViewController.test';
 import '../src/Slider.test';
 import '../src/utilities/ObserverMixin/ObserverMixin.test';
