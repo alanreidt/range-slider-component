@@ -1,6 +1,5 @@
 /**
- * Returns fallback, if origin is falsey (but excluding 0).
- * The values false, null, "", undefined, 0 and NaN are falsey.
+ * Returns fallback, if origin is false, null, "", undefined or NaN.
  *
  * @param {any} origin The first value to be validated.
  * @param {any} fallback A fallback for the origin.
