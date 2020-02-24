@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf prod && parcel build src/index.html -d ./prod --public-url ./prod",
     "postbuild": "mv prod/index.html ./index.html",
-    "serve": "parcel src/index.html --open"
+    "dev": "parcel src/index.html --open"
   },
   "keywords": [],
   "author": "Alan Reid",
