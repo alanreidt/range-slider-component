@@ -2,7 +2,7 @@ import findClosestDivisible from './findClosestDivisible';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from '../../../tests/testUtilities';
+} from '../../../modules/testUtilities';
 
 describe('findClosestDivisible', () => {
   const commonDescriptionTemplate = testDescriptionTemplate`closest divisible number for division of ${0} by ${1} is ${'expectation'}`;

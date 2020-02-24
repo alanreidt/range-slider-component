@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { simulateMouseEvent } from '../../tests/testUtilities';
+import { simulateMouseEvent } from '../../modules/testUtilities';
 import ViewController from './ViewController';
 import {
   ORIENTATION_VERTICAL,

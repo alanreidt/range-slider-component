@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { composeClassTest } from '../../tests/testUtilities';
+import { composeClassTest } from '../../modules/testUtilities';
 import Model from './Model';
 import {
   DEFAULT_OPTIONS,

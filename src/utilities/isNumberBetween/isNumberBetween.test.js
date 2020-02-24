@@ -2,7 +2,7 @@ import isNumberBetween from './isNumberBetween';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from '../../../tests/testUtilities';
+} from '../../../modules/testUtilities';
 
 describe('isNumberBetween', () => {
   const commonDescriptionTemplate = testDescriptionTemplate`It is ${'expectation'} that ${0} is between ${1} and ${2}`;

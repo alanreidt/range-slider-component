@@ -2,7 +2,7 @@ import findAntecedent from './findAntecedent';
 import {
   makeTestClass,
   testDescriptionTemplate,
-} from '../../../tests/testUtilities';
+} from '../../../modules/testUtilities';
 
 describe('findAntecedent', () => {
   const commonDescriptionTemplate = testDescriptionTemplate`antecedent of ${0} by ${1}, with offset = ${3} is ${'expectation'}`;
