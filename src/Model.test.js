@@ -1,12 +1,12 @@
 import { assert } from 'chai';
 
-import { composeClassTest } from './testUtilities';
-import Model from '../src/Model';
+import { composeClassTest } from '../tests/testUtilities';
+import Model from './Model';
 import {
   DEFAULT_OPTIONS,
   ORIENTATION_VERTICAL,
   ORIENTATION_HORIZONTAL,
-} from '../src/constants';
+} from './constants';
 
 describe('Model', () => {
   describe('Initialization test', () => {

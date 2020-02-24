@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import Slider from '../src/Slider';
+import Slider from './Slider';
 
 describe('Slider', () => {
   const options = {

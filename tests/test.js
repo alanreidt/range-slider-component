@@ -1,6 +1,6 @@
-import './Model.test';
-import './ViewController.test';
-import './Slider.test';
+import '../src/Model.test';
+import '../src/ViewController.test';
+import '../src/Slider.test';
 import '../src/utilities/ObserverMixin/ObserverMixin.test';
 import '../src/utilities/adjustValueToStep/adjustValueToStep.test';
 import '../src/utilities/findRatio/findRatio.test';
