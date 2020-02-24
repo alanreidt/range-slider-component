@@ -1,4 +1,4 @@
-import adjustValueToStep from '../utilities/adjustValueToStep/adjustValueToStep';
+import { adjustValueToStep } from '../utilities';
 
 /**
  * Wrapper on adjustValueToStep utility function
