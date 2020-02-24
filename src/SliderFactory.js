@@ -1,5 +1,5 @@
 import Model from './Model';
-import ViewController from './ViewController/ViewController';
+import ViewController from './ViewController';
 
 const SliderFactory = {
   createModel(...args) {
