@@ -21,8 +21,8 @@
     ],
     "rules": {
       "no-underscore-dangle": "off",
-      "import/prefer-default-export": "off",
-      "import/no-default-export": "error",
+      // "import/prefer-default-export": "off",
+      // "import/no-default-export": "error",
 
       // enhance linting speed
       "import/no-cycle": "off",

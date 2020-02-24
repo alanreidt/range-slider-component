@@ -1,8 +1,10 @@
-import { placeNumberBetween } from "../utilities";
+import { placeNumberBetween } from '../../modules/utilities';
 
 /**
  * Wrapper on placeNumberBetween utility function.
  */
-export function placeBetween(start, end) {
+const placeBetween = function placeBetweenFromHelpers(start, end) {
   return (number) => placeNumberBetween(number, start, end);
-}
+};
+
+export default placeBetween;

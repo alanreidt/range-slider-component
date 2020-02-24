@@ -11,8 +11,9 @@
     "url": "https://github.com/alanreidt/slider.git"
   },
   "scripts": {
+    "riteway": "riteway -r esm",
     "test": "parcel tests/test.html --open",
-    "build": "rm -rf prod && parcel build src/slider.js -o src/slider.min.js -d ./prod && parcel build src/slider.scss -o src/slider.min.css -d ./prod",
+    "build": "rm -rf prod && parcel build src/Slider.js -o src/Slider.min.js -d ./prod && parcel build src/slider.scss -o src/slider.min.css -d ./prod",
     "dev": "parcel test-page/index.html --open",
     "create": "plop"
   },
@@ -28,13 +29,16 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-prettier": "^3.1.2",
+    "esm": "^3.2.25",
     "mocha": "^6.2.2",
     "parcel-bundler": "^1.12.4",
     "plop": "^2.5.3",
     "prettier": "1.19.1",
+    "riteway": "^6.1.1",
     "sass": "^1.23.7"
   },
   "dependencies": {
+    "@bem-react/classname": "^1.5.6",
     "lodash": "^4.17.15"
   }
 }

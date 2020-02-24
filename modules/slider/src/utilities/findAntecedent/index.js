@@ -1,1 +1,0 @@
-export { findAntecedent } from "./findAntecedent";

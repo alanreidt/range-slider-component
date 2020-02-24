@@ -5,7 +5,7 @@
 
 Welcome to the slider plugin github page. Although it looks like every other range slider, the component has several advantages, that make it unique.
 
-The main slider plugin advantage is a client-oriented approach. It has an API, that accepts variety of input data types (user decide what is convenient for him) and strict data types of output, which makes it predictable. And beyond that, application logic handles input contradictions and correct them in a predictable manner (implicitly, for now).
+The main one is a client-oriented approach. It has an API, that accepts variety of input data types (user decides what is convenient for him) and strict data types of output, which makes it predictable. And beyond that, application logic handles input contradictions and correct them in a predictable manner (implicitly, for now).
 
 The second excellence is a presence of architecture, precisely MVC. More on that below.
 
@@ -35,7 +35,7 @@ npm run test
 npm run build
 ```
 
-The `slider API` is connected to the `test-page/app.js` file. You can mess around it there.
+The `slider API` is connected to the `test-page/app.js` file. You can mess around with it there.
 
 Production version is placed in `prod` folder.
 
@@ -56,10 +56,10 @@ And then, enter next lines in your main html file (or check `test-page` folder t
 And by next command initialize slider:
 ```javascript
 // select your DOM element
-const $parent = document.querySelector(".slider-wrapper");
+const parent = document.querySelector(".slider-wrapper");
 
 // and create slider with options
-slider.create($parent, {
+slider.create(parent, {
   boundaries: [0, 100],
   values: [20, 80],
   step: 20,
@@ -69,7 +69,7 @@ slider.create($parent, {
 
 Possible options are described in [the options section](#options).
 
-By the way, don't forget to set `height` for vertical slider on `$parent` element (because slider is created inside):
+By the way, don't forget to set `height` for vertical slider on `parent` element (because slider is created inside):
 ```css
 /* parent element for the slider */
 .slider-wrapper {
@@ -122,7 +122,7 @@ In case, when only a number is passed, the closest edge (`Min` or `Max` value) t
 
 For example, having an `200`, as an *input*, during an *initialization* (default value is `[0, 100]`), will result in `[0, 200]`.
 
-Analogycal situation would have a place during a *reassignment* (using *API setOptions method*) — your closest boundaries value will be changed.
+Analogical situation would have a place during a *reassignment* (using *API setOptions method*) — your closest boundaries value will be changed.
 
 *Output* will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.
 
@@ -133,11 +133,11 @@ This option represents something like an axiom — all other dependent values ar
 
 #### values
 ##### Input/Output type details
-`values` option is handled indentically to `boundaries`, but, as it has more values to deal with, there is additional information you need to know.
+`values` option is handled identically to `boundaries`, but, as it has more values to deal with, there is additional information you need to know.
 
 *The first* difference is if input value lie in the middle of 2 current values, then the bigger will be changed.
 
-And *the second* is that you can pass an array up to current values length (excessed will be ignored) — it will change all the closest values to the inputed ones.
+And *the second* is that you can pass an array up to current values length (excessed will be ignored) — it will change all the closest values to the inputted ones.
 
 *restrictions*: only positive and negative numbers are allowed.
 
@@ -149,25 +149,25 @@ This value is always corrected to accordance with `step` option. If it doesn't c
 *restrictions*: value from `1` to `Range (Max − Min values)` (`1 <= value <= Range`) is allowed.
 
 ##### Auto correction
-The value is always corrected to accordance with `boundaries` option. The division of `boundaries` difference by `step` should have no remainder, else it will be assigned to the closest possible one.
+The value is always corrected to accordance with `boundaries` option. The division of `boundaries` difference by `step` should have no remainder, otherwise it will be assigned to the closest possible one.
 
 #### orientation
 ##### API setOptions
-`orientation` option is closed for *update*, as this operation requires repaint of a web-page.
+`orientation` option is closed for an *update*, as this operation requires repaint of a web-page.
 
 You can accomplish desired result by using *API create method*, instead.
 
 #### hasTooltips
 ##### API setOptions
-Analogycally to `orientation` option `hasTooltips` option is closed for *update*.
+Analogically to `orientation` option `hasTooltips` option is closed for an *update*.
 
-Although, it's possible to realize *update* behavior here, I don't see this, as a logical functionality (see below).
+Although, it's possible to realize an *update* behavior here, I don't see this, as a logical functionality (see below).
 
 You can accomplish desired result by using *API create method*, instead.
 
 Or you can create the slider with tooltips and then hide them through css, when desire.
 
-> P.S. Functionality will be enhanced in the future, in order to allow to listen to events (as *update*), which will improve the situation.
+> P.S. Functionality will be enhanced in the future, in order to allow to listen to events (such as an *update*), which will improve the situation.
 
 
 ### Architecture
@@ -179,7 +179,7 @@ The module contains business logic of the slider component: possible slider opt
 #### ViewController
 This module is responsible for display of current slider state and handling of user actions.
 
-It translates position of occured events into the slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `Model`.
+It translates position of occurred events into the slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `Model`.
 
 As you see, `ViewController` performs View and Controller functionality. The objective for this is that it's not logical, from functional decomposition standpoint, to divide the module — handles (which realize Controller functionality) don't have any value outside of the slider (View).
 
@@ -188,4 +188,4 @@ This is a bird's view on the slider architecture.
 
 Diagram represents only public members.
 
-![Slider Architeture UML diagram](./_miscellaneous/slider_uml_diagram.jpeg)
+![Slider Architecture UML diagram](./_miscellaneous/slider_uml_diagram.jpeg)

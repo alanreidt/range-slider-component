@@ -1,1 +1,0 @@
-export { findRatio } from "./findRatio";

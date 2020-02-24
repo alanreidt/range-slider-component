@@ -1,1 +1,0 @@
-export { toPercentage } from "./toPercentage";

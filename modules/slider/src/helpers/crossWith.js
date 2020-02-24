@@ -1,8 +1,10 @@
-import { cross } from "../utilities";
+import { cross } from '../../modules/utilities';
 
 /**
  * Wrapper on cross utility function.
  */
-export function crossWith(baseArr) {
-  return (arr) => cross(baseArr, arr);
-}
+const crossWith = function crossWithFromHelpers(baseArray) {
+  return (crossingArray) => cross(baseArray, crossingArray);
+};
+
+export default crossWith;

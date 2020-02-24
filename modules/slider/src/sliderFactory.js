@@ -1,12 +1,14 @@
-import { Model } from "./Model";
-import { ViewController } from "./ViewController";
+import Model from './Model';
+import ViewController from './ViewController';
 
-export const sliderFactory = {
+const SliderFactory = {
   createModel(...args) {
     return new Model(...args);
   },
 
-  createUI(...args) {
+  createViewController(...args) {
     return new ViewController(...args);
   },
 };
+
+export default SliderFactory;

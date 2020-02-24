@@ -8,88 +8,89 @@ const requireField = (fieldName) => {
 };
 
 module.exports = (plop) => {
-  plop.setGenerator("helper", {
-    description: "Create a helper function",
+  plop.setGenerator('helper', {
+    description: 'Create a helper function',
     prompts: [
       {
-        type: "input",
-        name: "name",
-        message: "What is your helper name?",
-        validate: requireField("name"),
+        type: 'input',
+        name: 'name',
+        message: 'What is your helper name?',
+        validate: requireField('name'),
       },
     ],
     actions: [
       {
-        type: "add",
-        path: "src/helpers/{{camelCase name}}/{{camelCase name}}.js",
-        templateFile: "plop-templates/helper/helper.js.hbs",
+        type: 'add',
+        path: 'src/helpers/{{camelCase name}}.js',
+        templateFile: 'plop-templates/helper/helper.js.hbs',
         skipIfExists: true,
       },
       {
-        type: "add",
-        path: "src/helpers/{{camelCase name}}/{{camelCase name}}.test.js",
-        templateFile: "plop-templates/helper/helper.test.js.hbs",
+        type: 'add',
+        path: 'src/helpers/index.js',
+        templateFile: 'plop-templates/injectable-index.js.hbs',
         skipIfExists: true,
       },
       {
-        type: "add",
-        path: "src/helpers/{{camelCase name}}/index.js",
-        templateFile: "plop-templates/helper/index.js.hbs",
+        type: 'append',
+        path: 'src/helpers/index.js',
+        pattern: `/* PLOP_INJECT_IMPORT */`,
+        template: `import {{camelCase name}} from './{{camelCase name}}';`,
       },
       {
-        type: "add",
-        path: "src/helpers/index.js",
-        templateFile: "plop-templates/injectable-index.js.hbs",
-        skipIfExists: true,
-      },
-      {
-        type: "append",
-        path: "src/helpers/index.js",
+        type: 'append',
+        path: 'src/helpers/index.js',
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `export { {{camelCase name}} } from "./{{camelCase name}}";`,
+        template: `  {{camelCase name}},`,
       },
     ],
   });
 
-  plop.setGenerator("utility", {
-    description: "Create a utility function",
+  plop.setGenerator('utility', {
+    description: 'Create a utility function',
     prompts: [
       {
-        type: "input",
-        name: "name",
-        message: "What is your utility name?",
-        validate: requireField("name"),
+        type: 'input',
+        name: 'name',
+        message: 'What is your utility name?',
+        validate: requireField('name'),
       },
     ],
     actions: [
       {
-        type: "add",
-        path: "src/utilities/{{camelCase name}}/{{camelCase name}}.js",
-        templateFile: "plop-templates/helper/helper.js.hbs",
+        type: 'add',
+        path: 'src/utilities/{{camelCase name}}/{{camelCase name}}.js',
+        templateFile: 'plop-templates/helper/helper.js.hbs',
         skipIfExists: true,
       },
       {
-        type: "add",
-        path: "src/utilities/{{camelCase name}}/{{camelCase name}}.test.js",
-        templateFile: "plop-templates/helper/helper.test.js.hbs",
+        type: 'add',
+        path: 'src/utilities/{{camelCase name}}/{{camelCase name}}.test.js',
+        templateFile: 'plop-templates/helper/helper.test.js.hbs',
         skipIfExists: true,
       },
       {
-        type: "add",
-        path: "src/utilities/{{camelCase name}}/index.js",
-        templateFile: "plop-templates/helper/index.js.hbs",
+        type: 'add',
+        path: 'src/utilities/{{camelCase name}}/index.js',
+        templateFile: 'plop-templates/helper/index.js.hbs',
       },
       {
-        type: "add",
-        path: "src/utilities/index.js",
-        templateFile: "plop-templates/injectable-index.js.hbs",
+        type: 'add',
+        path: 'src/utilities/index.js',
+        templateFile: 'plop-templates/injectable-index.js.hbs',
         skipIfExists: true,
       },
       {
-        type: "append",
-        path: "src/utilities/index.js",
+        type: 'append',
+        path: 'src/utilities/index.js',
+        pattern: `/* PLOP_INJECT_IMPORT */`,
+        template: `import {{camelCase name}} from './{{camelCase name}}';`,
+      },
+      {
+        type: 'append',
+        path: 'src/utilities/index.js',
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `export { {{camelCase name}} } from "./{{camelCase name}}";`,
+        template: `  {{camelCase name}},`,
       },
     ],
   });
