@@ -1,4 +1,4 @@
-require('bootstrap');
+import "bootstrap";
 import Slider from "../modules/slider/prod/Slider.min.js";
 
 const $parent = document.querySelector(".slider-wrapper");
