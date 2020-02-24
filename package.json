@@ -13,7 +13,7 @@
   "scripts": {
     "riteway": "riteway -r esm",
     "test": "parcel tests/test.html --open",
-    "build": "rm -rf prod && parcel build src/Slider.js -o src/Slider.min.js -d ./prod && parcel build src/Slider.scss -o src/Slider.min.css -d ./prod",
+    "build": "rm -rf prod && parcel build src/Slider.js -o src/Slider.min.js -d ./prod && parcel build src/slider.scss -o src/slider.min.css -d ./prod",
     "dev": "parcel test-page/index.html --open",
     "create": "plop"
   },
