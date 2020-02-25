@@ -1,51 +1,51 @@
 import "bootstrap";
 import Slider from "../modules/slider/prod/Slider.min.js";
 
-const $parent = document.querySelector(".js-slider-wrapper");
+const parent = document.querySelector(".js-slider-wrapper");
 
-Slider.create($parent, {
+Slider.create(parent, {
   boundaries: [0, 100],
   values: [20, 80],
   hasTooltips: true,
 });
 
-const $currentValuesTextInput = document.querySelector("#currentValues");
-const currentValues = Slider.getOptions($parent).values;
+const currentValuesTextInput = document.querySelector("#currentValues");
+const currentValues = Slider.getOptions(parent).values;
 
-$currentValuesTextInput.value = currentValues.join(", ");
+currentValuesTextInput.value = currentValues.join(", ");
 
-Slider.addSubscriber($parent, "update", function(options) {
-  $currentValuesTextInput.value = options.values.join(", ");
+Slider.addSubscriber(parent, "update", function(options) {
+  currentValuesTextInput.value = options.values.join(", ");
 });
 
-const $sliderPaneForm = document.querySelector(".js-slider-pane__form");
+const sliderPaneForm = document.querySelector(".js-slider-pane__form");
 
-$sliderPaneForm.addEventListener("submit", (event) => {
+sliderPaneForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const values = $currentValuesTextInput.value.split(", ");
+  const values = currentValuesTextInput.value.split(", ");
 
-  Slider.setOptions($parent, {
+  Slider.setOptions(parent, {
     values,
   });
 });
 
-const $form = document.querySelector(".js-control-pane__form");
+const form = document.querySelector(".js-control-pane__form");
 
-$form.addEventListener("submit", event => {
+form.addEventListener("submit", event => {
   event.preventDefault();
 
-  const $boundariesTextInput = document.querySelector("#boundaries");
-  const $valuesTextInput = document.querySelector("#values");
-  const $stepNumberInput = document.querySelector("#step");
-  const $orientationCheckbox = document.querySelector("#orientation");
-  const $hasTooltipsCheckbox = document.querySelector("#hasTooltips");
+  const boundariesTextInput = document.querySelector("#boundaries");
+  const valuesTextInput = document.querySelector("#values");
+  const stepNumberInput = document.querySelector("#step");
+  const orientationCheckbox = document.querySelector("#orientation");
+  const hasTooltipsCheckbox = document.querySelector("#hasTooltips");
 
-  const boundaries = $boundariesTextInput.value.split(", ");
-  const values = $valuesTextInput.value.split(", ");
-  const step = $stepNumberInput.valueAsNumber;
-  const orientation = $orientationCheckbox.checked ? "vertical" : "horizontal";
-  const hasTooltips = $hasTooltipsCheckbox.checked;
+  const boundaries = boundariesTextInput.value.split(", ");
+  const values = valuesTextInput.value.split(", ");
+  const step = stepNumberInput.valueAsNumber;
+  const orientation = orientationCheckbox.checked ? "vertical" : "horizontal";
+  const hasTooltips = hasTooltipsCheckbox.checked;
 
   const options = {
     boundaries,
@@ -55,5 +55,5 @@ $form.addEventListener("submit", event => {
     orientation,
   };
 
-  Slider.create($parent, options);
+  Slider.create(parent, options);
 });
