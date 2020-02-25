@@ -1,4 +1,4 @@
-class controlPane {
+class ViewController {
   constructor(anchorElement, model) {
     this.anchorElement = anchorElement;
     this.model = model;
@@ -40,4 +40,4 @@ class controlPane {
   }
 }
 
-export default controlPane;
+export default ViewController;
