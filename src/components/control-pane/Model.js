@@ -15,3 +15,5 @@ class Model {
 }
 
 Object.assign(Model.prototype, ObserverMixin);
+
+export default Model;
