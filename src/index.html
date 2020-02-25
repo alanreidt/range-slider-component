@@ -36,27 +36,27 @@
                 <div class="control-pane__inner">
                   <form class="js-control-pane__form">
                     <div class="form-group">
-                      <label for="boundaries" class="control-pane__label  col-form-label  col-form-label-sm">Min/Max values:</label>
-                      <input type="text" class="form-control  form-control-sm" id="boundaries" aria-describedby="boundariesHelp" placeholder="format: 0, 100">
+                      <label for="boundaries-text-input" class="control-pane__label  col-form-label  col-form-label-sm">Min/Max values:</label>
+                      <input type="text" class="form-control  form-control-sm" id="boundaries-text-input" aria-describedby="boundariesHelp" placeholder="format: 0, 100">
                       <small id="boundariesHelp" class="form-text text-muted">Negative numbers are supported too</small>
                     </div>
                     <div class="form-group">
-                      <label for="values" class="control-pane__label  col-form-label  col-form-label-sm">Initial values:</label>
-                      <input type="text" class="form-control  form-control-sm" id="values" aria-describedby="valuesHelp" placeholder="format: 20, 50, 80...">
+                      <label for="values-text-input" class="control-pane__label  col-form-label  col-form-label-sm">Initial values:</label>
+                      <input type="text" class="form-control  form-control-sm" id="values-text-input" aria-describedby="valuesHelp" placeholder="format: 20, 50, 80...">
                       <small id="valuesHelp" class="form-text text-muted">Each value represents the handle</small>
                     </div>
                     <div class="form-group">
-                      <label for="step" class="control-pane__label  col-form-label  col-form-label-sm">Step:</label>
-                      <input type="number" class="form-control  form-control-sm" id="step" aria-describedby="stepHelp" placeholder="format: 20">
+                      <label for="step-number-input" class="control-pane__label  col-form-label  col-form-label-sm">Step:</label>
+                      <input type="number" class="form-control  form-control-sm" id="step-number-input" aria-describedby="stepHelp" placeholder="format: 20">
                       <small id="stepHelp" class="form-text text-muted">From 1 to Max−Min value</small>
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="hasTooltips">
-                        <label class="control-pane__label  custom-control-label" for="hasTooltips">Include tooltips?</label>
+                        <input type="checkbox" class="custom-control-input" id="hasTooltips-checkbox">
+                        <label class="control-pane__label  custom-control-label" for="hasTooltips-checkbox">Include tooltips?</label>
                     </div>
                     <div class="form-group custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input" id="orientation">
-                      <label class="control-pane__label  custom-control-label" for="orientation">Turn vertically?</label>
+                      <input type="checkbox" class="custom-control-input" id="orientation-checkbox">
+                      <label class="control-pane__label  custom-control-label" for="orientation-checkbox">Turn vertically?</label>
                     </div>
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Create</button>
