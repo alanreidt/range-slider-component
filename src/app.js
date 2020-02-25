@@ -9,6 +9,23 @@ Slider.create($parent, {
   hasTooltips: true,
 });
 
+const $currentValuesTextInput = document.querySelector("#currentValues");
+const currentValues = Slider.getOptions($parent).values;
+
+$currentValuesTextInput.value = currentValues.join(", ");
+
+const $sliderPaneForm = document.querySelector(".js-slider-pane__form");
+
+$sliderPaneForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const values = $currentValuesTextInput.value.split(", ");
+
+  Slider.setOptions($parent, {
+    values,
+  });
+});
+
 const $form = document.querySelector(".js-control-pane__form");
 
 $form.addEventListener("submit", event => {
