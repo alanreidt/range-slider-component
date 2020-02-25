@@ -1,3 +1,5 @@
+import { ObserverMixin } from "../../../modules/slider/prod/Slider.min";
+
 class Model {
   constructor(options) {
     this.setOptions(options);
@@ -11,3 +13,5 @@ class Model {
     this._options = options;
   }
 }
+
+Object.assign(Model.prototype, ObserverMixin);
