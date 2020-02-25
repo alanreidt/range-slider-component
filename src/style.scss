@@ -111,9 +111,20 @@ body {
   min-height: 100px;
 }
 
-.playground__slider {
+.slider-pane {
   display: flex;
   flex-flow: column nowrap;
+
+  &__slider-input {
+    flex: 0 0 auto;
+  }
+
+  &__slider-wrapper {
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
+  }
 
   & .slider__base {
     border-color: #afafaf;
@@ -144,13 +155,3 @@ body {
   color: rgba(255, 255, 255, .5);
 }
 
-.slider__input {
-  flex: 1 0 0;
-}
-
-.slider-wrapper {
-  display: flex;
-  flex: auto;
-  align-items: center;
-  justify-content: center;
-}

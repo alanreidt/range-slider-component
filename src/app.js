@@ -1,7 +1,7 @@
 import "bootstrap";
 import Slider from "../modules/slider/prod/Slider.min.js";
 
-const $parent = document.querySelector(".slider-wrapper");
+const $parent = document.querySelector(".js-slider-wrapper");
 
 const $form = document.querySelector(".js-control-pane__form");
 const $boundariesTextInput = document.querySelector("#boundaries");
