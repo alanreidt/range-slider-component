@@ -14,6 +14,10 @@ const currentValues = Slider.getOptions($parent).values;
 
 $currentValuesTextInput.value = currentValues.join(", ");
 
+Slider.addSubscriber($parent, "update", function(options) {
+  $currentValuesTextInput.value = options.values.join(", ");
+});
+
 const $sliderPaneForm = document.querySelector(".js-slider-pane__form");
 
 $sliderPaneForm.addEventListener("submit", (event) => {
