@@ -9,7 +9,7 @@ Slider.create(parent, {
   hasTooltips: true,
 });
 
-const currentValuesTextInput = document.querySelector("#currentValues");
+const currentValuesTextInput = document.querySelector(".js-current-values-text-input");
 const currentValues = Slider.getOptions(parent).values;
 
 currentValuesTextInput.value = currentValues.join(", ");
@@ -35,11 +35,11 @@ const form = document.querySelector(".js-control-pane__form");
 form.addEventListener("submit", event => {
   event.preventDefault();
 
-  const boundariesTextInput = document.querySelector("#boundaries");
-  const valuesTextInput = document.querySelector("#values");
-  const stepNumberInput = document.querySelector("#step");
-  const orientationCheckbox = document.querySelector("#orientation");
-  const hasTooltipsCheckbox = document.querySelector("#hasTooltips");
+  const boundariesTextInput = document.querySelector(".js-boundaries-text-input");
+  const valuesTextInput = document.querySelector(".js-values-text-input");
+  const stepNumberInput = document.querySelector(".js-step-number-input");
+  const orientationCheckbox = document.querySelector(".js-orientation-checkbox");
+  const hasTooltipsCheckbox = document.querySelector(".js-hasTooltips-checkbox");
 
   const boundaries = boundariesTextInput.value.split(", ");
   const values = valuesTextInput.value.split(", ");
