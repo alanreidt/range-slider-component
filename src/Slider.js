@@ -60,6 +60,40 @@ const Slider = {
   setValueAt(parent, index, value) {
     this._parentsMap.get(parent).model.setValueAt(index, value);
   },
+
+  /**
+   * Subscribe to event, usage:
+   *   menu.addSubscriber( "select", function(item) { ... } ),
+   *   menu.addSubscriber( "select", obj.method(item) { ... }.bind(obj) )
+   *
+   * @param {string} eventName The name of an event to listen to.
+   * @param {function} subscriber The subscriber to be triggered on the event.
+   */
+  addSubscriber(parent, eventName, subscriber) {
+    this._parentsMap.get(parent).model.addSubscriber(eventName, subscriber);
+  },
+
+  /**
+   * Cancel the subscription, usage:
+   *   menu.removeSubscriber("select", subscriber)
+   *
+   * @param {string} eventName The name of an event to which subscriber is listen to.
+   * @param {function} subscriber The subscriber to be removed from the list.
+   */
+  removeSubscriber(parent, eventName, subscriber) {
+    this._parentsMap.get(parent).model.removeSubscriber(eventName, subscriber);
+  },
+
+  /**
+   * Generate an event with the given name and data, usage:
+   *   this.triggerSubscribers("select", data1, data2);
+   *
+   * @param {string} eventName The name of an event to trigger.
+   * @param {any} arg1...args The data to be passed to subscribers.
+   */
+  triggerSubscribers(parent, eventName, ...args) {
+    this._parentsMap.get(parent).model.triggerSubscribers(eventName, ...args);
+  },
 };
 
 export default Slider;
