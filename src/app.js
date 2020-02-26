@@ -4,32 +4,50 @@ import Slider from '../modules/slider/prod/Slider.min.js';
 import ControlPane from './components/control-pane/ControlPane';
 import ControlInput from './components/control-input/ControlInput';
 
-const parent = document.querySelector('.js-slider-wrapper');
+class App {
+  constructor(anchorElement) {
+    this.anchorElement = anchorElement;
 
-Slider.create(parent, {
-  boundaries: [0, 100],
-  step: 1,
-  values: [20, 80],
-  hasTooltips: true,
-  orientation: 'horizontal',
-});
+    this._attachElements();
+    this._createComponents();
+    this._tieComponents();
+  }
 
-const controlPaneAnchorElement = document.querySelector('.js-control-pane');
+  _attachElements() {
+    this.sliderElement = this.anchorElement.querySelector('.js-slider-wrapper');
+    this.controlPaneElement = this.anchorElement.querySelector('.js-control-pane');
+    this.controlInputElement = this.anchorElement.querySelector('.js-control-input');
+  }
 
-ControlPane.create(controlPaneAnchorElement, {});
+  _createComponents() {
+    Slider.create(this.sliderElement, {
+      boundaries: [0, 100],
+      step: 1,
+      values: [20, 80],
+      hasTooltips: true,
+      orientation: 'horizontal',
+    });
 
-ControlPane.addSubscriber(controlPaneAnchorElement, 'update', (options) => {
-  Slider.create(parent, options);
-});
+    ControlPane.create(this.controlPaneElement, {});
 
-const controlInputAnchorElement = document.querySelector('.js-control-input');
+    ControlInput.create(this.controlInputElement, Slider.getOptions(this.sliderElement));
+  }
 
-ControlInput.create(controlInputAnchorElement, Slider.getOptions(parent));
+  _tieComponents() {
+    ControlPane.addSubscriber(this.controlPaneElement, 'update', (options) => {
+      Slider.create(this.sliderElement, options);
+    });
 
-ControlInput.addSubscriber(controlInputAnchorElement, 'update', (options) => {
-  Slider.setOptions(parent, options);
-});
+    ControlInput.addSubscriber(this.controlInputElement, 'update', (options) => {
+      Slider.setOptions(this.sliderElement, options);
+    });
 
-Slider.addSubscriber(parent, 'update', (options) => {
-  ControlInput.setOptions(controlInputAnchorElement, options);
-});
+    Slider.addSubscriber(this.sliderElement, 'update', (options) => {
+      ControlInput.setOptions(this.controlInputElement, options);
+    });
+  }
+}
+
+const appElement = document.querySelector('.js-app');
+
+window.addEventListener("load", new App(appElement));
