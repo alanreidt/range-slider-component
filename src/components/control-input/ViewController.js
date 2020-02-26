@@ -10,7 +10,7 @@ class ViewController {
   }
 
   setElements({ values } = {}) {
-    this.currentValuesTextInput.setAttributes('value', values.join(', '));
+    this.currentValuesTextInput.setAttribute('value', values.join(', '));
   }
 
   _bindMethods() {
