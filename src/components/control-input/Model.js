@@ -1,3 +1,4 @@
+import deepEqual from 'deep-equal';
 import cloneDeep from 'lodash/cloneDeep';
 
 import { ObserverMixin } from '../../../modules/utilities';
@@ -14,6 +15,8 @@ class Model {
   }
 
   setOptions(options) {
+    if (deepEqual(this._options, options)) return;
+
     this._options = options;
 
     this.triggerSubscribers('update', this.getOptions());
