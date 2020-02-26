@@ -5,11 +5,11 @@ import ControlPane from './components/control-pane/ControlPane';
 import ControlInput from './components/control-input/ControlInput';
 
 class App {
-  constructor(anchorElement) {
+  constructor(anchorElement, options) {
     this.anchorElement = anchorElement;
 
     this._attachElements();
-    this._createComponents();
+    this._createComponents(options);
     this._tieComponents();
   }
 
@@ -19,18 +19,10 @@ class App {
     this.controlInputElement = this.anchorElement.querySelector('.js-control-input');
   }
 
-  _createComponents() {
-    Slider.create(this.sliderElement, {
-      boundaries: [0, 100],
-      step: 1,
-      values: [20, 80],
-      hasTooltips: true,
-      orientation: 'horizontal',
-    });
-
-    ControlPane.create(this.controlPaneElement, {});
-
-    ControlInput.create(this.controlInputElement, Slider.getOptions(this.sliderElement));
+  _createComponents(options) {
+    Slider.create(this.sliderElement, options);
+    ControlPane.create(this.controlPaneElement, options);
+    ControlInput.create(this.controlInputElement, options);
   }
 
   _tieComponents() {
@@ -50,4 +42,10 @@ class App {
 
 const appElement = document.querySelector('.js-app');
 
-window.addEventListener("load", new App(appElement));
+window.addEventListener("load", new App(appElement, {
+  boundaries: [0, 100],
+  step: 1,
+  values: [20, 80],
+  hasTooltips: true,
+  orientation: 'horizontal',
+}));
