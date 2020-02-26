@@ -1,7 +1,9 @@
-import { ObserverMixin } from "../../../modules/slider/prod/Slider.min";
+import { ObserverMixin } from '../../../modules/utilities';
 
 class Model {
   constructor(options) {
+    this._options = {};
+
     this.setOptions(options);
   }
 
@@ -11,6 +13,8 @@ class Model {
 
   setOptions(options) {
     this._options = options;
+
+    this.triggerSubscribers('update', this.getOptions());
   }
 }
 
