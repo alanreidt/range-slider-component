@@ -2,6 +2,7 @@ import 'bootstrap';
 
 import Slider from '../modules/slider/prod/Slider.min.js';
 import ControlPane from './components/control-pane/ControlPane';
+import ControlInput from './components/control-input/ControlInput';
 
 const parent = document.querySelector('.js-slider-wrapper');
 
@@ -21,23 +22,14 @@ ControlPane.addSubscriber(controlPaneAnchorElement, 'update', (options) => {
   Slider.create(parent, options);
 });
 
-const currentValuesTextInput = document.querySelector('.js-current-values-text-input');
-const currentValues = Slider.getOptions(parent).values;
+const controlInputAnchorElement = document.querySelector('.js-control-input');
 
-currentValuesTextInput.value = currentValues.join(', ');
+ControlInput.create(controlInputAnchorElement, Slider.getOptions(parent));
 
-Slider.addSubscriber(parent, 'update', function(options) {
-  currentValuesTextInput.value = options.values.join(', ');
+ControlInput.addSubscriber(controlInputAnchorElement, 'update', (options) => {
+  Slider.setOptions(parent, options);
 });
 
-const sliderPaneForm = document.querySelector('.js-slider-pane__form');
-
-sliderPaneForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-
-  const values = currentValuesTextInput.value.split(', ');
-
-  Slider.setOptions(parent, {
-    values,
-  });
+Slider.addSubscriber(parent, 'update', (options) => {
+  ControlInput.setOptions(controlInputAnchorElement, options);
 });
