@@ -30,7 +30,7 @@ class ViewController {
     const orientation = this.orientationCheckbox.checked ? 'vertical' : 'horizontal';
     const hasTooltips = this.hasTooltipsCheckbox.checked;
 
-    model.setOptions({
+    this.model.setOptions({
       boundaries,
       values,
       step,
