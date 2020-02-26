@@ -7,8 +7,10 @@ const parent = document.querySelector('.js-slider-wrapper');
 
 Slider.create(parent, {
   boundaries: [0, 100],
+  step: 1,
   values: [20, 80],
   hasTooltips: true,
+  orientation: 'horizontal',
 });
 
 const controlPaneAnchorElement = document.querySelector('.js-control-pane');
