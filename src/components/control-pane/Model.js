@@ -1,3 +1,5 @@
+import cloneDeep from 'lodash/cloneDeep';
+
 import { ObserverMixin } from '../../../modules/utilities';
 
 class Model {
@@ -8,7 +10,7 @@ class Model {
   }
 
   getOptions() {
-    return this._options;
+    return cloneDeep(this._options);
   }
 
   setOptions(options) {
