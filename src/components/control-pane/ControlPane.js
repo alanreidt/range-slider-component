@@ -17,6 +17,11 @@ const ControlPane = {
   create(anchorElement, options) {
     const model = new Model(options);
     const viewController = new ViewController(anchorElement, model);
+    const viewControllerSetElementsBound = viewController.setElements.bind(
+      viewController,
+    );
+
+    model.addSubscriber('update', viewControllerSetElementsBound);
 
     this._parentsMap.set(anchorElement, {
       model,
