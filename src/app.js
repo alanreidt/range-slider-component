@@ -27,7 +27,7 @@ class App {
 
   _tieComponents() {
     ControlPane.addSubscriber(this.controlPaneElement, 'update', (options) => {
-      Slider.create(this.sliderElement, options);
+      new this.constructor(this.anchorElement, options);
     });
 
     ControlInput.addSubscriber(this.controlInputElement, 'update', (options) => {
