@@ -114,6 +114,8 @@ body {
 .display {
   display: flex;
   flex-flow: column nowrap;
+  width: 100%;
+  height: 100%;
 
   &__control-input {
     flex: 0 0 auto;
