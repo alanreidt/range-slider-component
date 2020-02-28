@@ -18,8 +18,8 @@ class ViewController {
   }
 
   _attachElements() {
-    this.form = this.anchorElement.querySelector('.js-slider-pane__form');
-    this.currentValuesTextInput = this.anchorElement.querySelector('.js-current-values-text-input');
+    this.form = this.anchorElement.querySelector('.js-control-input__form');
+    this.currentValuesTextInput = this.anchorElement.querySelector('.js-control-input__values-input');
   }
 
   _handleFormSubmit(event) {

@@ -14,7 +14,7 @@ class PlayGround {
   _attachElements() {
     this.sliderElement = this.anchorElement.querySelector('.js-slider-wrapper');
     this.controlPaneElement = this.anchorElement.querySelector('.js-control-pane');
-    this.controlInputElement = this.anchorElement.querySelector('.js-control-input');
+    this.controlInputElement = this.anchorElement.querySelector('.js-control-input-wrapper');
   }
 
   _createComponents(options) {
