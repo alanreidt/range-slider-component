@@ -6,6 +6,15 @@ class ViewController {
     this._bindMethods();
     this._attachElements();
     this.form.addEventListener('submit', this._handleFormSubmit);
+    this.setElements(model.getOptions())
+  }
+
+  setElements({ boundaries, values, step, orientation, hasTooltips } = {}) {
+    this.boundariesTextInput.value = boundaries.join(', ');
+    this.valuesTextInput.value = values.join(', ');
+    this.stepNumberInput.value = step;
+    this.orientationCheckbox.checked = orientation === 'vertical' ? true : false;
+    this.hasTooltipsCheckbox.checked = hasTooltips;
   }
 
   _bindMethods() {
