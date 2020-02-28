@@ -22,7 +22,7 @@ class App {
   _createComponents(options) {
     Slider.create(this.sliderElement, options);
     ControlPane.create(this.controlPaneElement, options);
-    ControlInput.create(this.controlInputElement, options);
+    ControlInput.create(this.controlInputElement, Slider.getOptions(this.sliderElement));
   }
 
   _tieComponents() {
