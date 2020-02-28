@@ -1,6 +1,6 @@
-import Slider from '../modules/slider/prod/Slider.min.js';
-import ControlPane from './components/control-pane/ControlPane';
-import ControlInput from './components/control-input/ControlInput';
+import Slider from '../../../modules/slider/prod/Slider.min.js';
+import ControlPane from '../control-pane/ControlPane';
+import ControlInput from '../control-input/ControlInput';
 
 class PlayGround {
   constructor(anchorElement, options) {
