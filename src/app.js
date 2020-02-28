@@ -4,7 +4,7 @@ import Slider from '../modules/slider/prod/Slider.min.js';
 import ControlPane from './components/control-pane/ControlPane';
 import ControlInput from './components/control-input/ControlInput';
 
-class App {
+class PlayGround {
   constructor(anchorElement, options) {
     this.anchorElement = anchorElement;
 
@@ -42,7 +42,7 @@ class App {
 
 const appElement = document.querySelector('.js-app');
 
-window.addEventListener("load", new App(appElement, {
+window.addEventListener("load", new PlayGround(appElement, {
   boundaries: [0, 100],
   step: 1,
   values: [20, 80],
