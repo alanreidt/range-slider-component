@@ -32,36 +32,38 @@
               </div>
               <div class="slider-pane__slider-wrapper  js-slider-wrapper"></div>
             </div>
-            <div class="control-pane  js-control-pane  col-sm">
-              <div class="control-pane__inner">
-                <form class="js-control-pane__form">
-                  <div class="form-group">
-                    <label for="boundaries-text-input" class="control-pane__label  col-form-label  col-form-label-sm">Min/Max values:</label>
-                    <input type="text" class="form-control  form-control-sm  js-boundaries-text-input" id="boundaries-text-input" aria-describedby="boundariesHelp" placeholder="format: 0, 100">
-                    <small id="boundariesHelp" class="form-text text-muted">Negative numbers are supported too</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="values-text-input" class="control-pane__label  col-form-label  col-form-label-sm">Initial values:</label>
-                    <input type="text" class="form-control  form-control-sm  js-values-text-input" id="values-text-input" aria-describedby="valuesHelp" placeholder="format: 20, 50, 80...">
-                    <small id="valuesHelp" class="form-text text-muted">Each value represents the handle</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="step-number-input" class="control-pane__label  col-form-label  col-form-label-sm">Step:</label>
-                    <input type="number" class="form-control  form-control-sm  js-step-number-input" id="step-number-input" aria-describedby="stepHelp" placeholder="format: 20">
-                    <small id="stepHelp" class="form-text text-muted">From 1 to Max−Min value</small>
-                  </div>
-                  <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input  js-hasTooltips-checkbox" id="hasTooltips-checkbox">
-                      <label class="control-pane__label  custom-control-label" for="hasTooltips-checkbox">Include tooltips?</label>
-                  </div>
-                  <div class="form-group custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input  js-orientation-checkbox" id="orientation-checkbox">
-                    <label class="control-pane__label  custom-control-label" for="orientation-checkbox">Turn vertically?</label>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                  </div>
-                </form>
+            <div class="col-sm">
+              <div class="control-pane  js-control-pane">
+                <div class="control-pane__inner">
+                  <form class="js-control-pane__form">
+                    <div class="form-group">
+                      <label for="boundaries-text-input" class="control-pane__label  col-form-label  col-form-label-sm">Min/Max values:</label>
+                      <input type="text" class="form-control  form-control-sm  js-boundaries-text-input" id="boundaries-text-input" aria-describedby="boundariesHelp" placeholder="format: 0, 100">
+                      <small id="boundariesHelp" class="form-text text-muted">Negative numbers are supported too</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="values-text-input" class="control-pane__label  col-form-label  col-form-label-sm">Initial values:</label>
+                      <input type="text" class="form-control  form-control-sm  js-values-text-input" id="values-text-input" aria-describedby="valuesHelp" placeholder="format: 20, 50, 80...">
+                      <small id="valuesHelp" class="form-text text-muted">Each value represents the handle</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="step-number-input" class="control-pane__label  col-form-label  col-form-label-sm">Step:</label>
+                      <input type="number" class="form-control  form-control-sm  js-step-number-input" id="step-number-input" aria-describedby="stepHelp" placeholder="format: 20">
+                      <small id="stepHelp" class="form-text text-muted">From 1 to Max−Min value</small>
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input  js-hasTooltips-checkbox" id="hasTooltips-checkbox">
+                        <label class="control-pane__label  custom-control-label" for="hasTooltips-checkbox">Include tooltips?</label>
+                    </div>
+                    <div class="form-group custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input  js-orientation-checkbox" id="orientation-checkbox">
+                      <label class="control-pane__label  custom-control-label" for="orientation-checkbox">Turn vertically?</label>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
