@@ -1,0 +1,15 @@
+//-
+  Parameters:
+    labelText {string} !required — text for label tag
+  Attributes:
+    id !required
+mixin checkbox(labelText = 'change me!')
+  .checkbox.form-group
+    .custom-control.custom-switch
+      input.custom-control-input(
+        type="checkbox"
+        id != attribute.id
+      )&attributes(attributes)
+      label.checkbox__label.custom-control-label(
+        for != attribute.id
+      )= labelText
