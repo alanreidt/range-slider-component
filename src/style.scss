@@ -1,8 +1,6 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../modules/slider/prod/slider.min.css";
-@import "./components/input-field/input-field.scss";
-@import "./components/checkbox/checkbox.scss";
-@import "./components/button/button.scss";
+@import "./components/control-pane/control-pane.scss";
 
 /*
  * Globals
@@ -135,12 +133,6 @@ body {
     border-color: #afafaf;
     background-color: #cacaca;
   }
-}
-
-.control-pane {
-  padding: 0.5rem 1rem;
-  border: 3px solid #333;
-  border-radius: 0.5rem;
 }
 
 /*
