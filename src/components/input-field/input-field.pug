@@ -1,0 +1,12 @@
+mixin input-field(labelText = 'change me!', helpText = undefined)
+  -
+    const isHelpText = helpText !== undefined;
+    const helpTextId = attributes.id + '-help';
+
+  .form-group
+    label.input-field__label.col-form-label.col-form-label-sm(
+      for != attributes.id
+    )= labelText
+    input.form-control.form-control-sm(aria-describedby != isHelpText && helpTextId)&attributes(attributes)
+    if (isHelpText)
+      small.form-text.text-muted(id != helpTextId)= helpText
