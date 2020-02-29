@@ -10,7 +10,7 @@ mixin input-field(labelText = 'change me!', helpText = undefined)
     const isHelpText = helpText !== undefined;
     const helpTextId = attributes.id + '-help';
 
-  .form-group
+  .input-field.form-group
     label.input-field__label.col-form-label.col-form-label-sm(
       for != attributes.id
     )= labelText
