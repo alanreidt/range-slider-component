@@ -38,21 +38,22 @@ include ./components/input-field/input-field
               <div class="control-pane  js-control-pane">
                 <div class="control-pane__inner">
                   <form class="js-control-pane__form">
-                    <div class="form-group">
-                      <label for="control-pane__boundaries-input" class="control-pane__label  col-form-label  col-form-label-sm">Min/Max values:</label>
-                      <input type="text" class="form-control  form-control-sm  js-control-pane__boundaries-input" id="control-pane__boundaries-input" aria-describedby="control-pane__boundaries-input-help" placeholder="format: 0, 100">
-                      <small id="control-pane__boundaries-input-help" class="form-text text-muted">Negative numbers are supported too</small>
-                    </div>
-                    <div class="form-group">
-                      <label for="control-pane__values-input" class="control-pane__label  col-form-label  col-form-label-sm">Initial values:</label>
-                      <input type="text" class="form-control  form-control-sm  js-control-pane__values-input" id="control-pane__values-input" aria-describedby="control-pane__values-input-help" placeholder="format: 20, 50, 80...">
-                      <small id="control-pane__values-input-help" class="form-text text-muted">Each value represents the handle</small>
-                    </div>
-                    <div class="form-group">
-                      <label for="control-pane__step-input" class="control-pane__label  col-form-label  col-form-label-sm">Step:</label>
-                      <input type="number" class="form-control  form-control-sm  js-control-pane__step-input" id="control-pane__step-input" aria-describedby="control-pane__step-input-help" placeholder="format: 20">
-                      <small id="control-pane__step-input-help" class="form-text text-muted">From 1 to Max−Min value</small>
-                    </div>
+                    +input-field("boundary (Max/Min) values:", "negative numbers are supported too")(
+                      class="js-control-pane__boundaries-input"
+                      id="control-pane__boundaries-input"
+                      placeholder="format: 0, 100"
+                    )
+                    +input-field("initial values:", "each value represents the handle")(
+                      class="js-control-pane__values-input"
+                      id="control-pane__values-input"
+                      placeholder="format: 20, 50, 80..."
+                    )
+                    +input-field("step:", "from 1 to Max−Min value")(
+                      type="number"
+                      class="js-control-pane__step-input"
+                      id="control-pane__step-input"
+                      placeholder="format: 20"
+                    )
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input  js-control-pane__hasTooltips-checkbox" id="control-pane__hasTooltips-checkbox">
                         <label class="control-pane__label  custom-control-label" for="control-pane__hasTooltips-checkbox">Include tooltips?</label>
