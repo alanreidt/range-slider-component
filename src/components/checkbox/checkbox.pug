@@ -8,8 +8,8 @@ mixin checkbox(labelText = 'change me!')
     .custom-control.custom-switch
       input.custom-control-input(
         type="checkbox"
-        id != attribute.id
+        id != attributes.id
       )&attributes(attributes)
       label.checkbox__label.custom-control-label(
-        for != attribute.id
+        for != attributes.id
       )= labelText
