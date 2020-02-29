@@ -1,6 +1,7 @@
 include ./components/control-input/control-input
 include ./components/input-field/input-field
 include ./components/checkbox/checkbox
+include ./components/button/button
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,9 +64,8 @@ include ./components/checkbox/checkbox
                       class="js-control-pane__orientation-checkbox"
                       id="control-pane__orientation-checkbox"
                     )
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Create</button>
-                    </div>
+                    .text-center
+                      +button('create')
                   </form>
                 </div>
               </div>
