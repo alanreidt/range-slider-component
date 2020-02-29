@@ -1,0 +1,12 @@
+mixin control-input()
+  .control-input.js-control-input
+    form.js-control-input__form
+      .form-group
+        label.control-pane__label.col-form-label.col-form-label-sm(
+          for='control-input__values-input'
+        ) Current values:
+        input.form-control.form-control-sm.js-control-input__values-input(
+          type='text'
+          id='control-input__values-input'
+          placeholder='format: 100, 300'
+        )
