@@ -1,0 +1,10 @@
+.checkbox {
+  &__label {
+    color: #333;
+    text-transform: capitalize;
+  }
+
+  & .form-group + & .form-group {
+    margin-bottom: 0;
+  }
+}
