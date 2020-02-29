@@ -23,11 +23,11 @@ class ViewController {
 
   _attachElements() {
     this.form = this.anchorElement.querySelector('.js-control-pane__form');
-    this.boundariesTextInput = this.anchorElement.querySelector('.js-boundaries-text-input');
-    this.valuesTextInput = this.anchorElement.querySelector('.js-values-text-input');
-    this.stepNumberInput = this.anchorElement.querySelector('.js-step-number-input');
-    this.orientationCheckbox = this.anchorElement.querySelector('.js-orientation-checkbox');
-    this.hasTooltipsCheckbox = this.anchorElement.querySelector('.js-hasTooltips-checkbox');
+    this.boundariesTextInput = this.anchorElement.querySelector('.js-control-pane__boundaries-input');
+    this.valuesTextInput = this.anchorElement.querySelector('.js-control-pane__values-input');
+    this.stepNumberInput = this.anchorElement.querySelector('.js-control-pane__step-input');
+    this.orientationCheckbox = this.anchorElement.querySelector('.js-control-pane__orientation-checkbox');
+    this.hasTooltipsCheckbox = this.anchorElement.querySelector('.js-control-pane__hasTooltips-checkbox');
   }
 
   _handleFormSubmit(event) {
