@@ -1,7 +1,7 @@
 include ../playground/playground
 
 mixin playground-carousel(dataSet)
-  .playground-carousel.carousel.slide(id='playgroundCarousel' data-ride='false')
+  .playground-carousel.carousel.slide(id='playgroundCarousel' data-ride='carousel')
     ol.carousel-indicators
       each data, index in dataSet
         li(class={active: index === 0} data-target='#playgroundCarousel' data-slide-to=index)
