@@ -1,7 +1,6 @@
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../modules/slider/prod/slider.min.css";
-@import "./components/control-pane/control-pane.scss";
-@import "./components/display/display.scss";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "./components/playground/playground.scss";
 
 /*
  * Globals
@@ -105,11 +104,6 @@ body {
 .cover .btn-lg {
   padding: .75rem 1.25rem;
   font-weight: 700;
-}
-
-.playground {
-  background-color: #fff;
-  min-height: 100px;
 }
 
 /*
