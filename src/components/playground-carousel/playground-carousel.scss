@@ -1,6 +1,12 @@
 @import "./components/playground/playground.scss";
 
 .playground-carousel {
+  & .carousel-control-prev,
+  & .carousel-control-next {
+    @media (max-width: 845px) {
+      display: none;
+    }
+  }
   & .carousel-control-prev {
     left: auto;
     right: 100%;
