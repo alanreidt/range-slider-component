@@ -1,5 +1,6 @@
 include ./components/control-input/control-input
 include ./components/control-pane/control-pane
+include ./components/display/display
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,12 +28,7 @@ include ./components/control-pane/control-pane
         <div class="playground  js-playground  rounded  p-3">
           <div class="row">
             <div class="col-sm">
-              <div class="display">
-                <div class="display__control-input  js-control-input-wrapper">
-                  +control-input()
-                </div>
-                <div class="display__slider-wrapper  js-slider-wrapper"></div>
-              </div>
+              +display()
             </div>
             <div class="col-sm">
               +control-pane()
