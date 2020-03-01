@@ -1,29 +1,22 @@
 include ../playground/playground
 
 mixin playground-carousel()
-  <div id="playgroundCarousel" class="playground-carousel carousel slide" data-ride="false">
-    <ol class="carousel-indicators">
-      <li data-target="#playgroundCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#playgroundCarousel" data-slide-to="1"></li>
-      <li data-target="#playgroundCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
+  .playground-carousel.carousel.slide(id='playgroundCarousel' data-ride='false')
+    ol.carousel-indicators
+      li.active(data-target='#playgroundCarousel' data-slide-to='0')
+      li(data-target='#playgroundCarousel' data-slide-to='1')
+      li(data-target='#playgroundCarousel' data-slide-to='2')
+    .carousel-inner
+      .carousel-item.active
         +playground('default example')
-      </div>
-      <div class="carousel-item">
+      .carousel-item
         +playground('custom example')
-      </div>
-      <div class="carousel-item">
+      .carousel-item
         +playground('vertical example')
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#playgroundCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#playgroundCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+    a.carousel-control-prev(href='#playgroundCarousel' role='button' data-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.sr-only Previous
+    a.carousel-control-next(href='#playgroundCarousel' role='button' data-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.sr-only Next
+
