@@ -19,8 +19,11 @@ class PlayGround {
 
   _createComponents(options) {
     Slider.create(this.sliderElement, options);
-    ControlPane.create(this.controlPaneElement, options);
-    ControlInput.create(this.controlInputElement, Slider.getOptions(this.sliderElement));
+
+    const sliderOptions = Slider.getOptions(this.sliderElement);
+
+    ControlPane.create(this.controlPaneElement, sliderOptions);
+    ControlInput.create(this.controlInputElement, sliderOptions);
   }
 
   _tieComponents() {
