@@ -1,4 +1,4 @@
-const optionsSets = [
+const dataSet = [
   {
     title: 'default example',
     options: {},
@@ -25,4 +25,4 @@ const optionsSets = [
   }
 ];
 
-export { optionsSets };
+export { dataSet };
