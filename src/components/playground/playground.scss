@@ -2,6 +2,12 @@
 @import "../control-pane/control-pane.scss";
 
 .playground {
-  background-color: #fff;
-  min-height: 100px;
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__body {
+    background-color: #fff;
+    min-height: 100px;
+  }
 }
