@@ -2,33 +2,36 @@ include ../input-field/input-field
 include ../checkbox/checkbox
 include ../button/button
 
-mixin control-pane()
+//-
+  Parameters:
+    name {string} !required — unique name for control pane inputs id
+mixin control-pane(name = 'control-pane')
   .control-pane.js-control-pane
     .control-pane__inner
       form.js-control-pane__form
         +input-field('boundary (Min/Max) values:', 'negative numbers are supported too')(
           class='js-control-pane__boundaries-input'
-          id='control-pane__boundaries-input'
+          id=`${name}-boundaries-input`
           placeholder='format: 0, 100'
         )
         +input-field('initial values:', 'each value represents the handle')(
           class='js-control-pane__values-input'
-          id='control-pane__values-input'
+          id=`${name}-values-input`
           placeholder='format: 20, 50, 80...'
         )
         +input-field('step:', 'from 1 to Max−Min value')(
           type='number'
           class='js-control-pane__step-input'
-          id='control-pane__step-input'
+          id=`${name}-step-input`
           placeholder='format: 20'
         )
         +checkbox('include tooltips?')(
           class='js-control-pane__hasTooltips-checkbox'
-          id='control-pane__hasTooltips-checkbox'
+          id=`${name}-hasTooltips-checkbox`
         )
         +checkbox('turn vertically?')(
           class='js-control-pane__orientation-checkbox'
-          id='control-pane__orientation-checkbox'
+          id=`${name}-orientation-checkbox`
         )
         .text-center
           +button('create')
