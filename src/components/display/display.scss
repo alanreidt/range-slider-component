@@ -7,6 +7,7 @@
 
   &__control-input {
     flex: 0 0 auto;
+    width: 100%;
     max-width: 200px;
   }
 
@@ -15,6 +16,9 @@
     flex: auto;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    max-width: 25rem;
+    margin: auto;
   }
 
   & .slider__base {
