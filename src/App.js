@@ -11,11 +11,13 @@ class App {
   }
 
   _attachElements() {
-    this.playground = this.anchorElement.querySelector('.js-playground');
+    this.playgrounds = this.anchorElement.querySelectorAll('.js-playground');
   }
 
   _createComponents(options) {
-    new PlayGround(this.playground, options);
+    this.playgrounds.forEach((playground) => {
+      new PlayGround(playground, options);
+    });
   }
 }
 
