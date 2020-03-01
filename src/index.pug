@@ -1,5 +1,34 @@
 include ./components/playground-carousel/playground-carousel
 
+-
+  const dataSet = [
+    {
+      title: 'default example',
+      options: {},
+    },
+    {
+      title: 'custom example',
+      options: {
+        boundaries: [-200, 300],
+        values: [-100, 200],
+        step: 10,
+        orientation: 'horizontal',
+        hasTooltips: true,
+      },
+    },
+    {
+      title: 'vertical example',
+      options: {
+        boundaries: [-500, 500],
+        values: [-300, -200, 200],
+        step: 25,
+        orientation: 'vertical',
+        hasTooltips: true,
+      },
+    }
+  ];
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +51,7 @@ include ./components/playground-carousel/playground-carousel
       </header>
 
       <main role="main" class="page__content  inner  cover">
-        +playground-carousel()
+        +playground-carousel(dataSet)
       </main>
 
       <footer class="mastfoot mt-auto">
