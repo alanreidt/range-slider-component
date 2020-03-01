@@ -5,6 +5,8 @@ include ../control-pane/control-pane
   Parameters:
     title {string} !required — title for playground section
 mixin playground(title = 'change-me!')
+  - const controlPaneName = title.toLowerCase().split(" ").join("-");
+
   .playground.js-playground
     h2.playground__title.cover-heading.text-center= title
     .playground__body.rounded.p-3
@@ -12,4 +14,4 @@ mixin playground(title = 'change-me!')
         .col-sm
           +display()
         .col-sm
-          +control-pane()
+          +control-pane(controlPaneName)
