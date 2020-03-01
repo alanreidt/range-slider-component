@@ -4,6 +4,10 @@
 .playground {
   &__title {
     text-transform: capitalize;
+
+    @media (max-width: 845px) {
+      font-size: 1.65rem;
+    }
   }
 
   &__body {
