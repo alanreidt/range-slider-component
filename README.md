@@ -3,7 +3,7 @@
 ## Introduction
 > Note: This project is regarded as portfolio background, so it's not ready for distribution (maybe, yet).
 
-Welcome to Slider plugin github page. Although it looks like every other range slider, the component has several advantages, that make it unique.
+Welcome to Slider plugin github page. Although it looks like every other range Slider, the component has several advantages, that make it unique.
 
 The main one is a client-oriented approach. It has an API, that accepts variety of input data types (user decides what is convenient for him) and strict data types of output, which makes it predictable. And beyond that, application logic handles input contradictions and correct them in a predictable manner (implicitly, for now).
 
@@ -46,19 +46,19 @@ Unzip and place folder within your project folder.
 
 And then, enter next lines in your main html file (or check `test-page` folder to see how to connect it directly to js and css files):
 ```html
-<!-- import slider style (change yourpath) -->
+<!-- import Slider style (change yourpath) -->
 <link rel="stylesheet" href="{your_path}/slider/prod/slider.min.css">
 
-<!-- import slider API unit (change yourpath) -->
+<!-- import Slider API unit (change yourpath) -->
 <script src="{your_path}/slider/prod/Slider.min.js"></script>
 ```
 
-And by next command initialize slider:
+And by next command initialize Slider:
 ```javascript
 // select your DOM element
 const parent = document.querySelector(".slider-wrapper");
 
-// and create slider with options
+// and create Slider with options
 Slider.create(parent, {
   boundaries: [0, 100],
   values: [20, 80],
@@ -69,11 +69,11 @@ Slider.create(parent, {
 
 Possible options are described in [the options section](#options).
 
-By the way, don't forget to set `height` for vertical slider on `parent` element (because slider is created inside):
+By the way, don't forget to set `height` for vertical Slider on `parent` element (because Slider is created inside):
 ```css
 /* parent element for Slider */
 .slider-wrapper {
-  /* the ruleset will allow slider to be responsive */
+  /* the ruleset will allow Slider to be responsive */
   height: 100%;
   max-height: 300px;
 }
@@ -84,7 +84,7 @@ Slider will take all free space up — it has `width` or `height` equal to `100%
 ## Documentation
 
 ### API
-*slider object*, which localized in the `src/Slider.js` file is dedicated as *Slider API Unit*.
+*Slider object*, which localized in the `src/Slider.js` file is dedicated as *Slider API Unit*.
 
 Use its methods to interact with Slider entity.
 
@@ -174,10 +174,10 @@ Or you can create Slider with tooltips and then hide them through css, when desi
 Slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
 
 #### Model
-The module contains business logic of Slider component: possible slider options and logic around them.
+The module contains business logic of Slider component: possible Slider options and logic around them.
 
 #### ViewController
-This module is responsible for display of current slider state and handling of user actions.
+This module is responsible for display of current Slider state and handling of user actions.
 
 It translates position of occurred events into Slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `Model`.
 
