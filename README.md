@@ -84,7 +84,7 @@ Slider will take all free space up — it has `width` or `height` equal to `100%
 ## Documentation
 
 ### API
-*slider object*, which localized in the `Slider.js` file is dedicated as *Slider API Unit*.
+*slider object*, which localized in the `src/Slider.js` file is dedicated as *Slider API Unit*.
 
 Use its methods to interact with Slider entity.
 
