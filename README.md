@@ -100,6 +100,14 @@ Compose from js docs.
 Compose from js docs.
 #### setValueAt method
 Compose from js docs.
+#### addSubscriber method
+> Note: currently only `'update'` event is realized.
+
+Compose from js docs.
+#### removeSubscriber method
+Compose from js docs.
+#### triggerSubscribers method
+Compose from js docs.
 
 ### Options
 `Options` represents an object with the next possible members:
@@ -155,7 +163,7 @@ The value is always corrected to accordance with `boundaries` option. The divisi
 ##### API setOptions
 `orientation` option is closed for an *update*, as this operation requires repaint of a web-page.
 
-You can accomplish desired result by using *API create method*, instead.
+You can accomplish desired result by using *API create method* along with `'update'` event, instead.
 
 #### hasTooltips
 ##### API setOptions
@@ -163,12 +171,9 @@ Analogically to `orientation` option `hasTooltips` option is closed for an *upda
 
 Although, it's possible to realize an *update* behavior here, I don't see this, as a logical functionality (see below).
 
-You can accomplish desired result by using *API create method*, instead.
+You can accomplish desired result by using *API create method* along with `'update'` event, instead.
 
-Or you can create Slider with tooltips and then hide them through css, when desire.
-
-> P.S. Functionality will be enhanced in the future, in order to allow to listen to events (such as an *update*), which will improve the situation.
-
+Or you can create Slider with tooltips and then hide them through css, depending on event.
 
 ### Architecture
 Slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
