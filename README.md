@@ -178,6 +178,14 @@ Or you can create Slider with tooltips and then hide them through css, depending
 ### Architecture
 Slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
 
+Slider, in the essence, represents component, which reflects a part of Application's Domain Model and allows user to change a representation of the part (via modification of Slider inner Model).
+
+For example, on a hotel website, Slider will reflect the hotel rooms price range (which will be passed to the Slider Model `boundaries` option) and will allow user to narrow down a representation of the diapason to its needs.
+
+But, Slider also can manipulate Domain Model directly (through the Application Model (Façade), of course). In that case, Slider options will be synchronized on an `'update'` event.
+
+So, Slider architecture is built with these things in mind.
+
 #### Model
 The module contains business logic of Slider component: possible Slider options and logic around them.
 
