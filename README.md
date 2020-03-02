@@ -3,7 +3,7 @@
 ## Introduction
 > Note: This project is regarded as portfolio background, so it's not ready for distribution (maybe, yet).
 
-Welcome to the slider plugin github page. Although it looks like every other range slider, the component has several advantages, that make it unique.
+Welcome to Slider plugin github page. Although it looks like every other range slider, the component has several advantages, that make it unique.
 
 The main one is a client-oriented approach. It has an API, that accepts variety of input data types (user decides what is convenient for him) and strict data types of output, which makes it predictable. And beyond that, application logic handles input contradictions and correct them in a predictable manner (implicitly, for now).
 
@@ -14,7 +14,7 @@ And also, there are tests.
 More to come.
 
 ## Getting started
-In order to try the slider out, check [Demo Page](https://alanreidt.github.io/slider/).
+In order to try Slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
 ### Mess with clone
 For more, clone the repository:
@@ -25,7 +25,7 @@ git clone https://github.com/alanreidt/slider.git
 
 Use next npm commands to get corresponding results (all dependencies should be installed by npm automatically):
 ```bash
-# to build and open web page with the slider
+# to build and open web page with Slider
 npm run dev
 
 # to build and open web page with tests
@@ -35,7 +35,7 @@ npm run test
 npm run build
 ```
 
-The `slider API` is connected to the `test-page/app.js` file. You can mess around with it there.
+`Slider API` is connected to the `test-page/app.js` file. You can mess around with it there.
 
 Production version is placed in `prod` folder.
 
@@ -71,7 +71,7 @@ Possible options are described in [the options section](#options).
 
 By the way, don't forget to set `height` for vertical slider on `parent` element (because slider is created inside):
 ```css
-/* parent element for the slider */
+/* parent element for Slider */
 .slider-wrapper {
   /* the ruleset will allow slider to be responsive */
   height: 100%;
@@ -79,14 +79,14 @@ By the way, don't forget to set `height` for vertical slider on `parent` element
 }
 ```
 
-The slider will take all free space up — it has `width` or `height` equal to `100%`, depending on orientation.
+Slider will take all free space up — it has `width` or `height` equal to `100%`, depending on orientation.
 
 ## Documentation
 
 ### API
 *slider object*, which localized in the `slider.js` file is dedicated as *Slider API Unit*.
 
-Use its methods to interact with the slider entity.
+Use its methods to interact with Slider entity.
 
 #### create method
 Compose from js docs.
@@ -109,7 +109,7 @@ Compose from js docs.
 | boundaries | [0, 100] | number or number[]* | number[] | Min/Max value |
 | values | average of boundaries | number or number[]* | number[] | Initial values = handles |
 | step | 1 | number* | number | Step between values |
-| orientation | "horizontal" | "horizontal" or "vertical" | "horizontal" or "vertical" | Orientation of the slider |
+| orientation | "horizontal" | "horizontal" or "vertical" | "horizontal" or "vertical" | Orientation of Slider |
 | hasTooltips | false | boolean | boolean | Tooltips state |
 
 *\* any, that can be parseFloat(), as a number (e.g. `"100"`, `"100ab"`)*
@@ -165,26 +165,26 @@ Although, it's possible to realize an *update* behavior here, I don't see this, 
 
 You can accomplish desired result by using *API create method*, instead.
 
-Or you can create the slider with tooltips and then hide them through css, when desire.
+Or you can create Slider with tooltips and then hide them through css, when desire.
 
 > P.S. Functionality will be enhanced in the future, in order to allow to listen to events (such as an *update*), which will improve the situation.
 
 
 ### Architecture
-The slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
+Slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
 
 #### Model
-The module contains business logic of the slider component: possible slider options and logic around them.
+The module contains business logic of Slider component: possible slider options and logic around them.
 
 #### ViewController
 This module is responsible for display of current slider state and handling of user actions.
 
-It translates position of occurred events into the slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `Model`.
+It translates position of occurred events into Slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `Model`.
 
-As you see, `ViewController` performs View and Controller functionality. The objective for this is that it's not logical, from functional decomposition standpoint, to divide the module — handles (which realize Controller functionality) don't have any value outside of the slider (View).
+As you see, `ViewController` performs View and Controller functionality. The objective for this is that it's not logical, from functional decomposition standpoint, to divide the module — handles (which realize Controller functionality) don't have any value outside of Slider (View).
 
 #### UML diagram
-This is a bird's view on the slider architecture.
+This is a bird's view on Slider architecture.
 
 Diagram represents only public members.
 
