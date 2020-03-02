@@ -135,7 +135,7 @@ This option represents something like an axiom — all other dependent values ar
 ##### Input/Output type details
 `values` option is handled identically to `boundaries`, but, as it has more values to deal with, there is additional information you need to know.
 
-*The first* difference is if input value lie in the middle of 2 current values, then the bigger will be changed.
+*The first* difference is if input value lies in the middle of 2 current values, then the bigger one will be changed.
 
 And *the second* is that you can pass an array up to current values length (excessed will be ignored) — it will change all the closest values to the inputted ones.
 
