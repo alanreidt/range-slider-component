@@ -50,7 +50,7 @@ And then, enter next lines in your main html file (or check `test-page` folder t
 <link rel="stylesheet" href="{your_path}/slider/prod/slider.min.css">
 
 <!-- import slider API unit (change yourpath) -->
-<script src="{your_path}/slider/prod/slider.min.js"></script>
+<script src="{your_path}/slider/prod/Slider.min.js"></script>
 ```
 
 And by next command initialize slider:
@@ -59,7 +59,7 @@ And by next command initialize slider:
 const parent = document.querySelector(".slider-wrapper");
 
 // and create slider with options
-slider.create(parent, {
+Slider.create(parent, {
   boundaries: [0, 100],
   values: [20, 80],
   step: 20,
@@ -84,7 +84,7 @@ Slider will take all free space up — it has `width` or `height` equal to `100%
 ## Documentation
 
 ### API
-*slider object*, which localized in the `slider.js` file is dedicated as *Slider API Unit*.
+*slider object*, which localized in the `Slider.js` file is dedicated as *Slider API Unit*.
 
 Use its methods to interact with Slider entity.
 
