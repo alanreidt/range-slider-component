@@ -29,6 +29,8 @@ a:hover {
  */
 
 html {
+  min-width: 320px;
+
   @media (max-width: 1020px) {
     font-size: 14px;
   }
