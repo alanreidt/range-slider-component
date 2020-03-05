@@ -22,10 +22,10 @@ class ViewController {
 
     this._bindMethods();
 
-    this._paint(model.getOptions());
+    this._paint(this._model.getOptions());
     this._attachElements();
     this._addSliderEventListener();
-    this.setElements(model.getOptions());
+    this.setElements(this._model.getOptions());
   }
 
   setElements({ boundaries, values, orientation } = {}) {
