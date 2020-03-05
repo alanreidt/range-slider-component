@@ -23,7 +23,7 @@ import {
 class Model {
   constructor(newOptions = {}) {
     this._DEFAULT_OPTIONS = DEFAULT_OPTIONS;
-    this._options = Object.create(DEFAULT_OPTIONS);
+    this._options = Object.create(this._DEFAULT_OPTIONS);
 
     this.setOptions(newOptions);
   }
