@@ -1,7 +1,7 @@
 import SliderFactory from './SliderFactory';
 
 /**
- * This object represents API for Slider.
+ * This class represents API for Slider.
  * All interactions with Slider must happen only through it.
  */
 class Slider {
@@ -25,8 +25,10 @@ class Slider {
   /**
    * Create Slider instance.
    *
-   * @param {HTMLElement} anchorElement An element Slider to be inserted in.
-   * @param {Object} options Options of Slider.
+   * @param {HTMLElement} anchorElement An element the Slider instance to be inserted in.
+   * @param {Object} options Options for Slider instance.
+   *
+   * @returns {Slider} the Slider instance.
    */
   static create(anchorElement, options, Factory) {
     return new this(anchorElement, options, Factory);
@@ -35,12 +37,12 @@ class Slider {
   /**
    * Returns Slider instance's current options copy. Non-primitive values are references.
    *
-   * @param {HTMLElement} anchorElement An element Slider is inserted in.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
    *
-   * @returns {Object} Current options of Slider.
+   * @returns {Object} Current options of the Slider instance.
    */
-  static getOptions(anchorElement) {
-    return this._anchorElementsMap.get(anchorElement).getOptions();
+  static getOptions(sliderElement) {
+    return this._anchorElementsMap.get(sliderElement).getOptions();
   }
 
   getOptions() {
@@ -50,11 +52,11 @@ class Slider {
   /**
    * Set Slider instance's options.
    *
-   * @param {HTMLElement} anchorElement An element Slider is inserted in.
-   * @param {Object} options Options to be set to Slider.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {Object} options Options to be set to the Slider instance.
    */
-  static setOptions(anchorElement, options) {
-    this._anchorElementsMap.get(anchorElement).setOptions(options);
+  static setOptions(sliderElement, options) {
+    this._anchorElementsMap.get(sliderElement).setOptions(options);
   }
 
   setOptions(options) {
@@ -64,12 +66,12 @@ class Slider {
   /**
    * Set Slider instance's value of “values” option at index position.
    *
-   * @param {HTMLElement} anchorElement An element Slider is inserted in.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
    * @param {number} index An index of “values” option's value to change.
    * @param {number} value A value to set.
    */
-  static setValueAt(anchorElement, index, value) {
-    this._anchorElementsMap.get(anchorElement).setValueAt(index, value);
+  static setValueAt(sliderElement, index, value) {
+    this._anchorElementsMap.get(sliderElement).setValueAt(index, value);
   }
 
   setValueAt(index, value) {
@@ -81,12 +83,13 @@ class Slider {
    *   menu.addSubscriber( "select", function(item) { ... } ),
    *   menu.addSubscriber( "select", obj.method(item) { ... }.bind(obj) )
    *
-   * @param {string} eventName The name of an event to listen to.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {string} eventName A name of an event to listen to.
    * @param {function} subscriber The subscriber to be triggered on the event.
    */
-  static addSubscriber(anchorElement, eventName, subscriber) {
+  static addSubscriber(sliderElement, eventName, subscriber) {
     this._anchorElementsMap
-      .get(anchorElement)
+      .get(sliderElement)
       .addSubscriber(eventName, subscriber);
   }
 
@@ -98,12 +101,13 @@ class Slider {
    * Cancel the subscription, usage:
    *   menu.removeSubscriber("select", subscriber)
    *
-   * @param {string} eventName The name of an event to which subscriber is listen to.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {string} eventName The name of the event to which subscriber listens to.
    * @param {function} subscriber The subscriber to be removed from the list.
    */
-  static removeSubscriber(anchorElement, eventName, subscriber) {
+  static removeSubscriber(sliderElement, eventName, subscriber) {
     this._anchorElementsMap
-      .get(anchorElement)
+      .get(sliderElement)
       .removeSubscriber(eventName, subscriber);
   }
 
@@ -115,12 +119,13 @@ class Slider {
    * Generate an event with the given name and data, usage:
    *   this.triggerSubscribers("select", data1, data2);
    *
-   * @param {string} eventName The name of an event to trigger.
-   * @param {any} arg1...args The data to be passed to subscribers.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {string} eventName The name of the event to trigger.
+   * @param {any} arg1...args A data to be passed to subscribers.
    */
-  static triggerSubscribers(anchorElement, eventName, ...args) {
+  static triggerSubscribers(sliderElement, eventName, ...args) {
     this._anchorElementsMap
-      .get(anchorElement)
+      .get(sliderElement)
       .triggerSubscribers(eventName, ...args);
   }
 
