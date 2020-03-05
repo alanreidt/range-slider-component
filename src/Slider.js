@@ -18,6 +18,8 @@ class Slider {
     );
 
     this.model.addSubscriber('update', viewControllerSetElementsBound);
+
+    this.constructor._parentsMap.set(parent, this);
   }
 
   /**
@@ -26,12 +28,8 @@ class Slider {
    * @param {HTMLElement} parent An element Slider to be inserted in.
    * @param {Object} options Options of Slider.
    */
-  static create(parent, options) {
-    const slider = new this(parent, options);
-
-    this._parentsMap.set(parent, slider);
-
-    return slider;
+  static create(parent, options, Factory) {
+    new this(parent, options, Factory);
   }
 
   /**
