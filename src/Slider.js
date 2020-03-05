@@ -1,17 +1,14 @@
-import SliderFactory from './SliderFactory';
+import Model from './Model';
+import ViewController from './ViewController';
 
 /**
  * This class represents API for Slider.
  * All interactions with Slider must happen only through it.
  */
 class Slider {
-  constructor(anchorElement, options, Factory = SliderFactory) {
-    this._Factory = Factory;
-    this._model = this._Factory.createModel(options);
-    this._viewController = this._Factory.createViewController(
-      anchorElement,
-      this._model,
-    );
+  constructor(anchorElement, options) {
+    this._model = new Model(options);
+    this._viewController = new ViewController(anchorElement, this._model);
 
     const viewControllerSetElementsBound = this._viewController.setElements.bind(
       this._viewController,
@@ -30,8 +27,8 @@ class Slider {
    *
    * @returns {Slider} the Slider instance.
    */
-  static create(anchorElement, options, Factory) {
-    return new this(anchorElement, options, Factory);
+  static create(anchorElement, options) {
+    return new this(anchorElement, options);
   }
 
   /**
