@@ -19,7 +19,7 @@ class Slider {
 
     this.model.addSubscriber('update', viewControllerSetElementsBound);
 
-    this.constructor._parentsMap.set(anchorElement, this);
+    this.constructor._anchorElementsMap.set(anchorElement, this);
   }
 
   /**
@@ -40,7 +40,7 @@ class Slider {
    * @returns {Object} Current options of Slider.
    */
   static getOptions(anchorElement) {
-    return this._parentsMap.get(anchorElement).getOptions();
+    return this._anchorElementsMap.get(anchorElement).getOptions();
   }
 
   getOptions() {
@@ -54,7 +54,7 @@ class Slider {
    * @param {Object} options Options to be set to Slider.
    */
   static setOptions(anchorElement, options) {
-    this._parentsMap.get(anchorElement).setOptions(options);
+    this._anchorElementsMap.get(anchorElement).setOptions(options);
   }
 
   setOptions(options) {
@@ -69,7 +69,7 @@ class Slider {
    * @param {number} value A value to set.
    */
   static setValueAt(anchorElement, index, value) {
-    this._parentsMap.get(anchorElement).setValueAt(index, value);
+    this._anchorElementsMap.get(anchorElement).setValueAt(index, value);
   }
 
   setValueAt(index, value) {
@@ -85,7 +85,9 @@ class Slider {
    * @param {function} subscriber The subscriber to be triggered on the event.
    */
   static addSubscriber(anchorElement, eventName, subscriber) {
-    this._parentsMap.get(anchorElement).addSubscriber(eventName, subscriber);
+    this._anchorElementsMap
+      .get(anchorElement)
+      .addSubscriber(eventName, subscriber);
   }
 
   addSubscriber(eventName, subscriber) {
@@ -100,7 +102,9 @@ class Slider {
    * @param {function} subscriber The subscriber to be removed from the list.
    */
   static removeSubscriber(anchorElement, eventName, subscriber) {
-    this._parentsMap.get(anchorElement).removeSubscriber(eventName, subscriber);
+    this._anchorElementsMap
+      .get(anchorElement)
+      .removeSubscriber(eventName, subscriber);
   }
 
   removeSubscriber(eventName, subscriber) {
@@ -115,7 +119,9 @@ class Slider {
    * @param {any} arg1...args The data to be passed to subscribers.
    */
   static triggerSubscribers(anchorElement, eventName, ...args) {
-    this._parentsMap.get(anchorElement).triggerSubscribers(eventName, ...args);
+    this._anchorElementsMap
+      .get(anchorElement)
+      .triggerSubscribers(eventName, ...args);
   }
 
   triggerSubscribers(eventName, ...args) {
@@ -123,6 +129,6 @@ class Slider {
   }
 }
 
-Slider._parentsMap = new WeakMap();
+Slider._anchorElementsMap = new WeakMap();
 
 export default Slider;
