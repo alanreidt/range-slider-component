@@ -7,17 +7,17 @@ import SliderFactory from './SliderFactory';
 class Slider {
   constructor(anchorElement, options, Factory = SliderFactory) {
     this._Factory = Factory;
-    this.model = this._Factory.createModel(options);
-    this.viewController = this._Factory.createViewController(
+    this._model = this._Factory.createModel(options);
+    this._viewController = this._Factory.createViewController(
       anchorElement,
-      this.model,
+      this._model,
     );
 
-    const viewControllerSetElementsBound = this.viewController.setElements.bind(
-      this.viewController,
+    const viewControllerSetElementsBound = this._viewController.setElements.bind(
+      this._viewController,
     );
 
-    this.model.addSubscriber('update', viewControllerSetElementsBound);
+    this._model.addSubscriber('update', viewControllerSetElementsBound);
 
     this.constructor._anchorElementsMap.set(anchorElement, this);
   }
@@ -115,7 +115,7 @@ class Slider {
    * @returns {Object} Current options.
    */
   getOptions() {
-    return this.model.getOptions();
+    return this._model.getOptions();
   }
 
   /**
@@ -124,7 +124,7 @@ class Slider {
    * @param {Object} options Options to be set.
    */
   setOptions(options) {
-    this.model.setOptions(options);
+    this._model.setOptions(options);
   }
 
   /**
@@ -134,7 +134,7 @@ class Slider {
    * @param {number} value A value to set.
    */
   setValueAt(index, value) {
-    this.model.setValueAt(index, value);
+    this._model.setValueAt(index, value);
   }
 
   /**
@@ -146,7 +146,7 @@ class Slider {
    * @param {function} subscriber The subscriber to be triggered on the event.
    */
   addSubscriber(eventName, subscriber) {
-    this.model.addSubscriber(eventName, subscriber);
+    this._model.addSubscriber(eventName, subscriber);
   }
 
   /**
@@ -157,7 +157,7 @@ class Slider {
    * @param {function} subscriber The subscriber to be removed from the list.
    */
   removeSubscriber(eventName, subscriber) {
-    this.model.removeSubscriber(eventName, subscriber);
+    this._model.removeSubscriber(eventName, subscriber);
   }
 
   /**
@@ -168,7 +168,7 @@ class Slider {
    * @param {any} arg1...args A data to be passed to subscribers.
    */
   triggerSubscribers(eventName, ...args) {
-    this.model.triggerSubscribers(eventName, ...args);
+    this._model.triggerSubscribers(eventName, ...args);
   }
 }
 
