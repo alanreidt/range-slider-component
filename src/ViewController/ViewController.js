@@ -17,8 +17,8 @@ import {
 
 class ViewController {
   constructor(parent, model) {
-    this.parent = parent;
-    this.model = model;
+    this._parent = parent;
+    this._model = model;
 
     this._bindMethods();
 
@@ -45,19 +45,19 @@ class ViewController {
   }
 
   _setHandleGroupHorizontalPositions(positions) {
-    this.handleGroups.forEach((handleGroup, i) => {
+    this._handleGroups.forEach((handleGroup, i) => {
       handleGroup.style.left = positions[i];
     });
   }
 
   _setHandleGroupVerticalPositions(positions) {
-    this.handleGroups.forEach((handleGroup, i) => {
+    this._handleGroups.forEach((handleGroup, i) => {
       handleGroup.style.top = positions[i];
     });
   }
 
   _setTooltipTextContents(values) {
-    this.tooltips.forEach((tooltip, i) => {
+    this._tooltips.forEach((tooltip, i) => {
       tooltip.textContent = values[i];
     });
   }
@@ -69,26 +69,26 @@ class ViewController {
   }
 
   _paint(options) {
-    this.parent.innerHTML = createTemplate(options);
+    this._parent.innerHTML = createTemplate(options);
   }
 
   _attachElements() {
-    this.slider = this.parent.querySelector(JS_SLIDER_SELECTOR);
-    this.base = this.parent.querySelector(JS_BASE_SELECTOR);
-    this.handleGroups = this._getHandleGroups();
-    this.tooltips = this._getTooltips();
+    this._slider = this._parent.querySelector(JS_SLIDER_SELECTOR);
+    this._base = this._parent.querySelector(JS_BASE_SELECTOR);
+    this._handleGroups = this._getHandleGroups();
+    this._tooltips = this._getTooltips();
   }
 
   _getHandleGroups() {
-    return [...this.parent.querySelectorAll(JS_HANDLE_GROUP_SELECTOR)];
+    return [...this._parent.querySelectorAll(JS_HANDLE_GROUP_SELECTOR)];
   }
 
   _getTooltips() {
-    return [...this.parent.querySelectorAll(JS_TOOLTIP_SELECTOR)];
+    return [...this._parent.querySelectorAll(JS_TOOLTIP_SELECTOR)];
   }
 
   _addSliderEventListener() {
-    this.slider.onmousedown = this._handleSliderMouseDown;
+    this._slider.onmousedown = this._handleSliderMouseDown;
   }
 
   _handleSliderMouseDown(event) {
@@ -97,8 +97,8 @@ class ViewController {
     const newValue = this._findValueByEvent(event);
     const target = event && event.target;
 
-    if (target === this.base) {
-      this.model.setOptions({ values: newValue });
+    if (target === this._base) {
+      this._model.setOptions({ values: newValue });
     }
 
     const currentHandleGroup =
@@ -121,7 +121,7 @@ class ViewController {
     const index = Number(handleGroup.dataset.index);
     const newValue = this._findValueByEvent(event);
 
-    this.model.setValueAt(index, newValue);
+    this._model.setValueAt(index, newValue);
   }
 
   _handleDocumentMouseUp() {
@@ -133,7 +133,7 @@ class ViewController {
   }
 
   _findValueByEvent(event) {
-    const { orientation } = this.model.getOptions();
+    const { orientation } = this._model.getOptions();
 
     return orientation === ORIENTATION_HORIZONTAL
       ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
@@ -146,25 +146,25 @@ class ViewController {
       : [this._adjustToSliderYAxis(yCoordinate), this._getSliderHeight()];
 
     const ratio = findRatio(adjustedCoordinate, sliderSize);
-    const { boundaries } = this.model.getOptions();
+    const { boundaries } = this._model.getOptions();
 
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
   _adjustToSliderXAxis(xCoordinate) {
-    return xCoordinate - this.slider.getBoundingClientRect().left;
+    return xCoordinate - this._slider.getBoundingClientRect().left;
   }
 
   _adjustToSliderYAxis(yCoordinate) {
-    return yCoordinate - this.slider.getBoundingClientRect().top;
+    return yCoordinate - this._slider.getBoundingClientRect().top;
   }
 
   _getSliderWidth() {
-    return this.slider.getBoundingClientRect().width;
+    return this._slider.getBoundingClientRect().width;
   }
 
   _getSliderHeight() {
-    return this.slider.getBoundingClientRect().height;
+    return this._slider.getBoundingClientRect().height;
   }
 }
 
