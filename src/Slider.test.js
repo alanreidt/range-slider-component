@@ -43,14 +43,13 @@ describe('Slider', () => {
     };
   };
 
-  const factory = {
+  const Factory = {
     createModel: makeClassMock(model),
     createViewController: makeClassMock(viewController),
   };
   const parent = document.createElement('div');
 
-  Slider._factory = factory;
-  Slider.create(parent, options);
+  Slider.create(parent, options, Factory);
 
   describe('create method', () => {
     context('shall create model with options', () => {
