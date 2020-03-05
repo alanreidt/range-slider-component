@@ -92,27 +92,6 @@ describe('Slider', () => {
         });
       },
     );
-
-    context('shall create parentsMap with model and viewController', () => {
-      it('sliderAPI parentsMap length is not equal to 0', () => {
-        assert.notEqual(Slider._parentsMap.length, 0);
-      });
-
-      it('sliderAPI parentsMap parent is not undefined', () => {
-        assert.notEqual(Slider._parentsMap.get(parent), undefined);
-      });
-
-      it('sliderAPI parentsMap parent model is equal to model', () => {
-        assert.equal(Slider._parentsMap.get(parent).model, model);
-      });
-
-      it('sliderAPI parentsMap parent viewController is equal to viewController', () => {
-        assert.equal(
-          Slider._parentsMap.get(parent).viewController,
-          viewController,
-        );
-      });
-    });
   });
 
   describe('getOptions method', () => {
