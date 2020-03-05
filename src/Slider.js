@@ -29,7 +29,7 @@ class Slider {
    * @param {Object} options Options of Slider.
    */
   static create(anchorElement, options, Factory) {
-    new this(anchorElement, options, Factory);
+    return new this(anchorElement, options, Factory);
   }
 
   /**
