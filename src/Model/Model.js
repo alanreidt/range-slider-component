@@ -22,7 +22,7 @@ import {
 
 class Model {
   constructor(newOptions = {}) {
-    this.DEFAULT_OPTIONS = DEFAULT_OPTIONS;
+    this._DEFAULT_OPTIONS = DEFAULT_OPTIONS;
     this._options = Object.create(DEFAULT_OPTIONS);
 
     this.setOptions(newOptions);
@@ -32,7 +32,7 @@ class Model {
     const options = this._options;
     const optionsCopy = {};
 
-    Object.keys(this.DEFAULT_OPTIONS).forEach((key) => {
+    Object.keys(this._DEFAULT_OPTIONS).forEach((key) => {
       const value = options[key];
 
       optionsCopy[key] = Array.isArray(value) ? value.slice() : value;
@@ -42,7 +42,7 @@ class Model {
   }
 
   setOptions(newOptions) {
-    Object.keys(this.DEFAULT_OPTIONS).forEach((key) => {
+    Object.keys(this._DEFAULT_OPTIONS).forEach((key) => {
       const keyFirstLetter = key[0];
       const isKeyPrivate = keyFirstLetter === '_';
 
