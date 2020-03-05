@@ -5,11 +5,11 @@ import SliderFactory from './SliderFactory';
  * All interactions with Slider must happen only through it.
  */
 class Slider {
-  constructor(parent, options, Factory = SliderFactory) {
+  constructor(anchorElement, options, Factory = SliderFactory) {
     this._Factory = Factory;
     this.model = this._Factory.createModel(options);
     this.viewController = this._Factory.createViewController(
-      parent,
+      anchorElement,
       this.model,
     );
 
@@ -19,28 +19,28 @@ class Slider {
 
     this.model.addSubscriber('update', viewControllerSetElementsBound);
 
-    this.constructor._parentsMap.set(parent, this);
+    this.constructor._parentsMap.set(anchorElement, this);
   }
 
   /**
    * Create Slider instance.
    *
-   * @param {HTMLElement} parent An element Slider to be inserted in.
+   * @param {HTMLElement} anchorElement An element Slider to be inserted in.
    * @param {Object} options Options of Slider.
    */
-  static create(parent, options, Factory) {
-    new this(parent, options, Factory);
+  static create(anchorElement, options, Factory) {
+    new this(anchorElement, options, Factory);
   }
 
   /**
    * Returns Slider instance's current options copy. Non-primitive values are references.
    *
-   * @param {HTMLElement} parent An element Slider is inserted in.
+   * @param {HTMLElement} anchorElement An element Slider is inserted in.
    *
    * @returns {Object} Current options of Slider.
    */
-  static getOptions(parent) {
-    return this._parentsMap.get(parent).getOptions();
+  static getOptions(anchorElement) {
+    return this._parentsMap.get(anchorElement).getOptions();
   }
 
   getOptions() {
@@ -50,11 +50,11 @@ class Slider {
   /**
    * Set Slider instance's options.
    *
-   * @param {HTMLElement} parent An element Slider is inserted in.
+   * @param {HTMLElement} anchorElement An element Slider is inserted in.
    * @param {Object} options Options to be set to Slider.
    */
-  static setOptions(parent, options) {
-    this._parentsMap.get(parent).setOptions(options);
+  static setOptions(anchorElement, options) {
+    this._parentsMap.get(anchorElement).setOptions(options);
   }
 
   setOptions(options) {
@@ -64,12 +64,12 @@ class Slider {
   /**
    * Set Slider instance's value of “values” option at index position.
    *
-   * @param {HTMLElement} parent An element Slider is inserted in.
+   * @param {HTMLElement} anchorElement An element Slider is inserted in.
    * @param {number} index An index of “values” option's value to change.
    * @param {number} value A value to set.
    */
-  static setValueAt(parent, index, value) {
-    this._parentsMap.get(parent).setValueAt(index, value);
+  static setValueAt(anchorElement, index, value) {
+    this._parentsMap.get(anchorElement).setValueAt(index, value);
   }
 
   setValueAt(index, value) {
@@ -84,8 +84,8 @@ class Slider {
    * @param {string} eventName The name of an event to listen to.
    * @param {function} subscriber The subscriber to be triggered on the event.
    */
-  static addSubscriber(parent, eventName, subscriber) {
-    this._parentsMap.get(parent).addSubscriber(eventName, subscriber);
+  static addSubscriber(anchorElement, eventName, subscriber) {
+    this._parentsMap.get(anchorElement).addSubscriber(eventName, subscriber);
   }
 
   addSubscriber(eventName, subscriber) {
@@ -99,8 +99,8 @@ class Slider {
    * @param {string} eventName The name of an event to which subscriber is listen to.
    * @param {function} subscriber The subscriber to be removed from the list.
    */
-  static removeSubscriber(parent, eventName, subscriber) {
-    this._parentsMap.get(parent).removeSubscriber(eventName, subscriber);
+  static removeSubscriber(anchorElement, eventName, subscriber) {
+    this._parentsMap.get(anchorElement).removeSubscriber(eventName, subscriber);
   }
 
   removeSubscriber(eventName, subscriber) {
@@ -114,8 +114,8 @@ class Slider {
    * @param {string} eventName The name of an event to trigger.
    * @param {any} arg1...args The data to be passed to subscribers.
    */
-  static triggerSubscribers(parent, eventName, ...args) {
-    this._parentsMap.get(parent).triggerSubscribers(eventName, ...args);
+  static triggerSubscribers(anchorElement, eventName, ...args) {
+    this._parentsMap.get(anchorElement).triggerSubscribers(eventName, ...args);
   }
 
   triggerSubscribers(eventName, ...args) {
