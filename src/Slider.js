@@ -46,15 +46,6 @@ class Slider {
   }
 
   /**
-   * Returns current options copy. Non-primitive values are references.
-   *
-   * @returns {Object} Current options.
-   */
-  getOptions() {
-    return this.model.getOptions();
-  }
-
-  /**
    * Set Slider instance's options.
    *
    * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
@@ -62,15 +53,6 @@ class Slider {
    */
   static setOptions(sliderElement, options) {
     this._anchorElementsMap.get(sliderElement).setOptions(options);
-  }
-
-  /**
-   * Set options.
-   *
-   * @param {Object} options Options to be set.
-   */
-  setOptions(options) {
-    this.model.setOptions(options);
   }
 
   /**
@@ -82,16 +64,6 @@ class Slider {
    */
   static setValueAt(sliderElement, index, value) {
     this._anchorElementsMap.get(sliderElement).setValueAt(index, value);
-  }
-
-  /**
-   * Set value of “values” option at index position.
-   *
-   * @param {number} index An index of “values” option's value to change.
-   * @param {number} value A value to set.
-   */
-  setValueAt(index, value) {
-    this.model.setValueAt(index, value);
   }
 
   /**
@@ -110,6 +82,62 @@ class Slider {
   }
 
   /**
+   * Cancel the subscription, usage:
+   *   menu.removeSubscriber("select", subscriber)
+   *
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {string} eventName The name of the event to which subscriber listens to.
+   * @param {function} subscriber The subscriber to be removed from the list.
+   */
+  static removeSubscriber(sliderElement, eventName, subscriber) {
+    this._anchorElementsMap
+      .get(sliderElement)
+      .removeSubscriber(eventName, subscriber);
+  }
+
+  /**
+   * Generate an event with the given name and data, usage:
+   *   this.triggerSubscribers("select", data1, data2);
+   *
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {string} eventName The name of the event to trigger.
+   * @param {any} arg1...args A data to be passed to subscribers.
+   */
+  static triggerSubscribers(sliderElement, eventName, ...args) {
+    this._anchorElementsMap
+      .get(sliderElement)
+      .triggerSubscribers(eventName, ...args);
+  }
+
+  /**
+   * Returns current options copy. Non-primitive values are references.
+   *
+   * @returns {Object} Current options.
+   */
+  getOptions() {
+    return this.model.getOptions();
+  }
+
+  /**
+   * Set options.
+   *
+   * @param {Object} options Options to be set.
+   */
+  setOptions(options) {
+    this.model.setOptions(options);
+  }
+
+  /**
+   * Set value of “values” option at index position.
+   *
+   * @param {number} index An index of “values” option's value to change.
+   * @param {number} value A value to set.
+   */
+  setValueAt(index, value) {
+    this.model.setValueAt(index, value);
+  }
+
+  /**
    * Subscribe to event, usage:
    *   menu.addSubscriber( "select", function(item) { ... } ),
    *   menu.addSubscriber( "select", obj.method(item) { ... }.bind(obj) )
@@ -125,39 +153,11 @@ class Slider {
    * Cancel the subscription, usage:
    *   menu.removeSubscriber("select", subscriber)
    *
-   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
-   * @param {string} eventName The name of the event to which subscriber listens to.
-   * @param {function} subscriber The subscriber to be removed from the list.
-   */
-  static removeSubscriber(sliderElement, eventName, subscriber) {
-    this._anchorElementsMap
-      .get(sliderElement)
-      .removeSubscriber(eventName, subscriber);
-  }
-
-  /**
-   * Cancel the subscription, usage:
-   *   menu.removeSubscriber("select", subscriber)
-   *
    * @param {string} eventName The name of the event to which subscriber listens to.
    * @param {function} subscriber The subscriber to be removed from the list.
    */
   removeSubscriber(eventName, subscriber) {
     this.model.removeSubscriber(eventName, subscriber);
-  }
-
-  /**
-   * Generate an event with the given name and data, usage:
-   *   this.triggerSubscribers("select", data1, data2);
-   *
-   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
-   * @param {string} eventName The name of the event to trigger.
-   * @param {any} arg1...args A data to be passed to subscribers.
-   */
-  static triggerSubscribers(sliderElement, eventName, ...args) {
-    this._anchorElementsMap
-      .get(sliderElement)
-      .triggerSubscribers(eventName, ...args);
   }
 
   /**
