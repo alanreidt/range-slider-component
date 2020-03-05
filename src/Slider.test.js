@@ -3,139 +3,73 @@ import { assert } from 'chai';
 import Slider from './Slider';
 
 describe('Slider', () => {
-  const options = {
-    boundaries: [100, 500],
-    values: [200, 300],
-    step: 20,
-    orientation: 'horizontal',
-    hasTooltips: true,
-  };
-  const model = {
-    arguments: null,
-    addSubscriberArgs: null,
-
-    getOptions() {
-      return options;
-    },
-
-    setOptions(newOptions) {
-      this.optionsUpdated = newOptions;
-    },
-
-    setValueAt(index, value) {
-      this.valueUpdated = [index, value];
-    },
-
-    addSubscriber(...args) {
-      this.addSubscriberArgs = args;
-    },
-  };
-  const viewController = {
-    arguments: null,
-    setElements() {},
-  };
-
-  const makeClassMock = (obj) => {
-    return (...newOptions) => {
-      obj.arguments = newOptions;
-
-      return obj;
-    };
-  };
-
-  const Factory = {
-    createModel: makeClassMock(model),
-    createViewController: makeClassMock(viewController),
-  };
-  const parent = document.createElement('div');
-
-  Slider.create(parent, options, Factory);
-
   describe('create method', () => {
-    context('shall create model with options', () => {
-      it('model arguments is not equal to null', () => {
-        assert.isNotNull(model.arguments);
-      });
+    it('shall create model with options', () => {
+      const options = {
+        boundaries: [100, 500],
+        values: [200, 300],
+        step: 20,
+        orientation: 'horizontal',
+        hasTooltips: true,
+      };
+      const parent = document.createElement('div');
 
-      it('model argument is equal to options', () => {
-        assert.equal(model.arguments[0], options);
-      });
-    });
+      Slider.create(parent, options);
 
-    context('shall create viewController with parent and model', () => {
-      it('viewController arguments is not equal to null', () => {
-        assert.isNotNull(viewController.arguments);
-      });
-
-      it('viewController arguments[0] is equal to parent', () => {
-        assert.equal(viewController.arguments[0], parent);
-      });
-
-      it('viewController arguments[1] is equal to model', () => {
-        assert.equal(viewController.arguments[1], model);
-      });
-    });
-
-    context(
-      'shall subscribe viewController setElements method to model',
-      () => {
-        it('model addSubscriberArgs is not equal to null', () => {
-          assert.isNotNull(model.addSubscriberArgs);
-        });
-
-        it("model addSubscriberArgs[0] is equal to 'update'", () => {
-          assert.equal(model.addSubscriberArgs[0], 'update');
-        });
-
-        it('model addSubscriberArgs[1] is equal to viewController setElements method', () => {
-          assert.equal(model.addSubscriberArgs[1], viewController.setElements);
-        });
-      },
-    );
-  });
-
-  describe('getOptions method', () => {
-    context('shall return current options', () => {
-      it('returned options are equal to passed options', () => {
-        assert.equal(Slider.getOptions(parent), options);
-      });
+      assert.deepEqual(Slider.getOptions(parent), options);
     });
   });
 
   describe('setOptions method', () => {
-    context('shall set model optionsUpdated property', () => {
-      const newOptions = {
-        boundaries: [0, 100],
+    it('shall set options', () => {
+      const options = {
+        boundaries: [100, 500],
+        values: [200, 300],
         step: 20,
+        orientation: 'horizontal',
+        hasTooltips: true,
+      };
+      const parent = document.createElement('div');
+
+      Slider.create(parent, options);
+
+      const newOptions = {
+        boundaries: [-200, 1000],
+        step: 10,
       };
 
       Slider.setOptions(parent, newOptions);
 
-      it('model optionsUpdated is not equal to undefined', () => {
-        assert.notEqual(model.optionsUpdated, undefined);
-      });
+      const expectation = {
+        ...options,
+        ...newOptions,
+      };
 
-      it('model optionsUpdated is equal to newOptions', () => {
-        assert.equal(model.optionsUpdated, newOptions);
-      });
+      assert.deepEqual(Slider.getOptions(parent), expectation);
     });
   });
 
   describe('setValueAt method', () => {
-    context('shall set model valueUpdated property', () => {
-      const index = 1;
-      const newValue = 30;
-      const expectation = [index, newValue];
+    it('shall set value at index', () => {
+      const options = {
+        boundaries: [100, 500],
+        values: [200, 300],
+        step: 20,
+        orientation: 'horizontal',
+        hasTooltips: true,
+      };
+      const parent = document.createElement('div');
 
-      Slider.setValueAt(parent, index, newValue);
+      Slider.create(parent, options);
 
-      it('model valueUpdated is not equal to undefined', () => {
-        assert.notEqual(model.valueUpdated, undefined);
-      });
+      Slider.setValueAt(parent, 1, 500);
 
-      it('model valueUpdated is equal to newOptions', () => {
-        assert.deepEqual(model.valueUpdated, expectation);
-      });
+      const expectation = {
+        ...options,
+        values: [200, 500],
+      };
+
+      assert.deepEqual(Slider.getOptions(parent), expectation);
     });
   });
 });
