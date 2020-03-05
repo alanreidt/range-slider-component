@@ -45,6 +45,11 @@ class Slider {
     return this._anchorElementsMap.get(sliderElement).getOptions();
   }
 
+  /**
+   * Returns current options copy. Non-primitive values are references.
+   *
+   * @returns {Object} Current options.
+   */
   getOptions() {
     return this.model.getOptions();
   }
@@ -59,6 +64,11 @@ class Slider {
     this._anchorElementsMap.get(sliderElement).setOptions(options);
   }
 
+  /**
+   * Set options.
+   *
+   * @param {Object} options Options to be set.
+   */
   setOptions(options) {
     this.model.setOptions(options);
   }
@@ -74,6 +84,12 @@ class Slider {
     this._anchorElementsMap.get(sliderElement).setValueAt(index, value);
   }
 
+  /**
+   * Set value of “values” option at index position.
+   *
+   * @param {number} index An index of “values” option's value to change.
+   * @param {number} value A value to set.
+   */
   setValueAt(index, value) {
     this.model.setValueAt(index, value);
   }
@@ -93,6 +109,14 @@ class Slider {
       .addSubscriber(eventName, subscriber);
   }
 
+  /**
+   * Subscribe to event, usage:
+   *   menu.addSubscriber( "select", function(item) { ... } ),
+   *   menu.addSubscriber( "select", obj.method(item) { ... }.bind(obj) )
+   *
+   * @param {string} eventName A name of an event to listen to.
+   * @param {function} subscriber The subscriber to be triggered on the event.
+   */
   addSubscriber(eventName, subscriber) {
     this.model.addSubscriber(eventName, subscriber);
   }
@@ -111,6 +135,13 @@ class Slider {
       .removeSubscriber(eventName, subscriber);
   }
 
+  /**
+   * Cancel the subscription, usage:
+   *   menu.removeSubscriber("select", subscriber)
+   *
+   * @param {string} eventName The name of the event to which subscriber listens to.
+   * @param {function} subscriber The subscriber to be removed from the list.
+   */
   removeSubscriber(eventName, subscriber) {
     this.model.removeSubscriber(eventName, subscriber);
   }
@@ -129,6 +160,13 @@ class Slider {
       .triggerSubscribers(eventName, ...args);
   }
 
+  /**
+   * Generate an event with the given name and data, usage:
+   *   this.triggerSubscribers("select", data1, data2);
+   *
+   * @param {string} eventName The name of the event to trigger.
+   * @param {any} arg1...args A data to be passed to subscribers.
+   */
   triggerSubscribers(eventName, ...args) {
     this.model.triggerSubscribers(eventName, ...args);
   }
