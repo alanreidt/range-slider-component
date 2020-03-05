@@ -6,9 +6,9 @@ import SliderFactory from './SliderFactory';
  */
 class Slider {
   constructor(parent, options, Factory = SliderFactory) {
-    this._factory = Factory;
-    this.model = this._factory.createModel(options);
-    this.viewController = this._factory.createViewController(
+    this._Factory = Factory;
+    this.model = this._Factory.createModel(options);
+    this.viewController = this._Factory.createViewController(
       parent,
       this.model,
     );
