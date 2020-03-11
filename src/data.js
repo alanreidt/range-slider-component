@@ -22,7 +22,7 @@ const dataSet = [
       orientation: 'vertical',
       hasTooltips: true,
     },
-  }
+  },
 ];
 
 export { dataSet };

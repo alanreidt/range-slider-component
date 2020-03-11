@@ -13,8 +13,12 @@ class PlayGround {
 
   _attachElements() {
     this.sliderElement = this.anchorElement.querySelector('.js-slider-wrapper');
-    this.controlPaneElement = this.anchorElement.querySelector('.js-control-pane');
-    this.controlInputElement = this.anchorElement.querySelector('.js-control-input-wrapper');
+    this.controlPaneElement = this.anchorElement.querySelector(
+      '.js-control-pane',
+    );
+    this.controlInputElement = this.anchorElement.querySelector(
+      '.js-control-input-wrapper',
+    );
   }
 
   _createComponents(options) {
@@ -31,9 +35,13 @@ class PlayGround {
       new this.constructor(this.anchorElement, options);
     });
 
-    ControlInput.addSubscriber(this.controlInputElement, 'update', (options) => {
-      Slider.setOptions(this.sliderElement, options);
-    });
+    ControlInput.addSubscriber(
+      this.controlInputElement,
+      'update',
+      (options) => {
+        Slider.setOptions(this.sliderElement, options);
+      },
+    );
 
     Slider.addSubscriber(this.sliderElement, 'update', (options) => {
       ControlInput.setOptions(this.controlInputElement, options);

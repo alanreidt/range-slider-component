@@ -59,7 +59,9 @@ const ControlPane = {
    * @param {function} subscriber The subscriber to be triggered on the event.
    */
   addSubscriber(anchorElement, eventName, subscriber) {
-    this._parentsMap.get(anchorElement).model.addSubscriber(eventName, subscriber);
+    this._parentsMap
+      .get(anchorElement)
+      .model.addSubscriber(eventName, subscriber);
   },
 
   /**
@@ -70,7 +72,9 @@ const ControlPane = {
    * @param {function} subscriber The subscriber to be removed from the list.
    */
   removeSubscriber(anchorElement, eventName, subscriber) {
-    this._parentsMap.get(anchorElement).model.removeSubscriber(eventName, subscriber);
+    this._parentsMap
+      .get(anchorElement)
+      .model.removeSubscriber(eventName, subscriber);
   },
 
   /**
@@ -81,7 +85,9 @@ const ControlPane = {
    * @param {any} arg1...args The data to be passed to subscribers.
    */
   triggerSubscribers(anchorElement, eventName, ...args) {
-    this._parentsMap.get(anchorElement).model.triggerSubscribers(eventName, ...args);
+    this._parentsMap
+      .get(anchorElement)
+      .model.triggerSubscribers(eventName, ...args);
   },
 };
 

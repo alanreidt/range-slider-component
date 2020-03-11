@@ -1,6 +1,6 @@
 import 'bootstrap';
 
-import { dataSet } from './data'
+import { dataSet } from './data';
 import PlayGround from './components/playground/PlayGround';
 
 class App {
@@ -26,4 +26,4 @@ class App {
 
 const appElement = document.querySelector('.js-app');
 
-window.addEventListener("load", new App(appElement, dataSet));
+window.addEventListener('load', new App(appElement, dataSet));
