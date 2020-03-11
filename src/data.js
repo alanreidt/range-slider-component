@@ -25,4 +25,4 @@ const dataSet = [
   },
 ];
 
-export { dataSet };
+export default dataSet;
