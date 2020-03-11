@@ -1,6 +1,6 @@
 import 'bootstrap';
 
-import { dataSet } from './data';
+import dataSet from './dataSet';
 import PlayGround from './components/playground/PlayGround';
 
 class App {
