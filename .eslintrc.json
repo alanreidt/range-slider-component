@@ -1,19 +1,43 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "rules": {
-    }
+  "env": {
+      "browser": true,
+      "es6": true,
+      "mocha": true
+  },
+  "extends": [
+      "airbnb-base",
+      "plugin:prettier/recommended"
+  ],
+  "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+  },
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "no-underscore-dangle": "off",
+
+    // enhance linting speed
+    "import/no-cycle": "off",
+
+    "import/order": ["error", {
+      "groups": [["builtin", "external"], "internal", ["parent", "sibling"], "index"],
+      "newlines-between": "always"
+    }],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": ["**/*.test.js", "**/*.spec.js", "**/testUtilities/*.js"]
+    }],
+
+    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true  }],
+
+    "no-console": ["error", { "allow": ["info", "warn", "error"] }],
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+
+    "prettier/prettier": "error"
+  }
 }
