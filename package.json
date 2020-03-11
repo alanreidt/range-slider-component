@@ -15,6 +15,7 @@
     "test": "parcel tests/test.html --open",
     "build": "rm -rf prod && parcel build src/Slider.js -o src/Slider.min.js -d ./prod && parcel build src/slider.scss -o src/slider.min.css -d ./prod",
     "dev": "parcel test-page/index.html --open",
+    "eslint": "eslint src/",
     "create": "plop"
   },
   "keywords": [],
