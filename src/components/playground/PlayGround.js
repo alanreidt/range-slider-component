@@ -1,4 +1,4 @@
-import Slider from '../../../modules/slider/prod/Slider.min.js';
+import Slider from '../../../modules/slider/prod/Slider.min';
 import ControlPane from '../control-pane/ControlPane';
 import ControlInput from '../control-input/ControlInput';
 
