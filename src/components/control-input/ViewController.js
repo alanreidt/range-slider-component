@@ -15,6 +15,9 @@ class ViewController {
 
   _bindMethods() {
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleCurrentValuesTextInputChange = this._handleCurrentValuesTextInputChange.bind(
+      this,
+    );
   }
 
   _attachElements() {
@@ -26,9 +29,21 @@ class ViewController {
 
   _addEventListeners() {
     this.form.addEventListener('submit', this._handleFormSubmit);
+    this.currentValuesTextInput.addEventListener(
+      'change',
+      this._handleCurrentValuesTextInputChange,
+    );
   }
 
   _handleFormSubmit(event) {
+    this._updateModel(event);
+  }
+
+  _handleCurrentValuesTextInputChange(event) {
+    this._updateModel(event);
+  }
+
+  _updateModel(event) {
     event.preventDefault();
 
     const values = this.currentValuesTextInput.value.split(', ');
