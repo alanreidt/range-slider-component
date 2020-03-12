@@ -5,7 +5,7 @@ class ViewController {
 
     this._bindMethods();
     this._attachElements();
-    this.form.addEventListener('submit', this._handleFormSubmit);
+    this._addEventListeners();
     this.setElements(model.getOptions());
   }
 
@@ -22,6 +22,10 @@ class ViewController {
     this.currentValuesTextInput = this.anchorElement.querySelector(
       '.js-control-input__values-input',
     );
+  }
+
+  _addEventListeners() {
+    this.form.addEventListener('submit', this._handleFormSubmit);
   }
 
   _handleFormSubmit(event) {
