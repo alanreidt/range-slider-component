@@ -1,8 +1,8 @@
 {
   "name": "slider_plugin",
+  "private": true,
   "version": "1.0.0",
   "description": "Bulletproof range slider plugin with MVC architecture at the core",
-  "main": "src/slider.js",
   "directories": {
     "test": "tests"
   },
