@@ -2,7 +2,7 @@
   "name": "slider_plugin-gh-pages",
   "version": "1.0.0",
   "description": "Web-page for Bulletproof range slider plugin with MVC architecture at the core",
-  "main": "index.html",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf prod && parcel build src/index.pug -d ./prod --public-url ./prod",
