@@ -1,5 +1,5 @@
 {
-  "name": "slider_plugin",
+  "name": "slider",
   "private": true,
   "version": "1.0.0",
   "description": "Bulletproof range slider plugin with MVC architecture at the core",
@@ -18,8 +18,8 @@
     "eslint": "eslint src/",
     "create": "plop"
   },
-  "keywords": [],
-  "author": "Alan Reid",
+  "keywords": ["range", "slider", "range-slider", "MVC"],
+  "author": "alanreidt",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
