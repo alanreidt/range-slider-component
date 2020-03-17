@@ -38,19 +38,10 @@ const createTemplate = function createTemplateFromHelpers({
   let scaleValuesQuantity = range / step + 1;
   let currentDensity = 276 / scaleValuesQuantity - 1;
 
-  while (currentDensity < minimalDensity) {
-    scaleStep = findNextFactor(range, scaleStep + 1);
-    console.log(scaleStep);
-
-    scaleValuesQuantity = range / scaleStep + 1;
-    currentDensity = 276 / scaleValuesQuantity - 1;
-
-    console.log(currentDensity < minimalDensity);
-    console.log(currentDensity);
-    console.log(minimalDensity);
-  }
-
-  while (!isDivisible(scaleStep, step) && scaleStep !== range) {
+  while (
+    currentDensity < minimalDensity ||
+    (!isDivisible(scaleStep, step) && scaleStep < range)
+  ) {
     scaleStep = findNextFactor(range, scaleStep + 1);
 
     scaleValuesQuantity = range / scaleStep + 1;
