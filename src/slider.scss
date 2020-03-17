@@ -87,7 +87,6 @@
 
     box-sizing: border-box;
   }
-
 }
 
 .slider_vertical {
@@ -114,5 +113,32 @@
     margin-bottom: 0;
     margin-left: 5px;
   }
+}
 
+.scale {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-between;
+
+  &__segment {
+    position: relative;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  &__pip {
+    display: inline-block;
+    width: 2px;
+    height: 18px;
+    background-color: black;
+  }
+
+  &__value {
+    position: absolute;
+    top: 100%;
+    cursor: pointer;
+  }
 }
