@@ -11,6 +11,7 @@ import {
   TOOLTIP_CLASS_NAME,
   HANDLE_CLASS_NAME,
 } from '../constants';
+import { findNextFactor, isDivisible } from '../../modules/utilities';
 
 /**
  * Returns a string, that contains Slider DOM structure.
@@ -31,11 +32,34 @@ const createTemplate = function createTemplateFromHelpers({
 } = {}) {
   const [min, max] = boundaries;
   const range = max - min;
-  const scaleValuesQuantity = range / step + 1;
+  const minimalDensity = 24;
+
+  let scaleStep = step;
+  let scaleValuesQuantity = range / step + 1;
+  let currentDensity = 276 / scaleValuesQuantity - 1;
+
+  while (currentDensity < minimalDensity) {
+    scaleStep = findNextFactor(range, scaleStep + 1);
+    console.log(scaleStep);
+
+    scaleValuesQuantity = range / scaleStep + 1;
+    currentDensity = 276 / scaleValuesQuantity - 1;
+
+    console.log(currentDensity < minimalDensity);
+    console.log(currentDensity);
+    console.log(minimalDensity);
+  }
+
+  while (!isDivisible(scaleStep, step) && scaleStep !== range) {
+    scaleStep = findNextFactor(range, scaleStep + 1);
+
+    scaleValuesQuantity = range / scaleStep + 1;
+    currentDensity = 276 / scaleValuesQuantity - 1;
+  }
 
   const scaleValues = new Array(scaleValuesQuantity)
     .fill(min)
-    .map((value, index) => index * step + value);
+    .map((value, index) => index * scaleStep + value);
 
   return `<div class="${JS_SLIDER_CLASS_NAME} ${
     orientation === ORIENTATION_VERTICAL
