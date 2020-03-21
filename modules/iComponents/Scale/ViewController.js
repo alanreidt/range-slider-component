@@ -5,13 +5,8 @@ class ViewController {
     this._anchorElement = anchorElement;
     this._model = model;
 
-    this._attachElements();
     this._paint(this._model.getOptions());
-  }
-
-  _attachElements() {
-    this._scale =
-      this._anchorElement.querySelector('.js-scale') || this._anchorElement;
+    this._attachElements();
   }
 
   _paint(options) {
@@ -55,7 +50,12 @@ class ViewController {
   }
 
   _getScaleWidth() {
-    return this._scale.getBoundingClientRect().width;
+    return this._anchorElement.getBoundingClientRect().width;
+  }
+
+  _attachElements() {
+    this._scale =
+      this._anchorElement.querySelector('.js-scale') || this._anchorElement;
   }
 }
 
