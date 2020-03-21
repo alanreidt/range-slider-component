@@ -1,5 +1,6 @@
 import isUndefined from 'lodash/isUndefined';
 
+import Scale from '../../modules/iComponents/Scale/ViewController';
 import { findRatio } from '../../modules/utilities';
 import {
   findValuePositionBetween,
@@ -42,6 +43,8 @@ class ViewController {
     }
 
     this._setTooltipTextContents(values);
+
+    new Scale(this._scaleWrapper, this._model);
   }
 
   _setHandleGroupHorizontalPositions(positions) {
@@ -77,6 +80,7 @@ class ViewController {
     this._base = this._parent.querySelector(JS_BASE_SELECTOR);
     this._handleGroups = this._getHandleGroups();
     this._tooltips = this._getTooltips();
+    this._scaleWrapper = this._parent.querySelector('.scale-wrapper');
   }
 
   _getHandleGroups() {
