@@ -25,20 +25,20 @@ class ViewController {
   _calcScaleValues({ boundaries, step }) {
     const [min, max] = boundaries;
     const range = max - min;
-    const minimalDensity = 24;
+    const minimalSparsity = 24;
 
     let scaleStep = step;
     let scaleValuesQuantity = range / step + 1;
-    let currentDensity = 276 / scaleValuesQuantity - 1;
+    let currentSparsity = 276 / scaleValuesQuantity - 1;
 
     while (
-      currentDensity < minimalDensity ||
+      currentSparsity < minimalSparsity ||
       (!isDivisible(scaleStep, step) && scaleStep < range)
     ) {
       scaleStep = findNextFactor(range, scaleStep + 1);
 
       scaleValuesQuantity = range / scaleStep + 1;
-      currentDensity = 276 / scaleValuesQuantity - 1;
+      currentSparsity = 276 / scaleValuesQuantity - 1;
     }
 
     const scaleValues = new Array(scaleValuesQuantity)
