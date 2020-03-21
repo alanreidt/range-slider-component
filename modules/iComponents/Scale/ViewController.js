@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import { findNextFactor, isDivisible } from '../../utilities';
 
 class ViewController {
@@ -6,7 +5,13 @@ class ViewController {
     this._anchorElement = anchorElement;
     this._model = model;
 
+    this._attachElements();
     this._paint(this._model.getOptions());
+  }
+
+  _attachElements() {
+    this._scale =
+      this._anchorElement.querySelector('.js-scale') || this._anchorElement;
   }
 
   _paint(options) {
@@ -25,11 +30,12 @@ class ViewController {
   _calcScaleValues({ boundaries, step }) {
     const [min, max] = boundaries;
     const range = max - min;
+    const scaleWidth = this._getScaleWidth();
     const minimalSparsity = 24;
 
     let scaleStep = step;
     let scaleValuesQuantity = range / step + 1;
-    let currentSparsity = 276 / scaleValuesQuantity - 1;
+    let currentSparsity = scaleWidth / scaleValuesQuantity - 1;
 
     while (
       currentSparsity < minimalSparsity ||
@@ -38,7 +44,7 @@ class ViewController {
       scaleStep = findNextFactor(range, scaleStep + 1);
 
       scaleValuesQuantity = range / scaleStep + 1;
-      currentSparsity = 276 / scaleValuesQuantity - 1;
+      currentSparsity = scaleWidth / scaleValuesQuantity - 1;
     }
 
     const scaleValues = new Array(scaleValuesQuantity)
@@ -46,6 +52,10 @@ class ViewController {
       .map((value, index) => index * scaleStep + value);
 
     return scaleValues;
+  }
+
+  _getScaleWidth() {
+    return this._scale.getBoundingClientRect().width;
   }
 }
 
