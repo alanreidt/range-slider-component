@@ -1,0 +1,49 @@
+.scale {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-between;
+
+  &__segment {
+    position: relative;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  &__pip {
+    display: inline-block;
+    width: 2px;
+    height: 18px;
+    background-color: black;
+  }
+
+  &__value {
+    position: absolute;
+    top: 100%;
+    cursor: pointer;
+  }
+}
+
+.scale_vertical {
+  flex-direction: column;
+  width: auto;
+  height: 100%;
+
+  & .scale__segment {
+    align-items: auto;
+    justify-content: center;
+  }
+
+  & .scale__pip {
+    width: 18px;
+    height: 2px;
+  }
+
+  & .scale__value {
+    top: auto;
+    right: 100%;
+    padding-right: 4px;
+  }
+}
