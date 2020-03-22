@@ -11,8 +11,12 @@ class ViewController {
 
   _paint(options) {
     const values = this._calcScaleValues(options);
+    const { orientation } = options;
+    const scaleClassName = `scale ${
+      orientation === 'vertical' ? 'scale_vertical' : ''
+    }`;
 
-    this._anchorElement.innerHTML = `<div class="scale js-scale">
+    this._anchorElement.innerHTML = `<div class="${scaleClassName} js-scale">
         ${values.reduce((str, value) => {
           return `${str}<div class="scale__segment">
             <span class="scale__pip"></span>
@@ -22,10 +26,13 @@ class ViewController {
       </div>`;
   }
 
-  _calcScaleValues({ boundaries, step }) {
+  _calcScaleValues({ boundaries, step, orientation }) {
     const [min, max] = boundaries;
     const range = max - min;
-    const scaleWidth = this._getScaleWidth();
+    const scaleWidth =
+      orientation === 'vertical'
+        ? this._getScaleHeight()
+        : this._getScaleWidth();
     const minimalSparsity = 24;
 
     let scaleStep = step;
@@ -51,6 +58,10 @@ class ViewController {
 
   _getScaleWidth() {
     return this._anchorElement.getBoundingClientRect().width;
+  }
+
+  _getScaleHeight() {
+    return this._anchorElement.getBoundingClientRect().height;
   }
 
   _attachElements() {
