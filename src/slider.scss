@@ -16,8 +16,8 @@
     var(--slider-handle-width) / 2
   );
 
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
+  flex-flow: column nowrap;
   width: 100%;
   padding: var(--slider-tooltip-gap) var(--slider-handle-gap) 5px;
 
@@ -90,6 +90,7 @@
 }
 
 .slider_vertical {
+  flex-direction: row-reverse;
   width: auto;
   height: 100%;
   padding: calc( var(--slider-handle-width) / 2 ) 5px;
@@ -140,5 +141,27 @@
     position: absolute;
     top: 100%;
     cursor: pointer;
+  }
+}
+
+.scale_vertical {
+  flex-direction: column;
+  width: auto;
+  height: 100%;
+
+  & .scale__segment {
+    align-items: auto;
+    justify-content: center;
+  }
+
+  & .scale__pip {
+    width: 18px;
+    height: 2px;
+  }
+
+  & .scale__value {
+    top: auto;
+    right: 100%;
+    padding-right: 4px;
   }
 }
