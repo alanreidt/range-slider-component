@@ -5,8 +5,15 @@ class ViewController {
     this._anchorElement = anchorElement;
     this._model = model;
 
+    this._bindMethods();
+
     this._paint(this._model.getOptions());
     this._attachElements();
+    this._addEventListeners();
+  }
+
+  _bindMethods() {
+    this._handleScaleClick = this._handleScaleClick.bind(this);
   }
 
   _paint(options) {
@@ -20,7 +27,7 @@ class ViewController {
         ${values.reduce((str, value) => {
           return `${str}<div class="scale__segment">
             <span class="scale__pip"></span>
-            <span class="scale__value">${value}</span>
+            <span class="scale__value js-scale__value">${value}</span>
           </div>`;
         }, '')}
       </div>`;
@@ -67,6 +74,20 @@ class ViewController {
   _attachElements() {
     this._scale =
       this._anchorElement.querySelector('.js-scale') || this._anchorElement;
+  }
+
+  _addEventListeners() {
+    this._scale.addEventListener('click', this._handleScaleClick);
+  }
+
+  _handleScaleClick(event) {
+    const scaleValue = event.target.closest('.js-scale__value');
+
+    if (scaleValue !== null) {
+      const value = event.target.textContent;
+
+      this._model.setOptions({ values: value });
+    }
   }
 }
 
