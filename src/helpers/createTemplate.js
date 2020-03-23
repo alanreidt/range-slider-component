@@ -4,12 +4,14 @@ import {
   JS_BASE_CLASS_NAME,
   JS_HANDLE_GROUP_CLASS_NAME,
   JS_TOOLTIP_CLASS_NAME,
+  JS_SCALE_CLASS_NAME,
   SLIDER_NAME,
   SLIDER_VERTICAL_CLASS_NAME,
   BASE_CLASS_NAME,
   HANDLE_GROUP_CLASS_NAME,
   TOOLTIP_CLASS_NAME,
   HANDLE_CLASS_NAME,
+  SCALE_CLASS_NAME,
 } from '../constants';
 
 /**
@@ -44,7 +46,11 @@ const createTemplate = function createTemplateFromHelpers({
             <div class="${HANDLE_CLASS_NAME}"></div>
           </div>`;
         }, '')}
-        ${hasScale ? '<div class="slider__scale js-slider__scale"></div>' : ''}
+        ${
+          hasScale
+            ? `<div class="${SCALE_CLASS_NAME} ${JS_SCALE_CLASS_NAME}"></div>`
+            : ''
+        }
       </div>
     </div>`;
 };
