@@ -1,5 +1,5 @@
 import {
-  composeSliderElementClassName,
+  composeSliderClassName,
   ORIENTATION_VERTICAL,
   JS_SLIDER_CLASS_NAME,
   JS_BASE_CLASS_NAME,
@@ -32,12 +32,12 @@ const createTemplate = function createTemplateFromHelpers({
   theme,
 } = {}) {
   const isVertical = orientation === ORIENTATION_VERTICAL;
-  const sliderElementClassName = composeSliderElementClassName({
+  const sliderClassName = composeSliderClassName({
     [ORIENTATION_FLAG_NAME]: isVertical,
     theme,
   });
 
-  return `<div class="${sliderElementClassName} ${JS_SLIDER_CLASS_NAME}">
+  return `<div class="${sliderClassName} ${JS_SLIDER_CLASS_NAME}">
       <div class="${BASE_CLASS_NAME} ${JS_BASE_CLASS_NAME}">
         ${values.reduce((str, value, index) => {
           return `${str}<div class="${HANDLE_GROUP_CLASS_NAME} ${JS_HANDLE_GROUP_CLASS_NAME}" data-index="${index}">
