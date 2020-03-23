@@ -25,6 +25,7 @@ class ViewController {
 
     this._paint(this._model.getOptions());
     this._attachElements();
+    this._createComponents();
     this._addSliderEventListener();
     this.setElements(this._model.getOptions());
   }
@@ -43,8 +44,6 @@ class ViewController {
     }
 
     this._setTooltipTextContents(values);
-
-    Scale.create(this._scale, this._model);
   }
 
   _setHandleGroupHorizontalPositions(positions) {
@@ -89,6 +88,10 @@ class ViewController {
 
   _getTooltips() {
     return [...this._parent.querySelectorAll(JS_TOOLTIP_SELECTOR)];
+  }
+
+  _createComponents() {
+    Scale.create(this._scale, this._model);
   }
 
   _addSliderEventListener() {
