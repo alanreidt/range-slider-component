@@ -18,6 +18,7 @@ import {
   DEFAULT_OPTIONS,
   ORIENTATION_HORIZONTAL,
   ORIENTATION_VERTICAL,
+  THEME_MODERN,
 } from '../constants';
 
 class Model {
@@ -142,6 +143,18 @@ class Model {
       newValue === ORIENTATION_HORIZONTAL || newValue === ORIENTATION_VERTICAL;
 
     this._options.orientation = isValueValid ? newValue : currentValue;
+  }
+
+  _setTheme(newValue) {
+    const currentValue = this._options.theme;
+
+    if (Object.prototype.hasOwnProperty.call(this._options, 'theme')) {
+      return;
+    }
+
+    const isValueValid = newValue === THEME_MODERN;
+
+    this._options.theme = isValueValid ? newValue : currentValue;
   }
 
   _setHasTooltips(newValue) {

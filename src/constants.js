@@ -4,6 +4,7 @@ import { getAverageOf } from '../modules/utilities';
 
 const ORIENTATION_HORIZONTAL = 'horizontal';
 const ORIENTATION_VERTICAL = 'vertical';
+const THEME_MODERN = 'modern';
 
 const DEFAULT_OPTIONS = {
   // order matters
@@ -12,6 +13,7 @@ const DEFAULT_OPTIONS = {
   orientation: ORIENTATION_HORIZONTAL,
   hasTooltips: true,
   hasScale: false,
+  theme: false,
   get values() {
     return this._values || [getAverageOf(this.boundaries)];
   },
@@ -66,9 +68,11 @@ const JS_HANDLE_SELECTOR = `.${JS_HANDLE_CLASS_NAME}`;
 const JS_SCALE_SELECTOR = `.${JS_SCALE_CLASS_NAME}`;
 
 export {
+  composeSliderElementClassName,
   DEFAULT_OPTIONS,
   ORIENTATION_HORIZONTAL,
   ORIENTATION_VERTICAL,
+  THEME_MODERN,
   SLIDER_NAME,
   ORIENTATION_FLAG_NAME,
   BASE_NAME,
