@@ -10,6 +10,7 @@ Slider.create(parent0, {
   values: [10, 30, 50],
   step: 1,
   hasTooltips: true,
+  hasScale: true,
 });
 
 Slider.create(parent1, {
