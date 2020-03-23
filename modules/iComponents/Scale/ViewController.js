@@ -33,14 +33,13 @@ class ViewController {
       </div>`;
   }
 
-  _calcScaleValues({ boundaries, step, orientation }) {
+  _calcScaleValues({ boundaries, step, orientation, minimalSparsity = 24 }) {
     const [min, max] = boundaries;
     const range = max - min;
     const scaleWidth =
       orientation === 'vertical'
         ? this._getScaleHeight()
         : this._getScaleWidth();
-    const minimalSparsity = 24;
 
     let scaleStep = step;
     let scaleValuesQuantity = range / step + 1;
