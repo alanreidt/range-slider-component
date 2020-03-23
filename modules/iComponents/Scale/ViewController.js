@@ -47,8 +47,10 @@ class ViewController {
     let currentSparsity = scaleWidth / scaleValuesQuantity - 1;
 
     while (
-      currentSparsity < minimalSparsity ||
-      (!isDivisible(scaleStep, step) && scaleStep < range)
+      !(
+        (currentSparsity >= minimalSparsity && isDivisible(scaleStep, step)) ||
+        scaleStep >= range
+      )
     ) {
       scaleStep = findNextFactor(range, scaleStep + 1);
 
