@@ -43,8 +43,8 @@ const createTemplate = function createTemplateFromHelpers({
             <div class="${HANDLE_CLASS_NAME}"></div>
           </div>`;
         }, '')}
+        <div class="slider__scale js-slider__scale"></div>
       </div>
-      <div class="js-slider__scale"></div>
     </div>`;
 };
 
