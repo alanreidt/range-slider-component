@@ -154,6 +154,17 @@ class Model {
     this._options.hasTooltips =
       typeof newValue === 'boolean' ? newValue : currentValue;
   }
+
+  _setHasScale(newValue) {
+    const currentValue = this._options.hasScale;
+
+    if (Object.prototype.hasOwnProperty.call(this._options, 'hasScale')) {
+      return;
+    }
+
+    this._options.hasScale =
+      typeof newValue === 'boolean' ? newValue : currentValue;
+  }
 }
 
 Object.assign(Model.prototype, ObserverMixin);

@@ -11,6 +11,7 @@ const DEFAULT_OPTIONS = {
   step: 1,
   orientation: ORIENTATION_HORIZONTAL,
   hasTooltips: true,
+  hasScale: false,
   get values() {
     return this._values || [getAverageOf(this.boundaries)];
   },

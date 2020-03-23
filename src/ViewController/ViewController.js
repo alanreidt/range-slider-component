@@ -25,7 +25,7 @@ class ViewController {
 
     this._paint(this._model.getOptions());
     this._attachElements();
-    this._createComponents();
+    this._createComponents(this._model.getOptions());
     this._addSliderEventListener();
     this.setElements(this._model.getOptions());
   }
@@ -90,8 +90,10 @@ class ViewController {
     return [...this._parent.querySelectorAll(JS_TOOLTIP_SELECTOR)];
   }
 
-  _createComponents() {
-    Scale.create(this._scale, this._model);
+  _createComponents({ hasScale }) {
+    if (hasScale) {
+      Scale.create(this._scale, this._model);
+    }
   }
 
   _addSliderEventListener() {

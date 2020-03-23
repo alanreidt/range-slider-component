@@ -26,6 +26,7 @@ const createTemplate = function createTemplateFromHelpers({
   values,
   orientation,
   hasTooltips,
+  hasScale,
 } = {}) {
   return `<div class="${JS_SLIDER_CLASS_NAME} ${
     orientation === ORIENTATION_VERTICAL
@@ -43,7 +44,7 @@ const createTemplate = function createTemplateFromHelpers({
             <div class="${HANDLE_CLASS_NAME}"></div>
           </div>`;
         }, '')}
-        <div class="slider__scale js-slider__scale"></div>
+        ${hasScale ? '<div class="slider__scale js-slider__scale"></div>' : ''}
       </div>
     </div>`;
 };
