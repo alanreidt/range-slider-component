@@ -19,11 +19,11 @@ class ViewController {
   _paint(options) {
     const values = this._calcScaleValues(options);
     const { orientation } = options;
-    const scaleClassName = `scale ${
+    const scaleClassName = `scale js-scale ${
       orientation === 'vertical' ? 'scale_vertical' : ''
     }`;
 
-    this._anchorElement.innerHTML = `<div class="${scaleClassName} js-scale">
+    this._anchorElement.innerHTML = `<div class="${scaleClassName}">
         ${values.reduce((str, value) => {
           return `${str}<div class="scale__segment">
             <span class="scale__pip"></span>
