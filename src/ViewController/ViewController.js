@@ -46,6 +46,8 @@ class ViewController {
     }
 
     this._setTooltipTextContents(values);
+
+    Connector.setElements(this._connector, { positions, orientation });
   }
 
   _setHandleGroupHorizontalPositions(positions) {
@@ -98,7 +100,7 @@ class ViewController {
       Scale.create(this._scale, this._model);
     }
 
-    Connector.create(this._connector, this._model);
+    Connector.create(this._connector, this._model.getOptions());
   }
 
   _addSliderEventListener() {
