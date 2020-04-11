@@ -1,6 +1,7 @@
 import isUndefined from 'lodash/isUndefined';
 
 import Scale from '../../modules/iComponents/Scale/Scale';
+import Connector from '../../modules/iComponents/Connector/Connector';
 import { findRatio } from '../../modules/utilities';
 import {
   findValuePositionBetween,
@@ -81,6 +82,7 @@ class ViewController {
     this._handleGroups = this._getHandleGroups();
     this._tooltips = this._getTooltips();
     this._scale = this._parent.querySelector(JS_SCALE_SELECTOR);
+    this._connector = this._parent.querySelector('.js-slider__connector');
   }
 
   _getHandleGroups() {
@@ -95,6 +97,8 @@ class ViewController {
     if (hasScale) {
       Scale.create(this._scale, this._model);
     }
+
+    Connector.create(this._connector, this._model);
   }
 
   _addSliderEventListener() {
