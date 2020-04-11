@@ -7,18 +7,21 @@ class ViewController {
     this.setElements(options);
   }
 
-  setElements({ positions = ['0%', '100%'], orientation }) {
+  setElements({ positions = ['10%', '90%'], orientation }) {
     let [start, end = '0%'] = positions;
 
     if (start > end) {
       [start, end] = [end, start];
     }
 
-    const direction = orientation === 'vertical' ? 'to top' : 'to right';
-    const connectorStyle = getComputedStyle(this._connector);
-    const currentBackgroundColor = connectorStyle.backgroundColor;
+    const connectorStyle = this._connector.style;
+    const [startSide, endSide] =
+      orientation === 'vertical' ? ['top', 'bottom'] : ['left', 'right'];
 
-    this._connector.style.background = `linear-gradient(${direction}, transparent ${start}, ${currentBackgroundColor} ${start} ${end}, transparent ${end})`;
+    [connectorStyle[startSide], connectorStyle[endSide]] = [
+      start,
+      `${100 - parseFloat(end)}%`,
+    ];
   }
 
   _paint({ orientation }) {
