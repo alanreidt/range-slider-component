@@ -54,7 +54,7 @@ const createTemplate = function createTemplateFromHelpers({
             ? `<div class="${SCALE_CLASS_NAME} ${JS_SCALE_CLASS_NAME}"></div>`
             : ''
         }
-        <div class="js-slider__connector"></div>
+        <div class="slider__connector js-slider__connector"></div>
       </div>
     </div>`;
 };
