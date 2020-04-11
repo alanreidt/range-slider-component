@@ -1,21 +1,19 @@
 class ViewController {
-  constructor(anchorElement, model) {
+  constructor(anchorElement, options) {
     this._anchorElement = anchorElement;
-    this._model = model;
 
-    this._paint(this._model.getOptions());
+    this._paint(options);
     this._attachElements();
-    this.setElements(this._model.getOptions());
+    this.setElements(options);
   }
 
-  setElements({ positions = ['0%', '100%'] }) {
+  setElements({ positions = ['0%', '100%'], orientation }) {
     let [start, end = '0%'] = positions;
 
     if (start > end) {
       [start, end] = [end, start];
     }
 
-    const { orientation } = this._model.getOptions();
     const direction = orientation === 'vertical' ? 'to top' : 'to right';
     const connectorStyle = getComputedStyle(this._connector);
     const currentBackgroundColor = connectorStyle.backgroundColor;

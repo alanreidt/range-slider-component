@@ -5,21 +5,20 @@ import ViewController from './ViewController';
  * All interactions with Connector must happen only through it.
  */
 class Connector {
-  constructor(anchorElement, model) {
-    this._model = model;
-    this._viewController = new ViewController(anchorElement, this._model);
+  constructor(anchorElement, options) {
+    this._viewController = new ViewController(anchorElement, options);
   }
 
   /**
    * Create Connector instance.
    *
    * @param {HTMLElement} anchorElement An element the Connector instance to be inserted in.
-   * @param {Model} model Model instance with Connector data.
+   * @param {Object} options Connector options.
    *
    * @returns {Connector} the Connector instance.
    */
-  static create(anchorElement, model) {
-    return new this(anchorElement, model);
+  static create(anchorElement, options) {
+    return new this(anchorElement, options);
   }
 }
 
