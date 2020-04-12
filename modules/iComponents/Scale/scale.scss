@@ -13,6 +13,8 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+
+    user-select: none;
   }
 
   &__pip {
