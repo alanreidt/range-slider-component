@@ -47,7 +47,10 @@ class ViewController {
 
     this._setTooltipTextContents(values);
 
-    Connector.setElements(this._connector, { positions, orientation });
+    Connector.setElements(this._connector, {
+      positions,
+      orientation,
+    });
   }
 
   _setHandleGroupHorizontalPositions(positions) {
@@ -95,12 +98,19 @@ class ViewController {
     return [...this._parent.querySelectorAll(JS_TOOLTIP_SELECTOR)];
   }
 
-  _createComponents({ hasScale }) {
+  _createComponents({ boundaries, values, hasScale, orientation }) {
+    const positions = values.map((value) =>
+      findValuePositionBetween(value, ...boundaries),
+    );
+
     if (hasScale) {
       Scale.create(this._scale, this._model);
     }
 
-    Connector.create(this._connector, this._model.getOptions());
+    Connector.create(this._connector, {
+      positions,
+      orientation,
+    });
   }
 
   _addSliderEventListener() {
