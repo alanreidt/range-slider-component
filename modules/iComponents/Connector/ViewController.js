@@ -10,7 +10,7 @@ class ViewController {
   setElements({ positions = ['10%', '90%'], orientation }) {
     let [start, end = '0%'] = positions;
 
-    if (start > end) {
+    if (parseFloat(start) > parseFloat(end)) {
       [start, end] = [end, start];
     }
 
