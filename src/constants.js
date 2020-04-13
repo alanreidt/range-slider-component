@@ -30,6 +30,7 @@ const HANDLE_GROUP_NAME = 'handle-group';
 const TOOLTIP_NAME = 'tooltip';
 const HANDLE_NAME = 'handle';
 const SCALE_NAME = 'scale';
+const CONNECTOR_NAME = 'connector';
 
 const className = withNaming({ e: '__', m: '_', v: '_' });
 const composeSliderClassName = className(SLIDER_NAME);
@@ -42,6 +43,7 @@ const BASE_CLASS_NAME = composeSliderClassName(BASE_NAME);
 const TOOLTIP_CLASS_NAME = composeSliderClassName(TOOLTIP_NAME);
 const HANDLE_CLASS_NAME = composeSliderClassName(HANDLE_NAME);
 const SCALE_CLASS_NAME = composeSliderClassName(SCALE_NAME);
+const CONNECTOR_CLASS_NAME = composeSliderClassName(CONNECTOR_NAME);
 
 const jsClassName = withNaming({ n: 'js-', e: '__', m: '_', v: '_' });
 const composeSliderJSClassName = jsClassName(SLIDER_NAME);
@@ -55,6 +57,7 @@ const JS_BASE_CLASS_NAME = composeSliderJSClassName(BASE_NAME);
 const JS_TOOLTIP_CLASS_NAME = composeSliderJSClassName(TOOLTIP_NAME);
 const JS_HANDLE_CLASS_NAME = composeSliderJSClassName(HANDLE_NAME);
 const JS_SCALE_CLASS_NAME = composeSliderJSClassName(SCALE_NAME);
+const JS_CONNECTOR_CLASS_NAME = composeSliderJSClassName(CONNECTOR_NAME);
 
 const JS_SLIDER_SELECTOR = `.${JS_SLIDER_CLASS_NAME}`;
 const JS_SLIDER_VERTICAL_SELECTOR = `.${JS_SLIDER_VERTICAL_CLASS_NAME}`;
@@ -63,6 +66,7 @@ const JS_HANDLE_GROUP_SELECTOR = `.${JS_HANDLE_GROUP_CLASS_NAME}`;
 const JS_TOOLTIP_SELECTOR = `.${JS_TOOLTIP_CLASS_NAME}`;
 const JS_HANDLE_SELECTOR = `.${JS_HANDLE_CLASS_NAME}`;
 const JS_SCALE_SELECTOR = `.${JS_SCALE_CLASS_NAME}`;
+const JS_CONNECTOR_SELECTOR = `.${JS_CONNECTOR_CLASS_NAME}`;
 
 export {
   composeSliderClassName,
@@ -82,6 +86,7 @@ export {
   TOOLTIP_CLASS_NAME,
   HANDLE_CLASS_NAME,
   SCALE_CLASS_NAME,
+  CONNECTOR_CLASS_NAME,
   JS_SLIDER_CLASS_NAME,
   JS_SLIDER_VERTICAL_CLASS_NAME,
   JS_BASE_CLASS_NAME,
@@ -89,6 +94,7 @@ export {
   JS_TOOLTIP_CLASS_NAME,
   JS_HANDLE_CLASS_NAME,
   JS_SCALE_CLASS_NAME,
+  JS_CONNECTOR_CLASS_NAME,
   JS_SLIDER_SELECTOR,
   JS_SLIDER_VERTICAL_SELECTOR,
   JS_BASE_SELECTOR,
@@ -96,4 +102,5 @@ export {
   JS_TOOLTIP_SELECTOR,
   JS_HANDLE_SELECTOR,
   JS_SCALE_SELECTOR,
+  JS_CONNECTOR_SELECTOR,
 };

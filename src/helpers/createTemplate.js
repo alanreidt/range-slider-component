@@ -6,11 +6,13 @@ import {
   JS_HANDLE_GROUP_CLASS_NAME,
   JS_TOOLTIP_CLASS_NAME,
   JS_SCALE_CLASS_NAME,
+  JS_CONNECTOR_CLASS_NAME,
   BASE_CLASS_NAME,
   HANDLE_GROUP_CLASS_NAME,
   TOOLTIP_CLASS_NAME,
   HANDLE_CLASS_NAME,
   SCALE_CLASS_NAME,
+  CONNECTOR_CLASS_NAME,
   ORIENTATION_FLAG_NAME,
 } from '../constants';
 
@@ -57,7 +59,7 @@ const createTemplate = function createTemplateFromHelpers({
         }
         ${
           hasConnector
-            ? `<div class="slider__connector js-slider__connector"></div>`
+            ? `<div class="${CONNECTOR_CLASS_NAME} ${JS_CONNECTOR_CLASS_NAME}"></div>`
             : ''
         }
       </div>

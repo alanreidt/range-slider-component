@@ -16,6 +16,7 @@ import {
   JS_HANDLE_GROUP_SELECTOR,
   JS_TOOLTIP_SELECTOR,
   JS_SCALE_SELECTOR,
+  JS_CONNECTOR_SELECTOR,
 } from '../constants';
 
 class ViewController {
@@ -89,7 +90,7 @@ class ViewController {
     this._handleGroups = this._getHandleGroups();
     this._tooltips = this._getTooltips();
     this._scale = this._parent.querySelector(JS_SCALE_SELECTOR);
-    this._connector = this._parent.querySelector('.js-slider__connector');
+    this._connector = this._parent.querySelector(JS_CONNECTOR_SELECTOR);
   }
 
   _getHandleGroups() {
