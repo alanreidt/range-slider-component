@@ -13,6 +13,7 @@ const DEFAULT_OPTIONS = {
   orientation: ORIENTATION_HORIZONTAL,
   hasTooltips: true,
   hasScale: false,
+  hasConnector: true,
   theme: false,
   get values() {
     return this._values || [getAverageOf(this.boundaries)];

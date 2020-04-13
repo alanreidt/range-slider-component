@@ -178,6 +178,17 @@ class Model {
     this._options.hasScale =
       typeof newValue === 'boolean' ? newValue : currentValue;
   }
+
+  _setHasConnector(newValue) {
+    const currentValue = this._options.hasConnector;
+
+    if (Object.prototype.hasOwnProperty.call(this._options, 'hasConnector')) {
+      return;
+    }
+
+    this._options.hasConnector =
+      typeof newValue === 'boolean' ? newValue : currentValue;
+  }
 }
 
 Object.assign(Model.prototype, ObserverMixin);

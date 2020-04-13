@@ -29,6 +29,7 @@ const createTemplate = function createTemplateFromHelpers({
   orientation,
   hasTooltips,
   hasScale,
+  hasConnector,
   theme,
 } = {}) {
   const isVertical = orientation === ORIENTATION_VERTICAL;
@@ -54,7 +55,11 @@ const createTemplate = function createTemplateFromHelpers({
             ? `<div class="${SCALE_CLASS_NAME} ${JS_SCALE_CLASS_NAME}"></div>`
             : ''
         }
-        <div class="slider__connector js-slider__connector"></div>
+        ${
+          hasConnector
+            ? `<div class="slider__connector js-slider__connector"></div>`
+            : ''
+        }
       </div>
     </div>`;
 };
