@@ -9,12 +9,24 @@ class ViewController {
     this.setElements(model.getOptions());
   }
 
-  setElements({ boundaries, values, step, orientation, hasTooltips } = {}) {
+  setElements({
+    boundaries,
+    values,
+    step,
+    hasTooltips,
+    hasScale,
+    hasConnector,
+    orientation,
+    theme,
+  } = {}) {
     this.boundariesTextInput.value = boundaries.join(', ');
     this.valuesTextInput.value = values.join(', ');
     this.stepNumberInput.value = step;
-    this.orientationCheckbox.checked = orientation === 'vertical';
     this.hasTooltipsCheckbox.checked = hasTooltips;
+    this.hasScaleCheckbox.checked = hasScale;
+    this.hasConnectorCheckbox.checked = hasConnector;
+    this.orientationCheckbox.checked = orientation === 'vertical';
+    this.modernThemeCheckbox.checked = theme === 'modern';
   }
 
   _bindMethods() {
@@ -32,11 +44,20 @@ class ViewController {
     this.stepNumberInput = this.anchorElement.querySelector(
       '.js-control-pane__step-input',
     );
+    this.hasTooltipsCheckbox = this.anchorElement.querySelector(
+      '.js-control-pane__hasTooltips-checkbox',
+    );
+    this.hasScaleCheckbox = this.anchorElement.querySelector(
+      '.js-control-pane__hasScale-checkbox',
+    );
+    this.hasConnectorCheckbox = this.anchorElement.querySelector(
+      '.js-control-pane__hasConnector-checkbox',
+    );
     this.orientationCheckbox = this.anchorElement.querySelector(
       '.js-control-pane__orientation-checkbox',
     );
-    this.hasTooltipsCheckbox = this.anchorElement.querySelector(
-      '.js-control-pane__hasTooltips-checkbox',
+    this.modernThemeCheckbox = this.anchorElement.querySelector(
+      '.js-control-pane__modern-theme-checkbox',
     );
   }
 
@@ -46,17 +67,23 @@ class ViewController {
     const boundaries = this.boundariesTextInput.value.split(', ');
     const values = this.valuesTextInput.value.split(', ');
     const step = this.stepNumberInput.valueAsNumber;
+    const hasTooltips = this.hasTooltipsCheckbox.checked;
+    const hasScale = this.hasScaleCheckbox.checked;
+    const hasConnector = this.hasConnectorCheckbox.checked;
     const orientation = this.orientationCheckbox.checked
       ? 'vertical'
       : 'horizontal';
-    const hasTooltips = this.hasTooltipsCheckbox.checked;
+    const theme = this.modernThemeCheckbox.checked && 'modern';
 
     this.model.setOptions({
       boundaries,
       values,
       step,
       hasTooltips,
+      hasScale,
+      hasConnector,
       orientation,
+      theme,
     });
   }
 }
