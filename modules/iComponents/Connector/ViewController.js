@@ -8,11 +8,10 @@ class ViewController {
   }
 
   setElements({ positions = ['10%', '90%'], orientation }) {
-    let [start, end = '0%'] = positions;
-
-    if (parseFloat(start) > parseFloat(end)) {
-      [start, end] = [end, start];
-    }
+    const [start, end] =
+      positions.length === 1
+        ? ['0%', positions[0]]
+        : [positions[0], positions[positions.length - 1]];
 
     const connectorStyle = this._connector.style;
     const [startSide, endSide] =
