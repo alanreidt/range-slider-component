@@ -11,6 +11,7 @@ const dataSet = [
       step: 10,
       orientation: 'horizontal',
       hasTooltips: true,
+      theme: 'modern',
     },
   },
   {
