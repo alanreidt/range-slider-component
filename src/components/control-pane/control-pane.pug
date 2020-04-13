@@ -25,25 +25,26 @@ mixin control-pane(name = 'control-pane')
           id=`${name}-step-input`
           placeholder='format: 20'
         )
-        +checkbox('turn on tooltips?')(
-          class='js-control-pane__hasTooltips-checkbox'
-          id=`${name}-hasTooltips-checkbox`
-        )
-        +checkbox('turn on scale?')(
-          class='js-control-pane__hasScale-checkbox'
-          id=`${name}-hasScale-checkbox`
-        )
-        +checkbox('turn on connector?')(
-          class='js-control-pane__hasConnector-checkbox'
-          id=`${name}-hasConnector-checkbox`
-        )
-        +checkbox('turn vertically?')(
-          class='js-control-pane__orientation-checkbox'
-          id=`${name}-orientation-checkbox`
-        )
-        +checkbox('turn on modern theme?')(
-          class='js-control-pane__modern-theme-checkbox'
-          id=`${name}-modern-theme-checkbox`
-        )
+        .form-group
+          +checkbox('turn on tooltips?')(
+            class='js-control-pane__hasTooltips-checkbox'
+            id=`${name}-hasTooltips-checkbox`
+          )
+          +checkbox('turn on scale?')(
+            class='js-control-pane__hasScale-checkbox'
+            id=`${name}-hasScale-checkbox`
+          )
+          +checkbox('turn on connector?')(
+            class='js-control-pane__hasConnector-checkbox'
+            id=`${name}-hasConnector-checkbox`
+          )
+          +checkbox('turn vertically?')(
+            class='js-control-pane__orientation-checkbox'
+            id=`${name}-orientation-checkbox`
+          )
+          +checkbox('turn on modern theme?')(
+            class='js-control-pane__modern-theme-checkbox'
+            id=`${name}-modern-theme-checkbox`
+          )
         .text-center
           +button('create')
