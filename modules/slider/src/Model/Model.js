@@ -18,12 +18,13 @@ import {
   DEFAULT_OPTIONS,
   ORIENTATION_HORIZONTAL,
   ORIENTATION_VERTICAL,
+  THEME_MODERN,
 } from '../constants';
 
 class Model {
   constructor(newOptions = {}) {
-    this.DEFAULT_OPTIONS = DEFAULT_OPTIONS;
-    this._options = Object.create(DEFAULT_OPTIONS);
+    this._DEFAULT_OPTIONS = DEFAULT_OPTIONS;
+    this._options = Object.create(this._DEFAULT_OPTIONS);
 
     this.setOptions(newOptions);
   }
@@ -32,7 +33,7 @@ class Model {
     const options = this._options;
     const optionsCopy = {};
 
-    Object.keys(this.DEFAULT_OPTIONS).forEach((key) => {
+    Object.keys(this._DEFAULT_OPTIONS).forEach((key) => {
       const value = options[key];
 
       optionsCopy[key] = Array.isArray(value) ? value.slice() : value;
@@ -42,7 +43,7 @@ class Model {
   }
 
   setOptions(newOptions) {
-    Object.keys(this.DEFAULT_OPTIONS).forEach((key) => {
+    Object.keys(this._DEFAULT_OPTIONS).forEach((key) => {
       const keyFirstLetter = key[0];
       const isKeyPrivate = keyFirstLetter === '_';
 
@@ -144,6 +145,18 @@ class Model {
     this._options.orientation = isValueValid ? newValue : currentValue;
   }
 
+  _setTheme(newValue) {
+    const currentValue = this._options.theme;
+
+    if (Object.prototype.hasOwnProperty.call(this._options, 'theme')) {
+      return;
+    }
+
+    const isValueValid = newValue === THEME_MODERN;
+
+    this._options.theme = isValueValid ? newValue : currentValue;
+  }
+
   _setHasTooltips(newValue) {
     const currentValue = this._options.hasTooltips;
 
@@ -152,6 +165,28 @@ class Model {
     }
 
     this._options.hasTooltips =
+      typeof newValue === 'boolean' ? newValue : currentValue;
+  }
+
+  _setHasScale(newValue) {
+    const currentValue = this._options.hasScale;
+
+    if (Object.prototype.hasOwnProperty.call(this._options, 'hasScale')) {
+      return;
+    }
+
+    this._options.hasScale =
+      typeof newValue === 'boolean' ? newValue : currentValue;
+  }
+
+  _setHasConnector(newValue) {
+    const currentValue = this._options.hasConnector;
+
+    if (Object.prototype.hasOwnProperty.call(this._options, 'hasConnector')) {
+      return;
+    }
+
+    this._options.hasConnector =
       typeof newValue === 'boolean' ? newValue : currentValue;
   }
 }

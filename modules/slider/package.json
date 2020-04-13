@@ -1,8 +1,8 @@
 {
-  "name": "slider_plugin",
+  "name": "slider",
+  "private": true,
   "version": "1.0.0",
   "description": "Bulletproof range slider plugin with MVC architecture at the core",
-  "main": "src/slider.js",
   "directories": {
     "test": "tests"
   },
@@ -15,13 +15,14 @@
     "test": "parcel tests/test.html --open",
     "build": "rm -rf prod && parcel build src/Slider.js -o src/Slider.min.js -d ./prod && parcel build src/slider.scss -o src/slider.min.css -d ./prod",
     "dev": "parcel test-page/index.html --open",
+    "eslint": "eslint src/",
     "create": "plop"
   },
-  "keywords": [],
-  "author": "Alan Reid",
+  "keywords": ["range", "slider", "range-slider", "MVC"],
+  "author": "alanreidt",
   "license": "MIT",
+  "browser": "prod/Slider.min.js",
   "devDependencies": {
-    "acorn": "^7.1.0",
     "chai": "^4.2.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.7.2",
@@ -39,6 +40,7 @@
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.6",
+    "deep-equal": "^2.0.1",
     "lodash": "^4.17.15"
   }
 }

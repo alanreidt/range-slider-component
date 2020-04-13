@@ -1,99 +1,174 @@
-import SliderFactory from './SliderFactory';
+import Model from './Model';
+import ViewController from './ViewController';
 
 /**
- * This object represents API for Slider.
+ * This class represents API for Slider.
  * All interactions with Slider must happen only through it.
  */
-const Slider = {
-  _factory: SliderFactory,
-  _parentsMap: new WeakMap(),
+class Slider {
+  constructor(anchorElement, options) {
+    this._model = new Model(options);
+    this._viewController = new ViewController(anchorElement, this._model);
+
+    const viewControllerSetElementsBound = this._viewController.setElements.bind(
+      this._viewController,
+    );
+
+    this._model.addSubscriber('update', viewControllerSetElementsBound);
+
+    this.constructor._anchorElementsMap.set(anchorElement, this);
+  }
 
   /**
    * Create Slider instance.
    *
-   * @param {HTMLElement} parent An element Slider to be inserted in.
-   * @param {Object} options Options of Slider.
+   * @param {HTMLElement} anchorElement An element the Slider instance to be inserted in.
+   * @param {Object} options Options for Slider instance.
+   *
+   * @returns {Slider} the Slider instance.
    */
-  create(parent, options) {
-    const model = this._factory.createModel(options);
-    const viewController = this._factory.createViewController(parent, model);
-    const viewControllerSetElementsBound = viewController.setElements.bind(
-      viewController,
-    );
-
-    model.addSubscriber('update', viewControllerSetElementsBound);
-
-    this._parentsMap.set(parent, {
-      model,
-      viewController,
-    });
-  },
+  static create(anchorElement, options) {
+    return new this(anchorElement, options);
+  }
 
   /**
    * Returns Slider instance's current options copy. Non-primitive values are references.
    *
-   * @param {HTMLElement} parent An element Slider is inserted in.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
    *
-   * @returns {Object} Current options of Slider.
+   * @returns {Object} Current options of the Slider instance.
    */
-  getOptions(parent) {
-    return this._parentsMap.get(parent).model.getOptions();
-  },
+  static getOptions(sliderElement) {
+    return this._anchorElementsMap.get(sliderElement).getOptions();
+  }
 
   /**
    * Set Slider instance's options.
    *
-   * @param {HTMLElement} parent An element Slider is inserted in.
-   * @param {Object} options Options to be set to Slider.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {Object} options Options to be set to the Slider instance.
    */
-  setOptions(parent, options) {
-    this._parentsMap.get(parent).model.setOptions(options);
-  },
+  static setOptions(sliderElement, options) {
+    this._anchorElementsMap.get(sliderElement).setOptions(options);
+  }
 
   /**
    * Set Slider instance's value of “values” option at index position.
    *
-   * @param {HTMLElement} parent An element Slider is inserted in.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
    * @param {number} index An index of “values” option's value to change.
    * @param {number} value A value to set.
    */
-  setValueAt(parent, index, value) {
-    this._parentsMap.get(parent).model.setValueAt(index, value);
-  },
+  static setValueAt(sliderElement, index, value) {
+    this._anchorElementsMap.get(sliderElement).setValueAt(index, value);
+  }
 
   /**
    * Subscribe to event, usage:
    *   menu.addSubscriber( "select", function(item) { ... } ),
    *   menu.addSubscriber( "select", obj.method(item) { ... }.bind(obj) )
    *
-   * @param {string} eventName The name of an event to listen to.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {string} eventName A name of an event to listen to.
    * @param {function} subscriber The subscriber to be triggered on the event.
    */
-  addSubscriber(parent, eventName, subscriber) {
-    this._parentsMap.get(parent).model.addSubscriber(eventName, subscriber);
-  },
+  static addSubscriber(sliderElement, eventName, subscriber) {
+    this._anchorElementsMap
+      .get(sliderElement)
+      .addSubscriber(eventName, subscriber);
+  }
 
   /**
    * Cancel the subscription, usage:
    *   menu.removeSubscriber("select", subscriber)
    *
-   * @param {string} eventName The name of an event to which subscriber is listen to.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {string} eventName The name of the event to which subscriber listens to.
    * @param {function} subscriber The subscriber to be removed from the list.
    */
-  removeSubscriber(parent, eventName, subscriber) {
-    this._parentsMap.get(parent).model.removeSubscriber(eventName, subscriber);
-  },
+  static removeSubscriber(sliderElement, eventName, subscriber) {
+    this._anchorElementsMap
+      .get(sliderElement)
+      .removeSubscriber(eventName, subscriber);
+  }
 
   /**
    * Generate an event with the given name and data, usage:
    *   this.triggerSubscribers("select", data1, data2);
    *
-   * @param {string} eventName The name of an event to trigger.
-   * @param {any} arg1...args The data to be passed to subscribers.
+   * @param {HTMLElement} sliderElement An element the Slider instance was inserted in.
+   * @param {string} eventName The name of the event to trigger.
+   * @param {any} arg1...args A data to be passed to subscribers.
    */
-  triggerSubscribers(parent, eventName, ...args) {
-    this._parentsMap.get(parent).model.triggerSubscribers(eventName, ...args);
-  },
-};
+  static triggerSubscribers(sliderElement, eventName, ...args) {
+    this._anchorElementsMap
+      .get(sliderElement)
+      .triggerSubscribers(eventName, ...args);
+  }
+
+  /**
+   * Returns current options copy. Non-primitive values are references.
+   *
+   * @returns {Object} Current options.
+   */
+  getOptions() {
+    return this._model.getOptions();
+  }
+
+  /**
+   * Set options.
+   *
+   * @param {Object} options Options to be set.
+   */
+  setOptions(options) {
+    this._model.setOptions(options);
+  }
+
+  /**
+   * Set value of “values” option at index position.
+   *
+   * @param {number} index An index of “values” option's value to change.
+   * @param {number} value A value to set.
+   */
+  setValueAt(index, value) {
+    this._model.setValueAt(index, value);
+  }
+
+  /**
+   * Subscribe to event, usage:
+   *   menu.addSubscriber( "select", function(item) { ... } ),
+   *   menu.addSubscriber( "select", obj.method(item) { ... }.bind(obj) )
+   *
+   * @param {string} eventName A name of an event to listen to.
+   * @param {function} subscriber The subscriber to be triggered on the event.
+   */
+  addSubscriber(eventName, subscriber) {
+    this._model.addSubscriber(eventName, subscriber);
+  }
+
+  /**
+   * Cancel the subscription, usage:
+   *   menu.removeSubscriber("select", subscriber)
+   *
+   * @param {string} eventName The name of the event to which subscriber listens to.
+   * @param {function} subscriber The subscriber to be removed from the list.
+   */
+  removeSubscriber(eventName, subscriber) {
+    this._model.removeSubscriber(eventName, subscriber);
+  }
+
+  /**
+   * Generate an event with the given name and data, usage:
+   *   this.triggerSubscribers("select", data1, data2);
+   *
+   * @param {string} eventName The name of the event to trigger.
+   * @param {any} arg1...args A data to be passed to subscribers.
+   */
+  triggerSubscribers(eventName, ...args) {
+    this._model.triggerSubscribers(eventName, ...args);
+  }
+}
+
+Slider._anchorElementsMap = new WeakMap();
 
 export default Slider;

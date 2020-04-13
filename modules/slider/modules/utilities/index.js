@@ -12,6 +12,7 @@ import restrictNumberByNeighbors from './restrictNumberByNeighbors';
 import either from './either';
 import isDivisible from './isDivisible';
 import findClosestFactor from './findClosestFactor';
+import findNextFactor from './findNextFactor/findNextFactor';
 import findClosestDivisible from './findClosestDivisible';
 import isNumberInBetween from './isNumberInBetween';
 import isNumberBetween from './isNumberBetween';
@@ -36,6 +37,7 @@ export {
   either,
   isDivisible,
   findClosestFactor,
+  findNextFactor,
   findClosestDivisible,
   isNumberInBetween,
   isNumberBetween,
