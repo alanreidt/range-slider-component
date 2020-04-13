@@ -21,6 +21,7 @@
   "keywords": ["range", "slider", "range-slider", "MVC"],
   "author": "alanreidt",
   "license": "MIT",
+  "browser": "prod/Slider.min.js",
   "devDependencies": {
     "chai": "^4.2.0",
     "cssnano": "^4.1.10",
