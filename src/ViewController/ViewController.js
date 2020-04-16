@@ -60,13 +60,13 @@ class ViewController {
 
   _setHandleGroupZIndex({ boundaries, values }) {
     const [start, end] = boundaries;
-    const average = (end - start) / 2;
+    const middle = (end - start) / 2;
     let zIndex = 200 + this._handleGroups.length;
 
     this._handleGroups.forEach((handleGroup, index) => {
       handleGroup.style.zIndex = '';
 
-      if (values[index] > average) {
+      if (values[index] > middle) {
         handleGroup.style.zIndex = zIndex;
         zIndex -= 1;
       }
