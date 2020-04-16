@@ -38,6 +38,24 @@ class ViewController {
       findValuePositionBetween(value, ...boundaries),
     );
 
+    this._handleGroups.forEach((handleGroup) => {
+      handleGroup.style.zIndex = '';
+    });
+
+    const [start, end] = boundaries;
+    const average = (end - start) / 2;
+
+    if (values[values.length - 1] > average) {
+      let index = values.length - 2;
+      let zIndex = 201;
+
+      while (values[index] > average) {
+        this._handleGroups[index].style.zIndex = zIndex;
+        index -= 1;
+        zIndex += 1;
+      }
+    }
+
     if (orientation === ORIENTATION_HORIZONTAL) {
       this._setHandleGroupHorizontalPositions(positions);
     }
