@@ -3,6 +3,8 @@
 .playground-carousel {
   & .carousel-control-prev,
   & .carousel-control-next {
+    top: 57px;
+
     @media (max-width: 845px) {
       display: none;
     }
