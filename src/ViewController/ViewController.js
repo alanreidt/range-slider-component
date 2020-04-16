@@ -38,18 +38,7 @@ class ViewController {
       findValuePositionBetween(value, ...boundaries),
     );
 
-    let zIndex = 200 + this._handleGroups.length;
-    const [start, end] = boundaries;
-    const average = (end - start) / 2;
-
-    this._handleGroups.forEach((handleGroup, index) => {
-      handleGroup.style.zIndex = '';
-
-      if (values[index] > average) {
-        handleGroup.style.zIndex = zIndex;
-        zIndex -= 1;
-      }
-    });
+    this._setHandleGroupZIndex({ boundaries, values });
 
     if (orientation === ORIENTATION_HORIZONTAL) {
       this._setHandleGroupHorizontalPositions(positions);
@@ -67,6 +56,21 @@ class ViewController {
         orientation,
       });
     }
+  }
+
+  _setHandleGroupZIndex({ boundaries, values }) {
+    const [start, end] = boundaries;
+    const average = (end - start) / 2;
+    let zIndex = 200 + this._handleGroups.length;
+
+    this._handleGroups.forEach((handleGroup, index) => {
+      handleGroup.style.zIndex = '';
+
+      if (values[index] > average) {
+        handleGroup.style.zIndex = zIndex;
+        zIndex -= 1;
+      }
+    });
   }
 
   _setHandleGroupHorizontalPositions(positions) {
