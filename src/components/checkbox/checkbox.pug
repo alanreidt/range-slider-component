@@ -5,11 +5,11 @@
     id !required
 mixin checkbox(labelText = 'change me!')
   .checkbox
-    .custom-control.custom-switch
+    .custom-control.custom-switch.checkbox__inner
       input.custom-control-input(
         type='checkbox'
         id != attributes.id
       )&attributes(attributes)
-      label.checkbox__label.custom-control-label(
+      label.custom-control-label.checkbox__label(
         for != attributes.id
       )= labelText
