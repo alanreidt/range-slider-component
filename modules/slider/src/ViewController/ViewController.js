@@ -38,6 +38,8 @@ class ViewController {
       findValuePositionBetween(value, ...boundaries),
     );
 
+    this._setHandleGroupZIndex({ boundaries, values });
+
     if (orientation === ORIENTATION_HORIZONTAL) {
       this._setHandleGroupHorizontalPositions(positions);
     }
@@ -54,6 +56,21 @@ class ViewController {
         orientation,
       });
     }
+  }
+
+  _setHandleGroupZIndex({ boundaries, values }) {
+    const [start, end] = boundaries;
+    const middle = (end - start) / 2;
+    let zIndex = 200 + this._handleGroups.length;
+
+    this._handleGroups.forEach((handleGroup, index) => {
+      handleGroup.style.zIndex = '';
+
+      if (values[index] > middle) {
+        handleGroup.style.zIndex = zIndex;
+        zIndex -= 1;
+      }
+    });
   }
 
   _setHandleGroupHorizontalPositions(positions) {
@@ -178,30 +195,30 @@ class ViewController {
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {
-    const [adjustedCoordinate, sliderSize] = !isUndefined(xCoordinate)
-      ? [this._adjustToSliderXAxis(xCoordinate), this._getSliderWidth()]
-      : [this._adjustToSliderYAxis(yCoordinate), this._getSliderHeight()];
+    const [adjustedCoordinate, baseSize] = !isUndefined(xCoordinate)
+      ? [this._adjustToBaseXAxis(xCoordinate), this._getBaseWidth()]
+      : [this._adjustToBaseYAxis(yCoordinate), this._getBaseHeight()];
 
-    const ratio = findRatio(adjustedCoordinate, sliderSize);
+    const ratio = findRatio(adjustedCoordinate, baseSize);
     const { boundaries } = this._model.getOptions();
 
     return findValueByRatioBetween(ratio, ...boundaries);
   }
 
-  _adjustToSliderXAxis(xCoordinate) {
-    return xCoordinate - this._slider.getBoundingClientRect().left;
+  _adjustToBaseXAxis(xCoordinate) {
+    return xCoordinate - this._base.getBoundingClientRect().left;
   }
 
-  _adjustToSliderYAxis(yCoordinate) {
-    return yCoordinate - this._slider.getBoundingClientRect().top;
+  _adjustToBaseYAxis(yCoordinate) {
+    return yCoordinate - this._base.getBoundingClientRect().top;
   }
 
-  _getSliderWidth() {
-    return this._slider.getBoundingClientRect().width;
+  _getBaseWidth() {
+    return this._base.getBoundingClientRect().width;
   }
 
-  _getSliderHeight() {
-    return this._slider.getBoundingClientRect().height;
+  _getBaseHeight() {
+    return this._base.getBoundingClientRect().height;
   }
 }
 

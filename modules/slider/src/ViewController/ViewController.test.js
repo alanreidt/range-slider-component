@@ -224,10 +224,9 @@ describe('ViewController', () => {
 
             new ViewController(parent, model);
 
-            const slider = parent.querySelector(JS_SLIDER_SELECTOR);
             const base = parent.querySelector(JS_BASE_SELECTOR);
 
-            slider.style.width = '200px';
+            base.style.width = '200px';
 
             const expectationValue = expectationValues[i];
 
@@ -280,10 +279,9 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(JS_SLIDER_SELECTOR);
               const base = parent.querySelector(JS_BASE_SELECTOR);
 
-              slider.style.height = '200px';
+              base.style.height = '200px';
 
               const expectationValue = expectationValues[i];
 
@@ -342,10 +340,10 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(JS_SLIDER_SELECTOR);
+              const base = parent.querySelector(JS_BASE_SELECTOR);
               const handle = parent.querySelector(`.${HANDLE_CLASS_NAME}`);
 
-              slider.style.width = '200px';
+              base.style.width = '200px';
 
               const expectationValue = expectationValues[i];
 
@@ -402,10 +400,10 @@ describe('ViewController', () => {
 
               new ViewController(parent, model);
 
-              const slider = parent.querySelector(JS_SLIDER_SELECTOR);
+              const base = parent.querySelector(JS_BASE_SELECTOR);
               const handle = parent.querySelector(`.${HANDLE_CLASS_NAME}`);
 
-              slider.style.height = '200px';
+              base.style.height = '200px';
 
               const expectationValue = expectationValues[i];
 

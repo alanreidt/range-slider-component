@@ -40,17 +40,19 @@ const createTemplate = function createTemplateFromHelpers({
     theme,
   });
 
-  return `<div class="${sliderClassName} ${JS_SLIDER_CLASS_NAME}">
+  return `
+    <div class="${sliderClassName} ${JS_SLIDER_CLASS_NAME}">
       <div class="${BASE_CLASS_NAME} ${JS_BASE_CLASS_NAME}">
         ${values.reduce((str, value, index) => {
-          return `${str}<div class="${HANDLE_GROUP_CLASS_NAME} ${JS_HANDLE_GROUP_CLASS_NAME}" data-index="${index}">
+          return `
+          ${str}<div class="${HANDLE_GROUP_CLASS_NAME} ${JS_HANDLE_GROUP_CLASS_NAME}" data-index="${index}">
             ${
               hasTooltips
                 ? `<div class="${TOOLTIP_CLASS_NAME} ${JS_TOOLTIP_CLASS_NAME}"></div>`
                 : ''
             }
             <div class="${HANDLE_CLASS_NAME}"></div>
-          </div>`;
+          </div>`.trim();
         }, '')}
         ${
           hasScale
@@ -63,7 +65,7 @@ const createTemplate = function createTemplateFromHelpers({
             : ''
         }
       </div>
-    </div>`;
+    </div>`.trim();
 };
 
 export default createTemplate;

@@ -23,14 +23,16 @@ class ViewController {
       orientation === 'vertical' ? 'scale_vertical' : ''
     }`;
 
-    this._anchorElement.innerHTML = `<div class="${scaleClassName}">
+    this._anchorElement.innerHTML = `
+      <div class="${scaleClassName}">
         ${values.reduce((str, value) => {
-          return `${str}<div class="scale__segment">
-            <span class="scale__pip"></span>
-            <span class="scale__value js-scale__value">${value}</span>
-          </div>`;
+          return `
+            ${str}<div class="scale__segment">
+              <span class="scale__pip"></span>
+              <span class="scale__value js-scale__value">${value}</span>
+            </div>`.trim();
         }, '')}
-      </div>`;
+      </div>`.trim();
   }
 
   _calcScaleValues({ boundaries, step, orientation, minimalSparsity = 24 }) {

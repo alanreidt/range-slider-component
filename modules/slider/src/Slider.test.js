@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 
 import Slider from './Slider';
+import { DEFAULT_OPTIONS } from './constants';
 
 describe('Slider', () => {
   describe('Slider class methods', () => {
@@ -17,7 +18,12 @@ describe('Slider', () => {
 
         Slider.create(parent, options);
 
-        assert.deepEqual(Slider.getOptions(parent), options);
+        const expectation = {
+          ...DEFAULT_OPTIONS,
+          ...options,
+        };
+
+        assert.deepEqual(Slider.getOptions(parent), expectation);
       });
     });
 
@@ -42,6 +48,7 @@ describe('Slider', () => {
         Slider.setOptions(parent, newOptions);
 
         const expectation = {
+          ...DEFAULT_OPTIONS,
           ...options,
           ...newOptions,
         };
@@ -66,6 +73,7 @@ describe('Slider', () => {
         Slider.setValueAt(parent, 1, 500);
 
         const expectation = {
+          ...DEFAULT_OPTIONS,
           ...options,
           values: [200, 500],
         };
@@ -89,7 +97,12 @@ describe('Slider', () => {
 
         const slider = Slider.create(parent, options);
 
-        assert.deepEqual(slider.getOptions(), options);
+        const expectation = {
+          ...DEFAULT_OPTIONS,
+          ...options,
+        };
+
+        assert.deepEqual(slider.getOptions(), expectation);
       });
     });
 
@@ -114,6 +127,7 @@ describe('Slider', () => {
         slider.setOptions(newOptions);
 
         const expectation = {
+          ...DEFAULT_OPTIONS,
           ...options,
           ...newOptions,
         };
@@ -138,6 +152,7 @@ describe('Slider', () => {
         slider.setValueAt(1, 500);
 
         const expectation = {
+          ...DEFAULT_OPTIONS,
           ...options,
           values: [200, 500],
         };
