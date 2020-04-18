@@ -19,7 +19,7 @@ class ViewController {
     orientation,
     theme,
   } = {}) {
-    this.boundariesTextInput.value = boundaries.join(', ');
+    [this.minimumNumberInput.value, this.maximumNumberInput.value] = boundaries;
     this.valuesTextInput.value = values.join(', ');
     this.stepNumberInput.value = step;
     this.hasTooltipsCheckbox.checked = hasTooltips;
@@ -35,8 +35,11 @@ class ViewController {
 
   _attachElements() {
     this.form = this.anchorElement.querySelector('.js-control-pane__form');
-    this.boundariesTextInput = this.anchorElement.querySelector(
-      '.js-control-pane__boundaries-input',
+    this.minimumNumberInput = this.anchorElement.querySelector(
+      '.js-control-pane__minimum-input',
+    );
+    this.maximumNumberInput = this.anchorElement.querySelector(
+      '.js-control-pane__maximum-input',
     );
     this.valuesTextInput = this.anchorElement.querySelector(
       '.js-control-pane__values-input',
@@ -64,7 +67,10 @@ class ViewController {
   _handleFormSubmit(event) {
     event.preventDefault();
 
-    const boundaries = this.boundariesTextInput.value.split(', ');
+    const boundaries = [
+      this.minimumNumberInput.valueAsNumber,
+      this.maximumNumberInput.valueAsNumber,
+    ];
     const values = this.valuesTextInput.value.split(', ');
     const step = this.stepNumberInput.valueAsNumber;
     const hasTooltips = this.hasTooltipsCheckbox.checked;
