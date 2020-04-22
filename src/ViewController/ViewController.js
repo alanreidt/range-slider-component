@@ -30,10 +30,21 @@ class ViewController {
     this._attachElements();
     this._createComponents(this._model.getOptions());
     this._addSliderEventListener();
-    this.setElements(this._model.getOptions());
+    this._update();
   }
 
-  setElements({ boundaries, values, hasConnector, orientation } = {}) {
+  setElements() {
+    requestAnimationFrame(this._update);
+  }
+
+  _update() {
+    const {
+      boundaries,
+      values,
+      hasConnector,
+      orientation,
+    } = this._model.getOptions();
+
     const positions = values.map((value) =>
       findValuePositionBetween(value, ...boundaries),
     );
@@ -95,6 +106,7 @@ class ViewController {
     this._handleSliderMouseDown = this._handleSliderMouseDown.bind(this);
     this._handleDocumentMouseMove = this._handleDocumentMouseMove.bind(this);
     this._handleDocumentMouseUp = this._handleDocumentMouseUp.bind(this);
+    this._update = this._update.bind(this);
   }
 
   _paint(options) {
