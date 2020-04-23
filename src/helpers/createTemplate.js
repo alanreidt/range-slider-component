@@ -1,6 +1,5 @@
 import {
   composeSliderClassName,
-  ORIENTATION_VERTICAL,
   JS_SLIDER_CLASS_NAME,
   JS_BASE_CLASS_NAME,
   JS_HANDLE_GROUP_CLASS_NAME,
@@ -14,6 +13,7 @@ import {
   SCALE_CLASS_NAME,
   CONNECTOR_CLASS_NAME,
   VERTICAL_FLAG_NAME,
+  THEME_FLAG_NAME,
 } from '../constants';
 
 /**
@@ -36,7 +36,7 @@ const createTemplate = function createTemplateFromHelpers({
 } = {}) {
   const sliderClassName = composeSliderClassName({
     [VERTICAL_FLAG_NAME]: isVertical,
-    theme,
+    [THEME_FLAG_NAME]: theme,
   });
 
   return `

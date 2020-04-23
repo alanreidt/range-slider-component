@@ -23,6 +23,7 @@ const DEFAULT_OPTIONS = {
 
 const SLIDER_NAME = 'slider';
 const VERTICAL_FLAG_NAME = 'vertical';
+const THEME_FLAG_NAME = 'theme';
 const BASE_NAME = 'base';
 const HANDLE_GROUP_NAME = 'handle-group';
 const TOOLTIP_NAME = 'tooltip';
@@ -72,6 +73,7 @@ export {
   THEME_MODERN,
   SLIDER_NAME,
   VERTICAL_FLAG_NAME,
+  THEME_FLAG_NAME,
   BASE_NAME,
   HANDLE_GROUP_NAME,
   TOOLTIP_NAME,
