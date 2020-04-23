@@ -10,7 +10,7 @@ class Slider {
     this._model = new Model(options);
     this._viewController = new ViewController(anchorElement, this._model);
 
-    const viewControllerSetElementsBound = this._viewController.setElements.bind(
+    const viewControllerSetElementsBound = this._viewController.update.bind(
       this._viewController,
     );
 

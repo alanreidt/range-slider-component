@@ -33,7 +33,7 @@ class ViewController {
     this._update();
   }
 
-  setElements() {
+  update() {
     requestAnimationFrame(this._update);
   }
 

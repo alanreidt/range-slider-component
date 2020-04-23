@@ -477,7 +477,7 @@ describe('ViewController', () => {
     });
   });
 
-  describe('setElements method', () => {
+  describe('update method', () => {
     const parent = document.createElement('div');
     const options = {
       boundaries: [0, 100],
@@ -515,7 +515,7 @@ describe('ViewController', () => {
     describe('shall update values', () => {
       const newValues = [10, 60];
 
-      viewController.setElements({
+      viewController.update({
         boundaries: [0, 100],
         values: newValues,
         orientation: ORIENTATION_HORIZONTAL,
