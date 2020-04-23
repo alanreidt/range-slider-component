@@ -13,7 +13,7 @@ import {
   HANDLE_CLASS_NAME,
   SCALE_CLASS_NAME,
   CONNECTOR_CLASS_NAME,
-  ORIENTATION_FLAG_NAME,
+  VERTICAL_FLAG_NAME,
 } from '../constants';
 
 /**
@@ -21,22 +21,21 @@ import {
  *
  * @param {object} options Object, which contains Slider properties.
  * @param {number[]} options.values
- * @param {string} options.orientation
+ * @param {string} options.isVertical
  * @param {boolean} options.hasTooltips
  *
  * @returns {string} Slider DOM structure.
  */
 const createTemplate = function createTemplateFromHelpers({
   values,
-  orientation,
+  isVertical,
   hasTooltips,
   hasScale,
   hasConnector,
   theme,
 } = {}) {
-  const isVertical = orientation === ORIENTATION_VERTICAL;
   const sliderClassName = composeSliderClassName({
-    [ORIENTATION_FLAG_NAME]: isVertical,
+    [VERTICAL_FLAG_NAME]: isVertical,
     theme,
   });
 

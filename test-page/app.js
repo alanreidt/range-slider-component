@@ -23,7 +23,7 @@ Slider.create(parent1, {
 
 Slider.create(parent2, {
   values: [20, 80],
-  orientation: 'vertical',
+  isVertical: true,
   hasTooltips: true,
   hasScale: true,
   theme: 'modern',
@@ -31,7 +31,7 @@ Slider.create(parent2, {
 
 Slider.create(parent3, {
   values: [20, 80],
-  orientation: 'vertical',
+  isVertical: true,
   hasTooltips: true,
   hasScale: true,
 });

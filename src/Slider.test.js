@@ -11,7 +11,7 @@ describe('Slider', () => {
           boundaries: [100, 500],
           values: [200, 300],
           step: 20,
-          orientation: 'horizontal',
+          isVertical: false,
           hasTooltips: true,
         };
         const parent = document.createElement('div');
@@ -33,7 +33,7 @@ describe('Slider', () => {
           boundaries: [100, 500],
           values: [200, 300],
           step: 20,
-          orientation: 'horizontal',
+          isVertical: false,
           hasTooltips: true,
         };
         const parent = document.createElement('div');
@@ -63,7 +63,7 @@ describe('Slider', () => {
           boundaries: [100, 500],
           values: [200, 300],
           step: 20,
-          orientation: 'horizontal',
+          isVertical: false,
           hasTooltips: true,
         };
         const parent = document.createElement('div');
@@ -90,7 +90,7 @@ describe('Slider', () => {
           boundaries: [100, 500],
           values: [200, 300],
           step: 20,
-          orientation: 'horizontal',
+          isVertical: false,
           hasTooltips: true,
         };
         const parent = document.createElement('div');
@@ -112,7 +112,7 @@ describe('Slider', () => {
           boundaries: [100, 500],
           values: [200, 300],
           step: 20,
-          orientation: 'horizontal',
+          isVertical: false,
           hasTooltips: true,
         };
         const parent = document.createElement('div');
@@ -142,7 +142,7 @@ describe('Slider', () => {
           boundaries: [100, 500],
           values: [200, 300],
           step: 20,
-          orientation: 'horizontal',
+          isVertical: false,
           hasTooltips: true,
         };
         const parent = document.createElement('div');

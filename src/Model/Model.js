@@ -14,12 +14,7 @@ import {
   restrictByNeighbors,
   replaceAt,
 } from '../helpers';
-import {
-  DEFAULT_OPTIONS,
-  ORIENTATION_HORIZONTAL,
-  ORIENTATION_VERTICAL,
-  THEME_MODERN,
-} from '../constants';
+import { DEFAULT_OPTIONS, THEME_MODERN } from '../constants';
 
 class Model {
   constructor(newOptions = {}) {
@@ -132,17 +127,15 @@ class Model {
     this._options.step = validate(newValue);
   }
 
-  _setOrientation(newValue) {
-    const currentValue = this._options.orientation;
+  _setIsVertical(newValue) {
+    const currentValue = this._options.isVertical;
 
-    if (Object.prototype.hasOwnProperty.call(this._options, 'orientation')) {
+    if (Object.prototype.hasOwnProperty.call(this._options, 'isVertical')) {
       return;
     }
 
-    const isValueValid =
-      newValue === ORIENTATION_HORIZONTAL || newValue === ORIENTATION_VERTICAL;
-
-    this._options.orientation = isValueValid ? newValue : currentValue;
+    this._options.isVertical =
+      typeof newValue === 'boolean' ? newValue : currentValue;
   }
 
   _setTheme(newValue) {

@@ -2,15 +2,13 @@ import { withNaming } from '@bem-react/classname';
 
 import { getAverageOf } from '../modules/utilities';
 
-const ORIENTATION_HORIZONTAL = 'horizontal';
-const ORIENTATION_VERTICAL = 'vertical';
 const THEME_MODERN = 'modern';
 
 const DEFAULT_OPTIONS = {
   // order matters
   boundaries: [0, 100],
   step: 1,
-  orientation: ORIENTATION_HORIZONTAL,
+  isVertical: false,
   hasTooltips: true,
   hasScale: false,
   hasConnector: true,
@@ -24,7 +22,7 @@ const DEFAULT_OPTIONS = {
 };
 
 const SLIDER_NAME = 'slider';
-const ORIENTATION_FLAG_NAME = 'vertical';
+const VERTICAL_FLAG_NAME = 'vertical';
 const BASE_NAME = 'base';
 const HANDLE_GROUP_NAME = 'handle-group';
 const TOOLTIP_NAME = 'tooltip';
@@ -36,7 +34,7 @@ const className = withNaming({ e: '__', m: '_', v: '_' });
 const composeSliderClassName = className(SLIDER_NAME);
 
 const SLIDER_VERTICAL_CLASS_NAME = composeSliderClassName({
-  [ORIENTATION_FLAG_NAME]: true,
+  [VERTICAL_FLAG_NAME]: true,
 });
 const HANDLE_GROUP_CLASS_NAME = composeSliderClassName(HANDLE_GROUP_NAME);
 const BASE_CLASS_NAME = composeSliderClassName(BASE_NAME);
@@ -49,7 +47,7 @@ const jsClassName = withNaming({ n: 'js-', e: '__', m: '_', v: '_' });
 const composeSliderJSClassName = jsClassName(SLIDER_NAME);
 
 const JS_SLIDER_VERTICAL_CLASS_NAME = composeSliderJSClassName({
-  [ORIENTATION_FLAG_NAME]: true,
+  [VERTICAL_FLAG_NAME]: true,
 });
 const JS_HANDLE_GROUP_CLASS_NAME = composeSliderJSClassName(HANDLE_GROUP_NAME);
 const JS_SLIDER_CLASS_NAME = composeSliderJSClassName();
@@ -71,11 +69,9 @@ const JS_CONNECTOR_SELECTOR = `.${JS_CONNECTOR_CLASS_NAME}`;
 export {
   composeSliderClassName,
   DEFAULT_OPTIONS,
-  ORIENTATION_HORIZONTAL,
-  ORIENTATION_VERTICAL,
   THEME_MODERN,
   SLIDER_NAME,
-  ORIENTATION_FLAG_NAME,
+  VERTICAL_FLAG_NAME,
   BASE_NAME,
   HANDLE_GROUP_NAME,
   TOOLTIP_NAME,

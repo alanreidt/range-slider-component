@@ -9,8 +9,6 @@ import {
   createTemplate,
 } from '../helpers';
 import {
-  ORIENTATION_HORIZONTAL,
-  ORIENTATION_VERTICAL,
   JS_SLIDER_SELECTOR,
   JS_BASE_SELECTOR,
   JS_HANDLE_GROUP_SELECTOR,
@@ -42,7 +40,7 @@ class ViewController {
       boundaries,
       values,
       hasConnector,
-      orientation,
+      isVertical,
     } = this._model.getOptions();
 
     const positions = values.map((value) =>
@@ -51,12 +49,10 @@ class ViewController {
 
     this._setHandleGroupZIndex({ boundaries, values });
 
-    if (orientation === ORIENTATION_HORIZONTAL) {
-      this._setHandleGroupHorizontalPositions(positions);
-    }
-
-    if (orientation === ORIENTATION_VERTICAL) {
+    if (isVertical) {
       this._setHandleGroupVerticalPositions(positions);
+    } else {
+      this._setHandleGroupHorizontalPositions(positions);
     }
 
     this._setTooltipTextContents(values);
@@ -64,7 +60,7 @@ class ViewController {
     if (hasConnector) {
       Connector.setElements(this._connector, {
         positions,
-        orientation,
+        isVertical,
       });
     }
   }
@@ -136,7 +132,7 @@ class ViewController {
     values,
     hasScale,
     hasConnector,
-    orientation,
+    isVertical,
   }) {
     const positions = values.map((value) =>
       findValuePositionBetween(value, ...boundaries),
@@ -149,7 +145,7 @@ class ViewController {
     if (hasConnector) {
       Connector.create(this._connector, {
         positions,
-        orientation,
+        isVertical,
       });
     }
   }
@@ -200,11 +196,11 @@ class ViewController {
   }
 
   _findValueByEvent(event) {
-    const { orientation } = this._model.getOptions();
+    const { isVertical } = this._model.getOptions();
 
-    return orientation === ORIENTATION_HORIZONTAL
-      ? this._convertCoordinateToValue({ xCoordinate: event.clientX })
-      : this._convertCoordinateToValue({ yCoordinate: event.clientY });
+    return isVertical
+      ? this._convertCoordinateToValue({ yCoordinate: event.clientY })
+      : this._convertCoordinateToValue({ xCoordinate: event.clientX });
   }
 
   _convertCoordinateToValue({ xCoordinate, yCoordinate }) {

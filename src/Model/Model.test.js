@@ -2,11 +2,7 @@ import { assert } from 'chai';
 
 import { composeClassTest } from '../../modules/testUtilities';
 import Model from './Model';
-import {
-  DEFAULT_OPTIONS,
-  ORIENTATION_VERTICAL,
-  ORIENTATION_HORIZONTAL,
-} from '../constants';
+import { DEFAULT_OPTIONS } from '../constants';
 
 describe('Model', () => {
   describe('Initialization test', () => {
@@ -28,7 +24,7 @@ describe('Model', () => {
           const partialOptions = {
             boundaries: [5000, 40000],
             values: [22500],
-            orientation: ORIENTATION_VERTICAL,
+            isVertical: true,
           };
           const constructorArgs = partialOptions;
           const expectations = [
@@ -50,7 +46,7 @@ describe('Model', () => {
           boundaries: ['hundred', 200],
           values: [25, 'p100'],
           step: -20,
-          orientation: 'right',
+          isVertical: 'right',
           hasTooltips: 7,
         };
         const expectations = [
@@ -70,7 +66,7 @@ describe('Model', () => {
           boundaries: [0, '1000px'],
           values: ['0$', 600],
           step: '100',
-          orientation: ORIENTATION_HORIZONTAL,
+          isVertical: false,
           hasTooltips: false,
         };
         const expectations = [
@@ -78,7 +74,7 @@ describe('Model', () => {
             boundaries: [0, 1000],
             values: [0, 600],
             step: 100,
-            orientation: ORIENTATION_HORIZONTAL,
+            isVertical: false,
             hasTooltips: false,
           },
         ];
@@ -96,7 +92,7 @@ describe('Model', () => {
           boundaries: [100, 500],
           values: [100, 200, 300, 460],
           step: 20,
-          orientation: ORIENTATION_VERTICAL,
+          isVertical: true,
           hasTooltips: true,
         };
         const expectations = [{ values: [100, 200, 300, 460] }];
@@ -112,7 +108,7 @@ describe('Model', () => {
             boundaries: [100, 500],
             values: [100, 200, 300, 'Ben', 460, false],
             step: 20,
-            orientation: ORIENTATION_VERTICAL,
+            isVertical: true,
             hasTooltips: true,
           };
           const expectations = [{ values: [100, 200, 300, 460] }];
@@ -127,7 +123,7 @@ describe('Model', () => {
       const constructorArgs = {
         boundaries: [100, 500],
         step: 20,
-        orientation: ORIENTATION_VERTICAL,
+        isVertical: true,
         hasTooltips: true,
       };
       const expectations = [{ values: [300] }];
@@ -596,7 +592,7 @@ describe('Model', () => {
             boundaries: [100, 500],
             values: 180,
             step: 20,
-            orientation: ORIENTATION_VERTICAL,
+            isVertical: true,
             hasTooltips: true,
           };
           const methodArgsList = [{ boundaries: 0 }];
@@ -615,7 +611,7 @@ describe('Model', () => {
             boundaries: [100, 500],
             values: 180,
             step: 20,
-            orientation: ORIENTATION_VERTICAL,
+            isVertical: true,
             hasTooltips: true,
           };
           const methodArgsList = [{ boundaries: 400 }];

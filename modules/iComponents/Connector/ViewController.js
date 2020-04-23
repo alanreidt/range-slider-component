@@ -7,15 +7,16 @@ class ViewController {
     this.setElements(options);
   }
 
-  setElements({ positions = ['10%', '90%'], orientation }) {
+  setElements({ positions = ['10%', '90%'], isVertical }) {
     const [start, end] =
       positions.length === 1
         ? ['0%', positions[0]]
         : [positions[0], positions[positions.length - 1]];
 
     const connectorStyle = this._connector.style;
-    const [startSide, endSide] =
-      orientation === 'vertical' ? ['top', 'bottom'] : ['left', 'right'];
+    const [startSide, endSide] = isVertical
+      ? ['top', 'bottom']
+      : ['left', 'right'];
 
     [connectorStyle[startSide], connectorStyle[endSide]] = [
       start,
@@ -23,9 +24,9 @@ class ViewController {
     ];
   }
 
-  _paint({ orientation }) {
+  _paint({ isVertical }) {
     const connectorClassName = `connector js-connector ${
-      orientation === 'vertical' ? 'connector_vertical' : ''
+      isVertical ? 'connector_vertical' : ''
     }`;
 
     this._anchorElement.innerHTML = `<div class="${connectorClassName}"></div>`;

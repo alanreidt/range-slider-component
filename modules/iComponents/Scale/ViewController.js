@@ -18,9 +18,9 @@ class ViewController {
 
   _paint(options) {
     const values = this._calcScaleValues(options);
-    const { orientation } = options;
+    const { isVertical } = options;
     const scaleClassName = `scale js-scale ${
-      orientation === 'vertical' ? 'scale_vertical' : ''
+      isVertical ? 'scale_vertical' : ''
     }`;
 
     this._anchorElement.innerHTML = `
@@ -35,13 +35,12 @@ class ViewController {
       </div>`.trim();
   }
 
-  _calcScaleValues({ boundaries, step, orientation, minimalSparsity = 24 }) {
+  _calcScaleValues({ boundaries, step, isVertical, minimalSparsity = 24 }) {
     const [min, max] = boundaries;
     const range = max - min;
-    const scaleWidth =
-      orientation === 'vertical'
-        ? this._getScaleHeight()
-        : this._getScaleWidth();
+    const scaleWidth = isVertical
+      ? this._getScaleHeight()
+      : this._getScaleWidth();
 
     let scaleStep = step;
     let scaleValuesQuantity = range / step + 1;
