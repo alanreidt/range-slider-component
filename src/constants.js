@@ -34,9 +34,6 @@ const CONNECTOR_NAME = 'connector';
 const className = withNaming({ e: '__', m: '_', v: '_' });
 const composeSliderClassName = className(SLIDER_NAME);
 
-const SLIDER_VERTICAL_CLASS_NAME = composeSliderClassName({
-  [VERTICAL_FLAG_NAME]: true,
-});
 const HANDLE_GROUP_CLASS_NAME = composeSliderClassName(HANDLE_GROUP_NAME);
 const BASE_CLASS_NAME = composeSliderClassName(BASE_NAME);
 const TOOLTIP_CLASS_NAME = composeSliderClassName(TOOLTIP_NAME);
@@ -47,9 +44,6 @@ const CONNECTOR_CLASS_NAME = composeSliderClassName(CONNECTOR_NAME);
 const jsClassName = withNaming({ n: 'js-', e: '__', m: '_', v: '_' });
 const composeSliderJSClassName = jsClassName(SLIDER_NAME);
 
-const JS_SLIDER_VERTICAL_CLASS_NAME = composeSliderJSClassName({
-  [VERTICAL_FLAG_NAME]: true,
-});
 const JS_HANDLE_GROUP_CLASS_NAME = composeSliderJSClassName(HANDLE_GROUP_NAME);
 const JS_SLIDER_CLASS_NAME = composeSliderJSClassName();
 const JS_BASE_CLASS_NAME = composeSliderJSClassName(BASE_NAME);
@@ -59,7 +53,6 @@ const JS_SCALE_CLASS_NAME = composeSliderJSClassName(SCALE_NAME);
 const JS_CONNECTOR_CLASS_NAME = composeSliderJSClassName(CONNECTOR_NAME);
 
 const JS_SLIDER_SELECTOR = `.${JS_SLIDER_CLASS_NAME}`;
-const JS_SLIDER_VERTICAL_SELECTOR = `.${JS_SLIDER_VERTICAL_CLASS_NAME}`;
 const JS_BASE_SELECTOR = `.${JS_BASE_CLASS_NAME}`;
 const JS_HANDLE_GROUP_SELECTOR = `.${JS_HANDLE_GROUP_CLASS_NAME}`;
 const JS_TOOLTIP_SELECTOR = `.${JS_TOOLTIP_CLASS_NAME}`;
@@ -78,7 +71,6 @@ export {
   HANDLE_GROUP_NAME,
   TOOLTIP_NAME,
   HANDLE_NAME,
-  SLIDER_VERTICAL_CLASS_NAME,
   BASE_CLASS_NAME,
   HANDLE_GROUP_CLASS_NAME,
   TOOLTIP_CLASS_NAME,
@@ -86,7 +78,6 @@ export {
   SCALE_CLASS_NAME,
   CONNECTOR_CLASS_NAME,
   JS_SLIDER_CLASS_NAME,
-  JS_SLIDER_VERTICAL_CLASS_NAME,
   JS_BASE_CLASS_NAME,
   JS_HANDLE_GROUP_CLASS_NAME,
   JS_TOOLTIP_CLASS_NAME,
@@ -94,7 +85,6 @@ export {
   JS_SCALE_CLASS_NAME,
   JS_CONNECTOR_CLASS_NAME,
   JS_SLIDER_SELECTOR,
-  JS_SLIDER_VERTICAL_SELECTOR,
   JS_BASE_SELECTOR,
   JS_HANDLE_GROUP_SELECTOR,
   JS_TOOLTIP_SELECTOR,
