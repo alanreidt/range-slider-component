@@ -16,7 +16,7 @@ class ViewController {
     hasTooltips,
     hasScale,
     hasConnector,
-    orientation,
+    isVertical,
     theme,
   } = {}) {
     [this.minimumNumberInput.value, this.maximumNumberInput.value] = boundaries;
@@ -25,7 +25,7 @@ class ViewController {
     this.hasTooltipsCheckbox.checked = hasTooltips;
     this.hasScaleCheckbox.checked = hasScale;
     this.hasConnectorCheckbox.checked = hasConnector;
-    this.orientationCheckbox.checked = orientation === 'vertical';
+    this.isVerticalCheckbox.checked = isVertical;
     this.modernThemeCheckbox.checked = theme === 'modern';
   }
 
@@ -56,8 +56,8 @@ class ViewController {
     this.hasConnectorCheckbox = this.anchorElement.querySelector(
       '.js-control-pane__hasConnector-checkbox',
     );
-    this.orientationCheckbox = this.anchorElement.querySelector(
-      '.js-control-pane__orientation-checkbox',
+    this.isVerticalCheckbox = this.anchorElement.querySelector(
+      '.js-control-pane__isVertical-checkbox',
     );
     this.modernThemeCheckbox = this.anchorElement.querySelector(
       '.js-control-pane__modern-theme-checkbox',
@@ -76,9 +76,7 @@ class ViewController {
     const hasTooltips = this.hasTooltipsCheckbox.checked;
     const hasScale = this.hasScaleCheckbox.checked;
     const hasConnector = this.hasConnectorCheckbox.checked;
-    const orientation = this.orientationCheckbox.checked
-      ? 'vertical'
-      : 'horizontal';
+    const isVertical = this.isVerticalCheckbox.checked;
     const theme = this.modernThemeCheckbox.checked && 'modern';
 
     this.model.setOptions({
@@ -88,7 +86,7 @@ class ViewController {
       hasTooltips,
       hasScale,
       hasConnector,
-      orientation,
+      isVertical,
       theme,
     });
   }
