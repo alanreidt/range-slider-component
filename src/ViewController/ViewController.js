@@ -30,14 +30,14 @@ class ViewController {
     this._attachElements();
     this._createComponents(this._model.getOptions());
     this._addSliderEventListener();
-    this._update();
+    this._setElements();
   }
 
   update() {
-    requestAnimationFrame(this._update);
+    requestAnimationFrame(this._setElements);
   }
 
-  _update() {
+  _setElements() {
     const {
       boundaries,
       values,
@@ -106,7 +106,7 @@ class ViewController {
     this._handleSliderMouseDown = this._handleSliderMouseDown.bind(this);
     this._handleDocumentMouseMove = this._handleDocumentMouseMove.bind(this);
     this._handleDocumentMouseUp = this._handleDocumentMouseUp.bind(this);
-    this._update = this._update.bind(this);
+    this._setElements = this._setElements.bind(this);
   }
 
   _paint(options) {
