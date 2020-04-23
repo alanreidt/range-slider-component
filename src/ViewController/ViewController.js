@@ -103,10 +103,11 @@ class ViewController {
   }
 
   _bindMethods() {
+    this.update = this.update.bind(this);
+    this._setElements = this._setElements.bind(this);
     this._handleSliderMouseDown = this._handleSliderMouseDown.bind(this);
     this._handleDocumentMouseMove = this._handleDocumentMouseMove.bind(this);
     this._handleDocumentMouseUp = this._handleDocumentMouseUp.bind(this);
-    this._setElements = this._setElements.bind(this);
   }
 
   _paint(options) {
