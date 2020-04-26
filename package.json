@@ -13,8 +13,12 @@
   "scripts": {
     "riteway": "riteway -r esm",
     "test": "parcel tests/test.html --open",
-    "build": "rm -rf prod && parcel build src/Slider.js -o src/Slider.min.js -d ./prod && parcel build src/slider.scss -o src/slider.min.css -d ./prod",
-    "dev": "parcel test-page/index.html --open",
+    "build": "rm -rf prod && npm run build:js && npm run build:css && npm run build:docs",
+    "build:js": "parcel build src/Slider.js -o src/Slider.min.js -d prod/",
+    "build:css": "parcel build src/slider.scss -o src/slider.min.css -d prod/",
+    "build:docs": "rm -rf docs/prod && parcel build docs/src/index.pug -d docs/prod/ --public-url ./prod",
+    "postbuild": "mv docs/prod/index.html docs/index.html",
+    "dev": "parcel docs/src/index.pug --open",
     "eslint": "eslint src/",
     "create": "plop"
   },
