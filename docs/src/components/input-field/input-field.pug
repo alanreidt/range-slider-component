@@ -1,0 +1,22 @@
+//-
+  Parameters:
+    labelText {string} !required — text for label tag
+    helpText {string} — help text, describing input value
+  Attributes:
+    id !required
+    type=['text']
+mixin input-field(labelText = 'change me!', helpText = undefined)
+  -
+    const isHelpText = helpText !== undefined;
+    const helpTextId = attributes.id + '-help';
+
+  .input-field.form-group
+    label.input-field__label.col-form-label.col-form-label-sm(
+      for != attributes.id
+    )= labelText
+    input.form-control.form-control-sm(
+      type='text'
+      aria-describedby != isHelpText && helpTextId
+    )&attributes(attributes)
+    if (isHelpText)
+      small.form-text.text-muted(id != helpTextId)= helpText

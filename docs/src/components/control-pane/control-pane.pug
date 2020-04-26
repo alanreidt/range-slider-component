@@ -1,0 +1,64 @@
+include ../input-field/input-field
+include ../checkbox/checkbox
+include ../button/button
+
+//-
+  Parameters:
+    name {string} !required — unique name for control pane inputs id
+mixin control-pane(name = 'control-pane')
+  .control-pane.js-control-pane
+    .control-pane__inner
+      form.js-control-pane__form
+        .form-row
+          .col
+            +input-field('Minimum:')(
+              type='number'
+              class='js-control-pane__minimum-input'
+              id=`${name}-minimum-input`
+              placeholder='format: 0'
+              inputmode='decimal'
+            )
+          .col
+            +input-field('Maximum:')(
+              type='number'
+              class='js-control-pane__maximum-input'
+              id=`${name}-maximum-input`
+              placeholder='format: 100'
+              inputmode='decimal'
+            )
+        +input-field('initial values:', 'each value represents the handle')(
+          class='js-control-pane__values-input'
+          id=`${name}-values-input`
+          placeholder='format: 20, 50, 80...'
+          inputmode='numeric'
+        )
+        +input-field('step:', 'from 1 to Max−Min value')(
+          type='number'
+          class='js-control-pane__step-input'
+          id=`${name}-step-input`
+          placeholder='format: 20'
+          inputmode='decimal'
+        )
+        .form-group
+          +checkbox('turn on tooltips?')(
+            class='js-control-pane__hasTooltips-checkbox'
+            id=`${name}-hasTooltips-checkbox`
+          )
+          +checkbox('turn on scale?')(
+            class='js-control-pane__hasScale-checkbox'
+            id=`${name}-hasScale-checkbox`
+          )
+          +checkbox('turn on connector?')(
+            class='js-control-pane__hasConnector-checkbox'
+            id=`${name}-hasConnector-checkbox`
+          )
+          +checkbox('turn vertically?')(
+            class='js-control-pane__isVertical-checkbox'
+            id=`${name}-isVertical-checkbox`
+          )
+          +checkbox('turn on modern theme?')(
+            class='js-control-pane__modern-theme-checkbox'
+            id=`${name}-modern-theme-checkbox`
+          )
+        .text-center
+          +button('create')

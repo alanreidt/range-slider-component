@@ -1,0 +1,9 @@
+@import "./components/input-field/input-field.scss";
+@import "./components/checkbox/checkbox.scss";
+@import "./components/button/button.scss";
+
+.control-pane {
+  padding: 0.5rem 1rem;
+  border: 3px solid #333;
+  border-radius: 0.5rem;
+}

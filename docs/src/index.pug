@@ -1,0 +1,70 @@
+include ./components/playground-carousel/playground-carousel
+
+-
+  const dataSet = [
+    {
+      title: 'default example',
+      options: {},
+    },
+    {
+      title: 'custom example',
+      options: {
+        boundaries: [-200, 300],
+        values: [-100, 200],
+        step: 10,
+        orientation: 'horizontal',
+        hasTooltips: true,
+      },
+    },
+    {
+      title: 'vertical example',
+      options: {
+        boundaries: [-500, 500],
+        values: [-300, -200, 200],
+        step: 25,
+        orientation: 'vertical',
+        hasTooltips: true,
+      },
+    }
+  ];
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./style.scss">
+    <title>Slider plugin Demo-page</title>
+  </head>
+  <body class="js-app">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="header masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Slider name</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="/mock-address/change-me">Home</a>
+            <a class="nav-link  active" href="/mock-address/change-me">Playground</a>
+            <a class="nav-link" href="/mock-address/change-me">Quick start</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="page__content  inner  cover">
+        +playground-carousel(dataSet)
+      </main>
+
+      <footer class="footer mastfoot mt-auto">
+        <div class="inner">
+          <p class="text-center">
+            | The site is built by <a href="https://github.com/alanreidt">Alan Reid</a> for <a href="https://github.com/alanreidt/slider">Slider plugin</a>.
+            <br>
+            | The design is based on <a href="https://getbootstrap.com/">Bootstrap</a> Cover template, made by <a href="https://twitter.com/mdo">@mdo</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

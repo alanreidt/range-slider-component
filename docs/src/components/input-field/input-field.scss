@@ -1,0 +1,10 @@
+.input-field {
+  &__label {
+    color: #333;
+    text-transform: capitalize;
+  }
+
+  & .form-control::placeholder {
+    opacity: 0.5;
+  }
+}

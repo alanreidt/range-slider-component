@@ -1,0 +1,18 @@
+include ../playground/playground
+
+mixin playground-carousel(dataSet)
+  .playground-carousel.carousel.slide(id='playgroundCarousel' data-pause='true')
+    ol.carousel-indicators
+      each data, index in dataSet
+        li(class={active: index === 0} data-target='#playgroundCarousel' data-slide-to=index)
+    .carousel-inner
+      each data, index in dataSet
+        .carousel-item(class={active: index === 0})
+          +playground(data)
+    a.carousel-control-prev(href='#playgroundCarousel' role='button' data-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.sr-only Previous
+    a.carousel-control-next(href='#playgroundCarousel' role='button' data-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.sr-only Next
+

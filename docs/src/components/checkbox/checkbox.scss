@@ -1,0 +1,15 @@
+.checkbox {
+  margin-bottom: 0.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__label {
+    color: #333;
+    text-transform: capitalize;
+
+    cursor: pointer;
+    user-select: none;
+  }
+}
