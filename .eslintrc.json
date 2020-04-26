@@ -32,7 +32,7 @@
         "newlines-between": "always"
       }],
       "import/no-extraneous-dependencies": ["error", {
-        "devDependencies": ["**/*.test.js", "**/*.spec.js", "modules/testUtilities/*.js"]
+        "devDependencies": ["**/*.test.js", "**/*.spec.js", "modules/testUtilities/*.js", "docs/**"]
       }],
       // "import/no-internal-modules": "off",
       // "no-restricted-imports": ["error", "@material-ui/core", "@material-ui/icons", "i18next", "react-i18next"],
