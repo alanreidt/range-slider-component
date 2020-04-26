@@ -47,7 +47,7 @@ class ViewController {
       findValuePositionBetween(value, ...boundaries),
     );
 
-    this._setHandleGroupZIndex({ boundaries, values });
+    this._setHandleGroupZIndexes({ boundaries, values });
 
     if (isVertical) {
       this._setHandleGroupVerticalPositions(positions);
@@ -65,7 +65,7 @@ class ViewController {
     }
   }
 
-  _setHandleGroupZIndex({ boundaries, values }) {
+  _setHandleGroupZIndexes({ boundaries, values }) {
     const [start, end] = boundaries;
     const middle = (end - start) / 2;
     let zIndex = 200 + this._handleGroups.length;
