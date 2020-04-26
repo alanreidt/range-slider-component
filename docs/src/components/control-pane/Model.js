@@ -1,7 +1,7 @@
 import deepEqual from 'deep-equal';
 import cloneDeep from 'lodash/cloneDeep';
 
-import { ObserverMixin } from '../../../modules/utilities';
+import { ObserverMixin } from '../../../../modules/utilities';
 
 class Model {
   constructor(options) {
