@@ -67,7 +67,7 @@ class ViewController {
 
   _setHandleGroupZIndexes({ boundaries, values }) {
     const [start, end] = boundaries;
-    const middle = (end - start) / 2;
+    const middle = start + (end - start) / 2;
     let zIndex = 201;
 
     this._handleGroups.reduceRight((prevHandleGroup, handleGroup, index) => {
