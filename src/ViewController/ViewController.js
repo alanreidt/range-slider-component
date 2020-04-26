@@ -68,14 +68,14 @@ class ViewController {
   _setHandleGroupZIndexes({ boundaries, values }) {
     const [start, end] = boundaries;
     const middle = (end - start) / 2;
-    let zIndex = 200 + this._handleGroups.length;
+    let zIndex = 201;
 
-    this._handleGroups.forEach((handleGroup, index) => {
+    this._handleGroups.reduceRight((prevHandleGroup, handleGroup, index) => {
       handleGroup.style.zIndex = '';
 
       if (values[index] > middle) {
         handleGroup.style.zIndex = zIndex;
-        zIndex -= 1;
+        zIndex += 1;
       }
     });
   }
