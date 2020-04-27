@@ -17,7 +17,7 @@
     "build:js": "parcel build src/Slider.js -o src/Slider.min.js -d prod/",
     "build:css": "parcel build src/slider.scss -o src/slider.min.css -d prod/",
     "build:docs": "rm -rf docs/prod && parcel build docs/src/index.pug -d docs/prod/ --public-url ./prod",
-    "postbuild": "mv docs/prod/index.html docs/index.html",
+    "postbuild:docs": "mv docs/prod/index.html docs/index.html",
     "dev": "parcel docs/src/index.pug --open",
     "eslint": "eslint src/",
     "create": "plop"
