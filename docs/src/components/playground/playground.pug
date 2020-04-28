@@ -4,7 +4,7 @@ include ../control-pane/control-pane
 //-
   Parameters:
     title {string} !required — title for playground section
-mixin playground({ title = 'playground' })
+mixin playground({ title = "playground" })
   - const controlPaneName = title.toLowerCase().split(" ").join("-");
 
   .playground.js-playground
