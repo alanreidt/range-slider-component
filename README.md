@@ -13,6 +13,13 @@ And also, there are tests.
 
 More to come.
 
+## Non-standard dependencies
+- [plop](https://github.com/plopjs/plop),
+- [riteway](https://github.com/ericelliott/riteway),
+- [esm](https://github.com/standard-things/esm),
+- [@bem-react/classname](https://github.com/bem/bem-react/tree/master/packages/classname),
+- [deep-equal](https://github.com/inspect-js/node-deep-equal).
+
 ## Getting started
 In order to try Slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
