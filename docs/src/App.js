@@ -1,4 +1,5 @@
-import 'bootstrap';
+import '../../node_modules/bootstrap/js/dist/util';
+import '../../node_modules/bootstrap/js/dist/carousel';
 
 import dataSet from './dataSet';
 import PlayGround from './components/playground/PlayGround';
