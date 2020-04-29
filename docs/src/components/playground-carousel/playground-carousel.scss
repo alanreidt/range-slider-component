@@ -1,25 +1,28 @@
-@import './components/playground/playground.scss';
+@import '../../../../node_modules/bootstrap/scss/bootstrap-reboot.scss';
+@import '../../../../node_modules/bootstrap/scss/utilities/screenreaders';
+@import '../../../../node_modules/bootstrap/scss/carousel';
 
 .playground-carousel {
-  & .carousel-control-prev,
-  & .carousel-control-next {
+  &__control {
+    display: none;
     top: 57px;
 
-    @media (max-width: 845px) {
-      display: none;
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+
+    &_prev {
+      left: auto;
+      right: 100%;
+    }
+
+    &_next {
+      left: 100%;
+      right: auto;
     }
   }
-  & .carousel-control-prev {
-    left: auto;
-    right: 100%;
-  }
 
-  & .carousel-control-next {
-    left: 100%;
-    right: auto;
-  }
-
-  & .carousel-indicators {
+  &__indicators {
     top: 100%;
     bottom: auto;
 
