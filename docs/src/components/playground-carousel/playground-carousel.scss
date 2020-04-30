@@ -6,7 +6,7 @@
 .playground-carousel {
   &__control {
     display: none;
-    top: 57px;
+    top: $playground-title-font-size * $headings-line-height + $playground-title-margin-bottom;
 
     @include media-breakpoint-up(md) {
       display: flex;

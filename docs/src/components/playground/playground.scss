@@ -5,7 +5,8 @@
 
 .playground {
   &__title {
-    margin-bottom: 1.5rem;
+    font-size: $playground-title-font-size;
+    margin-bottom: $playground-title-margin-bottom;
 
     text-align: center;
     text-transform: capitalize;
