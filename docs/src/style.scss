@@ -11,6 +11,8 @@
 @import '../../prod/slider.min.css';
 @import './components/playground-carousel/playground-carousel.scss';
 @import './components/playground/playground.scss';
+@import './components/display/display.scss';
+@import './components/control-pane/control-pane.scss';
 
 /*
  * Globals
@@ -118,10 +120,6 @@ body {
  */
 .cover {
   padding: 0 1.5rem;
-}
-
-.cover-heading {
-  margin-bottom: 1.5rem;;
 }
 
 .cover .btn-lg {

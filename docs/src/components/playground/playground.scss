@@ -1,8 +1,12 @@
-@import '../display/display.scss';
-@import '../control-pane/control-pane.scss';
+@import '../../../../node_modules/bootstrap/scss/bootstrap-reboot.scss';
+@import '../../../../node_modules/bootstrap/scss/type';
+@import '../../../../node_modules/bootstrap/scss/grid';
 
 .playground {
   &__title {
+    margin-bottom: 1.5rem;
+
+    text-align: center;
     text-transform: capitalize;
 
     @media (max-width: 845px) {
@@ -11,7 +15,10 @@
   }
 
   &__body {
-    background-color: #fff;
     min-height: 100px;
+    padding: 1rem;
+
+    background-color: #fff;
+    border-radius: 0.25rem;
   }
 }

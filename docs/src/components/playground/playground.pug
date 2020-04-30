@@ -8,8 +8,8 @@ mixin playground({ title = "playground" })
   - const controlPaneName = title.toLowerCase().split(" ").join("-");
 
   .playground.js-playground
-    h3.playground__title.cover-heading.text-center= title
-    .playground__body.rounded.p-3
+    h3.playground__title= title
+    .playground__body
       .row
         .col-sm
           +display()
