@@ -9,7 +9,10 @@
 @import '../../node_modules/bootstrap/scss/utilities';
 @import '../../prod/slider.min.css';
 
-@import './scss/global';
+@import './components/playground-carousel/playground-carousel.scss';
+@import './components/playground/playground.scss';
+@import './components/display/display.scss';
+@import './components/control-pane/control-pane.scss';
 
 /*
  * Globals
