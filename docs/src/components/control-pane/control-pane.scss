@@ -1,9 +1,14 @@
-@import './components/input-field/input-field.scss';
-@import './components/checkbox/checkbox.scss';
-@import './components/button/button.scss';
+@import '../../scss/common.scss';
+
+@import '../../../../node_modules/bootstrap/scss/forms';
+@import '../../../../node_modules/bootstrap/scss/grid';
 
 .control-pane {
   padding: 0.5rem 1rem;
   border: 3px solid #333;
   border-radius: 0.5rem;
+
+  &__button {
+    text-align: center;
+  }
 }
