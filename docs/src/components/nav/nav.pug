@@ -1,0 +1,13 @@
+//-
+  Parameters:
+    items {array} — an array of navigation items
+    items[i].href {string} — link of the navigation item
+    items[i].name {string} — name of the navigation item
+mixin nav(items)
+  if !items
+    - items = []
+
+  ul.nav
+    each item in items
+      li.nav-item
+        a.nav-link(href != item.href)= item.name
