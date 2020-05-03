@@ -1,0 +1,11 @@
+@import '../../../../src/slider';
+
+.slider {
+  &__base {
+    border-color: #afafaf;
+  }
+
+  &__scale {
+    color: #333;
+  }
+}
