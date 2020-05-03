@@ -14,7 +14,7 @@ mixin input-field({ labelText = "change me!", helpText = undefined })
     label.input-field__label.col-form-label.col-form-label-sm(
       for != attributes.id
     )= labelText
-    input.form-control.form-control-sm(
+    input.input-field__input.form-control.form-control-sm(
       type="text"
       aria-describedby != hasHelpText && helpTextId
     )&attributes(attributes)
