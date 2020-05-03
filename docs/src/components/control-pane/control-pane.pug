@@ -11,7 +11,7 @@ mixin control-pane(name = "control-pane")
       form.js-control-pane__form
         .form-row
           .col
-            +input-field("Minimum:")(
+            +input-field({ labelText: "Minimum:" })(
               type="number"
               class="js-control-pane__minimum-input"
               id=`${name}-minimum-input`
@@ -19,20 +19,26 @@ mixin control-pane(name = "control-pane")
               inputmode="decimal"
             )
           .col
-            +input-field("Maximum:")(
+            +input-field({ labelText: "Maximum:" })(
               type="number"
               class="js-control-pane__maximum-input"
               id=`${name}-maximum-input`
               placeholder="format: 100"
               inputmode="decimal"
             )
-        +input-field("initial values:", "each value represents the handle")(
+        +input-field({
+          labelText: "initial values:",
+          helpText: "each value represents the handle"
+        })(
           class="js-control-pane__values-input"
           id=`${name}-values-input`
           placeholder="format: 20, 50, 80..."
           inputmode="numeric"
         )
-        +input-field("step:", "from 1 to Max−Min value")(
+        +input-field({
+          labelText: "step:",
+          helpText: "from 1 to Max−Min value"
+        })(
           type="number"
           class="js-control-pane__step-input"
           id=`${name}-step-input`

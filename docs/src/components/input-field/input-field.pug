@@ -5,7 +5,7 @@
   Attributes:
     id !required
     type=["text"]
-mixin input-field(labelText = "change me!", helpText = undefined)
+mixin input-field({ labelText = "change me!", helpText = undefined })
   -
     const isHelpText = helpText !== undefined;
     const helpTextId = attributes.id + "-help";

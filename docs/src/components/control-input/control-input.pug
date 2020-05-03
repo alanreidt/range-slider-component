@@ -3,7 +3,10 @@ include ../input-field/input-field
 mixin control-input()
   .control-input.js-control-input
     form.js-control-input__form
-      +input-field("current values:", "reflects/updates current values")(
+      +input-field({
+        labelText: "current values:",
+        helpText: "reflects/updates current values"
+      })(
         class="js-control-input__values-input"
         id="control-input__values-input"
         placeholder="format: 0, 100"
