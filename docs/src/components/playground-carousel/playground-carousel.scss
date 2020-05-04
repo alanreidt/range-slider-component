@@ -4,7 +4,9 @@
 @import '../../../../node_modules/bootstrap/scss/carousel';
 
 .playground-carousel {
-  margin-bottom: 40px;
+  $playground-carousel-indicators-margin-top: 15px;
+
+  margin-bottom: $playground-carousel-indicators-margin-top + 2 * $carousel-indicator-hit-area-height + $carousel-indicator-height;
 
   &__control {
     display: none;
@@ -29,7 +31,7 @@
     top: 100%;
     bottom: auto;
 
-    margin-top: 1rem;
+    margin-top: $playground-carousel-indicators-margin-top;
     margin-bottom: 0;
   }
 }
