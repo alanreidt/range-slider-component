@@ -1,0 +1,23 @@
+@import '../../scss/common.scss';
+
+@import '../../../../node_modules/bootstrap/scss/utilities/clearfix';
+
+.topline {
+  margin-bottom: auto;
+  padding-bottom: 3.75rem;
+
+  &__logo {
+    margin-bottom: 0;
+    font-size: $font-size-base * 1.75;
+
+    @media (min-width: 48em) {
+      float: left;
+    }
+  }
+
+  &__nav {
+    @media (min-width: 48em) {
+      float: right;
+    }
+  }
+}

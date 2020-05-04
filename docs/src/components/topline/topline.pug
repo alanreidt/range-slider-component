@@ -1,0 +1,15 @@
+include ../nav/nav
+
+mixin topline({ items } = {})
+  if !items
+    -
+      items = [
+        { name: "Home" },
+        { name: "Playground", active: true },
+        { name: "Quick start" },
+      ];
+  header.topline
+    .topline__inner.clearfix
+      h1.topline__logo Slider name
+      .topline__nav
+        +nav(items).nav_main

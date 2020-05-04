@@ -1,5 +1,5 @@
 include ./components/playground-carousel/playground-carousel
-include ./components/nav/nav
+include ./components/topline/topline
 include ./components/link/link
 
 -
@@ -46,16 +46,7 @@ include ./components/link/link
   </head>
   <body class="js-app">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="header masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">Slider name</h3>
-          +nav([
-            { name: "Home" },
-            { name: "Playground" },
-            { name: "Quick start" },
-          ])
-        </div>
-      </header>
+      +topline()
 
       <main role="main" class="page__content  inner  cover">
         +playground-carousel(dataSet)

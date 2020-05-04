@@ -9,7 +9,7 @@ mixin nav(items)
   if !items
     - items = [];
 
-  ul.nav
+  ul.nav&attributes(attributes)
     each item in items
-      li.nav-item
-        +link(item).nav-link
+      li.nav__item.nav-item
+        +link(item).nav__link.nav-link(class={nav__link_active: item.active})
