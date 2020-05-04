@@ -2,16 +2,17 @@ include ../playground/playground
 
 mixin playground-carousel(dataSet)
   .playground-carousel.carousel.slide(id="playgroundCarousel" data-pause="true")
-    ol.playground-carousel__indicators.carousel-indicators
-      each data, index in dataSet
-        li(class={active: index === 0} data-target="#playgroundCarousel" data-slide-to=index)
-    .carousel-inner
-      each data, index in dataSet
-        .carousel-item(class={active: index === 0})
-          +playground(data)
-    a.playground-carousel__control.playground-carousel__control_prev.carousel-control-prev(href="#playgroundCarousel" role="button" data-slide="prev")
-      span.carousel-control-prev-icon(aria-hidden="true")
-      span.sr-only Previous
-    a.playground-carousel__control.playground-carousel__control_next.carousel-control-next(href="#playgroundCarousel" role="button" data-slide="next")
-      span.carousel-control-next-icon(aria-hidden="true")
-      span.sr-only Next
+    .container-fluid.container-fluid_size_md
+      ol.playground-carousel__indicators.carousel-indicators
+        each data, index in dataSet
+          li(class={active: index === 0} data-target="#playgroundCarousel" data-slide-to=index)
+      .carousel-inner
+        each data, index in dataSet
+          .carousel-item(class={active: index === 0})
+            +playground(data)
+      a.playground-carousel__control.playground-carousel__control_prev.carousel-control-prev(href="#playgroundCarousel" role="button" data-slide="prev")
+        span.carousel-control-prev-icon(aria-hidden="true")
+        span.sr-only Previous
+      a.playground-carousel__control.playground-carousel__control_next.carousel-control-next(href="#playgroundCarousel" role="button" data-slide="next")
+        span.carousel-control-next-icon(aria-hidden="true")
+        span.sr-only Next

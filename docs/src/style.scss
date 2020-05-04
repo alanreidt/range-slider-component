@@ -9,6 +9,7 @@
 @import '../../node_modules/bootstrap/scss/utilities';
 
 @import './components/page/page.scss';
+@import './components/container/container.scss';
 @import './components/topline/topline.scss';
 @import './components/nav/nav.scss';
 @import './components/playground-carousel/playground-carousel.scss';
@@ -21,7 +22,3 @@
 @import './components/button/button.scss';
 @import './components/footer/footer.scss';
 @import './components/link/link.scss';
-
-.cover-container {
-  max-width: 48em;
-}
