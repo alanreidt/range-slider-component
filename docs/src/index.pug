@@ -52,29 +52,7 @@ include ./components/link/link
         +playground-carousel(dataSet)
       </main>
 
-      <footer class="footer mastfoot mt-auto">
-        <div class="inner">
-          <p class="text-center">
-            | The site is built by
-            |
-            +link({ name: "Alan Reid" })(target="_blank" rel="noopener noreferrer" href="https://github.com/alanreidt")
-            |
-            | for
-            |
-            +link({ name: "Slider plugin" })(target="_blank" rel="noopener noreferrer" href="https://github.com/alanreidt/slider")
-            | .
-            <br>
-            | The design is based on
-            |
-            +link({ name: "Bootstrap" })(target="_blank" rel="noopener noreferrer" href="https://getbootstrap.com/")
-            |
-            | Cover template, made by
-            |
-            +link({ name: "@mdo" })(target="_blank" rel="noopener noreferrer" href="https://twitter.com/mdo")
-            | .
-          </p>
-        </div>
-      </footer>
+      include ./components/footer/footer
     </div>
 
     <script src="./app.js"></script>

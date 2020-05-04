@@ -18,6 +18,8 @@
 @import './components/input-field/input-field.scss';
 @import './components/checkbox/checkbox.scss';
 @import './components/button/button.scss';
+@import './components/footer/footer.scss';
+@import './components/link/link.scss';
 
 /*
  * Globals
@@ -66,16 +68,3 @@ body {
     margin-bottom: 40px;
   }
 }
-
-/*
- * Footer
- */
-
-.footer {
-  padding-top: 3.75rem;
-}
-
-.mastfoot {
-  color: rgba(255, 255, 255, .5);
-}
-
