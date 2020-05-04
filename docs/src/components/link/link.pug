@@ -1,0 +1,10 @@
+//-
+  Parameters:
+    name {string} !required — text for an `<a>` tag
+  Attributes:
+    href=["/mock-address/change-me"]
+mixin link({ href, name = "change me!" })
+  if !href
+    - href = "/mock-address/change-me";
+
+  a.link(href != href)&attributes(attributes)= name

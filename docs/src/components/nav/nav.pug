@@ -1,3 +1,4 @@
+include ../link/link
 //-
   Parameters:
     items {array} — an array of navigation items
@@ -5,9 +6,9 @@
     items[i].name {string} — name of the navigation item
 mixin nav(items)
   if !items
-    - items = []
+    - items = [];
 
   ul.nav
     each item in items
       li.nav-item
-        a.nav-link(href != item.href)= item.name
+        +link(item).nav-link

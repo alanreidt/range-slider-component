@@ -1,5 +1,6 @@
 include ./components/playground-carousel/playground-carousel
 include ./components/nav/nav
+include ./components/link/link
 
 -
   const dataSet = [
@@ -49,9 +50,9 @@ include ./components/nav/nav
         <div class="inner">
           <h3 class="masthead-brand">Slider name</h3>
           +nav([
-            { href: "/mock-address/change-me", name: "Home" },
-            { href: "/mock-address/change-me", name: "Playground" },
-            { href: "/mock-address/change-me", name: "Quick start" },
+            { name: "Home" },
+            { name: "Playground" },
+            { name: "Quick start" },
           ])
         </div>
       </header>
@@ -63,9 +64,23 @@ include ./components/nav/nav
       <footer class="footer mastfoot mt-auto">
         <div class="inner">
           <p class="text-center">
-            | The site is built by <a target="_blank" rel="noopener noreferrer" href="https://github.com/alanreidt">Alan Reid</a> for <a target="_blank" rel="noopener noreferrer" href="https://github.com/alanreidt/slider">Slider plugin</a>.
+            | The site is built by
+            |
+            +link({ name: "Alan Reid" })(target="_blank" rel="noopener noreferrer" href="https://github.com/alanreidt")
+            |
+            | for
+            |
+            +link({ name: "Slider plugin" })(target="_blank" rel="noopener noreferrer" href="https://github.com/alanreidt/slider")
+            | .
             <br>
-            | The design is based on <a target="_blank" rel="noopener noreferrer" href="https://getbootstrap.com/">Bootstrap</a> Cover template, made by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/mdo">@mdo</a>.
+            | The design is based on
+            |
+            +link({ name: "Bootstrap" })(target="_blank" rel="noopener noreferrer" href="https://getbootstrap.com/")
+            |
+            | Cover template, made by
+            |
+            +link({ name: "@mdo" })(target="_blank" rel="noopener noreferrer" href="https://twitter.com/mdo")
+            | .
           </p>
         </div>
       </footer>
