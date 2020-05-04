@@ -4,6 +4,8 @@
 @import '../../../../node_modules/bootstrap/scss/carousel';
 
 .playground-carousel {
+  margin-bottom: 40px;
+
   &__control {
     display: none;
     top: $playground-title-font-size * $headings-line-height + $playground-title-margin-bottom;
