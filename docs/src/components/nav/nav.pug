@@ -1,9 +1,10 @@
 include ../link/link
+
 //-
   Parameters:
     items {array} — an array of navigation items
-    items[i].href {string} — link of the navigation item
-    items[i].name {string} — name of the navigation item
+    items[i].href {string} — link for the navigation item
+    items[i].name {string} — name for the navigation item
 mixin nav(items)
   if !items
     - items = [];
