@@ -15,4 +15,5 @@
 @import './components/footer/footer.scss';
 @import './components/link/link.scss';
 
+// should be below the components — it depends on their common.scss
 @import '../../node_modules/bootstrap/scss/reboot';

@@ -1,3 +1,5 @@
 @import '../../../node_modules/bootstrap/scss/functions';
 @import '../../../node_modules/bootstrap/scss/mixins';
+
+// should be below the function and mixins — it depends on them
 @import './variables.scss';
