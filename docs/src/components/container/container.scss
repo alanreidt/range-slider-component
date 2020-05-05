@@ -2,6 +2,11 @@
 
 @import '../../../../node_modules/bootstrap/scss/grid';
 
-.container-fluid_size_md {
-  max-width: 48rem;
+.container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  &_size_md {
+    max-width: 48rem;
+  }
 }
