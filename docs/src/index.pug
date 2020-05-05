@@ -1,32 +1,40 @@
+include ./pages/playground-page/playground-page
 include ./components/topline/topline
 
 -
-  const dataSet = [
-    {
-      title: "default example",
-      options: {},
-    },
-    {
-      title: "custom example",
-      options: {
-        boundaries: [-200, 300],
-        values: [-100, 200],
-        step: 10,
-        isVertical: false,
-        hasTooltips: true,
+  const data = {
+    toplineItems: [
+      { name: "Home" },
+      { name: "Playground", active: true },
+      { name: "Quick start" },
+    ],
+    playgroundItems: [
+      {
+        title: "default example",
+        options: {},
       },
-    },
-    {
-      title: "vertical example",
-      options: {
-        boundaries: [-500, 500],
-        values: [-300, -200, 200],
-        step: 25,
-        isVertical: true,
-        hasTooltips: true,
+      {
+        title: "custom example",
+        options: {
+          boundaries: [-200, 300],
+          values: [-100, 200],
+          step: 10,
+          isVertical: false,
+          hasTooltips: true,
+        },
       },
-    }
-  ];
+      {
+        title: "vertical example",
+        options: {
+          boundaries: [-500, 500],
+          values: [-300, -200, 200],
+          step: 25,
+          isVertical: true,
+          hasTooltips: true,
+        },
+      },
+    ],
+  };
 
 doctype html
 html.page(lang="en")
@@ -43,9 +51,9 @@ html.page(lang="en")
     title Slider plugin Demo-page
   body.page__body.js-app
     .page__topline
-      +topline()
+      +topline(data.toplineItems)
     main.page__content.page__content_centered(role="main")
-      include ./pages/playground-page/playground-page
+      +playground-page(data.playgroundItems)
     .page__footer
       include ./components/footer/footer
 

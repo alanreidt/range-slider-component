@@ -1,13 +1,6 @@
 include ../nav/nav
 
-mixin topline({ items } = {})
-  if !items
-    -
-      items = [
-        { name: "Home" },
-        { name: "Playground", active: true },
-        { name: "Quick start" },
-      ];
+mixin topline(items = [])
   header.topline
     .container-fluid.container-fluid_size_md
       .spacer.clearfix

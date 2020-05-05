@@ -1,14 +1,14 @@
 include ../playground/playground
 
-mixin playground-carousel(dataSet)
+mixin playground-carousel(items = [])
   .playground-carousel.carousel.slide(id="playgroundCarousel" data-pause="true")
     ol.playground-carousel__indicators.carousel-indicators
-      each data, index in dataSet
+      each item, index in items
         li(class={active: index === 0} data-target="#playgroundCarousel" data-slide-to=index)
     .carousel-inner
-      each data, index in dataSet
+      each item, index in items
         .carousel-item(class={active: index === 0})
-          +playground(data)
+          +playground(item)
     a.playground-carousel__control.playground-carousel__control_prev.carousel-control-prev(href="#playgroundCarousel" role="button" data-slide="prev")
       span.carousel-control-prev-icon(aria-hidden="true")
       span.sr-only Previous
