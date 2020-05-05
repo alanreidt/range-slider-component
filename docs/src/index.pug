@@ -1,6 +1,4 @@
-include ./components/playground-carousel/playground-carousel
 include ./components/topline/topline
-include ./components/link/link
 
 -
   const dataSet = [
@@ -49,8 +47,7 @@ include ./components/link/link
       +topline()
 
     main.page__content(role="main")
-      .container-fluid.container-fluid_size_md
-        +playground-carousel(dataSet)
+      include ./pages/playground-page/playground-page
 
     .page__footer
       include ./components/footer/footer
