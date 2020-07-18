@@ -54,6 +54,6 @@
   "dependencies": {
     "@bem-react/classname": "^1.5.8",
     "deep-equal": "^2.0.3",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   }
 }
