@@ -1,17 +1,9 @@
-# Slider plugin
+# range-slider-component
+Realization of the [range-slider component](https://rizzoma.com/topic/d5c429337bcaa70548fb5aeedee6d92b/0_b_8ndo_78h6s/).
 
-## Introduction
-> Note: This project is regarded as portfolio background, so it's not ready for distribution (maybe, yet).
-
-Welcome to Slider plugin github page. Although it looks like every other range Slider, the component has several advantages, that make it unique.
+Aimed skills: OOP, MVC, functional programming, Documentation, TDD, UML diagram, Airbnb style guide.
 
 The main one is a client-oriented approach. It has an API, that accepts variety of input data types (user decides what is convenient for him) and strict data types of output, which makes it predictable. And beyond that, application logic handles input contradictions and correct them in a predictable manner (implicitly, for now).
-
-The second excellence is a presence of architecture, precisely MVC. More on that below.
-
-And also, there are tests.
-
-More to come.
 
 ## Non-standard dependencies
 - [plop](https://github.com/plopjs/plop),
