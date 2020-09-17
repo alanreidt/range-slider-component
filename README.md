@@ -104,25 +104,31 @@ Slider will take all free space up — it has `width` or `height` equal to `100%
 Use its methods to interact with Slider entity.
 
 #### create method
-Compose from js docs.
+See [Slider API wrapper object](./src/Slider.js).
+
 #### getOptions method
-Compose from js docs.
+See [Slider API wrapper object](./src/Slider.js).
+
 #### setOptions method
 > Note: `orientation` and `hasTooltips` options are closed for this method.
 >
 > See details in [the options section](#options).
 
-Compose from js docs.
+See [Slider API wrapper object](./src/Slider.js).
+
 #### setValueAt method
-Compose from js docs.
+See [Slider API wrapper object](./src/Slider.js).
+
 #### addSubscriber method
 > Note: currently only `'update'` event is realized.
 
-Compose from js docs.
+See [Slider API wrapper object](./src/Slider.js).
+
 #### removeSubscriber method
-Compose from js docs.
+See [Slider API wrapper object](./src/Slider.js).
+
 #### triggerSubscribers method
-Compose from js docs.
+See [Slider API wrapper object](./src/Slider.js).
 
 ### Options
 `Options` represents an object with the next possible members:
@@ -198,19 +204,19 @@ I'd been holding client's\* convenience in mind, when developing the component's
 ### Architecture
 Slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
 
-Slider, in the essence, represents component, which reflects a part of Application's Domain Model and allows user to change a representation of the part (via modification of Slider inner Model).
+Slider, in the essence, represents a component, that reflects a part of Application's Domain Model and allows user to change a representation of the part (via modification of Slider inner Model).
 
-For example, on a hotel website, Slider will reflect the hotel rooms price range (which will be passed to the Slider Model `boundaries` option) and will allow user to narrow down a representation of the diapason to its needs.
+For example, on a hotel website, Slider would reflect the hotel rooms' price range (which would be passed to the Slider Model `boundaries` option) and will allow a user to narrow down a representation of the diapason to its needs.
 
-But, Slider also can manipulate Domain Model directly (through the Application Model (Façade), of course). In that case, Slider options will be synchronized on an `'update'` event.
+But, Slider can also manipulate Domain Model directly (through the Application Model (Façade), of course). In that case, Slider options would be synchronized on `'update'` event.
 
 So, Slider architecture is built with these things in mind.
 
 #### Model
-The module contains business logic of Slider component: possible Slider options and logic around them.
+The module contains data of the component: possible options and logic around them.
 
 #### ViewController
-This module is responsible for display of current Slider state and handling of user actions.
+This module is responsible for display of a current state and handling of user actions.
 
 It translates position of occurred events into Slider `values` option. All further work (as validation of that value and correction of correlated options) is handled by `Model`.
 
