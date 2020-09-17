@@ -29,28 +29,31 @@ Initially was realized as a part of the [Full-stack development education system
 - [deep-equal](https://github.com/inspect-js/node-deep-equal).
 
 ## Getting started
-In order to try Slider out, check [Demo Page](https://alanreidt.github.io/slider/).
 
-### Mess with clone
-For more, clone the repository:
+### Quick Start
+To open the repo on your local machine use the following:
 ```bash
-# clone this repository
-git clone https://github.com/alanreidt/slider.git
+# clone the repo into the alanreidt-range-slider-component folder
+git clone https://github.com/alanreidt/range-slider-component.git alanreidt-range-slider-component
+
+cd alanreidt-range-slider-component
+
+# install the repo dependencies
+npm install
 ```
 
-Use next npm commands to get corresponding results (all dependencies should be installed by npm automatically):
+Use next npm commands to get corresponding results:
 ```bash
-# to build and open web page with Slider
+# to build a dev version of the docs web page and open it
 npm run dev
 
-# to build and open web page with tests
+# to build and open a web page with tests
 npm run test
 
-# to build production version
+# to build a production version
 npm run build
 ```
-
-`Slider API` is connected to the `test-page/app.js` file. You can mess around with it there.
+You can reach the page at http://localhost:1234/.
 
 Production version is placed in `prod` folder.
 
@@ -59,7 +62,7 @@ Connect it to your code by downloading zip-file via green button at the top of t
 
 Unzip and place folder within your project folder.
 
-And then, enter next lines in your main html file (or check `test-page` folder to see how to connect it directly to js and css files):
+And then, enter the next lines in your main html file:
 ```html
 <!-- import Slider style (change yourpath) -->
 <link rel="stylesheet" href="{your_path}/slider/prod/slider.min.css">
@@ -68,12 +71,12 @@ And then, enter next lines in your main html file (or check `test-page` folder t
 <script src="{your_path}/slider/prod/Slider.min.js"></script>
 ```
 
-And by next command initialize Slider:
+And by the next command initialize Slider:
 ```javascript
 // select your DOM element
 const parent = document.querySelector(".slider-wrapper");
 
-// and create Slider with options
+// and create Slider with the options
 Slider.create(parent, {
   boundaries: [0, 100],
   values: [20, 80],
@@ -84,7 +87,7 @@ Slider.create(parent, {
 
 Possible options are described in [the options section](#options).
 
-By the way, don't forget to set `height` for vertical Slider on `parent` element (because Slider is created inside):
+By the way, don't forget to set the `height` for vertical Slider on a `parent` element (because Slider is created inside):
 ```css
 /* parent element for Slider */
 .slider-wrapper {
@@ -94,7 +97,7 @@ By the way, don't forget to set `height` for vertical Slider on `parent` element
 }
 ```
 
-Slider will take all free space up — it has `width` or `height` equal to `100%`, depending on orientation.
+Slider will take all free space up — it has a `width` or a `height` equal to `100%`, depending on orientation.
 
 ## Documentation
 
