@@ -190,6 +190,11 @@ You can accomplish desired result by using *API create method* along with `'upda
 
 Or you can create Slider with tooltips and then hide them through css, depending on event.
 
+### User experience
+I'd been holding client's\* convenience in mind, when developing the component's interface: it accepts variety of input data types (user decides which is convenient for him) and strict data types of output, which makes it predictable. And beyond that, logic of the range-slider handles input contradictions and corrects them in a predictable manner.
+
+\* — by client I mean a developer, that uses the component.
+
 ### Architecture
 Slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
 
