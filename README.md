@@ -10,6 +10,7 @@ Initially was realized as a part of the [Full-stack development education system
 ## Aimed skills:
 - Object-oriented programming principles,
 - MVC architecture,
+- Application design principles,
 - Functional programming approach,
 - Documentation,
 - Component API creation,
@@ -64,10 +65,10 @@ Unzip and place folder within your project folder.
 
 And then, enter the next lines in your main html file:
 ```html
-<!-- import Slider style (change yourpath) -->
+<!-- import Slider style (change {yourpath}) -->
 <link rel="stylesheet" href="{your_path}/slider/prod/slider.min.css">
 
-<!-- import Slider API unit (change yourpath) -->
+<!-- import Slider API unit (change {yourpath}) -->
 <script src="{your_path}/slider/prod/Slider.min.js"></script>
 ```
 
@@ -85,9 +86,9 @@ Slider.create(parent, {
 });
 ```
 
-Possible options are described in [the options section](#options).
+Possible options are described in the [options section](#options).
 
-By the way, don't forget to set the `height` for vertical Slider on a `parent` element (because Slider is created inside):
+By the way, don't forget to set `height` for vertical Slider on a `parent` element (because Slider is created inside):
 ```css
 /* parent element for Slider */
 .slider-wrapper {
@@ -97,14 +98,14 @@ By the way, don't forget to set the `height` for vertical Slider on a `parent` e
 }
 ```
 
-Slider will take all free space up — it has a `width` or a `height` equal to `100%`, depending on orientation.
+Slider will take all free space up — it has `width` or `height` equal to `100%`, depending on orientation.
 
 ## Documentation
 
 ### API
 *Slider object*, which localized in the `src/Slider.js` file is dedicated as *Slider API Unit*.
 
-Use its methods to interact with Slider entity.
+Use its methods to interact with a Slider instance.
 
 #### create method
 See [Slider API wrapper object](./src/Slider.js).
@@ -134,7 +135,7 @@ See [Slider API wrapper object](./src/Slider.js).
 See [Slider API wrapper object](./src/Slider.js).
 
 ### Options
-`Options` represents an object with the next possible members:
+`Options` represents an object with the next possible properties:
 
 | options | default value | Input type | Output type | Details |
 |:-----------:|:---------------------:|:--------------------------:|:--------------------------:|---------------------------|
@@ -150,15 +151,15 @@ For future info, see below.
 
 #### boundaries
 ##### Input/Output type details
-In case, when only a number is passed, the closest edge (`Min` or `Max` value) to the input will be changed.
+In case, when only a number were passed, the closest edge (`Min` or `Max` value) to the number would be changed.
 
-For example, having an `200`, as an *input*, during an *initialization* (default value is `[0, 100]`), will result in `[0, 200]`.
+For example, having an `200`, as an *input*, during *initialization* (default value is `[0, 100]`), would result in `[0, 200]`.
 
-Analogical situation would have a place during a *reassignment* (using *API setOptions method*) — your closest boundaries value will be changed.
+An analogical situation would take a place during *reassignment* (using *API setOptions method*) — your closest boundaries value would be changed.
 
-*Output* will always return an array of numbers (even if only single value was passed). And that array will be sorted in ascending order.
+*Output* will always return an array of numbers (even if only single value were passed). And that array would be sorted in ascending order.
 
-*restrictions*: only positive and negative numbers are allowed.
+*restrictions*: only positive and negative integer numbers are allowed.
 
 ##### Auto correction
 This option represents something like an axiom — all other dependent values are corrected according to it.
@@ -167,27 +168,27 @@ This option represents something like an axiom — all other dependent values ar
 ##### Input/Output type details
 `values` option is handled identically to `boundaries`, but, as it has more values to deal with, there is additional information you need to know.
 
-*The first* difference is if input value lies in the middle of 2 current values, then the bigger one will be changed.
+*The first* difference is if input value lay in the middle of 2 current values, then the bigger one would be changed.
 
-And *the second* is that you can pass an array up to current values length (excessed will be ignored) — it will change all the closest values to the inputted ones.
+And *the second* is that you can pass an array up to current values quantity (excessed would be ignored) — it will change all the closest values to the passed ones.
 
-*restrictions*: only positive and negative numbers are allowed.
+*restrictions*: only positive and negative integer numbers are allowed.
 
 ##### Auto correction
-This value is always corrected to accordance with `step` option. If it doesn't correspond — the closest divisible by the `step` will be assigned.
+This value is always corrected to accordance with `step` option. If it didn't correspond — the closest divisible by the `step` would be assigned.
 
 #### step
 ##### Input/Output type details
-*restrictions*: value from `1` to `Range (Max − Min values)` (`1 <= value <= Range`) is allowed.
+*restrictions*: the value from `1` to `Range (Max − Min values)` (`1 <= value <= Range`) is allowed.
 
 ##### Auto correction
-The value is always corrected to accordance with `boundaries` option. The division of `boundaries` difference by `step` should have no remainder, otherwise it will be assigned to the closest possible one.
+The value is always corrected to accordance with `boundaries` option. The division of `boundaries` difference by `step` should have no remainder, otherwise it would be assigned to the closest possible one.
 
 #### orientation
 ##### API setOptions
-`orientation` option is closed for an *update*, as this operation requires repaint of a web-page.
+`orientation` option is closed for an *update*, as this operation requires repaint of a web page.
 
-You can accomplish desired result by using *API create method* along with `'update'` event, instead.
+You can accomplish a desired result by using *API create method* along with `'update'` event, instead.
 
 #### hasTooltips
 ##### API setOptions
@@ -195,7 +196,7 @@ Analogically to `orientation` option `hasTooltips` option is closed for an *upda
 
 Although, it's possible to realize an *update* behavior here, I don't see this, as a logical functionality (see below).
 
-You can accomplish desired result by using *API create method* along with `'update'` event, instead.
+You can accomplish a desired result by using *API create method* along with `'update'` event, instead.
 
 Or you can create Slider with tooltips and then hide them through css, depending on event.
 
@@ -205,11 +206,11 @@ I'd been holding client's\* convenience in mind, when developing the component's
 \* — by client I mean a developer, that uses the component.
 
 ### Architecture
-Slider architecture follows an *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
+Slider architecture follows *original MVC architecture*, the topic is thoroughly described in the article [«Охота на мифический MVC»](https://habr.com/ru/post/321050/) (see some details below).
 
 Slider, in the essence, represents a component, that reflects a part of Application's Domain Model and allows user to change a representation of the part (via modification of Slider inner Model).
 
-For example, on a hotel website, Slider would reflect the hotel rooms' price range (which would be passed to the Slider Model `boundaries` option) and will allow a user to narrow down a representation of the diapason to its needs.
+For example, on a hotel website, Slider would reflect the hotel rooms' price range (which would be passed to the Slider Model `boundaries` option) and would allow a user to narrow down a representation of the diapason to its needs.
 
 But, Slider can also manipulate Domain Model directly (through the Application Model (Façade), of course). In that case, Slider options would be synchronized on `'update'` event.
 
