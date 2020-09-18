@@ -1,5 +1,7 @@
+<!-- omit in toc -->
 # range-slider-component
 
+<!-- omit in toc -->
 ## Introduction
 Realization of a range-slider component, which is used to display a value between range of values or just a single one, giving a user-friendly interface.
 
@@ -9,10 +11,12 @@ The project had a lot of challenges along the way. I've learned quite a bit abou
 
 Initially was realized as a part of the [Full-stack development education system](https://www.fullstack-development.com/en#system).
 
+<!-- omit in toc -->
 ### Requirements:
 - [requirements in Russian](https://rizzoma.com/topic/d5c429337bcaa70548fb5aeedee6d92b/0_b_8ndo_78h7o/),
 - [requirements in English](./_miscellaneous/requirements.md).
 
+<!-- omit in toc -->
 ### Aimed skills:
 - Object-oriented programming principles,
 - MVC architecture,
@@ -23,6 +27,43 @@ Initially was realized as a part of the [Full-stack development education system
 - TDD approach,
 - UML diagram,
 - Airbnb style guide.
+
+<!-- omit in toc -->
+## Table of Contents
+- [Possible improvements](#possible-improvements)
+  - [Tests](#tests)
+- [Non-standard dependencies](#non-standard-dependencies)
+- [Getting started](#getting-started)
+  - [Quick Start](#quick-start)
+  - [Connect Slider to your project](#connect-slider-to-your-project)
+- [Documentation](#documentation)
+  - [API](#api)
+    - [create method](#create-method)
+    - [getOptions method](#getoptions-method)
+    - [setOptions method](#setoptions-method)
+    - [setValueAt method](#setvalueat-method)
+    - [addSubscriber method](#addsubscriber-method)
+    - [removeSubscriber method](#removesubscriber-method)
+    - [triggerSubscribers method](#triggersubscribers-method)
+  - [Options](#options)
+    - [boundaries](#boundaries)
+      - [Input/Output type details](#inputoutput-type-details)
+      - [Auto correction](#auto-correction)
+    - [values](#values)
+      - [Input/Output type details](#inputoutput-type-details-1)
+      - [Auto correction](#auto-correction-1)
+    - [step](#step)
+      - [Input/Output type details](#inputoutput-type-details-2)
+      - [Auto correction](#auto-correction-2)
+    - [orientation](#orientation)
+      - [API setOptions](#api-setoptions)
+    - [hasTooltips](#hastooltips)
+      - [API setOptions](#api-setoptions-1)
+  - [User experience](#user-experience)
+  - [Architecture](#architecture)
+    - [Model](#model)
+    - [ViewController](#viewcontroller)
+    - [UML diagram](#uml-diagram)
 
 ## Possible improvements
 ### Tests
