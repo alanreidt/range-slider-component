@@ -1,4 +1,6 @@
 # range-slider-component
+
+## Introduction
 Realization of a range-slider component, which is used to display a value between range of values or just a single one, giving a user-friendly interface.
 
 [Demo page](https://alanreidt.github.io/range-slider-component/)
@@ -7,16 +9,11 @@ The project had a lot of challenges along the way. I've learned quite a bit abou
 
 Initially was realized as a part of the [Full-stack development education system](https://www.fullstack-development.com/en#system).
 
-## Possible improvements
-### Tests
-Tests are the same as they were at the start, but since then I've gained knowledge how to do them right:
-- First of all, I would change their target point — most of them test not what needs to be tested.
-- Secondly, I would remove redundant test helpers I've created — they only add complexity and reduce understandability. I'd better use some restricting testing tool, like [riteway](https://github.com/ericelliott/riteway), that helps to concentrate on goals of the test.
-- Also, I would add appropriate testing layers for the needs, more precisely functional tests for ViewController module.
+### Requirements:
+- [requirements in Russian](https://rizzoma.com/topic/d5c429337bcaa70548fb5aeedee6d92b/0_b_8ndo_78h7o/),
+- [requirements in English](./_miscellaneous/requirements.md).
 
-For example, as I've done for [replaceValueAt function](https://github.com/alanreidt/utilities/blob/master/replaceValueAt/replaceValueAt.test.js) unit test.
-
-## Aimed skills:
+### Aimed skills:
 - Object-oriented programming principles,
 - MVC architecture,
 - Application design principles,
@@ -27,9 +24,14 @@ For example, as I've done for [replaceValueAt function](https://github.com/alanr
 - UML diagram,
 - Airbnb style guide.
 
-## Requirements:
-- [requirements in Russian](https://rizzoma.com/topic/d5c429337bcaa70548fb5aeedee6d92b/0_b_8ndo_78h7o/),
-- [requirements in English](./_miscellaneous/requirements.md).
+## Possible improvements
+### Tests
+Tests are the same as they were at the start, but since then I've gained knowledge how to do them right:
+- First of all, I would change their target point — most of them test not what needs to be tested.
+- Secondly, I would remove redundant test helpers I've created — they only add complexity and reduce understandability. I'd better use some restricting testing tool, like [riteway](https://github.com/ericelliott/riteway), that helps to concentrate on goals of the test.
+- Also, I would add appropriate testing layers for the needs, more precisely functional tests for ViewController module.
+
+For example, as I've done for [replaceValueAt function](https://github.com/alanreidt/utilities/blob/master/replaceValueAt/replaceValueAt.test.js) unit test.
 
 ## Non-standard dependencies
 - [plop](https://github.com/plopjs/plop),
