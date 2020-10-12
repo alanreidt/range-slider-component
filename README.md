@@ -3,11 +3,16 @@
 
 <!-- omit in toc -->
 ## Introduction
-Realization of a range-slider component, which is used to display a value between range of values or just a single one, giving a user-friendly interface.
+Realization of the range-slider component, that's used to allow a user to choose a value or range of values in the given interval, providing a user-friendly interface for that.
 
 [Demo page](https://alanreidt.github.io/range-slider-component/)
 
-The project had a lot of challenges along the way. I've learned quite a bit about MVC architecture and application design principles in general — now all of that gives me understanding of what can cause troubles later on, when I build something. Also, it's taught me about the importance of automated unit tests, which has helped me to detect bugs during the refactoring and addition of new features phases. And, of course, many more.
+The project had a lot of challenges along the way, as a result:
+- I've learned quite a bit about MVC architecture and application design principles in general — now all of that gives me understanding of what can cause troubles later on, when I build something;
+- It's taught me about the importance of automated unit tests, which has helped me to detect bugs during the refactoring and addition of new features phases;
+- It's showed me the advantages of TDD approach and has helped to get used to the thinking in that way;
+- I've practiced Javascript far and wide;
+- And, of course, many more;
 
 Initially was realized as a part of the [Full-stack development education system](https://www.fullstack-development.com/en#system).
 
