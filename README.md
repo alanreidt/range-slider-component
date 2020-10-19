@@ -74,10 +74,10 @@ Initially was realized as a part of the [Full-stack development education system
 ### Tests
 Tests are the same as they were at the start, but since then I've gained knowledge how to do them right.
 
-So, once I have time:
-- I would change their target point — most of them test not what needs to be tested.
-- I would remove redundant test helpers I've created — they only add complexity and reduce understandability. I'd better use some restricting testing tool, like [riteway](https://github.com/ericelliott/riteway), that helps to concentrate on goals of the test.
-- I would add appropriate testing layers for the needs, more precisely functional tests for ViewController module.
+So, if I have time:
+- I will change their target point — most of them test not what needs to be tested.
+- I will remove redundant test helpers I've created — they only add complexity and reduce understandability. I'd better use some restricting testing tool, like [riteway](https://github.com/ericelliott/riteway), that helps to concentrate on goals of the test.
+- I will add appropriate testing layers for the needs, more precisely functional tests for ViewController module.
 
 For example, as I've done for [replaceValueAt function](https://github.com/alanreidt/utilities/blob/master/replaceValueAt/replaceValueAt.test.js) unit test.
 
